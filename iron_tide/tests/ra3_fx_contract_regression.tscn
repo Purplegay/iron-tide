@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://tests/ra3_fx_contract_regression.gd" id="1"]
+[node name="Ra3FxContractRegression" type="Node"]
+script = ExtResource("1")

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128" height="92" viewBox="0 0 128 92">
+  <defs>
+    <linearGradient id="membrane" x2=".32" y2="1" gradientUnits="objectBoundingBox">
+      <stop stop-color="#8292d1"/><stop offset=".35" stop-color="#343e70"/><stop offset="1" stop-color="#101831"/>
+    </linearGradient>
+    <linearGradient id="hide" x1=".15" y1="0" x2=".85" y2="1">
+      <stop stop-color="#a4e3cf"/><stop offset=".28" stop-color="#568d91"/><stop offset=".55" stop-color="#255562"/><stop offset="1" stop-color="#172538"/>
+    </linearGradient>
+    <g id="wing" stroke-linejoin="round">
+      <path d="M51 64 Q40 56 30 59 Q28 48 18 51 Q17 37 5 38 Q10 24 3 6 Q25 14 34 29 L30 16 Q52 30 54 52Z" fill="url(#membrane)" stroke="#a4a9dd" stroke-width="1.9"/>
+      <path d="M50 59 Q31 27 5 8 M48 55 Q28 31 7 37 M47 55 Q33 40 18 50 M48 57 Q35 42 30 58" fill="none" stroke="#7385a8" stroke-width="1.8"/>
+      <path d="M50 56 Q38 27 32 18" fill="none" stroke="#b0c5cf" stroke-width="2"/>
+    </g>
+    <g id="tendril" stroke-linecap="round" fill="none">
+      <path d="M54 46 C42 52 51 63 43 66 C37 69 34 60 39 58 M59 48 C49 61 61 71 51 77 C46 80 43 77 44 74" stroke="#101e32" stroke-width="7.5"/>
+      <path d="M54 46 C42 52 51 63 43 66 C37 69 34 60 39 58 M59 48 C49 61 61 71 51 77 C46 80 43 77 44 74" stroke="#609e9f" stroke-width="4.5"/>
+      <path d="M54 46 C47 51 49 57 47 61 M59 49 Q53 56 55 64" stroke="#a8dbbf" stroke-width="1.6"/>
+    </g>
+  </defs>
+  <use xlink:href="#wing"/><use xlink:href="#wing" transform="translate(128 0) scale(-1 1)"/>
+  <path d="M32 89 Q33 68 41 56 Q50 45 63 47 Q79 45 88 57 Q97 70 97 89 Q80 80 64 87 Q50 81 32 89Z" fill="url(#hide)" stroke="#17253a" stroke-width="3"/>
+  <path d="M35 78 Q39 58 50 58 M93 78 Q89 58 78 58" fill="none" stroke="#6db8ae" stroke-width="2.5"/>
+  <path d="M44 33 C42 23 47 13 54 9 Q61 3 70 7 C81 9 88 23 84 34 L89 29 Q86 43 76 48 Q65 61 52 49 Q44 43 39 29Z" fill="url(#hide)" stroke="#17273b" stroke-width="2.6"/>
+  <path d="M46 27 Q48 13 59 10 M52 25 Q56 13 63 10 M79 27 Q78 16 71 13" fill="none" stroke="#a2d5bd" stroke-width="1.9"/>
+  <path d="M46 33 Q54 32 61 39 Q53 45 48 40Z M82 33 Q74 32 67 39 Q75 45 80 40Z" fill="#101c30"/>
+  <path d="M48 35 L59 39 Q50 41 48 35 M80 35 L69 39 Q78 41 80 35" fill="#b9ffd4"/>
+  <use xlink:href="#tendril"/><use xlink:href="#tendril" transform="translate(128 0) scale(-1 1)"/>
+  <path d="M63 42 C58 50 57 53 60 63 S65 75 59 84 Q69 80 66 67 C64 57 65 53 67 47 C70 52 67 58 70 64 Q72 68 69 73 C79 68 72 60 73 54 Q73 46 68 42Z" fill="url(#hide)" stroke="#173747" stroke-width="1.6"/>
+  <path d="M63 46 Q58 55 62 64 M68 46 Q73 51 70 58" fill="none" stroke="#96d0b8" stroke-width="1.4"/>
+</svg>

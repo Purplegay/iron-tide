@@ -1,0 +1,64 @@
+{
+  "time_of_day": "AFTERNOON",
+  "lights": [
+    {
+      "Ambient": [
+        0.21961,
+        0.20392,
+        0.17255
+      ],
+      "Diffuse": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "LightPos": [
+        -0.81,
+        0.38,
+        -0.45
+      ]
+    },
+    {
+      "Ambient": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Diffuse": [
+        0.23529,
+        0.23529,
+        0.47059
+      ],
+      "LightPos": [
+        0.79,
+        0.62,
+        -0.0
+      ]
+    },
+    {
+      "Ambient": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "Diffuse": [
+        0.11765,
+        0.11765,
+        0.07843
+      ],
+      "LightPos": [
+        0.81,
+        -0.48,
+        -0.34
+      ]
+    }
+  ],
+  "occluded_luminance_scale": 0.5,
+  "sources": {
+    "refs/ra3-sdk/installed/SAGEXML/System/LightingSettings.xml": "b970113daee4e67cace6667dec4c9a6d474e0d6b58ccbdebd35e99c8f5e24df7",
+    "refs/ea-modding-support/Uprising/Xml/System/LightingSettings.xml": "b970113daee4e67cace6667dec4c9a6d474e0d6b58ccbdebd35e99c8f5e24df7",
+    "refs/ra3-sdk/installed/Schemas/xsd/System/LightingSettings.xsd": "b63b7b8d303842a0857ed7345c8562088ba6df87472e98e7bfd59402c4e12ae6",
+    "refs/ea-modding-support/Uprising/Shaders/Shadow.fx": "39e953609a3b88b2d42c3cd712c232380b7588488bb5b85ff75eaff877e2541d"
+  },
+  "boundary": "Default map lighting only. Godot material response, planar mesh shadows, blur and flight-height opacity are adaptations, not SAGE shadow-map parity."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "SHK",
+  "image": "SHK",
+  "source": "SHK.SHP / FireUp launch frame per facing, centre of the violet electrode flash (native cell pixels)",
+  "facings": 8,
+  "muzzles": [
+    [37.5, 12.5],
+    [24.5, 11.5],
+    [18.5, 17.5],
+    [21.5, 21.5],
+    [28.5, 24.5],
+    [38.5, 25.5],
+    [45.5, 20.5],
+    [44.5, 14.5]
+  ]
+}

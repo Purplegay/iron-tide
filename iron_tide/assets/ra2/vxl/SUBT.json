@@ -1,0 +1,15 @@
+{
+  "id": "SUBT",
+  "image": "SUBT",
+  "vxl": "SUBT.VXL",
+  "facings": 32,
+  "frameW": 35,
+  "frameH": 23,
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

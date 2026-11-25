@@ -1,0 +1,274 @@
+{
+  "source": "EA RA3 SDK v3; resolved ArmorTemplate inheritance",
+  "adapter": "User-approved cross-game hit-count normalization: SDK damage * PRISM multiplier * target baseline HP / reference HP. Progression and defense remain independent. Role mappings/fallbacks are project policy, not original RA3 data.",
+  "profiles": {
+    "infantry": {
+      "id": "AlliedAntiInfantryInfantry",
+      "hp": 150.0,
+      "armor": "AlliedAntiInfantryInfantryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedAntiInfantryInfantry.xml"
+    },
+    "anti_vehicle_infantry": {
+      "id": "AlliedAntiVehicleInfantry",
+      "hp": 100.0,
+      "armor": "AlliedAntiVehicleInfantryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedAntiVehicleInfantry.xml"
+    },
+    "commando": {
+      "id": "AlliedCommandoTech1",
+      "hp": 300.0,
+      "armor": "BaseCommandoArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedCommandoTech1.xml"
+    },
+    "engineer": {
+      "id": "AlliedEngineer",
+      "hp": 50.0,
+      "armor": "AlliedEngineerArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedEngineer.xml"
+    },
+    "scout": {
+      "id": "AlliedScoutInfantry",
+      "hp": 30.0,
+      "armor": "AlliedScoutInfantryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedScoutInfantry.xml"
+    },
+    "spy": {
+      "id": "AlliedInfiltrationInfantry",
+      "hp": 75.0,
+      "armor": "AlliedInfiltrationInfantryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedInfiltrationInfantry.xml"
+    },
+    "tank": {
+      "id": "AlliedAntiVehicleVehicleTech1",
+      "hp": 480.0,
+      "armor": "AlliedAntiVehicleVehicleTech1Armor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech1.xml"
+    },
+    "mirage": {
+      "id": "AlliedAntiVehicleVehicleTech3",
+      "hp": 500.0,
+      "armor": "AlliedAntiVehicleVehicleTech3Armor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml"
+    },
+    "ifv": {
+      "id": "AlliedAntiAirVehicleTech1",
+      "hp": 360.0,
+      "armor": "AlliedAntiAirVehicleTech1Armor",
+      "prism_multiplier": 1.7,
+      "source": "SAGEXML/Allied/Units/AlliedAntiAirVehicleTech1.xml"
+    },
+    "miner": {
+      "id": "AlliedMiner",
+      "hp": 500.0,
+      "armor": "AlliedMinerArmor",
+      "prism_multiplier": 1.5,
+      "source": "SAGEXML/Allied/Units/AlliedMiner.xml"
+    },
+    "artillery": {
+      "id": "AlliedAntiStructureVehicle",
+      "hp": 400.0,
+      "armor": "AlliedAntiStructureVehicleArmor",
+      "prism_multiplier": 1.25,
+      "source": "SAGEXML/Allied/Units/AlliedAntiStructureVehicle.xml"
+    },
+    "mcv": {
+      "id": "AlliedMCV",
+      "hp": 5000.0,
+      "armor": "AlliedMCVArmor",
+      "prism_multiplier": 1.25,
+      "source": "SAGEXML/Allied/Units/AlliedMCV.xml"
+    },
+    "destroyer": {
+      "id": "AlliedAntiNavyShipTech1",
+      "hp": 1200.0,
+      "armor": "AlliedAntiNavyShipTech1Armor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Units/AlliedAntiNavyShipTech1.xml"
+    },
+    "carrier": {
+      "id": "AlliedAntiStructureShip",
+      "hp": 1500.0,
+      "armor": "AlliedAntiStructureShipArmor",
+      "prism_multiplier": 1.5,
+      "source": "SAGEXML/Allied/Units/AlliedAntiStructureShip.xml"
+    },
+    "dolphin": {
+      "id": "AlliedAntiNavalScout",
+      "hp": 300.0,
+      "armor": "AlliedAntiNavalScoutArmor",
+      "prism_multiplier": 0.75,
+      "source": "SAGEXML/Allied/Units/AlliedAntiNavalScout.xml"
+    },
+    "transport": {
+      "id": "AlliedAntiInfantryVehicle",
+      "hp": 500.0,
+      "armor": "AlliedAntiInfantryVehicleArmor",
+      "prism_multiplier": 1.7,
+      "source": "SAGEXML/Allied/Units/AlliedAntiInfantryVehicle.xml"
+    },
+    "barracks": {
+      "id": "AlliedBarracks",
+      "hp": 1000.0,
+      "armor": "AlliedBarracksArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedBarracks.xml"
+    },
+    "power": {
+      "id": "AlliedPowerPlant",
+      "hp": 1000.0,
+      "armor": "AlliedPowerPlantArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedPowerPlant.xml"
+    },
+    "refinery": {
+      "id": "AlliedRefinery",
+      "hp": 2000.0,
+      "armor": "AlliedRefineryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedRefinery.xml"
+    },
+    "factory": {
+      "id": "AlliedWarFactory",
+      "hp": 2500.0,
+      "armor": "AlliedWarFactoryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedWarFactory.xml"
+    },
+    "airfield": {
+      "id": "AlliedAirfield",
+      "hp": 2000.0,
+      "armor": "AlliedAirfieldArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedAirfield.xml"
+    },
+    "naval_yard": {
+      "id": "AlliedNavalYard",
+      "hp": 2500.0,
+      "armor": "AlliedWarFactoryArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedNavalYard.xml"
+    },
+    "construction_yard": {
+      "id": "AlliedConstructionYard",
+      "hp": 4000.0,
+      "armor": "AlliedConYardArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedConstructionYard.xml"
+    },
+    "tech": {
+      "id": "AlliedTechStructure",
+      "hp": 2000.0,
+      "armor": "BaseFactionStructureArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedTechStructure.xml"
+    },
+    "defense": {
+      "id": "AlliedBaseDefense",
+      "hp": 1000.0,
+      "armor": "AlliedPrimaryBaseDefenseArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedBaseDefense.xml"
+    },
+    "advanced_defense": {
+      "id": "AlliedBaseDefenseAdvanced",
+      "hp": 1500.0,
+      "armor": "AlliedAdvancedBaseDefenseArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedBaseDefenseAdvanced.xml"
+    },
+    "support_superweapon": {
+      "id": "AlliedSuperWeapon",
+      "hp": 4000.0,
+      "armor": "AlliedSuperWeaponArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedSuperWeapon.xml"
+    },
+    "attack_superweapon": {
+      "id": "AlliedSuperWeaponAdvanced",
+      "hp": 4000.0,
+      "armor": "AlliedAdvancedSuperWeaponArmor",
+      "prism_multiplier": 1.0,
+      "source": "SAGEXML/Allied/Structures/AlliedSuperWeaponAdvanced.xml"
+    }
+  },
+  "mapping": {
+    "E1": "infantry",
+    "GGI": "anti_vehicle_infantry",
+    "ENGINEER": "engineer",
+    "DOG": "scout",
+    "ADOG": "scout",
+    "TANY": "commando",
+    "GHOST": "commando",
+    "SPY": "spy",
+    "MTNK": "tank",
+    "MGTK": "mirage",
+    "FV": "ifv",
+    "CMIN": "miner",
+    "SREF": "artillery",
+    "AMCV": "mcv",
+    "DEST": "destroyer",
+    "AEGIS": "destroyer",
+    "CARRIER": "carrier",
+    "DLPH": "dolphin",
+    "LCRF": "transport",
+    "GAPILE": "barracks",
+    "GAPOWR": "power",
+    "GAREFN": "refinery",
+    "GAWEAP": "factory",
+    "GAAIRC": "airfield",
+    "GAYARD": "naval_yard",
+    "GACNST": "construction_yard",
+    "GATECH": "tech",
+    "GAPILL": "defense",
+    "NASAM": "defense",
+    "ATESLA": "advanced_defense",
+    "GTGCAN": "advanced_defense",
+    "GACSPH": "support_superweapon",
+    "GAWEAT": "attack_superweapon"
+  },
+  "fallback": {
+    "infantry": "infantry",
+    "vehicle": "tank",
+    "naval": "destroyer",
+    "building": "barracks"
+  },
+  "source_sha256": {
+    "SAGEXML/GlobalData/Armor.xml": "94c1f7f4115636870ff782a80f1206901bc265f26c2ccb896be7738e013885fc",
+    "SAGEXML/Allied/Units/AlliedAntiInfantryInfantry.xml": "3dba92ec2439cd4b0d01c11ba03c232587df4644aab943e403a82c18c9596013",
+    "SAGEXML/Allied/Units/AlliedAntiVehicleInfantry.xml": "c959260af16c6982e91e85a0e93ae4cbcbdcbad524ecba4d618bf9ed96777552",
+    "SAGEXML/Allied/Units/AlliedCommandoTech1.xml": "1afb2ad00d317767da61cab8b52b7f35426a0edd4c6d1d01c9a3f89fc6d2ae3b",
+    "SAGEXML/Allied/Units/AlliedEngineer.xml": "0be9f3a6bdec25fc242f8ec8a3bd0a5454a0e5c3d57c15a91d41a4985d4d9495",
+    "SAGEXML/Allied/Units/AlliedScoutInfantry.xml": "a0a6fced10b830466c202061e81064a5ef622f82392437dc5b5ba3bfcc7cfe25",
+    "SAGEXML/Allied/Units/AlliedInfiltrationInfantry.xml": "2b91ff92fc4dbc4203fb918f586212cde88a9ed2e0380d122cb5749c05ab83cb",
+    "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech1.xml": "5f5b82a1a2c6ea6b475dd02b76b03dda42db36b463d2e53ddefef940d2688376",
+    "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml": "932066544472e30fed1b5c12f94683ba21220159f5c7a91394ec0e94dc449f2d",
+    "SAGEXML/Allied/Units/AlliedAntiAirVehicleTech1.xml": "481a5a09ff4a3ea42f0226503953143623f31915a058e189581af09a748fe04a",
+    "SAGEXML/Allied/Units/AlliedMiner.xml": "ed9d51858becb122c7ffe20f9bcd55c200a4592b9e6944c15bf1e2d6996429d3",
+    "SAGEXML/Allied/Units/AlliedAntiStructureVehicle.xml": "19ca04b9d7fdffbfdf3232a7f68d0162874b670490e91167ec5315b2bf7b462b",
+    "SAGEXML/Allied/Units/AlliedMCV.xml": "01a6e66820effb588734837bc155ef050aade4b3f08412fe836efde22a50968e",
+    "SAGEXML/Allied/Units/AlliedAntiNavyShipTech1.xml": "2c55f592c602c486c45d77232fc5ba9262666d9d4001ca58b2d76bafdca7e9f8",
+    "SAGEXML/Allied/Units/AlliedAntiStructureShip.xml": "c1c40f6083c49b18cf34986e5da1b38164279df94fbe3f11ce65be92cefc2377",
+    "SAGEXML/Allied/Units/AlliedAntiNavalScout.xml": "ece15227733b5f7524ad9075e4cc9e2099c5b4d98c50b3e20127cc1797a5f74b",
+    "SAGEXML/Allied/Units/AlliedAntiInfantryVehicle.xml": "82bba14354932ce6c1f296f0e56a1d27ead41fcc3fb55694943ac399bb17aa8b",
+    "SAGEXML/Allied/Structures/AlliedBarracks.xml": "9ddd7e6864e2b44e82e807ea1266a7493985394a80482c58f792fee235eb30ba",
+    "SAGEXML/Allied/Structures/AlliedPowerPlant.xml": "616d13845004882bd7f4fb2daa18b059b9360ffc7e7dce1083d3d492cda4a107",
+    "SAGEXML/Allied/Structures/AlliedRefinery.xml": "f0cd782643ba1330c89b1466308af2cd9919bec609a29e17041a89e3df5ad3c3",
+    "SAGEXML/Allied/Structures/AlliedWarFactory.xml": "1da4ce39e04e11a67a16d71362f55b3d7a42c3ce740c1f11c1cbfb9e7d4f1bd8",
+    "SAGEXML/Allied/Structures/AlliedAirfield.xml": "150a926d542be5605e1c61fb95095716a38a4b4301333a6c14989113ae6fcb07",
+    "SAGEXML/Allied/Structures/AlliedNavalYard.xml": "2adcfa49259e3538256414b63031b5dcafa0e8a22579396e2a0fd479073d8ba9",
+    "SAGEXML/Allied/Structures/AlliedConstructionYard.xml": "7493ad5ac2b0c0367e34234fa9784ddf0de6b4745d37115f83067e912d451cfa",
+    "SAGEXML/Allied/Structures/AlliedTechStructure.xml": "c7254e226fa93c3768303ef12ce62e681178d694638526a00d894b28ce85ae23",
+    "SAGEXML/Allied/Structures/AlliedBaseDefense.xml": "3ff1263ecf9ae811ce1ecb3e562604568545d27a5fc70cca906b5e795caf315f",
+    "SAGEXML/Allied/Structures/AlliedBaseDefenseAdvanced.xml": "1cb293913eb4b9dd6427dc7a2d6e0a4bf010184debcc09e47739d98b6075452d",
+    "SAGEXML/Allied/Structures/AlliedSuperWeapon.xml": "73ebfcc914d5d13ac9874220bc1ab4a646421e2cf328bc086d2c7d9daba71af3",
+    "SAGEXML/Allied/Structures/AlliedSuperWeaponAdvanced.xml": "f74affdfa88f0c8e498bc6c679043f1e0f6aa95e618f9c543a3c991329a7f12a"
+  }
+}

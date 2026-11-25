@@ -1,0 +1,1 @@
+{"id":"GATECH","image":"GATECH","layers":[{"kind":"activeanim","image":"GATECH_A","loopStart":1,"loopEnd":12,"rate":250,"frames":48,"shadow":false,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"GATECH_A","loopStart":13,"loopEnd":24,"rate":250,"frames":48,"shadow":false,"reverse":false,"loopCount":-1}}]}

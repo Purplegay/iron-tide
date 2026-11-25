@@ -1,0 +1,15 @@
+{
+  "type": "AmerParaDrop",
+  "ui_name": "美国大兵空降",
+  "sidebar_image": "APARICON",
+  "recharge_seconds": 240,
+  "infantry": "E1",
+  "count": 8,
+  "plane": "PDPLANE",
+  "radius_leptons": 1024,
+  "fall_leptons": 3,
+  "chute": "PARACH",
+  "loop_start": 20,
+  "loop_end": 39,
+  "fps": 6.666666666666667
+}

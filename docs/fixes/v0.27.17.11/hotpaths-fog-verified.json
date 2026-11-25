@@ -1,0 +1,3089 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2: ally GACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally GACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally GACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy GACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy GACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy GACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally NACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally NACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally NACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy NACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy NACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy NACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: legacy config without fog remains clear",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unseen enemy absent from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: opponent obeys independent same visibility rule",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: hidden enemy cannot be picked",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: weapons cannot acquire outside shared sight and weapon vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: fire checks reject unseen target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: direct focus command cannot bypass fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: scout reveals target for entire army",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: scout revelation does not reveal own distant tank to opponent",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: scout permits focus but distant target still requires moving into range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: retreat leaves brief live sight in the scouted area",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: losing sight cancels live target tracking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: explored terrain persists after scout leaves",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: new enemy on explored terrain is hidden immediately before fog tick",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: new enemy structure cannot flash on explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: distant unexplored terrain remains unknown",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.0)",
+      "name": "ra2: lost terrain does not instantly turn dark",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: world fog softens cell boundaries",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: fade begins immediately and survives visibility rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: pause freezes visual fading",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.2235)",
+      "name": "ra2: fog reaches half opacity halfway through fade",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: visual delay grants no enemy rendering or targeting",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.4471)",
+      "name": "ra2: explored terrain settles at lighter neutral shade",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unexplored terrain stays opaque",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: returning scout immediately clears visual fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: second loss starts a fresh fade without leaking enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: small frame steps converge to the same final fog opacity",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unseen placement rejects before revealing hidden occupancy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: passenger contributes no independent vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: dead scout contributes no vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: hidden transient effects suppressed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: miner locates reachable ore in black shroud",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: automatic dispatch targets the hidden ore without exploring it",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unknown ore cannot be clicked through shroud",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: cursor does not expose unexplored ore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: four and a half seconds of scout sight survives slot validation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored retreat keeps its original remaining sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored scout sight expires at five game seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: death retains live enemy contact",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: death sight stays at the last position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: pause freezes death sight",
+      "passed": true
+    },
+    {
+      "details": {
+        "info": {
+          "funds": 8000.0,
+          "mode": "ra2",
+          "time": "2026-11-08 10:55:42",
+          "title": "遭遇战"
+        },
+        "message": "已保存：快速存档",
+        "ok": true,
+        "path": "user://battles/quick.itsave"
+      },
+      "name": "ra2: death sight saves through normal slot",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: death sight passes normal slot validation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: death sight expires without a survivor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored death sight survives until its original deadline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored death sight expires into explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: legacy saves discard later death sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: armed charge reveals nearby terrain after Ivan retreats",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: charge has limited sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: armed passenger can board a transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: bomb on passenger reveals transport location only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: blast visibility saves without an armed target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: blast retains live sight at detonation point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: blast sight ends after three seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: building site starts outside enemy vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy chrono Ivan reveals bombed building",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: armed charge fog saves through battle slot",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored armed charge still reveals for original side",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: engineer disarm removes enemy charge vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MTNK: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally SREF: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GTGCAN: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally GAPILL: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MTNK: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy SREF: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GTGCAN: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy GAPILL: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short settles once: ally",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "5205b093beee74f19655a238dbf23685",
+        "mission": "skirmish",
+        "outcome": "loss",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": false
+      },
+      "name": "ra2: short correct result: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short settles once: enemy",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "c4565d1a160e9f93da33bd513f004463",
+        "mission": "skirmish",
+        "outcome": "win",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": true
+      },
+      "name": "ra2: short correct result: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short settles once: both",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": true,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "2890f274742270d530a6f33a3b84786d",
+        "mission": "skirmish",
+        "outcome": "draw",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": false
+      },
+      "name": "ra2: short correct result: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short draw grants no victory currency or appearance win",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation ordinary tank keeps side alive: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation settles once: ally",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "2b06d10cb2cc3b8a9f04adaaa2ef0a23",
+        "mission": "skirmish",
+        "outcome": "loss",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": false
+      },
+      "name": "ra2: annihilation correct result: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation ordinary tank keeps side alive: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation settles once: enemy",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "23090cb4e062feb4b47978561a14778e",
+        "mission": "skirmish",
+        "outcome": "win",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": true
+      },
+      "name": "ra2: annihilation correct result: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation ordinary tank keeps side alive: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation settles once: both",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": true,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "c7e437fcd80306163e8dceb8cdedff12",
+        "mission": "skirmish",
+        "outcome": "draw",
+        "rewards": {},
+        "rules_mode": "ra2",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": false
+      },
+      "name": "ra2: annihilation correct result: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation draw grants no victory currency or appearance win",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally GACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally GACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally GACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy GACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy GACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy GACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally NACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally NACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally NACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy NACNST expanded operational radius",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy NACNST actual visible ring and outer fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy NACNST removal leaves explored terrain after sight hold",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: legacy config without fog remains clear",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unseen enemy absent from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: opponent obeys independent same visibility rule",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: hidden enemy cannot be picked",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: weapons cannot acquire outside shared sight and weapon vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: fire checks reject unseen target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: direct focus command cannot bypass fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: scout reveals target for entire army",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: scout revelation does not reveal own distant tank to opponent",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: scout permits focus but distant target still requires moving into range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: retreat leaves brief live sight in the scouted area",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: losing sight cancels live target tracking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: explored terrain persists after scout leaves",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: new enemy on explored terrain is hidden immediately before fog tick",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: new enemy structure cannot flash on explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: distant unexplored terrain remains unknown",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.0)",
+      "name": "iron_tide: lost terrain does not instantly turn dark",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: world fog softens cell boundaries",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: fade begins immediately and survives visibility rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: pause freezes visual fading",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.2235)",
+      "name": "iron_tide: fog reaches half opacity halfway through fade",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: visual delay grants no enemy rendering or targeting",
+      "passed": true
+    },
+    {
+      "details": "(0.0, 0.0, 0.0, 0.4471)",
+      "name": "iron_tide: explored terrain settles at lighter neutral shade",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unexplored terrain stays opaque",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: returning scout immediately clears visual fog",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: second loss starts a fresh fade without leaking enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: small frame steps converge to the same final fog opacity",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unseen placement rejects before revealing hidden occupancy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: passenger contributes no independent vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: dead scout contributes no vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: hidden transient effects suppressed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: miner locates reachable ore in black shroud",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: automatic dispatch targets the hidden ore without exploring it",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unknown ore cannot be clicked through shroud",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: cursor does not expose unexplored ore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: four and a half seconds of scout sight survives slot validation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored retreat keeps its original remaining sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored scout sight expires at five game seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: death retains live enemy contact",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: death sight stays at the last position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: pause freezes death sight",
+      "passed": true
+    },
+    {
+      "details": {
+        "info": {
+          "funds": 8000.0,
+          "mode": "iron_tide",
+          "time": "2026-11-08 10:55:46",
+          "title": "遭遇战"
+        },
+        "message": "已保存：快速存档",
+        "ok": true,
+        "path": "user://battles/quick.itsave"
+      },
+      "name": "iron_tide: death sight saves through normal slot",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: death sight passes normal slot validation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: death sight expires without a survivor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored death sight survives until its original deadline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored death sight expires into explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: legacy saves discard later death sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: armed charge reveals nearby terrain after Ivan retreats",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: charge has limited sight",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: armed passenger can board a transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: bomb on passenger reveals transport location only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: blast visibility saves without an armed target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: blast retains live sight at detonation point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: blast sight ends after three seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: building site starts outside enemy vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy chrono Ivan reveals bombed building",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: armed charge fog saves through battle slot",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored armed charge still reveals for original side",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: engineer disarm removes enemy charge vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MTNK: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally SREF: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GTGCAN: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally GAPILL: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MTNK: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: cooldown prevents firing",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: last shot location does not track fleeing unit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: evaded shot consumes firing action",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: fixture takes real dodge branch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: miss still reveals firing origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy SREF: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GTGCAN: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: asymmetric scouting allows hidden firing source",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: unfinished defense cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: failed firing attempt does not reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: actual weapon fires with shared scout vision",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: shot exposes attacker to victim side immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: firing position opens fog and records terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: reveal remains local",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: revealed attacker can be targeted but short-range victim must approach",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: world rendering and picking share reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: world/minimap fog texture opens at firing point",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: firing effect visible at exposed origin",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: reveal survives fog rebuild",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: second actual shot refreshes reveal",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: continued firing refreshes three-second window",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: pause freezes reveal timeout",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: ceasefire restores fog and target restrictions",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: expiry keeps terrain memory only",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: expired enemy is removed from world rendering",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: defense can expose itself again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy GAPILL: destroyed source expires without stale object references",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short settles once: ally",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "709d2000d42a6c8975fc494ea8beb36a",
+        "mission": "skirmish",
+        "outcome": "loss",
+        "rewards": {
+          "cores": 5.0,
+          "credits": 200.0
+        },
+        "rules_mode": "iron_tide",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": false
+      },
+      "name": "iron_tide: short correct result: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short settles once: enemy",
+      "passed": true
+    },
+    {
+      "details": {
+        "alliance_reward": {},
+        "cosmetic_rewards": [
+          "ice"
+        ],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "37ca139547ebf42b59aecdfcb15ae619",
+        "mission": "skirmish",
+        "outcome": "win",
+        "rewards": {
+          "cores": 20.0,
+          "credits": 800.0
+        },
+        "rules_mode": "iron_tide",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": true
+      },
+      "name": "iron_tide: short correct result: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short settles once: both",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": true,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "0dbdac6d079c043659c2502f93c4e4b1",
+        "mission": "skirmish",
+        "outcome": "draw",
+        "rewards": {},
+        "rules_mode": "iron_tide",
+        "victory_condition": "short",
+        "waves": 0,
+        "win": false
+      },
+      "name": "iron_tide: short correct result: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short draw grants no victory currency or appearance win",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: short repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation ordinary tank keeps side alive: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation settles once: ally",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "ff2fd292bb21b8ed48d7fcc3b706cfa7",
+        "mission": "skirmish",
+        "outcome": "loss",
+        "rewards": {
+          "cores": 5.0,
+          "credits": 200.0
+        },
+        "rules_mode": "iron_tide",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": false
+      },
+      "name": "iron_tide: annihilation correct result: ally",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation ordinary tank keeps side alive: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation settles once: enemy",
+      "passed": true
+    },
+    {
+      "details": {
+        "alliance_reward": {},
+        "cosmetic_rewards": [],
+        "draw": false,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "80dcb91e28710878318bfcb05b0d5f8f",
+        "mission": "skirmish",
+        "outcome": "win",
+        "rewards": {
+          "cores": 20.0,
+          "credits": 800.0
+        },
+        "rules_mode": "iron_tide",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": true
+      },
+      "name": "iron_tide: annihilation correct result: enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation ordinary tank keeps side alive: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stowed unit counts for annihilation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation settles once: both",
+      "passed": true
+    },
+    {
+      "details": {
+        "cosmetic_rewards": [],
+        "draw": true,
+        "endless": false,
+        "kills": 0,
+        "loop": 0,
+        "match_id": "55db6eea003ac21a05cb6e35314eb442",
+        "mission": "skirmish",
+        "outcome": "draw",
+        "rewards": {},
+        "rules_mode": "iron_tide",
+        "victory_condition": "annihilation",
+        "waves": 0,
+        "win": false
+      },
+      "name": "iron_tide: annihilation correct result: both",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation draw grants no victory currency or appearance win",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: annihilation repeated check cannot settle again",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "image allied scout visibility and explored maps equal reference raster",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "workers allied scout visibility and explored maps equal reference raster",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union matches visible cells: 2 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union matches exploration: 2 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union preserves all deadlines: 2 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union matches visible cells: 6 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union matches exploration: 6 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "vacated scout union preserves all deadlines: 6 houses",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "persist isolated lobby preferences before restoring",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "lobby restores victory and fog options",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "configured settings reach generated mission",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "actual scene setup consumes selected fog and victory rule",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "real startup has refinery",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "paid miner skill remains visible in persistent skill bar",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "invalid configuration normalizes safely",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "campaign does not inherit skirmish fog or victory",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 prebuilt: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: ally fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: enemy fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "2400 mcv: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 prebuilt: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: ally fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: enemy fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "3200 mcv: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 prebuilt: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: ally starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: ally known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: ally fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: ally automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: ally resource intelligence grants no enemy visibility",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: enemy starts with nearby resource intelligence",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: enemy known resource is explored terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: enemy fog permits starting MCV deployment",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: enemy automatic miner starts with a reachable resource",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "4000 mcv: enemy resource intelligence grants no enemy visibility",
+      "passed": true
+    }
+  ],
+  "failed": 0
+}

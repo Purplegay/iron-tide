@@ -1,0 +1,56 @@
+{
+  "version": "0.30.48.5",
+  "checks": [
+    {
+      "result": "reports/result.json",
+      "checks": 287,
+      "failed": 0
+    },
+    {
+      "result": "reports/cold-result.json",
+      "checks": 16,
+      "failed": 0
+    },
+    {
+      "result": "lightning/result.json",
+      "checks": 265,
+      "failed": 0
+    },
+    {
+      "result": "lightning/storm-cold-result.json",
+      "checks": 12,
+      "failed": 0
+    }
+  ],
+  "total_checks": 580,
+  "failed": 0,
+  "ai_damage_multipliers": [
+    1,
+    1.2,
+    1.6,
+    2,
+    2.6,
+    3.4,
+    4
+  ],
+  "runtime_source_matches_frozen": true,
+  "audited_runtime_files": 1944,
+  "changed_runtime_sha256": {
+    "scripts/rules/superweapon_damage.gd": "33d18d73ff4360bfb84c2cf34af74d8f6db808ec23f94538e107473fa869272a",
+    "tests/superweapon_damage_regression.gd": "92885797e17d412efd59247f0e81b6347f90c83d31bd3493dd52eb04ac87ee88",
+    "tests/lightning_storm_regression.gd": "f17b1fdd860b12026ccb4d5da9ab3d9b8a0a95163dc482dee55bbbad6f2bb073"
+  },
+  "primary_environment_audit": "reports/environment-audit.json",
+  "engine": "C:\\Users\\admin\\AppData\\Local\\Programs\\Godot\\Godot_v4.7.2-stable_win64_console.exe",
+  "mode": "headless; fixed-fps 60; isolated test user directories; no screenshots",
+  "lifecycle_user_dir": "CodexIronTideValidation/ai-storm-lifecycle-20261119",
+  "post_validation_metadata_only": [
+    "project.godot config/version",
+    "README.md",
+    "docs/CHANGELOG.md"
+  ],
+  "packaged": false,
+  "committed": false,
+  "pushed": false,
+  "gameplay_balance": "pending_user_play_confirmation"
+}

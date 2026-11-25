@@ -1,0 +1,21 @@
+{
+  "id": "HTNK_tur",
+  "image": "HTNK",
+  "vxl": "HTNKtur+HTNKbarl.VXL",
+  "source": "LOCAL.MIX",
+  "facings": 32,
+  "frameW": 87,
+  "frameH": 53,
+  "of": "HTNK",
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "draw_offset": [
+    0,
+    0
+  ],
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

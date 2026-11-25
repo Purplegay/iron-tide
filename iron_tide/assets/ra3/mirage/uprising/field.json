@@ -1,0 +1,325 @@
+{
+  "source": "Installed RA3 Uprising 1.1; SDK ShieldDraw ONCE/ONCE_BACKWARDS",
+  "fps": 30,
+  "frames": 101,
+  "visibility": [
+    0.0,
+    0.0011551705203459981,
+    0.0046206820813839925,
+    0.010396534683113983,
+    0.018251694221466767,
+    0.02795512659237315,
+    0.03973786589990233,
+    0.05336887803998511,
+    0.06861712890855229,
+    0.08548261850560386,
+    0.10396534683113984,
+    0.123834279781091,
+    0.14508941735545738,
+    0.16773075955423894,
+    0.1912962381692973,
+    0.21601688730470167,
+    0.24166167285638282,
+    0.2682237771747081,
+    0.29551030251989674,
+    0.32352124889194883,
+    0.3520151426152432,
+    0.3809919836897798,
+    0.4104517721155587,
+    0.4401530342169588,
+    0.47009576999398,
+    0.5000385057710012,
+    0.5299812415480224,
+    0.5599239773250436,
+    0.5896252394264436,
+    0.6190850278522225,
+    0.6480618689267592,
+    0.6765557626500536,
+    0.7045667090221056,
+    0.7317067931735528,
+    0.7584055751436757,
+    0.7840011016604876,
+    0.808714023814651,
+    0.8323236905155034,
+    0.854830101763045,
+    0.8760126064666135,
+    0.8960918557168712,
+    0.9144058962418316,
+    0.9313960302228188,
+    0.9466209554785087,
+    0.9603013230995634,
+    0.9719958309046586,
+    0.9819251299844564,
+    0.9896479181576324,
+    0.9953848465148489,
+    0.9988170251943695,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.0000005350838594,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359,
+    1.000000059162359
+  ],
+  "material": {
+    "shader": "FXLightning.fx",
+    "technique": "",
+    "technique_index": 0,
+    "constants": {
+      "Texture_0": {
+        "import_index": 1,
+        "asset": "Texture:FXCloud03"
+      },
+      "ColorDiffuse": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "EmissiveHDRMultipler": [
+        2.0
+      ],
+      "MultiTextureEnable": false,
+      "DiffuseCoordOffset": [
+        0.0,
+        0.0,
+        5.0,
+        1.0
+      ],
+      "MultiplyBlendEnable": false,
+      "EdgeFadeOut": [
+        3.0
+      ],
+      "Texture_1": {
+        "import_index": 2,
+        "asset": "Texture:FXFracTileNRM"
+      },
+      "UniqueWorldCoordEnable": false,
+      "UniqueWorldCoordScalar": [
+        0.10000000149011612
+      ],
+      "DisplaceScalar": [
+        1.0
+      ],
+      "DisplaceAmp": [
+        1.0
+      ],
+      "DisplaceDivergenceAngle": [
+        45.0
+      ],
+      "DisplaceSpeed": [
+        1.0
+      ],
+      "UseRecolorColors": false,
+      "CullingEnable": false
+    }
+  },
+  "delta_crosscheck_max_error": {
+    "IDLA": 0.01014567297633584,
+    "MOVA": 0.029391326148809183
+  },
+  "adapter": {
+    "distance_scale": 1.5,
+    "loop_stop_fade_seconds": 0.2,
+    "shader": "Godot FXLightning adaptation using original parameters; not SAGE shader binary execution",
+    "restart_on_restore": true
+  },
+  "audio": {
+    "ALL_Mirage_WeaponFire1": {
+      "volume": 35.0,
+      "volume_shift": -10.0,
+      "limit": 3,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "INTERRUPT",
+      "type": "WORLD SHROUDED EVERYONE",
+      "sounds": [
+        "JUChopp_weapMissa.wav",
+        "JUChopp_weapMissb.wav",
+        "JUChopp_weapMissc.wav",
+        "JUChopp_weapMissd.wav",
+        "JUChopp_weapMisse.wav",
+        "JUChopp_weapMissf.wav",
+        "JUChopp_weapMissg.wav",
+        "JUChopp_weapMissh.wav",
+        "JUChopp_weapMissi.wav",
+        "JUChopp_weapMissj.wav"
+      ],
+      "PitchShift": [
+        25.0,
+        30.0
+      ],
+      "Delay": [
+        0.0,
+        0.0
+      ]
+    },
+    "ALL_Mirage_WeaponFire2": {
+      "volume": 40.0,
+      "volume_shift": -15.0,
+      "limit": 3,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "INTERRUPT",
+      "type": "WORLD SHROUDED EVERYONE",
+      "sounds": [
+        "AUMirag_wea1FireA.wav",
+        "AUMirag_wea1FireB.wav",
+        "AUMirag_wea1FireC.wav"
+      ],
+      "PitchShift": [
+        -5.0,
+        5.0
+      ],
+      "Delay": [
+        200.0,
+        250.0
+      ]
+    },
+    "ALL_MirageField_Start": {
+      "volume": 60.0,
+      "volume_shift": -10.0,
+      "limit": 3,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "",
+      "type": "WORLD SHROUDED ALLIES ENEMIES",
+      "sounds": [
+        "SUHamme_leechArma.wav"
+      ],
+      "PitchShift": [
+        -5.0,
+        5.0
+      ],
+      "Delay": [
+        0.0,
+        90.0
+      ]
+    },
+    "ALL_MirageField_Stop": {
+      "volume": 60.0,
+      "volume_shift": -10.0,
+      "limit": 3,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "",
+      "type": "WORLD SHROUDED ALLIES ENEMIES",
+      "sounds": [
+        "SUHamme_leechUnarma.wav"
+      ],
+      "PitchShift": [
+        -5.0,
+        5.0
+      ],
+      "Delay": [
+        0.0,
+        90.0
+      ]
+    },
+    "ALL_MirageField_StartPlayer": {
+      "volume": 70.0,
+      "volume_shift": -10.0,
+      "limit": 1,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "",
+      "type": "WORLD PLAYER",
+      "sounds": [
+        "SUHamme_leechArma.wav"
+      ],
+      "PitchShift": [
+        -5.0,
+        5.0
+      ],
+      "Delay": [
+        0.0,
+        0.0
+      ]
+    },
+    "ALL_MirageField_StopPlayer": {
+      "volume": 70.0,
+      "volume_shift": -10.0,
+      "limit": 1,
+      "max_range": 1000.0,
+      "min_range": 300.0,
+      "control": "",
+      "type": "WORLD PLAYER",
+      "sounds": [
+        "SUHamme_leechUnarma.wav"
+      ],
+      "PitchShift": [
+        -5.0,
+        5.0
+      ],
+      "Delay": [
+        0.0,
+        0.0
+      ]
+    },
+    "ALL_MirageField_StartAndEndLoop": {
+      "volume": 15.0,
+      "volume_shift": -5.0,
+      "limit": 3,
+      "max_range": 1200.0,
+      "min_range": 300.0,
+      "control": "LOOP FADE_ON_KILL",
+      "type": "WORLD SHROUDED EVERYONE",
+      "sounds": [
+        "SUApoca_harpLoopa.wav",
+        "SUApoca_harpLoopb.wav",
+        "SUApoca_harpLoopc.wav"
+      ],
+      "PitchShift": [
+        45.0,
+        50.0
+      ],
+      "Delay": [
+        0.0,
+        0.0
+      ]
+    }
+  }
+}

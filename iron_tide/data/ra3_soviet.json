@@ -1,0 +1,1281 @@
+{
+  "units": [
+    {
+      "id": "R3TESLA",
+      "name": "磁暴坦克（RA3）",
+      "faction": "soviet",
+      "role": "vehicle",
+      "role_name": "磁暴坦克",
+      "extension_only": true,
+      "expansion": "ra3_uprising",
+      "ra3_native": true,
+      "soviet_ra3": {
+        "experience": [
+          900,
+          1800,
+          2700
+        ],
+        "experience_award": [
+          900,
+          900,
+          900,
+          900
+        ],
+        "max_speed_damaged": 0.75,
+        "vision_native": 200.0,
+        "armor": {
+          "MELEE": 0.0,
+          "SNIPER": 0.0,
+          "GUN": 0.5,
+          "AUTO_CANNON": 0.5,
+          "IMPACT": 0.75,
+          "FLAK": 1.0,
+          "ROCKET": 1.0,
+          "CANNON": 1.0,
+          "PRISM": 1.0,
+          "TESLA": 1.0,
+          "EXPLOSIVE": 1.0,
+          "CONCUSSIVE": 1.0,
+          "RADIATION": 0.05
+        },
+        "aim_degrees": 20.0
+      },
+      "cost": 2200,
+      "build_time": 22.0,
+      "production_seconds_native": true,
+      "hp": 750.0,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "ra3_armor": "SovietAntiVehicleVehicleTech2Armor",
+      "speed": 93.75,
+      "radius": 22,
+      "sight": 750.0,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "NAWEAP",
+      "ra2_prereq": [
+        "NAWEAP"
+      ],
+      "move": {
+        "speed": 93.75,
+        "rot": 90.0,
+        "accel_time": 0.3,
+        "accelerates": true,
+        "turret": true,
+        "crusher": true,
+        "movement_zone": "Normal"
+      },
+      "voice": {
+        "move": "RA3_R3TESLA_move",
+        "attack": "RA3_R3TESLA_attack",
+        "select": "RA3_R3TESLA_select"
+      },
+      "desc": "双门磁暴炮打击敌军。切换短路模式后，坦克停在原地，使周围的敌方地面载具瘫痪。",
+      "weapon": {
+        "damage": 100.0,
+        "cooldown": 2.0,
+        "range": 225.0,
+        "min_range": 0,
+        "projectile_speed": 0,
+        "attack_type": "cannon",
+        "ra2_aa": false,
+        "ra2_ag": true,
+        "ra2_warhead": "RA3_EXPANSION",
+        "burst": 2,
+        "burst_delay": 0.2
+      },
+      "deployed_prone": false,
+      "charge_weapon": {
+        "range": 75.0,
+        "cooldown": 0.5
+      }
+    },
+    {
+      "id": "R3APOC",
+      "name": "天启坦克（RA3）",
+      "faction": "soviet",
+      "role": "vehicle",
+      "role_name": "天启坦克",
+      "extension_only": true,
+      "expansion": "ra3_uprising",
+      "ra3_native": true,
+      "soviet_ra3": {
+        "experience": [
+          6000,
+          12000,
+          18000
+        ],
+        "experience_award": [
+          2000,
+          4000,
+          6000,
+          8000
+        ],
+        "max_speed_damaged": 0.75,
+        "vision_native": 200.0,
+        "armor": {
+          "MELEE": 0.0,
+          "SNIPER": 0.0,
+          "GUN": 0.5,
+          "AUTO_CANNON": 0.25,
+          "IMPACT": 0.75,
+          "ROCKET": 1.0,
+          "FLAK": 1.5,
+          "CANNON": 1.0,
+          "PRISM": 1.0,
+          "TESLA": 1.0,
+          "EXPLOSIVE": 2.5,
+          "CONCUSSIVE": 0.5,
+          "RADIATION": 0.05
+        },
+        "aim_degrees": 2.0
+      },
+      "cost": 2000,
+      "build_time": 20.0,
+      "production_seconds_native": true,
+      "hp": 3000.0,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "ra3_armor": "SovietAntiVehicleVehicleTech3Armor",
+      "speed": 75.0,
+      "radius": 30,
+      "sight": 750.0,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "NAWEAP",
+      "ra2_prereq": [
+        "NAWEAP"
+      ],
+      "move": {
+        "speed": 75.0,
+        "rot": 60.0,
+        "accel_time": 0.2,
+        "accelerates": true,
+        "turret": true,
+        "crusher": true,
+        "movement_zone": "Normal"
+      },
+      "voice": {
+        "attack": "RA3_R3APOC_attack",
+        "move": "RA3_R3APOC_move",
+        "select": "RA3_R3APOC_select"
+      },
+      "desc": "双联主炮对付地面目标，履带能碾过步兵、普通载具和围墙。切换磁力鱼叉可将载具拉近碾碎，也能贴住建筑持续研磨。",
+      "weapon": {
+        "damage": 100.0,
+        "cooldown": 2.0,
+        "range": 225.0,
+        "min_range": 0,
+        "projectile_speed": 0,
+        "attack_type": "cannon",
+        "ra2_aa": false,
+        "ra2_ag": true,
+        "ra2_warhead": "RA3_EXPANSION",
+        "burst": 2,
+        "burst_delay": 0.3
+      },
+      "deployed_prone": false
+    },
+    {
+      "id": "R3REAPER",
+      "name": "收割者（RA3）",
+      "faction": "soviet",
+      "role": "vehicle",
+      "role_name": "收割者",
+      "extension_only": true,
+      "expansion": "ra3_uprising",
+      "ra3_native": true,
+      "soviet_ra3": {
+        "experience": [
+          3600,
+          7200,
+          10800
+        ],
+        "experience_award": [
+          1200,
+          2400,
+          3600,
+          4800
+        ],
+        "max_speed_damaged": 0.75,
+        "vision_native": 250.0,
+        "armor": {
+          "MELEE": 0.0,
+          "SNIPER": 0.0,
+          "GUN": 0.25,
+          "AUTO_CANNON": 1.0,
+          "IMPACT": 0.75,
+          "ROCKET": 0.75,
+          "FLAK": 1.0,
+          "CANNON": 1.7,
+          "PRISM": 1.7,
+          "TESLA": 1.7,
+          "EXPLOSIVE": 1.0,
+          "RADIATION": 0.05
+        },
+        "aim_degrees": 10.0
+      },
+      "cost": 1200,
+      "build_time": 10.0,
+      "production_seconds_native": true,
+      "hp": 600.0,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "ra3_armor": "SovietHeavyWalkerVehicleArmor",
+      "speed": 120.0,
+      "radius": 22,
+      "sight": 750.0,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "NAWEAP",
+      "ra2_prereq": [
+        "NAWEAP"
+      ],
+      "move": {
+        "speed": 120.0,
+        "rot": 180.0,
+        "accel_time": 0.01,
+        "accelerates": true,
+        "turret": true,
+        "crusher": false,
+        "movement_zone": "Normal"
+      },
+      "voice": {
+        "attack": "RA3_R3REAPER_attack",
+        "move": "RA3_R3REAPER_move",
+        "select": "RA3_R3REAPER_select"
+      },
+      "desc": "用三门榴弹炮压制地面，火箭也能拦截飞机。指定地点后，它会跃过去并永久展开为固定炮塔，请先选好阵地。",
+      "weapon": {
+        "damage": 15.0,
+        "cooldown": 2.5,
+        "range": 337.5,
+        "min_range": 0,
+        "projectile_speed": 0,
+        "attack_type": "cannon",
+        "ra2_aa": true,
+        "ra2_ag": true,
+        "ra2_warhead": "RA3_EXPANSION",
+        "burst": 3,
+        "burst_delay": 0.2
+      },
+      "deployed_prone": false
+    }
+  ],
+  "art": {
+    "R3TESLA": {
+      "cameo": "res://assets/ra3/soviet/R3TESLA/button.png",
+      "portrait": "res://assets/ra3/soviet/R3TESLA/portrait.png"
+    },
+    "R3APOC": {
+      "cameo": "res://assets/ra3/soviet/R3APOC/button.png",
+      "portrait": "res://assets/ra3/soviet/R3APOC/portrait.png"
+    },
+    "R3REAPER": {
+      "cameo": "res://assets/ra3/soviet/R3REAPER/button.png",
+      "portrait": "res://assets/ra3/soviet/R3REAPER/portrait.png"
+    },
+    "R3REAPERTURRET": {
+      "cameo": "res://assets/ra3/soviet/R3REAPER/button.png",
+      "portrait": "res://assets/ra3/soviet/R3REAPER/portrait.png"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "RA3_R3TESLA_move": {
+        "sounds": [
+          "ra3_sutesla_voimova",
+          "ra3_sutesla_voimovb",
+          "ra3_sutesla_voimovc",
+          "ra3_sutesla_voimovd",
+          "ra3_sutesla_voimove",
+          "ra3_sutesla_voimovf",
+          "ra3_sutesla_voimovg",
+          "ra3_sutesla_voimovh",
+          "ra3_sutesla_voimovi",
+          "ra3_sutesla_voimovj",
+          "ra3_sutesla_voimovtnka",
+          "ra3_sutesla_voimovtnkb",
+          "ra3_sutesla_voimovtnkc",
+          "ra3_sutesla_voimovtnkd"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3TESLA_attack": {
+        "sounds": [
+          "ra3_sutesla_voiatka",
+          "ra3_sutesla_voiatkb",
+          "ra3_sutesla_voiatkc",
+          "ra3_sutesla_voiatkd",
+          "ra3_sutesla_voiatke",
+          "ra3_sutesla_voiatkf",
+          "ra3_sutesla_voiatkg",
+          "ra3_sutesla_voiatkh",
+          "ra3_sutesla_voiatki",
+          "ra3_sutesla_voiatkj",
+          "ra3_sutesla_voiatkk",
+          "ra3_sutesla_voiatkl"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3TESLA_select": {
+        "sounds": [
+          "ra3_sutesla_seltnka",
+          "ra3_sutesla_seltnkb",
+          "ra3_sutesla_voicretnkb",
+          "ra3_sutesla_voisela",
+          "ra3_sutesla_voiselb",
+          "ra3_sutesla_voiselc",
+          "ra3_sutesla_voiseld",
+          "ra3_sutesla_voisele",
+          "ra3_sutesla_voiself",
+          "ra3_sutesla_voiselg"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3APOC_attack": {
+        "sounds": [
+          "ra3_suapoca_voiatka",
+          "ra3_suapoca_voiatkb",
+          "ra3_suapoca_voiatkc",
+          "ra3_suapoca_voiatkd",
+          "ra3_suapoca_voiatke",
+          "ra3_suapoca_voiatkf",
+          "ra3_suapoca_voiatkg",
+          "ra3_suapoca_voiatkh"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3APOC_move": {
+        "sounds": [
+          "ra3_suapoca_voimova",
+          "ra3_suapoca_voimovb",
+          "ra3_suapoca_voimovc",
+          "ra3_suapoca_voimovd",
+          "ra3_suapoca_voimove",
+          "ra3_suapoca_voimovf",
+          "ra3_suapoca_voimovg",
+          "ra3_suapoca_voimovh"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3APOC_select": {
+        "sounds": [
+          "ra3_suapoca_voisela",
+          "ra3_suapoca_voiselb",
+          "ra3_suapoca_voiselc",
+          "ra3_suapoca_voiseld",
+          "ra3_suapoca_voisele",
+          "ra3_suapoca_voiself",
+          "ra3_suapoca_voiselg"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3REAPER_attack": {
+        "sounds": [
+          "ra3_sureape_voiattacka",
+          "ra3_sureape_voiattackb",
+          "ra3_sureape_voiattackc",
+          "ra3_sureape_voiattackd",
+          "ra3_sureape_voiattacke",
+          "ra3_sureape_voiattackf",
+          "ra3_sureape_voiattackg"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3REAPER_move": {
+        "sounds": [
+          "ra3_sureape_voimovea",
+          "ra3_sureape_voimoveb",
+          "ra3_sureape_voimovec",
+          "ra3_sureape_voimoved",
+          "ra3_sureape_voimovee",
+          "ra3_sureape_voimovef",
+          "ra3_sureape_voimoveg",
+          "ra3_sureape_voimoveh",
+          "ra3_sureape_voimovei",
+          "ra3_sureape_voimovej",
+          "ra3_sureape_voimovek"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_R3REAPER_select": {
+        "sounds": [
+          "ra3_suprotosickl_selecta",
+          "ra3_suprotosickl_selectb",
+          "ra3_suprotosickl_selectc",
+          "ra3_suprotosickl_selectd",
+          "ra3_suprotosickl_selecte",
+          "ra3_sureape_voicreatec",
+          "ra3_sureape_voiselecta",
+          "ra3_sureape_voiselectb",
+          "ra3_sureape_voiselectc",
+          "ra3_sureape_voiselectd",
+          "ra3_sureape_voiselecte",
+          "ra3_sureape_voiselectg",
+          "ra3_sureape_voiselecth"
+        ],
+        "volume": 85,
+        "priority": 10,
+        "loop": false
+      },
+      "RA3_SOV_FIRE_R3TESLA": {
+        "sounds": [
+          "ra3_temp_vtesatta",
+          "ra3_temp_vtesattb"
+        ],
+        "volume": 90,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_SOV_FIRE_R3APOC": {
+        "sounds": [
+          "ra3_suapoca_cannona",
+          "ra3_suapoca_cannonb",
+          "ra3_suapoca_cannonc",
+          "ra3_suapoca_cannond",
+          "ra3_suapoca_cannone"
+        ],
+        "volume": 90,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_SOV_FIRE_grenade": {
+        "sounds": [
+          "ra3_suprotosickl_wpngrndfirea",
+          "ra3_suprotosickl_wpngrndfireb",
+          "ra3_suprotosickl_wpngrndfirec",
+          "ra3_suprotosickl_wpngrndfired",
+          "ra3_suprotosickl_wpngrndfiree",
+          "ra3_suprotosickl_wpngrndfiref"
+        ],
+        "volume": 90,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_SOV_FIRE_rocket": {
+        "sounds": [
+          "ra3_suprotosickl_wpnrocketfirea",
+          "ra3_suprotosickl_wpnrocketfireb",
+          "ra3_suprotosickl_wpnrocketfirec",
+          "ra3_suprotosickl_wpnrocketfired",
+          "ra3_suprotosickl_wpnrocketfiree",
+          "ra3_suprotosickl_wpnrocketfiref"
+        ],
+        "volume": 90,
+        "priority": 9,
+        "loop": false
+      }
+    },
+    "entries": {
+      "ra3_sutesla_voimovspce": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovSpce.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 962
+      },
+      "ra3_sutesla_voimovspcd": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovSpcd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1780
+      },
+      "ra3_sutesla_voimovspcc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovSpcc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1443
+      },
+      "ra3_sutesla_voimovspcb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovSpcb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1426
+      },
+      "ra3_sutesla_voimovspca": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovSpca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2098
+      },
+      "ra3_sutesla_voiatkspcd": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkSpcd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1560
+      },
+      "ra3_sutesla_voiatkspcc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkSpcc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1529
+      },
+      "ra3_sutesla_voiatkspcb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkSpcb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1514
+      },
+      "ra3_sutesla_voiatkspca": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkSpca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2030
+      },
+      "ra3_sutesla_voiatkl": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkl.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1489
+      },
+      "ra3_sutesla_voiatkk": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkk.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1585
+      },
+      "ra3_sutesla_voiatkj": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1642
+      },
+      "ra3_sutesla_voiatki": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtki.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1374
+      },
+      "ra3_sutesla_voiatkh": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1152
+      },
+      "ra3_sutesla_voiatkg": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1872
+      },
+      "ra3_sutesla_voiatkf": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1635
+      },
+      "ra3_sutesla_voiatke": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1285
+      },
+      "ra3_sutesla_voiatkd": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 791
+      },
+      "ra3_sutesla_voiatkc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1296
+      },
+      "ra3_sutesla_voiatkb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 955
+      },
+      "ra3_sutesla_voiatka": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiAtka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1811
+      },
+      "ra3_sutesla_voimovj": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1067
+      },
+      "ra3_sutesla_voimovi": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovi.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1612
+      },
+      "ra3_sutesla_voimovh": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 877
+      },
+      "ra3_sutesla_voimovg": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1071
+      },
+      "ra3_sutesla_voimovf": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1025
+      },
+      "ra3_sutesla_voimove": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMove.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1002
+      },
+      "ra3_sutesla_voimovd": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1196
+      },
+      "ra3_sutesla_voimovc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1326
+      },
+      "ra3_sutesla_voimovb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 985
+      },
+      "ra3_sutesla_voimova": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMova.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 984
+      },
+      "ra3_sutesla_voimovtnkd": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovTnkd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1222
+      },
+      "ra3_sutesla_voimovtnkc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovTnkc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1148
+      },
+      "ra3_sutesla_voimovtnkb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovTnkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1682
+      },
+      "ra3_sutesla_voimovtnka": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiMovTnka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1523
+      },
+      "ra3_sutesla_voiselg": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSelg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1123
+      },
+      "ra3_sutesla_voiself": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSelf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1291
+      },
+      "ra3_sutesla_voisele": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSele.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1718
+      },
+      "ra3_sutesla_voiseld": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSeld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1735
+      },
+      "ra3_sutesla_voiselc": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSelc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1574
+      },
+      "ra3_sutesla_voiselb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSelb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1259
+      },
+      "ra3_sutesla_voisela": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiSela.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1237
+      },
+      "ra3_sutesla_voicretnkb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_VoiCreTnkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2156
+      },
+      "ra3_sutesla_seltnkb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_SelTnkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1267
+      },
+      "ra3_sutesla_seltnka": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_SUTesla_SelTnka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1325
+      },
+      "ra3_suapoca_voiatkspcf": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpcf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1029
+      },
+      "ra3_suapoca_voiatkspce": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpce.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2035
+      },
+      "ra3_suapoca_voiatkspcd": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpcd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1425
+      },
+      "ra3_suapoca_voiatkspcc": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpcc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1685
+      },
+      "ra3_suapoca_voiatkspcb": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpcb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1655
+      },
+      "ra3_suapoca_voiatkspca": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkSpca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1990
+      },
+      "ra3_suapoca_voicrea": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiCrea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2005
+      },
+      "ra3_suapoca_voiatkh": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1488
+      },
+      "ra3_suapoca_voiatkg": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1957
+      },
+      "ra3_suapoca_voiatkf": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1580
+      },
+      "ra3_suapoca_voiatke": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 759
+      },
+      "ra3_suapoca_voiatkd": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1110
+      },
+      "ra3_suapoca_voiatkc": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1492
+      },
+      "ra3_suapoca_voiatkb": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1186
+      },
+      "ra3_suapoca_voiatka": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiAtka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1230
+      },
+      "ra3_suapoca_voimovh": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1696
+      },
+      "ra3_suapoca_voimovg": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1204
+      },
+      "ra3_suapoca_voimovf": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1293
+      },
+      "ra3_suapoca_voimove": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMove.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1154
+      },
+      "ra3_suapoca_voimovd": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1110
+      },
+      "ra3_suapoca_voimovc": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2049
+      },
+      "ra3_suapoca_voimovb": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMovb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1163
+      },
+      "ra3_suapoca_voimova": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiMova.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1832
+      },
+      "ra3_suapoca_voiselg": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSelg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2110
+      },
+      "ra3_suapoca_voiself": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSelf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1285
+      },
+      "ra3_suapoca_voisele": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSele.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2045
+      },
+      "ra3_suapoca_voiseld": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSeld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2243
+      },
+      "ra3_suapoca_voiselc": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSelc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1992
+      },
+      "ra3_suapoca_voiselb": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSelb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1995
+      },
+      "ra3_suapoca_voisela": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_VoiSela.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 933
+      },
+      "ra3_sureape_voiattackg": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttackg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 898
+      },
+      "ra3_sureape_voiattackf": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttackf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 547
+      },
+      "ra3_sureape_voiattacke": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttacke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 900
+      },
+      "ra3_sureape_voiattackd": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttackd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 671
+      },
+      "ra3_sureape_voiattackc": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttackc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 660
+      },
+      "ra3_sureape_voiattackb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttackb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 827
+      },
+      "ra3_sureape_voiattacka": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiAttacka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 887
+      },
+      "ra3_sureape_voimovek": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovek.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 824
+      },
+      "ra3_sureape_voimovej": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovej.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 842
+      },
+      "ra3_sureape_voimovei": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovei.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 890
+      },
+      "ra3_sureape_voimoveh": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMoveh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 993
+      },
+      "ra3_sureape_voimoveg": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMoveg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 974
+      },
+      "ra3_sureape_voimovef": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovef.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1238
+      },
+      "ra3_sureape_voimovee": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 713
+      },
+      "ra3_sureape_voimoved": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMoved.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 891
+      },
+      "ra3_sureape_voimovec": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 817
+      },
+      "ra3_sureape_voimoveb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMoveb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1184
+      },
+      "ra3_sureape_voimovea": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiMovea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1203
+      },
+      "ra3_suprotosickl_selecte": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_selectE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1695
+      },
+      "ra3_suprotosickl_selectd": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_selectD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1958
+      },
+      "ra3_suprotosickl_selectc": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_selectC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1848
+      },
+      "ra3_suprotosickl_selectb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_selectB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1344
+      },
+      "ra3_suprotosickl_selecta": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_selectA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1795
+      },
+      "ra3_sureape_voiselecth": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelecth.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1021
+      },
+      "ra3_sureape_voiselectg": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelectg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2261
+      },
+      "ra3_sureape_voiselecte": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelecte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1196
+      },
+      "ra3_sureape_voiselectd": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelectd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1517
+      },
+      "ra3_sureape_voiselectc": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelectc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1287
+      },
+      "ra3_sureape_voiselectb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelectb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1165
+      },
+      "ra3_sureape_voiselecta": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiSelecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1528
+      },
+      "ra3_sureape_voicreatec": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUReape_voiCreatec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2118
+      },
+      "ra3_temp_vtesattb": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_TEMP_vtesattb.wav",
+        "sampleRate": 44100,
+        "channels": 1,
+        "durMs": 1408
+      },
+      "ra3_temp_vtesatta": {
+        "file": "res://assets/ra3/soviet/R3TESLA/AudioFile_TEMP_vtesatta.wav",
+        "sampleRate": 44100,
+        "channels": 1,
+        "durMs": 1238
+      },
+      "ra3_suapoca_cannone": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_cannonE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2224
+      },
+      "ra3_suapoca_cannond": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_cannonD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2353
+      },
+      "ra3_suapoca_cannonc": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_cannonC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2493
+      },
+      "ra3_suapoca_cannonb": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_cannonB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2433
+      },
+      "ra3_suapoca_cannona": {
+        "file": "res://assets/ra3/soviet/R3APOC/AudioFile_SUApoca_cannonA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2191
+      },
+      "ra3_suprotosickl_wpngrndfiref": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireF.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1709
+      },
+      "ra3_suprotosickl_wpngrndfiree": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1345
+      },
+      "ra3_suprotosickl_wpngrndfired": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1599
+      },
+      "ra3_suprotosickl_wpngrndfirec": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1743
+      },
+      "ra3_suprotosickl_wpngrndfireb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1489
+      },
+      "ra3_suprotosickl_wpngrndfirea": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnGrndFireA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1475
+      },
+      "ra3_suprotosickl_wpnrocketfiref": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireF.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1500
+      },
+      "ra3_suprotosickl_wpnrocketfiree": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1698
+      },
+      "ra3_suprotosickl_wpnrocketfired": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1624
+      },
+      "ra3_suprotosickl_wpnrocketfirec": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1742
+      },
+      "ra3_suprotosickl_wpnrocketfireb": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1800
+      },
+      "ra3_suprotosickl_wpnrocketfirea": {
+        "file": "res://assets/ra3/soviet/R3REAPER/AudioFile_SUProtoSickl_wpnRocketFireA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1417
+      }
+    }
+  },
+  "emplacement": {
+    "id": "R3REAPERTURRET",
+    "name": "收割者固定炮塔（RA3）",
+    "desc": "收割者落地后扎根于此，用榴弹炮守住地面，用火箭防空。部署后无法再移动。",
+    "faction": "soviet",
+    "cost": 1200,
+    "build_time": 0,
+    "hp": 900.0,
+    "armor": "structure",
+    "radius": 22,
+    "sight": 750.0,
+    "tags": [
+      "defense"
+    ],
+    "weapon": {
+      "damage": 15.0,
+      "cooldown": 2.5,
+      "range": 337.5,
+      "min_range": 0,
+      "projectile_speed": 0,
+      "attack_type": "cannon",
+      "ra2_aa": true,
+      "ra2_ag": true,
+      "ra2_warhead": "RA3_EXPANSION",
+      "burst": 3,
+      "burst_delay": 0.2
+    },
+    "footprint": [
+      1,
+      1
+    ],
+    "power": 0
+  },
+  "production_prerequisites": {
+    "R3TESLA": ["NAWEAP", "NANRCT"],
+    "R3APOC": ["NAWEAP", "NATECH"],
+    "R3REAPER": ["NAWEAP", "NANRCT"]
+  },
+  "source": "RA3 SDK Soviet units and EA Uprising EP1 Reaper; Steam Uprising 1.1 media."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "SCHP",
+  "image": "SCHP",
+  "vxl": "SCHP.VXL",
+  "facings": 32,
+  "frameW": 141,
+  "frameH": 82,
+  "facing_offset": 16,
+  "poses": 2,
+  "fps": 20,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

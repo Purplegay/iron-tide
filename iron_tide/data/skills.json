@@ -1,0 +1,580 @@
+{
+  "version": 2,
+  "_comment": "单位技能库（红警3 式）：Q 为固有主动，W 与被动为抽卡装配位，E 为单位特殊操作。effect 为数据驱动 token，运行时由 scripts/units/ability.gd 解释；多个 token 用 + 连接。target 仅作 UI 提示。unlock 决定装配资格：gacha 需先解锁；defaults.primary 与单位专属操作独立。rarity 仅对 gacha 技能有效。",
+  "slots": {
+    "active": 2,
+    "passive": 1
+  },
+  "unlock": {
+    "_comment": "技能获取口径。base 技能默认全部拥有；gacha 技能需通过 draw 抽取解锁。rarity_weight 决定抽取稀有度权重。",
+    "default": "gacha",
+    "labels": {
+      "base": "通用技能",
+      "gacha": "抽取技能"
+    },
+    "draw": {
+      "enabled": true,
+      "name": "技能抽取",
+      "currency": "diamonds",
+      "cost": 900,
+      "no_duplicate": false,
+      "hero_contracts": {
+        "chance": 0.0035,
+        "exchange_cost": 500,
+        "entries": [
+          {"id":"furnace_contract","hero_id":"E2","name":"炉火契约","cards":["ap_furnace_bastion","ps_furnace_flak"]},
+          {"id":"watch_contract","hero_id":"E1","name":"守望者契约","cards":["ap_watch_posts","ps_watch_succession"]},
+          {"id":"north_contract","hero_id":"MTNK","name":"北辰契约","cards":["ap_north_twin","ps_north_echo"]},
+          {"id":"spine_contract","hero_id":"HTNK","name":"铁脊契约","cards":["ap_spine_crown","ps_spine_scrap"]}
+        ]
+      },
+      "universal_cards": ["ps_rally_guard", "ps_flank_cover", "ps_emergency_plate", "ap_scout_flare", "ap_smoke", "ap_overdrive", "ap_focus_fire", "ps_armor_plating", "ps_hollow_point", "ap_bilge_repair", "ps_anchor_reload", "ap_wing_guard", "ps_cruise_scout"],
+      "rarity_weight": {
+        "common": 65,
+        "rare": 25,
+        "epic": 9,
+        "legend": 1
+      }
+    }
+  },
+  "skills": [
+    {"id":"ap_carrier_reserve","name":"增派中队","type":"active","effect":"ap_carrier_reserve","unlock":"gacha","rarity":"legend","scope_icon":"naval","allowed_units":["CARRIER"],"value":0,"cooldown":45,"rank_text":"临时增派两架舰载机，持续10／13／16／20秒。到时完成当前投弹后离场。"},
+    {"id":"ps_rally_guard","name":"会合整备","type":"passive","effect":"ps_rally_guard","unlock":"gacha","rarity":"common","scope_icon":"tactics","value":0,"rank_text":"脱离友军8秒后回到友军2格内，双方各抵挡下一次普通直接攻击。冷却60／50／40／30秒。"},
+    {"id":"ap_sonar_jam","name":"扰航鸣叫","type":"active","effect":"ap_sonar_jam","unlock":"gacha","rarity":"rare","scope_icon":"naval","allowed_units":["DLPH"],"value":0,"rank_text":"点选5格内可见敌舰，令主武器冷却暂停恢复2／3／4／5秒。已经打出的炮弹照常飞行。","cooldown":24,"target":"point"},
+    {"id":"ps_flank_cover","name":"侧翼掩护","type":"passive","effect":"ps_flank_cover","unlock":"gacha","rarity":"epic","scope_icon":"tactics","value":0,"rank_text":"为2格内友军单位分担直接伤害的4／6／8／10%，自身对这部分减伤5／10／15／20%。多名携带者在场时由最近的一名承担。"},
+    {"id":"ps_swimming","name":"两栖训练","type":"passive","effect":"ps_swimming","unlock":"gacha","rarity":"epic","scope_icon":"infantry","allowed_units":["SPY","ENGINEER","SENGINEER"],"value":0,"rank_text":"移动时可以直接渡水，在对岸登陆后执行任务。"},
+    {"id":"ap_extra_volley","name":"双份弹药","type":"active","effect":"ap_extra_volley","unlock":"gacha","rarity":"rare","scope_icon":"infantry","allowed_units":["GHOST","FLAKT"],"value":0,"rank_text":"让下一轮普通攻击多打一轮，冷却随等级缩短。","cooldown":30,"target":"self","cooldown_by_rank":[30,27,24,21]},
+    {"id":"ps_emergency_plate","name":"应急装甲","type":"passive","effect":"ps_emergency_plate","unlock":"gacha","rarity":"rare","scope_icon":"heavy","value":0,"rank_text":"可用时，若一次命中会让生命降到一半或以下，本次生命损失减少20／25／30／35%。冷却25秒。"},
+    {"id":"ap_chrono_return","name":"回到原点","type":"active","effect":"ap_chrono_return","unlock":"gacha","rarity":"epic","scope_icon":"hightech","allowed_units":["CLEG"],"value":0,"rank_text":"传送后6秒内按W回到出发点。恢复期间也能返回。","cooldown":36,"target":"self","cooldown_by_rank":[36,32,28,24]},
+    {"id":"ap_ivan_trigger","name":"提前引爆","type":"active","effect":"ap_ivan_trigger","unlock":"gacha","rarity":"epic","scope_icon":"explosive","allowed_units":["IVAN"],"value":0,"rank_text":"点选自己装弹的目标提前引爆。最高扣伤60／50／40／30%，按剩余引信比例折算。","cooldown":18,"target":"point"},
+    {"id":"ap_scout_flare","name":"探照弹","type":"active","effect":"ap_scout_flare","unlock":"gacha","rarity":"common","scope_icon":"tactics","value":0,"rank_text":"点选自身6格内地面，照亮周围2格，持续4／5／6／7秒。","cooldown":25,"target":"point"},
+    {"id": "ap_furnace_bastion", "name": "金鳞战垒", "type": "active", "effect": "furnace_bastion", "cooldown_by_rank": [120, 80, 70, 50], "attack_by_rank": [2.0, 2.25, 2.5, 3.0], "shield_by_rank": [0.5, 0.6, 0.65, 0.8], "speed_by_rank": [0.05, 0.1, 0.12, 0.15], "burst_by_rank": [0.1, 0.3, 0.35, 0.5], "desc": "按 W 切换卧倒和起身，无姿态冷却。卧倒攻击提升至站立的 2/2.25/2.5/3 倍（0～3级），可缓慢移动。护盾就绪时卧倒获得持续 10 秒的护盾并开始护盾冷却；冷却中卧倒仍有火力加成。受击破盾或带盾起身时对 1.5 格内敌人造成溅射。", "unlock": "contract", "rarity": "ultimate", "hero_only": true, "allowed_units": ["E2"], "scope_note": "苏联英雄步兵 · 炉火", "value": 0},
+    {"id": "ps_furnace_flak", "name": "龙卫截空", "type": "passive", "effect": "furnace_flak", "hp_by_rank": [0.5, 1.5, 1.8, 2.0], "rof_by_rank": [1, 1.2, 1.25, 1.3], "life_by_rank": [2, 4, 5, 7], "desc": "发现射程内空敌后召唤两辆防空履带车，按本方养成后的车辆生命计算。车辆生命加速衰减，到期分解。召唤冷却60秒。", "unlock": "contract", "rarity": "ultimate", "hero_only": true, "allowed_units": ["E2"], "scope_note": "苏联英雄步兵 · 炉火", "value": 0},
+    {"id": "ap_bilge_repair", "name": "排水抢修", "type": "active", "effect": "ap_bilge_repair", "scope_icon": "naval", "allowed_categories": ["naval"], "rarity": "common", "unlock": "gacha", "target": "self", "radius": 0, "value": 0.03, "strength_by_rank": [1, 1.3333333333333333, 1.6666666666666667, 2], "duration": 4, "cooldown": 30, "rank_text": "4 秒内缓慢恢复 {pct}% 最大生命，航行时也能抢修。", "stat": "总恢复生命", "group": "舰船通用", "demo_model": "DEST", "excluded_units": ["DLPH", "SQD"], "scope_note": "舰船（不含海豚、乌贼）"},
+    {"id": "ps_anchor_reload", "name": "锚定校射", "type": "passive", "effect": "ps_anchor_reload", "scope_icon": "naval", "allowed_categories": ["naval"], "rarity": "common", "unlock": "gacha", "target": "self", "radius": 0, "value": 0.08, "strength_by_rank": [1, 1.25, 1.5, 1.875], "duration": 0, "cooldown": 0, "rank_text": "停稳 2 秒后，主武器装填缩短 {pct}%；移动立即失效，不加快舰载机补充。", "stat": "停稳装填缩短", "group": "舰船通用", "demo_model": "DEST", "requires_direct_weapon": true, "excluded_units": ["DLPH", "SQD", "CARRIER"], "scope_note": "有舰载武器的舰船（不含航母、海豚、乌贼）"},
+    {"id": "ap_wing_guard", "name": "掠翼机动", "type": "active", "effect": "ap_wing_guard", "scope_icon": "air", "allowed_categories": ["air"], "rarity": "common", "unlock": "gacha", "target": "self", "radius": 0, "value": 0.2, "strength_by_rank": [1, 1.25, 1.5, 1.75], "duration": 3, "cooldown": 24, "rank_text": "空中展开翼侧防护流线，3 秒内受到的伤害降低 {pct}%；落地结束。", "stat": "空中减伤", "group": "飞机通用", "demo_model": "ORCA"},
+    {"id": "ps_cruise_scout", "name": "巡航瞭望", "type": "passive", "effect": "ps_cruise_scout", "scope_icon": "air", "allowed_categories": ["air"], "rarity": "common", "unlock": "gacha", "target": "self", "radius": 0, "value": 0.15, "strength_by_rank": [1, 1.3333333333333333, 1.6666666666666667, 2], "duration": 0, "cooldown": 0, "rank_text": "连续飞行 2 秒后，视野扩大 {pct}%；停下或落地收回，不增加射程或反隐能力。", "stat": "巡航视野增幅", "group": "飞机通用", "demo_model": "ORCA"},
+    {"id": "ps_chrono_commission", "scope_icon": "hightech", "name": "超时空突击许可", "type": "passive", "effect": "field_commission", "cooldown": 0, "duration": 0, "value": 0, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "epic", "allowed_units": ["CCOMAND"], "objective_unit": "GHOST", "objective_by_rank": [10, 8, 5, 3], "rank_text": "在超时空突击队的单位改造栏装配后，己方海豹部队累计击杀敌方单位或建筑 {goal} 次，本局永久解锁超时空突击队生产。执行任务的普通单位无需装卡，也无需先造超时空单位或实验室；任务路线生产仍需实验室和兵营，也可窃取对应科技解锁。新局重新计数，读档保留。友军、无评分附属物不计击杀，拆弹不计引爆。", "group": "盟军", "units": "超时空突击队", "stat": "本局解锁次数", "marker": ""},
+    {"id": "ps_chrono_sabotage", "scope_icon": "explosive", "name": "超时空爆破许可", "type": "passive", "effect": "field_commission", "cooldown": 0, "duration": 0, "value": 0, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "epic", "allowed_units": ["CIVAN"], "objective_unit": "IVAN", "objective_by_rank": [5, 4, 3, 1], "rank_text": "在超时空伊文的单位改造栏装配后，己方疯狂伊文对敌方目标装弹并实际引爆 {goal} 次，本局永久解锁超时空伊文生产。执行任务的普通单位无需装卡，也无需先造超时空单位或实验室；任务路线生产仍需实验室和兵营，也可窃取对应科技解锁。新局重新计数，读档保留。友军、无评分附属物不计击杀，拆弹不计引爆。", "group": "苏联", "units": "超时空伊文", "stat": "本局解锁次数", "marker": ""},
+
+    {"id": "reaper_split_fire", "scope_icon": "heavy", "name": "分区射击", "type": "active", "effect": "reaper_split_fire", "cooldown": 0, "value": 1.0, "duration": 0, "radius": 0, "target": "enemy", "unlock": "gacha", "rarity": "epic", "allowed_units": ["R3REAPER"], "strength_by_rank": [1, 1.1, 1.35, 1.5], "rank_text": "先指定主目标，再按 W 选择左右侧炮射界内的地面副目标。副目标侧炮造成原伤害的 {pct}%；不暂停主目标攻击。重新下达作战指令取消分火。", "group": "RA3 苏联", "units": "收割者", "stat": "副目标伤害", "marker": ""},
+    {"id": "ap_tesla_chain", "scope_icon": "electric", "name": "连锁放电", "type": "active", "effect": "ap_tesla_chain", "cooldown": 40, "duration": 8, "value": 0.1, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "legend", "rank_text": "前三次普通电击命中的主伤害增加 {primary}%。生效期间每次普通电击均分叉，对主目标两格内最近的至多两名可见地面敌人造成该次主伤害的 {branch}%；第四次起主攻击不再增伤，分支按未强化的主伤害计算。各目标分别结算护甲；分支不继承停火蓄电，不再次分裂，不触发被动。持续 {duration} 秒。", "strength_by_rank": [1, 3, 5, 10], "group": "RA2 苏联", "units": "磁爆步兵", "stat": "主伤害／分支伤害", "marker": "", "cooldown_by_rank": [40, 38, 36, 34], "allowed_units": ["SHK"], "primary_bonus_by_rank": [0, 0.2, 0.3, 0.35], "branch_by_rank": [0.1, 0.3, 0.5, 1]},
+    {"id": "ap_shock_pulse", "scope_icon": "electric", "name": "震荡脉冲", "type": "active", "effect": "ap_shock_pulse", "cooldown": 26, "duration": 3, "value": 0.4, "radius": 275, "target": "self", "unlock": "gacha", "rarity": "epic", "rank_text": "以自身当前攻击力的 {pct}% 造成电击伤害，半径等同普通美国大兵卧倒射程（5 格）。存活的地面敌方单位减速 25%，持续 3 秒。仅影响可见敌人，建筑不减速，不触发蓄电与普通攻击被动。", "strength_by_rank": [1, 1.5, 2, 2.5], "group": "电磁兵种", "units": "磁爆步兵、磁暴坦克（尤复）、磁暴线圈", "stat": "自身攻击倍率", "marker": "", "cooldown_by_rank": [26, 25, 24, 23], "allowed_units": ["SHK", "TTNK", "TESLA"]},
+    {"id": "ps_grounding", "scope_icon": "vehicle", "name": "乘员协同", "type": "passive", "effect": "ps_grounding", "cooldown": 0, "duration": 0, "value": 0.1, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "rare", "rank_text": "两名不同乘员在 2 秒内命中同一敌方目标，第二名乘员该次命中额外增伤 {pct}%。每辆要塞对每个目标共用 3 秒冷却，不叠层；同一乘员连发不触发。", "strength_by_rank": [1, 1.5, 2, 2.5], "group": "RA2 盟军", "units": "战斗要塞", "stat": "协同命中增伤", "marker": "", "allowed_units": ["BFRT"]},
+    {"id": "ps_aftercurrent", "scope_icon": "air", "name": "空仓返航", "type": "passive", "effect": "ps_aftercurrent", "cooldown": 0, "duration": 0, "value": 0.08, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "common", "rank_text": "弹药耗尽且正在返航时，水平飞行速度增加 {pct}%；落地、开始装填或取消返航立即结束。不加快起降、装填或攻击。", "strength_by_rank": [1, 1.25, 1.5, 1.75], "group": "RA2 盟军", "units": "入侵者战机、黑鹰战机", "stat": "空弹返航加速", "marker": "", "allowed_units": ["ORCA", "BEAG"]},
+
+    {"id": "ap_decoy", "scope_icon": "hightech", "name": "假象转移", "type": "active", "effect": "ap_decoy", "echo_seconds": 10, "cooldown": 30, "cooldown_by_rank": [30, 28, 26, 25], "duration": 0, "value": 0.08, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "legend", "allowed_units": ["R3MIRAGE"], "rank_text": "离开施放位置时留下 2 秒无碰撞残影并隐身。入隐后 {window} 秒内主炮破隐时，对主目标增伤 {pct}%。超时后本技能提供的隐身与首发增伤同时结束。", "group": "RA3 盟军", "units": "幻影坦克", "stat": "破隐首发伤害", "marker": "Echo"},
+    {"id": "ps_phase", "scope_icon": "hightech", "name": "相位稳流", "type": "passive", "effect": "ps_phase", "cooldown": 0, "duration": 0, "value": 0.05, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "epic", "allowed_units": ["R3MIRAGE", "R3FUTURE"], "rank_text": "静止用主炮集火同一目标，每满 3 秒叠一层，每层增伤 {pct}%，最多三层（+{full}%）。移动、失去或更换主目标会清空层数。未来坦克 X-1 的中子球波及其他单位时保留层数，只有主目标受到集火增伤。", "group": "RA3 盟军", "units": "幻影坦克、未来坦克", "stat": "每层主炮增伤", "marker": "Flux", "strength_by_rank": [1, 2, 3, 3.8]},
+    {"id": "ap_twin", "scope_icon": "heavy", "name": "炮座齐校", "type": "active", "effect": "ap_twin", "cooldown": 24, "cooldown_by_rank": [24, 23, 22.5, 22], "duration": 2, "value": 0.12, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "epic", "allowed_units": ["R3APOC"], "rank_text": "从下一轮左炮开火起，校射窗口为 {window} 秒。同轮左右炮依次命中同一目标，右炮增伤 {pct}%。可强化 {shots}。磁力鱼叉无法触发。", "group": "RA3 苏联", "units": "天启坦克", "stat": "右炮命中增伤", "marker": "Twin", "twin_windows": [2, 4, 5.5, 6], "twin_hits": [1, 2, 2, 3], "twin_extra_chance": [0, 0, 0.5, 0]},
+    {"id": "ps_limiter", "scope_icon": "heavy", "name": "重机限幅器", "type": "passive", "effect": "ps_limiter", "cooldown": 0, "duration": 0, "value": 0.05, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "rare", "allowed_units": ["R3APOC", "R3TESLA", "R3REAPER"], "rank_text": "连续行驶 3 秒后，行驶期间受到的伤害降低 {pct}%。停车即结束，抵挡伤害时全车闪出钢光。", "group": "RA3 苏联", "units": "天启坦克、磁暴坦克、收割者", "stat": "持续行驶减伤", "marker": ""},
+    {"id": "ap_buoy", "scope_icon": "naval", "name": "搜索浮标", "type": "active", "effect": "ap_buoy", "cooldown": 32, "cooldown_by_rank": [32, 30, 28, 25], "duration": 4, "value": 4, "radius": 165, "target": "water", "unlock": "gacha", "rarity": "rare", "allowed_units": ["DEST"], "rank_text": "指定本舰 660 范围内的水面投放浮标。本舰和所属鱼鹰可侦测半径 {radius} 内的潜艇，持续 {value} 秒。", "group": "RA2 盟军", "units": "驱逐舰", "stat": "本舰反潜侦测持续", "marker": ""},
+    {"id": "ps_contact", "scope_icon": "naval", "name": "接敌通报", "type": "passive", "effect": "ps_contact", "cooldown": 30, "duration": 3, "value": 0.05, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "rare", "allowed_units": ["DEST", "DLPH"], "rank_text": "首次伤害敌方单位后标记它，共享其视野 {sight} 秒。后续命中该目标增伤 {pct}% 并刷新标记。每舰同时标记一个目标，标记冷却 {report_cd} 秒，所属鱼鹰与母舰共用计时。", "group": "RA2 盟军", "units": "驱逐舰、海豚", "stat": "后续命中增伤", "marker": "Ping", "contact_seconds": [3, 3.5, 4, 5], "contact_cooldowns": [30, 28, 25, 22]},
+    {"id": "ap_slope", "scope_icon": "vehicle", "name": "斜甲迎击", "type": "active", "effect": "ap_slope", "cooldown": 24, "duration": 3, "value": 0.18, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "epic", "allowed_units": ["HTNK"], "rank_text": "停车开启，原地最多防护 {duration} 秒，车首左右各 60° 来袭伤害降低 {pct}%。首次起步后继续防护 {drive} 秒，期间加速 {speed}%，再次起步不会刷新。", "group": "RA2 苏联", "units": "犀牛坦克", "stat": "正面装甲减伤", "marker": "", "drive_seconds": 2, "speed_by_rank": [0.1, 0.25, 0.3, 0.5]},
+    {"id": "ps_barrage", "scope_icon": "antiair", "name": "交错弹幕", "type": "passive", "effect": "ps_barrage", "cooldown": 0, "duration": 0, "value": 0.08, "radius": 0, "target": "self", "unlock": "gacha", "rarity": "rare", "allowed_units": ["FLAKT", "HTK", "NAFLAK", "HYD"], "rank_text": "对同一空中目标连续命中时，第三击增伤 {pct}% 后重新计数。换目标清零。", "group": "RA2 苏联", "units": "防空步兵、防空履带车、防空炮、海蝎", "stat": "第三次对空命中增伤", "marker": "Burst"},
+    {
+      "id": "ap_smoke", "scope_icon": "infantry", "allowed_categories": ["infantry", "vehicle"],
+      "name": "烟幕弹",
+      "type": "active",
+      "effect": "defense_buff",
+      "cooldown": 26,
+      "duration": 7,
+      "value": 0.6,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "散布烟幕，{duration} 秒内自身受到伤害 -{reduction}%。"
+    },
+    {
+      "id": "ap_overdrive", "scope_icon": "vehicle", "allowed_categories": ["vehicle", "air"],
+      "name": "引擎超载",
+      "type": "active",
+      "effect": "speed_buff",
+      "cooldown": 22,
+      "duration": 5,
+      "value": 0.6,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内移动速度 +{pct}%。"
+    },
+    {
+      "id": "ap_focus_fire", "scope_icon": "defense", "allowed_categories": ["infantry", "defense"],
+      "name": "聚焦射击",
+      "type": "active",
+      "effect": "cooldown_buff",
+      "cooldown": 20,
+      "duration": 6,
+      "value": 0.2,
+      "strength_by_rank": [1.0, 1.25, 1.5, 1.75],
+      "stat": "武器装填时间缩短",
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内，新一轮武器装填时间缩短 {pct}%，单发伤害不变；不重置当前装填，也不缩短蓄力和连射间隔。"
+    },
+    {
+      "id": "ap_repair_field",
+      "name": "维修力场",
+      "type": "active",
+      "effect": "heal",
+      "cooldown": 30,
+      "duration": 0,
+      "value": 0.35,
+      "radius": 96,
+      "target": "allies",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "治疗自身与 {radius} 范围内友军 {pct}% 最大生命。"
+    },
+    {
+      "id": "ap_bayonet",
+      "name": "刺刀冲锋",
+      "type": "active",
+      "effect": "speed_buff+attack_buff",
+      "cooldown": 24,
+      "duration": 4,
+      "value": 0.45,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内速度与攻击各 +{pct}%。"
+    },
+    {
+      "id": "ap_evade",
+      "name": "机动规避",
+      "type": "active",
+      "effect": "dodge_buff",
+      "cooldown": 24,
+      "duration": 6,
+      "value": 0.5,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内闪避 +{pct}%（紫色光环）。"
+    },
+    {
+      "id": "ap_marker",
+      "name": "瞄准强化",
+      "type": "active",
+      "effect": "accuracy_buff",
+      "cooldown": 24,
+      "duration": 6,
+      "value": 0.5,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内命中 +{pct}%（黄色光环）。"
+    },
+    {
+      "id": "ap_rage_fire",
+      "name": "狂暴射击",
+      "type": "active",
+      "effect": "crit_buff",
+      "cooldown": 26,
+      "duration": 6,
+      "value": 0.35,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内暴击率 +{pct}%（红+蓝双环）。"
+    },
+    {
+      "id": "ap_rapid_load",
+      "name": "快速装填",
+      "type": "active",
+      "effect": "cooldown_buff",
+      "cooldown": 28,
+      "duration": 8,
+      "value": 0.4,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内武器装填时间 -{pct}%（青色光环）。"
+    },
+    {
+      "id": "ap_nano_field",
+      "name": "纳米修复场",
+      "type": "active",
+      "effect": "regen_buff",
+      "cooldown": 30,
+      "duration": 8,
+      "value": 0.03,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内每秒恢复 {pct}% 最大生命（绿色光环）。"
+    },
+    {
+      "id": "ap_war_drum",
+      "name": "战鼓光环",
+      "type": "active",
+      "effect": "attack_buff+defense_buff",
+      "cooldown": 36,
+      "duration": 8,
+      "value": 0.35,
+      "radius": 120,
+      "target": "allies",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内 {radius} 范围内友军攻击与防御各 +{pct}%。"
+    },
+    {
+      "id": "ap_deploy",
+      "name": "部署/卧倒",
+      "type": "active",
+      "effect": "deploy",
+      "cooldown": 0.5,
+      "duration": 0,
+      "value": 1.5,
+      "radius": 0,
+      "target": "self",
+      "unlock": "base",
+      "desc": "切换形态：卧倒据守（无法移动，火力 +50%）。再点一次起身。"
+    },
+    {
+      "id": "ap_nano_heal",
+      "name": "纳米自愈",
+      "type": "active",
+      "effect": "heal",
+      "cooldown": 26,
+      "duration": 0,
+      "value": 0.5,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "立即恢复 {pct}% 最大生命。"
+    },
+    {
+      "id": "ap_flank",
+      "name": "侧翼突袭",
+      "type": "active",
+      "effect": "speed_buff",
+      "cooldown": 16,
+      "duration": 3,
+      "value": 0.9,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "{duration} 秒内移动速度 +{pct}%。"
+    },
+    {
+      "id": "ap_reactive_armor",
+      "name": "反应装甲",
+      "type": "active",
+      "effect": "defense_buff",
+      "cooldown": 18,
+      "duration": 4,
+      "value": 0.9,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "{duration} 秒内受到伤害 -{reduction}%。"
+    },
+    {
+      "id": "ap_emp_burst",
+      "name": "电磁脉冲",
+      "type": "active",
+      "effect": "stun",
+      "cooldown": 34,
+      "duration": 3,
+      "value": 1,
+      "radius": 128,
+      "target": "enemies",
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "使 {radius} 范围内敌人瘫痪 {duration} 秒。"
+    },
+    {
+      "id": "ap_barrage",
+      "name": "炮火覆盖",
+      "type": "active",
+      "effect": "stun",
+      "cooldown": 44,
+      "duration": 2,
+      "value": 1,
+      "radius": 150,
+      "target": "enemies",
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "压制 {radius} 范围内敌人 {duration} 秒。"
+    },
+    {
+      "id": "ap_shroud",
+      "name": "隐匿护罩",
+      "type": "active",
+      "effect": "attack_buff+defense_buff",
+      "cooldown": 40,
+      "duration": 8,
+      "value": 0.3,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "epic",
+      "rank_text": "{duration} 秒内攻击 +{pct}% 且受到伤害 -{reduction}%。"
+    },
+    {
+      "id": "ap_berserk",
+      "name": "狂暴模式",
+      "type": "active",
+      "effect": "attack_buff",
+      "cooldown": 30,
+      "duration": 6,
+      "value": 0.9,
+      "radius": 0,
+      "target": "self",
+      "unlock": "gacha",
+      "rarity": "legend",
+      "rank_text": "{duration} 秒内攻击力 +{pct}%。"
+    },
+    {
+      "id": "ps_armor_plating", "scope_icon": "vehicle", "allowed_categories": ["vehicle", "defense"],
+      "name": "复合装甲板",
+      "type": "passive",
+      "effect": "passive_armor",
+      "value": 0.12,
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "常驻：受到伤害 -{reduction}%。"
+    },
+    {
+      "id": "ps_hollow_point", "scope_icon": "infantry", "allowed_categories": ["infantry", "air"],
+      "name": "空尖弹",
+      "stat": "单发伤害提高",
+      "type": "passive",
+      "effect": "passive_damage",
+      "value": 0.1,
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "常驻：单发伤害 +{pct}%，武器装填时间不变。"
+    },
+    {
+      "id": "ps_turbine",
+      "name": "涡轮增压",
+      "type": "passive",
+      "effect": "passive_speed",
+      "value": 0.12,
+      "unlock": "gacha",
+      "rarity": "common",
+      "rank_text": "常驻：移动速度 +{pct}%。"
+    },
+    {
+      "id": "ps_optics",
+      "name": "高级光学",
+      "type": "passive",
+      "effect": "passive_sight",
+      "value": 0.25,
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "常驻：视野 +{pct}%。"
+    },
+    {
+      "id": "ps_excavator",
+      "name": "强化挖掘",
+      "type": "passive",
+      "effect": "passive_harvest",
+      "value": 0.25,
+      "unlock": "gacha",
+      "rarity": "rare",
+      "rank_text": "常驻：采集效率 +{pct}%（仅采集车生效）。"
+    },
+    {
+      "id": "ps_regen",
+      "name": "自愈合金",
+      "type": "passive",
+      "effect": "passive_regen",
+      "value": 0.01,
+      "unlock": "gacha",
+      "rarity": "epic",
+      "rank_text": "常驻：每秒恢复 {pct}% 最大生命。"
+    }
+  ],
+  "defaults": {
+    "soviet_tesla": {
+      "primary": "ap_focus_fire",
+      "active": [
+        "ap_focus_fire",
+        "ap_marker"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "soviet_tank": {
+      "primary": "ap_smoke",
+      "active": [
+        "ap_smoke",
+        "ap_rapid_load"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "swarm_behemoth": {
+      "primary": "ap_bayonet",
+      "active": [
+        "ap_bayonet",
+        "ap_evade"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "E1": {
+      "primary": "ap_bayonet",
+      "active": [
+        "ap_deploy",
+        "ap_bayonet"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "MTNK": {
+      "primary": "ap_smoke",
+      "active": [
+        "ap_smoke",
+        "ap_overdrive"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "CMIN": {
+      "primary": "ap_repair_field",
+      "active": [
+        "ap_repair_field",
+        "ap_nano_field"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "ORCA": {
+      "primary": "ap_overdrive",
+      "active": [
+        "ap_overdrive",
+        "ap_marker"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "MGTK": {
+      "primary": "ap_focus_fire",
+      "active": [
+        "ap_focus_fire",
+        "ap_rage_fire"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "ENGINEER": {
+      "primary": "ap_repair_field",
+      "active": [
+        "ap_repair_field",
+        "ap_smoke"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "SPY": {
+      "primary": "ap_evade",
+      "active": [
+        "ap_evade",
+        "ap_smoke"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "JUMPJET": {
+      "primary": "ap_evade",
+      "active": [
+        "ap_evade",
+        "ap_marker"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "GHOST": {
+      "primary": "ap_bayonet",
+      "active": [
+        "ap_bayonet"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "DOG": {
+      "primary": "ap_bayonet",
+      "active": [
+        "ap_bayonet",
+        "ap_evade"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "CLEG": {
+      "primary": "ap_marker",
+      "active": [
+        "ap_marker",
+        "ap_focus_fire"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "SNIPE": {
+      "primary": "ap_focus_fire",
+      "active": [
+        "ap_focus_fire",
+        "ap_marker"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "TANY": {
+      "primary": "ap_rage_fire",
+      "active": [
+        "ap_rage_fire",
+        "ap_bayonet"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "AMCV": {
+      "primary": "ap_repair_field",
+      "active": [
+        "ap_deploy",
+        "ap_repair_field"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "TNKD": {
+      "primary": "ap_focus_fire",
+      "active": [
+        "ap_focus_fire",
+        "ap_rapid_load"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "SREF": {
+      "primary": "ap_focus_fire",
+      "active": [
+        "ap_focus_fire",
+        "ap_marker"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "FV": {
+      "primary": "ap_overdrive",
+      "active": [
+        "ap_overdrive",
+        "ap_smoke"
+      ],
+      "passive": "ps_armor_plating"
+    },
+    "SHAD": {
+      "primary": "ap_overdrive",
+      "active": [
+        "ap_overdrive",
+        "ap_evade"
+      ],
+      "passive": "ps_hollow_point"
+    },
+    "BEAG": {
+      "primary": "ap_overdrive",
+      "active": [
+        "ap_overdrive",
+        "ap_marker"
+      ],
+      "passive": "ps_hollow_point"
+    }
+  }
+}

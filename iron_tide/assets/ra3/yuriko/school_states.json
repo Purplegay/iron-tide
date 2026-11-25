@@ -1,0 +1,205 @@
+{
+  "STATE_bored": {
+    "clip": "JUCOMMANDOTECH1_BIDA",
+    "mode": "ONCE",
+    "restart": true,
+    "blend_frames": 10,
+    "variants": [
+      {
+        "clip": "JUCOMMANDOTECH1_BIDA",
+        "weight": 75
+      },
+      {
+        "clip": "JUCOMMANDOTECH1_BIFA",
+        "weight": 20
+      },
+      {
+        "clip": "JUCOMMANDOTECH1_BIFB",
+        "weight": 20
+      },
+      {
+        "clip": "JUCOMMANDOTECH1_BIFC",
+        "weight": 5
+      }
+    ]
+  },
+  "DYING SPLATTED OVER_WATER": {
+    "clip": "JUCOMMANDOTECH1_WLNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 15
+  },
+  "STUNNED_FLAILING": {
+    "clip": "JUCOMMANDOTECH1_FLYA",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING SPLATTED": {
+    "clip": "JUCOMMANDOTECH1_LNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 15
+  },
+  "STUNNED": {
+    "clip": "JUCOMMANDOTECH1_LNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "LAUNCHED": {
+    "clip": "JUCOMMANDOTECH1_MCNA",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "PARACHUTING": {
+    "clip": "JUCOMMANDOTECH1_MCNC",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_boredToSlam": {
+    "clip": "JUCOMMANDOTECH1_SPCB1",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_slamToBored": {
+    "clip": "JUCOMMANDOTECH1_SPCB3",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_toParachuting": {
+    "clip": "JUCOMMANDOTECH1_MCNB",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_fromParachuting": {
+    "clip": "JUCOMMANDOTECH1_MCND",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "PACKING": {
+    "clip": "JUCOMMANDOTECH1_SPCA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0,
+    "duration": 2.0
+  },
+  "DYING OVER_WATER DYING_WASMOVING": {
+    "clip": "JUCOMMANDOTECH1_DTBW",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "COMING_OUT_OF_FACTORY": {
+    "clip": "JUCOMMANDOTECH1_RUNB",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "MOVING": {
+    "clip": "JUCOMMANDOTECH1_RUNA",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A REACT_1": {
+    "clip": "JUCOMMANDOTECH1_ATKI",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A REACT_2": {
+    "clip": "JUCOMMANDOTECH1_ATKV",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A REACT_3": {
+    "clip": "JUCOMMANDOTECH1_ATKS",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "REACT_5": {
+    "clip": "JUCOMMANDOTECH1_SPCB2",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A": {
+    "clip": "JUCOMMANDOTECH1_ATKI",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "SELECTED": {
+    "clip": "JUCOMMANDOTECH1_AIDA",
+    "mode": "ONCE",
+    "restart": true,
+    "blend_frames": 10
+  },
+  "TRANS_IdleToSelected": {
+    "clip": "JUCOMMANDOTECH1_BATA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING OVER_WATER": {
+    "clip": "JUCOMMANDOTECH1_DTBW",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING DEATH_2": {
+    "clip": "JUCOMMANDOTECH1_DTPA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING DEATH_3": {
+    "clip": "JUCOMMANDOTECH1_DTFA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING_WASMOVING": {
+    "clip": "JUCOMMANDOTECH1_RNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING": {
+    "clip": "JUCOMMANDOTECH1_DTBA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_SelectedToIdle": {
+    "clip": "JUCOMMANDOTECH1_ABTB",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0,
+    "variants": [
+      {
+        "clip": "JUCOMMANDOTECH1_ABTB",
+        "weight": 80
+      },
+      {
+        "clip": "JUCOMMANDOTECH1_ABTA",
+        "weight": 20
+      }
+    ]
+  },
+  "USER_7": {
+    "clip": "JUCOMMANDOTECH1_SPCC",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  }
+}

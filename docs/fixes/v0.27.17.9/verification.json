@@ -1,0 +1,33 @@
+{
+  "version": "0.27.17.9",
+  "engine": "Godot 4.7.2 headless",
+  "tests": {
+    "accepted-access": {
+      "checks": 66,
+      "failed": 0,
+      "path": "C:\\Users\\admin\\Temp\\iron-repair-20261108\\accepted-access\\result.json"
+    },
+    "accepted-depot": {
+      "checks": 62,
+      "failed": 0,
+      "path": "C:\\Users\\admin\\Temp\\iron-repair-20261108\\accepted-depot\\result.json"
+    },
+    "accepted-yard": {
+      "checks": 52,
+      "failed": 0,
+      "path": "C:\\Users\\admin\\Temp\\iron-repair-20261108\\accepted-yard\\result.json"
+    }
+  },
+  "source_sha256": {
+    "scripts/buildings/repair_access.gd": "b528a5534ec403e3194336751e29c839f6853ef833e0efdae808b77f686975f0",
+    "scripts/buildings/repair_dock.gd": "b3c59e03a2010c6a9fcfaf81c97be5842c8ac03ea9cc5aead6c03c6aafc3604d",
+    "scripts/buildings/building.gd": "98221d3751fefe07b3c0a39ad6be59053d19bff0634f961d4bfdd9bc0987334c",
+    "scripts/units/unit.gd": "67cb7def9bb8b04bca85beacf7c3e7f218a0acf9968aec8a2419db37d90ce834",
+    "tests/repair_access_regression.gd": "cd6a2f11937a3482303302a80f610db19900bcc3bf0656638e2a6008eba6543a",
+    "tests/repair_access_regression.tscn": "f781587f89d7f3e607f235611cbd2b727449eb2226e65c19a95df690fde5a1d4"
+  },
+  "original_save_sha256": "a975c7069cbadae0a8ad7443aa3df34de1e0a312ec2196da10050860c902393d",
+  "player_userdata_used": false,
+  "visible_window_opened": false,
+  "performance_claim": "No controlled speedup claim; concurrent independent load; whole-battle slow frames remain."
+}

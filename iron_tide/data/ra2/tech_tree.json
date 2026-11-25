@@ -1,0 +1,7386 @@
+{
+  "version": 1,
+  "count": 403,
+  "entities": {
+    "E1": {
+      "kind": "infantry",
+      "cost": 200,
+      "tech_level": 1,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE"
+      ],
+      "image": "GI",
+      "cameo": "GIICON"
+    },
+    "E2": {
+      "kind": "infantry",
+      "cost": 100,
+      "tech_level": 1,
+      "prerequisites": [
+        "NAHAND"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND"
+      ],
+      "image": "CONS",
+      "cameo": "E2ICON"
+    },
+    "SHK": {
+      "kind": "infantry",
+      "cost": 500,
+      "tech_level": 5,
+      "prerequisites": [
+        "NAHAND"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND"
+      ],
+      "image": "SHK",
+      "cameo": "SHKICON"
+    },
+    "ENGINEER": {
+      "kind": "infantry",
+      "cost": 500,
+      "tech_level": 1,
+      "prerequisites": [
+        "Barracks"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs",
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "soviet",
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "Barracks"
+      ],
+      "image": "ENGINEER",
+      "cameo": "ENGNICON"
+    },
+    "JUMPJET": {
+      "kind": "infantry",
+      "cost": 600,
+      "tech_level": 3,
+      "prerequisites": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "image": "ROCK",
+      "cameo": "JJETICON"
+    },
+    "GHOST": {
+      "kind": "infantry",
+      "cost": 1000,
+      "tech_level": -1,
+      "prerequisites": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "image": "SEAL",
+      "cameo": "SEALICON"
+    },
+    "YURI": {
+      "kind": "infantry",
+      "cost": 1200,
+      "tech_level": 10,
+      "prerequisites": [
+        "NAHAND",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND",
+        "NATECH"
+      ],
+      "image": "YURI",
+      "cameo": "YURIICON"
+    },
+    "IVAN": {
+      "kind": "infantry",
+      "cost": 600,
+      "tech_level": 5,
+      "prerequisites": [
+        "NAHAND",
+        "NARADR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND",
+        "NARADR"
+      ],
+      "image": "IVAN",
+      "cameo": "IVANICON"
+    },
+    "DESO": {
+      "kind": "infantry",
+      "cost": 600,
+      "tech_level": 8,
+      "prerequisites": [
+        "NAHAND",
+        "RADAR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND",
+        "RADAR"
+      ],
+      "image": "DESO",
+      "cameo": "DESOICON"
+    },
+    "DOG": {
+      "kind": "infantry",
+      "cost": 200,
+      "tech_level": 2,
+      "prerequisites": [
+        "Barracks"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs",
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "soviet",
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "Barracks"
+      ],
+      "image": "DOG",
+      "cameo": "DOGICON"
+    },
+    "CIV1": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIV1",
+      "cameo": null
+    },
+    "CIV2": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIV2",
+      "cameo": null
+    },
+    "CIV3": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIV3",
+      "cameo": null
+    },
+    "CTECH": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIV3",
+      "cameo": null
+    },
+    "WEEDGUY": {
+      "kind": "infantry",
+      "cost": 300,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "WEEDGUY",
+      "cameo": null
+    },
+    "CLEG": {
+      "kind": "infantry",
+      "cost": 1500,
+      "tech_level": 10,
+      "prerequisites": [
+        "GAPILE",
+        "TECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "TECH"
+      ],
+      "image": "CLEG",
+      "cameo": "CLEGICON"
+    },
+    "SPY": {
+      "kind": "infantry",
+      "cost": 1000,
+      "tech_level": 5,
+      "prerequisites": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "image": "SPY",
+      "cameo": "SPYICON"
+    },
+    "CCOMAND": {
+      "kind": "infantry",
+      "cost": 2000,
+      "tech_level": 9,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE"
+      ],
+      "image": "CCOMAND",
+      "cameo": "CCOMICON"
+    },
+    "PTROOP": {
+      "kind": "infantry",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE"
+      ],
+      "image": "PTROOP",
+      "cameo": "PSICICON"
+    },
+    "CIVAN": {
+      "kind": "infantry",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "NAHAND"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND"
+      ],
+      "image": "CIVAN",
+      "cameo": "IVNCICON"
+    },
+    "YURIPR": {
+      "kind": "infantry",
+      "cost": 2000,
+      "tech_level": 9,
+      "prerequisites": [
+        "NAHAND"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND"
+      ],
+      "image": "YURIPR",
+      "cameo": "YURPICON"
+    },
+    "SNIPE": {
+      "kind": "infantry",
+      "cost": 600,
+      "tech_level": 1,
+      "prerequisites": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "image": "SNIPE",
+      "cameo": "SNIPICON"
+    },
+    "COW": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "COW",
+      "cameo": null
+    },
+    "ALL": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "ALL",
+      "cameo": null
+    },
+    "TANY": {
+      "kind": "infantry",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "image": "TANY",
+      "cameo": "TANYICON"
+    },
+    "FLAKT": {
+      "kind": "infantry",
+      "cost": 300,
+      "tech_level": 1,
+      "prerequisites": [
+        "NAHAND",
+        "NARADR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND",
+        "NARADR"
+      ],
+      "image": "FLAKT",
+      "cameo": "FLKTICON"
+    },
+    "TERROR": {
+      "kind": "infantry",
+      "cost": 200,
+      "tech_level": 5,
+      "prerequisites": [
+        "NAHAND",
+        "RADAR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAHAND",
+        "RADAR"
+      ],
+      "image": "TRST",
+      "cameo": "TRSTICON"
+    },
+    "SENGINEER": {
+      "kind": "infantry",
+      "cost": 500,
+      "tech_level": 1,
+      "prerequisites": [
+        "Barracks"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs",
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "soviet",
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "Barracks"
+      ],
+      "image": "ENGINEER",
+      "cameo": "ENGNICON"
+    },
+    "ADOG": {
+      "kind": "infantry",
+      "cost": 200,
+      "tech_level": 2,
+      "prerequisites": [
+        "Barracks"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs",
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "soviet",
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "Barracks"
+      ],
+      "image": "ADOG",
+      "cameo": "ADOGICON"
+    },
+    "VLADIMIR": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "VLADIMIR",
+      "cameo": "SHKICON"
+    },
+    "PENTGEN": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "PENTGEN",
+      "cameo": "SHKICON"
+    },
+    "PRES": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "PRES",
+      "cameo": "SHKICON"
+    },
+    "SSRV": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "SSRV",
+      "cameo": "SHKICON"
+    },
+    "CIVA": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVA",
+      "cameo": null
+    },
+    "CIVB": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVB",
+      "cameo": null
+    },
+    "CIVC": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVC",
+      "cameo": null
+    },
+    "CIVBBP": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVBBP",
+      "cameo": null
+    },
+    "CIVBFM": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVBFM",
+      "cameo": null
+    },
+    "CIVBF": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVBF",
+      "cameo": null
+    },
+    "CIVBTM": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVBTM",
+      "cameo": null
+    },
+    "CIVSFM": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVSFM",
+      "cameo": null
+    },
+    "CIVSF": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVSF",
+      "cameo": null
+    },
+    "CIVSTM": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CIVSTM",
+      "cameo": null
+    },
+    "POLARB": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "POLARB",
+      "cameo": null
+    },
+    "JOSH": {
+      "kind": "infantry",
+      "cost": 10,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "JOSH",
+      "cameo": null
+    },
+    "AMCV": {
+      "kind": "vehicle",
+      "cost": 3000,
+      "tech_level": 10,
+      "prerequisites": [
+        "GAWEAP",
+        "GADEPT"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "GADEPT"
+      ],
+      "image": "MCV",
+      "cameo": "MCVICON"
+    },
+    "HARV": {
+      "kind": "vehicle",
+      "cost": 1400,
+      "tech_level": 1,
+      "prerequisites": [
+        "NAWEAP",
+        "PROC"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "PROC"
+      ],
+      "image": "HARV",
+      "cameo": "HARVICON"
+    },
+    "APOC": {
+      "kind": "vehicle",
+      "cost": 1750,
+      "tech_level": 7,
+      "prerequisites": [
+        "NAWEAP",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NATECH"
+      ],
+      "image": "MTNK",
+      "cameo": "MTNKICON"
+    },
+    "HTNK": {
+      "kind": "vehicle",
+      "cost": 900,
+      "tech_level": 2,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "HTNK",
+      "cameo": "HTNKICON"
+    },
+    "SAPC": {
+      "kind": "vehicle",
+      "cost": 900,
+      "tech_level": 2,
+      "prerequisites": [
+        "NAYARD"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD"
+      ],
+      "image": "TRS",
+      "cameo": "SAPCICON"
+    },
+    "CAR": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "CAR",
+      "cameo": null
+    },
+    "BUS": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "BUS",
+      "cameo": null
+    },
+    "WINI": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "WINI",
+      "cameo": null
+    },
+    "PICK": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "PICK",
+      "cameo": null
+    },
+    "MTNK": {
+      "kind": "vehicle",
+      "cost": 700,
+      "tech_level": 2,
+      "prerequisites": [
+        "GAWEAP"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP"
+      ],
+      "image": "GTNK",
+      "cameo": "GTNKICON"
+    },
+    "HORV": {
+      "kind": "vehicle",
+      "cost": 1400,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "HORV",
+      "cameo": null
+    },
+    "TRUCKA": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "TRUCKA",
+      "cameo": "TRKAICON"
+    },
+    "TRUCKB": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "TRUCKB",
+      "cameo": null
+    },
+    "CARRIER": {
+      "kind": "vehicle",
+      "cost": 2000,
+      "tech_level": 7,
+      "prerequisites": [
+        "GAYARD",
+        "TECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAYARD",
+        "TECH"
+      ],
+      "image": "CARRIER",
+      "cameo": "CARRICON"
+    },
+    "V3": {
+      "kind": "vehicle",
+      "cost": 800,
+      "tech_level": 3,
+      "prerequisites": [
+        "NAWEAP",
+        "NARADR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NARADR"
+      ],
+      "image": "V3",
+      "cameo": "V3ICON"
+    },
+    "ZEP": {
+      "kind": "vehicle",
+      "cost": 2000,
+      "tech_level": 10,
+      "prerequisites": [
+        "NAWEAP",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NATECH"
+      ],
+      "image": "ZEP",
+      "cameo": "ZEPICON"
+    },
+    "DRON": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": 4,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "DRON",
+      "cameo": "DRONICON"
+    },
+    "HTK": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": 3,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "HTK",
+      "cameo": "HTKICON"
+    },
+    "DEST": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": 4,
+      "prerequisites": [
+        "GAYARD"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAYARD"
+      ],
+      "image": "DEST",
+      "cameo": "desticon"
+    },
+    "SUB": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": 2,
+      "prerequisites": [
+        "NAYARD"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD"
+      ],
+      "image": "SUB",
+      "cameo": "SubICON"
+    },
+    "AEGIS": {
+      "kind": "vehicle",
+      "cost": 1200,
+      "tech_level": 7,
+      "prerequisites": [
+        "GAYARD",
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAYARD",
+        "RADAR"
+      ],
+      "image": "AEGIS",
+      "cameo": "AGISICON"
+    },
+    "LCRF": {
+      "kind": "vehicle",
+      "cost": 900,
+      "tech_level": 4,
+      "prerequisites": [
+        "GAYARD"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAYARD"
+      ],
+      "image": "LCRF",
+      "cameo": "LANDICON"
+    },
+    "DRED": {
+      "kind": "vehicle",
+      "cost": 2000,
+      "tech_level": 6,
+      "prerequisites": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "image": "DRED",
+      "cameo": "DREDICON"
+    },
+    "SHAD": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": 7,
+      "prerequisites": [
+        "GAWEAP"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP"
+      ],
+      "image": "SHAD",
+      "cameo": "SHADICON"
+    },
+    "SQD": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "image": "SQD",
+      "cameo": "SQDICON"
+    },
+    "DLPH": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": 5,
+      "prerequisites": [
+        "GAYARD",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAYARD",
+        "GATECH"
+      ],
+      "image": "DLPH",
+      "cameo": "DLPHICON"
+    },
+    "SMCV": {
+      "kind": "vehicle",
+      "cost": 3000,
+      "tech_level": 10,
+      "prerequisites": [
+        "NAWEAP",
+        "NADEPT"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NADEPT"
+      ],
+      "image": "SMCV",
+      "cameo": "SMCVICON"
+    },
+    "TNKD": {
+      "kind": "vehicle",
+      "cost": 900,
+      "tech_level": 2,
+      "prerequisites": [
+        "GAWEAP",
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "RADAR"
+      ],
+      "image": "TNKD",
+      "cameo": "TNKDICON"
+    },
+    "HOWI": {
+      "kind": "vehicle",
+      "cost": 750,
+      "tech_level": -1,
+      "prerequisites": [
+        "GAWEAP"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP"
+      ],
+      "image": "HWTZ",
+      "cameo": null
+    },
+    "TTNK": {
+      "kind": "vehicle",
+      "cost": 1200,
+      "tech_level": 10,
+      "prerequisites": [
+        "NAWEAP",
+        "NARADR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NARADR"
+      ],
+      "image": "TTNK",
+      "cameo": "TTNKICON"
+    },
+    "HIND": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "HIND",
+      "cameo": "HINDICON"
+    },
+    "LTNK": {
+      "kind": "vehicle",
+      "cost": 600,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "LTNK",
+      "cameo": null
+    },
+    "CMON": {
+      "kind": "vehicle",
+      "cost": 1400,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CMON",
+      "cameo": null
+    },
+    "CMIN": {
+      "kind": "vehicle",
+      "cost": 1400,
+      "tech_level": 1,
+      "prerequisites": [
+        "GAWEAP",
+        "PROC"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "PROC"
+      ],
+      "image": "CMIN",
+      "cameo": "AHRVICON"
+    },
+    "SREF": {
+      "kind": "vehicle",
+      "cost": 1200,
+      "tech_level": 8,
+      "prerequisites": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "image": "SREF",
+      "cameo": "SREFICON"
+    },
+    "XCOMET": {
+      "kind": "vehicle",
+      "cost": 2000,
+      "tech_level": -1,
+      "prerequisites": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "image": "HTNK",
+      "cameo": "HTNKICON"
+    },
+    "HYD": {
+      "kind": "vehicle",
+      "cost": 600,
+      "tech_level": 6,
+      "prerequisites": [
+        "NAYARD",
+        "NARADR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD",
+        "NARADR"
+      ],
+      "image": "HYD",
+      "cameo": "HOVRICON"
+    },
+    "MGTK": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "image": "RTNK",
+      "cameo": "RTNKICON"
+    },
+    "FV": {
+      "kind": "vehicle",
+      "cost": 600,
+      "tech_level": 3,
+      "prerequisites": [
+        "GAWEAP"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAWEAP"
+      ],
+      "image": "FV",
+      "cameo": "FVICON"
+    },
+    "DeathDummy": {
+      "kind": "vehicle",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "DeathDummy",
+      "cameo": null
+    },
+    "VLAD": {
+      "kind": "vehicle",
+      "cost": 2500,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAYARD",
+        "NATECH"
+      ],
+      "image": "VLAD",
+      "cameo": "CARRICON"
+    },
+    "DTRUCK": {
+      "kind": "vehicle",
+      "cost": 1500,
+      "tech_level": 10,
+      "prerequisites": [
+        "NAWEAP",
+        "RADAR"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "RADAR"
+      ],
+      "image": "TRUCKA",
+      "cameo": "TRKAICON"
+    },
+    "PROPA": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "PROPA",
+      "cameo": null
+    },
+    "CONA": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "CONA",
+      "cameo": null
+    },
+    "COP": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "COP",
+      "cameo": null
+    },
+    "EUROC": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "EUROC",
+      "cameo": null
+    },
+    "LIMO": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "LIMO",
+      "cameo": null
+    },
+    "STANG": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "STANG",
+      "cameo": null
+    },
+    "SUVB": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "SUVB",
+      "cameo": null
+    },
+    "SUVW": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "SUVW",
+      "cameo": null
+    },
+    "TAXI": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "TAXI",
+      "cameo": null
+    },
+    "PTRUCK": {
+      "kind": "vehicle",
+      "cost": 0,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "PTRUCK",
+      "cameo": null
+    },
+    "CRUISE": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "CRUISE",
+      "cameo": null
+    },
+    "TUG": {
+      "kind": "vehicle",
+      "cost": 500,
+      "tech_level": -1,
+      "prerequisites": [
+        "NAWEAP"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "NAWEAP"
+      ],
+      "image": "TUG",
+      "cameo": null
+    },
+    "CDEST": {
+      "kind": "vehicle",
+      "cost": 1000,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CDEST",
+      "cameo": null
+    },
+    "ORCA": {
+      "kind": "aircraft",
+      "cost": 1200,
+      "tech_level": 3,
+      "prerequisites": [
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "RADAR"
+      ],
+      "image": "FALC",
+      "cameo": "FALCICON"
+    },
+    "HORNET": {
+      "kind": "aircraft",
+      "cost": 50,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "HORNET",
+      "cameo": "PROICON"
+    },
+    "V3ROCKET": {
+      "kind": "aircraft",
+      "cost": 50,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "V3ROCKET",
+      "cameo": null
+    },
+    "ASW": {
+      "kind": "aircraft",
+      "cost": 50,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "ASW",
+      "cameo": "PROICON"
+    },
+    "DMISL": {
+      "kind": "aircraft",
+      "cost": 50,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "DMISL",
+      "cameo": null
+    },
+    "PDPLANE": {
+      "kind": "aircraft",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "PDPLANE",
+      "cameo": "OBMBICON"
+    },
+    "BEAG": {
+      "kind": "aircraft",
+      "cost": 1200,
+      "tech_level": 3,
+      "prerequisites": [
+        "RADAR"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "RADAR"
+      ],
+      "image": "BEAG",
+      "cameo": "BEAGICON"
+    },
+    "CARGOPLANE": {
+      "kind": "aircraft",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "PDPLANE",
+      "cameo": "OBMBICON"
+    },
+    "GAPOWR": {
+      "kind": "building",
+      "cost": 800,
+      "tech_level": 1,
+      "prerequisites": [
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Power",
+      "factory": null,
+      "requires": [
+        "GACNST"
+      ],
+      "image": "GAPOWR",
+      "cameo": "POWRICON"
+    },
+    "GAREFN": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 1,
+      "prerequisites": [
+        "POWER",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Resource",
+      "factory": null,
+      "requires": [
+        "POWER",
+        "GACNST"
+      ],
+      "image": "GAREFN",
+      "cameo": "REFICON"
+    },
+    "GACNST": {
+      "kind": "building",
+      "cost": 3000,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": null,
+      "factory": "BuildingType",
+      "requires": [],
+      "image": "GACNST",
+      "cameo": null
+    },
+    "GAPILE": {
+      "kind": "building",
+      "cost": 500,
+      "tech_level": 2,
+      "prerequisites": [
+        "POWER",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "InfantryType",
+      "requires": [
+        "POWER",
+        "GACNST"
+      ],
+      "image": "GAPILE",
+      "cameo": "BRRKICON"
+    },
+    "GASAND": {
+      "kind": "building",
+      "cost": 25,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "GASAND",
+      "cameo": "SBAGICON"
+    },
+    "GADEPT": {
+      "kind": "building",
+      "cost": 800,
+      "tech_level": 6,
+      "prerequisites": [
+        "GAWEAP",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "GACNST"
+      ],
+      "image": "GADEPT",
+      "cameo": "FIXICON"
+    },
+    "GATECH": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 8,
+      "prerequisites": [
+        "GAWEAP",
+        "RADAR",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "GAWEAP",
+        "RADAR",
+        "GACNST"
+      ],
+      "image": "GATECH",
+      "cameo": "TECHICON"
+    },
+    "GAWEAP": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 2,
+      "prerequisites": [
+        "PROC",
+        "GAPILE",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "UnitType",
+      "requires": [
+        "PROC",
+        "GAPILE",
+        "GACNST"
+      ],
+      "image": "GAWEAP",
+      "cameo": "gwepicon"
+    },
+    "CALAB": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALAB",
+      "cameo": null
+    },
+    "NAPOWR": {
+      "kind": "building",
+      "cost": 600,
+      "tech_level": 1,
+      "prerequisites": [
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Power",
+      "factory": null,
+      "requires": [
+        "NACNST"
+      ],
+      "image": "NAPOWR",
+      "cameo": "NPWRICON"
+    },
+    "NATECH": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 7,
+      "prerequisites": [
+        "NAWEAP",
+        "RADAR",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "RADAR",
+        "NACNST"
+      ],
+      "image": "NATECH",
+      "cameo": "NTCHICON"
+    },
+    "NAHAND": {
+      "kind": "building",
+      "cost": 500,
+      "tech_level": 2,
+      "prerequisites": [
+        "POWER",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "InfantryType",
+      "requires": [
+        "POWER",
+        "NACNST"
+      ],
+      "image": "NAHAND",
+      "cameo": "HANDICON"
+    },
+    "GAWALL": {
+      "kind": "building",
+      "cost": 100,
+      "tech_level": 1,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "GAPILE"
+      ],
+      "image": "GAWALL",
+      "cameo": "WALLICON"
+    },
+    "NARADR": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 3,
+      "prerequisites": [
+        "NAREFN",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "NAREFN",
+        "NACNST"
+      ],
+      "image": "NARADR",
+      "cameo": "NRADICON"
+    },
+    "NAWEAP": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 2,
+      "prerequisites": [
+        "PROC",
+        "NAHAND",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "UnitType",
+      "requires": [
+        "PROC",
+        "NAHAND",
+        "NACNST"
+      ],
+      "image": "NAWEAP",
+      "cameo": "NWEPICON"
+    },
+    "NAREFN": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 1,
+      "prerequisites": [
+        "POWER",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Resource",
+      "factory": null,
+      "requires": [
+        "POWER",
+        "NACNST"
+      ],
+      "image": "NAREFN",
+      "cameo": "NREFICON"
+    },
+    "NAWALL": {
+      "kind": "building",
+      "cost": 100,
+      "tech_level": 1,
+      "prerequisites": [
+        "NAHAND"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "NAHAND"
+      ],
+      "image": "NAWALL",
+      "cameo": "NWALICON"
+    },
+    "CAHSE07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE07",
+      "cameo": null
+    },
+    "NAPSIS": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 10,
+      "prerequisites": [
+        "NATECH",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "NATECH",
+        "NACNST"
+      ],
+      "image": "NAPSIS",
+      "cameo": "PSISICON"
+    },
+    "NALASR": {
+      "kind": "building",
+      "cost": 500,
+      "tech_level": 1,
+      "prerequisites": [
+        "BARRACKS",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS",
+        "NACNST"
+      ],
+      "image": "NALASR",
+      "cameo": "PLTICON"
+    },
+    "NASAM": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 4,
+      "prerequisites": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "image": "NASAM",
+      "cameo": "SAMICON"
+    },
+    "GAYARD": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 4,
+      "prerequisites": [
+        "PROC",
+        "POWER",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "UnitType",
+      "requires": [
+        "PROC",
+        "POWER",
+        "GACNST"
+      ],
+      "image": "GAYARD",
+      "cameo": "ayaricon"
+    },
+    "NAIRON": {
+      "kind": "building",
+      "cost": 2500,
+      "tech_level": 10,
+      "prerequisites": [
+        "NATECH",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "NATECH",
+        "NACNST"
+      ],
+      "image": "NAIRON",
+      "cameo": "IRONICON"
+    },
+    "NACNST": {
+      "kind": "building",
+      "cost": 3000,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": "BuildingType",
+      "requires": [],
+      "image": "NACNST",
+      "cameo": null
+    },
+    "NADEPT": {
+      "kind": "building",
+      "cost": 800,
+      "tech_level": 6,
+      "prerequisites": [
+        "NAWEAP",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "NAWEAP",
+        "NACNST"
+      ],
+      "image": "NADEPT",
+      "cameo": "RFIXICON"
+    },
+    "GACSPH": {
+      "kind": "building",
+      "cost": 2500,
+      "tech_level": 10,
+      "prerequisites": [
+        "GATECH",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "GATECH",
+        "GACNST"
+      ],
+      "image": "GACSPH",
+      "cameo": "csphicon"
+    },
+    "GADUMY": {
+      "kind": "building",
+      "cost": 2800,
+      "tech_level": -1,
+      "prerequisites": [
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "GATECH"
+      ],
+      "image": "NTIRON",
+      "cameo": null
+    },
+    "GAWEAT": {
+      "kind": "building",
+      "cost": 5000,
+      "tech_level": 10,
+      "prerequisites": [
+        "GATECH",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "GATECH",
+        "GACNST"
+      ],
+      "image": "GAWETH",
+      "cameo": "wethicon"
+    },
+    "CABHUT": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CABHUT",
+      "cameo": null
+    },
+    "GALITE": {
+      "kind": "building",
+      "cost": 200,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "REDLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "GRENLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "BLUELAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "YELWLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "PURPLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INORANLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INGRNLMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INREDLMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INBLULMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "CITY01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY01",
+      "cameo": null
+    },
+    "CITY02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY02",
+      "cameo": null
+    },
+    "CITY03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY03",
+      "cameo": null
+    },
+    "CITY04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY04",
+      "cameo": null
+    },
+    "CITY05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY05",
+      "cameo": null
+    },
+    "CITY06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CITY06",
+      "cameo": null
+    },
+    "CAHOSP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHOSP",
+      "cameo": null
+    },
+    "INGALITE": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INYELWLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "INPURPLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "NEGLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "NEGRED": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "TESLA": {
+      "kind": "building",
+      "cost": 1500,
+      "tech_level": 5,
+      "prerequisites": [
+        "POWER",
+        "RADAR",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "POWER",
+        "RADAR",
+        "NACNST"
+      ],
+      "image": "NATSLA",
+      "cameo": "TSLAICON"
+    },
+    "NAMISL": {
+      "kind": "building",
+      "cost": 5000,
+      "tech_level": 10,
+      "prerequisites": [
+        "NATECH",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "NATECH",
+        "NACNST"
+      ],
+      "image": "NAMISL",
+      "cameo": "MSSLICON"
+    },
+    "ATESLA": {
+      "kind": "building",
+      "cost": 1500,
+      "tech_level": 6,
+      "prerequisites": [
+        "POWER",
+        "RADAR",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "POWER",
+        "RADAR",
+        "GACNST"
+      ],
+      "image": "GAPRIS",
+      "cameo": "prisicon"
+    },
+    "CAARMR": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAARMR",
+      "cameo": null
+    },
+    "TSTLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "AMMOCRAT": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "AMMO01",
+      "cameo": null
+    },
+    "GAGREEN": {
+      "kind": "building",
+      "cost": 100,
+      "tech_level": -1,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": null,
+      "factory": null,
+      "requires": [
+        "GAPILE"
+      ],
+      "image": "null",
+      "cameo": null
+    },
+    "NAYARD": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 2,
+      "prerequisites": [
+        "PROC",
+        "POWER",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "UnitType",
+      "requires": [
+        "PROC",
+        "POWER",
+        "NACNST"
+      ],
+      "image": "NAYARD",
+      "cameo": "YARDICON"
+    },
+    "GASPYSAT": {
+      "kind": "building",
+      "cost": 1500,
+      "tech_level": 9,
+      "prerequisites": [
+        "GATECH",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "GATECH",
+        "GACNST"
+      ],
+      "image": "GASPST",
+      "cameo": "asaticon"
+    },
+    "GAGAP": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 7,
+      "prerequisites": [
+        "GATECH",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "GATECH",
+        "GACNST"
+      ],
+      "image": "GAGAP",
+      "cameo": "Gapicon"
+    },
+    "GTGCAN": {
+      "kind": "building",
+      "cost": 2000,
+      "tech_level": 7,
+      "prerequisites": [
+        "RADAR",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "RADAR",
+        "GACNST"
+      ],
+      "image": "GTGCAN",
+      "cameo": "GCANICON"
+    },
+    "NANRCT": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 9,
+      "prerequisites": [
+        "NATECH",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Power",
+      "factory": null,
+      "requires": [
+        "NATECH",
+        "NACNST"
+      ],
+      "image": "NANRCT",
+      "cameo": "NRCTICON"
+    },
+    "GAPILL": {
+      "kind": "building",
+      "cost": 500,
+      "tech_level": 1,
+      "prerequisites": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "image": "GAPILL",
+      "cameo": "pillicon"
+    },
+    "NAFLAK": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 4,
+      "prerequisites": [
+        "BARRACKS",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS",
+        "NACNST"
+      ],
+      "image": "NAFLAK",
+      "cameo": "FLAKICON"
+    },
+    "CAOUTP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAOUTP",
+      "cameo": null
+    },
+    "CATHOSP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHOSP",
+      "cameo": null
+    },
+    "CAAIRP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAAIRP",
+      "cameo": null
+    },
+    "CAOILD": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAOILD",
+      "cameo": null
+    },
+    "NACLON": {
+      "kind": "building",
+      "cost": 2500,
+      "tech_level": 9,
+      "prerequisites": [
+        "NATECH",
+        "NACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "NATECH",
+        "NACNST"
+      ],
+      "image": "NACLON",
+      "cameo": "CLONICON"
+    },
+    "GAOREP": {
+      "kind": "building",
+      "cost": 2500,
+      "tech_level": 10,
+      "prerequisites": [
+        "GATECH",
+        "PROC",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Resource",
+      "factory": null,
+      "requires": [
+        "GATECH",
+        "PROC",
+        "GACNST"
+      ],
+      "image": "GAOREP",
+      "cameo": "gorep"
+    },
+    "CACITY01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACITY01",
+      "cameo": null
+    },
+    "CACITY02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACITY02",
+      "cameo": null
+    },
+    "CACITY03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACITY03",
+      "cameo": null
+    },
+    "CACITY04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACITY04",
+      "cameo": null
+    },
+    "CANEWY01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY01",
+      "cameo": null
+    },
+    "CANEWY04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY04",
+      "cameo": null
+    },
+    "CANEWY05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY05",
+      "cameo": null
+    },
+    "CASWST01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASWST01",
+      "cameo": null
+    },
+    "CATECH01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATECH01",
+      "cameo": null
+    },
+    "CATEXS01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS01",
+      "cameo": null
+    },
+    "CATEXS02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS02",
+      "cameo": null
+    },
+    "CAWASH01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH01",
+      "cameo": null
+    },
+    "CAFARM01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFARM01",
+      "cameo": null
+    },
+    "CAFARM02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFARM02",
+      "cameo": null
+    },
+    "CALIT01E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT01E",
+      "cameo": null
+    },
+    "CALIT01N": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT01N",
+      "cameo": null
+    },
+    "CALIT01S": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT01S",
+      "cameo": null
+    },
+    "CALIT01W": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT01W",
+      "cameo": null
+    },
+    "CAMISC01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC01",
+      "cameo": null
+    },
+    "CAMISC02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC02",
+      "cameo": null
+    },
+    "CAMISC03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC03",
+      "cameo": null
+    },
+    "CAMISC04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC04",
+      "cameo": null
+    },
+    "CAPOL01E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPOL01E",
+      "cameo": null
+    },
+    "CAPOL01N": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPOL01N",
+      "cameo": null
+    },
+    "CAPOL01S": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPOL01S",
+      "cameo": null
+    },
+    "CAPOL01W": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPOL01W",
+      "cameo": null
+    },
+    "CASIN01E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASIN01E",
+      "cameo": null
+    },
+    "CASIN01N": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASIN01N",
+      "cameo": null
+    },
+    "CASIN01S": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASIN01S",
+      "cameo": null
+    },
+    "CASIN01W": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASIN01W",
+      "cameo": null
+    },
+    "CAPARS01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS01",
+      "cameo": null
+    },
+    "GAAIRC": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 3,
+      "prerequisites": [
+        "GAREFN",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "AircraftType",
+      "requires": [
+        "GAREFN",
+        "GACNST"
+      ],
+      "image": "GAAIRC",
+      "cameo": "HELIICON"
+    },
+    "CAFRMA": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFRMA",
+      "cameo": null
+    },
+    "CAFRMB": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFRMB",
+      "cameo": null
+    },
+    "CAWASH05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH05",
+      "cameo": null
+    },
+    "CAWASH04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH04",
+      "cameo": null
+    },
+    "CAWASH03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH03",
+      "cameo": null
+    },
+    "CAWASH07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH07",
+      "cameo": null
+    },
+    "CAWASH11": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH11",
+      "cameo": null
+    },
+    "CAWSH12": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWSH12",
+      "cameo": null
+    },
+    "CAWASH14": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH14",
+      "cameo": null
+    },
+    "CAWASH09": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH09",
+      "cameo": null
+    },
+    "CAWASH10": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH10",
+      "cameo": null
+    },
+    "CAWASH13": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH13",
+      "cameo": null
+    },
+    "CAARMY01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAARMY01",
+      "cameo": null
+    },
+    "CAUSFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAUSFGL",
+      "cameo": null
+    },
+    "CAWASH08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH08",
+      "cameo": null
+    },
+    "CALIT03E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT03E",
+      "cameo": null
+    },
+    "CALIT03N": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT03N",
+      "cameo": null
+    },
+    "CALIT03S": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT03S",
+      "cameo": null
+    },
+    "CALIT03W": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT03W",
+      "cameo": null
+    },
+    "CALIT02L": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT02L",
+      "cameo": null
+    },
+    "CALIT02R": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALIT02R",
+      "cameo": null
+    },
+    "CAHSE01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE01",
+      "cameo": null
+    },
+    "CAWT01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWT01",
+      "cameo": null
+    },
+    "CATS01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATS01",
+      "cameo": null
+    },
+    "CABARN02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CABARN02",
+      "cameo": null
+    },
+    "CAWA2A": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWA2A",
+      "cameo": null
+    },
+    "CAWA2B": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWA2B",
+      "cameo": null
+    },
+    "CAWA2C": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWA2C",
+      "cameo": null
+    },
+    "CAWA2D": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWA2D",
+      "cameo": null
+    },
+    "AMRADR": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": 3,
+      "prerequisites": [
+        "GAREFN",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": "AircraftType",
+      "requires": [
+        "GAREFN",
+        "GACNST"
+      ],
+      "image": "GAAIRC",
+      "cameo": "HELIICON"
+    },
+    "CAPRS03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPRS03",
+      "cameo": null
+    },
+    "CAGARD01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAGARD01",
+      "cameo": null
+    },
+    "CARUS01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS01",
+      "cameo": null
+    },
+    "CAMIAM01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM01",
+      "cameo": null
+    },
+    "CAMIAM02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM02",
+      "cameo": null
+    },
+    "CANWY05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY05",
+      "cameo": null
+    },
+    "MAYAN": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX01",
+      "cameo": null
+    },
+    "CAEUR1": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAEUR1",
+      "cameo": null
+    },
+    "CAEUR2": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAEUR2",
+      "cameo": null
+    },
+    "CAEUR04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAEUR04",
+      "cameo": null
+    },
+    "CAMEX01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX01",
+      "cameo": null
+    },
+    "CARUS02A": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02A",
+      "cameo": null
+    },
+    "CARUS02B": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02B",
+      "cameo": null
+    },
+    "CARUS02C": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02C",
+      "cameo": null
+    },
+    "CARUS02D": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02D",
+      "cameo": null
+    },
+    "CARUS02E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02E",
+      "cameo": null
+    },
+    "CARUS02F": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02F",
+      "cameo": null
+    },
+    "CANEWY06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY06",
+      "cameo": null
+    },
+    "CANEWY07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY07",
+      "cameo": null
+    },
+    "CANEWY08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY08",
+      "cameo": null
+    },
+    "CAPARS02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS02",
+      "cameo": null
+    },
+    "CAPARS08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS08",
+      "cameo": null
+    },
+    "CAPARS09": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS09",
+      "cameo": null
+    },
+    "CARUS03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS03",
+      "cameo": null
+    },
+    "CANEWY10": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY10",
+      "cameo": null
+    },
+    "CANEWY11": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY11",
+      "cameo": null
+    },
+    "CANEWY12": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY12",
+      "cameo": null
+    },
+    "CANEWY13": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY13",
+      "cameo": null
+    },
+    "CANEWY14": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY14",
+      "cameo": null
+    },
+    "CANEWY15": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY15",
+      "cameo": null
+    },
+    "CANEWY16": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY16",
+      "cameo": null
+    },
+    "CANEWY17": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY17",
+      "cameo": null
+    },
+    "CANEWY18": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY18",
+      "cameo": null
+    },
+    "CAPARS04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS04",
+      "cameo": null
+    },
+    "CAPARS05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS05",
+      "cameo": null
+    },
+    "CAPARS06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS06",
+      "cameo": null
+    },
+    "CAPARS07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS07",
+      "cameo": null
+    },
+    "CAWASH15": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH15",
+      "cameo": null
+    },
+    "CAPARS10": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS10",
+      "cameo": null
+    },
+    "CAPARS13": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS13",
+      "cameo": null
+    },
+    "CAPARS14": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS14",
+      "cameo": null
+    },
+    "CAGAS01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAGAS01",
+      "cameo": null
+    },
+    "CAPARS11": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS11",
+      "cameo": null
+    },
+    "CAPARS12": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARS12",
+      "cameo": null
+    },
+    "CAFARM06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFARM06",
+      "cameo": null
+    },
+    "CAMIAM04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM04",
+      "cameo": null
+    },
+    "NAPSYB": {
+      "kind": "building",
+      "cost": 1000,
+      "tech_level": -1,
+      "prerequisites": [
+        "NATECH"
+      ],
+      "owner": [
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "soviet"
+      ],
+      "build_cat": "Tech",
+      "factory": null,
+      "requires": [
+        "NATECH"
+      ],
+      "image": "NAPSYB",
+      "cameo": "PSYBICON"
+    },
+    "NAPSYA": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "NAPSYA",
+      "cameo": null
+    },
+    "CAIND01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAIND01",
+      "cameo": null
+    },
+    "CACOLO01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACOLO01",
+      "cameo": null
+    },
+    "CANWY09": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY09",
+      "cameo": null
+    },
+    "CANWY22": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY22",
+      "cameo": null
+    },
+    "CANWY23": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY23",
+      "cameo": null
+    },
+    "CANWY24": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY24",
+      "cameo": null
+    },
+    "CANWY25": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY25",
+      "cameo": null
+    },
+    "CANWY26": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANWY26",
+      "cameo": null
+    },
+    "CATEXS03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS03",
+      "cameo": null
+    },
+    "CATEXS04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS04",
+      "cameo": null
+    },
+    "CATEXS05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS05",
+      "cameo": null
+    },
+    "CARUS02G": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS02G",
+      "cameo": null
+    },
+    "CACHIG04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG04",
+      "cameo": null
+    },
+    "CAMIAM03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM03",
+      "cameo": null
+    },
+    "CARUS07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS07",
+      "cameo": null
+    },
+    "CATEXS06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS06",
+      "cameo": null
+    },
+    "CATEXS07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS07",
+      "cameo": null
+    },
+    "CATEXS08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CATEXS08",
+      "cameo": null
+    },
+    "CACHIG01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG01",
+      "cameo": null
+    },
+    "CACHIG02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG02",
+      "cameo": null
+    },
+    "CACHIG03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG03",
+      "cameo": null
+    },
+    "CAWASH16": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH16",
+      "cameo": null
+    },
+    "CAWASH17": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH17",
+      "cameo": null
+    },
+    "CACHIG05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG05",
+      "cameo": null
+    },
+    "CAWASH19": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH19",
+      "cameo": null
+    },
+    "CARUS08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS08",
+      "cameo": null
+    },
+    "CARUS09": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS09",
+      "cameo": null
+    },
+    "CARUS10": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS10",
+      "cameo": null
+    },
+    "CARUS11": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS11",
+      "cameo": null
+    },
+    "CANEWY20": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY20",
+      "cameo": null
+    },
+    "CANEWY21": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CANEWY21",
+      "cameo": null
+    },
+    "CARUS04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS04",
+      "cameo": null
+    },
+    "CARUS05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS05",
+      "cameo": null
+    },
+    "CARUS06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUS06",
+      "cameo": null
+    },
+    "CAMSC01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC01",
+      "cameo": null
+    },
+    "CAMSC02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC02",
+      "cameo": null
+    },
+    "CAMSC03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC03",
+      "cameo": null
+    },
+    "CAMSC04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC04",
+      "cameo": null
+    },
+    "CAMSC05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC05",
+      "cameo": null
+    },
+    "CAMSC06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC06",
+      "cameo": null
+    },
+    "CAMSC07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC07",
+      "cameo": null
+    },
+    "CAWASH18": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH18",
+      "cameo": null
+    },
+    "CAEURO05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAEURO05",
+      "cameo": null
+    },
+    "CAPARK01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARK01",
+      "cameo": null
+    },
+    "CAPARK02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARK02",
+      "cameo": null
+    },
+    "CAPARK03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPARK03",
+      "cameo": null
+    },
+    "CAHSE02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE02",
+      "cameo": null
+    },
+    "CAHSE03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE03",
+      "cameo": null
+    },
+    "CAHSE04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE04",
+      "cameo": null
+    },
+    "CASTRT01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTRT01",
+      "cameo": null
+    },
+    "CASTRT02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTRT02",
+      "cameo": null
+    },
+    "CASTL01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL01",
+      "cameo": null
+    },
+    "CASTL02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL02",
+      "cameo": null
+    },
+    "CASTL03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL03",
+      "cameo": null
+    },
+    "CASTL04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL04",
+      "cameo": null
+    },
+    "CAHSE05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE05",
+      "cameo": null
+    },
+    "CAHSE06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAHSE06",
+      "cameo": null
+    },
+    "CAMIAM05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM05",
+      "cameo": null
+    },
+    "CAMIAM06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM06",
+      "cameo": null
+    },
+    "CAMIAM07": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM07",
+      "cameo": null
+    },
+    "CAFNCB": {
+      "kind": "building",
+      "cost": 25,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "CAFNCB",
+      "cameo": "SBAGICON"
+    },
+    "CAFNCW": {
+      "kind": "building",
+      "cost": 25,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "CAFNCW",
+      "cameo": "SBAGICON"
+    },
+    "CAMEX02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX02",
+      "cameo": null
+    },
+    "CAMEX03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX03",
+      "cameo": null
+    },
+    "CAMEX04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX04",
+      "cameo": null
+    },
+    "CAMEX05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMEX05",
+      "cameo": null
+    },
+    "CACHIG06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACHIG06",
+      "cameo": null
+    },
+    "CAMSC08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC08",
+      "cameo": null
+    },
+    "CAMSC09": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC09",
+      "cameo": null
+    },
+    "CAARMY02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAARMY02",
+      "cameo": null
+    },
+    "CAARMY03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAARMY03",
+      "cameo": null
+    },
+    "CAARMY04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAARMY04",
+      "cameo": null
+    },
+    "TEMMORLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "TEMDAYLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "TEMDUSLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "TEMNITLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "SNOMORLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "SNODAYLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "SNODUSLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "SNONITLAMP": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "GALITE",
+      "cameo": "LITEICON"
+    },
+    "CAKRMW": {
+      "kind": "building",
+      "cost": 25,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "CAKRMW",
+      "cameo": "SBAGICON"
+    },
+    "CARUFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CARUFGL",
+      "cameo": null
+    },
+    "CAFRFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAFRFGL",
+      "cameo": null
+    },
+    "CACUFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CACUFGL",
+      "cameo": null
+    },
+    "CASKFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASKFGL",
+      "cameo": null
+    },
+    "CALBFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CALBFGL",
+      "cameo": null
+    },
+    "CAMIAM08": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMIAM08",
+      "cameo": null
+    },
+    "CAMISC05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC05",
+      "cameo": null
+    },
+    "CAMISC06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMISC06",
+      "cameo": null
+    },
+    "CASTL05A": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05A",
+      "cameo": null
+    },
+    "CASTL05B": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05B",
+      "cameo": null
+    },
+    "CASTL05C": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05C",
+      "cameo": null
+    },
+    "CASTL05D": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05D",
+      "cameo": null
+    },
+    "CASTL05E": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05E",
+      "cameo": null
+    },
+    "CASTL05F": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05F",
+      "cameo": null
+    },
+    "CASTL05G": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05G",
+      "cameo": null
+    },
+    "CASTL05H": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTL05H",
+      "cameo": null
+    },
+    "CAMSC10": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC10",
+      "cameo": null
+    },
+    "CAGEFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAGEFGL",
+      "cameo": null
+    },
+    "CAUKFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAUKFGL",
+      "cameo": null
+    },
+    "CAWASH06": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAWASH06",
+      "cameo": null
+    },
+    "CAMSC11": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC11",
+      "cameo": null
+    },
+    "CAMSC12": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC12",
+      "cameo": null
+    },
+    "CAMSC13": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC13",
+      "cameo": null
+    },
+    "CAPOFGL": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAPOFGL",
+      "cameo": null
+    },
+    "CAMSC12A": {
+      "kind": "building",
+      "cost": 600,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMSC12",
+      "cameo": null
+    },
+    "CAMOV01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMOV01",
+      "cameo": null
+    },
+    "CAMOV02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CAMOV02",
+      "cameo": null
+    },
+    "CABUNK01": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CABUNK01",
+      "cameo": null
+    },
+    "CABUNK02": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CABUNK02",
+      "cameo": null
+    },
+    "CAFNCP": {
+      "kind": "building",
+      "cost": 25,
+      "tech_level": -1,
+      "prerequisites": [
+        "BARRACKS"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "build_cat": "Combat",
+      "factory": null,
+      "requires": [
+        "BARRACKS"
+      ],
+      "image": "CAFNCP",
+      "cameo": "SBAGICON"
+    },
+    "CASTRT03": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTRT03",
+      "cameo": null
+    },
+    "CASTRT04": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTRT04",
+      "cameo": null
+    },
+    "CASTRT05": {
+      "kind": "building",
+      "cost": null,
+      "tech_level": -1,
+      "prerequisites": [],
+      "owner": [],
+      "sides": [],
+      "build_cat": null,
+      "factory": null,
+      "requires": [],
+      "image": "CASTRT05",
+      "cameo": null
+    }
+  }
+}

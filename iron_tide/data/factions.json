@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "player_faction": "allied",
+  "factions": [
+    {
+      "id": "allied",
+      "name": "联合防卫军",
+      "short": "联军",
+      "color": "#57a8ff",
+      "desc": "高精度、模块化科技流。防空与反装甲突出，工程能力最强。",
+      "style": "数值均衡 / 远程压制"
+    },
+    {
+      "id": "soviet",
+      "name": "铁幕同盟",
+      "short": "赤军",
+      "color": "#ff5b4a",
+      "desc": "重甲蛮力与装甲洪流，磁暴科技。单位笨重但抗揍。",
+      "style": "高血量 / 高爆发"
+    },
+    {
+      "id": "empire",
+      "name": "升阳帝国",
+      "short": "帝国",
+      "color": "#ffd24a",
+      "desc": "高机动、电磁与变形机甲。廉价快攻，正面弱。",
+      "style": "高机动 / 骚扰"
+    },
+    {
+      "id": "swarm",
+      "name": "虫群天灾",
+      "short": "虫群",
+      "color": "#a56bff",
+      "desc": "外来的寄生型集群生命，以数量、撕咬与酸蚀建筑为生。本作作为敌方阵营。",
+      "style": "数量压制 / 近战拆家"
+    }
+  ],
+  "house_palette": [
+    { "id": "allied", "name": "盟军蓝", "hex": "#57a8ff" },
+    { "id": "red",    "name": "战火红", "hex": "#ff5b4a" },
+    { "id": "yellow", "name": "旭日黄", "hex": "#ffd24a" },
+    { "id": "green",  "name": "丛林绿", "hex": "#4ade80" },
+    { "id": "purple", "name": "虫群紫", "hex": "#a56bff" },
+    { "id": "cyan",   "name": "冰原青", "hex": "#22d3ee" },
+    { "id": "orange", "name": "熔岩橙", "hex": "#ff8a3d" },
+    { "id": "gray",   "name": "灰白",   "hex": "#cbd5e1" },
+    { "id": "magenta", "name": "玫瑰红", "hex": "#e83e9a" },
+    { "id": "teal",   "name": "深海青", "hex": "#008577" },
+    { "id": "indigo", "name": "靛蓝",   "hex": "#3e42c4" },
+    { "id": "brown",  "name": "铜棕",   "hex": "#946536" }
+  ]
+}

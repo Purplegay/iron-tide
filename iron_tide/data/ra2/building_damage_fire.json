@@ -1,0 +1,3221 @@
+{
+  "yellow": 0.5,
+  "red": 0.25,
+  "types": [
+    "FIRE01",
+    "FIRE02",
+    "FIRE03"
+  ],
+  "buildings": {
+    "GACNST": {
+      "image": "GACNST",
+      "offsets": [
+        [
+          -24,
+          -1
+        ],
+        [
+          64,
+          36
+        ]
+      ]
+    },
+    "GAPOWR": {
+      "image": "GAPOWR",
+      "offsets": [
+        [
+          -20,
+          32
+        ],
+        [
+          3,
+          12
+        ]
+      ]
+    },
+    "GAPILE": {
+      "image": "GAPILE",
+      "offsets": [
+        [
+          18,
+          9
+        ],
+        [
+          42,
+          55
+        ]
+      ]
+    },
+    "GAREFN": {
+      "image": "GAREFN",
+      "offsets": [
+        [
+          -33,
+          31
+        ],
+        [
+          -3,
+          48
+        ]
+      ]
+    },
+    "GAWEAP": {
+      "image": "GAWEAP",
+      "offsets": [
+        [
+          -10,
+          -10
+        ],
+        [
+          27,
+          30
+        ],
+        [
+          0,
+          70
+        ]
+      ]
+    },
+    "GAAIRC": {
+      "image": "GAAIRC",
+      "offsets": [
+        [
+          -36,
+          23
+        ],
+        [
+          -21,
+          6
+        ]
+      ]
+    },
+    "GAYARD": {
+      "image": "GAYARD",
+      "offsets": [
+        [
+          -40,
+          21
+        ],
+        [
+          -7,
+          8
+        ],
+        [
+          32,
+          36
+        ]
+      ]
+    },
+    "GADEPT": {
+      "image": "GADEPT",
+      "offsets": [
+        [
+          -67,
+          22
+        ]
+      ]
+    },
+    "GATECH": {
+      "image": "GATECH",
+      "offsets": [
+        [
+          -26,
+          27
+        ],
+        [
+          -2,
+          -57
+        ],
+        [
+          22,
+          50
+        ]
+      ]
+    },
+    "GAOREP": {
+      "image": "GAOREP",
+      "offsets": [
+        [
+          -20,
+          23
+        ],
+        [
+          -12,
+          34
+        ],
+        [
+          6,
+          25
+        ],
+        [
+          -24,
+          53
+        ]
+      ]
+    },
+    "GAROBO": {
+      "image": "GAROBO",
+      "offsets": [
+        [
+          -20,
+          23
+        ],
+        [
+          -12,
+          34
+        ],
+        [
+          6,
+          25
+        ],
+        [
+          -24,
+          53
+        ]
+      ]
+    },
+    "NASAM": {
+      "image": "NASAM",
+      "offsets": [
+        [
+          1,
+          20
+        ]
+      ]
+    },
+    "ATESLA": {
+      "image": "GAPRIS",
+      "offsets": [
+        [
+          -1,
+          16
+        ]
+      ]
+    },
+    "GASPYSAT": {
+      "image": "GASPST",
+      "offsets": [
+        [
+          25,
+          37
+        ],
+        [
+          -26,
+          25
+        ]
+      ]
+    },
+    "GAGAP": {
+      "image": "GAGAP",
+      "offsets": [
+        [
+          -5,
+          11
+        ]
+      ]
+    },
+    "GACSPH": {
+      "image": "GACSPH",
+      "offsets": [
+        [
+          -19,
+          50
+        ]
+      ]
+    },
+    "GAWEAT": {
+      "image": "GAWETH",
+      "offsets": [
+        [
+          2,
+          50
+        ],
+        [
+          38,
+          63
+        ]
+      ]
+    },
+    "AMRADR": {
+      "image": "GAAIRC",
+      "offsets": [
+        [
+          -36,
+          23
+        ],
+        [
+          -21,
+          6
+        ]
+      ]
+    },
+    "GTGCAN": {
+      "image": "GTGCAN",
+      "offsets": [
+        [
+          -1,
+          28
+        ]
+      ]
+    },
+    "NACNST": {
+      "image": "NACNST",
+      "offsets": [
+        [
+          -65,
+          41
+        ]
+      ]
+    },
+    "NAPOWR": {
+      "image": "NAPOWR",
+      "offsets": [
+        [
+          -12,
+          30
+        ]
+      ]
+    },
+    "NAHAND": {
+      "image": "NAHAND",
+      "offsets": [
+        [
+          -8,
+          -7
+        ],
+        [
+          17,
+          40
+        ]
+      ]
+    },
+    "NAREFN": {
+      "image": "NAREFN",
+      "offsets": [
+        [
+          30,
+          30
+        ]
+      ]
+    },
+    "NAWEAP": {
+      "image": "NAWEAP",
+      "offsets": [
+        [
+          -32,
+          35
+        ],
+        [
+          31,
+          74
+        ]
+      ]
+    },
+    "NARADR": {
+      "image": "NARADR",
+      "offsets": [
+        [
+          -16,
+          31
+        ]
+      ]
+    },
+    "NAYARD": {
+      "image": "NAYARD",
+      "offsets": [
+        [
+          25,
+          45
+        ],
+        [
+          -37,
+          42
+        ],
+        [
+          -57,
+          -6
+        ]
+      ]
+    },
+    "NATECH": {
+      "image": "NATECH",
+      "offsets": [
+        [
+          -27,
+          37
+        ],
+        [
+          24,
+          25
+        ],
+        [
+          5,
+          -13
+        ]
+      ]
+    },
+    "NANRCT": {
+      "image": "NANRCT",
+      "offsets": [
+        [
+          72,
+          15
+        ],
+        [
+          -44,
+          71
+        ]
+      ]
+    },
+    "NAINDP": {
+      "image": "NAINDP",
+      "offsets": [
+        [
+          -40,
+          41
+        ]
+      ]
+    },
+    "NALASR": {
+      "image": "NALASR",
+      "offsets": [
+        [
+          -5,
+          15
+        ]
+      ]
+    },
+    "NAFLAK": {
+      "image": "NAFLAK",
+      "offsets": [
+        [
+          -5,
+          13
+        ]
+      ]
+    },
+    "TESLA": {
+      "image": "NATSLA",
+      "offsets": [
+        [
+          0,
+          14
+        ]
+      ]
+    },
+    "NABNKR": {
+      "image": "NABNKR",
+      "offsets": [
+        [
+          -11,
+          37
+        ],
+        [
+          -6,
+          -1
+        ]
+      ]
+    },
+    "NAIRON": {
+      "image": "NAIRON",
+      "offsets": [
+        [
+          -2,
+          59
+        ]
+      ]
+    },
+    "YACNST": {
+      "image": "YACNST",
+      "offsets": [
+        [
+          -24,
+          -1
+        ],
+        [
+          64,
+          36
+        ]
+      ]
+    },
+    "YAPOWR": {
+      "image": "YAPOWR",
+      "offsets": [
+        [
+          -20,
+          32
+        ],
+        [
+          3,
+          12
+        ]
+      ]
+    },
+    "YABRCK": {
+      "image": "YABRCK",
+      "offsets": [
+        [
+          -36,
+          -33
+        ],
+        [
+          -16,
+          52
+        ]
+      ]
+    },
+    "YACOMD": {
+      "image": "YACOMD",
+      "offsets": [
+        [
+          -44,
+          25
+        ],
+        [
+          19,
+          95
+        ],
+        [
+          25,
+          -48
+        ]
+      ]
+    },
+    "YAWEAP": {
+      "image": "YAWEAP",
+      "offsets": [
+        [
+          20,
+          35
+        ],
+        [
+          50,
+          101
+        ],
+        [
+          111,
+          64
+        ]
+      ]
+    },
+    "NAPSIS": {
+      "image": "NAPSIS",
+      "offsets": [
+        [
+          -23,
+          34
+        ]
+      ]
+    },
+    "YAYARD": {
+      "image": "YAYARD",
+      "offsets": [
+        [
+          -37,
+          58
+        ],
+        [
+          -8,
+          64
+        ],
+        [
+          23,
+          18
+        ]
+      ]
+    },
+    "YADEPT": {
+      "image": "GADEPT",
+      "offsets": [
+        [
+          -67,
+          22
+        ]
+      ]
+    },
+    "YATECH": {
+      "image": "YATECH",
+      "offsets": [
+        [
+          -9,
+          43
+        ],
+        [
+          25,
+          54
+        ],
+        [
+          21,
+          -56
+        ]
+      ]
+    },
+    "YAGRND": {
+      "image": "YAGRND",
+      "offsets": [
+        [
+          -29,
+          44
+        ]
+      ]
+    },
+    "NACLON": {
+      "image": "NACLON",
+      "offsets": [
+        [
+          23,
+          27
+        ]
+      ]
+    },
+    "YAGGUN": {
+      "image": "YAGGUN",
+      "offsets": [
+        [
+          -5,
+          15
+        ]
+      ]
+    },
+    "YAPSYT": {
+      "image": "YAPSYT",
+      "offsets": [
+        [
+          -5,
+          5
+        ]
+      ]
+    },
+    "YAGNTC": {
+      "image": "YAGNTC",
+      "offsets": [
+        [
+          -2,
+          59
+        ]
+      ]
+    },
+    "YAPPET": {
+      "image": "YAPPET",
+      "offsets": [
+        [
+          2,
+          50
+        ],
+        [
+          38,
+          63
+        ]
+      ]
+    },
+    "CAOUTP": {
+      "image": "CAOUTP",
+      "offsets": [
+        [
+          -32,
+          -1
+        ],
+        [
+          -43,
+          28
+        ]
+      ]
+    },
+    "CAAIRP": {
+      "image": "CAAIRP",
+      "offsets": [
+        [
+          -3,
+          5
+        ],
+        [
+          -65,
+          32
+        ]
+      ]
+    },
+    "CAOILD": {
+      "image": "CAOILD",
+      "offsets": [
+        [
+          -2,
+          34
+        ],
+        [
+          7,
+          -21
+        ],
+        [
+          29,
+          10
+        ]
+      ]
+    },
+    "CAPOWR": {
+      "image": "CAPOWR",
+      "offsets": [
+        [
+          -3,
+          5
+        ]
+      ]
+    },
+    "CAMACH": {
+      "image": "CAMACH",
+      "offsets": [
+        [
+          -2,
+          34
+        ],
+        [
+          29,
+          10
+        ]
+      ]
+    },
+    "CATHOSP": {
+      "image": "CAHOSP",
+      "offsets": [
+        [
+          70,
+          50
+        ],
+        [
+          94,
+          83
+        ],
+        [
+          42,
+          -9
+        ],
+        [
+          -16,
+          -11
+        ]
+      ]
+    },
+    "CAHOSP": {
+      "image": "CAHOSP",
+      "offsets": [
+        [
+          70,
+          50
+        ],
+        [
+          94,
+          83
+        ],
+        [
+          42,
+          -9
+        ],
+        [
+          -16,
+          -11
+        ]
+      ]
+    },
+    "CASLAB": {
+      "image": "CASLAB",
+      "offsets": [
+        [
+          17,
+          -30
+        ]
+      ]
+    },
+    "CATEXS02": {
+      "image": "CATEXS02",
+      "offsets": [
+        [
+          -25,
+          30
+        ],
+        [
+          19,
+          27
+        ]
+      ]
+    },
+    "CAWASH01": {
+      "image": "CAWASH01",
+      "offsets": [
+        [
+          -22,
+          14
+        ],
+        [
+          55,
+          73
+        ]
+      ]
+    },
+    "CAWSH12": {
+      "image": "CAWSH12",
+      "offsets": [
+        [
+          0,
+          24
+        ]
+      ]
+    },
+    "CAPRS03": {
+      "image": "CAPRS03",
+      "offsets": [
+        [
+          -38,
+          23
+        ],
+        [
+          63,
+          113
+        ]
+      ]
+    },
+    "CAMEX01": {
+      "image": "CAMEX01",
+      "offsets": [
+        [
+          -10,
+          16
+        ]
+      ]
+    },
+    "MAYAN": {
+      "image": "CAMEX01",
+      "offsets": [
+        [
+          -10,
+          16
+        ]
+      ]
+    },
+    "CARUS03": {
+      "image": "CARUS03",
+      "offsets": [
+        [
+          -60,
+          55
+        ],
+        [
+          15,
+          -11
+        ]
+      ]
+    },
+    "CAPARS11": {
+      "image": "CAPARS11",
+      "offsets": [
+        [
+          10,
+          66
+        ],
+        [
+          -68,
+          -38
+        ]
+      ]
+    },
+    "CAPARS12": {
+      "image": "CAPARS12",
+      "offsets": [
+        [
+          19,
+          31
+        ],
+        [
+          -43,
+          25
+        ]
+      ]
+    },
+    "NAPSYB": {
+      "image": "NAPSYB",
+      "offsets": [
+        [
+          -12,
+          34
+        ]
+      ]
+    },
+    "NAPSYA": {
+      "image": "NAPSYA",
+      "offsets": [
+        [
+          -20,
+          44
+        ],
+        [
+          -74,
+          64
+        ]
+      ]
+    },
+    "CACOLO01": {
+      "image": "CACOLO01",
+      "offsets": [
+        [
+          48,
+          82
+        ]
+      ]
+    },
+    "CARUS07": {
+      "image": "CARUS07",
+      "offsets": [
+        [
+          0,
+          6
+        ]
+      ]
+    },
+    "CAWASH16": {
+      "image": "CAWASH16",
+      "offsets": [
+        [
+          -27,
+          4
+        ],
+        [
+          22,
+          53
+        ],
+        [
+          32,
+          39
+        ]
+      ]
+    },
+    "CAWASH17": {
+      "image": "CAWASH17",
+      "offsets": [
+        [
+          26,
+          14
+        ],
+        [
+          86,
+          18
+        ],
+        [
+          12,
+          74
+        ]
+      ]
+    },
+    "CACHIG05": {
+      "image": "CACHIG05",
+      "offsets": [
+        [
+          32,
+          60
+        ],
+        [
+          54,
+          -10
+        ],
+        [
+          -30,
+          -4
+        ]
+      ]
+    },
+    "CAWASH19": {
+      "image": "CAWASH19",
+      "offsets": [
+        [
+          -35,
+          58
+        ],
+        [
+          1,
+          40
+        ]
+      ]
+    },
+    "CASTL04": {
+      "image": "CASTL04",
+      "offsets": [
+        [
+          -131,
+          -15
+        ]
+      ]
+    },
+    "CARUS01": {
+      "image": "CARUS01",
+      "offsets": [
+        [
+          -15,
+          38
+        ],
+        [
+          46,
+          49
+        ]
+      ]
+    },
+    "CAWA2A": {
+      "image": "CAWA2A",
+      "offsets": [
+        [
+          -103,
+          52
+        ]
+      ]
+    },
+    "CAWA2B": {
+      "image": "CAWA2B",
+      "offsets": [
+        [
+          -35,
+          58
+        ]
+      ]
+    },
+    "CAWA2C": {
+      "image": "CAWA2C",
+      "offsets": [
+        [
+          35,
+          8
+        ],
+        [
+          32,
+          86
+        ]
+      ]
+    },
+    "CAWA2D": {
+      "image": "CAWA2D",
+      "offsets": [
+        [
+          39,
+          51
+        ],
+        [
+          74,
+          68
+        ]
+      ]
+    },
+    "CAEAST01": {
+      "image": "CAEAST01",
+      "offsets": [
+        [
+          12,
+          20
+        ],
+        [
+          -2,
+          -78
+        ]
+      ]
+    },
+    "CAEAST02": {
+      "image": "CAEAST02",
+      "offsets": [
+        [
+          12,
+          20
+        ]
+      ]
+    },
+    "YAPPPT": {
+      "image": "YAPPPT",
+      "offsets": [
+        [
+          12,
+          20
+        ]
+      ]
+    },
+    "CASANF01": {
+      "image": "CASANF01",
+      "offsets": [
+        [
+          -14,
+          10
+        ],
+        [
+          27,
+          -14
+        ]
+      ]
+    },
+    "CALAB": {
+      "image": "CALAB",
+      "offsets": [
+        [
+          -11,
+          10
+        ]
+      ]
+    },
+    "CATIME01": {
+      "image": "CATIME01",
+      "offsets": [
+        [
+          -11,
+          10
+        ]
+      ]
+    },
+    "CATIME02": {
+      "image": "CATIME02",
+      "offsets": [
+        [
+          -11,
+          10
+        ]
+      ]
+    },
+    "CALOND04": {
+      "image": "CALOND04",
+      "offsets": [
+        [
+          139,
+          68
+        ],
+        [
+          -24,
+          72
+        ]
+      ]
+    },
+    "CALOND05": {
+      "image": "CALOND05",
+      "offsets": [
+        [
+          15,
+          -58
+        ],
+        [
+          -15,
+          -2
+        ]
+      ]
+    },
+    "CALOND06": {
+      "image": "CALOND06",
+      "offsets": [
+        [
+          22,
+          -26
+        ],
+        [
+          -88,
+          23
+        ]
+      ]
+    },
+    "CAMOON01": {
+      "image": "CAMOON01",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CATRAN03": {
+      "image": "CATRAN03",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASTL05A": {
+      "image": "CASTL05A",
+      "offsets": [
+        [
+          -12,
+          14
+        ],
+        [
+          -14,
+          98
+        ]
+      ]
+    },
+    "CASTL05B": {
+      "image": "CASTL05B",
+      "offsets": [
+        [
+          -40,
+          58
+        ],
+        [
+          0,
+          -32
+        ]
+      ]
+    },
+    "CASTL05C": {
+      "image": "CASTL05C",
+      "offsets": [
+        [
+          -42,
+          -22
+        ],
+        [
+          -92,
+          48
+        ]
+      ]
+    },
+    "CASTL05D": {
+      "image": "CASTL05D",
+      "offsets": [
+        [
+          4,
+          -36
+        ],
+        [
+          16,
+          56
+        ]
+      ]
+    },
+    "CASTL05E": {
+      "image": "CASTL05E",
+      "offsets": [
+        [
+          26,
+          30
+        ],
+        [
+          -58,
+          50
+        ],
+        [
+          22,
+          -8
+        ]
+      ]
+    },
+    "CASTL05F": {
+      "image": "CASTL05F",
+      "offsets": [
+        [
+          22,
+          -12
+        ],
+        [
+          38,
+          -38
+        ],
+        [
+          88,
+          44
+        ]
+      ]
+    },
+    "CASTL05G": {
+      "image": "CASTL05G",
+      "offsets": [
+        [
+          6,
+          42
+        ],
+        [
+          -56,
+          -5
+        ]
+      ]
+    },
+    "CASTL05H": {
+      "image": "CASTL05H",
+      "offsets": [
+        [
+          -48,
+          -4
+        ],
+        [
+          86,
+          -8
+        ]
+      ]
+    },
+    "CAMIAM08": {
+      "image": "CAMIAM08",
+      "offsets": [
+        [
+          62,
+          40
+        ]
+      ]
+    },
+    "CAEGYP01": {
+      "image": "CAEGYP01",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAEGYP02": {
+      "image": "CAEGYP02",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAEGYP03": {
+      "image": "CAEGYP03",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAEGYP04": {
+      "image": "CAEGYP04",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAEGYP05": {
+      "image": "CAEGYP05",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAEGYP06": {
+      "image": "CAEGYP06",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CALA03": {
+      "image": "CALA03",
+      "offsets": [
+        [
+          -1,
+          21
+        ]
+      ]
+    },
+    "CALA04": {
+      "image": "CALA04",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          50,
+          36
+        ]
+      ]
+    },
+    "CALA11": {
+      "image": "CALA11",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          45,
+          48
+        ]
+      ]
+    },
+    "CALA12": {
+      "image": "CALA12",
+      "offsets": [
+        [
+          -19,
+          36
+        ],
+        [
+          20,
+          18
+        ]
+      ]
+    },
+    "CALA13": {
+      "image": "CALA13",
+      "offsets": [
+        [
+          40,
+          30
+        ]
+      ]
+    },
+    "CALA14": {
+      "image": "CALA14",
+      "offsets": [
+        [
+          76,
+          45
+        ],
+        [
+          -9,
+          -27
+        ]
+      ]
+    },
+    "CALA15": {
+      "image": "CALA15",
+      "offsets": [
+        [
+          -76,
+          42
+        ],
+        [
+          -13,
+          11
+        ]
+      ]
+    },
+    "CALA05": {
+      "image": "CALA05",
+      "offsets": [
+        [
+          -35,
+          30
+        ]
+      ]
+    },
+    "CALA06": {
+      "image": "CALA06",
+      "offsets": [
+        [
+          -31,
+          39
+        ],
+        [
+          -2,
+          -28
+        ]
+      ]
+    },
+    "CALA07": {
+      "image": "CALA07",
+      "offsets": [
+        [
+          -53,
+          -2
+        ],
+        [
+          45,
+          27
+        ]
+      ]
+    },
+    "CALA08": {
+      "image": "CALA08",
+      "offsets": [
+        [
+          -34,
+          -10
+        ],
+        [
+          -33,
+          -2
+        ]
+      ]
+    },
+    "CALA09": {
+      "image": "CALA09",
+      "offsets": [
+        [
+          -29,
+          40
+        ]
+      ]
+    },
+    "CASANF04": {
+      "image": "CASANF04",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF05": {
+      "image": "CASANF05",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF06": {
+      "image": "CASANF06",
+      "offsets": [
+        [
+          -14,
+          16
+        ],
+        [
+          -31,
+          -55
+        ]
+      ]
+    },
+    "CASANF07": {
+      "image": "CASANF07",
+      "offsets": [
+        [
+          -14,
+          16
+        ],
+        [
+          -31,
+          -55
+        ]
+      ]
+    },
+    "CASANF08": {
+      "image": "CASANF08",
+      "offsets": [
+        [
+          53,
+          8
+        ],
+        [
+          26,
+          48
+        ]
+      ]
+    },
+    "CASANF09": {
+      "image": "CASANF09",
+      "offsets": [
+        [
+          -29,
+          40
+        ]
+      ]
+    },
+    "CASANF10": {
+      "image": "CASANF10",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF11": {
+      "image": "CASANF11",
+      "offsets": [
+        [
+          -29,
+          40
+        ]
+      ]
+    },
+    "CASANF12": {
+      "image": "CASANF12",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF13": {
+      "image": "CASANF13",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF14": {
+      "image": "CASANF14",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CASANF15": {
+      "image": "CASANF15",
+      "offsets": [
+        [
+          -4,
+          -17
+        ]
+      ]
+    },
+    "CASANF16": {
+      "image": "CASANF16",
+      "offsets": [
+        [
+          0,
+          -11
+        ]
+      ]
+    },
+    "CASANF17": {
+      "image": "CASANF17",
+      "offsets": [
+        [
+          -29,
+          40
+        ]
+      ]
+    },
+    "CASANF18": {
+      "image": "CASANF18",
+      "offsets": [
+        [
+          5,
+          18
+        ],
+        [
+          -69,
+          33
+        ]
+      ]
+    },
+    "CASEAT01": {
+      "image": "CASEAT01",
+      "offsets": [
+        [
+          12,
+          -131
+        ]
+      ]
+    },
+    "CASEAT02": {
+      "image": "CASEAT02",
+      "offsets": [
+        [
+          -59,
+          -8
+        ],
+        [
+          66,
+          35
+        ]
+      ]
+    },
+    "CASYDN03": {
+      "image": "CASYDN03",
+      "offsets": [
+        [
+          -4,
+          44
+        ],
+        [
+          93,
+          113
+        ]
+      ]
+    },
+    "CALA01": {
+      "image": "CALA01",
+      "offsets": [
+        [
+          -29,
+          40
+        ]
+      ]
+    },
+    "CALOND01": {
+      "image": "CALOND01",
+      "offsets": [
+        [
+          -62,
+          36
+        ],
+        [
+          -33,
+          40
+        ]
+      ]
+    },
+    "CALOND03": {
+      "image": "CALOND03",
+      "offsets": [
+        [
+          -48,
+          -34
+        ],
+        [
+          -21,
+          53
+        ]
+      ]
+    },
+    "CAMORR01": {
+      "image": "CAMORR01",
+      "offsets": [
+        [
+          -27,
+          7
+        ],
+        [
+          6,
+          34
+        ]
+      ]
+    },
+    "CAMORR02": {
+      "image": "CAMORR02",
+      "offsets": [
+        [
+          -54,
+          -8
+        ],
+        [
+          49,
+          20
+        ]
+      ]
+    },
+    "CAMORR03": {
+      "image": "CAMORR03",
+      "offsets": [
+        [
+          -29,
+          44
+        ],
+        [
+          33,
+          51
+        ]
+      ]
+    },
+    "CAMORR04": {
+      "image": "CAMORR04",
+      "offsets": [
+        [
+          30,
+          -75
+        ],
+        [
+          -49,
+          53
+        ]
+      ]
+    },
+    "CAMORR05": {
+      "image": "CAMORR05",
+      "offsets": [
+        [
+          -69,
+          -4
+        ],
+        [
+          2,
+          18
+        ]
+      ]
+    },
+    "CAMORR06": {
+      "image": "CAMORR06",
+      "offsets": [
+        [
+          1,
+          -38
+        ],
+        [
+          -14,
+          26
+        ]
+      ]
+    },
+    "CAMORR07": {
+      "image": "CAMORR07",
+      "offsets": [
+        [
+          -3,
+          25
+        ],
+        [
+          -25,
+          55
+        ]
+      ]
+    },
+    "CAMORR08": {
+      "image": "CAMORR08",
+      "offsets": [
+        [
+          27,
+          -30
+        ],
+        [
+          60,
+          33
+        ]
+      ]
+    },
+    "CAMORR09": {
+      "image": "CAMORR09",
+      "offsets": [
+        [
+          54,
+          3
+        ],
+        [
+          -51,
+          4
+        ]
+      ]
+    },
+    "CAMORR10": {
+      "image": "CAMORR10",
+      "offsets": [
+        [
+          -13,
+          -16
+        ],
+        [
+          -32,
+          -68
+        ]
+      ]
+    },
+    "CASANF02": {
+      "image": "CASANF02",
+      "offsets": [
+        [
+          -36,
+          1
+        ],
+        [
+          44,
+          -27
+        ],
+        [
+          -23,
+          -51
+        ]
+      ]
+    },
+    "CASANF03": {
+      "image": "CASANF03",
+      "offsets": [
+        [
+          -14,
+          10
+        ],
+        [
+          27,
+          -14
+        ]
+      ]
+    },
+    "CASYDN02": {
+      "image": "CASYDN02",
+      "offsets": [
+        [
+          -18,
+          1
+        ],
+        [
+          45,
+          27
+        ]
+      ]
+    },
+    "CATRAN01": {
+      "image": "CATRAN01",
+      "offsets": [
+        [
+          33,
+          1
+        ]
+      ]
+    },
+    "CATRAN02": {
+      "image": "CATRAN02",
+      "offsets": [
+        [
+          6,
+          -6
+        ]
+      ]
+    },
+    "CAMEX02": {
+      "image": "CAMEX02",
+      "offsets": [
+        [
+          25,
+          45
+        ]
+      ]
+    },
+    "CAMEX03": {
+      "image": "CAMEX03",
+      "offsets": [
+        [
+          3,
+          30
+        ]
+      ]
+    },
+    "CAMEX04": {
+      "image": "CAMEX04",
+      "offsets": [
+        [
+          -7,
+          63
+        ]
+      ]
+    },
+    "CAPARS01": {
+      "image": "CAPARS01",
+      "offsets": [
+        [
+          -14,
+          -56
+        ],
+        [
+          62,
+          40
+        ]
+      ]
+    },
+    "CANEWY01": {
+      "image": "CANEWY01",
+      "offsets": [
+        [
+          50,
+          56
+        ]
+      ]
+    },
+    "CASWST01": {
+      "image": "CASWST01",
+      "offsets": [
+        [
+          -34,
+          24
+        ],
+        [
+          1,
+          -83
+        ]
+      ]
+    },
+    "CATECH01": {
+      "image": "CATECH01",
+      "offsets": [
+        [
+          -2,
+          20
+        ]
+      ]
+    },
+    "CATEXS01": {
+      "image": "CATEXS01",
+      "offsets": [
+        [
+          19,
+          10
+        ],
+        [
+          -21,
+          -23
+        ]
+      ]
+    },
+    "CAWASH05": {
+      "image": "CAWASH05",
+      "offsets": [
+        [
+          -36,
+          -12
+        ],
+        [
+          110,
+          8
+        ]
+      ]
+    },
+    "CAWASH04": {
+      "image": "CAWASH04",
+      "offsets": [
+        [
+          -85,
+          33
+        ]
+      ]
+    },
+    "CAWASH03": {
+      "image": "CAWASH03",
+      "offsets": [
+        [
+          7,
+          1
+        ],
+        [
+          90,
+          49
+        ]
+      ]
+    },
+    "CAWASH07": {
+      "image": "CAWASH07",
+      "offsets": [
+        [
+          -38,
+          4
+        ],
+        [
+          36,
+          -70
+        ]
+      ]
+    },
+    "CAWASH11": {
+      "image": "CAWASH11",
+      "offsets": [
+        [
+          4,
+          -58
+        ],
+        [
+          90,
+          52
+        ],
+        [
+          2,
+          6
+        ],
+        [
+          30,
+          64
+        ]
+      ]
+    },
+    "CAWASH08": {
+      "image": "CAWASH08",
+      "offsets": [
+        [
+          -64,
+          36
+        ],
+        [
+          64,
+          2
+        ],
+        [
+          -92,
+          -8
+        ]
+      ]
+    },
+    "CAWASH09": {
+      "image": "CAWASH09",
+      "offsets": [
+        [
+          -28,
+          18
+        ],
+        [
+          62,
+          4
+        ],
+        [
+          -2,
+          -26
+        ]
+      ]
+    },
+    "CAWASH10": {
+      "image": "CAWASH10",
+      "offsets": [
+        [
+          36,
+          17
+        ],
+        [
+          58,
+          -6
+        ]
+      ]
+    },
+    "CAWASH13": {
+      "image": "CAWASH13",
+      "offsets": [
+        [
+          13,
+          -12
+        ]
+      ]
+    },
+    "CAEUR1": {
+      "image": "CAEUR1",
+      "offsets": [
+        [
+          19,
+          24
+        ],
+        [
+          -4,
+          -9
+        ]
+      ]
+    },
+    "CAEUR2": {
+      "image": "CAEUR2",
+      "offsets": [
+        [
+          20,
+          22
+        ],
+        [
+          1,
+          -7
+        ]
+      ]
+    },
+    "CAMIAM02": {
+      "image": "CAMIAM02",
+      "offsets": [
+        [
+          44,
+          -52
+        ],
+        [
+          -2,
+          46
+        ]
+      ]
+    },
+    "CANWY05": {
+      "image": "CANWY05",
+      "offsets": [
+        [
+          0,
+          30
+        ]
+      ]
+    },
+    "CAEUR04": {
+      "image": "CAEUR04",
+      "offsets": [
+        [
+          -56,
+          21
+        ]
+      ]
+    },
+    "CANEWY06": {
+      "image": "CANEWY06",
+      "offsets": [
+        [
+          52,
+          35
+        ]
+      ]
+    },
+    "CANEWY07": {
+      "image": "CANEWY07",
+      "offsets": [
+        [
+          35,
+          -10
+        ],
+        [
+          -54,
+          6
+        ]
+      ]
+    },
+    "CANEWY08": {
+      "image": "CANEWY08",
+      "offsets": [
+        [
+          58,
+          21
+        ],
+        [
+          -37,
+          -33
+        ]
+      ]
+    },
+    "CAPARS02": {
+      "image": "CAPARS02",
+      "offsets": [
+        [
+          -49,
+          20
+        ],
+        [
+          20,
+          13
+        ]
+      ]
+    },
+    "CAPARS08": {
+      "image": "CAPARS08",
+      "offsets": [
+        [
+          20,
+          24
+        ],
+        [
+          -56,
+          7
+        ]
+      ]
+    },
+    "CAPARS09": {
+      "image": "CAPARS09",
+      "offsets": [
+        [
+          -65,
+          30
+        ],
+        [
+          75,
+          98
+        ]
+      ]
+    },
+    "CANEWY10": {
+      "image": "CANEWY10",
+      "offsets": [
+        [
+          -36,
+          -88
+        ],
+        [
+          -12,
+          -142
+        ],
+        [
+          64,
+          -98
+        ]
+      ]
+    },
+    "CANEWY11": {
+      "image": "CANEWY11",
+      "offsets": [
+        [
+          24,
+          -42
+        ],
+        [
+          -34,
+          -48
+        ]
+      ]
+    },
+    "CANEWY12": {
+      "image": "CANEWY12",
+      "offsets": [
+        [
+          28,
+          -72
+        ],
+        [
+          -38,
+          -4
+        ]
+      ]
+    },
+    "CANEWY13": {
+      "image": "CANEWY13",
+      "offsets": [
+        [
+          55,
+          -94
+        ],
+        [
+          -44,
+          -44
+        ]
+      ]
+    },
+    "CANEWY14": {
+      "image": "CANEWY14",
+      "offsets": [
+        [
+          46,
+          -92
+        ],
+        [
+          -44,
+          -44
+        ]
+      ]
+    },
+    "CANEWY15": {
+      "image": "CANEWY15",
+      "offsets": [
+        [
+          -32,
+          -92
+        ],
+        [
+          -48,
+          -45
+        ]
+      ]
+    },
+    "CANEWY16": {
+      "image": "CANEWY16",
+      "offsets": [
+        [
+          16,
+          -166
+        ],
+        [
+          -26,
+          -66
+        ],
+        [
+          20,
+          -42
+        ]
+      ]
+    },
+    "CANEWY17": {
+      "image": "CANEWY17",
+      "offsets": [
+        [
+          36,
+          -52
+        ],
+        [
+          -24,
+          -4
+        ]
+      ]
+    },
+    "CANEWY18": {
+      "image": "CANEWY18",
+      "offsets": [
+        [
+          25,
+          -43
+        ]
+      ]
+    },
+    "CAPARS04": {
+      "image": "CAPARS04",
+      "offsets": [
+        [
+          -24,
+          -20
+        ],
+        [
+          24,
+          22
+        ]
+      ]
+    },
+    "CAPARS05": {
+      "image": "CAPARS05",
+      "offsets": [
+        [
+          -24,
+          -20
+        ],
+        [
+          54,
+          -12
+        ]
+      ]
+    },
+    "CAPARS06": {
+      "image": "CAPARS06",
+      "offsets": [
+        [
+          30,
+          -24
+        ],
+        [
+          40,
+          50
+        ]
+      ]
+    },
+    "CAPARS10": {
+      "image": "CAPARS10",
+      "offsets": [
+        [
+          -29,
+          40
+        ],
+        [
+          85,
+          48
+        ]
+      ]
+    },
+    "CAPARS13": {
+      "image": "CAPARS13",
+      "offsets": [
+        [
+          23,
+          36
+        ],
+        [
+          -90,
+          4
+        ]
+      ]
+    },
+    "CAPARS14": {
+      "image": "CAPARS14",
+      "offsets": [
+        [
+          26,
+          74
+        ],
+        [
+          5,
+          -19
+        ]
+      ]
+    },
+    "CAGAS01": {
+      "image": "CAGAS01",
+      "offsets": [
+        [
+          -5,
+          28
+        ]
+      ]
+    },
+    "CAFARM06": {
+      "image": "CAFARM06",
+      "offsets": [
+        [
+          8,
+          -48
+        ],
+        [
+          22,
+          0
+        ]
+      ]
+    },
+    "CAMIAM04": {
+      "image": "CAMIAM04",
+      "offsets": [
+        [
+          -5,
+          0
+        ],
+        [
+          -17,
+          15
+        ]
+      ]
+    },
+    "CAIND01": {
+      "image": "CAIND01",
+      "offsets": [
+        [
+          11,
+          -25
+        ],
+        [
+          -78,
+          56
+        ]
+      ]
+    },
+    "CANWY09": {
+      "image": "CANWY09",
+      "offsets": [
+        [
+          11,
+          -64
+        ]
+      ]
+    },
+    "CANWY22": {
+      "image": "CANWY22",
+      "offsets": [
+        [
+          31,
+          15
+        ],
+        [
+          -3,
+          9
+        ]
+      ]
+    },
+    "CANWY23": {
+      "image": "CANWY23",
+      "offsets": [
+        [
+          38,
+          -94
+        ],
+        [
+          -41,
+          5
+        ]
+      ]
+    },
+    "CANWY24": {
+      "image": "CANWY24",
+      "offsets": [
+        [
+          53,
+          4
+        ]
+      ]
+    },
+    "CANWY25": {
+      "image": "CANWY25",
+      "offsets": [
+        [
+          57,
+          36
+        ],
+        [
+          8,
+          57
+        ]
+      ]
+    },
+    "CANWY26": {
+      "image": "CANWY26",
+      "offsets": [
+        [
+          100,
+          -53
+        ]
+      ]
+    },
+    "CATEXS03": {
+      "image": "CATEXS03",
+      "offsets": [
+        [
+          -12,
+          -23
+        ],
+        [
+          46,
+          13
+        ]
+      ]
+    },
+    "CATEXS04": {
+      "image": "CATEXS04",
+      "offsets": [
+        [
+          27,
+          -25
+        ],
+        [
+          -21,
+          6
+        ]
+      ]
+    },
+    "CATEXS05": {
+      "image": "CATEXS05",
+      "offsets": [
+        [
+          5,
+          34
+        ],
+        [
+          68,
+          -19
+        ]
+      ]
+    },
+    "CACHIG04": {
+      "image": "CACHIG04",
+      "offsets": [
+        [
+          -26,
+          8
+        ],
+        [
+          32,
+          -26
+        ]
+      ]
+    },
+    "CAMIAM03": {
+      "image": "CAMIAM03",
+      "offsets": [
+        [
+          -32,
+          -58
+        ],
+        [
+          32,
+          -11
+        ]
+      ]
+    },
+    "CAMIAM01": {
+      "image": "CAMIAM01",
+      "offsets": [
+        [
+          -42,
+          -66
+        ],
+        [
+          86,
+          -14
+        ]
+      ]
+    },
+    "CATEXS06": {
+      "image": "CATEXS06",
+      "offsets": [
+        [
+          36,
+          6
+        ],
+        [
+          -31,
+          35
+        ],
+        [
+          -39,
+          -9
+        ]
+      ]
+    },
+    "CATEXS07": {
+      "image": "CATEXS07",
+      "offsets": [
+        [
+          1,
+          27
+        ],
+        [
+          24,
+          -17
+        ],
+        [
+          33,
+          47
+        ]
+      ]
+    },
+    "CATEXS08": {
+      "image": "CATEXS08",
+      "offsets": [
+        [
+          19,
+          10
+        ],
+        [
+          -68,
+          5
+        ]
+      ]
+    },
+    "CACHIG01": {
+      "image": "CACHIG01",
+      "offsets": [
+        [
+          -47,
+          19
+        ],
+        [
+          70,
+          -42
+        ]
+      ]
+    },
+    "CACHIG02": {
+      "image": "CACHIG02",
+      "offsets": [
+        [
+          -33,
+          53
+        ]
+      ]
+    },
+    "CACHIG03": {
+      "image": "CACHIG03",
+      "offsets": [
+        [
+          57,
+          -13
+        ]
+      ]
+    },
+    "CARUS08": {
+      "image": "CARUS08",
+      "offsets": [
+        [
+          8,
+          -18
+        ]
+      ]
+    },
+    "CARUS09": {
+      "image": "CARUS09",
+      "offsets": [
+        [
+          38,
+          -12
+        ]
+      ]
+    },
+    "CANEWY20": {
+      "image": "CANEWY20",
+      "offsets": [
+        [
+          -93,
+          62
+        ],
+        [
+          -12,
+          57
+        ],
+        [
+          -47,
+          9
+        ]
+      ]
+    },
+    "CANEWY21": {
+      "image": "CANEWY21",
+      "offsets": [
+        [
+          89,
+          71
+        ],
+        [
+          26,
+          55
+        ],
+        [
+          3,
+          7
+        ]
+      ]
+    },
+    "CARUS04": {
+      "image": "CARUS04",
+      "offsets": [
+        [
+          58,
+          55
+        ],
+        [
+          -10,
+          79
+        ],
+        [
+          -65,
+          42
+        ]
+      ]
+    },
+    "CARUS05": {
+      "image": "CARUS05",
+      "offsets": [
+        [
+          -38,
+          7
+        ],
+        [
+          60,
+          44
+        ],
+        [
+          -13,
+          94
+        ]
+      ]
+    },
+    "CARUS06": {
+      "image": "CARUS06",
+      "offsets": [
+        [
+          -23,
+          2
+        ],
+        [
+          -39,
+          38
+        ],
+        [
+          59,
+          45
+        ]
+      ]
+    },
+    "CAMSC01": {
+      "image": "CAMSC01",
+      "offsets": [
+        [
+          -2,
+          4
+        ]
+      ]
+    },
+    "CAMSC07": {
+      "image": "CAMSC07",
+      "offsets": [
+        [
+          -3,
+          -1
+        ]
+      ]
+    },
+    "CAMSC08": {
+      "image": "CAMSC08",
+      "offsets": [
+        [
+          4,
+          -7
+        ]
+      ]
+    },
+    "CAMSC09": {
+      "image": "CAMSC09",
+      "offsets": [
+        [
+          -7,
+          10
+        ]
+      ]
+    },
+    "CAEURO05": {
+      "image": "CAEURO05",
+      "offsets": [
+        [
+          4,
+          13
+        ]
+      ]
+    },
+    "CASTL01": {
+      "image": "CASTL01",
+      "offsets": [
+        [
+          5,
+          -27
+        ],
+        [
+          54,
+          54
+        ],
+        [
+          -55,
+          -9
+        ]
+      ]
+    },
+    "CASTL02": {
+      "image": "CASTL02",
+      "offsets": [
+        [
+          -63,
+          61
+        ],
+        [
+          -2,
+          43
+        ]
+      ]
+    },
+    "CASTL03": {
+      "image": "CASTL03",
+      "offsets": [
+        [
+          -43,
+          12
+        ],
+        [
+          -4,
+          43
+        ]
+      ]
+    },
+    "CAHSE05": {
+      "image": "CAHSE05",
+      "offsets": [
+        [
+          8,
+          6
+        ]
+      ]
+    },
+    "CAHSE06": {
+      "image": "CAHSE06",
+      "offsets": [
+        [
+          42,
+          22
+        ]
+      ]
+    },
+    "CAHSE07": {
+      "image": "CAHSE07",
+      "offsets": [
+        [
+          -12,
+          -2
+        ],
+        [
+          22,
+          29
+        ]
+      ]
+    },
+    "CAMIAM05": {
+      "image": "CAMIAM05",
+      "offsets": [
+        [
+          58,
+          33
+        ],
+        [
+          43,
+          -12
+        ]
+      ]
+    },
+    "CAMIAM06": {
+      "image": "CAMIAM06",
+      "offsets": [
+        [
+          -108,
+          46
+        ],
+        [
+          85,
+          37
+        ]
+      ]
+    },
+    "CAMIAM07": {
+      "image": "CAMIAM07",
+      "offsets": [
+        [
+          -50,
+          27
+        ]
+      ]
+    },
+    "CASTRT05": {
+      "image": "CASTRT05",
+      "offsets": [
+        [
+          5,
+          10
+        ]
+      ]
+    },
+    "CAARMY03": {
+      "image": "CAARMY03",
+      "offsets": [
+        [
+          0,
+          9
+        ]
+      ]
+    },
+    "CAARMY04": {
+      "image": "CAARMY04",
+      "offsets": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    "CAGARD01": {
+      "image": "CAGARD01",
+      "offsets": [
+        [
+          -1,
+          -4
+        ]
+      ]
+    },
+    "CAFARM01": {
+      "image": "CAFARM01",
+      "offsets": [
+        [
+          20,
+          9
+        ]
+      ]
+    },
+    "CAFARM02": {
+      "image": "CAFARM02",
+      "offsets": [
+        [
+          0,
+          19
+        ]
+      ]
+    },
+    "CAFRMA": {
+      "image": "CAFRMA",
+      "offsets": [
+        [
+          -28,
+          28
+        ]
+      ]
+    },
+    "CAFRMB": {
+      "image": "CAFRMB",
+      "offsets": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "CAHSE01": {
+      "image": "CAHSE01",
+      "offsets": [
+        [
+          -2,
+          -10
+        ],
+        [
+          30,
+          30
+        ]
+      ]
+    },
+    "CAWT01": {
+      "image": "CAWT01",
+      "offsets": [
+        [
+          9,
+          -34
+        ]
+      ]
+    },
+    "CATS01": {
+      "image": "CATS01",
+      "offsets": [
+        [
+          30,
+          19
+        ]
+      ]
+    },
+    "CABARN02": {
+      "image": "CABARN02",
+      "offsets": [
+        [
+          16,
+          -2
+        ]
+      ]
+    },
+    "CAMSC10": {
+      "image": "CAMSC10",
+      "offsets": [
+        [
+          -29,
+          28
+        ],
+        [
+          29,
+          25
+        ],
+        [
+          -52,
+          55
+        ]
+      ]
+    },
+    "CAMSC11": {
+      "image": "CAMSC11",
+      "offsets": [
+        [
+          0,
+          11
+        ]
+      ]
+    },
+    "CAMOV01": {
+      "image": "CAMOV01",
+      "offsets": [
+        [
+          -85,
+          -2
+        ],
+        [
+          -4,
+          -56
+        ]
+      ]
+    },
+    "CAMOV02": {
+      "image": "CAMOV02",
+      "offsets": [
+        [
+          23,
+          18
+        ],
+        [
+          -29,
+          14
+        ]
+      ]
+    },
+    "CABUNK01": {
+      "image": "CABUNK01",
+      "offsets": [
+        [
+          1,
+          8
+        ]
+      ]
+    },
+    "CABUNK02": {
+      "image": "CABUNK02",
+      "offsets": [
+        [
+          -1,
+          7
+        ]
+      ]
+    },
+    "CABUNK03": {
+      "image": "CABUNK03",
+      "offsets": [
+        [
+          32,
+          24
+        ]
+      ]
+    },
+    "CABUNK04": {
+      "image": "CABUNK04",
+      "offsets": [
+        [
+          2,
+          -1
+        ]
+      ]
+    },
+    "CAMSC13": {
+      "image": "CAMSC13",
+      "offsets": [
+        [
+          3,
+          8
+        ]
+      ]
+    }
+  },
+  "inputs": [
+    {
+      "name": "rulesmd.ini",
+      "source": "expandmd01.mix > 0x8218f9f4",
+      "sha256": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef"
+    },
+    {
+      "name": "artmd.ini",
+      "source": "ra2md.mix > localmd.mix > 0x5b47d8d5",
+      "sha256": "e1f0378394313c04ebbd5073f47785ee3e46f1b3c62d65724e8f3c310ee7ba31"
+    },
+    {
+      "name": "anim.pal",
+      "source": "ra2.mix > cache.mix > 0xa64c5120",
+      "sha256": "341e85171041e7c8be53d5533d96a9bf86b402d9d67335713369354aaa5707af"
+    },
+    {
+      "name": "FIRE01.shp",
+      "source": "ra2.mix > conquer.mix > 0x918b3aac",
+      "sha256": "b58a8a40a7dc26253e3ec491c8402501e0b888330c8304c54fc8765828248665"
+    },
+    {
+      "name": "FIRE02.shp",
+      "source": "ra2.mix > conquer.mix > 0xa0632031",
+      "sha256": "237b885c650a574d9c0d4397c599d7d93439e222b3145c48ff4079a5d6a4014b"
+    },
+    {
+      "name": "FIRE03.shp",
+      "source": "ra2.mix > conquer.mix > 0x6142b85",
+      "sha256": "41f196c3284426dbc94ccf939f4447ff8207ec8a87b20d4c556f259b29a477fa"
+    }
+  ]
+}

@@ -1,0 +1,645 @@
+{
+  "date": "2026-11-19",
+  "destination": "C:\\Users\\admin\\IronTide\\iron_tide\\docs\\memory",
+  "status": "complete",
+  "source_file_count": 40,
+  "verbatim_count": 36,
+  "excerpt_source_count": 4,
+  "sources": [
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\2026-11-16-irontide-performance-handoff.md",
+      "source_sha256": "a4e318aec5bbef3e9e82c04c89b3b2107f52ac6edde9a4b49e496c7c4cae7569",
+      "source_bytes": 7980,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 62
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/2026-11-16-irontide-performance-handoff.md",
+      "archive_sha256": "a4e318aec5bbef3e9e82c04c89b3b2107f52ac6edde9a4b49e496c7c4cae7569"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\2026-11-17-irontide-every-round-dual-reference.md",
+      "source_sha256": "9724f87457c4d903cf6832bb9d5a3964d49ef8890362a1430ec016d532670932",
+      "source_bytes": 1453,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 7
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/2026-11-17-irontide-every-round-dual-reference.md",
+      "archive_sha256": "9724f87457c4d903cf6832bb9d5a3964d49ef8890362a1430ec016d532670932"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\2026-11-17-irontide-final-production-performance-pause.md",
+      "source_sha256": "7f289f387da4e228301f5c5924a18d3cb1ec173fa610928bb168f0978fa6130e",
+      "source_bytes": 4150,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/2026-11-17-irontide-final-production-performance-pause.md",
+      "archive_sha256": "7f289f387da4e228301f5c5924a18d3cb1ec173fa610928bb168f0978fa6130e"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\2026-11-17-irontide-top10-structural-performance.md",
+      "source_sha256": "7019a9c8bb391976a6678e5ae06547172fb7cc49df4699c7306d9eb57531ec0d",
+      "source_bytes": 1655,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/2026-11-17-irontide-top10-structural-performance.md",
+      "archive_sha256": "7019a9c8bb391976a6678e5ae06547172fb7cc49df4699c7306d9eb57531ec0d"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261023-211241-iron-tide-handoff.md",
+      "source_sha256": "642883a092713fe75723312813d9f50c597e841509d1bd9f9dddd7a668ddb791",
+      "source_bytes": 7073,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 49
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261023-211241-iron-tide-handoff.md",
+      "archive_sha256": "642883a092713fe75723312813d9f50c597e841509d1bd9f9dddd7a668ddb791"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261027-182926-iron-tide-ra3-sdk-authority.md",
+      "source_sha256": "35ddbefc8f8abb5f150a6d8ed38862e5caba8639cb6bfe7164b5c306c67c842b",
+      "source_bytes": 1379,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261027-182926-iron-tide-ra3-sdk-authority.md",
+      "archive_sha256": "35ddbefc8f8abb5f150a6d8ed38862e5caba8639cb6bfe7164b5c306c67c842b"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261027-200642-iron-tide-ra3-field-damage-handoff.md",
+      "source_sha256": "cbfbc14c664eaa36abc66bccb3d84b12699a41f5c57c5f6f1c0c47bc0724b98d",
+      "source_bytes": 3148,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 17
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261027-200642-iron-tide-ra3-field-damage-handoff.md",
+      "archive_sha256": "cbfbc14c664eaa36abc66bccb3d84b12699a41f5c57c5f6f1c0c47bc0724b98d"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261027-ra3-mirage-presentation.md",
+      "source_sha256": "165566e2afb952de8f67bcc34a08a5c0f8139729c935a748524a344fefa966cc",
+      "source_bytes": 2053,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 11
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261027-ra3-mirage-presentation.md",
+      "archive_sha256": "165566e2afb952de8f67bcc34a08a5c0f8139729c935a748524a344fefa966cc"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261028-164515-irontide-ra3-xml-completeness.md",
+      "source_sha256": "5345b88c7e44a72347cf2715ab1ac04c1e86b06a73df124cf818d19fc11b1a17",
+      "source_bytes": 2015,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 12
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261028-164515-irontide-ra3-xml-completeness.md",
+      "archive_sha256": "5345b88c7e44a72347cf2715ab1ac04c1e86b06a73df124cf818d19fc11b1a17"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261029-123925-irontide-death-ai-handoff.md",
+      "source_sha256": "e41ef97f23b43af31d51e61aeb0f9983bdb24be2f114c6e772504ef72c5c2b3d",
+      "source_bytes": 6024,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 31
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261029-123925-irontide-death-ai-handoff.md",
+      "archive_sha256": "e41ef97f23b43af31d51e61aeb0f9983bdb24be2f114c6e772504ef72c5c2b3d"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261029-125114-irontide-ra3-completion-gm-targets.md",
+      "source_sha256": "ec2fd623d69e1f2a49d74a7876a17e5dab34c12f7d01149ab8e4f436be65d065",
+      "source_bytes": 5431,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 41
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261029-125114-irontide-ra3-completion-gm-targets.md",
+      "archive_sha256": "ec2fd623d69e1f2a49d74a7876a17e5dab34c12f7d01149ab8e4f436be65d065"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261102-125646-irontide-allied-soviet-model-detail.md",
+      "source_sha256": "7ae3b1f6b00d95986910668b47d685397339251634dec95128f2dcf99c81c31c",
+      "source_bytes": 1230,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 7
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261102-125646-irontide-allied-soviet-model-detail.md",
+      "archive_sha256": "7ae3b1f6b00d95986910668b47d685397339251634dec95128f2dcf99c81c31c"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261102-162454-irontide-weapon-cooldown-rings.md",
+      "source_sha256": "da664e7cdd34486a779c0782b4e5282ed0cbedc2e2fbe3ae3bd78e048eaf7e56",
+      "source_bytes": 1527,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261102-162454-irontide-weapon-cooldown-rings.md",
+      "archive_sha256": "da664e7cdd34486a779c0782b4e5282ed0cbedc2e2fbe3ae3bd78e048eaf7e56"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261103-165312-irontide-fix-version-readmes.md",
+      "source_sha256": "41f3b84221e81dda82743f4e3b693901c97cc6419c9dc735a1412b65e7a93f40",
+      "source_bytes": 477,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 3
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261103-165312-irontide-fix-version-readmes.md",
+      "archive_sha256": "41f3b84221e81dda82743f4e3b693901c97cc6419c9dc735a1412b65e7a93f40"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261104-183904209-irontide-tnkd-exoframe.md",
+      "source_sha256": "9c13c5df7fe755ed3077c24bca6c178084208544a3411434466f35eedf77f630",
+      "source_bytes": 1020,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261104-183904209-irontide-tnkd-exoframe.md",
+      "archive_sha256": "9c13c5df7fe755ed3077c24bca6c178084208544a3411434466f35eedf77f630"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261104-193335-irontide-turbine-ignition.md",
+      "source_sha256": "ae6e7314729b00473257a339cfb55b6186fe2b376f6e53fc489849a7f8bab2b0",
+      "source_bytes": 854,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261104-193335-irontide-turbine-ignition.md",
+      "archive_sha256": "ae6e7314729b00473257a339cfb55b6186fe2b376f6e53fc489849a7f8bab2b0"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261104-195110-irontide-ra2-skin-design-standard.md",
+      "source_sha256": "a2f41035770b676d9860091b538a5ef3565c4e135414cfb990f05e34a55ee613",
+      "source_bytes": 952,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261104-195110-irontide-ra2-skin-design-standard.md",
+      "archive_sha256": "a2f41035770b676d9860091b538a5ef3565c4e135414cfb990f05e34a55ee613"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261104-200110-irontide-hunter-short-jet-selection.md",
+      "source_sha256": "95ef6a527bda61605bd8bcbd9074be7799a442e0c9fba13537553dcbf847cb7a",
+      "source_bytes": 922,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261104-200110-irontide-hunter-short-jet-selection.md",
+      "archive_sha256": "95ef6a527bda61605bd8bcbd9074be7799a442e0c9fba13537553dcbf847cb7a"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261104-215339-irontide-ra2-infantry-skin-sockets.md",
+      "source_sha256": "1e8896de1c7a344c8a087a548bf6844cd39d5a0da535a88e8fc8edee856db235",
+      "source_bytes": 1013,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261104-215339-irontide-ra2-infantry-skin-sockets.md",
+      "archive_sha256": "1e8896de1c7a344c8a087a548bf6844cd39d5a0da535a88e8fc8edee856db235"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261105-172553-irontide-skill-card-scope.md",
+      "source_sha256": "4d09f3c6643b312188b24862ff4a0e472738296cf50da389f7b2b8401a7dc7d5",
+      "source_bytes": 1561,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 8
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261105-172553-irontide-skill-card-scope.md",
+      "archive_sha256": "4d09f3c6643b312188b24862ff4a0e472738296cf50da389f7b2b8401a7dc7d5"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261105-183154-irontide-talent-stack-display.md",
+      "source_sha256": "04cc5ea149d12cc080f16f6e51e2c8a6eed25505b01e2ba12b7ec30ca22aa1c3",
+      "source_bytes": 1471,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261105-183154-irontide-talent-stack-display.md",
+      "archive_sha256": "04cc5ea149d12cc080f16f6e51e2c8a6eed25505b01e2ba12b7ec30ca22aa1c3"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261105-184106-irontide-exclusive-card-demo-model.md",
+      "source_sha256": "a0a0986b18d93331a8943da058a21e4d3ef9736c8910248caaecdd743a0a56b5",
+      "source_bytes": 1054,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 7
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261105-184106-irontide-exclusive-card-demo-model.md",
+      "archive_sha256": "a0a0986b18d93331a8943da058a21e4d3ef9736c8910248caaecdd743a0a56b5"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\extensions\\ad_hoc\\notes\\20261105-auto-w-design-contract.md",
+      "source_sha256": "8c24f597e9bfdd8ac427271c26c54d044caadc8550d1138115ee87736b687b62",
+      "source_bytes": 1386,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 9
+        }
+      ],
+      "archive": "sources/memories/extensions/ad_hoc/notes/20261105-auto-w-design-contract.md",
+      "archive_sha256": "8c24f597e9bfdd8ac427271c26c54d044caadc8550d1138115ee87736b687b62"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\MEMORY.md",
+      "source_sha256": "51c2ae2d182f55ae87954164315540c8c50c9ed610fa482695bd2be240d09188",
+      "source_bytes": 245923,
+      "kind": "excerpt",
+      "line_ranges": [
+        {
+          "start_line": 237,
+          "end_line": 312,
+          "text_sha256": "31ae81e4f5438f84f7de1763d27b3c301821ec3ceb824de4a08f9f52c9fb9359"
+        },
+        {
+          "start_line": 807,
+          "end_line": 917,
+          "text_sha256": "c90c79411a13e3219f102592ada66cb649a40c6d3f536a9443b5377ad41608eb"
+        }
+      ],
+      "archive": "sources/memories/excerpts/MEMORY-irontide.md",
+      "archive_sha256": "636a1cacf86562568a6427f674be7fe4d1d72ae477a595d5478b2fe9df4fe7d7"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\memory_summary.md",
+      "source_sha256": "7836c7e1808005e0e26cd380f1a07207a6ad6edb319c3bd866be2ccf5d732cef",
+      "source_bytes": 13282,
+      "kind": "excerpt",
+      "line_ranges": [
+        {
+          "start_line": 21,
+          "end_line": 22,
+          "text_sha256": "5042eb5395d4f313029a448890204e53a3bb7e6e479f8df48d9a4111482802c9"
+        },
+        {
+          "start_line": 26,
+          "end_line": 26,
+          "text_sha256": "34507fea591eebe5d787bdd568a372713c3c006cfaf63d8a861458d7748eed78"
+        },
+        {
+          "start_line": 85,
+          "end_line": 113,
+          "text_sha256": "a5251630e14f1b96a87619a9a9da85e948446b078ddb026d45cafddd57fc7ba0"
+        },
+        {
+          "start_line": 137,
+          "end_line": 143,
+          "text_sha256": "b9a3c2d875418cd1750f42094886f53621b516f49060a6b07aaa8ab678b24ee3"
+        }
+      ],
+      "archive": "sources/memories/excerpts/memory_summary-irontide.md",
+      "archive_sha256": "9a734c9405b48b6d6c80f25a4af8e7a835f124a675ed183c80f09ce0e88e7dc6"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\raw_memories.md",
+      "source_sha256": "1a6e0fec8c673fac10139767f3551d18c0d5fb4ec4a82c411dc7fa22edb3b1e9",
+      "source_bytes": 283928,
+      "kind": "excerpt",
+      "line_ranges": [
+        {
+          "start_line": 1577,
+          "end_line": 1649,
+          "text_sha256": "633d38967409273f31d66169a4f8515e37df808d32be1ceb331a2b0baa026d95"
+        },
+        {
+          "start_line": 2429,
+          "end_line": 2522,
+          "text_sha256": "f8a839beef840026b78e445f768b721738b8a2ea81e0e2a8ac7b8c5af6fec6a5"
+        }
+      ],
+      "archive": "sources/memories/excerpts/raw_memories-irontide.md",
+      "archive_sha256": "19700fa56f82890db7180945f6821b9a5efb6d66ff5ce0043e9fe5ff78f30b4a"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\rollout_summaries\\2026-10-20T02-50-53-w2iT-irontide_bridge_fix_performance_call_logging_hero_design.md",
+      "source_sha256": "a560d9edbafe145f4a38c4a4fe7dc871754bed043c4eebc98a6e3b266284a721",
+      "source_bytes": 9830,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 82
+        }
+      ],
+      "archive": "sources/memories/rollout_summaries/2026-10-20T02-50-53-w2iT-irontide_bridge_fix_performance_call_logging_hero_design.md",
+      "archive_sha256": "a560d9edbafe145f4a38c4a4fe7dc871754bed043c4eebc98a6e3b266284a721"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories\\rollout_summaries\\2026-10-27T06-15-29-noHH-irontide_ra3_xml_completeness_effects_balance_air_impact.md",
+      "source_sha256": "44849e43e20ac2dade66741328433de29e4ff904f329e10294dba713201ca23b",
+      "source_bytes": 5653,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 78
+        }
+      ],
+      "archive": "sources/memories/rollout_summaries/2026-10-27T06-15-29-noHH-irontide_ra3_xml_completeness_effects_balance_air_impact.md",
+      "archive_sha256": "44849e43e20ac2dade66741328433de29e4ff904f329e10294dba713201ca23b"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-12-irontide-hero-contracts.md",
+      "source_sha256": "cf1e211b290c19177b1a311dabb3654dd9c45d0435c705c8fa8eb98aa2ea1b3e",
+      "source_bytes": 1610,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 8
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-12-irontide-hero-contracts.md",
+      "archive_sha256": "cf1e211b290c19177b1a311dabb3654dd9c45d0435c705c8fa8eb98aa2ea1b3e"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-12-irontide-unit-status.md",
+      "source_sha256": "64d3a73ee049b186fc95b5b2c7b99a90b1fc000fdf905651001b8aeff5b56130",
+      "source_bytes": 1298,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 7
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-12-irontide-unit-status.md",
+      "archive_sha256": "64d3a73ee049b186fc95b5b2c7b99a90b1fc000fdf905651001b8aeff5b56130"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-16-irontide-profile-top10-first.md",
+      "source_sha256": "f0c52768b5df742f695e4460514018e1238ea4a22161583af2c2a06c15e340ef",
+      "source_bytes": 1231,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 8
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-16-irontide-profile-top10-first.md",
+      "archive_sha256": "f0c52768b5df742f695e4460514018e1238ea4a22161583af2c2a06c15e340ef"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-17-irontide-expedition-and-hud.md",
+      "source_sha256": "1d2077c3ce684cec024c47d33130fda56fc1ae56754d300383520d0412f614e9",
+      "source_bytes": 12561,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 68
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-17-irontide-expedition-and-hud.md",
+      "archive_sha256": "1d2077c3ce684cec024c47d33130fda56fc1ae56754d300383520d0412f614e9"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-17-irontide-night-hunter-skin-lessons.md",
+      "source_sha256": "f931fdb503aff9dd829601d65929c32974a2610d6d5273c065e86cafcbff1cbf",
+      "source_bytes": 7325,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 33
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-17-irontide-night-hunter-skin-lessons.md",
+      "archive_sha256": "f931fdb503aff9dd829601d65929c32974a2610d6d5273c065e86cafcbff1cbf"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-18-irontide-skill-rarity-design.md",
+      "source_sha256": "b02c41d5da421e962d0d3902589a46585b47874e2faff486ad239c7e12d6b50e",
+      "source_bytes": 695,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 5
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-18-irontide-skill-rarity-design.md",
+      "archive_sha256": "b02c41d5da421e962d0d3902589a46585b47874e2faff486ad239c7e12d6b50e"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\extensions\\ad_hoc\\notes\\2026-11-19-irontide-60fps-optimization-plan.md",
+      "source_sha256": "f5a334e052668d52bb23e5850f3f381b4ece755e71b3b3f4a967bf751a321097",
+      "source_bytes": 1194,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 14
+        }
+      ],
+      "archive": "sources/memories_v2/extensions/ad_hoc/notes/2026-11-19-irontide-60fps-optimization-plan.md",
+      "archive_sha256": "f5a334e052668d52bb23e5850f3f381b4ece755e71b3b3f4a967bf751a321097"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\memory_summary.md",
+      "source_sha256": "7a3ce6f759fcd03f84d08df77fe84a98125df157f8f2bf26ade0c788de39ed47",
+      "source_bytes": 9631,
+      "kind": "excerpt",
+      "line_ranges": [
+        {
+          "start_line": 16,
+          "end_line": 17,
+          "text_sha256": "c7f61faade020e1d45a942e8cf6668f76226b4687df17c854ebed1c162309c3d"
+        },
+        {
+          "start_line": 47,
+          "end_line": 67,
+          "text_sha256": "48505f98ca7ca75e989fd9b15c0f71dd72f5e3f8bfef1efbb801000f6b4aab49"
+        },
+        {
+          "start_line": 86,
+          "end_line": 89,
+          "text_sha256": "550283874d678ed82fef430155a79c8c3cb569809eead0136d5c99a61dedde5a"
+        }
+      ],
+      "archive": "sources/memories_v2/excerpts/memory_summary-irontide.md",
+      "archive_sha256": "1b211fae1f7fd661c4f288d2151dd6f9ca44c8f35f5422e1725843bcd8929cbf"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\rollout_summaries\\2026-10-20T02-50-53-w2iT-iron_tide_gameplay_performance_and_diagnostics.md",
+      "source_sha256": "9821e50ecea0e3294f6e0842a481613af41bf7170d3f4b5311aa7f46754f2c1c",
+      "source_bytes": 5065,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "archive": "sources/memories_v2/rollout_summaries/2026-10-20T02-50-53-w2iT-iron_tide_gameplay_performance_and_diagnostics.md",
+      "archive_sha256": "9821e50ecea0e3294f6e0842a481613af41bf7170d3f4b5311aa7f46754f2c1c"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\rollout_summaries\\2026-10-27T06-15-29-noHH-irontide_ra3_porting_gm_and_air_impact_handoff.md",
+      "source_sha256": "9b5b247e9f36af3c97f7898b24b9c6beb735cc9fd3cb2d117bd44cb8c6148a45",
+      "source_bytes": 4012,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 25
+        }
+      ],
+      "archive": "sources/memories_v2/rollout_summaries/2026-10-27T06-15-29-noHH-irontide_ra3_porting_gm_and_air_impact_handoff.md",
+      "archive_sha256": "9b5b247e9f36af3c97f7898b24b9c6beb735cc9fd3cb2d117bd44cb8c6148a45"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\rollout_summaries\\2026-11-13T05-01-31-iBzp-irontide_p95_paused_ai_starvation_fix.md",
+      "source_sha256": "c01cb151af5ab563fc9a5673b6a531116b1f1ad62dae66a4e14b4a7b6c58cb20",
+      "source_bytes": 3077,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "archive": "sources/memories_v2/rollout_summaries/2026-11-13T05-01-31-iBzp-irontide_p95_paused_ai_starvation_fix.md",
+      "archive_sha256": "c01cb151af5ab563fc9a5673b6a531116b1f1ad62dae66a4e14b4a7b6c58cb20"
+    },
+    {
+      "source": "C:\\Users\\admin\\.codex\\memories_v2\\rollout_summaries\\2026-11-16T09-20-29-tg1L-irontide_six_house_33ms_optimization_paused.md",
+      "source_sha256": "3ae1f449298b88aa606e15aed9d3dc8f0dcafe8ce1ca2a298ac6d351e73bd79d",
+      "source_bytes": 3884,
+      "kind": "verbatim",
+      "line_ranges": [
+        {
+          "start_line": 1,
+          "end_line": 13
+        }
+      ],
+      "archive": "sources/memories_v2/rollout_summaries/2026-11-16T09-20-29-tg1L-irontide_six_house_33ms_optimization_paused.md",
+      "archive_sha256": "3ae1f449298b88aa606e15aed9d3dc8f0dcafe8ce1ca2a298ac6d351e73bd79d"
+    }
+  ],
+  "current_thread_evidence": {
+    "source": "C:\\Users\\admin\\IronTide\\.validation\\ai-storm-damage-20261119\\summary.json",
+    "archive": "evidence/ai-storm-damage-20261119-summary.json",
+    "sha256": "3e55638874b03a4820b7c1815f93061110b4ef3a8a69d22fa607108fb3974dab"
+  },
+  "searched_roots": [
+    "C:\\Users\\admin\\.codex\\memories",
+    "C:\\Users\\admin\\.codex\\memories_v2",
+    "C:\\Users\\admin\\IronTide\\.codex",
+    "C:\\Users\\admin\\IronTide\\iron_tide\\.codex",
+    "C:\\Users\\admin\\KFramework_server\\.codex\\memory",
+    "C:\\Users\\admin\\KFramework_server\\.claude\\memory"
+  ],
+  "identical_content_groups": [],
+  "validation": {
+    "all_sources_unchanged": true,
+    "all_verbatim_copies_identical": true,
+    "all_excerpt_line_ranges_verified": true,
+    "curated_links_checked": 97,
+    "broken_curated_links": [],
+    "historical_archive_links": "preserved verbatim; not asserted portable",
+    "historical_tests_rerun": false
+  },
+  "scope": "IronTide Markdown memories; originals retained; unrelated sections excluded",
+  "curated_files": {
+    "CURRENT_THREAD.md": "c1e15d2385788413474706c81323695fb3c54187f20dbabe47d5070e9eb3ff44",
+    "EXPEDITION.md": "7d9f33b903142543af7ec0dda5da796478d02043212e3ac0582fb8194f8e3b87",
+    "GAMEPLAY.md": "373648102ec62e8e24099317b0b9db2315355bab751202a8b8e9717830019414",
+    "HISTORY.md": "75a0647cc2b443d64a6ff66acb3ac0a57afe7dcadc21f8fd44618aaae20bd398",
+    "PERFORMANCE.md": "d5645a340cb71b7f9cca41fb386338c24d7f6e5eb4a2f549211e8b78720b6a7b",
+    "PRESENTATION.md": "16dcf7533e38f0df17a3cc7ecdf9a5c0c144859790fc6e5e19d6022a0d7e7e88",
+    "README.md": "c1cb4605fcfe4a109fdc37ed4e227c0036d77303a3eaee7acfc2d6bc54973ed1",
+    "SOURCE_INDEX.md": "022f9b8888dcaec8c821ad00c11a69d76f8830625061e3746e651fd0247f41e1",
+    "VALIDATION.md": "c029bd23161a5d288969b3d53e3bdcaa86cb563c9a16f3d5f7cf6db4dc4dcad3",
+    "WORKSPACE.md": "abe5b776ab9719916b4aac60673681160a45b7b4c4d7f2b14eb4aacc3dadb86b"
+  }
+}

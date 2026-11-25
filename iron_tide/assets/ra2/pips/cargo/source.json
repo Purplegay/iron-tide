@@ -1,0 +1,87 @@
+{
+  "source": {
+    "name": "PIPS2.SHP",
+    "archive": "ra2md.mix > conqmd.mix > 0xb98c56d7",
+    "sha256": "0afe9935160c04bdabed5bfefd0d55aad645ae38ec7dddeb5b3f4f2b2d2712d4"
+  },
+  "palette": {
+    "name": "PALETTE.PAL",
+    "archive": "ra2.mix > cache.mix > 0x18e978ee",
+    "sha256": "e85c535002573b5f95f7c361c4bdb95ee43e4914ddc926afda9ace995c54242b"
+  },
+  "reference": "https://github.com/OpenRA/ra2/blob/master/mods/ra2/sequences/misc.yaml",
+  "frames": {
+    "empty": {
+      "index": 0,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "2c10f42b644c4270b095b0ca45eab1e38699912c8061bd44bf34aa37444b51b3"
+    },
+    "green": {
+      "index": 1,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "2538d521c6dc933600ef56ea0b13812cff4b69d05ebf64e3749ec978a96a6a79"
+    },
+    "yellow": {
+      "index": 2,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "c97153acf21d1d392c140a30d2d6e4efe888ded548f49b1dec59f12ec1c8262d"
+    },
+    "white": {
+      "index": 3,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "bf6c14955f3e95c939f730dc0ddc1fcb2069adb04ab9e8074f0dac74110d9e72"
+    },
+    "red": {
+      "index": 4,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "dcee59edc2210a487455ff86ff1e2b272dcedf466a665d0ed36f56a8cc1d2618"
+    },
+    "blue": {
+      "index": 5,
+      "size": [
+        4,
+        4
+      ],
+      "offset": [
+        1,
+        4
+      ],
+      "sha256": "909f6cb9731da74deb241075ae6d735dd9c52b4d38d20560818e2fc57c5453a3"
+    }
+  }
+}

@@ -1,0 +1,263 @@
+{
+  "save_sha256": "87d51faeb5df2114f8fd783a14ca328b81faf63c2779dcfb3b18a6385d187946",
+  "scope": "Headless CPU; 1x gameplay, 15 Hz physics. selection/move contain only one player unit. Not GPU or Ryzen 3700X acceptance.",
+  "runs": {
+    "before": {
+      "buildings": 159,
+      "difficulty": 6,
+      "layout": "yr_isleland",
+      "units": 302,
+      "phases": {
+        "battle": {
+          "frames": 209,
+          "hz": 15,
+          "max": 160.812,
+          "p50": 67.416,
+          "p95": 115.039,
+          "p99": 143.543,
+          "paths": 468,
+          "physics_steps": 227,
+          "selected": 0,
+          "shots": 17,
+          "sim_s": 15.0664608148148,
+          "wall_s": 15.102
+        },
+        "move": {
+          "frames": 148,
+          "hz": 15,
+          "max": 179.554,
+          "p50": 97.594,
+          "p95": 158.672,
+          "p99": 174.767,
+          "paths": 543,
+          "physics_steps": 226,
+          "selected": 1,
+          "shots": 17,
+          "sim_s": 15.0311143333334,
+          "wall_s": 15.141
+        },
+        "selection": {
+          "frames": 145,
+          "hz": 15,
+          "max": 209.856,
+          "p50": 102.781,
+          "p95": 146.589,
+          "p99": 198.208,
+          "paths": 651,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 16,
+          "sim_s": 15.0494825185185,
+          "wall_s": 15.072
+        }
+      }
+    },
+    "after1": {
+      "buildings": 159,
+      "difficulty": 6,
+      "layout": "yr_isleland",
+      "units": 302,
+      "phases": {
+        "battle": {
+          "frames": 416,
+          "hz": 15,
+          "max": 83.55,
+          "p50": 39.24,
+          "p95": 69.065,
+          "p99": 75.841,
+          "paths": 630,
+          "physics_steps": 225,
+          "selected": 0,
+          "shots": 16,
+          "sim_s": 15.040264,
+          "wall_s": 15.006
+        },
+        "move": {
+          "frames": 350,
+          "hz": 15,
+          "max": 111.016,
+          "p50": 44.159,
+          "p95": 74.507,
+          "p99": 97.585,
+          "paths": 502,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 17,
+          "sim_s": 15.0222222222222,
+          "wall_s": 15.019
+        },
+        "selection": {
+          "frames": 333,
+          "hz": 15,
+          "max": 100.833,
+          "p50": 47.097,
+          "p95": 73.958,
+          "p99": 86.951,
+          "paths": 652,
+          "physics_steps": 226,
+          "selected": 1,
+          "shots": 16,
+          "sim_s": 15.0101676868688,
+          "wall_s": 14.994
+        }
+      }
+    },
+    "after2": {
+      "buildings": 159,
+      "difficulty": 6,
+      "layout": "yr_isleland",
+      "units": 302,
+      "phases": {
+        "battle": {
+          "frames": 411,
+          "hz": 15,
+          "max": 85.161,
+          "p50": 38.84,
+          "p95": 68.355,
+          "p99": 77.606,
+          "paths": 570,
+          "physics_steps": 226,
+          "selected": 0,
+          "shots": 14,
+          "sim_s": 15.0006016666668,
+          "wall_s": 14.97
+        },
+        "move": {
+          "frames": 325,
+          "hz": 15,
+          "max": 110.015,
+          "p50": 46.371,
+          "p95": 74.632,
+          "p99": 83.824,
+          "paths": 500,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 20,
+          "sim_s": 15.0281024444444,
+          "wall_s": 14.957
+        },
+        "selection": {
+          "frames": 306,
+          "hz": 15,
+          "max": 96.719,
+          "p50": 49.791,
+          "p95": 81.193,
+          "p99": 87.502,
+          "paths": 624,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 20,
+          "sim_s": 15.0438652222223,
+          "wall_s": 15.09
+        }
+      }
+    },
+    "after3": {
+      "buildings": 159,
+      "difficulty": 6,
+      "layout": "yr_isleland",
+      "units": 302,
+      "phases": {
+        "battle": {
+          "frames": 420,
+          "hz": 15,
+          "max": 99.277,
+          "p50": 39.148,
+          "p95": 65.445,
+          "p99": 77.368,
+          "paths": 638,
+          "physics_steps": 226,
+          "selected": 0,
+          "shots": 17,
+          "sim_s": 15.078368,
+          "wall_s": 15.079
+        },
+        "move": {
+          "frames": 334,
+          "hz": 15,
+          "max": 103.11,
+          "p50": 45.418,
+          "p95": 73.609,
+          "p99": 84.711,
+          "paths": 631,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 19,
+          "sim_s": 15.0188632222221,
+          "wall_s": 15.007
+        },
+        "selection": {
+          "frames": 351,
+          "hz": 15,
+          "max": 103.276,
+          "p50": 44.518,
+          "p95": 70.924,
+          "p99": 84.92,
+          "paths": 716,
+          "physics_steps": 226,
+          "selected": 1,
+          "shots": 15,
+          "sim_s": 15.0086544444444,
+          "wall_s": 15.007
+        }
+      }
+    },
+    "final": {
+      "buildings": 159,
+      "difficulty": 6,
+      "layout": "yr_isleland",
+      "units": 302,
+      "phases": {
+        "battle": {
+          "frames": 429,
+          "hz": 15,
+          "max": 85.1,
+          "p50": 38.514,
+          "p95": 67.623,
+          "p99": 73.483,
+          "paths": 556,
+          "physics_steps": 225,
+          "selected": 0,
+          "shots": 15,
+          "sim_s": 15.0219526666667,
+          "wall_s": 14.985
+        },
+        "move": {
+          "frames": 322,
+          "hz": 15,
+          "max": 123.475,
+          "p50": 48.008,
+          "p95": 74.437,
+          "p99": 82.583,
+          "paths": 649,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 30,
+          "sim_s": 15.0224983030304,
+          "wall_s": 15.023
+        },
+        "selection": {
+          "frames": 319,
+          "hz": 15,
+          "max": 105.173,
+          "p50": 49.319,
+          "p95": 76.399,
+          "p99": 88.945,
+          "paths": 671,
+          "physics_steps": 225,
+          "selected": 1,
+          "shots": 22,
+          "sim_s": 15.0,
+          "wall_s": 15.009
+        }
+      }
+    }
+  },
+  "hardware": "Intel Core Ultra 5 250K Plus, 18 logical processors",
+  "source_sha256": {
+    "iron_tide/scripts/units/allied_abilities.gd": "72b320a86c2e655320edf747a16fdaf88b9d8c42973cca185732417f25d7ae4b",
+    "iron_tide/scripts/units/ra3_mirage.gd": "c598d84cf9f0fb01828dd25f66741f9526120416dd5e328ad4a5c2e081302316",
+    "iron_tide/scripts/world/skirmish_tactics.gd": "be2fe5b2d1faa579e29aacba122b685efeccf4fcfc2f549d6c141db82ee65d4f",
+    "iron_tide/scripts/ui/minimap.gd": "9f84073b2eb9776f9635b9a1825e4a840e7663e3cbb9e65583bb69319ae7447e"
+  }
+}

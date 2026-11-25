@@ -1,0 +1,24 @@
+{
+  "id": "GAROBO",
+  "layers": [
+    {
+      "kind": "activeanim",
+      "image": "GAROBO_A",
+      "frames": 40,
+      "shadow": true,
+      "x": 0,
+      "y": 0,
+      "dmg": {
+        "image": "GAROBO_A",
+        "frames": 40,
+        "shadow": true,
+        "loopStart": 20,
+        "loopEnd": 39,
+        "rate": 180
+      },
+      "loopStart": 0,
+      "loopEnd": 19,
+      "rate": 220
+    }
+  ]
+}

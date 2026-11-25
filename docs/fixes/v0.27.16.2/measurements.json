@@ -1,0 +1,230 @@
+{
+  "save_sha256": "8afa2d7de8127511f3306d8e431fdf3f2e3c76ba70d32cb320b",
+  "initial_units": 327,
+  "initial_buildings": 155,
+  "times_ms": {
+    "equalold": {
+      "battle": {
+        "frames": 177,
+        "hz": 15,
+        "max": 172.45,
+        "p50": 78.387,
+        "p95": 131.918,
+        "p99": 153.469,
+        "paths": 598,
+        "physics_steps": 226,
+        "selected": 0,
+        "shots": 7,
+        "sim_s": 15.072069,
+        "wall_s": 15.079
+      },
+      "move": {
+        "frames": 153,
+        "hz": 15,
+        "max": 234.864,
+        "p50": 92.848,
+        "p95": 153.929,
+        "p99": 189.917,
+        "paths": 531,
+        "physics_steps": 227,
+        "selected": 1,
+        "shots": 8,
+        "sim_s": 15.0269453333334,
+        "wall_s": 15.335
+      },
+      "selection": {
+        "frames": 185,
+        "hz": 15,
+        "max": 165.381,
+        "p50": 73.971,
+        "p95": 129.421,
+        "p99": 165.073,
+        "paths": 634,
+        "physics_steps": 225,
+        "selected": 1,
+        "shots": 5,
+        "sim_s": 15.010835,
+        "wall_s": 15.0
+      }
+    },
+    "validated": {
+      "battle": {
+        "frames": 322,
+        "hz": 15,
+        "max": 130.803,
+        "p50": 47.077,
+        "p95": 77.139,
+        "p99": 99.019,
+        "paths": 669,
+        "physics_steps": 226,
+        "selected": 0,
+        "shots": 8,
+        "sim_s": 15.0185538181818,
+        "wall_s": 15.021
+      },
+      "move": {
+        "frames": 246,
+        "hz": 15,
+        "max": 147.009,
+        "p50": 59.285,
+        "p95": 105.906,
+        "p99": 143.667,
+        "paths": 531,
+        "physics_steps": 227,
+        "selected": 1,
+        "shots": 10,
+        "sim_s": 15.0748983636365,
+        "wall_s": 15.199
+      },
+      "selection": {
+        "frames": 269,
+        "hz": 15,
+        "max": 252.742,
+        "p50": 54.51,
+        "p95": 98.226,
+        "p99": 130.267,
+        "paths": 649,
+        "physics_steps": 225,
+        "selected": 1,
+        "shots": 8,
+        "sim_s": 15.0026707575758,
+        "wall_s": 15.045
+      }
+    },
+    "oldrepeat": {
+      "battle": {
+        "frames": 189,
+        "hz": 15,
+        "max": 159.979,
+        "p50": 74.921,
+        "p95": 126.921,
+        "p99": 154.613,
+        "paths": 630,
+        "physics_steps": 225,
+        "selected": 0,
+        "shots": 7,
+        "sim_s": 15.0112205925926,
+        "wall_s": 15.008
+      },
+      "move": {
+        "frames": 146,
+        "hz": 15,
+        "max": 197.861,
+        "p50": 100.344,
+        "p95": 159.213,
+        "p99": 173.502,
+        "paths": 575,
+        "physics_steps": 225,
+        "selected": 1,
+        "shots": 7,
+        "sim_s": 15.0324850000001,
+        "wall_s": 15.052
+      },
+      "selection": {
+        "frames": 165,
+        "hz": 15,
+        "max": 200.65,
+        "p50": 83.639,
+        "p95": 149.234,
+        "p99": 187.261,
+        "paths": 597,
+        "physics_steps": 228,
+        "selected": 1,
+        "shots": 8,
+        "sim_s": 15.0941043333334,
+        "wall_s": 15.244
+      }
+    },
+    "newrepeat": {
+      "battle": {
+        "frames": 325,
+        "hz": 15,
+        "max": 121.915,
+        "p50": 46.897,
+        "p95": 77.653,
+        "p99": 110.66,
+        "paths": 675,
+        "physics_steps": 226,
+        "selected": 0,
+        "shots": 6,
+        "sim_s": 15.0262626262627,
+        "wall_s": 15.05
+      },
+      "move": {
+        "frames": 268,
+        "hz": 15,
+        "max": 194.067,
+        "p50": 54.506,
+        "p95": 86.41,
+        "p99": 140.077,
+        "paths": 555,
+        "physics_steps": 226,
+        "selected": 1,
+        "shots": 8,
+        "sim_s": 15.0511332222224,
+        "wall_s": 15.084
+      },
+      "selection": {
+        "frames": 240,
+        "hz": 15,
+        "max": 233.018,
+        "p50": 59.621,
+        "p95": 103.29,
+        "p99": 155.653,
+        "paths": 665,
+        "physics_steps": 225,
+        "selected": 1,
+        "shots": 6,
+        "sim_s": 15.0282828282828,
+        "wall_s": 15.084
+      }
+    }
+  },
+  "old_move_inclusive_ms_per_frame": {
+    "battle.path_for_unit": 5.22,
+    "path_service.find_path": 3.76,
+    "flow_field._expand_to": 0.38,
+    "local_traffic.apply": 2.96,
+    "unit._slide_across_bridge_layers": 1.42,
+    "unit._refresh_target": 8.06,
+    "unit._process_combat": 20.74
+  },
+  "tests": {
+    "ai_dispatch_regression": [
+      26,
+      0
+    ],
+    "blocked_order_regression": [
+      18,
+      0
+    ],
+    "deployed_traffic_regression": [
+      280,
+      0
+    ],
+    "native_bridge_traffic_regression": [
+      30,
+      0
+    ],
+    "navigation_building_regression": [
+      47,
+      0
+    ],
+    "refinery_traffic_regression": [
+      78,
+      0
+    ],
+    "skirmish_coast_regression": [
+      260,
+      0
+    ],
+    "traffic_regression": [
+      52,
+      0
+    ],
+    "yr_fortress_regression": [
+      176,
+      0
+    ]
+  }
+}

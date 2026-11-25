@@ -1,0 +1,159 @@
+{
+  "checks": [
+    {
+      "details": 3,
+      "name": "ra2 three real Hornet bombs false",
+      "passed": true
+    },
+    {
+      "details": 9880.0,
+      "name": "ra2 bomb damages stationary armor",
+      "passed": true
+    },
+    {
+      "details": 3,
+      "name": "ra2 three real Hornet bombs true",
+      "passed": true
+    },
+    {
+      "details": 9880.0,
+      "name": "ra2 bomb damages moving armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 airborne Hornet releases its bomb directly overhead",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 overhead bomb damages its target",
+      "passed": true
+    },
+    {
+      "details": [
+        [
+          "deck_landing",
+          0,
+          0.0,
+          22.0
+        ],
+        [
+          "deck_landing",
+          1,
+          0.0,
+          100.35782623291
+        ],
+        [
+          "deck_landing",
+          1,
+          0.0,
+          138.200271606445
+        ]
+      ],
+      "name": "ra2 all surviving planes return to continuously moving carrier after target is freed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 recovery preserves fired and unused ammo until deck reload",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 target loss leaves reloaded squadron aboard",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 new order launches same three aircraft",
+      "passed": true
+    },
+    {
+      "details": 3,
+      "name": "iron_tide three real Hornet bombs false",
+      "passed": true
+    },
+    {
+      "details": 9880.0,
+      "name": "iron_tide bomb damages stationary armor",
+      "passed": true
+    },
+    {
+      "details": 3,
+      "name": "iron_tide three real Hornet bombs true",
+      "passed": true
+    },
+    {
+      "details": 9880.0,
+      "name": "iron_tide bomb damages moving armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide airborne Hornet releases its bomb directly overhead",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide overhead bomb damages its target",
+      "passed": true
+    },
+    {
+      "details": [
+        [
+          "deck_landing",
+          0,
+          0.0,
+          22.0
+        ],
+        [
+          "deck_landing",
+          1,
+          0.0,
+          100.35782623291
+        ],
+        [
+          "deck_landing",
+          1,
+          0.0,
+          138.200271606445
+        ]
+      ],
+      "name": "iron_tide all surviving planes return to continuously moving carrier after target is freed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide recovery preserves fired and unused ammo until deck reload",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide target loss leaves reloaded squadron aboard",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide new order launches same three aircraft",
+      "passed": true
+    }
+  ],
+  "evidence": {
+    "engine": "4.7.2-stable (official)",
+    "input": "Viewport.push_input routes mouse/key events through the real battle/HUD",
+    "modes": [
+      "ra2",
+      "iron_tide"
+    ],
+    "project": "C:/Users/admin/Temp/iron-memory-nov8/project/",
+    "user_dir": "C:/Users/admin/Temp/iron-memory-nov8/hotpaths-carrier/profile/CodexIronTideValidation/edgeperf",
+    "zooms": [
+      0.5,
+      1,
+      2,
+      4
+    ]
+  },
+  "failed": 0
+}

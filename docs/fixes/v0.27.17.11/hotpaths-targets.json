@@ -1,0 +1,345 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2: ally: tank destroyer prefers vulnerable armor over nearest infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: one-shot armored target beats healthy armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: shootable target beats weak target beyond weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: manual focus overrides automatic counter and health priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: small distance changes do not churn current target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: embarked units are excluded before scoring",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: automatic retargeting preserves a valid ongoing burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: retargeting resumes when volley ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: cease fire prevents autonomous target choice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: return fire without provocation remains idle",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: GI prefers infantry despite closer tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: automatic fire ignores targets inside minimum range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: defensive buildings use the same counter priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: real automatic volley targets the low-health counter target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: selected low-health target takes real lethal damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: AA acquires a plane beyond its ground weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ally: editing one shot leaves the cached weapon intact",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: tank destroyer prefers vulnerable armor over nearest infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: one-shot armored target beats healthy armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: shootable target beats weak target beyond weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: manual focus overrides automatic counter and health priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: small distance changes do not churn current target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: embarked units are excluded before scoring",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: automatic retargeting preserves a valid ongoing burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: retargeting resumes when volley ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: cease fire prevents autonomous target choice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: return fire without provocation remains idle",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: GI prefers infantry despite closer tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: automatic fire ignores targets inside minimum range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: defensive buildings use the same counter priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: real automatic volley targets the low-health counter target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: selected low-health target takes real lethal damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: AA acquires a plane beyond its ground weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy: editing one shot leaves the cached weapon intact",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: tank destroyer prefers vulnerable armor over nearest infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: one-shot armored target beats healthy armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: shootable target beats weak target beyond weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: manual focus overrides automatic counter and health priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: small distance changes do not churn current target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: embarked units are excluded before scoring",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: automatic retargeting preserves a valid ongoing burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: retargeting resumes when volley ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: cease fire prevents autonomous target choice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: return fire without provocation remains idle",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: GI prefers infantry despite closer tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: automatic fire ignores targets inside minimum range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: defensive buildings use the same counter priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: real automatic volley targets the low-health counter target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: selected low-health target takes real lethal damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: AA acquires a plane beyond its ground weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ally: editing one shot leaves the cached weapon intact",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: tank destroyer prefers vulnerable armor over nearest infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: one-shot armored target beats healthy armor",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: shootable target beats weak target beyond weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: manual focus overrides automatic counter and health priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: small distance changes do not churn current target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: embarked units are excluded before scoring",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: automatic retargeting preserves a valid ongoing burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: retargeting resumes when volley ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: cease fire prevents autonomous target choice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: return fire without provocation remains idle",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: GI prefers infantry despite closer tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: automatic fire ignores targets inside minimum range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: defensive buildings use the same counter priority",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: real automatic volley targets the low-health counter target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: selected low-health target takes real lethal damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: AA acquires a plane beyond its ground weapon range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy: editing one shot leaves the cached weapon intact",
+      "passed": true
+    }
+  ],
+  "failed": 0
+}

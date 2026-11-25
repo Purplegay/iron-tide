@@ -1,0 +1,1195 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula MTNK/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula E1/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: single-pass buffs equal original formula GGI/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain MTNK/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach MTNK/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain MTNK/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach MTNK/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain MTNK/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach MTNK/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain MTNK/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach MTNK/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain APOC/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach APOC/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain APOC/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach APOC/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain APOC/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach APOC/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain APOC/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach APOC/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain BFRT/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach BFRT/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain BFRT/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach BFRT/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain BFRT/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach BFRT/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain BFRT/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach BFRT/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DRED/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DRED/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DRED/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DRED/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DRED/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DRED/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DRED/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DRED/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DEST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DEST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DEST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DEST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DEST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DEST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain DEST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach DEST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain GHOST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach GHOST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain GHOST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach GHOST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain GHOST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach GHOST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain GHOST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach GHOST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain FV/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach FV/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain FV/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach FV/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain FV/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach FV/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves domain FV/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: resolved weapon preserves reach FV/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula MTNK/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula E1/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/false/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/4",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/5",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/6",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: single-pass buffs equal original formula GGI/true/7",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ordinary actor has no freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live chrono arrival freeze still applies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: expired chrono state is not frozen",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: live temporal owner still freezes",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: idle ground logistics has no work",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain MTNK/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach MTNK/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain MTNK/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach MTNK/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain MTNK/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach MTNK/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain MTNK/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach MTNK/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain APOC/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach APOC/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain APOC/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach APOC/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain APOC/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach APOC/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain APOC/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach APOC/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain BFRT/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach BFRT/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain BFRT/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach BFRT/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain BFRT/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach BFRT/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain BFRT/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach BFRT/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DRED/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DRED/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DRED/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DRED/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DRED/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DRED/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DRED/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DRED/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DEST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DEST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DEST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DEST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DEST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DEST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain DEST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach DEST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain GHOST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach GHOST/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain GHOST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach GHOST/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain GHOST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach GHOST/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain GHOST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach GHOST/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain FV/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach FV/HTNK/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain FV/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach FV/HTNK/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain FV/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach FV/JUMPJET/0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves domain FV/JUMPJET/2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: resolved weapon preserves reach FV/JUMPJET/2",
+      "passed": true
+    }
+  ],
+  "failed": 0
+}

@@ -1,0 +1,752 @@
+{
+  "save": {
+    "name": "slot1(3).itsave",
+    "sha256": "cc9aa4f791aa2f9c7aabd1b464d52644fecc02e13bae7ffd25c42b81a06a992c"
+  },
+  "performance": {
+    "before": {
+      "units": 354,
+      "buildings": 222,
+      "phases": {
+        "battle": {
+          "frames": 383,
+          "hz": 15,
+          "max": 189.473,
+          "p50": 41.274,
+          "p95": 73.476,
+          "p99": 116.093,
+          "paths": 456,
+          "physics_steps": 225,
+          "selected": 0,
+          "shots": 11,
+          "sim_s": 15.0110477272729,
+          "wall_s": 14.998
+        },
+        "move": {
+          "frames": 380,
+          "hz": 15,
+          "max": 88.874,
+          "p50": 42.954,
+          "p95": 72.392,
+          "p99": 83.23,
+          "paths": 431,
+          "physics_steps": 225,
+          "selected": 13,
+          "shots": 28,
+          "sim_s": 15.0020107777776,
+          "wall_s": 15.018
+        },
+        "selection": {
+          "frames": 366,
+          "hz": 15,
+          "max": 332.417,
+          "p50": 43.246,
+          "p95": 77.04,
+          "p99": 160.647,
+          "paths": 419,
+          "physics_steps": 226,
+          "selected": 13,
+          "shots": 29,
+          "sim_s": 15.0085411616163,
+          "wall_s": 15.331
+        }
+      }
+    },
+    "baseline_final": {
+      "units": 354,
+      "buildings": 222,
+      "phases": {
+        "battle": {
+          "frames": 344,
+          "hz": 15,
+          "max": 133.08,
+          "p50": 45.599,
+          "p95": 73.553,
+          "p99": 108.928,
+          "paths": 464,
+          "physics_steps": 226,
+          "selected": 0,
+          "shots": 12,
+          "sim_s": 15.0303245367966,
+          "wall_s": 15.032
+        },
+        "move": {
+          "frames": 302,
+          "hz": 15,
+          "max": 113.349,
+          "p50": 52.771,
+          "p95": 80.505,
+          "p99": 96.349,
+          "paths": 434,
+          "physics_steps": 226,
+          "selected": 13,
+          "shots": 33,
+          "sim_s": 15.016098080808,
+          "wall_s": 15.061
+        },
+        "selection": {
+          "frames": 273,
+          "hz": 15,
+          "max": 164.409,
+          "p50": 54.305,
+          "p95": 105.991,
+          "p99": 155.702,
+          "paths": 401,
+          "physics_steps": 225,
+          "selected": 13,
+          "shots": 14,
+          "sim_s": 15.0302156753247,
+          "wall_s": 14.967
+        }
+      }
+    },
+    "final1": {
+      "units": 354,
+      "buildings": 222,
+      "phases": {
+        "battle": {
+          "frames": 328,
+          "hz": 15,
+          "max": 187.306,
+          "p50": 45.894,
+          "p95": 83.62,
+          "p99": 107.663,
+          "paths": 472,
+          "physics_steps": 225,
+          "selected": 0,
+          "shots": 10,
+          "sim_s": 15.047502,
+          "wall_s": 15.024
+        },
+        "move": {
+          "frames": 378,
+          "hz": 15,
+          "max": 98.368,
+          "p50": 43.205,
+          "p95": 70.664,
+          "p99": 78.23,
+          "paths": 478,
+          "physics_steps": 225,
+          "selected": 13,
+          "shots": 29,
+          "sim_s": 15.0264750740738,
+          "wall_s": 14.956
+        },
+        "selection": {
+          "frames": 326,
+          "hz": 15,
+          "max": 148.438,
+          "p50": 47.137,
+          "p95": 77.851,
+          "p99": 103.151,
+          "paths": 481,
+          "physics_steps": 226,
+          "selected": 13,
+          "shots": 14,
+          "sim_s": 15.0287360000001,
+          "wall_s": 15.024
+        }
+      }
+    },
+    "final2": {
+      "units": 354,
+      "buildings": 222,
+      "phases": {
+        "battle": {
+          "frames": 378,
+          "hz": 15,
+          "max": 169.951,
+          "p50": 41.116,
+          "p95": 69.618,
+          "p99": 89.367,
+          "paths": 497,
+          "physics_steps": 225,
+          "selected": 0,
+          "shots": 11,
+          "sim_s": 15.0090909090909,
+          "wall_s": 15.027
+        },
+        "move": {
+          "frames": 368,
+          "hz": 15,
+          "max": 91.425,
+          "p50": 42.779,
+          "p95": 70.512,
+          "p99": 87.056,
+          "paths": 501,
+          "physics_steps": 226,
+          "selected": 13,
+          "shots": 29,
+          "sim_s": 15.0333333333333,
+          "wall_s": 14.974
+        },
+        "selection": {
+          "frames": 310,
+          "hz": 15,
+          "max": 135.381,
+          "p50": 48.555,
+          "p95": 83.145,
+          "p99": 121.753,
+          "paths": 419,
+          "physics_steps": 225,
+          "selected": 13,
+          "shots": 30,
+          "sim_s": 15.0242424242424,
+          "wall_s": 15.008
+        }
+      }
+    }
+  },
+  "regressions": {
+    "save3_hotspots": {
+      "checks": 40,
+      "failed": 0,
+      "failures": []
+    },
+    "soviet_defense": {
+      "checks": 91,
+      "failed": 2,
+      "failures": [
+        {
+          "details": null,
+          "name": "one clickable portrait per live occupant",
+          "passed": false
+        },
+        {
+          "details": null,
+          "name": "remaining four portraits stay on selected bunker",
+          "passed": false
+        }
+      ]
+    },
+    "baseline_soviet_defense": {
+      "checks": 91,
+      "failed": 2,
+      "failures": [
+        {
+          "details": null,
+          "name": "one clickable portrait per live occupant",
+          "passed": false
+        },
+        {
+          "details": null,
+          "name": "remaining four portraits stay on selected bunker",
+          "passed": false
+        }
+      ]
+    },
+    "ai_campaign": {
+      "checks": 59,
+      "failed": 0,
+      "failures": []
+    },
+    "ai_dispatch": {
+      "checks": 29,
+      "failed": 0,
+      "failures": []
+    },
+    "ai_base_access": {
+      "checks": 46,
+      "failed": 0,
+      "failures": []
+    },
+    "skirmish_traffic": {
+      "checks": 12,
+      "failed": 0,
+      "failures": []
+    },
+    "deployed_traffic": {
+      "checks": 280,
+      "failed": 0,
+      "failures": []
+    },
+    "bridge_queue": {
+      "checks": 208,
+      "failed": 0,
+      "failures": []
+    }
+  },
+  "sources": {
+    "units/unit.gd": "2a57af213cc88096425c7250662d9a9fd0a75183841907e041468c43254c3216",
+    "units/open_topped.gd": "cbbd81f3c8ac1efcad88f5201aa1384990b9bfaabef5f856b5daa89fb5a1cadb",
+    "units/civilian_orders.gd": "b12ae9fcc5740528a7e9d1792895088c093dafb591fc60277533c1ec12f5ab2f",
+    "units/local_traffic.gd": "810dff7810ebe784e1b5b0d0966eae3ee324da4c3c83ab6ca0a94fbe20be8259",
+    "units/tesla_support.gd": "c2e1063acef241f6aebd7021bff2f55e7b1ba934b74e30921329c1d3cdc8315f",
+    "world/skirmish_assembly.gd": "645b7bcf3d16636138a2f73d3bffff703928b851608f0f9165af5e1b251476b5",
+    "world/skirmish_campaign.gd": "8369b15b2f3303bbd947dfcae274528c220cc7ce190121f6f236c661339351e1"
+  },
+  "motion": {
+    "baseline_final": [
+      {
+        "unit": "SHK",
+        "start": [
+          6070.884,
+          2441.18
+        ],
+        "moved": 0.0,
+        "action": "tesla_charge"
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5973.228,
+          2880.316
+        ],
+        "moved": 14.16,
+        "action": "tesla_charge"
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          6085.173,
+          2452.118
+        ],
+        "moved": 0.0,
+        "action": "tesla_charge"
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5653.323,
+          2633.793
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5512.89,
+          2693.565
+        ],
+        "moved": 216.96,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5516.171,
+          2879.611
+        ],
+        "moved": 320.2,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5631.339,
+          2772.165
+        ],
+        "moved": 23.23,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5685.981,
+          2823.797
+        ],
+        "moved": 601.8,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5531.703,
+          2796.185
+        ],
+        "moved": 970.6,
+        "action": null
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5760.0,
+          2842.882
+        ],
+        "moved": 427.81,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5653.323,
+          2713.793
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5665.891,
+          2822.0
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5617.623,
+          2775.837
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5474.753,
+          2764.143
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5657.597,
+          2798.804
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5640.334,
+          2782.901
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5637.389,
+          2748.583
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5512.319,
+          2744.931
+        ],
+        "moved": 20.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5743.303,
+          3080.494
+        ],
+        "moved": 1519.42,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5634.656,
+          2829.401
+        ],
+        "moved": 609.32,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5613.72,
+          2813.022
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5598.532,
+          2781.829
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5596.156,
+          2760.0
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5633.323,
+          2679.152
+        ],
+        "moved": 0.0,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5646.093,
+          3010.397
+        ],
+        "moved": 55.04,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5645.033,
+          2894.033
+        ],
+        "moved": 1570.27,
+        "action": null
+      }
+    ],
+    "final2": [
+      {
+        "unit": "SHK",
+        "start": [
+          6070.884,
+          2441.18
+        ],
+        "moved": 34.8,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5973.228,
+          2880.316
+        ],
+        "moved": 619.26,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          6085.173,
+          2452.118
+        ],
+        "moved": 37.56,
+        "action": "tesla_charge"
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5653.323,
+          2633.793
+        ],
+        "moved": 339.43,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5512.89,
+          2693.565
+        ],
+        "moved": 215.49,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5516.171,
+          2879.611
+        ],
+        "moved": 1003.26,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5631.339,
+          2772.165
+        ],
+        "moved": 192.41,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5685.981,
+          2823.797
+        ],
+        "moved": 858.73,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5531.703,
+          2796.185
+        ],
+        "moved": 717.91,
+        "action": null
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5760.0,
+          2842.882
+        ],
+        "moved": 430.72,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5653.323,
+          2713.793
+        ],
+        "moved": 209.81,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5665.891,
+          2822.0
+        ],
+        "moved": 103.22,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5617.623,
+          2775.837
+        ],
+        "moved": 130.15,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5474.753,
+          2764.143
+        ],
+        "moved": 22.49,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5657.597,
+          2798.804
+        ],
+        "moved": 247.32,
+        "action": "tesla_charge"
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5640.334,
+          2782.901
+        ],
+        "moved": 194.06,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5637.389,
+          2748.583
+        ],
+        "moved": 937.11,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5512.319,
+          2744.931
+        ],
+        "moved": 7.72,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5743.303,
+          3080.494
+        ],
+        "moved": 1592.08,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5634.656,
+          2829.401
+        ],
+        "moved": 239.98,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5613.72,
+          2813.022
+        ],
+        "moved": 964.46,
+        "action": null
+      },
+      {
+        "unit": "E2",
+        "start": [
+          5598.532,
+          2781.829
+        ],
+        "moved": 946.94,
+        "action": null
+      },
+      {
+        "unit": "IVAN",
+        "start": [
+          5596.156,
+          2760.0
+        ],
+        "moved": 141.27,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5633.323,
+          2679.152
+        ],
+        "moved": 1026.84,
+        "action": null
+      },
+      {
+        "unit": "FLAKT",
+        "start": [
+          5646.093,
+          3010.397
+        ],
+        "moved": null,
+        "action": null
+      },
+      {
+        "unit": "SHK",
+        "start": [
+          5645.033,
+          2894.033
+        ],
+        "moved": 106.62,
+        "action": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "_comment": "战斗关卡配置。prepare_time 为开局准备时间；每波 wave 有独立组成，最后一批可无限递增。",
+  "missions": [
+    {
+      "id": "m01",
+      "name": "断轨平原",
+      "subtitle": "教学关：认识克制关系",
+      "map_size": 3200,
+      "prepare_time": 35,
+      "enemy_faction": "swarm",
+      "starting_funds": 4200,
+      "brief": "虫群先头部队正在向你的前哨推进。用步兵挡住工蜂，用反装甲火力处理多头蛇。",
+      "waves": [
+        { "name": "侦察群", "delay": 14, "spawns": [{ "unit": "swarm_drone", "count": 5 }] },
+        { "name": "第一波", "delay": 22, "spawns": [{ "unit": "swarm_drone", "count": 8 }, { "unit": "swarm_claw", "count": 2 }] },
+        { "name": "酸液小队", "delay": 26, "spawns": [{ "unit": "swarm_spitter", "count": 3 }, { "unit": "swarm_claw", "count": 3 }] },
+        { "name": "多头蛇", "delay": 30, "spawns": [{ "unit": "swarm_hydra", "count": 2 }, { "unit": "swarm_drone", "count": 10 }] },
+        { "name": "飞螳突袭", "delay": 30, "spawns": [{ "unit": "swarm_winged", "count": 4 }, { "unit": "swarm_claw", "count": 4 }] }
+      ]
+    },
+    {
+      "id": "m02",
+      "name": "结晶裂谷",
+      "subtitle": "压制两路虫巢",
+      "map_size": 3600,
+      "prepare_time": 30,
+      "enemy_faction": "swarm",
+      "starting_funds": 5200,
+      "brief": "两处孵化巢同时开工。撑住前六波，然后拆掉所有孵化巢。",
+      "objectives": { "destroy_hives": 2 },
+      "waves": [
+        { "name": "两路展开", "delay": 16, "spawns": [{ "unit": "swarm_drone", "count": 8 }, { "unit": "swarm_claw", "count": 3 }], "from": "both" },
+        { "name": "酸蚀", "delay": 22, "spawns": [{ "unit": "swarm_spitter", "count": 4 }, { "unit": "swarm_drone", "count": 10 }], "from": "both" },
+        { "name": "重甲推进", "delay": 26, "spawns": [{ "unit": "swarm_hydra", "count": 3 }, { "unit": "swarm_claw", "count": 5 }], "from": "both" },
+        { "name": "空袭", "delay": 28, "spawns": [{ "unit": "swarm_winged", "count": 6 }], "from": "both" },
+        { "name": "潮水", "delay": 30, "spawns": [{ "unit": "swarm_drone", "count": 16 }, { "unit": "swarm_claw", "count": 8 }], "from": "both" },
+        { "name": "重兽压境", "delay": 36, "spawns": [{ "unit": "swarm_behemoth", "count": 1 }, { "unit": "swarm_hydra", "count": 3 }, { "unit": "swarm_spitter", "count": 5 }], "from": "both" }
+      ]
+    },
+    {
+      "id": "m03",
+      "name": "灰烬要塞",
+      "subtitle": "无尽虫潮：尽量拖时间",
+      "map_size": 4000,
+      "prepare_time": 25,
+      "enemy_faction": "swarm",
+      "starting_funds": 6500,
+      "endless": true,
+      "brief": "没有胜利，只有坚持。记录你能撑过的波数，结算时按波数发放军需券。",
+      "waves": [
+        { "name": "序波", "delay": 18, "spawns": [{ "unit": "swarm_claw", "count": 6 }, { "unit": "swarm_spitter", "count": 3 }] },
+        { "name": "加压", "delay": 24, "spawns": [{ "unit": "swarm_hydra", "count": 3 }, { "unit": "swarm_winged", "count": 4 }] },
+        { "name": "重压", "delay": 30, "spawns": [{ "unit": "swarm_behemoth", "count": 1 }, { "unit": "swarm_claw", "count": 10 }, { "unit": "swarm_spitter", "count": 6 }] }
+      ]
+    }
+  ],
+  "endless_scaling": {
+    "_comment": "无尽模式下每轮循环叠加的成长系数",
+    "hp_mult_per_loop": 1.18,
+    "damage_mult_per_loop": 1.08,
+    "count_add_per_loop": 2,
+    "loop_seconds": 90
+  }
+}

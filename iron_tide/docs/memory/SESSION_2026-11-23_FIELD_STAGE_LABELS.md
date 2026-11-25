@@ -1,0 +1,1 @@
+补齐余下16种远征支线的阶段标记，定位支线按任务当前首选点；已有20种战场提示，排期、奖励及胜利判定不变。预览 FIELD_STAGE_LABELS.svg。隔离周目回归 errors=[]，真实任务回归 139 checks / 0 failed；修正测试中固定黑匣子下一关和调敌任务的测试关卡。未逐图人工遮挡检查、未打包。此文与 FIELD_SIGNALS.md、FUEL_OUTPOST.md 交接连续。

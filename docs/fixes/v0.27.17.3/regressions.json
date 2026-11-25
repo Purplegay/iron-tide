@@ -1,0 +1,29 @@
+{
+  "version": "0.27.17.3",
+  "headless": true,
+  "isolated_user_data": true,
+  "checks": 98,
+  "failed": 0,
+  "runs": [
+    {
+      "case": "construction_final",
+      "checks": 48,
+      "failed": 0,
+      "report": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\construction_final\\result.json",
+      "log": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\construction_final\\log"
+    },
+    {
+      "case": "construction_economy",
+      "checks": 50,
+      "failed": 0,
+      "report": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\construction_economy\\result.json",
+      "log": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\construction_economy\\log"
+    }
+  ],
+  "sha256": {
+    "iron_tide/scripts/buildings/building.gd": "b670dab772517f0fd35eac60033d11b46f34f3b986cf14a18e509412521661f2",
+    "iron_tide/tests/construction_damage_regression.gd": "33eee3b66988a2dd65e2cb4aab75caa6ab54630906484be5ccc3bc7b501ef744",
+    "iron_tide/tests/construction_damage_regression.tscn": "c6e2f44bd4aed00cbab7bd98ee7624f01b933932e7aa3466ea8c880b0bdadde1",
+    "iron_tide/project.godot": "90d5c7377454a2c8d38df751c5643400b703d76ddca28704ea1de80adbd52054"
+  }
+}

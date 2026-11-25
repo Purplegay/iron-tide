@@ -1,0 +1,20 @@
+{
+  "specs": {
+    "MenuSlideIn": {"sounds": ["uslide1"], "volume": 65},
+    "ShopRefreshCoin": {"sounds": ["ucredup"], "volume": 32},
+    "ShopPurchaseCoin": {"sounds": ["ubonus_shop_1s"], "volume": 40},
+    "MenuBuild": {"sounds": ["uqeue"], "volume": 60},
+    "SupportReady": {"sounds": ["umessage"], "volume": 65},
+    "Bonus": {"sounds": ["ubonus"], "volume": 60},
+    "HealCrate": {"sounds": ["gcraheal"], "volume": 80}
+  },
+  "entries": {
+    "uslide1": {"file": "uslide1.wav"},
+    "ucredup": {"file": "ucredup.wav"},
+    "ubonus_shop_1s": {"file": "ubonus_shop_1s.wav"},
+    "uqeue": {"file": "uqeue.wav"},
+    "umessage": {"file": "umessage.wav"},
+    "ubonus": {"file": "ubonus.wav"},
+    "gcraheal": {"file": "gcraheal.wav"}
+  }
+}

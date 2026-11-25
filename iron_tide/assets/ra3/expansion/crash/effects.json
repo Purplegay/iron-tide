@@ -1,0 +1,1174 @@
+{
+  "effect": {
+    "tag": "FXList",
+    "attrs": {
+      "id": "FX_AlliedBomberDie"
+    },
+    "children": [
+      {
+        "tag": "NuggetList",
+        "attrs": {},
+        "children": [
+          {
+            "tag": "ParticleSystem",
+            "attrs": {
+              "Particle": "AlliedBomberDestructionFlash",
+              "OrientToObject": "true"
+            },
+            "children": []
+          },
+          {
+            "tag": "ParticleSystem",
+            "attrs": {
+              "Particle": "AlliedBomberDestructionMainExplosion",
+              "OrientToObject": "true"
+            },
+            "children": []
+          },
+          {
+            "tag": "ParticleSystem",
+            "attrs": {
+              "Particle": "AlliedBomberDestructionMainExplosionLight",
+              "OrientToObject": "true"
+            },
+            "children": []
+          },
+          {
+            "tag": "ParticleSystem",
+            "attrs": {
+              "Particle": "AlliedBomberDestructionMainExplosionSmoke",
+              "OrientToObject": "true"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "particles": {
+    "AlliedBomberDestructionFlash": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXLenzflareHDR01",
+        "PerParticleAttachedSystem": "",
+        "Priority": "VERY_LOW_OR_ABOVE",
+        "SortLevel": "1",
+        "SystemLifetime": "1",
+        "Type": "GPU_PARTICLE",
+        "id": "AlliedBomberDestructionFlash"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "20",
+            "Low": "20"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "50",
+            "Low": "50"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "1",
+                "RelativeAge": "0"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.92549",
+                    "g": "0.988235",
+                    "r": "1"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "9.999999"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.901961",
+                    "g": "0.152941",
+                    "r": "0.133333"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "75"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.12549",
+                    "g": "0.180392",
+                    "r": "0.266667"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "4",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.058824",
+                    "g": "0.058824",
+                    "r": "0.058824"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "ColorScale",
+              "attrs": {
+                "High": "3",
+                "Low": "3"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "DetailTexture": "FXFracTileNRM",
+                "GeometryType": "CENTERED_QUAD",
+                "MiscValue1": "0.15",
+                "MiscValue2": "0.1",
+                "MiscValue3": "45",
+                "MiscValue4": "0.4",
+                "SpeedMultiplier": "1"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Cylinder",
+              "attrs": {
+                "IsHollow": "true"
+              },
+              "children": [
+                {
+                  "tag": "Offset",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Ortho",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Position",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "tag": "x",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "y",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "z",
+                      "attrs": {
+                        "High": "0.5",
+                        "Low": "0.5"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "7",
+                    "Low": "-7"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularRateZ",
+                  "attrs": {
+                    "High": "0.01",
+                    "Low": "-0.01"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleXY",
+                  "attrs": {
+                    "High": "5",
+                    "Low": "2"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularRateXY",
+                  "attrs": {
+                    "High": "0.1",
+                    "Low": "0.01"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "0.99",
+                    "Low": "0.97"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "AlliedBomberDestructionMainExplosion": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXFire03",
+        "PerParticleAttachedSystem": "",
+        "Priority": "VERY_LOW_OR_ABOVE",
+        "SortLevel": "1",
+        "SystemLifetime": "10",
+        "Type": "GPU_PARTICLE",
+        "id": "AlliedBomberDestructionMainExplosion"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "15",
+            "Low": "15"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "25",
+            "Low": "15"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "2",
+            "Low": "2"
+          },
+          "children": []
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "3"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.192157",
+                    "g": "0.470588",
+                    "r": "0.67451"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.101961",
+                    "g": "0.117647",
+                    "r": "0.14902"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "ColorScale",
+              "attrs": {
+                "High": "2",
+                "Low": "2"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "DriftVelocity",
+                  "attrs": {
+                    "x": "0.1",
+                    "y": "0",
+                    "z": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "FramesPerRow": "6",
+                "SpeedMultiplier": "2.2",
+                "TotalFrames": "36"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Box",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "HalfSize",
+                  "attrs": {
+                    "x": "10",
+                    "y": "5",
+                    "z": "5"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Ortho",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Position",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "tag": "x",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "y",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "z",
+                      "attrs": {
+                        "High": "3",
+                        "Low": "0"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRate",
+                  "attrs": {
+                    "High": "1.5",
+                    "Low": "0.5"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "0.99",
+                    "Low": "0.95"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "7",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularRateZ",
+                  "attrs": {
+                    "High": "0.05",
+                    "Low": "-0.05"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "AlliedBomberDestructionMainExplosionLight": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXLenzFlare01",
+        "PerParticleAttachedSystem": "",
+        "Priority": "ULTRA_HIGH_ONLY",
+        "SystemLifetime": "1",
+        "id": "AlliedBomberDestructionMainExplosionLight"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "15",
+            "Low": "15"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "150",
+            "Low": "150"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "1",
+                "RelativeAge": "0"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "1",
+                    "g": "0.415686",
+                    "r": "0.34902"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "70"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.129412",
+                    "g": "0.25098",
+                    "r": "0.411765"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0",
+                    "g": "0",
+                    "r": "0"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "ColorScale",
+              "attrs": {
+                "High": "10",
+                "Low": "8"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "LightSource",
+              "attrs": {},
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Cylinder",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Offset",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "20"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Outward",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Speed",
+                  "attrs": {
+                    "High": "0",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "OtherSpeed",
+                  "attrs": {
+                    "High": "0",
+                    "Low": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRate",
+                  "attrs": {
+                    "High": "0.5",
+                    "Low": "0.5"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "0.99",
+                    "Low": "0.99"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "3",
+                    "Low": "-3"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "AlliedBomberDestructionMainExplosionSmoke": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXFactorySteam01",
+        "PerParticleAttachedSystem": "",
+        "Priority": "MEDIUM_OR_ABOVE",
+        "Shader": "ALPHA",
+        "SortLevel": "2",
+        "SystemLifetime": "20",
+        "Type": "GPU_PARTICLE",
+        "id": "AlliedBomberDestructionMainExplosionSmoke"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "80",
+            "Low": "80"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "15",
+            "Low": "10"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Alphas",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "1",
+                "High": "1",
+                "Low": "1",
+                "RelativeAge": "0"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "2",
+                "High": "0.66",
+                "Low": "0.66",
+                "RelativeAge": "25"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "3",
+                "High": "0.5",
+                "Low": "0.5",
+                "RelativeAge": "50"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "4",
+                "High": "0",
+                "Low": "0",
+                "RelativeAge": "100"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "1",
+                "RelativeAge": "0"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.215686",
+                    "g": "0.215686",
+                    "r": "0.215686"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "25"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.215686",
+                    "g": "0.215686",
+                    "r": "0.215686"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "50"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.215686",
+                    "g": "0.215686",
+                    "r": "0.215686"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "4",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.215686",
+                    "g": "0.215686",
+                    "r": "0.215686"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "DriftVelocity",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "DetailTexture": "FXDisotrtionFractal01",
+                "FramesPerRow": "6",
+                "GeometryType": "CENTERED_QUAD",
+                "MiscValue1": "0.1",
+                "MiscValue2": "0.04",
+                "MiscValue3": "45",
+                "MiscValue4": "0.05",
+                "RandTex": "36",
+                "Shader": "gpuparticledistort.fx",
+                "SpeedMultiplier": "1",
+                "TotalFrames": "36"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Box",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "HalfSize",
+                  "attrs": {
+                    "x": "5",
+                    "y": "5",
+                    "z": "5"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Ortho",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Position",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "tag": "x",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "y",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "z",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRate",
+                  "attrs": {
+                    "High": "0.5",
+                    "Low": "0.5"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "0.94",
+                    "Low": "0.94"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "4",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sources": {
+    "refs/ea-modding-support/Uprising/Xml/GlobalData/FXListAllied.xml": "b8c0142824d9e901a54c5c8c2361b566f71a1b1e74d6c675195994719115bbca",
+    "refs/ea-modding-support/Uprising/Xml/FXParticleSystems/AlliedBomberDestructionFlash.xml": "03505fc9e7507e4ac9e3d51bf1764bdbdacc4ca6b82fc8835dd29a2540a64596",
+    "refs/ra3-expansion/uprising/converted/textures/Texture_FXLenzflareHDR01.png": "14818ab23dd620fb8a37529d311a1b6f96a4cb664809633517ad46539ccc5b08",
+    "refs/ea-modding-support/Uprising/Xml/FXParticleSystems/AlliedBomberDestructionMainExplosion.xml": "87751b216f3046643e48d07d0bb267243faa245dfc759bfe3854f5e8ffacf8be",
+    "refs/ra3-expansion/crash-media/converted/textures/Texture_FXFire03.png": "afc2dfb8cbbd80fd31ac218b8276157339e4512aee372468463e4915eca86068",
+    "refs/ea-modding-support/Uprising/Xml/FXParticleSystems/AlliedBomberDestructionMainExplosionLight.xml": "d1c5128f9d58c05a381cd4cee7e5dc5207e4f4ad0b55ece69527dd1dc1007965",
+    "refs/ra3-expansion/uprising/converted/textures/Texture_FXLenzFlare01.png": "eb440fb563c2544f3450d64bf9a29af3087e65faa406c00ae1ca4c3f76f03ce0",
+    "refs/ea-modding-support/Uprising/Xml/FXParticleSystems/AlliedBomberDestructionMainExplosionSmoke.xml": "66c73e4039cff3f404ad706d28efa367347f32c9ecb5e27c629344ac342e4f4a",
+    "refs/ra3-expansion/damage-state/converted/textures/Texture_FXFactorySteam01.png": "806aa1bb05363715bf14365e7ec2269bda6828e75eebe72844bbdb1042e88417"
+  }
+}

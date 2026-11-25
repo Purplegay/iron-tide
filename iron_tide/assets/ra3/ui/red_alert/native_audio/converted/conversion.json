@@ -1,0 +1,35 @@
+{
+  "source": "Installed Steam RA3 Uprising1.1; no demo source",
+  "input_manifest_sha256": "9bd17887422b5a27f30f43ee994863015dc5646f334bf8a6d9e58e9c208b4e05",
+  "validated_raw_files": 3,
+  "records": [
+    {
+      "asset": "AudioFile:Aeva_RedAlertAct",
+      "file": "converted/snr/AudioFile_Aeva_RedAlertAct.snr",
+      "sha256": "03a02f627996f87a8eaec9d2bd6de1fe67bdba368f2daedcb132ac90e025c395",
+      "size": 97144
+    },
+    {
+      "asset": "AudioFile:Aeva_RedAlertAct",
+      "file": "converted/audio/AudioFile_Aeva_RedAlertAct.wav",
+      "sha256": "fb9bf619b7ff72212eaf3e320606b445feb00c0ae7dd18b959d493927c34f803",
+      "size": 327212,
+      "rate": 48000,
+      "frames": 81792,
+      "channels": 2,
+      "duration": 1.704
+    },
+    {
+      "asset": "Uprising audio event dependencies",
+      "file": "converted/audio/events.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "size": 2
+    }
+  ],
+  "limitations": [
+    "No game runtime resources replaced.",
+    "AnimationChannelDelta data is preserved losslessly, not claimed decoded into playback curves.",
+    "FXO is compiled D3D shader bytecode, not portable Godot/HLSL source.",
+    "Binary FX/weapon records retained; complete semantic decompilation is separate."
+  ]
+}

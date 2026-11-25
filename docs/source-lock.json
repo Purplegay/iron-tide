@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-20",
+  "implementation": "Independent Godot mechanics with behavior checks",
+  "reference": {
+    "url": "https://github.com/huangkaoya/ts-redalert2",
+    "commit": "898d89188542a3028a232031ce1a0bdc7c605b6f",
+    "license_sha256": "66DF8CA1A6A1A2E656C62A419C8849AEFAD808705CD4EEC45F88774B3EE6705D"
+  },
+  "inputs": {
+    "extracted/rules.ini": "FD1E95CEA0306EA78049DC81C8CD816E18C28C496872A1FF02EDD50BD082062F",
+    "extracted/art.ini": "B477F861063A9509E87B7836B78190204C73BEA5EA5595A842C456F5920EA223",
+    "extracted/ai.ini": "1FEAC6DDEA6886B177DDF7E5F8580B7A99A63F12684F2CBB42831671BB7A8A79",
+    "extracted/eva.ini": "B4716E8C76C18F7AA01BBFCBE5E348C107393148E10C67FD9ED696E57FBF144B",
+    "refs/ts-ra2/public/general.csf": "66B46690DFB475FB6A0323085EB4C94FBFB35A4DD490BA7D8359D34898EBEC6C",
+    "tools/ra2bundle.mjs": "0F534464CEA2BF519C78CDB82D2E46C4A1FB49F9FA4074B17B35CD6FC521ECE7"
+  },
+  "yr_reference": {
+    "url": "https://github.com/Ritanlisa/RA2YR_ReSource",
+    "commit": "b01d3cf93db69aca9b5cb5054ba04e4358963828",
+    "license_sha256": "e1dda00751c88aef5ff0d39964ae89b55ae7caf703d40a28a473b21d6365a4aa",
+    "role": "Read-only reverse-engineering reference, independent Godot implementation",
+    "license_statement": "Repository states GPL v3 with EA additional terms; not an official EA RA2/YR source release",
+    "integration": "No reference C++ code compiled, injected, translated or copied into Godot",
+    "observed_gaps": [
+      "TechnoClass::GetWeapon returns nullptr",
+      "GattlingRateUp_GattlingRateDownReset returns 0",
+      "TransferSlavedUnit returns 0",
+      "No rulesmd.ini, artmd.ini, MIX, SHP or VXL game assets in checkout"
+    ]
+  }
+}

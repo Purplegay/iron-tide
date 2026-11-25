@@ -1,0 +1,1460 @@
+{
+  "source": "Vector / CnCNet YR unit voice pack (2025-01-19)",
+  "source_hashes": {
+    "audio.bag": "bfd049fe5a12ea16a32dd822457e83854db8244c5bdc2331da40e3c21cd9fdff",
+    "audio.idx": "fcb216992ab6a3833ad7469ba88601fc421367f7f6e19b523ad48d59419c2c1a",
+    "rules.ini": "d4688f6c8811240d14f366a8e9354075c54e6a9b9caf92f2d2e949c1fbc77d66",
+    "sound.ini": "0fe0a53fe7ca056246d3f68fa4ae53cc4340fd63ba62c17b3c37503d542a8b27"
+  },
+  "units": {
+    "AMCV": {
+      "select": "yr_MCVAlliedSelect",
+      "move": "yr_MCVAlliedMove",
+      "attack": "yr_MCVAlliedMove"
+    },
+    "CARRIER": {
+      "select": "yr_AircraftCarrierSelect",
+      "move": "yr_AircraftCarrierMove",
+      "attack": "yr_AircraftCarrierAttackCommand"
+    },
+    "AEGIS": {
+      "select": "yr_AegisSelect",
+      "move": "yr_AegisMove",
+      "attack": "yr_AegisAttackCommand"
+    },
+    "LCRF": {
+      "select": "yr_HoverAlliedSelect",
+      "move": "yr_HoverAlliedMove",
+      "attack": "yr_HoverAlliedMove"
+    },
+    "TNKD": {
+      "select": "yr_TankDestroyerSelect",
+      "move": "yr_TankDestroyerMove",
+      "attack": "yr_TankDestroyerAttackCommand"
+    },
+    "CMIN": {
+      "select": "yr_ChronoMinerSelect"
+    },
+    "SREF": {
+      "select": "yr_PrismTankSelect",
+      "move": "yr_PrismTankMove",
+      "attack": "yr_PrismTankAttackCommand"
+    },
+    "MGTK": {
+      "select": "yr_MirageTankSelect",
+      "move": "yr_MirageTankMove",
+      "attack": "yr_MirageTankAttackCommand"
+    },
+    "FV": {
+      "select": "yr_IFVSelect",
+      "move": "yr_IFVMove",
+      "attack": "yr_IFVAttackCommand"
+    }
+  },
+  "specs": {
+    "yr_MCVAlliedSelect": {
+      "sounds": [
+        "yr_vmcasea",
+        "yr_vmcaseb",
+        "yr_vmcasec",
+        "yr_vmcased",
+        "yr_vmcasee",
+        "yr_vmcasef"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_MCVAlliedMove": {
+      "sounds": [
+        "yr_vmcamoa",
+        "yr_vmcamob",
+        "yr_vmcamoc",
+        "yr_vmcamod",
+        "yr_vmcamoe",
+        "yr_vmcamof"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AircraftCarrierSelect": {
+      "sounds": [
+        "yr_vairsea",
+        "yr_vairseb",
+        "yr_vairsec",
+        "yr_vairsed",
+        "yr_vairsee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AircraftCarrierMove": {
+      "sounds": [
+        "yr_vairmoa",
+        "yr_vairmob",
+        "yr_vairmoc",
+        "yr_vairmod",
+        "yr_vairmoe"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AircraftCarrierAttackCommand": {
+      "sounds": [
+        "yr_vairata",
+        "yr_vairatb",
+        "yr_vairatc",
+        "yr_vairatd",
+        "yr_vairate"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AegisSelect": {
+      "sounds": [
+        "yr_vaegsea",
+        "yr_vaegseb",
+        "yr_vaegsec",
+        "yr_vaegsed",
+        "yr_vaegsee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AegisMove": {
+      "sounds": [
+        "yr_vaegmoa",
+        "yr_vaegmob",
+        "yr_vaegmoc",
+        "yr_vaegmod",
+        "yr_vaegmoe"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_AegisAttackCommand": {
+      "sounds": [
+        "yr_vaegata",
+        "yr_vaegatb",
+        "yr_vaegatc",
+        "yr_vaegatd",
+        "yr_vaegate",
+        "yr_vaegatf",
+        "yr_vaegatg",
+        "yr_vaegath"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_HoverAlliedSelect": {
+      "sounds": [
+        "yr_vhoasea",
+        "yr_vhoaseb",
+        "yr_vhoasec",
+        "yr_vhoased",
+        "yr_vhoasee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_HoverAlliedMove": {
+      "sounds": [
+        "yr_vhoamoa",
+        "yr_vhoamob",
+        "yr_vhoamoc",
+        "yr_vhoamod",
+        "yr_vhoamoe"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_TankDestroyerSelect": {
+      "sounds": [
+        "yr_vtansea",
+        "yr_vtanseb",
+        "yr_vtansec",
+        "yr_vtansed",
+        "yr_vtansee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_TankDestroyerMove": {
+      "sounds": [
+        "yr_vtanmoa",
+        "yr_vtanmob",
+        "yr_vtanmoc",
+        "yr_vtanmod",
+        "yr_vtanmoc"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_TankDestroyerAttackCommand": {
+      "sounds": [
+        "yr_vtanata",
+        "yr_vtanatb",
+        "yr_vtanatc",
+        "yr_vtanatd",
+        "yr_vtanate"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_ChronoMinerSelect": {
+      "sounds": [
+        "yr_vchrsea",
+        "yr_vchrseb",
+        "yr_vchrsec",
+        "yr_vchrsed",
+        "yr_vchrsee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_PrismTankSelect": {
+      "sounds": [
+        "yr_vprisea",
+        "yr_vpriseb",
+        "yr_vprisec",
+        "yr_vprised",
+        "yr_vprisee"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_PrismTankMove": {
+      "sounds": [
+        "yr_vprimoa",
+        "yr_vprimob",
+        "yr_vprimoc",
+        "yr_vprimod",
+        "yr_vprimoe"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_PrismTankAttackCommand": {
+      "sounds": [
+        "yr_vpriata",
+        "yr_vpriatb",
+        "yr_vpriatc",
+        "yr_vpriatd",
+        "yr_vpriate"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_MirageTankSelect": {
+      "sounds": [
+        "yr_vmirsea",
+        "yr_vmirseb",
+        "yr_vmirsec",
+        "yr_vmirsed",
+        "yr_vmirsee",
+        "yr_vmirsef"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_MirageTankMove": {
+      "sounds": [
+        "yr_vmirmoa",
+        "yr_vmirmob",
+        "yr_vmirmoc",
+        "yr_vmirmod",
+        "yr_vmirmoe",
+        "yr_vmirmof",
+        "yr_vmirmog"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_MirageTankAttackCommand": {
+      "sounds": [
+        "yr_vmirata",
+        "yr_vmiratb",
+        "yr_vmiratc",
+        "yr_vmiratd",
+        "yr_vmirate"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_IFVSelect": {
+      "sounds": [
+        "yr_vifvsea",
+        "yr_vifvseb",
+        "yr_vifvsec",
+        "yr_vifvsed",
+        "yr_vifvsee",
+        "yr_vifvsef"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_IFVMove": {
+      "sounds": [
+        "yr_vifvmoa",
+        "yr_vifvmob",
+        "yr_vifvmoc",
+        "yr_vifvmod",
+        "yr_vifvmoe",
+        "yr_vifvmof"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    },
+    "yr_IFVAttackCommand": {
+      "sounds": [
+        "yr_vifvata",
+        "yr_vifvatb",
+        "yr_vifvatc",
+        "yr_vifvatd",
+        "yr_vifvate"
+      ],
+      "volume": 85.0,
+      "range": 10.0,
+      "type": ""
+    }
+  },
+  "entries": {
+    "yr_vmcasea": {
+      "file": "yr/vmcasea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22863,
+      "durMs": 1037,
+      "bytes": 45770,
+      "sha256": "a4590c08b96343b2bc3d44bf8da0a72cd74c6c568a2f8126ba6e9be7f1a75623"
+    },
+    "yr_vmcaseb": {
+      "file": "yr/vmcaseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 40280,
+      "durMs": 1827,
+      "bytes": 80604,
+      "sha256": "0d58c55b523333d9a7123f97e2b515b824a07fac54f9029c788e82083b08fb3f"
+    },
+    "yr_vmcasec": {
+      "file": "yr/vmcasec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31183,
+      "durMs": 1414,
+      "bytes": 62410,
+      "sha256": "c1b0976b049d47826349342a0ee05ae69aa45bda75f148d28ada956e3ec6e4f5"
+    },
+    "yr_vmcased": {
+      "file": "yr/vmcased.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 38238,
+      "durMs": 1734,
+      "bytes": 76520,
+      "sha256": "1f492dc71c3e5d6408a21fd07e84244e706b26104fb26f12c4216026863282a5"
+    },
+    "yr_vmcasee": {
+      "file": "yr/vmcasee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25417,
+      "durMs": 1153,
+      "bytes": 50878,
+      "sha256": "56f10f1c4f5c255d192f1c2433f16f6352e20189f0507fb882bc611e8968d3c8"
+    },
+    "yr_vmcasef": {
+      "file": "yr/vmcasef.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 17241,
+      "durMs": 782,
+      "bytes": 34526,
+      "sha256": "c8ea7335912248636382e96df29e6357779f298d7789f770df5fadf7f8d41d1c"
+    },
+    "yr_vmcamoa": {
+      "file": "yr/vmcamoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29157,
+      "durMs": 1322,
+      "bytes": 58358,
+      "sha256": "5a26b320b509b01e0bf81d82b0c0124e2de34e91e872f282334dfa783e2bb990"
+    },
+    "yr_vmcamob": {
+      "file": "yr/vmcamob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 35940,
+      "durMs": 1630,
+      "bytes": 71924,
+      "sha256": "0d4bfa39e60e0832387d7ee73d988a0bd803727f4f037f8787144057b03b97dd"
+    },
+    "yr_vmcamoc": {
+      "file": "yr/vmcamoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 30030,
+      "durMs": 1362,
+      "bytes": 60104,
+      "sha256": "720631b46aafddf1b92deb03523f135776ffd4b2bde86a7c32339e2376720582"
+    },
+    "yr_vmcamod": {
+      "file": "yr/vmcamod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33882,
+      "durMs": 1537,
+      "bytes": 67808,
+      "sha256": "c49ae44b4b84cbf06b4fa09cd354919f4114b0dce5d5a163ce8a2b6e91146aab"
+    },
+    "yr_vmcamoe": {
+      "file": "yr/vmcamoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 27059,
+      "durMs": 1227,
+      "bytes": 54162,
+      "sha256": "5e54735177704e5e9241a0671d42f16e73e4e38ebc12c9a7f5df6e258c5aec9a"
+    },
+    "yr_vmcamof": {
+      "file": "yr/vmcamof.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31119,
+      "durMs": 1411,
+      "bytes": 62282,
+      "sha256": "84e7c43c5ce2eae8e6a4c2da674df9ad861a37ecd82653b924c5da0c8d4ca998"
+    },
+    "yr_vairsea": {
+      "file": "yr/vairsea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33433,
+      "durMs": 1516,
+      "bytes": 66910,
+      "sha256": "89e0ec83d96051767bcb8383323ebb52d13360f8f4c966ec5b34b888dfef73f8"
+    },
+    "yr_vairseb": {
+      "file": "yr/vairseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26683,
+      "durMs": 1210,
+      "bytes": 53410,
+      "sha256": "8f33cce492dfe3dedc5471a739a683328d25fc3565e174a7a66618bfe7877bab"
+    },
+    "yr_vairsec": {
+      "file": "yr/vairsec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33561,
+      "durMs": 1522,
+      "bytes": 67166,
+      "sha256": "54b40415adf2e82dd74a05b7226cab41b1f408dd5831aae6fd122a07b90f82d8"
+    },
+    "yr_vairsed": {
+      "file": "yr/vairsed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 37910,
+      "durMs": 1719,
+      "bytes": 75864,
+      "sha256": "0e7677d832e3d944624821c82d9ee6d74a79c00e6aa3090288ffaada1f12f031"
+    },
+    "yr_vairsee": {
+      "file": "yr/vairsee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 34899,
+      "durMs": 1583,
+      "bytes": 69842,
+      "sha256": "a39c4b0634bf288c60b76795cba65527f88c8c26c3e237e44ff98cbc11fa4f17"
+    },
+    "yr_vairmoa": {
+      "file": "yr/vairmoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19043,
+      "durMs": 864,
+      "bytes": 38130,
+      "sha256": "bbe4527689d0f244d642d5c5889585b28cfe81d9c0bc976a192775a2e5f8cdc4"
+    },
+    "yr_vairmob": {
+      "file": "yr/vairmob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33177,
+      "durMs": 1505,
+      "bytes": 66398,
+      "sha256": "0fbd77da9b442488564773b8c7c80e8a7a21f1f3d175e45e6b79f626da7127a8"
+    },
+    "yr_vairmoc": {
+      "file": "yr/vairmoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19612,
+      "durMs": 889,
+      "bytes": 39268,
+      "sha256": "f9936d57ddc9ffe0c7c683a7a342a8748eaa33d0854c4bda79ec85e95c15f479"
+    },
+    "yr_vairmod": {
+      "file": "yr/vairmod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26659,
+      "durMs": 1209,
+      "bytes": 53362,
+      "sha256": "480a3eb8abb2ea017a1bd4af5580d40460e8ca06a2648284f1670f582ef01d5d"
+    },
+    "yr_vairmoe": {
+      "file": "yr/vairmoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31904,
+      "durMs": 1447,
+      "bytes": 63852,
+      "sha256": "e7160368b47ab411c2cb03afc59dbe8b7a2faedc5005d333165591a11258bac7"
+    },
+    "yr_vairata": {
+      "file": "yr/vairata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 28989,
+      "durMs": 1315,
+      "bytes": 58022,
+      "sha256": "8c8ed36b8b169c6def0e6c43ccec92933ee71c265df7a89f20f677551d84cb0b"
+    },
+    "yr_vairatb": {
+      "file": "yr/vairatb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25874,
+      "durMs": 1173,
+      "bytes": 51792,
+      "sha256": "aa470321ab776ce514e92f228005ad322521e8f249c2a028accffbdb586244a2"
+    },
+    "yr_vairatc": {
+      "file": "yr/vairatc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 30374,
+      "durMs": 1378,
+      "bytes": 60792,
+      "sha256": "c6b8c51fbb2545ef4df42937d5209b5d6b59f7e4651f037d6df16b5c07f37e83"
+    },
+    "yr_vairatd": {
+      "file": "yr/vairatd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31952,
+      "durMs": 1449,
+      "bytes": 63948,
+      "sha256": "455a1dc15e0365c946d8d89129bfb40dc3a6ff93ef386d6a85310be04f9fb157"
+    },
+    "yr_vairate": {
+      "file": "yr/vairate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 28116,
+      "durMs": 1275,
+      "bytes": 56276,
+      "sha256": "6eb87b96a2dbcab8a501bf0522f8b480dc50be071fdd1ff0510732c50a883f04"
+    },
+    "yr_vaegsea": {
+      "file": "yr/vaegsea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26050,
+      "durMs": 1181,
+      "bytes": 52144,
+      "sha256": "8ccab7bb287fa9aaee6dcdd003914e8b04f66852f85aa4ae06f451c369b150df"
+    },
+    "yr_vaegseb": {
+      "file": "yr/vaegseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26483,
+      "durMs": 1201,
+      "bytes": 53010,
+      "sha256": "3f647f274091f08c6dea6bd0ae220310006642bae1f0775c5423fa1cdf34d8a6"
+    },
+    "yr_vaegsec": {
+      "file": "yr/vaegsec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 37782,
+      "durMs": 1713,
+      "bytes": 75608,
+      "sha256": "53e0c95319e2997e6a933f9c13bcd2d1c50338e9bada0d46d206c9d110bc5b6d"
+    },
+    "yr_vaegsed": {
+      "file": "yr/vaegsed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 28300,
+      "durMs": 1283,
+      "bytes": 56644,
+      "sha256": "66761259e05b6b2d1a3e7a73cf165d1a97339be4dc40c2e651a3551c25f031cd"
+    },
+    "yr_vaegsee": {
+      "file": "yr/vaegsee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 36701,
+      "durMs": 1664,
+      "bytes": 73446,
+      "sha256": "77a32607c646425766639d1ac06036558f22b904ffb83d7d2fc9cc04c6de2cf9"
+    },
+    "yr_vaegmoa": {
+      "file": "yr/vaegmoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 23560,
+      "durMs": 1068,
+      "bytes": 47164,
+      "sha256": "e279831d87b6ac807e49852c7aed523e5f218f5b6e8a913565489f1363775d24"
+    },
+    "yr_vaegmob": {
+      "file": "yr/vaegmob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 23760,
+      "durMs": 1078,
+      "bytes": 47564,
+      "sha256": "36b1cfe79a2dec274a146b60b47a0669a2732eed98a3842d53eaaa833e282575"
+    },
+    "yr_vaegmoc": {
+      "file": "yr/vaegmoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 28364,
+      "durMs": 1286,
+      "bytes": 56772,
+      "sha256": "4dc92060b93330ad29d8dfb867c2f798e3e1bea849fd519b9e14720526fb8e00"
+    },
+    "yr_vaegmod": {
+      "file": "yr/vaegmod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 17698,
+      "durMs": 803,
+      "bytes": 35440,
+      "sha256": "8b9bef2ae21eb6ab9f165b1ff20cf38589eb045f62149d830641921b80241a91"
+    },
+    "yr_vaegmoe": {
+      "file": "yr/vaegmoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 14166,
+      "durMs": 642,
+      "bytes": 28376,
+      "sha256": "bc149ca7cfecb5a7091937c3654bf108d7372c1144f4628c631651f722a517e8"
+    },
+    "yr_vaegata": {
+      "file": "yr/vaegata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22903,
+      "durMs": 1039,
+      "bytes": 45850,
+      "sha256": "1392d98b111ca05a1b8264ceba23c02ce6572bc7d2c746d0e18cb5255e403bec"
+    },
+    "yr_vaegatb": {
+      "file": "yr/vaegatb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 36981,
+      "durMs": 1677,
+      "bytes": 74006,
+      "sha256": "983e28a2379b447e3d938e58d240722c96543cc6dd49461d7d713de7b878a272"
+    },
+    "yr_vaegatc": {
+      "file": "yr/vaegatc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 45141,
+      "durMs": 2047,
+      "bytes": 90326,
+      "sha256": "9ca06657360592a2df7bee6017057c748a8590da9eba45beee3302c81dfc0bd2"
+    },
+    "yr_vaegatd": {
+      "file": "yr/vaegatd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25778,
+      "durMs": 1169,
+      "bytes": 51600,
+      "sha256": "eafa21fc1127bc7346329a2a6708d7982f720af9b1ea69169f4a1b344da99d32"
+    },
+    "yr_vaegate": {
+      "file": "yr/vaegate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31736,
+      "durMs": 1439,
+      "bytes": 63516,
+      "sha256": "7d3c7878e88e908a934c0ccd41589ce7ce7f36ea22927a2541afc28aefd31ec9"
+    },
+    "yr_vaegatf": {
+      "file": "yr/vaegatf.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22903,
+      "durMs": 1039,
+      "bytes": 45850,
+      "sha256": "3797eb8ae9010335f6b680a734a3e68632ad7c0614dc88c441e09a91b7dd2a5e"
+    },
+    "yr_vaegatg": {
+      "file": "yr/vaegatg.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 27355,
+      "durMs": 1241,
+      "bytes": 54754,
+      "sha256": "05136a56b3f75fb39e587d8218d0aec658de27566bbcc57f686bf25fd2462301"
+    },
+    "yr_vaegath": {
+      "file": "yr/vaegath.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22767,
+      "durMs": 1033,
+      "bytes": 45578,
+      "sha256": "d1ec9570fdb2f3ef889fe712953977fde0e0bf0003b43a95327b0622a501cc55"
+    },
+    "yr_vhoasea": {
+      "file": "yr/vhoasea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18483,
+      "durMs": 838,
+      "bytes": 37010,
+      "sha256": "3892299ff158a1eeb663fa7e2ef458e09ed61ab0df915982b83653ed643dbaa1"
+    },
+    "yr_vhoaseb": {
+      "file": "yr/vhoaseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22695,
+      "durMs": 1029,
+      "bytes": 45434,
+      "sha256": "5a6cbb1c1521ca17e5bc8be6752bbbc7b6045db80f413ffb9059496b543a052d"
+    },
+    "yr_vhoasec": {
+      "file": "yr/vhoasec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26194,
+      "durMs": 1188,
+      "bytes": 52432,
+      "sha256": "d9189973a41f403eb7ebb1ea1afd707f3335b5c3d9189ccb409f53f5c01db3ac"
+    },
+    "yr_vhoased": {
+      "file": "yr/vhoased.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 27259,
+      "durMs": 1236,
+      "bytes": 54562,
+      "sha256": "6d3c6a8e747d43dae32c3f40ff50de6f3b9e1dfbf1ace0004cf435e7ddb4fd3c"
+    },
+    "yr_vhoasee": {
+      "file": "yr/vhoasee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 24577,
+      "durMs": 1115,
+      "bytes": 49198,
+      "sha256": "6189e3d146462b1b8e9006ea25ec6ea89fe7365947bbe88b9f2152f71764ffb4"
+    },
+    "yr_vhoamoa": {
+      "file": "yr/vhoamoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18515,
+      "durMs": 840,
+      "bytes": 37074,
+      "sha256": "86e1f27e3cd1c26812a7e12eaf8bcd3fb849d13e5e58164a3d5490bab9bab0e9"
+    },
+    "yr_vhoamob": {
+      "file": "yr/vhoamob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29077,
+      "durMs": 1319,
+      "bytes": 58198,
+      "sha256": "307887df99ef6f48b022e7097e07291fc8e3ada69d234cc4ad5ed0832035bdf9"
+    },
+    "yr_vhoamoc": {
+      "file": "yr/vhoamoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25762,
+      "durMs": 1168,
+      "bytes": 51568,
+      "sha256": "89086071f8851451802f27f9f54fcf33880644db6ec88f2231b19286b45e8885"
+    },
+    "yr_vhoamod": {
+      "file": "yr/vhoamod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 16409,
+      "durMs": 744,
+      "bytes": 32862,
+      "sha256": "29bf3fd7025cd1d0e3eb74a46f3f690d693a21e136abdc30631abedfa2765c77"
+    },
+    "yr_vhoamoe": {
+      "file": "yr/vhoamoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 24985,
+      "durMs": 1133,
+      "bytes": 50014,
+      "sha256": "ccf715edfac2b3e1952dcf955def09a557c2a78d9e3aca4876a51d35fed6159f"
+    },
+    "yr_vtansea": {
+      "file": "yr/vtansea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 32544,
+      "durMs": 1476,
+      "bytes": 65132,
+      "sha256": "92315e6a2d0555b055de49516c907b91d723ffeea890aae36772fe9bfca30749"
+    },
+    "yr_vtanseb": {
+      "file": "yr/vtanseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 32024,
+      "durMs": 1452,
+      "bytes": 64092,
+      "sha256": "abe2b893127d7b515e3871782d698f8e4376a894e1bb1b37141641ec66c343c4"
+    },
+    "yr_vtansec": {
+      "file": "yr/vtansec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 36829,
+      "durMs": 1670,
+      "bytes": 73702,
+      "sha256": "5bdefc4c38f2e2954cefa353ac7594cb7159a2991d811fa566b439b0e2bd017c"
+    },
+    "yr_vtansed": {
+      "file": "yr/vtansed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 40913,
+      "durMs": 1855,
+      "bytes": 81870,
+      "sha256": "9e3bdb5086889b919a31acf2ab76d0407cc94f432e7155851999dae1e2ab8f94"
+    },
+    "yr_vtansee": {
+      "file": "yr/vtansee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29109,
+      "durMs": 1320,
+      "bytes": 58262,
+      "sha256": "8a845664eae54268020b102e497e95b349d41e702a0207791fbcc9ed41cb8272"
+    },
+    "yr_vtanmoa": {
+      "file": "yr/vtanmoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22078,
+      "durMs": 1001,
+      "bytes": 44200,
+      "sha256": "99dfd26d39f8b654230e85067b781f823d90767bec7be788d5d09a4fe0b905fa"
+    },
+    "yr_vtanmob": {
+      "file": "yr/vtanmob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 12453,
+      "durMs": 565,
+      "bytes": 24950,
+      "sha256": "0f3803c932014d1c1840af13f832ca1496cb5d15d6fa595d85792d3669132fc7"
+    },
+    "yr_vtanmoc": {
+      "file": "yr/vtanmoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 16176,
+      "durMs": 734,
+      "bytes": 32396,
+      "sha256": "906653d077b6cdffb19b5bbf4e3de1ffedb29c66c617540572b05b1caffad2d5"
+    },
+    "yr_vtanmod": {
+      "file": "yr/vtanmod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 21414,
+      "durMs": 971,
+      "bytes": 42872,
+      "sha256": "8f9a6faa006d0be9ea4422069682b188ba58d33b1305b59739862a53db682726"
+    },
+    "yr_vtanata": {
+      "file": "yr/vtanata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 32905,
+      "durMs": 1492,
+      "bytes": 65854,
+      "sha256": "a080ec639f1ebbc65886b1c1e49531efe258f15e4ca8c93f68f5ec16ad25d8ee"
+    },
+    "yr_vtanatb": {
+      "file": "yr/vtanatb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29598,
+      "durMs": 1342,
+      "bytes": 59240,
+      "sha256": "4099ea743bd6a3f8dd381d12ab80fcc62843f88b651001246f9f3736864d068a"
+    },
+    "yr_vtanatc": {
+      "file": "yr/vtanatc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29389,
+      "durMs": 1333,
+      "bytes": 58822,
+      "sha256": "9d29bbfe8f524178038dae0ddfae5b1b2018277f362db22369c57d4e79594d17"
+    },
+    "yr_vtanatd": {
+      "file": "yr/vtanatd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 36813,
+      "durMs": 1670,
+      "bytes": 73670,
+      "sha256": "fa59e30869114ae3caa1612270848697d89d5846b780a4a4fa8fd33b2a5aab43"
+    },
+    "yr_vtanate": {
+      "file": "yr/vtanate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33698,
+      "durMs": 1528,
+      "bytes": 67440,
+      "sha256": "32d4ebb2ca9d722acaf004a5f684316b250737bd32a757ee0cebebd3acf884bb"
+    },
+    "yr_vchrsea": {
+      "file": "yr/vchrsea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18515,
+      "durMs": 840,
+      "bytes": 37074,
+      "sha256": "b5b8832de80962cbc16d6a01681ad0bc0076b1f0a30a30bc1687b5cef1944920"
+    },
+    "yr_vchrseb": {
+      "file": "yr/vchrseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 16825,
+      "durMs": 763,
+      "bytes": 33694,
+      "sha256": "ab8a2f6fa9ccfe8426bdc48d8dcb81e80bcd6bb7d8f28ca8bc0a682d9d0e9acc"
+    },
+    "yr_vchrsec": {
+      "file": "yr/vchrsec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33497,
+      "durMs": 1519,
+      "bytes": 67038,
+      "sha256": "9f67064d9ad39318deb1f609d81765f0ea96c054a77718a5bd44cb7d90c6c5f9"
+    },
+    "yr_vchrsed": {
+      "file": "yr/vchrsed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18747,
+      "durMs": 850,
+      "bytes": 37538,
+      "sha256": "c1d5de742a9da5c6829530805665fe2b0e7cde5a1ab73aacd2fb6b87fcf0f7f7"
+    },
+    "yr_vchrsee": {
+      "file": "yr/vchrsee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 21245,
+      "durMs": 963,
+      "bytes": 42534,
+      "sha256": "f750fc847d51249c958ce09ed9ee203edaffa5b0beb620a0b92d4c83da02fdfc"
+    },
+    "yr_vprisea": {
+      "file": "yr/vprisea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29493,
+      "durMs": 1338,
+      "bytes": 59030,
+      "sha256": "99df0fb989f6a679f81c87c17d1e8dfcc9a7b6c22dfd686dc12e8c1b8fcc42bd"
+    },
+    "yr_vpriseb": {
+      "file": "yr/vpriseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33986,
+      "durMs": 1541,
+      "bytes": 68016,
+      "sha256": "4a23afade764cf889dd692f81cdc20a3770f3a74d2328bd61da5d5929449716d"
+    },
+    "yr_vprisec": {
+      "file": "yr/vprisec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 40536,
+      "durMs": 1838,
+      "bytes": 81116,
+      "sha256": "08a733118412820e1ff6f27b4b6aaad2279d7c32d34fbb0aaf3a6c652d7ec220"
+    },
+    "yr_vprised": {
+      "file": "yr/vprised.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26779,
+      "durMs": 1214,
+      "bytes": 53602,
+      "sha256": "83e3fad32f0a623f64fc086f61ed962a70306d9c8c64eaaf2afc91cd213fb826"
+    },
+    "yr_vprisee": {
+      "file": "yr/vprisee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22983,
+      "durMs": 1042,
+      "bytes": 46010,
+      "sha256": "5c6b8df5aeaba16321115c5cdf91846d708c7d8b399c24e266e176f565a0343c"
+    },
+    "yr_vprimoa": {
+      "file": "yr/vprimoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 39447,
+      "durMs": 1789,
+      "bytes": 78938,
+      "sha256": "57b1bad575fc1738f05d22532cbd8921a7d261bc5cc9ca0eb335ad8094eff0db"
+    },
+    "yr_vprimob": {
+      "file": "yr/vprimob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31648,
+      "durMs": 1435,
+      "bytes": 63340,
+      "sha256": "a3d4aaad574a9de869389eaad7ab3b11a1d7b438b2a6ae4b6e0cad3a1549fa10"
+    },
+    "yr_vprimoc": {
+      "file": "yr/vprimoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29301,
+      "durMs": 1329,
+      "bytes": 58646,
+      "sha256": "92e7e1321722309d1b90bd5a3950219a6a70cbfa67d4b11deb82a1bfeb4be594"
+    },
+    "yr_vprimod": {
+      "file": "yr/vprimod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29998,
+      "durMs": 1360,
+      "bytes": 60040,
+      "sha256": "acf231a3eb4c26d3ecc07beeca286fbd4fec920eee9d0bd51835ce642d0a48df"
+    },
+    "yr_vprimoe": {
+      "file": "yr/vprimoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 33297,
+      "durMs": 1510,
+      "bytes": 66638,
+      "sha256": "325c5476eae493b267576508328e842abd7f833663071727ea7e80ee625022bc"
+    },
+    "yr_vpriata": {
+      "file": "yr/vpriata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31223,
+      "durMs": 1416,
+      "bytes": 62490,
+      "sha256": "67df36044854124009436c35ba2d899cd6798ddfd6fb730d3f382f917fab5973"
+    },
+    "yr_vpriatb": {
+      "file": "yr/vpriatb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31712,
+      "durMs": 1438,
+      "bytes": 63468,
+      "sha256": "439f90338c938e2a3dbb50acf74c5508af8bda91ffb72822ec6614a082e2be8f"
+    },
+    "yr_vpriatc": {
+      "file": "yr/vpriatc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 35644,
+      "durMs": 1617,
+      "bytes": 71332,
+      "sha256": "c36e01053a7d09fd8d6c3401efd430941bf0b1c530a0d189a4c12496fbf1d570"
+    },
+    "yr_vpriatd": {
+      "file": "yr/vpriatd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 37077,
+      "durMs": 1681,
+      "bytes": 74198,
+      "sha256": "81f9bc09f662554f808c9241c1d79b1cd53579c7e1f94a9c127cc396c088258b"
+    },
+    "yr_vpriate": {
+      "file": "yr/vpriate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 30094,
+      "durMs": 1365,
+      "bytes": 60232,
+      "sha256": "ec8bde87962942d9943f3d7d2e5117ae26eea72ee24d9af718a47a86e16372db"
+    },
+    "yr_vmirsea": {
+      "file": "yr/vmirsea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 45525,
+      "durMs": 2065,
+      "bytes": 91094,
+      "sha256": "fe0d2dcb7d55d1501006ad4fae612108a03e43feead05b886f92d4a407aaf75d"
+    },
+    "yr_vmirseb": {
+      "file": "yr/vmirseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 26218,
+      "durMs": 1189,
+      "bytes": 52480,
+      "sha256": "8c69e436c8d144a7715fefa9e70e45f71920fbaf1c80bb3063ce4e894a862b6c"
+    },
+    "yr_vmirsec": {
+      "file": "yr/vmirsec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18122,
+      "durMs": 822,
+      "bytes": 36288,
+      "sha256": "23911aba887d60b39e917614f5252f126878b6bd0a83a5a6d2c10360ea54a011"
+    },
+    "yr_vmirsed": {
+      "file": "yr/vmirsed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25065,
+      "durMs": 1137,
+      "bytes": 50174,
+      "sha256": "3e6f689529a317f9b633dd6318e573d17e72005d3970a3fe00b810c9126b96d0"
+    },
+    "yr_vmirsee": {
+      "file": "yr/vmirsee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18523,
+      "durMs": 840,
+      "bytes": 37090,
+      "sha256": "987b892382cc46b3e0f0df2abb0cc91217222d54b02ae7d8513911ce464f13a8"
+    },
+    "yr_vmirsef": {
+      "file": "yr/vmirsef.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 29469,
+      "durMs": 1336,
+      "bytes": 58982,
+      "sha256": "2799c3872709fa686a6941d36f6ae18d12da05c4eb9191de610afcf8dc857cba"
+    },
+    "yr_vmirmoa": {
+      "file": "yr/vmirmoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18867,
+      "durMs": 856,
+      "bytes": 37778,
+      "sha256": "e5b0c428ffcc8d5dcc2711a4e4db569916082569e567243549ccafa9a0298192"
+    },
+    "yr_vmirmob": {
+      "file": "yr/vmirmob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 14551,
+      "durMs": 660,
+      "bytes": 29146,
+      "sha256": "5041ca673cbca8808a4dcb1d9ed7c974d17a16b60a23a77a8cfd1bef67ca339f"
+    },
+    "yr_vmirmoc": {
+      "file": "yr/vmirmoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 15095,
+      "durMs": 685,
+      "bytes": 30234,
+      "sha256": "5d958669461f0dd1ff0533a08e7b44eb4739e2cfe2d78a4cc9623bc8950ca2f1"
+    },
+    "yr_vmirmod": {
+      "file": "yr/vmirmod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19892,
+      "durMs": 902,
+      "bytes": 39828,
+      "sha256": "ce1495a2d74c09268edf632b180e77c1a0acbfc711d45ff8500203791e81ca6e"
+    },
+    "yr_vmirmoe": {
+      "file": "yr/vmirmoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 14791,
+      "durMs": 671,
+      "bytes": 29626,
+      "sha256": "8f7ee865b2738d0bebf70a7f5183a06c45021024f4042188fa74133eea469162"
+    },
+    "yr_vmirmof": {
+      "file": "yr/vmirmof.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19227,
+      "durMs": 872,
+      "bytes": 38498,
+      "sha256": "c98a5ca533e0d71823c32bc44dd111bd1936f6dab104957eff325faf31b26623"
+    },
+    "yr_vmirmog": {
+      "file": "yr/vmirmog.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 42714,
+      "durMs": 1937,
+      "bytes": 85472,
+      "sha256": "6a8ea1ea2b7a6f13a8b0eb2d5e206c850e230c3b757643342453339b7d024310"
+    },
+    "yr_vmirata": {
+      "file": "yr/vmirata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 16657,
+      "durMs": 755,
+      "bytes": 33358,
+      "sha256": "662df24a0ab54eaf9f131f9d90ab9a7c0ed6390e810747d2d16dd44e0e3fade6"
+    },
+    "yr_vmiratb": {
+      "file": "yr/vmiratb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18611,
+      "durMs": 844,
+      "bytes": 37266,
+      "sha256": "cd603a8662e1cbee06aee7dabbde650032fc259b128b10b640deafb7b0443764"
+    },
+    "yr_vmiratc": {
+      "file": "yr/vmiratc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19708,
+      "durMs": 894,
+      "bytes": 39460,
+      "sha256": "5c96fdb6120d03c4aa4392a347a2a393abaea0f2f8630850c69adcafc54a537b"
+    },
+    "yr_vmiratd": {
+      "file": "yr/vmiratd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 28661,
+      "durMs": 1300,
+      "bytes": 57366,
+      "sha256": "b6091a5242ce6172f7a512f15a56d764ffcd113dbba6aab697445c2fb6da30f7"
+    },
+    "yr_vmirate": {
+      "file": "yr/vmirate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 23896,
+      "durMs": 1084,
+      "bytes": 47836,
+      "sha256": "e819da3dd1404a650dc445f4bb80052333ff496de0c67d6d36a53082ca8bfa09"
+    },
+    "yr_vifvsea": {
+      "file": "yr/vifvsea.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 21221,
+      "durMs": 962,
+      "bytes": 42486,
+      "sha256": "3bfb2fcdd34825b446aec6817525bb6b335ec1700d7d3e1d12a5eca34522ad91"
+    },
+    "yr_vifvseb": {
+      "file": "yr/vifvseb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18627,
+      "durMs": 845,
+      "bytes": 37298,
+      "sha256": "b9aba5145f48a3d2bc615ab853e7aaf78721b2f3b10f9478e984288a9f072557"
+    },
+    "yr_vifvsec": {
+      "file": "yr/vifvsec.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 17057,
+      "durMs": 774,
+      "bytes": 34158,
+      "sha256": "a98a9dbe7536dec69a4e5bfec82cf32a3e94e1475ed10263ab21d89f146a682a"
+    },
+    "yr_vifvsed": {
+      "file": "yr/vifvsed.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22615,
+      "durMs": 1026,
+      "bytes": 45274,
+      "sha256": "df87dd6d21fad3ad84a59d150348dd92b5de2360ef675571be59c0d0dbf9bb86"
+    },
+    "yr_vifvsee": {
+      "file": "yr/vifvsee.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31904,
+      "durMs": 1447,
+      "bytes": 63852,
+      "sha256": "f6e8071ede88b4fccf2241bc9a0de46a1578ab662116a8d787e55fcf579547e5"
+    },
+    "yr_vifvsef": {
+      "file": "yr/vifvsef.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19412,
+      "durMs": 880,
+      "bytes": 38868,
+      "sha256": "860d65a78fd97613068b09197ddc3668cb4be22742d613929ebb2680b218d6b3"
+    },
+    "yr_vifvmoa": {
+      "file": "yr/vifvmoa.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 18250,
+      "durMs": 828,
+      "bytes": 36544,
+      "sha256": "f7ae7b0378a1a79caeaf6560afbb74e1af66c09d9efae594d9504bbb78ae2f13"
+    },
+    "yr_vifvmob": {
+      "file": "yr/vifvmob.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 25594,
+      "durMs": 1161,
+      "bytes": 51232,
+      "sha256": "2e0a9d3703c44b9a37ec4bdc6622ed26705fd1120ac0ab8d936e7c33cd55ce5e"
+    },
+    "yr_vifvmoc": {
+      "file": "yr/vifvmoc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 12981,
+      "durMs": 589,
+      "bytes": 26006,
+      "sha256": "c0708aa35b8357fe1d2081889c70deea3c4c7d2a132bd045de244b205f1cbe34"
+    },
+    "yr_vifvmod": {
+      "file": "yr/vifvmod.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 10683,
+      "durMs": 484,
+      "bytes": 21410,
+      "sha256": "629eff38da0c828205e675437040aab55319c302d020662f89361e649f604520"
+    },
+    "yr_vifvmoe": {
+      "file": "yr/vifvmoe.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 19299,
+      "durMs": 875,
+      "bytes": 38642,
+      "sha256": "5b7406313c98c5a9ca688a5f12ee6761f43614d99b6dcae8fd234ab4e32727c8"
+    },
+    "yr_vifvmof": {
+      "file": "yr/vifvmof.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22206,
+      "durMs": 1007,
+      "bytes": 44456,
+      "sha256": "d092f10e3c30b7bbd3141b6bb96cd2ec19961a84143c1ab8624401fd0db9d99f"
+    },
+    "yr_vifvata": {
+      "file": "yr/vifvata.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 21422,
+      "durMs": 972,
+      "bytes": 42888,
+      "sha256": "410d2f26c84f0ba3319410a376b9c0972bfbb297662252d31ee57737e5c6d398"
+    },
+    "yr_vifvatb": {
+      "file": "yr/vifvatb.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 15480,
+      "durMs": 702,
+      "bytes": 31004,
+      "sha256": "245dd5d6d0d3cd12bcc8f1fb882a610635ccd82089574676a60efb4e09fdc435"
+    },
+    "yr_vifvatc": {
+      "file": "yr/vifvatc.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 12789,
+      "durMs": 580,
+      "bytes": 25622,
+      "sha256": "9baf63881430d12c0cb9fde41aa2b71db67c369cef6c090c2025f744eff42741"
+    },
+    "yr_vifvatd": {
+      "file": "yr/vifvatd.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 22479,
+      "durMs": 1019,
+      "bytes": 45002,
+      "sha256": "b6f98d7bdc65fc887a50876151eed3defd5c993189b785fc950207f5ed6806f2"
+    },
+    "yr_vifvate": {
+      "file": "yr/vifvate.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 23095,
+      "durMs": 1047,
+      "bytes": 46234,
+      "sha256": "5b7f1e40501e3077c8139d554d930a93fca5bf2da698725c170f01ef71c01527"
+    }
+  }
+}

@@ -1,0 +1,2477 @@
+{
+  "source": "EA RA3 SDK v3 local XML",
+  "distance_scale": 1.5,
+  "cost": 1600,
+  "build_seconds": 15.0,
+  "hp": 500.0,
+  "speed": 80.0,
+  "vision": 200.0,
+  "shroud": 500.0,
+  "primary": [
+    {
+      "damage": 200.0,
+      "damage_delay": 0.1,
+      "range": 125.0,
+      "firing_seconds": 1.5,
+      "reload_seconds": 0.1
+    },
+    {
+      "damage": 250.0,
+      "damage_delay": 0.1,
+      "range": 150.0,
+      "firing_seconds": 1.5,
+      "reload_seconds": 0.1
+    }
+  ],
+  "scatter": [
+    {
+      "range": 125.0,
+      "damage": 25.0,
+      "damage_delay": 0.1
+    },
+    {
+      "range": 150.0,
+      "damage": 40.0,
+      "damage_delay": 0.1
+    }
+  ],
+  "promotions": [
+    {
+      "experience": 4800.0,
+      "modifiers": {
+        "DAMAGE_MULT": 1.25
+      }
+    },
+    {
+      "experience": 8400.0,
+      "modifiers": {
+        "HEALTH_MULT": 1.25
+      }
+    },
+    {
+      "experience": 14400.0,
+      "modifiers": {
+        "RANGE": 1.25,
+        "VISION": 1.25,
+        "SHROUD_CLEARING": 1.25,
+        "RATE_OF_FIRE": 1.2,
+        "SUPPRESSABILITY": 3.0
+      }
+    }
+  ],
+  "heal": {
+    "amount": 3.0,
+    "delay": 0.5,
+    "start_delay": 1.0
+  },
+  "locomotor": {
+    "id": "AlliedAntiVehicleVehicleTech3Locomotor",
+    "Surfaces": "GROUND CRUSHABLE_OBSTACLE",
+    "TurnTimeSeconds": "1.0s",
+    "TurnTimeDamagedSeconds": "1.0s",
+    "MaxSpeedDamaged": "75%",
+    "AccelerationSeconds": "0.01s",
+    "BrakingSeconds": "0.01s",
+    "SlowTurnRadius": "0.0",
+    "FastTurnRadius": "20.0",
+    "BehaviorZ": "NO_MOTIVE_FORCE",
+    "Appearance": "FOUR_WHEELS",
+    "UseTerrainSmoothing": "true",
+    "CanReverseMove": "true",
+    "AccelPitchLimit": "4d",
+    "BounceKick": "0.5d",
+    "PitchStiffness": "0.2",
+    "RollStiffness": "0.75",
+    "PitchDamping": "0.15",
+    "RollDamping": "0.75",
+    "ForwardAccelerationPitchFactor": "0.01",
+    "LateralAccelerationRollFactor": "0.0",
+    "HasSuspension": "true",
+    "ClampOrientationToPathTangent": "true",
+    "MaximumWheelExtension": "-2.3",
+    "MaximumWheelCompression": "1.4",
+    "WheelTurnAngle": "0d",
+    "ReorientIfTurnTooSharp": "true",
+    "TurnThresholdHS": "90d"
+  },
+  "raw": {
+    "unit": {
+      "type": "GameObject",
+      "id": "AlliedAntiVehicleVehicleTech3",
+      "inheritFrom": "BaseVehicle",
+      "SelectPortrait": "Portrait_AlliedAntiVehicleVehicleTech3",
+      "ButtonImage": "Button_AlliedAntiVehicleVehicleTech3_on",
+      "Side": "Allies",
+      "SubGroupPriority": "535",
+      "EditorSorting": "UNIT",
+      "HealthBoxHeightOffset": "25",
+      "BuildTime": "15",
+      "CommandSet": "AlliedAntiVehicleVehicleTech3CommandSet",
+      "KindOf": "SELECTABLE CAN_ATTACK CAN_CAST_REFLECTIONS SCORE VEHICLE CAN_BE_FAVORITE_UNIT DISGUISER T3_UNIT",
+      "WeaponCategory": "CANNON",
+      "VoicePriority": "188",
+      "EditorName": "AlliedAntiVehicleVehicleTech3",
+      "Description": "Desc:AlliedAntiVehicleVehicleTech3",
+      "TypeDescription": "Type:AlliedAntiVehicleVehicleTech3",
+      "UnitIntro": "Allied_MirageTank_UnitIntro",
+      "children": [
+        {
+          "type": "DisplayName",
+          "{uri:ea.com:eala:asset:instance}joinAction": "Replace",
+          "children": []
+        },
+        {
+          "type": "GameDependency",
+          "children": [
+            {
+              "type": "NeededUpgrade",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ObjectResourceInfo",
+          "children": [
+            {
+              "type": "BuildCost",
+              "Account": "=$ACCOUNT_ORE",
+              "Amount": "1600",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ArmorSet",
+          "Armor": "AlliedAntiVehicleVehicleTech3Armor",
+          "DamageFX": "VehicleDamageFX",
+          "children": []
+        },
+        {
+          "type": "LocomotorSet",
+          "id": "DefaultLocomotor",
+          "Locomotor": "AlliedAntiVehicleVehicleTech3Locomotor",
+          "Condition": "NORMAL",
+          "Speed": "80.0",
+          "children": []
+        },
+        {
+          "type": "SkirmishAIInformation",
+          "UnitBuilderStandardCombatUnit": "true",
+          "OutOfRangePenalty": "2.0",
+          "children": []
+        },
+        {
+          "type": "Draws",
+          "children": [
+            {
+              "type": "TruckDraw",
+              "id": "ModuleTag_Draw",
+              "OkToChangeModelColor": "true",
+              "ExtraPublicBone": "FX_Weapon BONE_EAR_LEFT BONE_EAR_RIGHT B_TREAD_FRONT_LEFT B_TREAD_FRONT_RIGHT B_TREAD_REAR_LEFT B_TREAD_REAR_RIGHT T2_UNIT",
+              "TrackMarks": "EXTireTrack2",
+              "TrackMarksOnlyWhenCorneringQuickly": "false",
+              "TrackMarksLeftBone": "Bone_Tire_Rear_Left",
+              "TrackMarksRightBone": "Bone_Tire_Rear_Right",
+              "LeftFrontTireBone": "Bone_Tire_Front_Left",
+              "RightFrontTireBone": "Bone_Tire_Front_Right",
+              "LeftRearTireBone": "Bone_Tire_Rear_Left",
+              "RightRearTireBone": "Bone_Tire_Rear_Right",
+              "TireRotationMultiplier": "0.0",
+              "PowerslideRotationAddition": "1.25",
+              "InitialRecoilSpeed": "0.1",
+              "MaxRecoilDistance": "0.1",
+              "RecoilDamping": "2.0",
+              "RecoilSettleSpeed": "3.0",
+              "children": [
+                {
+                  "type": "TreadTerrainParticles",
+                  "children": []
+                },
+                {
+                  "type": "TreadScrollingMap",
+                  "LeftTrack": "B_TREAD_FRONT_LEFT",
+                  "RightTrack": "B_TREAD_FRONT_RIGHT",
+                  "SpeedMultiplier": "-0.05",
+                  "children": []
+                },
+                {
+                  "type": "TreadScrollingMap",
+                  "LeftTrack": "B_TREAD_REAR_LEFT",
+                  "RightTrack": "B_TREAD_REAR_RIGHT",
+                  "SpeedMultiplier": "-0.05",
+                  "children": []
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "RetainSubObjects": "true",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_SKN",
+                      "children": []
+                    },
+                    {
+                      "type": "WeaponFireFXBone",
+                      "WeaponSlotID": "1",
+                      "WeaponSlotType": "PRIMARY_WEAPON",
+                      "BoneName": "FX_Weapon",
+                      "children": []
+                    },
+                    {
+                      "type": "WeaponLaunchBone",
+                      "WeaponSlotID": "1",
+                      "WeaponSlotType": "PRIMARY_WEAPON",
+                      "BoneName": "FX_Weapon",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "RetainSubObjects": "true",
+                  "ConditionsYes": "DISGUISED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_SKN",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "Bone_Ear_Left",
+                      "FXParticleSystemTemplate": "Primage_Disguise_Rays",
+                      "FollowBone": "true",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "Bone_Ear_Right",
+                      "FXParticleSystemTemplate": "Primage_Disguise_Rays02",
+                      "FollowBone": "true",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "RetainSubObjects": "true",
+                  "ConditionsYes": "REALLYDAMAGED DISGUISED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_SKN",
+                      "children": []
+                    },
+                    {
+                      "type": "Texture",
+                      "Original": "AUAntiVehicleVehicleTech3",
+                      "New": "AUAntiVehicleVehicleTech3_D",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "Bone_Ear_Left",
+                      "FXParticleSystemTemplate": "Primage_Disguise_Rays",
+                      "FollowBone": "true",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "Bone_Ear_Right",
+                      "FXParticleSystemTemplate": "Primage_Disguise_Rays02",
+                      "FollowBone": "true",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "RetainSubObjects": "true",
+                  "ConditionsYes": "REALLYDAMAGED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_SKN",
+                      "children": []
+                    },
+                    {
+                      "type": "Texture",
+                      "Original": "AUAntiVehicleVehicleTech3",
+                      "New": "AUAntiVehicleVehicleTech3_D",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+                  "StateName": "STATE_bored",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    },
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6 MOVING",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_MOVA",
+                      "AnimationMode": "LOOP",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6 SELECTED",
+                  "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "MOVING",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_MOVA",
+                      "AnimationMode": "LOOP",
+                      "children": []
+                    },
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "SELECTED",
+                  "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+                  "StateName": "STATE_SelectedPose",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    },
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6",
+                  "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_TRANSITION",
+                  "StateName": "TRANS_FromField",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ScriptedModelDraw",
+              "id": "ModuleTag_DisguiseDraw",
+              "InvertStealthOpacity": "true",
+              "children": [
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "include",
+              "href": "DATA:Includes/HeadlightDraw2.xml",
+              "xpointer": "xmlns(n=uri:ea.com:eala:asset) xpointer(/n:HeadlightDraw2/child::*)",
+              "children": []
+            },
+            {
+              "type": "ScriptedModelDraw",
+              "id": "ModuleTag_Draw_FX",
+              "OkToChangeModelColor": "true",
+              "children": [
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_FX",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "DAMAGED DISGUISED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_FX",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "REALLYDAMAGED DISGUISED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_FX",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "DAMAGED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_FX",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "FX_BONE01",
+                      "FXParticleSystemTemplate": "VehicleDamageSmoke",
+                      "FollowBone": "true",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "REALLYDAMAGED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "AUAntiVehicleVehicleTech3_FX",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "FX_BONE01",
+                      "FXParticleSystemTemplate": "VehicleDamageSmoke",
+                      "FollowBone": "true",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "FX_BONE01",
+                      "FXParticleSystemTemplate": "VehicleDamageFire",
+                      "FollowBone": "true",
+                      "children": []
+                    },
+                    {
+                      "type": "ParticleSysBone",
+                      "BoneName": "FX_BONE01",
+                      "FXParticleSystemTemplate": "VehicleDamageFire02",
+                      "FollowBone": "true",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ScriptedModelDraw",
+              "id": "ModuleTag_ShieldDraw",
+              "NoRotate": "true",
+              "OkToChangeModelColor": "false",
+              "children": [
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "AFFECTED_BY_EMP USER_6",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "EXCloakingField",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "PARALYZED USER_6",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "EXCloakingField",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "EXCloakingField",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "REALLYDAMAGED",
+                  "children": [
+                    {
+                      "type": "Model",
+                      "Name": "",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_DEFAULT",
+                  "StateName": "STATE_NoField",
+                  "Flags": "START_FRAME_FIRST",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "EXCloakingField",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    },
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6 AFFECTED_BY_EMP",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6 PARALYZED",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Script",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_NORMAL",
+                  "ConditionsYes": "USER_6",
+                  "StateName": "STATE_Field",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "EXCloakingField",
+                      "AnimationMode": "ONCE",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AnimationState",
+                  "ParseCondStateType": "PARSE_TRANSITION",
+                  "StateName": "TRANS_FromField",
+                  "children": [
+                    {
+                      "type": "Animation",
+                      "AnimationName": "EXCloakingField",
+                      "AnimationMode": "ONCE_BACKWARDS",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LaserDraw",
+              "id": "ModuleTag_LaserDraw",
+              "Texture1_UTile": "1",
+              "Texture1_VTile": "1",
+              "Texture1_UScrollRate": "0.2",
+              "Texture1_VScrollRate": ".3",
+              "Texture1_NumFrames": "1",
+              "Texture1_FrameRate": "0",
+              "Texture2_UTile": "1",
+              "Texture2_VTile": "1",
+              "Texture2_UScrollRate": "-.2",
+              "Texture2_VScrollRate": "-.3",
+              "Texture2_NumFrames": "1",
+              "Texture2_FrameRate": "0",
+              "LaserWidth": "25",
+              "WeaponSlotID": "1",
+              "LaserStateID": "201",
+              "children": [
+                {
+                  "type": "FXShader",
+                  "ShaderName": "Laser.fx",
+                  "TechniqueIndex": "0",
+                  "children": [
+                    {
+                      "type": "Constants",
+                      "children": [
+                        {
+                          "type": "Texture",
+                          "Name": "Texture1",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Texture",
+                          "Name": "Texture2",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Float",
+                          "Name": "ColorEmissive",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            },
+                            {
+                              "type": "Value",
+                              "children": []
+                            },
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LaserDraw",
+              "id": "ModuleTag_LaserDraw_Vet",
+              "Texture1_UTile": "1",
+              "Texture1_VTile": "1",
+              "Texture1_UScrollRate": "0.2",
+              "Texture1_VScrollRate": ".3",
+              "Texture1_NumFrames": "1",
+              "Texture1_FrameRate": "0",
+              "Texture2_UTile": "1",
+              "Texture2_VTile": "1",
+              "Texture2_UScrollRate": "-.2",
+              "Texture2_VScrollRate": "-.3",
+              "Texture2_NumFrames": "1",
+              "Texture2_FrameRate": "0",
+              "LaserWidth": "25",
+              "WeaponSlotID": "1",
+              "LaserStateID": "202",
+              "children": [
+                {
+                  "type": "FXShader",
+                  "ShaderName": "Laser.fx",
+                  "TechniqueIndex": "0",
+                  "children": [
+                    {
+                      "type": "Constants",
+                      "children": [
+                        {
+                          "type": "Texture",
+                          "Name": "Texture1",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Texture",
+                          "Name": "Texture2",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        },
+                        {
+                          "type": "Float",
+                          "Name": "ColorEmissive",
+                          "children": [
+                            {
+                              "type": "Value",
+                              "children": []
+                            },
+                            {
+                              "type": "Value",
+                              "children": []
+                            },
+                            {
+                              "type": "Value",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Behaviors",
+          "children": [
+            {
+              "type": "WeaponSetUpdate",
+              "id": "ModuleTag_WeaponSetUpdate",
+              "children": [
+                {
+                  "type": "WeaponSlotHardpoint",
+                  "ID": "1",
+                  "children": [
+                    {
+                      "type": "Weapon",
+                      "Ordering": "PRIMARY_WEAPON",
+                      "Template": "AlliedAntiVehicleVehicleTech3PrismCannon",
+                      "ForbiddenObjectStatus": "GENERIC_TOGGLE_STATE WEAPON_UPGRADED_01",
+                      "children": []
+                    },
+                    {
+                      "type": "Weapon",
+                      "Ordering": "PRIMARY_WEAPON",
+                      "Template": "AlliedAntiVehicleVehicleTech3PrismCannon_Veteran",
+                      "ForbiddenObjectStatus": "GENERIC_TOGGLE_STATE",
+                      "ObjectStatus": "WEAPON_UPGRADED_01",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "LaserState",
+              "id": "ModuleTag_LaserState",
+              "LaserId": "201",
+              "children": [
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                },
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                },
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "LaserState",
+              "id": "ModuleTag_LaserState_Vet",
+              "LaserId": "202",
+              "children": [
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                },
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                },
+                {
+                  "type": "LaserEndParticleSystem",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Physics",
+              "id": "ModuleTag_Physics",
+              "children": []
+            },
+            {
+              "type": "CreateObjectDie",
+              "id": "ModuleTag_CreateObjectDie",
+              "CreationList": "AUAntiVehicleVehicleTech3_Die_OCL",
+              "children": [
+                {
+                  "type": "DieMuxData",
+                  "DeathTypes": "ALL",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "DestroyDie",
+              "id": "ModuleTag_Die",
+              "children": [
+                {
+                  "type": "DieMuxData",
+                  "DeathTypes": "ALL",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "FXListBehavior",
+              "id": "ModuleTag_FXList",
+              "children": [
+                {
+                  "type": "DieMuxData",
+                  "DeathTypes": "ALL",
+                  "children": []
+                },
+                {
+                  "type": "Event",
+                  "Index": "onDeath",
+                  "FX": "FX_AlliedChieftanDie",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "InvisibilityBroadcastUpdate",
+              "id": "ModuleTag_BroadcastInvisibility",
+              "BroadcastRange": "175",
+              "UpdatePeriod": "0.2s",
+              "AffectsSelf": "false",
+              "InvisibilityTemplate": "AlliedAntiVehicleVehicleTech3InvisibilityBroadcastTemplate",
+              "children": [
+                {
+                  "type": "BroadcastObjectFilter",
+                  "Rule": "ANY",
+                  "Relationship": "ALLIES",
+                  "Include": "INFANTRY VEHICLE",
+                  "StatusBitFlagsExclude": "AIRBORNE_TARGET BROADCASTING_INVISIBILITY IGNORING_STEALTH",
+                  "children": [
+                    {
+                      "type": "ExcludeThing",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ObjectStatusValidation",
+                  "RequiredStatus": "GENERIC_TOGGLE_STATE",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "SpecialPower",
+              "id": "ModuleTag_Disguise",
+              "SpecialPowerTemplate": "SpecialPower_PrimageDisguise",
+              "UpdateModuleStartsAttack": "true",
+              "children": []
+            },
+            {
+              "type": "SpecialDisguiseUpdate",
+              "id": "ModuleTag_DisguiseUpdate",
+              "SpecialPowerTemplate": "SpecialPower_PrimageDisguise",
+              "OpacityTarget": "0.5",
+              "ScanRadiusForPropDisguise": "250.0",
+              "DisguiseFX": "FX_PrimageDisguise",
+              "children": [
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Misc",
+                  "ObjectTemplate": "PrimageDisguise_Tree01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Grass",
+                  "ObjectTemplate": "PrimageDisguise_Tree01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Snow",
+                  "ObjectTemplate": "PrimageDisguise_Tree02",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Mud",
+                  "ObjectTemplate": "PrimageDisguise_Rock01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Dirt",
+                  "ObjectTemplate": "PrimageDisguise_Rock01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Cliff",
+                  "ObjectTemplate": "PrimageDisguise_Rock01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Sand",
+                  "ObjectTemplate": "PrimageDisguise_Rock01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Rock",
+                  "ObjectTemplate": "PrimageDisguise_Rock01",
+                  "children": []
+                },
+                {
+                  "type": "TerrainData",
+                  "TerrainClass": "Road",
+                  "ObjectTemplate": "PrimageDisguise_Truck01",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "SpecialPower",
+              "id": "ModuleTag_ToggleMirageFieldTrigger",
+              "SpecialPowerTemplate": "SpecialPower_ToggleMirageField",
+              "UpdateModuleStartsAttack": "true",
+              "children": []
+            },
+            {
+              "type": "ToggleStatusSpecialAbilityUpdate",
+              "id": "ModuleTag_ToggleMirageFieldTriggerUpdate",
+              "Options": "RECONSTITUTE_STORED_COMMAND",
+              "SpecialPowerTemplate": "SpecialPower_ToggleMirageField",
+              "children": [
+                {
+                  "type": "ToggleState",
+                  "EnterStateSound": "ALL_MirageField_StopMS",
+                  "children": [
+                    {
+                      "type": "SkirmishAiInfo",
+                      "ToggleHint": "TOGGLE_DEFAULT",
+                      "NeverUseInState": "RETREAT GATHER",
+                      "children": [
+                        {
+                          "type": "StateWeapon",
+                          "Weapon": "AlliedAntiVehicleVehicleTech3PrismCannon",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "ToggleState",
+                  "ObjectStatus": "GENERIC_TOGGLE_STATE BROADCASTING_INVISIBILITY",
+                  "ModelConditions": "USER_6",
+                  "EnterStateSound": "ALL_MirageField_StartMS",
+                  "children": [
+                    {
+                      "type": "SkirmishAiInfo",
+                      "ToggleHint": "TOGGLE_STEALTH_OTHERS",
+                      "NeverUseWhenHealthIsBelow": "250",
+                      "StealthOthersInvisibilityModuleId": "ModuleTag_BroadcastInvisibility",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "StatusBitsUpgrade",
+              "id": "ModuleTag_VeterancyUpgrade",
+              "StatusToSet": "WEAPON_UPGRADED_01",
+              "children": [
+                {
+                  "type": "TriggeredBy",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "AI",
+          "children": [
+            {
+              "type": "AIUpdate",
+              "id": "ModuleTag_AI",
+              "AutoAcquireEnemiesWhenIdle": "YES",
+              "StateMachine": "DisguiseWhenIdleAIStateMachine",
+              "children": [
+                {
+                  "type": "UnitAITargetChooserData",
+                  "IdleScanDelay": "=$FAST_IDLE_SCAN_DELAY",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Body",
+          "children": [
+            {
+              "type": "ActiveBody",
+              "id": "ModuleTag_Body",
+              "MaxHealth": "500",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "ClientBehaviors",
+          "children": [
+            {
+              "type": "ModelConditionAudioLoopClientBehavior",
+              "id": "ModuleTag_ShrunkenVoice",
+              "children": [
+                {
+                  "type": "ModelConditionSound",
+                  "Sound": "ALL_MirageTank_VoiceShrunken",
+                  "RequiredFlags": "SHRINK_EFFECT",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ModelConditionAudioLoopClientBehavior",
+              "id": "ModuleTag_MirageField",
+              "children": [
+                {
+                  "type": "ModelConditionSound",
+                  "Sound": "ALL_MirageField_StartAndEndLoop",
+                  "RequiredFlags": "USER_6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ModelConditionSoundSelectorClientBehavior",
+              "id": "ModuleTag_MirageFieldVoices",
+              "children": [
+                {
+                  "type": "Override",
+                  "RequiredFlags": "USER_6",
+                  "children": [
+                    {
+                      "type": "AudioArrayVoice",
+                      "children": [
+                        {
+                          "type": "AudioEntry",
+                          "Sound": "ALL_MirageTank_VoiceMoveSpecial",
+                          "AudioType": "voiceMove",
+                          "children": []
+                        },
+                        {
+                          "type": "AudioEntry",
+                          "Sound": "ALL_MirageTank_VoiceSelectMirageMS",
+                          "AudioType": "voiceSelect",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "Geometry",
+          "IsSmall": "false",
+          "children": [
+            {
+              "type": "Shape",
+              "Type": "BOX",
+              "MajorRadius": "20.0",
+              "MinorRadius": "14.0",
+              "Height": "17.0",
+              "ContactPointGeneration": "VEHICLE",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "AudioArrayVoice",
+          "children": [
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceAttack",
+              "AudioType": "voiceAttack",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceCreate",
+              "AudioType": "voiceCreated",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceMove",
+              "AudioType": "voiceMove",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceMoveAttack",
+              "AudioType": "voiceAttackAfterMoving",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceRetreat",
+              "AudioType": "voiceRetreatToCastle",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceSelectMS",
+              "AudioType": "voiceSelect",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceSelectBattleMS",
+              "AudioType": "voiceSelectBattle",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_MirageTank_VoiceSelectUnderFireMS",
+              "AudioType": "voiceSelectUnderFire",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "AudioArraySound",
+          "children": [
+            {
+              "type": "AudioEntry",
+              "Sound": "ALL_Mirage_MoveStart",
+              "AudioType": "soundMoveStart",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "VehicleCrush",
+              "AudioType": "soundCrushing",
+              "children": []
+            },
+            {
+              "type": "AudioEntry",
+              "Sound": "Tank_Land_MoveLoop",
+              "AudioType": "soundMoveLoop",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "VisionInfo",
+          "VisionRange": "200",
+          "ShroudClearingRange": "=$STANDARD_SHROUD_CLEAR",
+          "children": []
+        },
+        {
+          "type": "CrusherInfo",
+          "CrushableLevel": "20",
+          "CrusherLevel": "20",
+          "CrushDecelerationPercent": "80%",
+          "children": []
+        }
+      ]
+    },
+    "weapons": [
+      {
+        "type": "WeaponTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3PrismCannon",
+        "AttackRange": "125.0",
+        "CanFireWhileMoving": "true",
+        "WeaponSpeed": "999999.0",
+        "FireSound": "ALL_Mirage_WeaponFireMS",
+        "RadiusDamageAffects": "ENEMIES",
+        "AcceptableAimDelta": "10d",
+        "ClipSize": "1",
+        "FireFX": "FX_AlliedPrismTowerFire",
+        "FireVeteranFX": "FX_AlliedPrismTowerFire",
+        "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+        "AutoReloadsClip": "AUTO",
+        "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+        "ReAcquireDetailType": "PER_CLIP",
+        "children": [
+          {
+            "type": "FiringDuration",
+            "MinSeconds": "1.5s",
+            "MaxSeconds": "1.5s",
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "MinSeconds": "0.1s",
+            "MaxSeconds": "0.1s",
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "children": [
+              {
+                "type": "ActivateLaserNugget",
+                "Lifetime": "1.5s",
+                "LaserId": "201",
+                "children": []
+              },
+              {
+                "type": "WeaponOCLNugget",
+                "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeRegular",
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "Damage": "200.0",
+                "Radius": "0.0",
+                "DelayTimeSeconds": "0.1s",
+                "DamageType": "PRISM",
+                "DamageFXType": "ALLIED_PRIMAGECANNON",
+                "DeathType": "LASERED",
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "Radius": "20.0",
+                "Suppression": "10",
+                "DurationSeconds": "3s",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WeaponTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3CannonNode",
+        "AttackRange": "125.0",
+        "CanFireWhileMoving": "false",
+        "WeaponSpeed": "999999.0",
+        "RadiusDamageAffects": "ENEMIES NEUTRALS",
+        "AcceptableAimDelta": "180d",
+        "ClipSize": "1",
+        "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+        "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+        "AutoReloadsClip": "AUTO",
+        "ReAcquireDetailType": "PER_CLIP",
+        "children": [
+          {
+            "type": "FiringDuration",
+            "MinSeconds": "0.5s",
+            "MaxSeconds": "0.5s",
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "MinSeconds": "2.0s",
+            "MaxSeconds": "2.0s",
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeEnd",
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "Damage": "25.0",
+                "Radius": "0.0",
+                "DelayTimeSeconds": "0.1s",
+                "DamageType": "PRISM",
+                "DamageFXType": "ALLIED_PRIMAGECANNON",
+                "DeathType": "LASERED",
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "Radius": "20.0",
+                "Suppression": "10",
+                "DurationSeconds": "3s",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WeaponTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3PrismCannon_Veteran",
+        "AttackRange": "150.0",
+        "CanFireWhileMoving": "false",
+        "WeaponSpeed": "999999.0",
+        "FireSound": "ALL_Mirage_WeaponFireMS",
+        "RadiusDamageAffects": "ENEMIES",
+        "AcceptableAimDelta": "10d",
+        "ClipSize": "1",
+        "FireFX": "FX_AlliedPrismTowerFire_Vet",
+        "FireVeteranFX": "FX_AlliedPrismTowerFire_Vet",
+        "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+        "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+        "AutoReloadsClip": "AUTO",
+        "ReAcquireDetailType": "PER_CLIP",
+        "children": [
+          {
+            "type": "FiringDuration",
+            "MinSeconds": "1.5s",
+            "MaxSeconds": "1.5s",
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "MinSeconds": "0.1s",
+            "MaxSeconds": "0.1s",
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "children": [
+              {
+                "type": "ActivateLaserNugget",
+                "Lifetime": "1.5s",
+                "LaserId": "202",
+                "children": []
+              },
+              {
+                "type": "WeaponOCLNugget",
+                "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeVeteran1",
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "Damage": "250.0",
+                "Radius": "0.0",
+                "DelayTimeSeconds": "0.1s",
+                "DamageType": "PRISM",
+                "DamageFXType": "ALLIED_PRIMAGECANNONVET1",
+                "DeathType": "LASERED",
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "Radius": "20.0",
+                "Suppression": "10",
+                "DurationSeconds": "3s",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WeaponTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran1",
+        "AttackRange": "150.0",
+        "CanFireWhileMoving": "false",
+        "WeaponSpeed": "999999.0",
+        "RadiusDamageAffects": "ENEMIES NEUTRALS",
+        "AcceptableAimDelta": "180d",
+        "ClipSize": "1",
+        "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+        "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+        "AutoReloadsClip": "AUTO",
+        "ReAcquireDetailType": "PER_CLIP",
+        "children": [
+          {
+            "type": "FiringDuration",
+            "MinSeconds": "0.5s",
+            "MaxSeconds": "0.5s",
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "MinSeconds": "2.0s",
+            "MaxSeconds": "2.0s",
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeVeteran2",
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "Damage": "40.0",
+                "Radius": "0.0",
+                "DelayTimeSeconds": "0.1s",
+                "DamageType": "PRISM",
+                "DamageFXType": "ALLIED_PRIMAGECANNONVET2",
+                "DeathType": "LASERED",
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "Radius": "20.0",
+                "Suppression": "10",
+                "DurationSeconds": "3s",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "WeaponTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran2",
+        "AttackRange": "75.0",
+        "CanFireWhileMoving": "false",
+        "WeaponSpeed": "999999.0",
+        "RadiusDamageAffects": "ENEMIES NEUTRALS",
+        "AcceptableAimDelta": "180d",
+        "ClipSize": "1",
+        "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+        "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+        "AutoReloadsClip": "AUTO",
+        "ReAcquireDetailType": "PER_CLIP",
+        "children": [
+          {
+            "type": "FiringDuration",
+            "MinSeconds": "0.5s",
+            "MaxSeconds": "0.5s",
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "MinSeconds": "2.0s",
+            "MaxSeconds": "2.0s",
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeEnd",
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "Damage": "20.0",
+                "Radius": "0.0",
+                "DelayTimeSeconds": "0.1s",
+                "DamageType": "CANNON",
+                "DamageFXType": "ALLIED_PRIMAGECANNONVET2",
+                "DeathType": "NORMAL",
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "Radius": "20.0",
+                "Suppression": "10",
+                "DurationSeconds": "3s",
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "scatter": {
+      "type": "AssetDeclaration",
+      "children": [
+        {
+          "type": "Tags",
+          "children": []
+        },
+        {
+          "type": "Includes",
+          "children": [
+            {
+              "type": "all",
+              "source": "ART:FXAlliedPrismBeam.xml",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "AlliedAntiVehicleVehicleTech3CannonNodeBase",
+          "KindOf": "DEFLECT_BY_SPECIAL_POWER INERT NO_COLLIDE HIDE_IF_FOGGED",
+          "children": [
+            {
+              "type": "ArmorSet",
+              "Armor": "NoArmor",
+              "children": []
+            },
+            {
+              "type": "Draws",
+              "children": [
+                {
+                  "type": "LaserDraw",
+                  "id": "ModuleTag_LaserDraw",
+                  "Texture1_UTile": "1",
+                  "Texture1_VTile": "1",
+                  "Texture1_UScrollRate": "0.2",
+                  "Texture1_VScrollRate": ".3",
+                  "Texture1_NumFrames": "1",
+                  "Texture1_FrameRate": "0",
+                  "Texture2_UTile": "1",
+                  "Texture2_VTile": "1",
+                  "Texture2_UScrollRate": "-.2",
+                  "Texture2_VScrollRate": "-.3",
+                  "Texture2_NumFrames": "1",
+                  "Texture2_FrameRate": "0",
+                  "LaserWidth": "5",
+                  "WeaponSlotID": "1",
+                  "LaserStateID": "1",
+                  "children": [
+                    {
+                      "type": "FXShader",
+                      "ShaderName": "Laser.fx",
+                      "TechniqueIndex": "0",
+                      "children": [
+                        {
+                          "type": "Constants",
+                          "children": [
+                            {
+                              "type": "Texture",
+                              "Name": "Texture1",
+                              "children": [
+                                {
+                                  "type": "Value",
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Texture",
+                              "Name": "Texture2",
+                              "children": [
+                                {
+                                  "type": "Value",
+                                  "children": []
+                                }
+                              ]
+                            },
+                            {
+                              "type": "Float",
+                              "Name": "ColorEmissive",
+                              "children": [
+                                {
+                                  "type": "Value",
+                                  "children": []
+                                },
+                                {
+                                  "type": "Value",
+                                  "children": []
+                                },
+                                {
+                                  "type": "Value",
+                                  "children": []
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "DestroyDie",
+                  "id": "ModuleTag_Die",
+                  "children": [
+                    {
+                      "type": "DieMuxData",
+                      "DeathTypes": "ALL",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AttributeModifierPoolUpdate",
+                  "id": "DefaultAttributeModifierPoolUpdate",
+                  "children": []
+                },
+                {
+                  "type": "LaserScatterUpdate",
+                  "id": "ModuleTag_LaserScatterUpdate",
+                  "LaserLifetime": "0.5s",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Body",
+              "children": [
+                {
+                  "type": "ActiveBody",
+                  "id": "ModuleTag_ActiveBody",
+                  "MaxHealth": "100.0",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Geometry",
+              "IsSmall": "true",
+              "children": [
+                {
+                  "type": "Shape",
+                  "Type": "SPHERE",
+                  "MajorRadius": "0.8",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "VisionInfo",
+              "VisionRange": "0",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "AlliedAntiVehicleVehicleTech3CannonNodeEnd",
+          "inheritFrom": "AlliedAntiVehicleVehicleTech3CannonNodeBase",
+          "children": [
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "WeaponScatterEffectUpdate",
+                  "id": "Base_ScatterEffect",
+                  "children": [
+                    {
+                      "type": "ScatterSettings",
+                      "ScatterAmount": "0",
+                      "ScatterDelay": "0.0s",
+                      "children": []
+                    },
+                    {
+                      "type": "Filter",
+                      "Rule": "ALL",
+                      "Exclude": "AIRCRAFT",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "AlliedAntiVehicleVehicleTech3CannonNodeRegular",
+          "inheritFrom": "AlliedAntiVehicleVehicleTech3CannonNodeBase",
+          "children": [
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "WeaponScatterEffectUpdate",
+                  "id": "Regular_ScatterEffect",
+                  "WeaponTemplate": "AlliedAntiVehicleVehicleTech3CannonNode",
+                  "children": [
+                    {
+                      "type": "ScatterSettings",
+                      "ScatterAmount": "5",
+                      "ScatterDelay": "0.0s",
+                      "children": []
+                    },
+                    {
+                      "type": "Filter",
+                      "Rule": "ALL",
+                      "Exclude": "AIRCRAFT",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "AlliedAntiVehicleVehicleTech3CannonNodeVeteran1",
+          "inheritFrom": "AlliedAntiVehicleVehicleTech3CannonNodeBase",
+          "children": [
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "WeaponScatterEffectUpdate",
+                  "id": "VeteranTier1_ScatterEffect",
+                  "WeaponTemplate": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran1",
+                  "children": [
+                    {
+                      "type": "ScatterSettings",
+                      "ScatterAmount": "7",
+                      "ScatterDelay": "0.0s",
+                      "children": []
+                    },
+                    {
+                      "type": "Filter",
+                      "Rule": "ALL",
+                      "Exclude": "AIRCRAFT",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "AlliedAntiVehicleVehicleTech3CannonNodeVeteran2",
+          "inheritFrom": "AlliedAntiVehicleVehicleTech3CannonNodeBase",
+          "children": [
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "WeaponScatterEffectUpdate",
+                  "id": "VeteranTier2_ScatterEffect",
+                  "WeaponTemplate": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran2",
+                  "children": [
+                    {
+                      "type": "ScatterSettings",
+                      "ScatterAmount": "3",
+                      "ScatterDelay": "0.0s",
+                      "children": []
+                    },
+                    {
+                      "type": "Filter",
+                      "Rule": "ALL",
+                      "Exclude": "AIRCRAFT",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "armor": {
+      "type": "ArmorTemplate",
+      "id": "AlliedAntiVehicleVehicleTech3Armor",
+      "inheritFrom": "BaseTankArmor",
+      "children": []
+    },
+    "base_vehicle": {
+      "type": "AssetDeclaration",
+      "children": [
+        {
+          "type": "Tags",
+          "children": []
+        },
+        {
+          "type": "Includes",
+          "children": [
+            {
+              "type": "instance",
+              "source": "BaseObject.xml",
+              "children": []
+            },
+            {
+              "type": "all",
+              "source": "DATA:GlobalData/GlobalDefines.xml",
+              "children": []
+            }
+          ]
+        },
+        {
+          "type": "GameObject",
+          "id": "BaseVehicle",
+          "inheritFrom": "BaseObject",
+          "TransportSlotCount": "5",
+          "ShockwaveResistance": "90",
+          "RadarPriority": "UNIT",
+          "PathPriority": "30",
+          "ProductionQueueType": "VEHICLE",
+          "UnitCategory": "VEHICLE",
+          "CommandPoints": "1",
+          "EvaEventSecondDamageFarFromFirstScanRange": "600",
+          "VoiceSelectUnderFireTimeout": "10s",
+          "VoiceSelectUnderFireDamageTime": "3s",
+          "children": [
+            {
+              "type": "ArmorSet",
+              "Armor": "CryoBeamFrozenArmor",
+              "DamageFX": "VehicleDamageFX",
+              "Conditions": "SECONDARY_DAMAGE",
+              "children": []
+            },
+            {
+              "type": "ArmorSet",
+              "Armor": "ShrinkRayEffectArmor",
+              "DamageFX": "VehicleDamageFX",
+              "Conditions": "SHRINK_EFFECT",
+              "children": []
+            },
+            {
+              "type": "Behaviors",
+              "children": [
+                {
+                  "type": "AttributeModifierPoolUpdate",
+                  "id": "DefaultAttributeModifierPoolUpdate",
+                  "children": []
+                },
+                {
+                  "type": "SquishCollide",
+                  "id": "DefaultSquishCollide",
+                  "CrushKillDelay": "1.5s",
+                  "children": []
+                },
+                {
+                  "type": "DynamicsUpdate",
+                  "id": "ModuleTag_DefaultDynamicsUpdate",
+                  "Motion": "TRACKED",
+                  "Collision": "OMNICOLLIDING",
+                  "ContactTag": "VEHICLE",
+                  "children": []
+                },
+                {
+                  "type": "FireWeaponWhenDead",
+                  "id": "ModuleTag_CatalystDeathWeapon",
+                  "InitiallyActive": "true",
+                  "DeathWeapon": "CatalystInfantryDeathWeapon",
+                  "ContinueToBezierDestination": "false",
+                  "UseMyKillerAsWeaponSource": "true",
+                  "children": [
+                    {
+                      "type": "DieMuxData",
+                      "DeathTypes": "CATALYST",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "AutoHealBehavior",
+                  "id": "Upgrade_HeroicHeal",
+                  "InitiallyActive": "false",
+                  "HealOnlyIfNotInCombat": "false",
+                  "HealOnlyIfNotUnderAttack": "false",
+                  "StartHealingDelay": "1s",
+                  "HealingAmount": "3",
+                  "HealingDelay": ".5s",
+                  "children": [
+                    {
+                      "type": "TriggeredBy",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "StancesBehavior",
+                  "id": "ModuleTag_Stance",
+                  "StanceTemplate": "Generic",
+                  "children": []
+                },
+                {
+                  "type": "LevelUpUpgrade",
+                  "id": "ModuleTag_LevelUpUpgrade_Veteran",
+                  "LevelCap": "4",
+                  "LevelsToGain": "1",
+                  "children": [
+                    {
+                      "type": "TriggeredBy",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "LevelUpUpgrade",
+                  "id": "ModuleTag_LevelUpUpgrade_Elite",
+                  "LevelCap": "4",
+                  "LevelsToGain": "1",
+                  "children": [
+                    {
+                      "type": "TriggeredBy",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "LevelUpUpgrade",
+                  "id": "ModuleTag_LevelUpUpgrade_Heroic",
+                  "LevelCap": "4",
+                  "LevelsToGain": "1",
+                  "children": [
+                    {
+                      "type": "TriggeredBy",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "SecondaryDamageTracker",
+                  "id": "ModuleTag_SecondaryDamageTracker",
+                  "UpdateDuration": "1s",
+                  "DissipateAmount": "25",
+                  "MaxDamageClampScaler": "=$MAX_SECONDARY_DAMAGE_SCALER",
+                  "children": [
+                    {
+                      "type": "Color",
+                      "R": "1.0",
+                      "G": "1.0",
+                      "B": "1.75",
+                      "children": []
+                    },
+                    {
+                      "type": "EffectInfo",
+                      "Fraction": "0.2",
+                      "AttributeModifier": "AttributeModifer_CryoBeam_02",
+                      "children": []
+                    },
+                    {
+                      "type": "EffectInfo",
+                      "Fraction": "0.4",
+                      "AttributeModifier": "AttributeModifer_CryoBeam_04",
+                      "children": []
+                    },
+                    {
+                      "type": "EffectInfo",
+                      "Fraction": "0.6",
+                      "AttributeModifier": "AttributeModifer_CryoBeam_06",
+                      "children": []
+                    },
+                    {
+                      "type": "EffectInfo",
+                      "Fraction": "0.8",
+                      "AttributeModifier": "AttributeModifer_CryoBeam_08",
+                      "children": []
+                    },
+                    {
+                      "type": "EffectInfo",
+                      "Fraction": "1.0",
+                      "SetUpgradedArmor": "true",
+                      "OnEnterDisable": "true",
+                      "OnEnterCancelSpecialAbilities": "true",
+                      "AttributeModifier": "AttributeModifer_CryoBeam_10",
+                      "children": []
+                    },
+                    {
+                      "type": "ObjectStatusValidation",
+                      "ForbiddenStatus": "UNDER_IRON_CURTAIN",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "RunOffMapBehavior",
+                  "id": "ModuleTag_RunOffMapBehavior",
+                  "RequiresSpecificTrigger": "true",
+                  "RunOffMapWaypointName": "RunOffMap",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "Body",
+              "children": [
+                {
+                  "type": "ActiveBody",
+                  "id": "DefaultBody",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "ClientBehaviors",
+              "children": [
+                {
+                  "type": "ModelConditionAudioLoopClientBehavior",
+                  "id": "ModuleTag_MagneticSatelliteSuckedAway",
+                  "children": [
+                    {
+                      "type": "ModelConditionSound",
+                      "Sound": "SOV_MagneticSatellite_SuckedAway",
+                      "RequiredFlags": "SUCKED_UP_HIGH",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "type": "ModelConditionSoundSelectorClientBehavior",
+                  "id": "Frozen",
+                  "children": [
+                    {
+                      "type": "Override",
+                      "RequiredFlags": "PARALYZED",
+                      "children": [
+                        {
+                          "type": "AudioArrayVoice",
+                          "children": [
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttack",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttackAir",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttackAfterMoving",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttackGarrisonedStructure",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttackStructure",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceCreated",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceDock",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceFear",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceGarrison",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceMove",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceAttackAfterMoving",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceMoveWaterToLand",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceMoveLandToWater",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceRepair",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "",
+                              "AudioType": "voiceRetreatToCastle",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "UnitSelectFrozen",
+                              "AudioType": "voiceSelect",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "UnitSelectFrozen",
+                              "AudioType": "voiceSelectBattle",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "UnitSelectFrozen",
+                              "AudioType": "voiceSelectUnderFire",
+                              "children": []
+                            },
+                            {
+                              "type": "AudioEntry",
+                              "Sound": "UnitSelectFrozen",
+                              "AudioType": "voiceSupply",
+                              "children": []
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "EvaEventArray",
+              "children": [
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "UnitLost",
+                  "EvaType": "dieOwner",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "BuildingConstructionStarted",
+                  "EvaType": "productionStarted",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "UnitUnderAttack",
+                  "EvaType": "damagedOwner",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "UnitUnderAttackFromShroudedUnit",
+                  "EvaType": "damagedFromShroudedSourceOwner",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "GenericUnitBeingBurned",
+                  "EvaType": "damagedByFireOwner",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "AllyUnitUnderAttack",
+                  "EvaType": "damagedAlly",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "UnitAmbushed",
+                  "EvaType": "ambushed",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "GenericEnemyUnitSighted",
+                  "EvaType": "enemyObjectSighted",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "EnemyStealthUnitDiscovered",
+                  "EvaType": "detectedEnemy",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "NewConstructionOptions",
+                  "EvaType": "availableForProduction",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "BuildOnHold",
+                  "EvaType": "buildOnHold",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "BuildCancelled",
+                  "EvaType": "buildCancelled",
+                  "children": []
+                },
+                {
+                  "type": "EvaEntry",
+                  "EvaEvent": "UnitPromoted",
+                  "EvaType": "promotedOwner",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "type": "CrusherInfo",
+              "id": "id_CrusherInfo",
+              "CrusherLevel": "10",
+              "CrushableLevel": "20",
+              "CrushDecelerationPercent": "80%",
+              "children": [
+                {
+                  "type": "ExtraCrushLevels",
+                  "CrusherLevel": "0",
+                  "CrushableLevel": "1",
+                  "ModelConditionMatch": "SHRINK_EFFECT",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "experience": [
+      {
+        "type": "ExperienceLevelTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3ExperienceLevel_1",
+        "inheritFrom": "ExperienceLevel_AlliedRank1",
+        "RequiredExperience": "1",
+        "ExperienceAward": "1600",
+        "children": [
+          {
+            "type": "Target",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "ExperienceLevelTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3ExperienceLevel_2",
+        "inheritFrom": "ExperienceLevel_AlliedRank2",
+        "Prerequisite": "AlliedAntiVehicleVehicleTech3ExperienceLevel_1",
+        "RequiredExperience": "4800",
+        "ExperienceAward": "3200",
+        "children": [
+          {
+            "type": "Target",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "ExperienceLevelTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3ExperienceLevel_3",
+        "inheritFrom": "ExperienceLevel_AlliedRank3",
+        "Prerequisite": "AlliedAntiVehicleVehicleTech3ExperienceLevel_2",
+        "RequiredExperience": "8400",
+        "ExperienceAward": "9600",
+        "children": [
+          {
+            "type": "Target",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "ExperienceLevelTemplate",
+        "id": "AlliedAntiVehicleVehicleTech3ExperienceLevel_4",
+        "inheritFrom": "ExperienceLevel_AlliedRank4",
+        "Prerequisite": "AlliedAntiVehicleVehicleTech3ExperienceLevel_3",
+        "RequiredExperience": "14400",
+        "ExperienceAward": "6400",
+        "children": [
+          {
+            "type": "Target",
+            "children": []
+          }
+        ]
+      }
+    ],
+    "promotion_modifiers": [
+      {
+        "type": "AttributeModifier",
+        "id": "Unit_Veteran",
+        "Category": "LEVEL",
+        "children": [
+          {
+            "type": "Modifier",
+            "Type": "DAMAGE_MULT",
+            "Value": "125",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "AttributeModifier",
+        "id": "Unit_Elite",
+        "Category": "LEVEL",
+        "children": [
+          {
+            "type": "Modifier",
+            "Type": "HEALTH_MULT",
+            "Value": "125",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "AttributeModifier",
+        "id": "Unit_Heroic",
+        "Category": "LEVEL",
+        "ObjectStatusToSet": "NO_BRIBE IMMUNE_TO_BARK",
+        "children": [
+          {
+            "type": "Modifier",
+            "Type": "RANGE",
+            "Value": "125%",
+            "children": []
+          },
+          {
+            "type": "Modifier",
+            "Type": "VISION",
+            "Value": "125",
+            "children": []
+          },
+          {
+            "type": "Modifier",
+            "Type": "SHROUD_CLEARING",
+            "Value": "125%",
+            "children": []
+          },
+          {
+            "type": "Modifier",
+            "Type": "RATE_OF_FIRE",
+            "Value": "120%",
+            "children": []
+          },
+          {
+            "type": "Modifier",
+            "Type": "SUPPRESSABILITY",
+            "Value": "300",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "source_sha256": {
+    "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml": "932066544472e30fed1b5c12f94683ba21220159f5c7a91394ec0e94dc449f2d",
+    "SAGEXML/GlobalData/Weapon.xml": "7a82e52aa6142f96271173195366227b21a552657bd683f7a33a22e770e1bad1",
+    "SAGEXML/GlobalData/Locomotor.xml": "de79b1286d38e685a9e2b9fbdc7664cd578e21ef8de45532f95088b874a01a4e",
+    "SAGEXML/GlobalData/ExperienceLevels.xml": "a45b26fc122f0088a5bc8748ab5762bb2c74b0c1d4eb94d4fff296b631884c02",
+    "SAGEXML/GlobalData/AttributeModifier.xml": "2d09de5bb896a537e25e42c0addc5d63f650ce8451e250d4228cb6f90947cd34",
+    "SAGEXML/BaseObjects/BaseVehicle.xml": "3f12c296d3daf313acc9809af0ea801b8211772d0edbfd3d33c7c34a9c24af0c",
+    "SAGEXML/GlobalData/GlobalDefines.xml": "913e57c0b92ff88db5f06654c50b0e4b43052efd4abb989e08f8eeb88e2a92b7",
+    "SAGEXML/Allied/Props/AlliedAntiVehicleVehicleTech3CannonNode.xml": "427f8bd12227f248abf615d03f948347e0a528c734276a5d38c2b0658f047cb0",
+    "SAGEXML/GlobalData/Armor.xml": "94c1f7f4115636870ff782a80f1206901bc265f26c2ccb896be7738e013885fc"
+  }
+}

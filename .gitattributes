@@ -1,0 +1,7 @@
+# Preserve exact runtime resource bytes, including JSON content fingerprints.
+/iron_tide/assets/** -text
+/iron_tide/data/ra2/** -text
+/iron_tide/data/ra2_allied.json -text
+/iron_tide/data/yr_allied.json -text
+/iron_tide/data/yr_robot.json -text
+/ra2pipe/palettes/*.pal binary

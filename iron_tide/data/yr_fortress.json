@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "source": "Local Steam Yuri Revenge",
+  "units": [
+    {
+      "id": "BFRT",
+      "name": "战斗要塞",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "重型步兵战车",
+      "ra2": true,
+      "expansion": "yr",
+      "cost": 2000,
+      "hp": 600,
+      "build_time": 40,
+      "build_time_multiplier": 1,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 60,
+      "sight": 330,
+      "radius": 24,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "ra2_prereq": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "tech_level": 10,
+      "image": "BFRT",
+      "cameo": "BFRTICON",
+      "movement_zone": "land",
+      "voxel": true,
+      "open_topped": {
+        "range_bonus": 110,
+        "damage_multiplier": 1.2,
+        "warp_distance": 385
+      },
+      "desc": "可搭载五名步兵，乘员在车内使用自己的武器，射程增加 2 格，伤害提高 20%。能碾过敌方普通地面载具。建好盟军战车工厂和作战实验室后可生产。按 E 或再次点击选中的车体可卸员。",
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 105.46875,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 3.5,
+        "movement_zone": "CrusherAll",
+        "speed_type": "Track",
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "weapon": {
+        "name": "20mmRapid",
+        "attack_type": "bullet",
+        "damage": 30,
+        "cooldown": 1.3333333333333333,
+        "range": 302.5,
+        "min_range": 0,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_20mmRapid",
+        "ra2_warhead": "YR_BFRT_HARVWH",
+        "ra2_projectile": "YR_BFRT_InvisibleLow",
+        "ra2_aa": false,
+        "report": "YR_WarMinerAttack"
+      },
+      "voice": {
+        "select": "YR_BattleFortressSelect",
+        "move": "YR_BattleFortressMove",
+        "attack": "YR_BattleFortressAttackCommand",
+        "die": "YR_GenVehicleDie"
+      }
+    }
+  ],
+  "buildings": [],
+  "source_units": {
+    "BFRT": {
+      "id": "BFRT",
+      "kind": "vehicle",
+      "rules_name": "Battle Fortress",
+      "uiname_label": "Battlefortress",
+      "display_name": "Battle Fortress",
+      "image": "BFRT",
+      "category": "AFV",
+      "hp": 600,
+      "armor": "heavy",
+      "speed": 4,
+      "sight": 6,
+      "cost": 2000,
+      "tech_level": 10,
+      "points": 50,
+      "prerequisites": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "cameo": "BFRTICON",
+      "alt_cameo": "BFRTUICO",
+      "voxel": true,
+      "sequence": null,
+      "foundation": null,
+      "buildup": null,
+      "primary": "20mmRapid",
+      "secondary": null,
+      "elite_primary": null,
+      "elite_secondary": null,
+      "weapon_count": 0,
+      "soylent": 2000,
+      "threat_posed": 40,
+      "size": 6,
+      "physical_size": null,
+      "movement_zone": "CrusherAll",
+      "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}",
+      "turret": false,
+      "crusher": true,
+      "deployer": false,
+      "deploy_frame": -1,
+      "occupier": false,
+      "extra": {
+        "IsTilter": "yes",
+        "TooBigToFitUnderBridge": "true",
+        "PipScale": "Passengers",
+        "Passengers": "5",
+        "OpenTopped": "yes",
+        "SizeLimit": "2",
+        "CrateGoodie": "yes",
+        "OmniCrusher": "yes",
+        "ROT": "5",
+        "AllowedToStartInMultiplayer": "no",
+        "Explosion": "TWLT070,S_BANG48,S_BRNL58,S_CLSN58,S_TUMU60",
+        "VoiceSelect": "BattleFortressSelect",
+        "VoiceMove": "BattleFortressMove",
+        "VoiceAttack": "BattleFortressAttackCommand",
+        "VoiceFeedback": "",
+        "DieSound": "GenVehicleDie",
+        "MoveSound": "BattleFortressMoveStart",
+        "EnterTransportSound": "EnterTransport",
+        "LeaveTransportSound": "ExitTransport",
+        "Maxdebris": "3",
+        "DamageParticleSystems": "SparkSys,SmallGreySSys",
+        "DamageSmokeOffset": "100, 100, 275",
+        "Weight": "3.5",
+        "VeteranAbilities": "STRONGER,FIREPOWER,SIGHT,FASTER",
+        "EliteAbilities": "SELF_HEAL,STRONGER,FIREPOWER,ROF",
+        "Accelerates": "false",
+        "ZFudgeColumn": "8",
+        "ZFudgeTunnel": "13",
+        "OmniCrushResistant": "yes"
+      }
+    }
+  },
+  "weapons": {
+    "YR_20mmRapid": {
+      "id": "YR_20mmRapid",
+      "damage": 30,
+      "rof": 20,
+      "range": 5.5,
+      "projectile": "YR_BFRT_InvisibleLow",
+      "speed": 100,
+      "warhead": "YR_BFRT_HARVWH",
+      "burst": 1,
+      "anim": "GUNFIRE",
+      "report": "YR_WarMinerAttack",
+      "bright": false,
+      "min_range": null,
+      "ambient_damage": null,
+      "extra": {}
+    }
+  },
+  "warheads": {
+    "YR_BFRT_HARVWH": {
+      "id": "YR_BFRT_HARVWH",
+      "verses_raw": "100%,80%,70%,50%,20%,20%,20%,15%,10%,400%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.7,
+        "light": 0.5,
+        "medium": 0.2,
+        "heavy": 0.2,
+        "wood": 0.2,
+        "steel": 0.15,
+        "concrete": 0.1,
+        "special_1": 4,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.5,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    }
+  },
+  "projectiles": {
+    "YR_BFRT_InvisibleLow": {
+      "id": "YR_BFRT_InvisibleLow",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    }
+  },
+  "art": {
+    "BFRT": {
+      "cameo": "res://assets/ra2/cameo/BFRTICON.png",
+      "vxl": "res://assets/ra2/vxl/BFRT.png"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "YR_WarMinerAttack": {
+        "sounds": [
+          "yr_bfrt_vwaratta",
+          "yr_bfrt_vwarattb"
+        ],
+        "volume": 70.0,
+        "range": 10.0,
+        "type": ""
+      },
+      "YR_BattleFortressSelect": {
+        "sounds": [
+          "yr_bfrt_vbatsea",
+          "yr_bfrt_vbatseb",
+          "yr_bfrt_vbatsec",
+          "yr_bfrt_vbatsed",
+          "yr_bfrt_vbatsee",
+          "yr_bfrt_vbatsef"
+        ],
+        "volume": 85.0,
+        "range": 10.0,
+        "type": ""
+      },
+      "YR_BattleFortressMove": {
+        "sounds": [
+          "yr_bfrt_vbatmoa",
+          "yr_bfrt_vbatmob",
+          "yr_bfrt_vbatmoc",
+          "yr_bfrt_vbatmod",
+          "yr_bfrt_vbatmoe"
+        ],
+        "volume": 85.0,
+        "range": 10.0,
+        "type": ""
+      },
+      "YR_BattleFortressAttackCommand": {
+        "sounds": [
+          "yr_bfrt_vbatatb",
+          "yr_bfrt_vbatatc",
+          "yr_bfrt_vbatatd",
+          "yr_bfrt_vbatate"
+        ],
+        "volume": 85.0,
+        "range": 10.0,
+        "type": ""
+      },
+      "YR_GenVehicleDie": {
+        "sounds": [
+          "yr_bfrt_vgendiea",
+          "yr_bfrt_vgendieb",
+          "yr_bfrt_vgendiec",
+          "yr_bfrt_vgendied",
+          "yr_bfrt_vgendiee",
+          "yr_bfrt_vgendief"
+        ],
+        "volume": 85.0,
+        "range": 10.0,
+        "type": ""
+      }
+    },
+    "entries": {
+      "yr_bfrt_vwaratta": {
+        "file": "yr_bfrt/vwaratta.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 14943,
+        "durMs": 678,
+        "bytes": 29930,
+        "sha256": "179fa5eaf92da1ecb21cc0061db15133430a3af84b7033641988cb8e734bd5e9"
+      },
+      "yr_bfrt_vwarattb": {
+        "file": "yr_bfrt/vwarattb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 18058,
+        "durMs": 819,
+        "bytes": 36160,
+        "sha256": "3655518a5c8c50b973858cd33eaf2d06890726340d19bf0d48cd329bcfcf9489"
+      },
+      "yr_bfrt_vbatsea": {
+        "file": "yr_bfrt/vbatsea.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 30366,
+        "durMs": 1377,
+        "bytes": 60776,
+        "sha256": "eeb7b1dccb263a6da4a4ca05d498540e4e0b2c3497806e8b396c1ee2bc5c9e0f"
+      },
+      "yr_bfrt_vbatseb": {
+        "file": "yr_bfrt/vbatseb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 43579,
+        "durMs": 1976,
+        "bytes": 87202,
+        "sha256": "7bd790822637bcd789e6d3f6e416e29d3bd642c437cd2b4525948a96525a69e5"
+      },
+      "yr_bfrt_vbatsec": {
+        "file": "yr_bfrt/vbatsec.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 34627,
+        "durMs": 1570,
+        "bytes": 69298,
+        "sha256": "5b39ae61f29e36d3591577908897a6247b9151d6d5ed76fc5147f1a7a381b5b1"
+      },
+      "yr_bfrt_vbatsed": {
+        "file": "yr_bfrt/vbatsed.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 27484,
+        "durMs": 1246,
+        "bytes": 55012,
+        "sha256": "04ed08de63134b164cc73403e41be7fa76303845e12399497625e70e953001d4"
+      },
+      "yr_bfrt_vbatsee": {
+        "file": "yr_bfrt/vbatsee.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 47383,
+        "durMs": 2149,
+        "bytes": 94810,
+        "sha256": "76b1d69f803ae5acc57d372db3633dba17f0abcee3f34de48f888ef380ce1a56"
+      },
+      "yr_bfrt_vbatsef": {
+        "file": "yr_bfrt/vbatsef.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 36612,
+        "durMs": 1660,
+        "bytes": 73268,
+        "sha256": "76199539240a58805e34eeb5508a4776730ffe4a7d82fe7a92810a7c2276f3c8"
+      },
+      "yr_bfrt_vbatmoa": {
+        "file": "yr_bfrt/vbatmoa.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 34562,
+        "durMs": 1567,
+        "bytes": 69168,
+        "sha256": "d9ef4223b4b44163bd81a38ba790e9edfd78e5f253b78739e8ee12357426e2b0"
+      },
+      "yr_bfrt_vbatmob": {
+        "file": "yr_bfrt/vbatmob.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 28060,
+        "durMs": 1273,
+        "bytes": 56164,
+        "sha256": "db339fb34c53c385b6f559edc08bcd62a23813dfab90984e775e1434911b41a7"
+      },
+      "yr_bfrt_vbatmoc": {
+        "file": "yr_bfrt/vbatmoc.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26146,
+        "durMs": 1186,
+        "bytes": 52336,
+        "sha256": "2cde9ade74986762bbbfe804b234e6fea0eb8bfe7c0129091ed7b8de6d1b75c2"
+      },
+      "yr_bfrt_vbatmod": {
+        "file": "yr_bfrt/vbatmod.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 36693,
+        "durMs": 1664,
+        "bytes": 73430,
+        "sha256": "88435914235286af04037a3d9389b573fe91c669ad2148b2d8a57ed7990102bc"
+      },
+      "yr_bfrt_vbatmoe": {
+        "file": "yr_bfrt/vbatmoe.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 35027,
+        "durMs": 1589,
+        "bytes": 70098,
+        "sha256": "6c35f304a2686ddd5e09d96d342d10d42654eb6316de961132cb158a9eadd017"
+      },
+      "yr_bfrt_vbatatb": {
+        "file": "yr_bfrt/vbatatb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 30230,
+        "durMs": 1371,
+        "bytes": 60504,
+        "sha256": "143efbb71afc1d640d8b196aeb66fc1c55e32b302f517e5566855402da702b85"
+      },
+      "yr_bfrt_vbatatc": {
+        "file": "yr_bfrt/vbatatc.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 25305,
+        "durMs": 1148,
+        "bytes": 50654,
+        "sha256": "61dd261de07e172ccbdf76ad54bbf099fd3c44dbdfa27f4fce899fdb162a9ff8"
+      },
+      "yr_bfrt_vbatatd": {
+        "file": "yr_bfrt/vbatatd.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26354,
+        "durMs": 1195,
+        "bytes": 52752,
+        "sha256": "c3500374229176ab311dd77f18a6b9279a3db602b0f75d424329d9716273c33b"
+      },
+      "yr_bfrt_vbatate": {
+        "file": "yr_bfrt/vbatate.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 32777,
+        "durMs": 1486,
+        "bytes": 65598,
+        "sha256": "8d84dddd43f3b30b87544243c4d1a7422b301f12065d305907744feb66df5337"
+      },
+      "yr_bfrt_vgendiea": {
+        "file": "yr_bfrt/vgendiea.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 19484,
+        "durMs": 884,
+        "bytes": 39012,
+        "sha256": "d33172b854dabeb7c96b4e5f105204c88cfc18ce44e878b061913c5a2f836a4d"
+      },
+      "yr_bfrt_vgendieb": {
+        "file": "yr_bfrt/vgendieb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 25786,
+        "durMs": 1169,
+        "bytes": 51616,
+        "sha256": "b8c215b97f783cb79a21e076b853ff6e296fe8a8eebda6c8db88e55abecccac4"
+      },
+      "yr_bfrt_vgendiec": {
+        "file": "yr_bfrt/vgendiec.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 20821,
+        "durMs": 944,
+        "bytes": 41686,
+        "sha256": "3905552c3e9fe6b7d89b41d59e47e64c810ee97ad7634d09297d62bee40de4ad"
+      },
+      "yr_bfrt_vgendied": {
+        "file": "yr_bfrt/vgendied.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 31343,
+        "durMs": 1421,
+        "bytes": 62730,
+        "sha256": "716282aa5fc99d7967292588e929d11bbebbf47654412733a85e6f94708384cb"
+      },
+      "yr_bfrt_vgendiee": {
+        "file": "yr_bfrt/vgendiee.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26915,
+        "durMs": 1221,
+        "bytes": 53874,
+        "sha256": "7b3ca13990cd4dc4749068c425dc6f062b34be58100e26d1ebabb3928dc24d12"
+      },
+      "yr_bfrt_vgendief": {
+        "file": "yr_bfrt/vgendief.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26034,
+        "durMs": 1181,
+        "bytes": 52112,
+        "sha256": "717f54471195b1325f2dbbdd678ae6df8f1b41f9cd2a6386b79b1d7aa756ddec"
+      }
+    }
+  }
+}

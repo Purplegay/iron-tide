@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="480" viewBox="0 0 840 480" role="img" aria-label="战场标记阶段示意">
+<style>text{font:19px 'Microsoft YaHei',sans-serif;fill:#eef4ec}.small{font-size:15px;fill:#b1c7c0}.gold{fill:#ffdb91}.green{fill:#a3efc1}</style>
+<rect width="840" height="480" fill="#172729"/><text x="30" y="43" style="font-size:26px">远征支线 · 下一步在哪里</text><text class="small" x="674" y="43">示意 / 非截图</text>
+<path d="M30 65h780M30 157h780M30 270h780M30 367h780" stroke="#52635e"/>
+<text x="30" y="106">回收军需</text><text class="gold" x="195" y="106">敌军争夺 · 清敌后继续</text><rect x="195" y="122" width="300" height="8" fill="#54635c"/><rect x="195" y="122" width="180" height="8" fill="#ffdb91"/><text class="small" x="530" y="131">剩余 8 秒 · 已有进度保留</text>
+<text x="30" y="205">往返签收</text><g fill="none" stroke="#a3efc1" stroke-width="2"><circle cx="211" cy="199" r="8"/><circle cx="474" cy="199" r="8"/><path d="M225 199h228m-9-7 9 7-9 7"/></g><text class="small" x="185" y="243">邮站领取</text><text class="gold" x="497" y="206">回己方起点取回执</text><text class="small" x="467" y="243">取得回执后，定位切回邮站</text>
+<text x="30" y="311">静默监听</text><text class="gold" x="195" y="311">多余单位撤出 · 只留一队</text><text class="green" x="510" y="311">单队监听 3/8秒</text><rect x="510" y="330" width="220" height="6" fill="#54635c"/><rect x="510" y="330" width="83" height="6" fill="#a3efc1"/>
+<text x="30" y="413">移动工棚</text><text class="gold" x="195" y="413">派工程师入圈</text><text class="small" x="195" y="447">载具已到，只提示仍缺的兵种</text><text class="green" x="505" y="413">缺编：清点备用零件</text><text class="small" x="505" y="447">原点驻留 12 秒也可完成</text></svg>

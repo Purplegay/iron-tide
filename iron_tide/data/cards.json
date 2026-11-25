@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "_comment": "抽卡系统占位配置。当前未实现逻辑，仅为后续扩展预留数据结构；GM 面板可直接发放。",
+  "enabled": false,
+  "pools": [
+    {
+      "id": "standard",
+      "name": "常规征召池",
+      "cost": {
+        "currency": "credits",
+        "amount": 1500
+      },
+      "pity": {
+        "soft": 40,
+        "hard": 60
+      },
+      "entries": [
+        {
+          "unit": "soviet_tesla",
+          "rarity": "epic",
+          "weight": 12,
+          "unlock": true
+        },
+        {
+          "unit": "empire_mecha",
+          "rarity": "epic",
+          "weight": 10,
+          "unlock": true
+        },
+        {
+          "unit": "soviet_twinblade",
+          "rarity": "legend",
+          "weight": 3,
+          "unlock": true
+        }
+      ]
+    }
+  ]
+}

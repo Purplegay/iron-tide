@@ -1,0 +1,384 @@
+{
+  "source": "Steam RA3 Uprising1.1",
+  "assets": {
+    "uprising\\audio\\JUChopp_weapMissa.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissa.wav",
+      "sha256": "ff2dbc88873eace7220916ec92922ef776b45392d551b0ce5db486b03d53cc27"
+    },
+    "uprising\\audio\\JUChopp_weapMissb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissb.wav",
+      "sha256": "c43b2cbcf3df17c8de3f2451f2bd42ae6c1cb5c8b977bf3fe8ac8c7e5a17ffd2"
+    },
+    "uprising\\audio\\JUChopp_weapMissc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissc.wav",
+      "sha256": "c2dc76712ce6196f4635d0c058c46683ba52c1994ab429262734320a151d1921"
+    },
+    "uprising\\audio\\JUChopp_weapMissd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissd.wav",
+      "sha256": "532d7f6ce849377b62b52e7a31fb86d81561ab3c7051b42f4a41deae2ddd4c90"
+    },
+    "uprising\\audio\\JUChopp_weapMisse.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMisse.wav",
+      "sha256": "af8b27f3d2324504868400ac68f234182d461567aa4d3bf296d42712039c5449"
+    },
+    "uprising\\audio\\JUChopp_weapMissf.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissf.wav",
+      "sha256": "cbe86e3b7da8013e6bb1ad547a06680d66348c598fdee316b0b3ebbc74ca6aaf"
+    },
+    "uprising\\audio\\JUChopp_weapMissg.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissg.wav",
+      "sha256": "f802726a830876de6ce8b288657276a8989dffdc99ad7fbb7d66e61897cc4c78"
+    },
+    "uprising\\audio\\JUChopp_weapMissh.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissh.wav",
+      "sha256": "c61a5e7e109168a82232ab1bb3096dff1db23c621695024987b2660b29aa594a"
+    },
+    "uprising\\audio\\JUChopp_weapMissi.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissi.wav",
+      "sha256": "71a64108b008602d949c25de6fc923584d11f13597a91afd0ad01ff2b89ac482"
+    },
+    "uprising\\audio\\JUChopp_weapMissj.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_JUChopp_weapMissj.wav",
+      "sha256": "8b083acd5a6ff50f532afcaf5c0eb89b340014a514c6357314570e3f72016f0e"
+    },
+    "uprising\\audio\\AUMirag_wea1FireA.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireA.wav",
+      "sha256": "3d76e057069883dc6fc2f581fa6fd0e1da1a66abc918a97f1ff2560fa920cf37"
+    },
+    "uprising\\audio\\AUMirag_wea1FireB.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireB.wav",
+      "sha256": "28c94e7adea87fe641eda8f426b860977a341e5fc4e1d9850f1a7232248f1fa5"
+    },
+    "uprising\\audio\\AUMirag_wea1FireC.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireC.wav",
+      "sha256": "a2060edac7d418ac7a9131fabb553cb72b4092814fc6f99db509b63d9acde399"
+    },
+    "uprising\\audio\\SUHamme_leechArma.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_SUHamme_leechArma.wav",
+      "sha256": "3da751331891569315b08c9d078fdfa8c96744eed75804488a2939c2c1bd5453"
+    },
+    "uprising\\audio\\SUHamme_leechUnarma.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_SUHamme_leechUnarma.wav",
+      "sha256": "844441a52b36c45c1994e3f9e16102227d43177d3ec2cfe55564e7c571d56227"
+    },
+    "uprising\\audio\\SUApoca_harpLoopa.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_SUApoca_harpLoopa.wav",
+      "sha256": "6039fda6e8ecd3f57340068363fc90215438ab7ab3092a56d34ae378cb245b64"
+    },
+    "uprising\\audio\\SUApoca_harpLoopb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_SUApoca_harpLoopb.wav",
+      "sha256": "95694f47a1769240e73cf794776a819b79e32d51ef0daf4aa02b2dc34aef3d62"
+    },
+    "uprising\\audio\\SUApoca_harpLoopc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_SUApoca_harpLoopc.wav",
+      "sha256": "5dde94d9343dc5a83260e3325f54dcddbfd0bdec21ce2347d5d95ec7b2d14cbd"
+    },
+    "uprising\\FXCloud03.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXCloud03.png",
+      "sha256": "ad9f2fb5ebe5bfa504ce40a88f64d24e2f0cd8d940dffc3142231789653bd6cf"
+    },
+    "presentation\\FXCloud03.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXCloud03.png",
+      "sha256": "ad9f2fb5ebe5bfa504ce40a88f64d24e2f0cd8d940dffc3142231789653bd6cf"
+    },
+    "uprising\\FXFracTileNRM.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXFracTileNRM.png",
+      "sha256": "af7fd8901a14c22baf6d93a6f977bc87392400ce024d53444fdf8e9bb87d3e41"
+    },
+    "presentation\\FXFracTileNRM.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXFracTileNRM.png",
+      "sha256": "af7fd8901a14c22baf6d93a6f977bc87392400ce024d53444fdf8e9bb87d3e41"
+    },
+    "uprising\\FXBuzzerRef.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXBuzzerRef.png",
+      "sha256": "f73e50e668949c62f01dd197f2dfeade050a6fbcd9da7ad3c8ea1306b0fb0d03"
+    },
+    "presentation\\FXBuzzerRef.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXBuzzerRef.png",
+      "sha256": "f73e50e668949c62f01dd197f2dfeade050a6fbcd9da7ad3c8ea1306b0fb0d03"
+    },
+    "uprising\\FXAlliedPrismBeam.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXAlliedPrismBeam.png",
+      "sha256": "ba67d12ada70dc649bbd69a23c0ec419769ff8385be9369939105e3898f085a0"
+    },
+    "presentation\\FXAlliedPrismBeam.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXAlliedPrismBeam.png",
+      "sha256": "ba67d12ada70dc649bbd69a23c0ec419769ff8385be9369939105e3898f085a0"
+    },
+    "uprising\\FXAlliedPrismBeam_Vet.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXAlliedPrismBeam_Vet.png",
+      "sha256": "053cbfaa232183969af3cc091034b60b1a3efc85cff90f7b7fe234136e6a6a0b"
+    },
+    "presentation\\FXAlliedPrismBeam_Vet.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_FXAlliedPrismBeam_Vet.png",
+      "sha256": "053cbfaa232183969af3cc091034b60b1a3efc85cff90f7b7fe234136e6a6a0b"
+    },
+    "uprising\\AP_MirageDisguises01.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\textures\\Texture_AP_MirageDisguises01.png",
+      "sha256": "977d7326ef4ae9ec920bef682c0a98fad5a7f94e4a271898297f5905f550383f"
+    },
+    "presentation\\field_on.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_AUA_Mirage_GapGenerator.png",
+      "sha256": "303cfe74bc9238c7549cbb30660e5de289cc07107cf9da1fa271c0af608083e8"
+    },
+    "presentation\\field_off.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_AUA_Mirage_StrikeMode.png",
+      "sha256": "ab9cd8416a600f23452e47020d9fac9248dc8f63d8cfaa89c5511ef23c59635b"
+    },
+    "presentation\\cameo.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_Button_AlliedAntiVehiclevehicleTech3_on.png",
+      "sha256": "481fca179bc9851ff2ba9b0aa61b927df85e5c189ab66a1f18e816f03366579c"
+    },
+    "presentation\\portrait.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_Portrait_AlliedAntiVehicleVehicleTech3.png",
+      "sha256": "585f3f4c42f2bed2628fb18629cc427403850147a260fb0ca3cd72e7ff32ac43"
+    },
+    "uprising\\rank1.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_VeterancyRank2_Allies.png",
+      "sha256": "416fa00af09fe4146b495a25f787a8e7c712535d51f228eb139cc04a39e69d95"
+    },
+    "uprising\\rank2.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_VeterancyRank3_Allies.png",
+      "sha256": "78f8d897c7fd0e9aa1f9ba9d4d3c484e4e2614ae219ee393b743f44c1ca74cf7"
+    },
+    "uprising\\rank3.png": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\icons\\PackedTextureImage_VeterancyRank4_Allies.png",
+      "sha256": "d87d960fe09a862097039cf6d3c4ea3f2804812a0cfdf977f0756434d8420e9f"
+    },
+    "native\\audio\\AUMirag_VoiAtka.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtka.wav",
+      "sha256": "89f8e32d670450ceb061b2811ff4cf65dfb90d8f6368f478f5562d294077e0cb"
+    },
+    "native\\audio\\AUMirag_VoiAtkb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkb.wav",
+      "sha256": "9551197724c4d780cf6218a78b6829ff72b87012a082c2983f473b499d023cfd"
+    },
+    "native\\audio\\AUMirag_VoiAtkc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkc.wav",
+      "sha256": "eded23fdb164d3e9d21a3af0976a8dc38956b9fe86f6ac3e52b0d9e682cc7925"
+    },
+    "native\\audio\\AUMirag_VoiAtkd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkd.wav",
+      "sha256": "7d7daef43826f2b8362fc8134f450575f2b1c1be9e7d47772836d161048d9864"
+    },
+    "native\\audio\\AUMirag_VoiAtke.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtke.wav",
+      "sha256": "e80e60bc94d936d86a45681421b527bab23f09085b5d57e712ea507f961b9324"
+    },
+    "native\\audio\\AUMirag_VoiAtkf.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkf.wav",
+      "sha256": "d7665080dcf9515b5e146aa2d020666da3387a4e9f86c8779b1bb0b34d4dc618"
+    },
+    "native\\audio\\AUMirag_VoiAtkg.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkg.wav",
+      "sha256": "15fca928c639ad2d43f50e49a661436053f8dadb7e4dee23b7763921e383b9f0"
+    },
+    "native\\audio\\AUMirag_VoiAtkh.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiAtkh.wav",
+      "sha256": "08791ad72e0505a42502dac1b5a95f1048ca41826bf59cdb8886256623a23c8c"
+    },
+    "native\\audio\\AUMirag_VoiCrea.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiCrea.wav",
+      "sha256": "b1533f312a8dc09639b142abd48a28990013e537f574a841806765f0d6eed08e"
+    },
+    "native\\audio\\AUMirag_VoiCreb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiCreb.wav",
+      "sha256": "149337847e1932af0311b87d0f3749832577f87725bea1cf03fef4ba96cb022e"
+    },
+    "native\\audio\\AUMirag_VoiMova.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMova.wav",
+      "sha256": "8cc4e169c6c287f841b0552c0ec7219a68c6dc16e12d65550558e9a9105419da"
+    },
+    "native\\audio\\AUMirag_VoiMovAtka.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovAtka.wav",
+      "sha256": "12377d838bbf7e5b1713954b12da98be1de5d110420c7a6969f57080913adaaf"
+    },
+    "native\\audio\\AUMirag_VoiMovAtkb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovAtkb.wav",
+      "sha256": "fbc06ae2aae2e9fedfb48a6b1dfb3cfc7d35fe169b991373931be15f496c9408"
+    },
+    "native\\audio\\AUMirag_VoiMovAtkc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovAtkc.wav",
+      "sha256": "6d2df390f64dbadf99b06065c2fb0e2c02a41a2b0cc162b17c3b89d65feaf3d2"
+    },
+    "native\\audio\\AUMirag_VoiMovAtkd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovAtkd.wav",
+      "sha256": "477d91446a564b336b0c803e411146147c8cd48c15ef07a5439049c76a80085b"
+    },
+    "native\\audio\\AUMirag_VoiMovAtke.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovAtke.wav",
+      "sha256": "575171f0195a1ece308803718835483061dd0f08371870b9180876edcbd330cf"
+    },
+    "native\\audio\\AUMirag_VoiMovb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovb.wav",
+      "sha256": "21c4baa33d50c87b4cc80f6d0ca19df02b0d2ea906390a8614bb667eeb92aead"
+    },
+    "native\\audio\\AUMirag_VoiMovc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovc.wav",
+      "sha256": "be0c11be0d3e71d39080562beb328d447c68db04305ddd2bcf355a1ec3dd577c"
+    },
+    "native\\audio\\AUMirag_VoiMovd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovd.wav",
+      "sha256": "66759b9183e316d989061d3fdfedf87e365908997e4972f95f0ce1860edb3f3b"
+    },
+    "native\\audio\\AUMirag_VoiMove.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMove.wav",
+      "sha256": "56e63b6e6e075489a517b3763b808500b16a9ce2a8600de5c071f32aba96fab6"
+    },
+    "native\\audio\\AUMirag_VoiMovf.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovf.wav",
+      "sha256": "f27bd7d08c3ac5f2664265ea7830be1aade0fbb824503546be8de6b10f0d18b8"
+    },
+    "native\\audio\\AUMirag_VoiMovg.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovg.wav",
+      "sha256": "99ec4abea2be0b6d626603c25e1972e5270cccf16a54796a5b9f7334b31bc0cd"
+    },
+    "native\\audio\\AUMirag_VoiMovSpca.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovSpca.wav",
+      "sha256": "043f7d76020ae36b4af4635e374e2356bbc04a7e9e3b885052a4110f2b31bf5b"
+    },
+    "native\\audio\\AUMirag_VoiMovSpcb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovSpcb.wav",
+      "sha256": "da0d1e3f084671d684a7de6936fe7c5f545e22793ee23082619da06328813eea"
+    },
+    "native\\audio\\AUMirag_VoiMovSpcc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovSpcc.wav",
+      "sha256": "ea25eb354d7e64fb548b021ae2391e46298f34c8f7540ee2854c903b36dd8d2f"
+    },
+    "native\\audio\\AUMirag_VoiMovSpcd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovSpcd.wav",
+      "sha256": "4cb99b45d767c8db5c84957a840678e420a9eb0e95edda663047e93c38303090"
+    },
+    "native\\audio\\AUMirag_VoiMovSpce.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiMovSpce.wav",
+      "sha256": "9b08eac7009f76fcc3e25314ad2f3ed1dc40595b6780e8fd677d046c383f566a"
+    },
+    "native\\audio\\AUMirag_VoiReta.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiReta.wav",
+      "sha256": "5ca1e2577b7fd41c2c87e2829e7be2b5e5dedfdad35cd6fc8703f5a1b3b186c4"
+    },
+    "native\\audio\\AUMirag_VoiRetb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiRetb.wav",
+      "sha256": "5183656ac981eca92c02e09bea8cfe910e7f45b061c0e94c6bcae25163ce4c8a"
+    },
+    "native\\audio\\AUMirag_VoiRetc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiRetc.wav",
+      "sha256": "259fcc802c3f125aaee681359600385a0d8a4801feb1917772f3cf31b1bfa1d3"
+    },
+    "native\\audio\\AUMirag_VoiSela.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSela.wav",
+      "sha256": "20a7f2a12c121c59f826c3e253c96eb87ebb69743c9043878e09b95350c4320e"
+    },
+    "native\\audio\\AUMirag_VoiSelb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelb.wav",
+      "sha256": "1af2c92c5130ab7dba9c821eda561ab769f839bca93e882f43b9f82df9a1a3a4"
+    },
+    "native\\audio\\AUMirag_VoiSelBata.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelBata.wav",
+      "sha256": "4ceab28fcd0e0f849a0fd605b198d3b4d6df2f2b32716b0daa4b718815e0f258"
+    },
+    "native\\audio\\AUMirag_VoiSelBatb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelBatb.wav",
+      "sha256": "7afafd56d0521a35b46d63cae975802a9e6df7ef1dc7ce0557c976dfe51bc3ca"
+    },
+    "native\\audio\\AUMirag_VoiSelBatc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelBatc.wav",
+      "sha256": "7c55365cfa683dfa9970a27b3b5e8ef2017fbdba0f01e2f85007ad79e7a497ad"
+    },
+    "native\\audio\\AUMirag_VoiSelBatd.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelBatd.wav",
+      "sha256": "43264f14b2cb6054257502fa362e61ef33542ca25ad3ba54bf4775576971dd4a"
+    },
+    "native\\audio\\AUMirag_VoiSelBate.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelBate.wav",
+      "sha256": "876f2383634371ac76ef16c78b78cac52b0a102178f383af29444953e4ef1363"
+    },
+    "native\\audio\\AUMirag_VoiSelc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelc.wav",
+      "sha256": "0a50fd05064001d9362aafa209560e74e1eab3bf3fe1e73c774e49120edfbd35"
+    },
+    "native\\audio\\AUMirag_VoiSeld.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSeld.wav",
+      "sha256": "52fa1378c3c05c78e20c142e8886489f8390d3be2ee69b45778a822b8dfaf520"
+    },
+    "native\\audio\\AUMirag_VoiSele.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSele.wav",
+      "sha256": "912fe87473450841a4b730adf4a8c43c05e0be6a6176273b5518fabd82849b41"
+    },
+    "native\\audio\\AUMirag_VoiSelMira.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMira.wav",
+      "sha256": "aa966e114a5b6a2ecda576b65d17dc338dd20724d1ba2e931c2f74a54023db98"
+    },
+    "native\\audio\\AUMirag_VoiSelMirb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMirb.wav",
+      "sha256": "cc721610e0c0bf83fb3b8327bc143c0a44404efab98dc54c90bb2dca26f04f51"
+    },
+    "native\\audio\\AUMirag_VoiSelMirc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMirc.wav",
+      "sha256": "191d22baabbbf1b4619abb8dddfcb527eef24dbe7d52f0d545a834054589a1db"
+    },
+    "native\\audio\\AUMirag_VoiSelMird.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMird.wav",
+      "sha256": "acbc55e7198b8acdb4c1bae0d5cf830194e15217f12229f71f634b2b8ea6e353"
+    },
+    "native\\audio\\AUMirag_VoiSelMire.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMire.wav",
+      "sha256": "9161e9c4d112b0ed192751c9bb1b33bf9cf9cbae6fb1e75836a1433642298a30"
+    },
+    "native\\audio\\AUMirag_VoiSelMirf.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMirf.wav",
+      "sha256": "dd68c3436aea3a5ad754e6e5431ada917e5cb54ba1d3f961ee67b71fce0e7647"
+    },
+    "native\\audio\\AUMirag_VoiSelMirg.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelMirg.wav",
+      "sha256": "ab5d81c3f526754f93e666bf90aa6895e647ddd9760049e90aaa3b3ddaf801b3"
+    },
+    "native\\audio\\AUMirag_VoiSelUndFira.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelUndFira.wav",
+      "sha256": "ad8bff2a7a2abccb8ad0835e55280e2b68c0ed2c907498c2b131e9f38e4c5e0e"
+    },
+    "native\\audio\\AUMirag_VoiSelUndFirb.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelUndFirb.wav",
+      "sha256": "d90efc193d29064a85b0978873b547a19ccb6674735af55263fdcf22c6159cd5"
+    },
+    "native\\audio\\AUMirag_VoiSelUndFirc.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_VoiSelUndFirc.wav",
+      "sha256": "43f561d41c9483d7b0c8440e0748dd2e83e3050e850b43411fbfcaff4f33af6f"
+    },
+    "native\\audio\\AUMirag_wea1FireA.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireA.wav",
+      "sha256": "3d76e057069883dc6fc2f581fa6fd0e1da1a66abc918a97f1ff2560fa920cf37"
+    },
+    "native\\audio\\AUMirag_wea1FireB.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireB.wav",
+      "sha256": "28c94e7adea87fe641eda8f426b860977a341e5fc4e1d9850f1a7232248f1fa5"
+    },
+    "native\\audio\\AUMirag_wea1FireC.wav": {
+      "source": "refs\\ra3-mirage\\uprising\\converted\\audio\\AudioFile_AUMirag_wea1FireC.wav",
+      "sha256": "a2060edac7d418ac7a9131fabb553cb72b4092814fc6f99db509b63d9acde399"
+    },
+    "uprising\\disguise_tree.json": {
+      "sha256": "7bf74b429a3cbc5d7242ab76835339328ed9fc9f394e7c8e056b0bb4551520bb",
+      "source": "uprising converted mesh/animation and official SDK XML"
+    },
+    "uprising\\excloakingfield.json": {
+      "sha256": "930f01110e058be3658bcb4de6eb808fdf537efc42f80cab88f95ef2cee09688",
+      "source": "uprising converted mesh/animation and official SDK XML"
+    },
+    "uprising\\field.json": {
+      "sha256": "a0cb4628cf2d8dd8a6c96687fb88a1c01bd54b1e765226451e19220a1eb3e29a",
+      "source": "uprising converted mesh/animation and official SDK XML"
+    },
+    "uprising\\fxmiragedisguise.json": {
+      "sha256": "ab0eb2c4e4ff97261326870adaecf8ac7fbae92bf5a65e08be9f0033a355e2c0",
+      "source": "uprising converted mesh/animation and official SDK XML"
+    },
+    "uprising\\provenance.json": {
+      "sha256": "2cc0a5ff9cca1a37b9ec13c9b868db308b98b11981ea8c9609cd2a59917c8fc9",
+      "source": "uprising converted mesh/animation and official SDK XML"
+    }
+  },
+  "runtime_shader_is_adapter": true,
+  "field_animation_channel": "Visibility, 101 frames at 30 FPS; no scale channel",
+  "not_activated": "EXMIRAGEFIELDBUILDUP: present in Uprising, not referenced by SDK ShieldDraw; no invented trigger"
+}

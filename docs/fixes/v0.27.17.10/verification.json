@@ -1,0 +1,82 @@
+{
+  "version": "0.27.17.10",
+  "environment": {
+    "engine": "Godot 4.7.2",
+    "headless": true,
+    "creationflags": "CREATE_NO_WINDOW",
+    "fixed_fps": 60,
+    "project": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\project",
+    "player_userdata_used": false,
+    "original_save_modified": false
+  },
+  "tests": {
+    "stale-before": {
+      "checks": 16,
+      "failed": 4,
+      "report_sha256": "04ba207d5d1c32bd95eb50fdaf79282d9dcd8f886c4d2db116e1f3307350238a",
+      "report_path": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\stale-before\\result.json",
+      "expected_failure": true
+    },
+    "final-stale": {
+      "checks": 16,
+      "failed": 0,
+      "report_sha256": "b2253d46decdcb376efb57626b03d4a5fd9e185a41d641f7abff6aefc995f577",
+      "report_path": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\final-stale\\result.json"
+    },
+    "final-crowd": {
+      "checks": 4,
+      "failed": 0,
+      "report_sha256": "3dbbd5bd946d2e312c97b5b35c94716819a975f18133f1a86c8ae87fdcbc048b",
+      "report_path": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\final-crowd\\result.json",
+      "arrivals": [
+        {
+          "map": "yr_isleland",
+          "kind": "E1",
+          "reached": 60,
+          "expected": 60
+        },
+        {
+          "map": "yr_isleland",
+          "kind": "mixed",
+          "reached": 60,
+          "expected": 60
+        },
+        {
+          "map": "yr_crctbrd",
+          "kind": "E1",
+          "reached": 60,
+          "expected": 60
+        },
+        {
+          "map": "yr_crctbrd",
+          "kind": "mixed",
+          "reached": 60,
+          "expected": 60
+        }
+      ]
+    },
+    "native-fixed": {
+      "checks": 30,
+      "failed": 0,
+      "report_sha256": "424e127f6dc4a19670f7f51f1608fbd2c7c8fa06a9e25f2b88efe7907435da8d",
+      "report_path": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\native-fixed\\result.json"
+    },
+    "queue-fixed": {
+      "checks": 208,
+      "failed": 0,
+      "report_sha256": "0138e93fc545f36e369499f75ed026e0a84ec63276966e8e451353a9b92d7a02",
+      "report_path": "C:\\Users\\admin\\Temp\\iron-bridge-20261108\\queue-fixed\\result.json"
+    }
+  },
+  "sources": {
+    "scripts/units/unit.gd": "3feaeffd63033df93fa44f0cb75d9af9b4ea2543b7b3dd69a18d45086361a3c4",
+    "scripts/units/local_traffic.gd": "810dff7810ebe784e1b5b0d0966eae3ee324da4c3c83ab6ca0a94fbe20be8259",
+    "scripts/world/path_service.gd": "51df343d229a7caff56dbbdc58c71d06d1734817de83effcfc5b2721288abda7",
+    "scripts/world/native_maps.gd": "91a6c7d9c1932d79f7d669ed6b1ea01de3fbebc5b077fece7d72a6cd5b9f3be0",
+    "tests/bridge_stale_actor_regression.gd": "1b759e6f13bf2d5cec6afb91646088f0752d9d09fc5a4eac2441867ce387efc8",
+    "tests/bridge_stale_actor_regression.tscn": "906c8e1858fae736fbb2425e940f38ff21a08e2c56ba69ea6aaf7389f7488bef",
+    "tests/bridge_crowd_regression.gd": "80a5d67c9648f3416e5376a9e314892541753cf6350a480f7175b52dc7452dc9",
+    "tests/bridge_crowd_regression.tscn": "1d683f323395184ed90ca3d2f8ef884a486b441cf15b7ad0b0a2e75ff468a3ce"
+  },
+  "boundary": "Functionality only; no GPU/frame-rate improvement claim. Earlier queue/native suites used identical behavior with only two later explanatory comment lines added to unit.gd."
+}

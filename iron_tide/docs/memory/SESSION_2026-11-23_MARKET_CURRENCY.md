@@ -1,0 +1,1 @@
+远征 market.gd 禁用补给买补给，旧未售含锁定移除；类别池空时用未占用的完整池，不足留空。event 中两项同为补给时将免费首项替换为免费刷新，第二项保留数量和费用，生成和读档都适用。screen.gd 显示维修包持有、需求及不足状态。独立 user_dir Godot 4.7.2 headless expedition_shop_pricing_regression.tscn 73项0失败退出0。未打包、未人工目测 UI。

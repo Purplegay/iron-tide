@@ -1,0 +1,107 @@
+{
+  "version": "0.25.46",
+  "validation": "headless CREATE_NO_WINDOW; isolated APPDATA; no user save changes",
+  "suites": [
+    {
+      "suite": "native_talent",
+      "checks": 780,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-card-freeze-20261105\\native_talent\\console.log",
+      "exit_resource_warnings": [
+        "2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    {
+      "suite": "skill_training",
+      "checks": 183,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\skill_training\\console.log",
+      "exit_resource_warnings": [
+        "8 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.",
+        "19 RID allocations of type 'PN18TextServerAdvanced22ShapedTextDataAdvancedE' were leaked at exit.",
+        "2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    {
+      "suite": "ra3_reaper_cooldown",
+      "checks": 242,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\ra3_reaper_cooldown\\console.log",
+      "exit_resource_warnings": []
+    },
+    {
+      "suite": "academy",
+      "checks": 746,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\academy\\console.log",
+      "exit_resource_warnings": [
+        "2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    {
+      "suite": "talent_cost",
+      "checks": 473,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\talent_cost\\console.log",
+      "exit_resource_warnings": [
+        "1 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    {
+      "suite": "savegame",
+      "checks": 120,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\savegame\\console.log",
+      "exit_resource_warnings": []
+    },
+    {
+      "suite": "boris_arrival",
+      "checks": 68,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\boris_arrival\\console.log",
+      "exit_resource_warnings": []
+    },
+    {
+      "suite": "radiation_training",
+      "checks": 56,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\radiation_training\\console.log",
+      "exit_resource_warnings": [
+        "2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit."
+      ]
+    },
+    {
+      "suite": "pulse_scaling",
+      "checks": 112,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\pulse_scaling\\console.log",
+      "exit_resource_warnings": []
+    },
+    {
+      "suite": "crew_sortie_cards",
+      "checks": 239,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-v02546-final-20261105\\crew_sortie_cards\\console.log",
+      "exit_resource_warnings": []
+    }
+  ],
+  "total_checks": 3019,
+  "source_fingerprints": {
+    "data/meta.json": "64146c064e1afaca79ead2f20ea5ab5ee9d6f3f2043c6828a46463b4f0f013a9",
+    "data/skills.json": "0c53763f9cc34261e8aba203b9cb237b0b92bab5f10baa1c2577439c5d9e6425",
+    "scripts/autoload/meta_progress.gd": "8c74f171ed7d94e656ae34e81687c639cb2a711a5028bce1039f3a484f3ab8f4",
+    "scripts/autoload/battle_request.gd": "0dedd93056013714eb03b928e0cce66f1189e5824b7d1bf0444fa52cf4a2c4f9",
+    "scripts/units/unit.gd": "0e0d2018db84c09c1789f60055e2741a4278fccc3a3461987cb2124f2442970b",
+    "scripts/units/unit_skill_layout.gd": "89f72972de762e005af405505f666cf1f12fef0391ef186a227f91bf70ab92e8",
+    "scripts/units/ra3_reaper_split.gd": "e79e8bd65a99e5aa2073c1e880fb419e326de4b3c9cfa52efbc4339b13e85baa",
+    "scripts/ui/hud.gd": "4e4b96047a8dc354f45b87373f76b73f0ad4ec88b418a055715aaaa4000549a9",
+    "scripts/screens/meta_screen.gd": "fa52c2b1045c9c223f1183a822ae65f0168bc64f0a4b18e696b5ced32ccea1de",
+    "scripts/ui/faction_card_gallery.gd": "4395245f1a5a382641327b82d85beea7db07d2941713ec42a496d468855ee278",
+    "scripts/ui/faction_card_stage.gd": "e3cc48d595eb4fa59c3362b6b3b509a5ab7dbe0a3f1887729c6f1bbfd6201928",
+    "scripts/ui/progression_icon.gd": "1c223382929fc30fcb962fd129f50a64e5b64fd1f464a6dc2465a15d602d8d1b",
+    "scripts/rules/skill_training.gd": "e8b1dd48fcbbf0b7668b4702af1fabd2cbdbe74005c9ba132157c3b94541729b",
+    "scripts/rules/native_talent_migration.gd": "53a66280ddc1fe2fb4d70bd76de83c9a792c28558c0e47e712bc34288380ea16"
+  },
+  "source_drift": [],
+  "visual": "pending_user_visual_confirmation"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "LCRF",
+  "image": "LCRF",
+  "vxl": "LCRF.VXL",
+  "source": "LOCAL.MIX",
+  "facings": 32,
+  "frameW": 104,
+  "frameH": 64,
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

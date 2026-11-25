@@ -1,0 +1,3 @@
+用户偏好：自主分析并尝试优化，避免逐步播报；存档2/3在5×图形Release下重复验证，累计每减少10ms整帧耗时再总结，不能用局部耗时替代。除非遇到必须处理的阻塞。
+
+Godot独立渲染线程(thread_model=2)在隔离slot2-b1发生cowdata bounds FATAL，证据.validation/5x-render-20261123，不改生产。独立2D物理线程2d/run_on_separate_thread=true：.validation/5x-physics-20261123，每档B A A B，30秒。slot2各场均帧128.98/218.29/139.67/234.44ms，slot3为208.35/257.34/256.15/375.27ms。slot2-b2外层超时已有result但缺host-cpu审计，不作有效验收；slot3复测也反向。没有可推广的10ms收益，不重复这两个设置。未改正式项目配置/玩法或存档。

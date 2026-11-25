@@ -1,0 +1,341 @@
+{
+  "version": 1,
+  "hero_contracts": [
+    {
+      "id": "tanya_contract",
+      "hero_id": "TANY",
+      "name": "谭雅「破晓之前」契约",
+      "cards": [
+        "ap_tanya_breach",
+        "ps_tanya_rhythm"
+      ]
+    },
+    {
+      "id": "boris_contract",
+      "hero_id": "BORIS",
+      "name": "鲍里斯「红色坐标」契约",
+      "cards": [
+        "ap_boris_corridor",
+        "ps_boris_receipt"
+      ]
+    },
+    {
+      "id": "peregrine_contract",
+      "hero_id": "ORCA",
+      "name": "游隼「第七航迹」契约",
+      "cards": [
+        "ap_peregrine_hunt",
+        "ps_peregrine_rearm"
+      ]
+    },
+    {
+      "id": "leizhu_contract",
+      "hero_id": "TTNK",
+      "name": "雷铸「铜环之誓」契约",
+      "cards": [
+        "ap_leizhu_court",
+        "ps_leizhu_charge"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "ap_boris_corridor",
+      "name": "红色走廊",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "BORIS"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄鲍里斯专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "effect": "ap_boris_corridor",
+      "value": 0,
+      "radius": 55,
+      "target": "point",
+      "cooldown_by_rank": [
+        55,
+        50,
+        45,
+        40
+      ],
+      "desc": "点选6格内可见地面起点，沿本人到起点方向延伸4格，三个落点须已探索。静止呼叫0.6秒，移动或控制打断且不扣冷却；成功后预警1.2秒，沿线每0.8秒落一发炮弹，共3发。每发对1格内敌地面目标造成呼叫成功时普通主武器单发攻击的{damage_pct}%爆破伤害，步兵/轻甲/重甲/建筑倍率1/0.8/0.65/0.6。成功后死亡不取消炮火；不占用米格冷却。",
+      "values": {
+        "damage": [
+          0.8,
+          1.0,
+          1.2,
+          1.5
+        ]
+      }
+    },
+    {
+      "id": "ps_boris_receipt",
+      "name": "校射回执",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "BORIS"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄鲍里斯专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "effect": "ps_boris_receipt",
+      "value": 0,
+      "cooldown": 2,
+      "desc": "本人步枪对真实敌人造成直接生命损失获得1枚校射章，每2秒至多1枚，上限3枚；无敌对伤害往来12秒后清空。下次W成功呼叫或原生米格实际出发，消耗全部章数并锁定本轮收益。每章使W爆破/米格对建筑炸弹伤害+{damage_pct}%，爆炸半径+{radius_pct}%；原生无范围弹头不新增溅射。W、米格和附加伤害不生产校射章。",
+      "values": {
+        "damage": [
+          0.04,
+          0.06,
+          0.08,
+          0.1
+        ],
+        "radius": [
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "ap_tanya_breach",
+      "name": "三点破门",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "TANY"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄谭雅专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "effect": "ap_tanya_breach",
+      "value": 0,
+      "radius": 49.5,
+      "target": "point",
+      "cooldown_by_rank": [
+        40,
+        37,
+        34,
+        30
+      ],
+      "desc": "向4格内可见合法地面连续投出3枚炸药，横向间隔0.8格；投掷间隔0.35秒、飞行0.4秒、落地1.5秒后爆炸。每枚对0.9格内地面目标造成投掷时普通主武器单发攻击的{damage_pct}%伤害；步兵/轻甲/重甲/建筑倍率为1/0.8/0.65/0.6。炸药生命为英雄最大生命3%，可被击毁；最多保留一组。死亡、冻结或登载取消尚未投出的部分，已投出继续计时。",
+      "values": {
+        "damage": [
+          0.6,
+          0.8,
+          1.0,
+          1.2
+        ]
+      }
+    },
+    {
+      "id": "ps_tanya_rhythm",
+      "name": "破门节拍",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "TANY"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄谭雅专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "effect": "ps_tanya_rhythm",
+      "value": 0,
+      "cooldown": 8,
+      "desc": "自身普通双枪击杀真实敌步兵，或自身三点破门炸药/原生C4摧毁建筑后，移动速度+25%，普通远程伤害减免{defense_pct}%，持续{life}秒。触发间隔8秒，期间不刷新；临时单位、附加攻击、碾压和擦除不触发。",
+      "values": {
+        "life": [
+          1.5,
+          2.0,
+          2.5,
+          3.0
+        ],
+        "defense": [
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "rarity": "ultimate",
+      "allowed_units": [
+        "ORCA"
+      ],
+      "scope_icon": "air",
+      "scope_note": "英雄游隼专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "value": 0,
+      "id": "ap_peregrine_hunt",
+      "name": "隼群追猎",
+      "type": "active",
+      "effect": "ap_peregrine_hunt",
+      "radius": 55,
+      "target": "point",
+      "cooldown_by_rank": [
+        38,
+        35,
+        32,
+        29
+      ],
+      "desc": "选择可见敌地面单位或建筑，射程外自动靠近，进入主武器射程后消耗2发弹药，释放4枚追猎导弹；两翼展开后间隔0.2秒追向同一目标，每枚造成施放时攻击力{damage_pct}%的普通爆破，半径{radius}格内其他敌地面目标受半伤。必中且不可拦截，但不绕过无敌；目标失效则落至最后有效位置。不揭雾、不触发普通首末弹或子弹药，已发弹群在本人死亡后继续。",
+      "values": {
+        "damage": [
+          0.4,
+          0.5,
+          0.6,
+          0.75
+        ],
+        "radius": [
+          1,
+          1.2,
+          1.4,
+          1.6
+        ]
+      }
+    },
+    {
+      "rarity": "ultimate",
+      "allowed_units": [
+        "ORCA"
+      ],
+      "scope_icon": "air",
+      "scope_note": "英雄游隼专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "value": 0,
+      "id": "ps_peregrine_rearm",
+      "name": "空中整备",
+      "type": "passive",
+      "effect": "ps_peregrine_rearm",
+      "cooldown": 0,
+      "desc": "游隼每次补满弹药，都会获得相当于最大生命{shield_pct}%的护盾，最多叠至{cap_pct}%。护盾不会自行消失。首次满弹出场也能获得一层，读档不会再送一层。只要有飞机停稳在正常运作的友方机场，游隼每发补弹时间就缩短{reload_pct}%。多架飞机停靠也只加速一次，停靠的飞机自身不享受加速。机场停运后，加速立即结束，当前补弹进度保留。",
+      "values": {
+        "shield": [
+          0.04,
+          0.06,
+          0.08,
+          0.1
+        ],
+        "cap": [
+          0.2,
+          0.3,
+          0.4,
+          0.5
+        ],
+        "reload": [
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "rarity": "ultimate",
+      "allowed_units": [
+        "TTNK"
+      ],
+      "scope_icon": "electric",
+      "scope_note": "英雄雷铸专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "value": 0,
+      "id": "ap_leizhu_court",
+      "name": "三极电庭",
+      "type": "active",
+      "effect": "ap_leizhu_court",
+      "radius": 275,
+      "target": "point",
+      "cooldown_by_rank": [
+        48,
+        44,
+        40,
+        36
+      ],
+      "desc": "选择可见合法地面，超过5格时自动驶近，进入5格后施放并开始冷却；新移动或停止指令可取消。在中心外1.4格放置三根可摧毁电极，各有本人最大生命{hp_pct}%耐久，持续{life}秒。三根覆盖三角区域，两根仅保留总宽0.45格连线，不足两根断电。区域内可见敌地面目标每秒受到施放时攻击力{damage_pct}%的电伤，每连续停留0.5秒结算一次，敌地面单位减速{slow_pct}%；同组不重复伤害，离开立即停伤、减速残留0.5秒。本人离中心超过7格、死亡或阵营出局时消失；不阻路、不揭雾。",
+      "values": {
+        "hp": [
+          0.08,
+          0.1,
+          0.12,
+          0.15
+        ],
+        "life": [
+          8,
+          10,
+          12,
+          14
+        ],
+        "damage": [
+          0.4,
+          0.5,
+          0.6,
+          0.7
+        ],
+        "slow": [
+          0.2,
+          0.25,
+          0.3,
+          0.35
+        ]
+      }
+    },
+    {
+      "rarity": "ultimate",
+      "allowed_units": [
+        "TTNK"
+      ],
+      "scope_icon": "electric",
+      "scope_note": "英雄雷铸专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "hero_expansion2": true,
+      "value": 0,
+      "id": "ps_leizhu_charge",
+      "name": "电荷调度",
+      "type": "passive",
+      "effect": "ps_leizhu_charge",
+      "cooldown": 0,
+      "desc": "普通主电击直接命中真实敌地面目标积累1层电荷，每秒最多1层，8秒未积累全部消退。第3层消耗全部电荷，对自身{radius}格内可见敌地面单位与建筑造成当前攻击力{damage_pct}%电伤，主目标在范围内也可受到。自身处于本人有效电庭内时范围增加0.5格；附近无敌人也消耗。副伤害不积层、不递归，可独立装备。",
+      "values": {
+        "radius": [
+          2,
+          2.25,
+          2.5,
+          3
+        ],
+        "damage": [
+          0.3,
+          0.4,
+          0.5,
+          0.6
+        ]
+      }
+    }
+  ]
+}

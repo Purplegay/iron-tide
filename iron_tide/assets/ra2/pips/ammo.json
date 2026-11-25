@@ -1,0 +1,22 @@
+{
+  "frame": 12,
+  "size": [
+    6,
+    13
+  ],
+  "offset": [
+    0,
+    0
+  ],
+  "source": {
+    "name": "PIPS2.SHP",
+    "archive": "ra2md.mix > conqmd.mix > 0xb98c56d7",
+    "sha256": "0afe9935160c04bdabed5bfefd0d55aad645ae38ec7dddeb5b3f4f2b2d2712d4"
+  },
+  "palette": {
+    "name": "PALETTE.PAL",
+    "archive": "ra2.mix > cache.mix > 0x18e978ee",
+    "sha256": "e85c535002573b5f95f7c361c4bdb95ee43e4914ddc926afda9ace995c54242b"
+  },
+  "png_sha256": "1f8af4a096768a318675b9105f9d4ba65412c00c577a422ffd181efbf1e5e805"
+}

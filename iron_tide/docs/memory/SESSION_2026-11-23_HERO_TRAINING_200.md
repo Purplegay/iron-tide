@@ -1,0 +1,1 @@
+英雄火力/生命默认训练上限统一 200：hero/training 未缩放 step 2/3、cap 400/600，保留费用与缩放、已有等级、管理员调参语义。UI 和购买共用 training_cap。未改普通单位。隔离 headless Godot：progression_costs_regression 91 检查 24 失败（普通单位 skill 等级）；academy_regression 1043 检查 29 失败（装备/载具等），英雄 200 级购买边界、伤害生命断言未报失败。不宣称全套通过；未打包。

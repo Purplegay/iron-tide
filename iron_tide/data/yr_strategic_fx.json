@@ -1,0 +1,79 @@
+{
+  "source": "Local Yuri rulesmd.ini, artmd.ini and soundmd.ini",
+  "flight": {
+    "NukeCarrier": {
+      "projectile": "GiantNukeUp",
+      "speed": "100",
+      "warhead": "NukeMaker"
+    },
+    "GiantNukeUp": {
+      "arm": "2",
+      "shadow": "no",
+      "image": "NKMSLUP",
+      "acceleration": "1",
+      "vertical": "yes",
+      "detonationaltitude": "20000",
+      "firerspalette": "yes"
+    },
+    "GiantNukeDown": {
+      "arm": "2",
+      "shadow": "no",
+      "image": "NKMSLDN",
+      "acceleration": "1",
+      "vertical": "yes",
+      "detonationaltitude": "30000",
+      "firerspalette": "yes"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "CrazyIvanBombTick": {
+        "sounds": [
+          "icraloop"
+        ],
+        "volume": 45
+      },
+      "CrazyIvanAttack": {
+        "sounds": [
+          "icraatta"
+        ],
+        "volume": 70
+      },
+      "NukeLaunch": {
+        "sounds": [
+          "snuklaun"
+        ],
+        "volume": 90
+      },
+      "NukeIntro": {
+        "sounds": [
+          "snukintr"
+        ],
+        "volume": 100
+      },
+      "IronCurtainBlast": {
+        "sounds": [
+          "siroon"
+        ],
+        "volume": 90
+      }
+    },
+    "entries": {
+      "icraloop": {
+        "file": "icraloop.wav"
+      },
+      "icraatta": {
+        "file": "icraatta.wav"
+      },
+      "snuklaun": {
+        "file": "snuklaun.wav"
+      },
+      "snukintr": {
+        "file": "snukintr.wav"
+      },
+      "siroon": {
+        "file": "siroon.wav"
+      }
+    }
+  }
+}

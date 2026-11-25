@@ -1,0 +1,19 @@
+{
+  "id": "SCHD_shd",
+  "image": "SCHD",
+  "of": "SCHD",
+  "facings": 32,
+  "frameW": 150,
+  "frameH": 94,
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 1,
+  "draw_offset": [
+    0,
+    0
+  ]
+}

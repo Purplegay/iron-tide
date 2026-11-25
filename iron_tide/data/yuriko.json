@@ -1,0 +1,194 @@
+{
+  "tree": [
+    {
+      "id": "Shield_Rank1",
+      "branch": "Shield",
+      "rank": 1,
+      "cost": 1,
+      "requires": [],
+      "icon": "Shield1"
+    },
+    {
+      "id": "Lure_Rank1",
+      "branch": "Lure",
+      "rank": 1,
+      "cost": 1,
+      "requires": [],
+      "icon": "PsychicLure1"
+    },
+    {
+      "id": "Slam_Rank1",
+      "branch": "Slam",
+      "rank": 1,
+      "cost": 1,
+      "requires": [],
+      "icon": "PsychicSlam1"
+    },
+    {
+      "id": "Upgrade_Speed01",
+      "branch": "Speed",
+      "rank": 1,
+      "cost": 1,
+      "requires": [
+        "Shield_Rank1"
+      ],
+      "icon": "Speed1"
+    },
+    {
+      "id": "Upgrade_Health01",
+      "branch": "Health",
+      "rank": 1,
+      "cost": 1,
+      "requires": [
+        "Lure_Rank1"
+      ],
+      "icon": "Health1"
+    },
+    {
+      "id": "Upgrade_AttackDamage01",
+      "branch": "AttackDamage",
+      "rank": 1,
+      "cost": 1,
+      "requires": [
+        "Slam_Rank1"
+      ],
+      "icon": "Power1"
+    },
+    {
+      "id": "Shield_Rank2",
+      "branch": "Shield",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Upgrade_Speed01"
+      ],
+      "icon": "Shield2"
+    },
+    {
+      "id": "Lure_Rank2",
+      "branch": "Lure",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Upgrade_Health01"
+      ],
+      "icon": "PsychicLure2"
+    },
+    {
+      "id": "Slam_Rank2",
+      "branch": "Slam",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Upgrade_AttackDamage01"
+      ],
+      "icon": "PsychicSlam2"
+    },
+    {
+      "id": "Upgrade_Speed02",
+      "branch": "Speed",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Shield_Rank2"
+      ],
+      "icon": "Speed2"
+    },
+    {
+      "id": "Upgrade_Health02",
+      "branch": "Health",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Lure_Rank2"
+      ],
+      "icon": "Health2"
+    },
+    {
+      "id": "Upgrade_AttackDamage02",
+      "branch": "AttackDamage",
+      "rank": 2,
+      "cost": 1,
+      "requires": [
+        "Slam_Rank2"
+      ],
+      "icon": "Power2"
+    },
+    {
+      "id": "Shield_Rank3",
+      "branch": "Shield",
+      "rank": 3,
+      "cost": 1,
+      "requires": [
+        "Upgrade_Speed02"
+      ],
+      "icon": "Shield3"
+    },
+    {
+      "id": "Lure_Rank3",
+      "branch": "Lure",
+      "rank": 3,
+      "cost": 1,
+      "requires": [
+        "Upgrade_Health02"
+      ],
+      "icon": "PsychicLure3"
+    },
+    {
+      "id": "Slam_Rank3",
+      "branch": "Slam",
+      "rank": 3,
+      "cost": 1,
+      "requires": [
+        "Upgrade_AttackDamage02"
+      ],
+      "icon": "PsychicSlam3"
+    }
+  ],
+  "unit": {
+    "id": "YURIKO",
+    "name": "百合子",
+    "role": "infantry",
+    "tags": [
+      "infantry",
+      "special"
+    ],
+    "faction": "japan",
+    "hp": 350,
+    "speed": 97.5,
+    "sight": 350,
+    "radius": 9,
+    "armor": "infantry",
+    "ra2_armor": "flak",
+    "movement_zone": "amphibious",
+    "cost": 0,
+    "weapon": {
+      "name": "念动力",
+      "damage": 65,
+      "range": 112.5,
+      "cooldown": 0.1,
+      "attack_type": "energy",
+      "projectile": "beam",
+      "ra2_aa": false,
+      "max_health_fraction": 0.04
+    },
+    "anti_air_weapon": {
+      "name": "念动力 · 对空",
+      "damage": 250,
+      "range": 225,
+      "cooldown": 1,
+      "attack_type": "energy",
+      "projectile": "beam",
+      "ra2_aa": true
+    },
+    "elite_anti_air_weapon": {
+      "name": "念动力 · 对空",
+      "damage": 250,
+      "range": 225,
+      "cooldown": 1,
+      "attack_type": "energy",
+      "projectile": "beam",
+      "ra2_aa": true
+    }
+  }
+}

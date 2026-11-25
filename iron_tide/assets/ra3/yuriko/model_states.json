@@ -1,0 +1,117 @@
+{
+  "STATE_bored": {
+    "clip": "JAPANYURIKOTECH1_BIDA",
+    "mode": "ONCE",
+    "restart": true,
+    "blend_frames": 10
+  },
+  "DYING": {
+    "clip": "JAPANYURIKOTECH1_DTBA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "STUNNED_FLAILING": {
+    "clip": "JAPANYURIKOTECH1_FLYA",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "DYING SPLATTED": {
+    "clip": "JAPANYURIKOTECH1_LNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 15
+  },
+  "STUNNED": {
+    "clip": "JAPANYURIKOTECH1_LNDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "STUNNED_STANDING_UP": {
+    "clip": "JAPANYURIKOTECH1_GTPA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "USER_7": {
+    "clip": "JAPANYURIKOTECH1_Y01_INTRO",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "MOVING": {
+    "clip": "JAPANYURIKOTECH1_RUNB",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "USER_8": {
+    "clip": "JAPANYURIKOTECH1_SPCA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0,
+    "duration": 2.0
+  },
+  "FIRING_A REACT_1": {
+    "clip": "JAPANYURIKOTECH1_ATKI",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A REACT_2": {
+    "clip": "JAPANYURIKOTECH1_ATKV",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A REACT_3": {
+    "clip": "JAPANYURIKOTECH1_ATKS",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "REACT_5": {
+    "clip": "JAPANYURIKOTECH1_SPCB2",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "FIRING_A": {
+    "clip": "JAPANYURIKOTECH1_ATKI",
+    "mode": "LOOP",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "SELECTED": {
+    "clip": "JAPANYURIKOTECH1_AIDA",
+    "mode": "ONCE",
+    "restart": true,
+    "blend_frames": 9
+  },
+  "TRANS_boredToSlam": {
+    "clip": "JAPANYURIKOTECH1_SPCB1",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_slamToBored": {
+    "clip": "JAPANYURIKOTECH1_SPCB3",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_boredToAttention": {
+    "clip": "JAPANYURIKOTECH1_BATA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  },
+  "TRANS_attentionToBored": {
+    "clip": "JAPANYURIKOTECH1_BIDA",
+    "mode": "ONCE",
+    "restart": false,
+    "blend_frames": 0
+  }
+}

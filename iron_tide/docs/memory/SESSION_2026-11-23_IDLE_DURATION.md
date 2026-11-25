@@ -1,0 +1,1 @@
+驻防挂机补给：原每秒结算后 pending_hours 只读 elapsed_seconds，紧跟结算时显示 0。现 idle.pending_seconds 记录未领取累计结算秒数，领取清零。旧存档按当前速率估算已有收益对应的时间，收益算法不变。UI 分行显示 HH:MM:SS。Godot 4.7.2 隔离 APPDATA 运行 tests/idle_duration_ui.tscn，旧档 60 秒收益加第二次结算 5 秒，面板 00:01:05，领取后 00:00:00，exit 0。未打包。

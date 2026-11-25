@@ -1,0 +1,58 @@
+{
+  "version": "0.27.17.7",
+  "engine": "Godot 4.7.2",
+  "execution": "headless CREATE_NO_WINDOW isolated profile",
+  "runs": {
+    "air_relief": {
+      "report": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\air_relief\\result.json",
+      "checks": 100,
+      "failed": 0,
+      "timings": [
+        {
+          "max": 1.009,
+          "name": "ra2 multi=false: bounded relief pass timing ms",
+          "p95": 0.187,
+          "passed": true
+        },
+        {
+          "max": 0.975,
+          "name": "ra2 multi=true: bounded relief pass timing ms",
+          "p95": 0.124,
+          "passed": true
+        },
+        {
+          "max": 1.445,
+          "name": "iron_tide multi=false: bounded relief pass timing ms",
+          "p95": 0.254,
+          "passed": true
+        },
+        {
+          "max": 0.963,
+          "name": "iron_tide multi=true: bounded relief pass timing ms",
+          "p95": 0.284,
+          "passed": true
+        }
+      ]
+    },
+    "air_relief_dispatch": {
+      "report": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\air_relief_dispatch\\result.json",
+      "checks": 29,
+      "failed": 0,
+      "timings": []
+    },
+    "air_relief_campaign": {
+      "report": "C:\\Users\\admin\\Temp\\iron-memory-nov8\\air_relief_campaign\\result.json",
+      "checks": 59,
+      "failed": 0,
+      "timings": []
+    }
+  },
+  "sha256": {
+    "iron_tide\\scripts\\world\\air_relief.gd": "a937a2769fa5b00145904ea95167bb042209bf72298f75f5c6e0af3d41687442",
+    "iron_tide\\scripts\\world\\ai_unit_dispatch.gd": "6727cc025c3c5d3a4ce74988606b46b8812250db5d6f06ac97c7c1f67a7db60c",
+    "iron_tide\\scripts\\world\\skirmish_ai.gd": "afdd82a3dc1eadac4e20921fbac0af9103e383080192d27edfc873061bcc0364",
+    "iron_tide\\scripts\\world\\house_ai.gd": "a91fe5f4d30033d98f354ad420a8f08e766dbbab6363b404443f6ec24868694e",
+    "iron_tide\\scripts\\units\\unit.gd": "4c61f8b2a4913cb2703efa675d4f03a7f88ad80f485c3b3095d2fc803759b27a",
+    "iron_tide\\tests\\air_relief_regression.gd": "47f7ab48a5b7474659cd9bf22daedba68037cf276b5441fe7f700d2da7cb0787"
+  }
+}

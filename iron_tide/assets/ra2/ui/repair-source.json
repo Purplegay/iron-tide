@@ -1,0 +1,14 @@
+{
+  "source": "Local Steam Yuri installation / RA2.MIX / SIDEC01.MIX / REPAIR.SHP",
+  "palette": "SIDEC01.MIX / SIDEBAR.PAL",
+  "frame": 0,
+  "crop": {
+    "x": 24,
+    "y": 4,
+    "width": 40,
+    "height": 24
+  },
+  "source_sha256": "e94719c890e63fc1abd87c7cde3f2e9c2099138fe481782433967edbee205bfb",
+  "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+  "png_sha256": "3f2cc957e413e6b8ca66152eb3ced712f5a6e2e5e6aa24afb0bbfd7f2737007e"
+}

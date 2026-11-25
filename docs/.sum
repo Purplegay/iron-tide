@@ -1,0 +1,73 @@
+系统概述：Iron Tide 的 DLC 规划、英雄与技能卡设计及直接关联功能；既有专题文档仍按原路径维护。
+
+| 关联系统 | 联系说明 | 文档路径 |
+| --- | --- | --- |
+| Auto W 战术兼容 | v0.30.23：新增十一项条件自动施放，累计35项，仅金鳞战垒保留手动 | [自动施放规则](AUTO_W.md) |
+| 三英雄完整联动与连续性 | v0.29.84：三条时间轴、11种保存恢复示意与实际边界验证，3979项，游隼机身未完成 | [英雄第四十二批](PROGRESSION_EXPANSION_2_HERO_BATCH42.md) |
+| 两英雄额外出场演示 | v0.29.83：保留普通产品／读档不重送／阵亡不返次数，541项检查，表现待确认 | [英雄第四十一批](PROGRESSION_EXPANSION_2_HERO_BATCH41.md) |
+| 雷铸防御联动演示 | v0.29.82：控制反寄生／回收排除／直接受击／停堆联动，645项检查，表现待确认 | [英雄第四十批](PROGRESSION_EXPANSION_2_HERO_BATCH40.md) |
+| 游隼维护与迫降演示 | v0.29.81：受伤重算／重复下降／五种迫降结果，434项检查，表现待确认 | [英雄第三十九批](PROGRESSION_EXPANSION_2_HERO_BATCH39.md) |
+| 游隼弹药周期演示 | v0.29.80：W不分束／诱饵排除／第二次眩晕／补满恢复，820项检查，表现待确认 | [英雄第三十八批](PROGRESSION_EXPANSION_2_HERO_BATCH38.md) |
+| 游隼侦察与编队演示 | v0.29.79：固定视野／对空资格／反潜排除／领航恢复与叠速，634项检查，表现待确认 | [英雄第三十七批](PROGRESSION_EXPANSION_2_HERO_BATCH37.md) |
+| 鲍里斯生存边界演示 | v0.29.78：限伤／补给／取消呼叫／最后电令边界，573项检查，表现待确认 | [英雄第三十六批](PROGRESSION_EXPANSION_2_HERO_BATCH36.md) |
+| 鲍里斯目标边界演示 | v0.29.77：移动压制／集火消耗／副楼改派与撤退，493项检查，表现待确认 | [英雄第三十五批](PROGRESSION_EXPANSION_2_HERO_BATCH35.md) |
+| 谭雅生存线边界演示 | v0.29.76：碰撞／炮击、闪光重新触发、最后一搏后续死亡，547项检查，表现待确认 | [英雄第三十四批](PROGRESSION_EXPANSION_2_HERO_BATCH34.md) |
+| 谭雅震波与行进演示 | v0.29.75：邻楼排除、70%实际演示位移、停步C4，491项检查，表现待确认 | [英雄第三十三批](PROGRESSION_EXPANSION_2_HERO_BATCH33.md) |
+| 谭雅识破与分击演示 | v0.29.74：反隐边界／潜艇排除／单目标不补枪，458项检查，表现待确认 | [英雄第三十二批](PROGRESSION_EXPANSION_2_HERO_BATCH32.md) |
+| 谭雅连锁拆除演示 | v0.29.73：完整60秒间隔／两次额度／拆除不退款，485项检查，表现待确认 | [英雄第三十一批](PROGRESSION_EXPANSION_2_HERO_BATCH31.md) |
+| 谭雅受伤门槛与累积盾 | v0.29.72：小伤／致命伤／反猎杀对照，526项检查，表现待确认 | [英雄第三十批](PROGRESSION_EXPANSION_2_HERO_BATCH30.md) |
+| 第二批收尾核对 | v0.29.71：按源码记录已覆盖范围、具体演示差距与独立阻塞，不当作完成证明 | [核对台账](PROGRESSION_EXPANSION_2_ACCEPTANCE_AUDIT.md) |
+| 雷铸演示文字裁切 | v0.29.71：五节点底部文字恢复可见，311项GPU检查，表现待确认 | [英雄第二十九批](PROGRESSION_EXPANSION_2_HERO_BATCH29.md) |
+| 鲍里斯米格与接力演示 | v0.29.70：一次接力及5秒到期、主副编队共同占用、完整补充与无副目标，385项检查，表现待确认 | [英雄第二十八批](PROGRESSION_EXPANSION_2_HERO_BATCH28.md) |
+| 鲍里斯抗扰通讯演示 | v0.29.69：新增计时控制／旧控制／持续冻结分开表现，169项后台检查，表现待确认 | [英雄第二十七批](PROGRESSION_EXPANSION_2_HERO_BATCH27.md) |
+| 游隼空中补弹演示 | v0.29.68：真实7／8秒补弹、完整命中资格与部分补弹对照，513项后台检查，表现待确认 | [英雄第二十六批](PROGRESSION_EXPANSION_2_HERO_BATCH26.md) |
+| 游隼迫降资格与同时修复 | v0.29.67：排除非普通致命伤，双路径只恢复一次，927项后台检查 | [英雄第二十五批](PROGRESSION_EXPANSION_2_HERO_BATCH25.md) |
+| 持续效果出局清理 | v0.29.66：链式C4与五类普通持续物件出局／读档清理，1837项后台检查 | [玩法第四十七批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH47.md) |
+| 潜泳累积护盾与英雄复核 | v0.29.65：15＋10自身护盾、独立期限与三种破隐，四英雄出场／契约复核1427项，表现待确认 | [英雄第二十四批](PROGRESSION_EXPANSION_2_HERO_BATCH24.md) |
+| 观察与深水耐压 | v0.29.64：移动取消／拒绝、连续停火／耗盾／独立间隔，19904项后台检查，表现待确认 | [玩法第四十六批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH46.md) |
+| 雷铸铜冕雷炉 | v0.29.32，32向自带外观、阵营色、状态灯光、实际选择及UI演示；3177项通过，视觉待确认 | [英雄第二十一批](PROGRESSION_EXPANSION_2_HERO_BATCH21.md) · [素材及提示词](concepts/progression-expansion-2/LEIZHU_DIRECTIONS.md) |
+| 游隼方向图检查 | 八视角参考已保存；补角候选未满足32向条件，未接入游戏；保留内置生成提示词与拒用原因 | [素材检查](concepts/progression-expansion-2/FALCON_DIRECTION_REVIEW.md) |
+| 夜枭／猎蛛细节调整 | v0.29.11：192 帧概念精修与夜枭悬浮；猎蛛加大步幅稿因腿数错误撤回，用户明确停止外观迭代，未获视觉认可 | [变化与验证](NIGHT_HUNTER_DETAIL_0297.md) |
+| 第二批养成分批实施 | 七批总目标进行中；普通卡 24/24、兵种天赋 16/16，v0.29.31 接通夜枭／猎蛛正常价格与购买验收；英雄契约卡 8/8、功能链 8/8；新英雄外观和全量核对未完成，表现和平衡待试玩确认 | [实施进度](PROGRESSION_EXPANSION_2_ROLLOUT.md) · [玩法第一批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH1.md) · [玩法第二批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH2.md) · [玩法第三批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH3.md) · [玩法第四批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH4.md) · [玩法第五批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH5.md) · [玩法第六批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH6.md) · [玩法第七批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH7.md) · [玩法第八批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH8.md) · [玩法第九批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH9.md) · [玩法第十批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH10.md) · [玩法第十一批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH11.md) · [玩法第十二批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH12.md) · [玩法第十三批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH13.md) · [玩法第十四批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH14.md) · [玩法第十五批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH15.md) · [普通池收尾](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH16.md) · [英雄基础批](PROGRESSION_EXPANSION_2_HERO_BATCH1.md) · [谭雅契约双卡](PROGRESSION_EXPANSION_2_HERO_BATCH2.md) · [谭雅完整天赋](PROGRESSION_EXPANSION_2_HERO_BATCH3.md) · [鲍里斯契约双卡](PROGRESSION_EXPANSION_2_HERO_BATCH4.md) · [鲍里斯前线指挥](PROGRESSION_EXPANSION_2_HERO_BATCH5.md) · [鲍里斯战地电台](PROGRESSION_EXPANSION_2_HERO_BATCH6.md) · [游隼基础批](PROGRESSION_EXPANSION_2_HERO_BATCH7.md) · [游隼契约双卡](PROGRESSION_EXPANSION_2_HERO_BATCH8.md) · [游隼王牌航线](PROGRESSION_EXPANSION_2_HERO_BATCH9.md) · [游隼防御前三节点](PROGRESSION_EXPANSION_2_HERO_BATCH10.md) · [游隼维护与返修](PROGRESSION_EXPANSION_2_HERO_BATCH11.md) · [雷铸基础批](PROGRESSION_EXPANSION_2_HERO_BATCH12.md) · [雷铸契约双卡](PROGRESSION_EXPANSION_2_HERO_BATCH13.md) · [移动变电站前三节点](PROGRESSION_EXPANSION_2_HERO_BATCH14.md) · [完整移动变电站](PROGRESSION_EXPANSION_2_HERO_BATCH15.md) · [过载保险前两级](PROGRESSION_EXPANSION_2_HERO_BATCH16.md) · [绝缘缓行](PROGRESSION_EXPANSION_2_HERO_BATCH17.md) · [护盾演示与详情](PROGRESSION_EXPANSION_2_HERO_BATCH18.md) · [分流与停堆](PROGRESSION_EXPANSION_2_HERO_BATCH19.md) · [正式皮肤定价](PROGRESSION_EXPANSION_2_HERO_BATCH20.md) |
+| 第二批首批皮肤 | v0.29.5：夜枭／猎蛛 128 像素格的直接 32 向图集、动作切帧、实时灯光；898 项检查通过，表现待试玩确认 | [实现与验证](PROGRESSION_EXPANSION_2_BATCH1.md) |
+| 铁潮远征 | v0.29.0：25 关目标战、自选军团、六图扩展、十类羁绊、自带天赋与特装、实际实现及验收边界 | [EXPEDITION.md](EXPEDITION.md) |
+| DLC 规划 | RA3、星际 1/2 候选兵种，独立启用与开发顺序 | [DLC_ROADMAP.md](DLC_ROADMAP.md) |
+| 三英雄与技能卡草案 | 三英雄与契约任务、十二张技能卡（八张专属）、八项被动兵种天赋，每兵种上限两项；第四稿已批准；首版接入与专项验证记录，表现待确认 | [HERO_TALENTS_AND_CARD_POOL_DRAFT.md](HERO_TALENTS_AND_CARD_POOL_DRAFT.md) |
+| 技能卡适用规范 | 现有装配范围、共享获取及品质图标规则 | [SKILL_CARD_DESIGN.md](SKILL_CARD_DESIGN.md) |
+| 第二批养成扩展草案 | 第五稿设计底稿，已授权分批实施：海空交叉火控、校射不叠加、两极串联被动、跳宿 Q 开关、左右分猎溅射；四英雄、32 张卡及全量演示要求。已实现范围见分批记录，未实现部分继续保留为目标 | [系统设计](PROGRESSION_EXPANSION_2_DRAFT.md) · [UI 与表现](PROGRESSION_EXPANSION_2_UI.md) · [演示清单](PROGRESSION_EXPANSION_2_DEMOS.md) |
+| 游隼状态表现 | v0.29.33悬停、维护、迫降、修复起飞与后台证据；完整新机身仍待接入 | [英雄第二十二批](PROGRESSION_EXPANSION_2_HERO_BATCH22.md) |
+| 英雄契约结算 | v0.29.34真实结算落盘失败回滚、重试、防重复与任务审计；保留旧专项失败 | [英雄第二十三批](PROGRESSION_EXPANSION_2_HERO_BATCH23.md) |
+| 第二批跃扑与火控 | v0.29.47两格触发／无敌倒计时／失败、双向共用间隔／缺目标 | [玩法第二十九批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH29.md) |
+| 第二批牵引弹头 | v0.29.48落地／拦截／墙体阻挡／撤离／六秒待命过期 | [玩法第三十批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH30.md) |
+| 第二批过载封条 | v0.29.49四档到期／停火不触发／三次额度／移出队形 | [玩法第三十一批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH31.md) |
+| 第二批弹道留档 | v0.29.50当前CD对照／资格消费／拦截／转火／八秒到期 | [玩法第三十二批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH32.md) |
+| 第二批燃烧挂载 | v0.29.51普通直击计数／W与溅射排除／六跳／新区替换 | [玩法第三十三批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH33.md) |
+| 第二批空中观察 | v0.29.52移动与静止／开火区别／落地与起飞重置 | [玩法第三十四批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH34.md) |
+| 第二批阵地轮值 | v0.29.53真实三轮装填／停火不补／起身清空与重备 | [玩法第三十五批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH35.md) |
+| 第二批撤离护送 | v0.29.54生命阈值／最近两人／保留命令／治疗与致命边界 | [玩法第三十六批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH36.md) |
+| 第二批伴行维修 | v0.29.55三秒准备／自身回血／中断／18秒间隔 | [玩法第三十七批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH37.md) |
+| 第二批伪装间隙 | v0.29.56伪装首次开火／不续时／独立间隔／镜像排除 | [玩法第三十八批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH38.md) |
+| 第二批多功能车乘客 | v0.29.46乘客身份／类型、护盾与间隔、维修模式预览 | [玩法第二十八批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH28.md) |
+| 第二批电链与扇幕 | v0.29.45配对与断链、直击及额外溅射数值对照 | [玩法第二十七批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH27.md) |
+| 第二批海军天赋 | v0.29.44分叉条件／失锁、三轮计数／两次装填／转火清空 | [玩法第二十六批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH26.md) |
+| 第二批舰船支援 | v0.29.43水幕固定受益舰船及压舱真实装填／代价对照 | [玩法第二十五批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH25.md) |
+| 第二批转储对照 | v0.29.42储存与新蓄电数值取强、普通主击验证 | [玩法第二十四批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH24.md) |
+| 第二批装填与破隐 | v0.29.41空闲装填、双计时破隐与切卡状态清理 | [玩法第二十三批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH23.md) |
+| 第二批压阵演示 | v0.29.40正背面减伤与主炮／防空三次装填额度 | [玩法第二十二批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH22.md) |
+| 第二批跳宿演示 | v0.29.39Q切换、读档、维修与多选五段示例 | [玩法第二十一批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH21.md) |
+| 第二批分猎演示 | v0.29.38逐枚10%溅射、重叠与攻击成长五段示例 | [玩法第二十批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH20.md) |
+| 第二批潜航与棱镜边界 | v0.29.37分猎溅射排除潜航、棱镜两次闪现与撤出 | [玩法第十九批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH19.md) |
+| 第二批航空演示 | v0.29.36原生单弹、游隼四弹及W首末资格演示与回归 | [玩法第十八批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH18.md) |
+| 第二批支援卡审计 | v0.29.35同队不同所属方隔离、校射强弱区演示与最终说明同步 | [玩法第十七批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH17.md) |
+| 对局存档 | DLC 版本、缺包读取与旧存档兼容的关联基础 | [BATTLE_SAVES.md](BATTLE_SAVES.md) |
+| RA3 整合 | 已有交互、SDK 参考和资源边界 | [RA3_INTEGRATION.md](RA3_INTEGRATION.md) |
+| 尤复单位 | 现有独立增量接入的参考 | [YR_INTEGRATION.md](YR_INTEGRATION.md) |
+| 铁潮远征 2.0 策划草案 | 25 关、初始军团、多层羁绊、每关商店、养成自带天赋解禁、特装部队与新增六图；原始方案，实际交付范围见 EXPEDITION.md | [系统策划](EXPEDITION_REDESIGN.md) · [UI 设计](EXPEDITION_REDESIGN_UI.md) |
+
+| 第二批追身破片 | v0.29.57跟随空爆／落地解除／死亡位置／火箭排除 | [玩法第三十九批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH39.md) |
+| 第二批反甲校距 | v0.29.58两次基础直击／四秒绑定／重置边界／对空排除 | [玩法第四十批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH40.md) |
+| 第二批余光护镜 | v0.29.59原生三人／不跨轮累计／盾量与溢出／自然到期 | [玩法第四十一批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH41.md) |
+| 第二批步兵移动天赋 | v0.29.60转移阵位击杀来源／交替推进移动资格与新装填 | [玩法第四十二批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH42.md) |
+| 第二批发射保护 | v0.29.61发射隔舱车体盾／护航弹仓双架与导弹独立盾 | [玩法第四十三批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH43.md) |
+| 第二批弹着校射 | v0.29.62普通炮与震地锚／最高一份／独立时限／离区与起飞 | [玩法第四十四批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH44.md) |
+| 第二批步兵W | v0.29.63锚钉独立发射／换气停火／在途弹／姿态与冻结拒绝 | [玩法第四十五批](PROGRESSION_EXPANSION_2_GAMEPLAY_BATCH45.md) |

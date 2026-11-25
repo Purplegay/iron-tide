@@ -1,0 +1,298 @@
+--- before/iron_tide/scripts/units/allied_abilities.gd
++++ after/iron_tide/scripts/units/allied_abilities.gd
+@@ -434,6 +434,9 @@
+ 		TemporalVisual.sync(actor)
+ 
+ static func frozen(actor) -> bool:
++	# Most actors never carry either state; avoid a null actor validity call on
++	# every movement, range and target check. Active effects still resolve live.
++	if not actor.special.has("chrono_left") and not actor.special.has("temporal_by"): return false
+ 	if float(actor.special.get("chrono_left", 0.0)) <= 0.0 and not alive(actor.special.get("temporal_by")): return false
+ 	return Unit.TankHero.rank(actor,true) < 4
+ 
+--- before/iron_tide/scripts/units/open_topped.gd
++++ after/iron_tide/scripts/units/open_topped.gd
+@@ -76,7 +76,7 @@
+ 	return carrier.global_position + Vector2(along, across).rotated(carrier.hull_angle) \
+ 		+ RA2Art.art_dir(Vector2(0.0, -24.0))
+ 
+-static func command_range(carrier, target = null) -> float:
++static func command_range(carrier, target = null, resolved_weapon: Dictionary = {}) -> float:
+ 	if carrier.unit_id == "DEST" and NavalContact.underwater_type(target):
+ 		# Range=-2: aircraft on patrol can use an allied sensor contact beyond
+ 		# the mothership's own sonar. Normal domain/visibility and stance checks still apply.
+@@ -85,18 +85,20 @@
+ 		var world=carrier._battle_world()
+ 		if world!=null and NavalContact.detected(world,carrier.side,target):return INF
+ 		return NavalContact.sensor_range(carrier)
+-	var reach: float = carrier._weapon_for_target(target).get("range", carrier.attack_range) if carrier.data.has("anti_air_weapon") else carrier.attack_range
++	var gun := resolved_weapon
++	if gun.is_empty() and carrier.data.has("anti_air_weapon"): gun = carrier._weapon_for_target(target)
++	var reach: float = gun.get("range", carrier.attack_range) if carrier.data.has("anti_air_weapon") else carrier.attack_range
+ 	if carrier.unit_id == "DRED" and is_instance_valid(target) and target is Building:
+ 		var half_size: Vector2 = target.foundation_half() / Building.BUILD_GRID
+ 		if minf(half_size.x,half_size.y) >= 1.0:
+ 			reach += ceilf(minf(half_size.x,half_size.y)) * Ra2Damage.PX_PER_CELL
+ 	if not AlliedAbilities.flag(carrier, "OpenTopped"): return reach
+-	if target != null and not carrier._weapon_domain_valid(target): reach = 0.0
++	if target != null and not carrier._weapon_domain_valid(target, false, gun): reach = 0.0
+ 	for passenger in carrier.logistics.passengers:
+ 		if not AlliedAbilities.alive(passenger) or passenger.side != carrier.side: continue
+-		var gun: Dictionary = passenger._weapon_for_target(target)
+-		if target == null or passenger._weapon_domain_valid(target, false, gun):
+-			reach = maxf(reach, float(gun.get("range", 0.0)))
++		var passenger_gun: Dictionary = passenger._weapon_for_target(target)
++		if target == null or passenger._weapon_domain_valid(target, false, passenger_gun):
++			reach = maxf(reach, float(passenger_gun.get("range", 0.0)))
+ 	return reach
+ 
+ ## Conservative broad-phase bound. Domain, cover, live range and scoring still
+--- before/iron_tide/scripts/units/unit.gd
++++ after/iron_tide/scripts/units/unit.gd
+@@ -1011,16 +1011,17 @@
+ 
+ ## 动画计时（履带滚动、炮口衰减、后坐复位、反击计时）
+ func decorate_tick(delta: float) -> void:
++	var speed := velocity.length()
+ 	if _fire_anim_time >= 0.0:
+ 		_fire_anim_time += delta
+ 		if _fire_anim_time >= float(_seq.get(_fire_sequence(), {}).get("per", 0)) / 16.0:
+ 			_fire_anim_time = -1.0
+ 		queue_redraw()
+-	if velocity.length() > 4.0:
+-		_track_phase = fmod(_track_phase + delta * (velocity.length() / maxf(20.0, radius * 3.0)), 1.0)
++	if speed > 4.0:
++		_track_phase = fmod(_track_phase + delta * (speed / maxf(20.0, radius * 3.0)), 1.0)
+ 	if unit_id != "SQD":
+-		if velocity.length() > 4.0:
+-			_walk_phase = fmod(_walk_phase + delta * clampf(velocity.length() / WALK_STRIDE, 0.0, 4.0), 1.0)
++		if speed > 4.0:
++			_walk_phase = fmod(_walk_phase + delta * clampf(speed / WALK_STRIDE, 0.0, 4.0), 1.0)
+ 		else:
+ 			_walk_phase = float(_seed % 977) / 977.0
+ 	if _muzzle > 0.0:
+@@ -1076,8 +1077,9 @@
+ 			reach = OpenTopped.command_range(self, target)
+ 			has_target = reach > 0.0
+ 		else:
+-			has_target = attack_domain_valid(target)
+-			if has_target: reach = OpenTopped.command_range(self, target)
++			var live_weapon := _weapon_for_target(target)
++			has_target = _weapon_domain_valid(target, false, live_weapon)
++			if has_target: reach = OpenTopped.command_range(self, target, live_weapon)
+ 	var dist := CommandoCombat.distance_to(self, target) if has_target else 0.0
+ 	var in_range := has_target and dist <= reach and dist >= min_range
+ 	if has_target and (in_range or attack_ordered or attack_move or fire_stance == "free") and CommandoCombat.begin_c4(self, target):
+@@ -1820,13 +1822,14 @@
+ 		if not _automatic_target_allowed(e): continue
+ 		if fire_stance == "return" and not attack_move and e != special.get("retaliation_target"): continue
+ 		var d := CommandoCombat.distance_to(self, e)
+-		var reach := attack_range if fixed_range else OpenTopped.command_range(self, e)
++		var candidate_weapon: Dictionary = {} if fixed_range else _weapon_for_target(e)
++		var reach := attack_range if fixed_range else OpenTopped.command_range(self, e, candidate_weapon)
+ 		var search_range := reach if hold_position or (fire_stance in ["defend", "return"] and not attack_move) else maxf(sight, reach)
+ 		if d < min_range or (d > search_range and not _can_pursue_attacker(e, reach)):
+ 			continue
+-		if not attack_domain_valid(e):
++		if candidate_weapon.is_empty(): candidate_weapon = _weapon_for_target(e)
++		if not _weapon_domain_valid(e, false, candidate_weapon) and not OpenTopped.cargo_can_attack(self, e):
+ 			continue
+-		var candidate_weapon := _weapon_for_target(e)
+ 		if check_cover and not CommandoCombat.building_c4(self, e) and WallArt.shot_blocked(cover_world, self, e, candidate_weapon): continue
+ 		var score := TacticalTargeting.score(self, e, candidate_weapon, attack_target)
+ 		if CommandoCombat.building_c4(self, e): score = 4.0 - d / maxf(1.0, sight)
+@@ -2920,6 +2923,7 @@
+ # ------------------------------------------------------------------ 受伤 / 死亡
+ 
+ func ignores_warhead(warhead_id: String) -> bool:
++	if data.get("immune_to_psionics", false) != true and data.get("immune_to_radiation", false) != true: return false
+ 	var flags: Dictionary = GameData.ra2_warheads.get(warhead_id.to_lower(), {}).get("extra", {})
+ 	# PsychicDamage is distinct from mind control in the original rules.
+ 	return (data.get("immune_to_psionics", false) == true and GameData._ra2_flag(flags.get("MindControl", false))) \
+@@ -4603,11 +4607,24 @@
+ 		bonuses.defense_bonus = _base_def * armor
+ 		move_speed = TankHero.speed(self,_base_speed)
+ 		return
+-	bonuses["attack_bonus"] = _base_atk * buff_mult_scalar("attack") * (_deploy_atk if _deployed else 1.0)
+-	bonuses["defense_bonus"] = _base_def * buff_mult_scalar("defense") * (_deploy_def * (Training.scale(self) if unit_id in ["E1","GGI"] else 1.0) if _deployed else 1.0)
+-	move_speed = _base_speed * buff_mult_scalar("speed") * (0.0 if _deployed else 1.0)
++	# One pass, same per-kind multiplication order. Do not cache across ticks:
++	# effects can expire, be dispelled or change during another actor's attack.
++	var attack := 1.0
++	var defense := 1.0
++	var speed := 1.0
++	var slow := 0.0
++	for buff in buffs:
++		var value := float(buff.get("value",0.0))
++		match str(buff.get("kind","")):
++			"attack": attack *= 1.0 + value
++			"defense": defense *= 1.0 + value
++			"speed": speed *= 1.0 + value
++			"electric_slow": slow += value
++	bonuses["attack_bonus"] = _base_atk * attack * (_deploy_atk if _deployed else 1.0)
++	bonuses["defense_bonus"] = _base_def * defense * (_deploy_def * (Training.scale(self) if unit_id in ["E1","GGI"] else 1.0) if _deployed else 1.0)
++	move_speed = _base_speed * speed * (0.0 if _deployed else 1.0)
+ 	if special.has("slope_speed"): move_speed *= 1.0 + float(special.slope_speed)
+-	move_speed *= 1.0 - clampf(buff_value("electric_slow"),0.0,0.8)
++	move_speed *= 1.0 - clampf(slow,0.0,0.8)
+ 	move_speed=TankHero.speed(self,move_speed)
+ 
+ # ------------------------------------------------------------------ 增益 / 减益（buff）
+--- before/iron_tide/scripts/units/unit_logistics.gd
++++ after/iron_tide/scripts/units/unit_logistics.gd
+@@ -127,6 +127,9 @@
+ 		ammo = maxi(0, ammo - 1)
+ 
+ func tick(delta: float) -> bool:
++	# Ordinary ground actors have no transport/flight work. Read live state so
++	# boarding, unloading and a newly created squadron take effect immediately.
++	if not unit.is_air and unit.unit_id != "SCHP" and ammo_max == 0 and not unloading and not is_instance_valid(boarding) and squadron.is_empty(): return false
+ 	if not squadron.is_empty():
+ 		tick_squadron(delta)
+ 	if is_instance_valid(boarding):
+@@ -191,14 +194,18 @@
+ 	if unit.unit_id == "SCHP":
+ 		return SiegeChopper.tick(unit, delta)
+ 	if unit.is_air:
+-		incoming = incoming.filter(func(p): return is_instance_valid(p) and p.hp > 0.0 and p.logistics.boarding == unit)
++		if not incoming.is_empty():
++			incoming = incoming.filter(func(p): return is_instance_valid(p) and p.hp > 0.0 and p.logistics.boarding == unit)
+ 		var landing := false
+ 		for passenger in incoming:
+ 			if not unit.has_move_order and unit.position.distance_to(passenger.position) <= unit.radius + passenger.radius + 16.0 and unit.velocity.length() < 8.0:
+ 				landing = unit.flight.can_land()
+ 				break
+-		var attacking: bool = valid_target(unit.attack_target) and (unit.attack_ordered or unit.fire_stance != "none")
+-		if not unit.has_move_order and not attacking and unit.flight.can_land(): landing = true
++		# A moving aircraft cannot auto-land. Its combat update validates the
++		# target separately; skip that duplicate query solely for this decision.
++		if not unit.has_move_order:
++			var attacking: bool = (unit.attack_ordered or unit.fire_stance != "none") and valid_target(unit.attack_target)
++			if not attacking and unit.flight.can_land(): landing = true
+ 		unit.flight.altitude(0.0 if landing else 1.0, delta)
+ 		if landing:
+ 			unit.velocity = Vector2.ZERO
+@@ -451,14 +458,15 @@
+ 			slot.timer = float(source.get("SpawnRegenRate", 600)) / 15.0
+ 			aircraft = null
+ 		slot.timer = maxf(0.0, float(slot.timer) - delta)
++		# Already airborne aircraft cannot launch again; still advance their berth
++		# timer and detect death above, but do not revalidate the ship's target.
++		if aircraft != null and aircraft.embarked_in != unit: continue
+ 		var target = unit.attack_target
+ 		if slot.timer > 0.0 or (unit.fire_stance == "none" and not unit.attack_ordered) or not valid_target(target):
+ 			continue
+ 		if unit.unit_id == "DEST" and not NavalContact.underwater_type(target):
+ 			continue
+ 		if (target is Unit and target.is_air_target()) or (unit.unit_id == "CARRIER" and unit.position.distance_to(target.position) > unit.attack_range):
+-			continue
+-		if aircraft != null and aircraft.embarked_in != unit:
+ 			continue
+ 		var launch := deck_position(index)
+ 		if aircraft == null:
+--- before/iron_tide/scripts/world/fog_of_war.gd
++++ after/iron_tide/scripts/world/fog_of_war.gd
+@@ -69,6 +69,36 @@
+ 			var left := maxi(maxi(lo.x, 0), ceili((point.x - span) / CELL) - 1)
+ 			var right := mini(mini(hi.x, size - 1), floori((point.x + span) / CELL))
+ 			if left <= right: image.fill_rect(Rect2i(left, y, right - left + 1, 1), Color.WHITE)
++
++	static func raster_vacated(image: Image, size: int, old: Dictionary, current: Dictionary) -> void:
++		var p: Vector2 = old.point
++		var radius: float = old.radius
++		var lo := Vector2i(floori((p.x - radius) / CELL), floori((p.y - radius) / CELL))
++		var hi := Vector2i(floori((p.x + radius) / CELL), floori((p.y + radius) / CELL))
++		for y in range(maxi(0, lo.y), mini(size - 1, hi.y) + 1):
++			var dy := p.y - clampf(p.y, y * CELL, (y + 1) * CELL)
++			var span2 := radius * radius - dy * dy
++			if span2 < 0: continue
++			var span := sqrt(span2)
++			var left := maxi(maxi(lo.x, 0), ceili((p.x - span) / CELL) - 1)
++			var end := mini(mini(hi.x, size - 1), floori((p.x + span) / CELL)) + 1
++			if left >= end: continue
++			var skip_left := end
++			var skip_end := end
++			if not current.is_empty():
++				var at: Vector2 = current.point
++				var r: float = current.radius
++				var offset_y := at.y - clampf(at.y, y * CELL, (y + 1) * CELL)
++				var overlap2 := r * r - offset_y * offset_y
++				if overlap2 >= 0:
++					var overlap := sqrt(overlap2)
++					skip_left = clampi(ceili((at.x - overlap) / CELL) - 1, left, end)
++					skip_end = clampi(floori((at.x + overlap) / CELL) + 1, left, end)
++			if skip_end <= skip_left:
++				image.fill_rect(Rect2i(left, y, end - left, 1), Color.WHITE)
++			else:
++				if skip_left > left: image.fill_rect(Rect2i(left, y, skip_left - left, 1), Color.WHITE)
++				if skip_end < end: image.fill_rect(Rect2i(skip_end, y, end - skip_end, 1), Color.WHITE)
+ 
+ func setup(world) -> void:
+ 	battle = world
+@@ -408,6 +438,52 @@
+ 			_foundation_masks[team]=mask
+ 		var live:Image=_live_masks[team]
+ 		live.blit_rect_mask(mask,mask,Rect2i(0,0,width,width),Vector2i.ZERO)
++
++func _hold_vacated_scouts(scouts: Dictionary, remaining: float) -> void:
++	# Small encounters do not amortize creating alliance masks.
++	if _scouts.size() < 64:
++		for id in _scouts:
++			var old: Dictionary = _scouts[id]
++			var current: Dictionary = scouts.get(id,{})
++			if old == current: continue
++			if current.get("side") != old.side: current = {}
++			_stamp_sight(old.side,old.point,old.radius,remaining,false,current)
++		return
++	# Union each scout's OLD minus its OWN current footprint, not union(old)
++	# minus union(current): another scout's death must not erase this hold time.
++	var masks := {}
++	for id in _scouts:
++		var old: Dictionary = _scouts[id]
++		var current: Dictionary = scouts.get(id, {})
++		if old == current or not visible_cells.has(old.side): continue
++		if current.get("side") != old.side: current = {}
++		var team = BattleRequest.house_teams.get(old.side, old.side)
++		if not masks.has(team):
++			var mask := Image.create(width, width, false, Image.FORMAT_L8)
++			mask.fill(Color.BLACK)
++			masks[team] = mask
++		SightBatch.raster_vacated(masks[team], width, old, current)
++	var deadline := sight_clock + remaining
++	for team in masks:
++		var bytes: PackedByteArray = masks[team].get_data()
++		var indices := PackedInt32Array()
++		# Most pixels are empty: native byte search skips those without a script
++		# iteration per map cell. L8 masks contain only 0 and 255.
++		var index := bytes.find(255)
++		while index >= 0:
++			indices.append(index)
++			index = bytes.find(255, index + 1)
++		for side in visible_cells:
++			if BattleRequest.house_teams.get(side, side) != team: continue
++			var held: Dictionary = sight_until[side]
++			var cells: PackedByteArray = visible_cells[side]
++			var explored: PackedByteArray = explored_cells[side]
++			for i in indices:
++				held[i] = maxf(deadline, float(held.get(i, 0.0)))
++				cells[i] = 1
++				explored[i] = 1
++			visible_cells[side] = cells
++			explored_cells[side] = explored
+ 
+ func rebuild() -> void:
+ 	rebuild_count += 1
+@@ -478,12 +554,7 @@
+ 	# or a separate temporary reveal must not refresh it for five more seconds.
+ 	var remaining := SCOUT_SIGHT_SECONDS - (sight_clock - _scout_sample_time)
+ 	if remaining > 0:
+-		for id in _scouts:
+-			var old: Dictionary = _scouts[id]
+-			var current: Dictionary = scouts.get(id,{})
+-			if old == current: continue
+-			if current.get("side") != old.side: current = {}
+-			_stamp_sight(old.side, old.point, old.radius, remaining, false, current)
++		_hold_vacated_scouts(scouts, remaining)
+ 	_scouts = scouts
+ 	_scout_sample_time = sight_clock
+ 	if not batches.is_empty():

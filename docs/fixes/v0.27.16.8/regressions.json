@@ -1,0 +1,1559 @@
+{
+  "camera_v8": {
+    "checks": [
+      {
+        "details": null,
+        "name": "ra2 new battle starts at reference overview scale",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1279.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (100.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1279.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1279.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (1281.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (200.0, 720.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1280.0, 720.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1599.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (100.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1599.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1599.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (1601.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (200.0, 900.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (1600.0, 900.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (2559.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (100.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (2559.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (2559.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (1.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (2561.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (200.0, 1440.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge direction (2560.0, 1440.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: edge point hits real production HUD",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: HUD edge does not scroll",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: left edge fixture is world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: headless skips physical mouse edge scrolling",
+        "passed": true
+      },
+      {
+        "details": "(2541.366, 2541.366)",
+        "name": "ra2: keyboard pan cancels follow and moves along screen axis",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: text editing owns arrows",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: real LineEdit owns keyboard focus",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: minimap centering cancels follow without snap-back",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: scroll setting scales 1.5x 10",
+        "passed": true
+      },
+      {
+        "details": "(-23.39995, 0.0)",
+        "name": "ra2: screen-axis pan [10, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.39995, 0.0)",
+        "name": "ra2: screen-axis pan [10, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -23.40004)",
+        "name": "ra2: screen-axis pan [10, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 23.40004)",
+        "name": "ra2: screen-axis pan [10, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54623, 16.54631)",
+        "name": "ra2: screen-axis pan [10, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-23.40012, 0.0)",
+        "name": "ra2: screen-axis pan [10, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.40012, 0.0)",
+        "name": "ra2: screen-axis pan [10, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000345, -23.39995)",
+        "name": "ra2: screen-axis pan [10, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000345, 23.39995)",
+        "name": "ra2: screen-axis pan [10, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54623, 16.54623)",
+        "name": "ra2: screen-axis pan [10, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-23.40081, 0.0)",
+        "name": "ra2: screen-axis pan [10, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.40012, 0.0)",
+        "name": "ra2: screen-axis pan [10, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -23.40012)",
+        "name": "ra2: screen-axis pan [10, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 23.40012)",
+        "name": "ra2: screen-axis pan [10, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54588, 16.54623)",
+        "name": "ra2: screen-axis pan [10, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: scroll setting scales 1.5x 50",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -117.0)",
+        "name": "ra2: screen-axis pan [50, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 117.0)",
+        "name": "ra2: screen-axis pan [50, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "ra2: screen-axis pan [50, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000343, -116.9999)",
+        "name": "ra2: screen-axis pan [50, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000343, 116.9999)",
+        "name": "ra2: screen-axis pan [50, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "ra2: screen-axis pan [50, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "ra2: screen-axis pan [50, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, -116.9999)",
+        "name": "ra2: screen-axis pan [50, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, 116.9999)",
+        "name": "ra2: screen-axis pan [50, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "ra2: screen-axis pan [50, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: scroll setting scales 1.5x 100",
+        "passed": true
+      },
+      {
+        "details": "(-234.0, 0.0)",
+        "name": "ra2: screen-axis pan [100, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9999, 0.0)",
+        "name": "ra2: screen-axis pan [100, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -234.0)",
+        "name": "ra2: screen-axis pan [100, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 234.0)",
+        "name": "ra2: screen-axis pan [100, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.463, 165.463)",
+        "name": "ra2: screen-axis pan [100, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-234.0002, 0.0)",
+        "name": "ra2: screen-axis pan [100, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9995, 0.0)",
+        "name": "ra2: screen-axis pan [100, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -234.0)",
+        "name": "ra2: screen-axis pan [100, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 234.0)",
+        "name": "ra2: screen-axis pan [100, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.4626, 165.463)",
+        "name": "ra2: screen-axis pan [100, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-233.9999, 0.0)",
+        "name": "ra2: screen-axis pan [100, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9992, 0.0)",
+        "name": "ra2: screen-axis pan [100, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, -233.9998)",
+        "name": "ra2: screen-axis pan [100, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, 233.9998)",
+        "name": "ra2: screen-axis pan [100, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.463, 165.463)",
+        "name": "ra2: screen-axis pan [100, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle press waits for click or drag 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle click restores default scale 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves usable center and angle 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves selection and never orders unit 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle press waits for click or drag 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle click restores default scale 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves usable center and angle 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves selection and never orders unit 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle press waits for click or drag 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle click restores default scale 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves usable center and angle 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves selection and never orders unit 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle press waits for click or drag 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle click restores default scale 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves usable center and angle 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset preserves selection and never orders unit 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 middle drag never resets zoom",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 GUI middle click does not reset world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 GUI middle click does not reset world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 stale release after focus loss never resets",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 stale release after pause never resets",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reset works during placement without consuming or cancelling",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: right drag enabled in a new match",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: middle pan owns gesture across right click",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: owning middle button continues pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: middle release never orders units",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: right pan ignores unrelated middle release",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: right drag matches middle-button displacement",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: right drag ends without order",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: right drag keeps targeting active",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: stationary right click cancels targeting",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: missing button release is recovered from motion mask",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: normal right click still issues move",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: real left gesture begins",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: focus loss cancels selection gesture",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: stale release after refocus does not clear selection",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: focus loss cancels pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: unfocused camera ignores keys and motion",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: minimap drag begins",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: focus loss cancels minimap drag",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: pause cancels unfinished pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: paused drag cannot move camera",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: paused minimap rejects new camera gesture",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2: stale release after resume never issues order",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide new battle starts at reference overview scale",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1279.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (100.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1279.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1279.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1.0, 719.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (1281.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (200.0, 720.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1280.0, 720.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1599.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (100.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1599.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1599.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1.0, 899.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (1601.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (200.0, 900.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (1600.0, 900.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (1.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (2559.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (100.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (100.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (1.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (2559.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (2559.0, 1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (1.0, 1439.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (-1.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (2561.0, 200.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (200.0, -1.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (200.0, 1440.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge direction (2560.0, 1440.0) (10.0, 100.0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: edge point hits real production HUD",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: HUD edge does not scroll",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: left edge fixture is world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: headless skips physical mouse edge scrolling",
+        "passed": true
+      },
+      {
+        "details": "(2541.366, 2541.366)",
+        "name": "iron_tide: keyboard pan cancels follow and moves along screen axis",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: text editing owns arrows",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: real LineEdit owns keyboard focus",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: minimap centering cancels follow without snap-back",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: scroll setting scales 1.5x 10",
+        "passed": true
+      },
+      {
+        "details": "(-23.39995, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.39995, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -23.40004)",
+        "name": "iron_tide: screen-axis pan [10, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 23.40004)",
+        "name": "iron_tide: screen-axis pan [10, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54623, 16.54631)",
+        "name": "iron_tide: screen-axis pan [10, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-23.40012, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.40012, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000345, -23.39995)",
+        "name": "iron_tide: screen-axis pan [10, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000345, 23.39995)",
+        "name": "iron_tide: screen-axis pan [10, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54623, 16.54623)",
+        "name": "iron_tide: screen-axis pan [10, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-23.40081, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(23.40012, 0.0)",
+        "name": "iron_tide: screen-axis pan [10, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -23.40012)",
+        "name": "iron_tide: screen-axis pan [10, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 23.40012)",
+        "name": "iron_tide: screen-axis pan [10, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(16.54588, 16.54623)",
+        "name": "iron_tide: screen-axis pan [10, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: scroll setting scales 1.5x 50",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -117.0)",
+        "name": "iron_tide: screen-axis pan [50, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 117.0)",
+        "name": "iron_tide: screen-axis pan [50, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "iron_tide: screen-axis pan [50, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000343, -116.9999)",
+        "name": "iron_tide: screen-axis pan [50, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000343, 116.9999)",
+        "name": "iron_tide: screen-axis pan [50, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "iron_tide: screen-axis pan [50, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(116.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [50, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, -116.9999)",
+        "name": "iron_tide: screen-axis pan [50, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, 116.9999)",
+        "name": "iron_tide: screen-axis pan [50, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(82.73149, 82.73149)",
+        "name": "iron_tide: screen-axis pan [50, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: scroll setting scales 1.5x 100",
+        "passed": true
+      },
+      {
+        "details": "(-234.0, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 0.5, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 0.5, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -234.0)",
+        "name": "iron_tide: screen-axis pan [100, 0.5, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 234.0)",
+        "name": "iron_tide: screen-axis pan [100, 0.5, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.463, 165.463)",
+        "name": "iron_tide: screen-axis pan [100, 0.5, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-234.0002, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 1.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9995, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 1.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, -234.0)",
+        "name": "iron_tide: screen-axis pan [100, 1.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(0.0, 234.0)",
+        "name": "iron_tide: screen-axis pan [100, 1.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.4626, 165.463)",
+        "name": "iron_tide: screen-axis pan [100, 1.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": "(-233.9999, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 2.0, (-1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(233.9992, 0.0)",
+        "name": "iron_tide: screen-axis pan [100, 2.0, (1.0, 0.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, -233.9998)",
+        "name": "iron_tide: screen-axis pan [100, 2.0, (0.0, -1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(-0.000687, 233.9998)",
+        "name": "iron_tide: screen-axis pan [100, 2.0, (0.0, 1.0)]",
+        "passed": true
+      },
+      {
+        "details": "(165.463, 165.463)",
+        "name": "iron_tide: screen-axis pan [100, 2.0, (0.707107, 0.707107)]",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle press waits for click or drag 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle click restores default scale 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves usable center and angle 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves selection and never orders unit 0.45",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle press waits for click or drag 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle click restores default scale 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves usable center and angle 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves selection and never orders unit 1.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle press waits for click or drag 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle click restores default scale 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves usable center and angle 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves selection and never orders unit 2.0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle press waits for click or drag 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle click restores default scale 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves usable center and angle 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset preserves selection and never orders unit 3.2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide middle drag never resets zoom",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide GUI middle click does not reset world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide GUI middle click does not reset world",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide stale release after focus loss never resets",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide stale release after pause never resets",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reset works during placement without consuming or cancelling",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: right drag enabled in a new match",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: middle pan owns gesture across right click",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: owning middle button continues pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: middle release never orders units",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: right pan ignores unrelated middle release",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: right drag matches middle-button displacement",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: right drag ends without order",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: right drag keeps targeting active",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: stationary right click cancels targeting",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: missing button release is recovered from motion mask",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: normal right click still issues move",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: real left gesture begins",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: focus loss cancels selection gesture",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: stale release after refocus does not clear selection",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: focus loss cancels pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: unfocused camera ignores keys and motion",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: minimap drag begins",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: focus loss cancels minimap drag",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: pause cancels unfinished pan",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: paused drag cannot move camera",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: paused minimap rejects new camera gesture",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide: stale release after resume never issues order",
+        "passed": true
+      }
+    ],
+    "evidence": {
+      "engine": "4.7.2-stable (official)",
+      "input": "Viewport.push_input routes mouse/key events through the real battle/HUD",
+      "modes": [
+        "ra2",
+        "iron_tide"
+      ],
+      "project": "C:/Users/admin/Temp/iron-decisions-nov7/project/",
+      "user_dir": "C:/Users/admin/Temp/iron-decisions-nov7/camera_v8/profile/CodexIronTideValidation/edgeperf",
+      "zooms": [
+        0.5,
+        1,
+        2,
+        4
+      ]
+    },
+    "failed": 0
+  },
+  "edge_v8": {
+    "checks": [
+      {
+        "details": null,
+        "name": "ra2 client edge (-1, 300)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 client edge (1600, 899)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 client edge (-2, 901)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 client edge (1599, 0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 interior arms exit without panning",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 fast exit ignores stale GUI hover",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 reentry immediately stops scrolling",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 exit from UI cannot arm scroll",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 focus loss clears continuation",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 exact scout mask on stationary, capture and removal 0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 exact scout mask on stationary, capture and removal 1",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 exact scout mask on stationary, capture and removal 2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "ra2 exact scout mask on stationary, capture and removal 3",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide client edge (-1, 300)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide client edge (1600, 899)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide client edge (-2, 901)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide client edge (1599, 0)",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide interior arms exit without panning",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide fast exit ignores stale GUI hover",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide reentry immediately stops scrolling",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide exit from UI cannot arm scroll",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide focus loss clears continuation",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide exact scout mask on stationary, capture and removal 0",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide exact scout mask on stationary, capture and removal 1",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide exact scout mask on stationary, capture and removal 2",
+        "passed": true
+      },
+      {
+        "details": null,
+        "name": "iron_tide exact scout mask on stationary, capture and removal 3",
+        "passed": true
+      }
+    ],
+    "failed": 0,
+    "metrics": []
+  }
+}

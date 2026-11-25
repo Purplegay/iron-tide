@@ -1,0 +1,194 @@
+[
+  {
+    "name": "top-0.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TOP.SHP",
+    "frame": 0,
+    "dimensions": [
+      168,
+      32
+    ],
+    "source_sha256": "519f3b2681adef3b1328e3581b1fb796bafe804a7f9835d4244069939dabaf90",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "ad4c31cc0735fbff8acc81cd605f296df7aa88ba34bb1878ac72430d89c519af"
+  },
+  {
+    "name": "tab01-0.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB01.SHP",
+    "frame": 0,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "873a84382ac9f2a2cb2e1f00b6a1dc945af0cceff54d9183607039f2d47c9ebe",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "d3d4b02620a831496e4e4c1c58c4374fd50a90174e3cd196b71c7666c76accae"
+  },
+  {
+    "name": "tab01-1.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB01.SHP",
+    "frame": 1,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "873a84382ac9f2a2cb2e1f00b6a1dc945af0cceff54d9183607039f2d47c9ebe",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "29665f2237cf32d02571b4fe34f02f8312e096a6f94d61dfe5acd20129abfdca"
+  },
+  {
+    "name": "tab01-2.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB01.SHP",
+    "frame": 2,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "873a84382ac9f2a2cb2e1f00b6a1dc945af0cceff54d9183607039f2d47c9ebe",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "d4659aa7b6fe764fe5f1bf5f190a2cc40a1cc067f3b0083e2a5b89cedfe0ab2b"
+  },
+  {
+    "name": "tab01-3.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB01.SHP",
+    "frame": 3,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "873a84382ac9f2a2cb2e1f00b6a1dc945af0cceff54d9183607039f2d47c9ebe",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "ae82584fae9b922f29dde693fe86936acba32599ce83ccf5b34f536e3c04c319"
+  },
+  {
+    "name": "tab01-4.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB01.SHP",
+    "frame": 4,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "873a84382ac9f2a2cb2e1f00b6a1dc945af0cceff54d9183607039f2d47c9ebe",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "d3d4b02620a831496e4e4c1c58c4374fd50a90174e3cd196b71c7666c76accae"
+  },
+  {
+    "name": "tab02-0.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB02.SHP",
+    "frame": 0,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "4b29f41e474925adf75767fff14dac9b8bdadd56a859643a730bb03a3901b78e",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "ee06f5611d85ae35dfd63db3b3952f49a063e6b039418d7bbbe793f6a941512e"
+  },
+  {
+    "name": "tab02-1.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB02.SHP",
+    "frame": 1,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "4b29f41e474925adf75767fff14dac9b8bdadd56a859643a730bb03a3901b78e",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "b69d9ed10c54bc01bb5af7c86571369f5afc8a6506055619ec8cd4495795784e"
+  },
+  {
+    "name": "tab02-2.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB02.SHP",
+    "frame": 2,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "4b29f41e474925adf75767fff14dac9b8bdadd56a859643a730bb03a3901b78e",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "7bd6f3fc48db29b755617b78631e388e076de3d9cf7d6abdd200f1038db022e5"
+  },
+  {
+    "name": "tab02-3.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB02.SHP",
+    "frame": 3,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "4b29f41e474925adf75767fff14dac9b8bdadd56a859643a730bb03a3901b78e",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "706ac9a6cfdaf2fe2fa3924d0ff2cd72a2c1a0f75cf428ad6a73784d64877f7d"
+  },
+  {
+    "name": "tab02-4.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB02.SHP",
+    "frame": 4,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "4b29f41e474925adf75767fff14dac9b8bdadd56a859643a730bb03a3901b78e",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "ee06f5611d85ae35dfd63db3b3952f49a063e6b039418d7bbbe793f6a941512e"
+  },
+  {
+    "name": "tab03-0.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB03.SHP",
+    "frame": 0,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "7ccc112b1ecd660853efcc996b065321322c9f9e74c568879d229b7467378eb6",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "d242071de6e19d7dc85c55fcdb482552f767411a0adda91c18c99408ea471229"
+  },
+  {
+    "name": "tab03-1.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB03.SHP",
+    "frame": 1,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "7ccc112b1ecd660853efcc996b065321322c9f9e74c568879d229b7467378eb6",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "aed80ddc1896e4d3f83e74e10b5a73602193f775bb8a879684a52c685652b4fa"
+  },
+  {
+    "name": "tab03-2.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB03.SHP",
+    "frame": 2,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "7ccc112b1ecd660853efcc996b065321322c9f9e74c568879d229b7467378eb6",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "5815a10d63c555ae3aaa03e91ba184cee47ed18bf9b987d7fe8156597744335e"
+  },
+  {
+    "name": "tab03-3.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB03.SHP",
+    "frame": 3,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "7ccc112b1ecd660853efcc996b065321322c9f9e74c568879d229b7467378eb6",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "93cadc070b185333b16800a02caf9056f0a1520095d7896b06661781c8168f2a"
+  },
+  {
+    "name": "tab03-4.png",
+    "source": "Local Steam RA2.MIX/SIDEC02.MIX/TAB03.SHP",
+    "frame": 4,
+    "dimensions": [
+      32,
+      28
+    ],
+    "source_sha256": "7ccc112b1ecd660853efcc996b065321322c9f9e74c568879d229b7467378eb6",
+    "palette_sha256": "cdc10ac4ba4dbd6b81189bdc961a0ac305e66fae52ef06384d0be88c1eece8f5",
+    "png_sha256": "d242071de6e19d7dc85c55fcdb482552f767411a0adda91c18c99408ea471229"
+  }
+]

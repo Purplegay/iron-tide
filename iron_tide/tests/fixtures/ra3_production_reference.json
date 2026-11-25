@@ -1,0 +1,117 @@
+{
+  "GAPOWR": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Structures/AlliedPowerPlant.xml",
+    "sha256": "616d13845004882bd7f4fb2daa18b059b9360ffc7e7dce1083d3d492cda4a107"
+  },
+  "GAPILE": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Structures/AlliedBarracks.xml",
+    "sha256": "9ddd7e6864e2b44e82e807ea1266a7493985394a80482c58f792fee235eb30ba"
+  },
+  "GAREFN": {
+    "seconds": 20,
+    "source": "SAGEXML/Allied/Structures/AlliedRefinery.xml",
+    "sha256": "f0cd782643ba1330c89b1466308af2cd9919bec609a29e17041a89e3df5ad3c3"
+  },
+  "GAWEAP": {
+    "seconds": 20,
+    "source": "SAGEXML/Allied/Structures/AlliedWarFactory.xml",
+    "sha256": "1da4ce39e04e11a67a16d71362f55b3d7a42c3ce740c1f11c1cbfb9e7d4f1bd8"
+  },
+  "GAAIRC": {
+    "seconds": 15,
+    "source": "SAGEXML/Allied/Structures/AlliedAirfield.xml",
+    "sha256": "150a926d542be5605e1c61fb95095716a38a4b4301333a6c14989113ae6fcb07"
+  },
+  "GAYARD": {
+    "seconds": 20,
+    "source": "SAGEXML/Allied/Structures/AlliedNavalYard.xml",
+    "sha256": "2adcfa49259e3538256414b63031b5dcafa0e8a22579396e2a0fd479073d8ba9"
+  },
+  "GATECH": {
+    "seconds": 30,
+    "source": "SAGEXML/Allied/Structures/AlliedTechStructure.xml",
+    "sha256": "c7254e226fa93c3768303ef12ce62e681178d694638526a00d894b28ce85ae23"
+  },
+  "E1": {
+    "seconds": 5,
+    "source": "SAGEXML/Allied/Units/AlliedAntiInfantryInfantry.xml",
+    "sha256": "3dba92ec2439cd4b0d01c11ba03c232587df4644aab943e403a82c18c9596013"
+  },
+  "GGI": {
+    "seconds": 5,
+    "source": "SAGEXML/Allied/Units/AlliedAntiVehicleInfantry.xml",
+    "sha256": "c959260af16c6982e91e85a0e93ae4cbcbdcbad524ecba4d618bf9ed96777552"
+  },
+  "ENGINEER": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Units/AlliedEngineer.xml",
+    "sha256": "0be9f3a6bdec25fc242f8ec8a3bd0a5454a0e5c3d57c15a91d41a4985d4d9495"
+  },
+  "DOG": {
+    "seconds": 2,
+    "source": "SAGEXML/Allied/Units/AlliedScoutInfantry.xml",
+    "sha256": "a0a6fced10b830466c202061e81064a5ef622f82392437dc5b5ba3bfcc7cfe25"
+  },
+  "SPY": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Units/AlliedInfiltrationInfantry.xml",
+    "sha256": "2b91ff92fc4dbc4203fb918f586212cde88a9ed2e0380d122cb5749c05ab83cb"
+  },
+  "TANY": {
+    "seconds": 30,
+    "source": "SAGEXML/Allied/Units/AlliedCommandoTech1.xml",
+    "sha256": "1afb2ad00d317767da61cab8b52b7f35426a0edd4c6d1d01c9a3f89fc6d2ae3b"
+  },
+  "MTNK": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech1.xml",
+    "sha256": "5f5b82a1a2c6ea6b475dd02b76b03dda42db36b463d2e53ddefef940d2688376"
+  },
+  "FV": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Units/AlliedAntiAirVehicleTech1.xml",
+    "sha256": "481a5a09ff4a3ea42f0226503953143623f31915a058e189581af09a748fe04a"
+  },
+  "CMIN": {
+    "seconds": 20,
+    "source": "SAGEXML/Allied/Units/AlliedMiner.xml",
+    "sha256": "ed9d51858becb122c7ffe20f9bcd55c200a4592b9e6944c15bf1e2d6996429d3"
+  },
+  "AMCV": {
+    "seconds": 60,
+    "source": "SAGEXML/Allied/Units/AlliedMCV.xml",
+    "sha256": "01a6e66820effb588734837bc155ef050aade4b3f08412fe836efde22a50968e"
+  },
+  "MGTK": {
+    "seconds": 15,
+    "source": "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml",
+    "sha256": "932066544472e30fed1b5c12f94683ba21220159f5c7a91394ec0e94dc449f2d"
+  },
+  "ORCA": {
+    "seconds": 15,
+    "source": "SAGEXML/Allied/Units/AlliedAntiGroundAircraft.xml",
+    "sha256": "8a9a1d24eecbd842773c1bcdaaddf36d4e84fee1529903c3f033548577a3e214"
+  },
+  "BEAG": {
+    "seconds": 15,
+    "source": "SAGEXML/Allied/Units/AlliedAntiGroundAircraft.xml",
+    "sha256": "8a9a1d24eecbd842773c1bcdaaddf36d4e84fee1529903c3f033548577a3e214"
+  },
+  "DLPH": {
+    "seconds": 10,
+    "source": "SAGEXML/Allied/Units/AlliedAntiNavalScout.xml",
+    "sha256": "ece15227733b5f7524ad9075e4cc9e2099c5b4d98c50b3e20127cc1797a5f74b"
+  },
+  "DEST": {
+    "seconds": 20,
+    "source": "SAGEXML/Allied/Units/AlliedAntiNavyShipTech1.xml",
+    "sha256": "2c55f592c602c486c45d77232fc5ba9262666d9d4001ca58b2d76bafdca7e9f8"
+  },
+  "CARRIER": {
+    "seconds": 30,
+    "source": "SAGEXML/Allied/Units/AlliedAntiStructureShip.xml",
+    "sha256": "c1c40f6083c49b18cf34986e5da1b38164279df94fbe3f11ce65be92cefc2377"
+  }
+}

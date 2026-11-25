@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="sea" x2="0" y2="1"><stop stop-color="#20384b"/><stop offset="1" stop-color="#09131f"/></linearGradient>
+    <linearGradient id="steel" x2="0" y2="1"><stop stop-color="#f1f6f7"/><stop offset="1" stop-color="#7894a6"/></linearGradient>
+  </defs>
+  <rect x="8" y="8" width="240" height="240" rx="48" fill="#07101a"/>
+  <path d="M128 23 224 60v87c0 39-49 68-96 88-47-20-96-49-96-88V60Z" fill="url(#sea)" stroke="#607e91" stroke-width="6"/>
+  <path d="M128 37 211 69" fill="none" stroke="#e65a43" stroke-width="7" stroke-linecap="round"/>
+  <path d="M124 61h8v33h-8zM105 83h46v8h-46z" fill="#f1f6f7"/>
+  <path d="M113 97h30l7 24h18v22H88v-22h18Z" fill="url(#steel)"/>
+  <path d="M115 107h26v8h-26z" fill="#162b3d"/>
+  <path d="M73 130h38v10H73zM145 130h38v10h-38z" fill="#ccdce4"/>
+  <path d="m61 147 67-16 67 16-19 32-48 19-48-19Z" fill="url(#steel)"/>
+  <path d="m128 139 0 47 38-15 13-19Z" fill="#607f94"/>
+  <path d="M49 183c16-10 29-10 45 0s29 10 45 0 29-10 45 0 19 8 23 6M69 204c12-7 22-7 35 0s25 7 38 0 25-7 38 0" fill="none" stroke="#48b9d3" stroke-width="10" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,2523 @@
+{
+  "version": 1,
+  "armor_order": [
+    "none",
+    "flak",
+    "plate",
+    "light",
+    "medium",
+    "heavy",
+    "wood",
+    "steel",
+    "concrete",
+    "special_1",
+    "special_2"
+  ],
+  "count": 83,
+  "warheads": {
+    "EMPuls": {
+      "id": "EMPuls",
+      "verses_raw": "",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "EMEffect": "yes"
+      }
+    },
+    "SonicWarhead": {
+      "id": "SonicWarhead",
+      "verses_raw": "100%,100%,100%,100%,80%,80%,100%,60%,60%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 0.8,
+        "heavy": 0.8,
+        "wood": 1,
+        "steel": 0.6,
+        "concrete": 0.6,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 0.1,
+      "percent_at_max": 1,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": false,
+      "wood": true,
+      "anim_list": [],
+      "extra": {
+        "Rocker": "yes",
+        "Sonic": "yes"
+      }
+    },
+    "TankOGas": {
+      "id": "TankOGas",
+      "verses_raw": "90%,90%,90%,80%,60%,25%,100%,50%,10%,90%,100%",
+      "verses": {
+        "none": 0.9,
+        "flak": 0.9,
+        "plate": 0.9,
+        "light": 0.8,
+        "medium": 0.6,
+        "heavy": 0.25,
+        "wood": 1,
+        "steel": 0.5,
+        "concrete": 0.1,
+        "special_1": 0.9,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.9,
+      "prone_damage": 0.5,
+      "inf_death": 4,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "TWLT026",
+        "TWLT036",
+        "TWLT050",
+        "TWLT070",
+        "TWLT100"
+      ],
+      "extra": {
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Rocker": "no",
+        "Fire": "yes"
+      }
+    },
+    "SA": {
+      "id": "SA",
+      "verses_raw": "100%,80%,80%,50%,25%,25%,75%,50%,25%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.8,
+        "light": 0.5,
+        "medium": 0.25,
+        "heavy": 0.25,
+        "wood": 0.75,
+        "steel": 0.5,
+        "concrete": 0.25,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.7,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "HE": {
+      "id": "HE",
+      "verses_raw": "100%,100%,100%,70%,70%,35%,75%,40%,20%,80%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.7,
+        "medium": 0.7,
+        "heavy": 0.35,
+        "wood": 0.75,
+        "steel": 0.4,
+        "concrete": 0.2,
+        "special_1": 0.8,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "no",
+        "Deform": "10%",
+        "DeformThreshhold": "300",
+        "Tiberium": "yes",
+        "Sparky": "no"
+      }
+    },
+    "AP": {
+      "id": "AP",
+      "verses_raw": "25%,25%,15%,75%,100%,100%,65%,45%,60%,60%,100%",
+      "verses": {
+        "none": 0.25,
+        "flak": 0.25,
+        "plate": 0.15,
+        "light": 0.75,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.65,
+        "steel": 0.45,
+        "concrete": 0.6,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "Gas": {
+      "id": "Gas",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 1,
+      "prone_damage": 3,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Particle": "GasCloudSys"
+      }
+    },
+    "Fire": {
+      "id": "Fire",
+      "verses_raw": "600%,500%,200%,60%,30%,5%,150%,100%,2%,200%,100%",
+      "verses": {
+        "none": 6,
+        "flak": 5,
+        "plate": 2,
+        "light": 0.6,
+        "medium": 0.3,
+        "heavy": 0.05,
+        "wood": 1.5,
+        "steel": 1,
+        "concrete": 0.02,
+        "special_1": 2,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.5,
+      "prone_damage": 6,
+      "inf_death": 4,
+      "wall": false,
+      "wood": true,
+      "anim_list": [],
+      "extra": {
+        "Sparky": "no",
+        "Fire": "no"
+      }
+    },
+    "HollowPoint": {
+      "id": "HollowPoint",
+      "verses_raw": "200%,100%,100%,1%,1%,1%,1%,1%,1%,1%,100%",
+      "verses": {
+        "none": 2,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.01,
+        "medium": 0.01,
+        "heavy": 0.01,
+        "wood": 0.01,
+        "steel": 0.01,
+        "concrete": 0.01,
+        "special_1": 0.01,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "Super": {
+      "id": "Super",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 2,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Tiberium": "yes",
+        "Sparky": "no"
+      }
+    },
+    "Organic": {
+      "id": "Organic",
+      "verses_raw": "100%,100%,100%,0%,0%,0%,0%,0%,0%,0%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 0,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "Slimer": {
+      "id": "Slimer",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 0,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "FirestormWH": {
+      "id": "FirestormWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "IonCannonWH": {
+      "id": "IonCannonWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": true,
+      "wood": true,
+      "anim_list": [],
+      "extra": {
+        "Fire": "yes",
+        "Deform": "100%",
+        "Sparky": "no",
+        "ShakeXlo": "10",
+        "ShakeXhi": "10",
+        "ShakeYlo": "10",
+        "ShakeYhi": "20"
+      }
+    },
+    "RailShot": {
+      "id": "RailShot",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 2,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Rocker": "no"
+      }
+    },
+    "Mechanical": {
+      "id": "Mechanical",
+      "verses_raw": "0%,0%,0%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 0,
+        "flak": 0,
+        "plate": 0,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 0,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "VeinholeWH": {
+      "id": "VeinholeWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 0,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Veinhole": "yes"
+      }
+    },
+    "IonWH": {
+      "id": "IonWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,3%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.03,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "EXPLOSML"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Bright": "yes",
+        "CombatLightSize": "40%"
+      }
+    },
+    "ARTYHE": {
+      "id": "ARTYHE",
+      "verses_raw": "100%,80%,60%,100%,60%,60%,100%,100%,60%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.6,
+        "light": 1,
+        "medium": 0.6,
+        "heavy": 0.6,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.6,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.25,
+      "prone_damage": 0.5,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Deform": "15%",
+        "DeformThreshhold": "120",
+        "Tiberium": "yes",
+        "Bright": "yes"
+      }
+    },
+    "PlasmaWH": {
+      "id": "PlasmaWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 3.5,
+      "inf_death": 5,
+      "wall": true,
+      "wood": false,
+      "anim_list": [
+        "EXPLOMED",
+        "EXPLOLRG"
+      ],
+      "extra": {
+        "Bright": "yes",
+        "Tiberium": "yes",
+        "Sparky": "no"
+      }
+    },
+    "SAMWH": {
+      "id": "SAMWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 1,
+      "prone_damage": 1,
+      "inf_death": 3,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML"
+      ],
+      "extra": {}
+    },
+    "ORCAAP": {
+      "id": "ORCAAP",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,75%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.75,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 0.4,
+      "percent_at_max": 1,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22",
+        "S_CLSN30",
+        "S_CLSN42",
+        "S_CLSN58"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "RailShot2": {
+      "id": "RailShot2",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 2,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Rocker": "no"
+      }
+    },
+    "ORCAHE": {
+      "id": "ORCAHE",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1.5,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "EXPLOMED",
+        "EXPLOLRG"
+      ],
+      "extra": {
+        "Sparky": "no",
+        "Bright": "yes",
+        "Fire": "yes",
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Deform": "8%",
+        "DeformThreshhold": "160",
+        "Tiberium": "yes"
+      }
+    },
+    "Controller": {
+      "id": "Controller",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "YURICNTL"
+      ],
+      "extra": {
+        "MindControl": "yes"
+      }
+    },
+    "PsiPulse": {
+      "id": "PsiPulse",
+      "verses_raw": "100%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 0
+      },
+      "cell_spread": 3,
+      "percent_at_max": 0.85,
+      "prone_damage": null,
+      "inf_death": 6,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "PsychicDamage": "yes"
+      }
+    },
+    "IvanBomb": {
+      "id": "IvanBomb",
+      "verses_raw": "",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "IvanBomb": "yes"
+      }
+    },
+    "IvanWH": {
+      "id": "IvanWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,250%,20%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 2.5,
+        "concrete": 0.2,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1.5,
+      "percent_at_max": 0.25,
+      "prone_damage": null,
+      "inf_death": 6,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "CRIVEXP"
+      ],
+      "extra": {}
+    },
+    "Electric": {
+      "id": "Electric",
+      "verses_raw": "100%,100%,100%,85%,100%,100%,50%,50%,50%,200%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.85,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.5,
+        "steel": 0.5,
+        "concrete": 0.5,
+        "special_1": 2,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "TSTIMPCT"
+      ],
+      "extra": {}
+    },
+    "ElectricAssault": {
+      "id": "ElectricAssault",
+      "verses_raw": "0%,0,0%,0%,0%,0%,100%,100%,100%,50%,100%",
+      "verses": {
+        "none": 0,
+        "flak": 0,
+        "plate": 0,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 0.5,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "ElectricAssault": "yes"
+      }
+    },
+    "V3HE": {
+      "id": "V3HE",
+      "verses_raw": "100%,100%,100%,30%,5%,5%,85%,50%,30%,100%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.3,
+        "medium": 0.05,
+        "heavy": 0.05,
+        "wood": 0.85,
+        "steel": 0.5,
+        "concrete": 0.3,
+        "special_1": 1,
+        "special_2": 0
+      },
+      "cell_spread": 0.9,
+      "percent_at_max": 1,
+      "prone_damage": null,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "no",
+        "Tiberium": "yes",
+        "Sparky": "no"
+      }
+    },
+    "Parasite": {
+      "id": "Parasite",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,0%,0%,0%,0%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 0
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Parasite": "yes",
+        "Rocker": "yes"
+      }
+    },
+    "NUKE": {
+      "id": "NUKE",
+      "verses_raw": "100%,100%,100%,200%,100%,100%,60%,100%,8%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 2,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.6,
+        "steel": 1,
+        "concrete": 0.08,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 10,
+      "percent_at_max": 0.02,
+      "prone_damage": null,
+      "inf_death": 7,
+      "wall": false,
+      "wood": true,
+      "anim_list": [
+        "NUKEANIM"
+      ],
+      "extra": {
+        "WallAbsoluteDestroyer": "yes",
+        "Sparky": "no",
+        "Tiberium": "yes"
+      }
+    },
+    "BlimpHE": {
+      "id": "BlimpHE",
+      "verses_raw": "100%,100%,100%,70%,35%,35%,85%,75%,50%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.7,
+        "medium": 0.35,
+        "heavy": 0.35,
+        "wood": 0.85,
+        "steel": 0.75,
+        "concrete": 0.5,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "ParasitePlus": {
+      "id": "ParasitePlus",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Parasite": "yes",
+        "Culling": "yes",
+        "Paralyzes": "32767",
+        "Rocker": "yes"
+      }
+    },
+    "DeathWH": {
+      "id": "DeathWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1.5,
+      "percent_at_max": 0.5,
+      "prone_damage": null,
+      "inf_death": 3,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "ParasiteDog": {
+      "id": "ParasiteDog",
+      "verses_raw": "100%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 0
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Parasite": "yes",
+        "Rocker": "yes"
+      }
+    },
+    "BombDisarm": {
+      "id": "BombDisarm",
+      "verses_raw": "",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "BombDisarm": "yes"
+      }
+    },
+    "Snapshot": {
+      "id": "Snapshot",
+      "verses_raw": "100%,100%,100%,0%,0%,0%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "MakesDisguise": "yes"
+      }
+    },
+    "RadBeamWarhead": {
+      "id": "RadBeamWarhead",
+      "verses_raw": "100%,100%,100%,20%,15%,10%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.2,
+        "medium": 0.15,
+        "heavy": 0.1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 7,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Radiation": "yes"
+      }
+    },
+    "RadEruptionWarhead": {
+      "id": "RadEruptionWarhead",
+      "verses_raw": "100%,100%,100%,20%,10%,10%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.2,
+        "medium": 0.1,
+        "heavy": 0.1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 10,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 7,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Radiation": "yes",
+        "CellInset": "3"
+      }
+    },
+    "RadSite": {
+      "id": "RadSite",
+      "verses_raw": "100%,100%,100%,50%,10%,10%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.5,
+        "medium": 0.1,
+        "heavy": 0.1,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 7,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Radiation": "yes"
+      }
+    },
+    "GrandCannonWH": {
+      "id": "GrandCannonWH",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,50%,100%,50%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.5,
+        "steel": 1,
+        "concrete": 0.5,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.2,
+      "prone_damage": 0.3,
+      "inf_death": null,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Sparky": "no",
+        "Conventional": "yes",
+        "Rocker": "yes"
+      }
+    },
+    "UltraAP": {
+      "id": "UltraAP",
+      "verses_raw": "2%,2%,2%,100%,40%,100%,2%,2%,2%,2%,100%",
+      "verses": {
+        "none": 0.02,
+        "flak": 0.02,
+        "plate": 0.02,
+        "light": 1,
+        "medium": 0.4,
+        "heavy": 1,
+        "wood": 0.02,
+        "steel": 0.02,
+        "concrete": 0.02,
+        "special_1": 0.02,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN30"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "HowitzerWH": {
+      "id": "HowitzerWH",
+      "verses_raw": "100%,90%,80%,60%,40%,40%,50%,40%,25%,80%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.9,
+        "plate": 0.8,
+        "light": 0.6,
+        "medium": 0.4,
+        "heavy": 0.4,
+        "wood": 0.5,
+        "steel": 0.4,
+        "concrete": 0.25,
+        "special_1": 0.8,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22",
+        "S_CLSN30",
+        "S_CLSN42",
+        "S_CLSN58"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "CometWH": {
+      "id": "CometWH",
+      "verses_raw": "100%,100%,100%,75%,50%,50%,200%,200%,200%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.75,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 2,
+        "steel": 2,
+        "concrete": 2,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {}
+    },
+    "MaverickHE": {
+      "id": "MaverickHE",
+      "verses_raw": "25%,25%,25%,100%,50%,50%,100%,75%,50%,25%,100%",
+      "verses": {
+        "none": 0.25,
+        "flak": 0.25,
+        "plate": 0.25,
+        "light": 1,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 1,
+        "steel": 0.75,
+        "concrete": 0.5,
+        "special_1": 0.25,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22",
+        "S_CLSN30",
+        "S_CLSN42",
+        "S_CLSN58"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "FlakWH": {
+      "id": "FlakWH",
+      "verses_raw": "150%,80%,50%,100%,20%,20%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 0.8,
+        "plate": 0.5,
+        "light": 1,
+        "medium": 0.2,
+        "heavy": 0.2,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.1,
+      "prone_damage": null,
+      "inf_death": 3,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "SMKPUFF"
+      ],
+      "extra": {}
+    },
+    "OilExplosionWH": {
+      "id": "OilExplosionWH",
+      "verses_raw": "150%,100%,100%,90%,70%,50%,200%,90%,50%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.9,
+        "medium": 0.7,
+        "heavy": 0.5,
+        "wood": 2,
+        "steel": 0.9,
+        "concrete": 0.5,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 4,
+      "percent_at_max": 0.5,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": true,
+      "wood": true,
+      "anim_list": [],
+      "extra": {
+        "Sparky": "no",
+        "Fire": "yes",
+        "CausesDelayKill": "yes",
+        "DelayKillFrames": "5",
+        "DelayKillAtMax": "7.0"
+      }
+    },
+    "TankSnapshot": {
+      "id": "TankSnapshot",
+      "verses_raw": "0%,0%,0%,1%,1%,1%,0%,0%,0%,0%,0%",
+      "verses": {
+        "none": 0,
+        "flak": 0,
+        "plate": 0,
+        "light": 0.01,
+        "medium": 0.01,
+        "heavy": 0.01,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 0
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "MakesDisguise": "yes"
+      }
+    },
+    "CRNUKEWH": {
+      "id": "CRNUKEWH",
+      "verses_raw": "100%,100%,100%,90%,50%,50%,60%,150%,20%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.9,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 0.6,
+        "steel": 1.5,
+        "concrete": 0.2,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 5,
+      "percent_at_max": 0.25,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "MININUKE - added 11/30"
+      ],
+      "extra": {
+        "Sparky": "no",
+        "Tiberium": "yes"
+      }
+    },
+    "ChronoBeam": {
+      "id": "ChronoBeam",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 0
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Temporal": "yes"
+      }
+    },
+    "HollowPoint2": {
+      "id": "HollowPoint2",
+      "verses_raw": "100%,100%,100%,0%,0%,0%,1%,1%,1%,1%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0.01,
+        "steel": 0.01,
+        "concrete": 0.01,
+        "special_1": 0.01,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "NukeMaker": {
+      "id": "NukeMaker",
+      "verses_raw": "",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "NukeMaker": "yes"
+      }
+    },
+    "FakeC4WH": {
+      "id": "FakeC4WH",
+      "verses_raw": "0%,0%,0%,0%,0%,0%,100%,100%,100%,0%,100%",
+      "verses": {
+        "none": 0,
+        "flak": 0,
+        "plate": 0,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 0,
+        "special_2": 1
+      },
+      "cell_spread": 0,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "HollowPointNoBuilding": {
+      "id": "HollowPointNoBuilding",
+      "verses_raw": "200%,100%,75%,1%,1%,1%,0%,0%,0%,75%,100%",
+      "verses": {
+        "none": 2,
+        "flak": 1,
+        "plate": 0.75,
+        "light": 0.01,
+        "medium": 0.01,
+        "heavy": 0.01,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0.75,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "V3WH": {
+      "id": "V3WH",
+      "verses_raw": "100%,90%,80%,90%,70%,70%,100%,100%,50%,80%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 0.9,
+        "plate": 0.8,
+        "light": 0.9,
+        "medium": 0.7,
+        "heavy": 0.7,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.5,
+        "special_1": 0.8,
+        "special_2": 0
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.25,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Deform": "10%",
+        "DeformThreshhold": "300",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "FlakTWH": {
+      "id": "FlakTWH",
+      "verses_raw": "150%,100%,50%,60%,10%,10%,30%,20%,10%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 1,
+        "plate": 0.5,
+        "light": 0.6,
+        "medium": 0.1,
+        "heavy": 0.1,
+        "wood": 0.3,
+        "steel": 0.2,
+        "concrete": 0.1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.2,
+      "prone_damage": null,
+      "inf_death": 3,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "HTRKPUFF"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "APSplash": {
+      "id": "APSplash",
+      "verses_raw": "25%,25%,25%,75%,100%,100%,65%,65%,60%,25%,100%",
+      "verses": {
+        "none": 0.25,
+        "flak": 0.25,
+        "plate": 0.25,
+        "light": 0.75,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.65,
+        "steel": 0.65,
+        "concrete": 0.6,
+        "special_1": 0.25,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.8,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22",
+        "S_CLSN30",
+        "S_CLSN42",
+        "S_CLSN58"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "DMISLWH": {
+      "id": "DMISLWH",
+      "verses_raw": "100%,90%,80%,100%,80%,80%,85%,65%,28%,80%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 0.9,
+        "plate": 0.8,
+        "light": 1,
+        "medium": 0.8,
+        "heavy": 0.8,
+        "wood": 0.85,
+        "steel": 0.65,
+        "concrete": 0.28,
+        "special_1": 0.8,
+        "special_2": 0
+      },
+      "cell_spread": 1.5,
+      "percent_at_max": 0.25,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "no",
+        "Deform": "10%",
+        "DeformThreshhold": "300",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "DemobombWH": {
+      "id": "DemobombWH",
+      "verses_raw": "100%,100%,100%,100%,50%,50%,80%,150%,10%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 0.8,
+        "steel": 1.5,
+        "concrete": 0.1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 8,
+      "percent_at_max": 0.1,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "DEMTEXP"
+      ],
+      "extra": {
+        "Sparky": "no",
+        "Tiberium": "yes"
+      }
+    },
+    "MirageWH": {
+      "id": "MirageWH",
+      "verses_raw": "100%,100%,80%,100%,100%,100%,30%,20%,20%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 0.8,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.3,
+        "steel": 0.2,
+        "concrete": 0.2,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "IRONFX"
+      ],
+      "extra": {
+        "Bright": "true",
+        "CLDisableBlue": "true",
+        "CLDisableGreen": "true"
+      }
+    },
+    "SSA": {
+      "id": "SSA",
+      "verses_raw": "100%,100%,100%,60%,40%,40%,75%,50%,25%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.6,
+        "medium": 0.4,
+        "heavy": 0.4,
+        "wood": 0.75,
+        "steel": 0.5,
+        "concrete": 0.25,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.8,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "SSAB": {
+      "id": "SSAB",
+      "verses_raw": "100%,80%,70%,50%,25%,25%,75%,30%,20%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.7,
+        "light": 0.5,
+        "medium": 0.25,
+        "heavy": 0.25,
+        "wood": 0.75,
+        "steel": 0.3,
+        "concrete": 0.2,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.5,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "ApocAP": {
+      "id": "ApocAP",
+      "verses_raw": "25%,25%,25%,75%,100%,100%,100%,100%,70%,60%,100%",
+      "verses": {
+        "none": 0.25,
+        "flak": 0.25,
+        "plate": 0.25,
+        "light": 0.75,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.7,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "APOCEXP"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "HARVWH": {
+      "id": "HARVWH",
+      "verses_raw": "100%,80%,70%,50%,20%,20%,20%,15%,10%,200%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.7,
+        "light": 0.5,
+        "medium": 0.2,
+        "heavy": 0.2,
+        "wood": 0.2,
+        "steel": 0.15,
+        "concrete": 0.1,
+        "special_1": 2,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.5,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "V3EWH": {
+      "id": "V3EWH",
+      "verses_raw": "100%,90%,80%,80%,70%,70%,100%,75%,50%,80%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 0.9,
+        "plate": 0.8,
+        "light": 0.8,
+        "medium": 0.7,
+        "heavy": 0.7,
+        "wood": 1,
+        "steel": 0.75,
+        "concrete": 0.5,
+        "special_1": 0.8,
+        "special_2": 0
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "MININUKE"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "DMISLEWH": {
+      "id": "DMISLEWH",
+      "verses_raw": "100%,90%,80%,100%,80%,80%,85%,65%,28%,80%,0%",
+      "verses": {
+        "none": 1,
+        "flak": 0.9,
+        "plate": 0.8,
+        "light": 1,
+        "medium": 0.8,
+        "heavy": 0.8,
+        "wood": 0.85,
+        "steel": 0.65,
+        "concrete": 0.28,
+        "special_1": 0.8,
+        "special_2": 0
+      },
+      "cell_spread": 3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "MININUKE"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "no",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "TerrorBombWH": {
+      "id": "TerrorBombWH",
+      "verses_raw": "150%,100%,100%,90%,50%,50%,100%,150%,30%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.9,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 1,
+        "steel": 1.5,
+        "concrete": 0.3,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "MININUKE"
+      ],
+      "extra": {
+        "Sparky": "no",
+        "Fire": "yes",
+        "Bright": "yes"
+      }
+    },
+    "FlakGuyWH": {
+      "id": "FlakGuyWH",
+      "verses_raw": "150%,100%,50%,80%,20%,20%,0%,0%,0%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 1,
+        "plate": 0.5,
+        "light": 0.8,
+        "medium": 0.2,
+        "heavy": 0.2,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 1,
+      "percent_at_max": 0.2,
+      "prone_damage": null,
+      "inf_death": 3,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "SMKPUFF"
+      ],
+      "extra": {}
+    },
+    "CRTerrorBombWH": {
+      "id": "CRTerrorBombWH",
+      "verses_raw": "150%,100%,100%,90%,50%,50%,200%,90%,50%,100%,100%",
+      "verses": {
+        "none": 1.5,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.9,
+        "medium": 0.5,
+        "heavy": 0.5,
+        "wood": 2,
+        "steel": 0.9,
+        "concrete": 0.5,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 3,
+      "percent_at_max": 0.1,
+      "prone_damage": null,
+      "inf_death": 4,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "Sparky": "no",
+        "Fire": "yes"
+      }
+    },
+    "HollowPoint3": {
+      "id": "HollowPoint3",
+      "verses_raw": "100%,100%,100%,2%,2%,2%,2%,2%,2%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.02,
+        "medium": 0.02,
+        "heavy": 0.02,
+        "wood": 0.02,
+        "steel": 0.02,
+        "concrete": 0.02,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "Shock": {
+      "id": "Shock",
+      "verses_raw": "100%,100%,100%,85%,100%,100%,50%,50%,50%,200%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.85,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.5,
+        "steel": 0.5,
+        "concrete": 0.5,
+        "special_1": 2,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": false,
+      "wood": true,
+      "anim_list": [
+        "TSTIMPCT"
+      ],
+      "extra": {}
+    },
+    "ApocAPE": {
+      "id": "ApocAPE",
+      "verses_raw": "100%,100%,100%,75%,100%,100%,100%,100%,70%,60%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.75,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 0.7,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "VTEXPLOD"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "RHINAPE": {
+      "id": "RHINAPE",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,65%,45%,60%,60%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.65,
+        "steel": 0.45,
+        "concrete": 0.6,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "VTEXPLOD"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "GRIZAPE": {
+      "id": "GRIZAPE",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,65%,45%,60%,60%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.65,
+        "steel": 0.45,
+        "concrete": 0.6,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "VTEXPLOD"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "Special": {
+      "id": "Special",
+      "verses_raw": "",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {
+        "UIName": "Name:Special",
+        "Name": "JP",
+        "Suffix": "JP",
+        "Prefix": "J",
+        "Color": "Grey",
+        "Side": "Mutant",
+        "SmartAI": "yes",
+        "MultiplayPassive": "true"
+      }
+    },
+    "KTSTLEXP": {
+      "id": "KTSTLEXP",
+      "verses_raw": "100%,100%,100%,70%,35%,35%,85%,75%,50%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 0.7,
+        "medium": 0.35,
+        "heavy": 0.35,
+        "wood": 0.85,
+        "steel": 0.75,
+        "concrete": 0.5,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 2,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.7,
+      "inf_death": 2,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "KTSTLEXP"
+      ],
+      "extra": {
+        "Conventional": "yes",
+        "Rocker": "yes",
+        "Tiberium": "yes",
+        "Sparky": "no",
+        "Bright": "yes"
+      }
+    },
+    "UltraAPE": {
+      "id": "UltraAPE",
+      "verses_raw": "2%,2%,2%,100%,50%,100%,2%,2%,2%,100%,100%",
+      "verses": {
+        "none": 0.02,
+        "flak": 0.02,
+        "plate": 0.02,
+        "light": 1,
+        "medium": 0.5,
+        "heavy": 1,
+        "wood": 0.02,
+        "steel": 0.02,
+        "concrete": 0.02,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "VTEXPLOD"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    },
+    "PrismWarhead": {
+      "id": "PrismWarhead",
+      "verses_raw": "200%,100%,100%,100%,100%,100%,50%,50%,50%,200%,100%",
+      "verses": {
+        "none": 2,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.5,
+        "steel": 0.5,
+        "concrete": 0.5,
+        "special_1": 2,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 5,
+      "wall": true,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "DummyWarhead": {
+      "id": "DummyWarhead",
+      "verses_raw": "0%,0%,0%,0%,0%,0%,0%,0%,0%,0%,0%",
+      "verses": {
+        "none": 0,
+        "flak": 0,
+        "plate": 0,
+        "light": 0,
+        "medium": 0,
+        "heavy": 0,
+        "wood": 0,
+        "steel": 0,
+        "concrete": 0,
+        "special_1": 0,
+        "special_2": 0
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": null,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    },
+    "RPG": {
+      "id": "RPG",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 1,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22",
+        "S_CLSN30",
+        "S_CLSN42",
+        "S_CLSN58"
+      ],
+      "extra": {
+        "Rocker": "yes",
+        "Conventional": "yes"
+      }
+    },
+    "Shard": {
+      "id": "Shard",
+      "verses_raw": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 1,
+        "plate": 1,
+        "light": 1,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 1,
+        "steel": 1,
+        "concrete": 1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": null,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [],
+      "extra": {}
+    }
+  },
+  "combat_source": {
+    "name": "Local Yuri Revenge rulesmd.ini",
+    "sha256": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef"
+  }
+}

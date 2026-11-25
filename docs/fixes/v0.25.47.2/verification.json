@@ -1,0 +1,30 @@
+{
+  "suites": [
+    {
+      "suite": "progression_bookmarks",
+      "checks": 16,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-bookmarks-integrated-20261105\\progression_bookmarks\\console.log"
+    },
+    {
+      "suite": "academy",
+      "checks": 746,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-bookmarks-integrated-20261105\\academy\\console.log"
+    },
+    {
+      "suite": "talent_cost",
+      "checks": 481,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-bookmarks-integrated-20261105\\talent_cost\\console.log"
+    }
+  ],
+  "total_checks": 1243,
+  "environment": "headless CREATE_NO_WINDOW; isolated APPDATA; 1280x720 SubViewport for bookmark cases",
+  "source_sha256": {
+    "iron_tide\\scripts\\ui\\progression_bookmarks.gd": "192f2bd7d41b9c7d028d2f138e5182681a0c5d8b3b9ecb6e6c4acdc5458ff62c",
+    "iron_tide\\scripts\\ui\\hero_progression.gd": "4aa1d40be715b6e9daab48943ac4cd057909dfb5d69b2ae6f544ca0075f01e99",
+    "iron_tide\\scripts\\screens\\meta_screen.gd": "4a7aa38261777dc33c0c9a7f2ec8f5d6cbe34e3dcbab19b4b1bd41822809ab44"
+  },
+  "visual": "pending_user_visual_confirmation"
+}

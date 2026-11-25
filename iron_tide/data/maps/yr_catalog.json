@@ -1,0 +1,274 @@
+[
+  {
+    "id": "yr_isleland",
+    "title": "Islands on the Land",
+    "archive": "IsleLand.yro",
+    "sha256": "9f81e5a1077e20d8561f4394a6ab1ce90e819c03ec1b3cdf5c0c252513c1e0dd",
+    "theater": "TEMPERATE",
+    "side": 163
+  },
+  {
+    "id": "yr_ice_age",
+    "title": "Ice Age",
+    "archive": "Ice_Age.yro",
+    "sha256": "367578ab6f0766d1e637fa2ccbb768af5ec4b76a4c6fde8dbcf8c7c32eee3b4a",
+    "theater": "SNOW",
+    "side": 204
+  },
+  {
+    "id": "yr_crctbrd",
+    "title": "Circuit Board",
+    "archive": "CrctBrd.yro",
+    "sha256": "af962c8c37ccae65a364a949ba85aba9f71de1f8a5f30eb44cfe712b2c38b630",
+    "theater": "URBAN",
+    "side": 161
+  },
+  {
+    "id": "yr_deepfrze",
+    "title": "Deep Freeze",
+    "archive": "DeepFrze.yro",
+    "sha256": "73060dee7adf94411fc27aa8e20c8d5fa653b59d3cac8534eef3cd087cac1f4b",
+    "theater": "SNOW",
+    "side": 191
+  },
+  {
+    "id": "yr_riverram",
+    "title": "River Rampage",
+    "archive": "RiverRam.yro",
+    "sha256": "62743584bb781bf12ec5b2582dc18845bcf5ce09e6ab2fca8083dc43d6eccb80",
+    "theater": "TEMPERATE",
+    "side": 97
+  },
+  {
+    "id": "yr_mojosprt",
+    "title": "Spirit of Mojo One",
+    "archive": "MojoSprt.yro",
+    "sha256": "2e3d09bade52b5e726ba623aa0c2e7ef896bfaf55901c433dff5f695aafe1716",
+    "theater": "SNOW",
+    "side": 144
+  },
+  {
+    "id": "yr_unrepent",
+    "title": "Unrepentant",
+    "archive": "Unrepent.yro",
+    "sha256": "6bf7f9e0a90c606b9d6c8c29e12abae1921224b210db8fce47edf5fd5c385177",
+    "theater": "TEMPERATE",
+    "side": 176
+  },
+  {
+    "id": "yr_irvineca",
+    "title": "Irvine, California",
+    "archive": "IrvineCa.yro",
+    "sha256": "7198e34cee5621885ca1285a21f7623983bd9c9d96f5ba23d25390c61f108936",
+    "theater": "NEWURBAN",
+    "side": 188
+  },
+  {
+    "id": "yr_monsterm",
+    "title": "Monster Movie",
+    "archive": "MonsterM.yro",
+    "sha256": "3b8cb7a81232f679058d0f14dd4c5b709d02d256d8a4bacbedd4c27cac325641",
+    "theater": "TEMPERATE",
+    "side": 137
+  },
+  {
+    "id": "yr_transylv",
+    "title": "Transylvania",
+    "archive": "Transylv.yro",
+    "sha256": "e4a7e8f86b564ea433e2aefcf502e2a819772c6cd7b5df78a40595b7967d06ea",
+    "theater": "NEWURBAN",
+    "side": 126
+  },
+  {
+    "id": "yr_highexpr",
+    "title": "High Explosive Round",
+    "archive": "HighExpR.yro",
+    "sha256": "4bd47d058f8cc870078b2e5190887829a72348dd1f923b5a545482b5682a9640",
+    "theater": "DESERT",
+    "side": 132
+  },
+  {
+    "id": "yr_moonpatr",
+    "title": "Moon Patrol",
+    "archive": "MoonPatr.yro",
+    "sha256": "aaef5e6f2efb262c646b9801f0ecb50ddf32784a8c7cec0576364a7c919fe245",
+    "theater": "LUNAR",
+    "side": 108
+  },
+  {
+    "id": "yr_hidvally",
+    "title": "Hidden Valley",
+    "archive": "HidVally.map",
+    "sha256": "2f7f9ec92afb8fba3a996ca2699b7e204dc1e8283abe8cb6383dd1669f8704d6",
+    "theater": "TEMPERATE",
+    "side": 89
+  },
+  {
+    "id": "yr_dunepatr",
+    "title": "Dune Patrol",
+    "archive": "DunePatr.map",
+    "sha256": "c60aee4317c1fcea1a9c3c750f2ca859fbe2ad13760cf14392907d4d4558524d",
+    "theater": "DESERT",
+    "side": 97
+  },
+  {
+    "id": "yr_dryheat",
+    "title": "Dry Heat",
+    "archive": "DryHeat.map",
+    "sha256": "2c922ac63feecfbab9266025fc1dd116f8baa9a142b696e8c5fecd1e412808ea",
+    "theater": "DESERT",
+    "side": 108
+  },
+  {
+    "id": "yr_groundze",
+    "title": "Ground Zero",
+    "archive": "GroundZe.map",
+    "sha256": "204556d9d760c08eaaa0bb1b6ed7de5f50417cd21844fd0db8a2bc6d24973218",
+    "theater": "NEWURBAN",
+    "side": 106
+  },
+  {
+    "id": "yr_fourcorners",
+    "title": "Four Corners",
+    "archive": "FourCorners.map",
+    "sha256": "233d884456bdc8da1a1ed4f941c214e6ee006ebdea35bb2ca8662f18490603b6",
+    "theater": "TEMPERATE",
+    "side": 166
+  },
+  {
+    "id": "yr_tourofegypt",
+    "title": "Tour of Egypt",
+    "archive": "TourOfEgypt.map",
+    "sha256": "933a637e1030ad1b1c114f512f68b8b27c5e1f407d726a35a0611b1773a36295",
+    "theater": "DESERT",
+    "side": 118
+  },
+  {
+    "id": "yr_bayopigs",
+    "title": "Bay of Pigs",
+    "archive": "BayOPigs.mmx",
+    "sha256": "0e9cb5f161facf1fcd4a003ada2512647307b6c09f4c47de403be22272475f15",
+    "theater": "URBAN",
+    "side": 256
+  },
+  {
+    "id": "yr_pacific",
+    "title": "Pacific Heights",
+    "archive": "Pacific.mmx",
+    "sha256": "d0098ce710244210f0d9da41972c3fe4351dbccb266869e3c115ce19dc0eb37e",
+    "theater": "TEMPERATE",
+    "side": 168
+  },
+  {
+    "id": "yr_seaofiso",
+    "title": "Sea of Isolation",
+    "archive": "SeaofIso.mmx",
+    "sha256": "e57554181d7f6f1b786cd9cbecf4dd9e7ddcba24fabca05eb56c9e90d3108644",
+    "theater": "TEMPERATE",
+    "side": 149
+  },
+  {
+    "id": "yr_tsunami",
+    "title": "Tsunami",
+    "archive": "Tsunami.mmx",
+    "sha256": "ae08357b983be46154368d488fb9290724190dd45c21b87d39f5350c54a1cda9",
+    "theater": "TEMPERATE",
+    "side": 178
+  },
+  {
+    "id": "yr_potomac",
+    "title": "Potomac Divide",
+    "archive": "Potomac.mmx",
+    "sha256": "35674581fce5f390b61d756aba55f86d7a6572d24e4f99548a12ac0272ef73e1",
+    "theater": "URBAN",
+    "side": 164
+  },
+  {
+    "id": "yr_amazon",
+    "title": "Amazonas Delta",
+    "archive": "amazon.mmx",
+    "sha256": "b91babfd0553683ec648be159cb7de0c6df264319f269f728ae522d7f44fb7a8",
+    "theater": "TEMPERATE",
+    "side": 135
+  },
+  {
+    "id": "yr_lostlake",
+    "title": "Lost Lake",
+    "archive": "Lostlake.mmx",
+    "sha256": "4dc1a34301d2d877d9d856bf62692ec5bfef92d8050f8f7274a8dcab81bb501b",
+    "theater": "TEMPERATE",
+    "side": 186
+  },
+  {
+    "id": "yr_shrapnel",
+    "title": "Shrapnel Mountain",
+    "archive": "Shrapnel.mmx",
+    "sha256": "98f296a4d8630f6a111ed51437982dd54ea831ede23906b16397f2b924cab70b",
+    "theater": "SNOW",
+    "side": 141
+  },
+  {
+    "id": "yr_arena",
+    "title": "Arena",
+    "archive": "Arena.mmx",
+    "sha256": "ee0507b9900599449758008394a13b1ef51ef6b9a9cd50be7b321a54c8752e27",
+    "theater": "URBAN",
+    "side": 139
+  },
+  {
+    "id": "yr_oceansid",
+    "title": "Oceanside",
+    "archive": "Oceansid.mmx",
+    "sha256": "16b43bee8f59ab9a92aaa71b7cf31434bc2d0111bf4302b04dfc6787aa3db609",
+    "theater": "URBAN",
+    "side": 170
+  },
+  {
+    "id": "yr_hills",
+    "title": "The Hills Have Eyes",
+    "archive": "Hills.mmx",
+    "sha256": "780d5d6e6d3c81ac0d510a5df326848dd426b3d840ac290114f44faf8eab9e9e",
+    "theater": "TEMPERATE",
+    "side": 139
+  },
+  {
+    "id": "yr_valley",
+    "title": "Valley of Gems",
+    "archive": "Valley.mmx",
+    "sha256": "6c400db9edf2593a0331b315306d8987072264f10b9b8a5d76ce472fd2d008cc",
+    "theater": "TEMPERATE",
+    "side": 196
+  },
+  {
+    "id": "yr_dustbowl",
+    "title": "Dust Bowl",
+    "archive": "Dustbowl.mmx",
+    "sha256": "3146e0a1ec1f7cb65b8cde29f6ec8871856815ee293ce16f180bafcf7d675d23",
+    "theater": "TEMPERATE",
+    "side": 127
+  },
+  {
+    "id": "yr_newhghts",
+    "title": "New Heights",
+    "archive": "NewHghts.mmx",
+    "sha256": "2d8642934cfa2e4bf327d90db80f9cc3f78b10becf3e5937ab283f4c3923be28",
+    "theater": "TEMPERATE",
+    "side": 91
+  },
+  {
+    "id": "yr_hailmary",
+    "title": "Hail Mary",
+    "archive": "HailMary.mmx",
+    "sha256": "cfdfa94ddecf7328bf8898ed23f22a3ee9c12e7a54d48faa0fc26c538a6911bb",
+    "theater": "URBAN",
+    "side": 144
+  },
+  {
+    "id": "yr_grinder",
+    "title": "Meat Grinder",
+    "archive": "Grinder.mmx",
+    "sha256": "0857085b6874f54b0af7891794f50a1d5713454cdc6bccc921142e19051d9bba",
+    "theater": "TEMPERATE",
+    "side": 177
+  }
+]

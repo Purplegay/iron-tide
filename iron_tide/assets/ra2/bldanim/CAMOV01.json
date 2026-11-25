@@ -1,0 +1,1 @@
+{"id":"CAMOV01","image":"CAMOV01","layers":[{"kind":"activeanim","image":"CAMOV01_A","loopStart":0,"loopEnd":30,"rate":220,"frames":62,"shadow":true,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"CAMOV01_A","loopStart":31,"loopEnd":61,"rate":200,"frames":62,"shadow":true,"reverse":false,"loopCount":-1}}]}

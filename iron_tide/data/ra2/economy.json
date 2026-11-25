@@ -1,0 +1,27 @@
+{
+  "source": "rules.ini",
+  "source_sha256": "fd1e95cea0306ea78049dc81c8cd816e18c28c496872a1ff02edd50bd082062f",
+  "resources": {
+    "ore": {
+      "value": 25
+    },
+    "gems": {
+      "value": 50
+    }
+  },
+  "purifier_bonus": 0.25,
+  "growth": {
+    "interval_seconds": 300,
+    "fraction": 0.06,
+    "spread_fraction": 0.06
+  },
+  "chrono_return_seconds": 1.0666666666666667,
+  "storage": {
+    "CMIN": 20,
+    "HARV": 40
+  },
+  "adapter": {
+    "harvest_units_per_second": 0.88,
+    "unload_seconds": 1
+  }
+}

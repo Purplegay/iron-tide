@@ -1,0 +1,14 @@
+{
+  "muzzle": {
+    "bone": "FX_Weapon",
+    "name_hash": "09bb1f5d",
+    "pivot": 6,
+    "position": [
+      1.2391260098665953,
+      19.395246505737305,
+      -0.0
+    ]
+  },
+  "independent_turret": false,
+  "source": "RA3 SDK TruckDraw + WeaponSlotHardpoint (no turret); SKL bind-pose hierarchy"
+}

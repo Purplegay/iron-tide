@@ -1,0 +1,274 @@
+{
+  "sounds": {
+    "specs": {
+      "RA3_TANK_Building_SmallExplosionMS": {
+        "sounds": [
+          "wiexplo_genelarg1a",
+          "wiexplo_genelarg1b",
+          "wiexplo_genelarg1c",
+          "wiexplo_genelarg1d",
+          "wiexplo_genelarg1e",
+          "wiexplo_genelarg1f",
+          "wiexplo_glaslarg1a",
+          "wiexplo_glaslarg1b",
+          "wiexplo_glaslarg1c",
+          "wiexplo_glaslarg1d",
+          "wiexplo_glaslarg1e",
+          "wiexplo_glaslarg1f",
+          "wiexplo_metalarg1a",
+          "wiexplo_metalarg1b",
+          "wiexplo_metalarg1c",
+          "wiexplo_metalarg1d",
+          "wiexplo_metalarg1e",
+          "wiexplo_metalarg1f"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_TANK_SOV_Apocalypse_WeaponGrinder": {
+        "sounds": [
+          "suapoc_wea3a"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_TANK_SOV_Apocalypse_WeaponHarpoon": {
+        "sounds": [
+          "suapoc_wea2a",
+          "suapoc_wea2b"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_TANK_SOV_Dreadnought_MissileExplosion": {
+        "sounds": [
+          "suv4mis_misexplosioa",
+          "suv4mis_misexplosiob",
+          "suv4mis_misexplosioc",
+          "suv4mis_misexplosiod",
+          "suv4mis_misexplosioe"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_TANK_SOV_HammerTank_CannonImpact": {
+        "sounds": [
+          "suflakt_weapexpla",
+          "suflakt_weapexplb",
+          "suflakt_weapexplc",
+          "suflakt_weapexpld",
+          "suflakt_weapexple",
+          "suflakt_weapexplf",
+          "suflakt_weapexplg"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      }
+    },
+    "entries": {
+      "wiexplo_metalarg1f": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 5239
+      },
+      "wiexplo_metalarg1e": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3041
+      },
+      "wiexplo_metalarg1d": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4757
+      },
+      "wiexplo_metalarg1c": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3369
+      },
+      "wiexplo_metalarg1b": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3936
+      },
+      "wiexplo_metalarg1a": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_metaLarg1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3595
+      },
+      "wiexplo_glaslarg1f": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4789
+      },
+      "wiexplo_glaslarg1e": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 6533
+      },
+      "wiexplo_glaslarg1d": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3925
+      },
+      "wiexplo_glaslarg1c": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3536
+      },
+      "wiexplo_glaslarg1b": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 5163
+      },
+      "wiexplo_glaslarg1a": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_glasLarg1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4907
+      },
+      "wiexplo_genelarg1f": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 5167
+      },
+      "wiexplo_genelarg1e": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3067
+      },
+      "wiexplo_genelarg1d": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4753
+      },
+      "wiexplo_genelarg1c": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 5082
+      },
+      "wiexplo_genelarg1b": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4223
+      },
+      "wiexplo_genelarg1a": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_WIExplo_geneLarg1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3497
+      },
+      "suapoc_wea3a": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUApoc_wea3A.wav",
+        "sampleRate": 44100,
+        "channels": 1,
+        "durMs": 1790
+      },
+      "suapoc_wea2b": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUApoc_wea2B.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 5205
+      },
+      "suapoc_wea2a": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUApoc_wea2A.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4975
+      },
+      "suv4mis_misexplosioe": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUV4Mis_misExplosioe.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1536
+      },
+      "suv4mis_misexplosiod": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUV4Mis_misExplosiod.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1451
+      },
+      "suv4mis_misexplosioc": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUV4Mis_misExplosioc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1430
+      },
+      "suv4mis_misexplosiob": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUV4Mis_misExplosiob.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1428
+      },
+      "suv4mis_misexplosioa": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUV4Mis_misExplosioa.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1504
+      },
+      "suflakt_weapexplg": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExplg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2000
+      },
+      "suflakt_weapexplf": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExplf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1906
+      },
+      "suflakt_weapexple": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExple.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2595
+      },
+      "suflakt_weapexpld": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExpld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2239
+      },
+      "suflakt_weapexplc": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExplc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2248
+      },
+      "suflakt_weapexplb": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExplb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2847
+      },
+      "suflakt_weapexpla": {
+        "file": "res://assets/ra3/soviet/tank_fx/AudioFile_SUFlakT_weapExpla.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2774
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"id":"WCLBOLT2","kind":"fx","source":"CONQUER.MIX/WCLBOLT2.SHP","palette":"ANIM.PAL","cell":[48,183],"cols":3,"count":3,"rects":[{"i":0,"x":0,"y":0,"w":48,"h":183},{"i":1,"x":48,"y":0,"w":48,"h":183},{"i":2,"x":96,"y":0,"w":48,"h":183}],"fps":15,"rate":900,"loopStart":-1,"loopEnd":-1,"sound":null,"projectile":false,"raw_count":3}

@@ -1,0 +1,104 @@
+{
+  "baseline_final": {
+    "buildings": 155,
+    "layout": "yr_isleland",
+    "limit_ms": 30.0,
+    "passed": false,
+    "phases": {
+      "battle": {
+        "frames": 464,
+        "max": 172.288,
+        "native_long_paths": 76,
+        "p50": 30.484,
+        "p95": 74.623,
+        "p99": 105.729,
+        "paths": 411,
+        "physics_steps": 225,
+        "selected": 0,
+        "sim_s": 15.0178233333333,
+        "unaffected_routes": 627,
+        "wall_s": 15.043879
+      },
+      "move": {
+        "frames": 247,
+        "max": 143.895,
+        "native_long_paths": 24,
+        "p50": 58.879,
+        "p95": 113.414,
+        "p99": 135.145,
+        "paths": 292,
+        "physics_steps": 224,
+        "selected": 1,
+        "sim_s": 15.0304610000001,
+        "unaffected_routes": 806,
+        "wall_s": 14.950416
+      },
+      "selection": {
+        "frames": 317,
+        "max": 279.985,
+        "native_long_paths": 54,
+        "p50": 49.465,
+        "p95": 88.576,
+        "p99": 136.392,
+        "paths": 252,
+        "physics_steps": 228,
+        "selected": 1,
+        "sim_s": 15.0932266666667,
+        "unaffected_routes": 810,
+        "wall_s": 15.340445
+      }
+    },
+    "units": 327
+  },
+  "final": {
+    "buildings": 155,
+    "layout": "yr_isleland",
+    "limit_ms": 30.0,
+    "passed": false,
+    "phases": {
+      "battle": {
+        "frames": 467,
+        "max": 106.389,
+        "native_long_paths": 71,
+        "p50": 32.093,
+        "p95": 69.669,
+        "p99": 87.484,
+        "paths": 395,
+        "physics_steps": 226,
+        "selected": 0,
+        "sim_s": 15.0316666666667,
+        "unaffected_routes": 754,
+        "wall_s": 15.080199
+      },
+      "move": {
+        "frames": 260,
+        "max": 185.214,
+        "native_long_paths": 19,
+        "p50": 57.515,
+        "p95": 94.013,
+        "p99": 140.918,
+        "paths": 384,
+        "physics_steps": 225,
+        "selected": 1,
+        "sim_s": 15.0019160000001,
+        "unaffected_routes": 720,
+        "wall_s": 15.051103
+      },
+      "selection": {
+        "frames": 336,
+        "max": 259.064,
+        "native_long_paths": 49,
+        "p50": 45.868,
+        "p95": 78.257,
+        "p99": 100.087,
+        "paths": 362,
+        "physics_steps": 226,
+        "selected": 1,
+        "sim_s": 15.0443980000001,
+        "unaffected_routes": 854,
+        "wall_s": 15.109032
+      }
+    },
+    "units": 327
+  }
+}

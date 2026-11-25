@@ -1,0 +1,62 @@
+{
+  "version": "0.27.16.7",
+  "game": {
+    "path": "C:\\Users\\admin\\Downloads\\IronTide-v0.27.16.7-Windows-x64-20261107-224018-632027.zip",
+    "bytes": 242352554,
+    "sha256": "493551df29902d588b85fd697adedf0b76f8e238c52e572812fea6fc640cab8f"
+  },
+  "snapshot_files": 11506,
+  "source_commit": "0ec6d757436b2d68866e29026c4a8c452fa6ee5a",
+  "verification": "archive entries sha256; exported executable headless menu and six native maps with alternating Allied/Soviet battles; source drift check",
+  "release_performance": {
+    "buildings": 155,
+    "layout": "yr_isleland",
+    "limit_ms": 30.0,
+    "passed": false,
+    "phases": {
+      "battle": {
+        "frames": 688,
+        "max": 89.914,
+        "native_long_paths": 81,
+        "p50": 13.407,
+        "p95": 54.183,
+        "p99": 67.167,
+        "paths": 533,
+        "physics_steps": 246,
+        "selected": 0,
+        "sim_s": 15.0001412380953,
+        "unaffected_routes": 691,
+        "wall_s": 15.033849
+      },
+      "move": {
+        "frames": 411,
+        "max": 137.174,
+        "native_long_paths": 35,
+        "p50": 36.894,
+        "p95": 70.325,
+        "p99": 84.946,
+        "paths": 348,
+        "physics_steps": 226,
+        "selected": 1,
+        "sim_s": 15.0196713333334,
+        "unaffected_routes": 837,
+        "wall_s": 15.056979
+      },
+      "selection": {
+        "frames": 415,
+        "max": 210.936,
+        "native_long_paths": 78,
+        "p50": 37.089,
+        "p95": 71.667,
+        "p99": 90.281,
+        "paths": 405,
+        "physics_steps": 226,
+        "selected": 1,
+        "sim_s": 15.0479539999999,
+        "unaffected_routes": 1073,
+        "wall_s": 15.112455
+      }
+    },
+    "units": 327
+  }
+}

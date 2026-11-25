@@ -1,0 +1,182 @@
+--- before/scripts/buildings/repair_dock.gd
++++ after/scripts/buildings/repair_dock.gd
+@@ -6,8 +6,23 @@
+ static func pad(depot) -> Vector2:
+ 	return depot.depth_anchor()
+ 
++static func invalidate(world) -> void:
++	if is_instance_valid(world): world.remove_meta("repair_dock_candidates")
++
++static func candidates(world) -> Array:
++	# One broad scan per physics step, shared by every waiting vehicle/depot.
++	# Live occupancy is still checked below so simultaneous arrivals cannot enter.
++	var frame := Engine.get_physics_frames()
++	var cached: Dictionary = world.get_meta("repair_dock_candidates", {})
++	if cached.get("frame", -1) == frame: return cached.units
++	var units: Array = []
++	for other in world.units:
++		if world.actor_alive(other) and (other.repairing or other.special.has("repair_exit_depot")): units.append(other)
++	world.set_meta("repair_dock_candidates", {"frame":frame, "units":units})
++	return units
++
+ static func occupied(unit, depot) -> bool:
+-	for other in depot.battle.units:
++	for other in candidates(depot.battle):
+ 		if other == unit or not depot.battle.actor_alive(other): continue
+ 		if other.special.get("repair_exit_depot") == depot: return true
+ 		if other.repairing and other.repair_depot == depot and other.special.get("repair_stage", "") == "inside": return true
+@@ -64,6 +79,7 @@
+ 
+ static func leave(unit, depot) -> void:
+ 	if not is_instance_valid(depot): return
++	invalidate(depot.battle)
+ 	var direction: Vector2 = depot.position.direction_to(unit.position)
+ 	if unit.position.distance_to(depot.position) <= depot.footprint_clearance(direction) + unit.radius + 4.0:
+ 		unit.special.repair_exit_depot = depot
+--- before/scripts/ui/healing_indicator.gd
++++ after/scripts/ui/healing_indicator.gd
+@@ -27,6 +27,9 @@
+ 	else: unit.set_meta(PULSE, left)
+ 
+ static func alpha(unit) -> float:
++	# No pulse means nothing to draw. Avoid another fog/concealment query for
++	# every ordinary unit redraw when no successful heal has occurred.
++	if not unit.has_meta(PULSE): return 0.0
+ 	if not eligible(unit): return 0.0
+ 	return clampf(float(unit.get_meta(PULSE, 0.0)) / 0.2, 0.0, 1.0)
+ 
+--- before/scripts/ui/minimap.gd
++++ after/scripts/ui/minimap.gd
+@@ -7,6 +7,7 @@
+ var battle = null
+ var _dragging: bool = false
+ var _ore_marks: Array = []
++var _ore_signature := PackedInt64Array()
+ var _ore_projection := Transform2D.IDENTITY
+ var _ore_mask_revision := -1
+ var _ore_revision := -1
+@@ -19,6 +20,8 @@
+ 		add_child(_camera_layer)
+ 		_camera_layer.draw.connect(_draw_camera_outline)
+ 	_ore_revision = -1
++	_ore_signature.clear()
++	_ore_marks.clear()
+ 	mouse_filter = Control.MOUSE_FILTER_STOP
+ 	if not Events.radar_ping.is_connected(_on_radar_ping):
+ 		Events.radar_ping.connect(_on_radar_ping)
+@@ -196,14 +199,27 @@
+ 		_camera_layer.draw_polyline(outline, Color(0.9, 1.0, 1.0, 0.75), 1.5, true)
+ 
+ func _refresh_ore_marks(projection: Transform2D) -> void:
++	# Fog changes anywhere used to recluster every ore cell. First compare only
++	# the inputs that affect radar marks; harvesting a nonempty cell is unchanged.
++	var signature := PackedInt64Array()
++	var sources: Array = []
++	var seen_states: Array[bool] = []
++	for rn in battle.get_tree().get_nodes_in_group("resource_nodes"):
++		if not is_instance_valid(rn) or not battle.position_explored_by("ally", rn.global_position): continue
++		var seen: bool = battle.position_visible_to("ally", rn.global_position)
++		if seen and rn.is_empty(): continue
++		signature.append(rn.get_instance_id())
++		signature.append(1 if seen else 0)
++		sources.append(rn)
++		seen_states.append(seen)
++	if signature == _ore_signature and projection.is_equal_approx(_ore_projection): return
++	_ore_signature = signature
++	_ore_projection = projection
+ 	_ore_marks.clear()
+ 	var bins := {}
+-	for rn in battle.get_tree().get_nodes_in_group("resource_nodes"):
+-		if not is_instance_valid(rn) or not battle.position_explored_by("ally", rn.global_position):
+-			continue
+-		var seen: bool = battle.position_visible_to("ally", rn.global_position)
+-		if seen and rn.is_empty():
+-			continue
++	for source_index in sources.size():
++		var rn = sources[source_index]
++		var seen: bool = seen_states[source_index]
+ 		var p: Vector2 = projection * rn.global_position
+ 		var cell := Vector2i((p / 5.0).floor())
+ 		var match_index := -1
+--- before/scripts/units/open_topped.gd
++++ after/scripts/units/open_topped.gd
+@@ -94,8 +94,9 @@
+ 	if target != null and not carrier._weapon_domain_valid(target): reach = 0.0
+ 	for passenger in carrier.logistics.passengers:
+ 		if not AlliedAbilities.alive(passenger) or passenger.side != carrier.side: continue
+-		if target == null or passenger._weapon_domain_valid(target):
+-			reach = maxf(reach, float(passenger._weapon_for_target(target).get("range", 0.0)))
++		var gun: Dictionary = passenger._weapon_for_target(target)
++		if target == null or passenger._weapon_domain_valid(target, false, gun):
++			reach = maxf(reach, float(gun.get("range", 0.0)))
+ 	return reach
+ 
+ ## Conservative broad-phase bound. Domain, cover, live range and scoring still
+--- before/scripts/units/unit.gd
++++ after/scripts/units/unit.gd
+@@ -1067,11 +1067,18 @@
+ 				if _automatic_target_allowed(target) and attack_domain_valid(target):
+ 					_face(target.global_position)
+ 		return
+-	var has_target := is_instance_valid(target) and (attack_ordered or fire_stance != "none") and _automatic_target_allowed(target) and attack_domain_valid(target)
+-	var dist := 0.0
++	var has_target := is_instance_valid(target) and (attack_ordered or fire_stance != "none") and _automatic_target_allowed(target)
++	var reach := 0.0
+ 	if has_target:
+-		dist = CommandoCombat.distance_to(self, target)
+-	var reach := OpenTopped.command_range(self, target) if has_target else 0.0
++		if AlliedAbilities.flag(self, "OpenTopped"):
++			# command_range already validates every usable passenger weapon.
++			# Do not run cargo_can_attack over the same passengers first.
++			reach = OpenTopped.command_range(self, target)
++			has_target = reach > 0.0
++		else:
++			has_target = attack_domain_valid(target)
++			if has_target: reach = OpenTopped.command_range(self, target)
++	var dist := CommandoCombat.distance_to(self, target) if has_target else 0.0
+ 	var in_range := has_target and dist <= reach and dist >= min_range
+ 	if has_target and (in_range or attack_ordered or attack_move or fire_stance == "free") and CommandoCombat.begin_c4(self, target):
+ 		AlliedAbilities.tick_action(self, delta)
+@@ -1842,7 +1849,7 @@
+ func attack_domain_valid(target) -> bool:
+ 	return _weapon_domain_valid(target) or OpenTopped.cargo_can_attack(self, target)
+ 
+-func _weapon_domain_valid(target, check_cover := false) -> bool:
++func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Dictionary = {}) -> bool:
+ 	if not is_instance_valid(target): return false
+ 	if not BattleRequest.house_teams.is_empty() and target.side != side and BattleRequest.friendly(side,target.side) and not ForceFire.active(self,target): return false
+ 	if unit_id == "R3APOC" and special.get("soviet_mode", false):
+@@ -1851,7 +1858,9 @@
+ 	if unit_id in ["IVAN","CIVAN"] and not SovietSpecials.accepts_bomb(self,target): return false
+ 	if unit_id == "DRON" and not SovietWeapons.can_infest(target): return false
+ 	if not NavalContact.weapon_allows(self, target): return false
+-	var active := _weapon_for_target(target)
++	# Callers that already resolved the live weapon can share it within this
++	# decision. Never retain it across ticks, target changes or passenger changes.
++	var active := resolved_weapon if not resolved_weapon.is_empty() else _weapon_for_target(target)
+ 	var c4 := CommandoCombat.building_c4(self, target)
+ 	if not c4 and not AlliedAbilities.valid_weapon_target(self, target, active): return false
+ 	var world := _battle_world()
+@@ -1886,10 +1895,12 @@
+ 	if target is Unit and target.embarked_in!=null and not (unit_id=="DLPH" and NavalContact.grip_host(target)!=null):
+ 		return false
+ 	var distance := CommandoCombat.distance_to(self, target)
+-	var reach := float(_weapon_for_target(target).get("range",0.0)) if data.has("anti_air_weapon") or data.has("special_weapon") else attack_range
++	var target_dependent := data.has("anti_air_weapon") or data.has("special_weapon")
++	var resolved_weapon: Dictionary = _weapon_for_target(target) if target_dependent else {}
++	var reach := float(resolved_weapon.get("range",0.0)) if target_dependent else attack_range
+ 	if unit_id == "DRED": reach = OpenTopped.command_range(self,target)
+ 	if distance > reach or distance < min_range: return false
+-	if (target.get("side") == side and not ForceFire.active(self, target)) or not _automatic_target_allowed(target) or not _weapon_domain_valid(target, true):
++	if (target.get("side") == side and not ForceFire.active(self, target)) or not _automatic_target_allowed(target) or not _weapon_domain_valid(target, true, resolved_weapon):
+ 		return false
+ 	return not CommandoCombat.building_c4(self, target) # Contact action, never fire the primary at it.
+ 
+@@ -3278,6 +3289,7 @@
+ 		_claim_release()      # (M6)
+ 		_unlock_dock()
+ 	add_to_group("repair_docked")
++	RepairDock.invalidate(depot.battle)
+ 	special.repair_entry = move_target
+ 	special.repair_stage = "inside" if global_position.distance_to(RepairDock.pad(depot)) <= 6.0 else "approach"
+ 	if special.get("repair_exit_depot") == depot:

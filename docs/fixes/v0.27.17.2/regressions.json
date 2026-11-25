@@ -1,0 +1,6171 @@
+{
+  "version": "0.27.17.2",
+  "headless": true,
+  "results": {
+    "defeat_final": {
+      "count": 25,
+      "failed": 0,
+      "checks": [
+        {
+          "details": null,
+          "name": "fixture includes a pending hero revival",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "undeployed MCV preserves short-match survival",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "one defeated house is removed while the four-house match continues",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys MTNK",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys HTNK",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys SHAD",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys GHOST",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys CARRIER",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys HORNET",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys DTRUCK",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "elimination destroys GAPILL",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "heroes cannot enter or retain resurrection state after defeat",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "defeat explosions do not trigger demolition-truck collateral",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "automatic defeat cleanup grants no extra kill score",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "other allies and enemies remain alive",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "late support and factory spawns are rejected",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "defeated house cannot recreate its base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "defeated construction queues stop progressing and charging funds",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "repeat defeat checks are idempotent",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "defeated-house record is valid save data",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "defeat persists across save restoration",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "player defeat removes player army without eliminating the allied team",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "annihilation mode preserves remaining army after losing buildings",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "GM lab does not eliminate houses",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "annihilation ends after the last real asset is gone",
+          "passed": true
+        }
+      ]
+    },
+    "defeat_compile": {
+      "count": 16,
+      "failed": 0,
+      "checks": [
+        {
+          "details": null,
+          "name": "First due house gets strategy frame",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Other due houses remain pending on same rendered frame",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Same house may finish its own synchronous decision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Pending houses advance next frames without losing their due work",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Deferred strategy frames recorded for diagnostics",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "8000 deterministic circles retain all precise footprint collisions",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Circle touching right boundary remains a collision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Separated circle rejected before polygon work",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "144 live placements match fresh geometry, including changed same-ID definition",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "No industrial plant: unchanged vehicle price",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Placement invalidates same-decision procurement cache",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Newly placed operational industrial plant discounts next purchase",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Repeated vehicle purchase retains exact discount",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Vehicle discount never applies to infantry",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Independent player economy retains full price",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Next decision rechecks operational plant state",
+          "passed": true
+        }
+      ]
+    },
+    "defeat_house": {
+      "count": 248,
+      "failed": 0,
+      "checks": [
+        {
+          "details": null,
+          "name": "One ally of equal difficulty discounts the reward",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "One higher enemy tier partially restores the reward",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Use weakest enemy and strongest ally even across hostile teams",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Two allies and three tiers of compensation",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Alliance penalty is capped with four allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Compensation cannot exceed the unallied reward",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Solo and free-for-all keep the full reward",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Older saved rosters use the match difficulty",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Both currencies scale once after kills are counted",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Displayed rewards equal deposited amounts",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Repeated settlement cannot pay twice",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "same-map refresh preserves all selectable spawn markers",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "switching maps restores correct spawn button count: yr_ice_age",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "switching maps restores correct spawn button count: coast",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "switching maps restores correct spawn button count: yr_crctbrd",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "custom map does not overwrite native cached coordinates",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "four seats visible inline on Circuit Board",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Clicking occupied marker swaps the two starting positions",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Swapping positions preserves independent difficulties",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Lobby previews the allied victory multiplier",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Classic mode has no currency preview",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "lobby reopens on saved roster",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Saved map remembers difficulty and position",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied-only lineup cannot launch",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "two-player map restores its own valid roster",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Victory uses the weakest hostile computer",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Owner difficulty controls starting capital",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Each side freezes its own growth",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "four unique spawns",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "House production rates follow their own difficulty",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "independent treasuries",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI production delivers its own unit",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "production charges only its producer's treasury",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI distinguishes hostile AI and player's group",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI tank damages a hostile AI tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "one wave member receives its order per dispatch",
+          "passed": true
+        },
+        {
+          "details": "",
+          "name": "four-house snapshot validates",
+          "passed": true
+        },
+        {
+          "details": "已保存：快速存档",
+          "name": "Mixed roster writes to a save slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Reloaded mixed roster keeps positions, difficulty and reward tier",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "treasury survives restoration",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "pending attackers are restored as live units",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "restored wave finishes",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "surviving AI ally keeps team in the match",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "eliminating opposing team ends match",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Actual battle settlement shows compensation from opening teams",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Victory uses the weakest hostile computer",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Owner difficulty controls starting capital",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Each side freezes its own growth",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 owns its own factory base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Only brutal 3 buildings get shield",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 starts at chosen map pin",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 team vision",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 player diplomacy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "four unique spawns",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "House production rates follow their own difficulty",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "independent treasuries",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai3 starts own production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI production delivers its own unit",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "production charges only its producer's treasury",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI distinguishes hostile AI and player's group",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI tank damages a hostile AI tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "one wave member receives its order per dispatch",
+          "passed": true
+        },
+        {
+          "details": "",
+          "name": "four-house snapshot validates",
+          "passed": true
+        },
+        {
+          "details": "已保存：快速存档",
+          "name": "Mixed roster writes to a save slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Reloaded mixed roster keeps positions, difficulty and reward tier",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "treasury survives restoration",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "pending attackers are restored as live units",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "restored wave finishes",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy own radar and lab unlock a delivered T3 tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy tech structures were actually destroyed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 own radar and lab unlock a delivered T3 tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 tech structures were actually destroyed",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAPILL",
+            "GAPILL",
+            "NASAM",
+            "ATESLA",
+            "GAWEAP",
+            "GAPILE",
+            "GAPOWR",
+            "GAAIRC",
+            "GATECH",
+            "GAREFN"
+          ],
+          "name": "enemy brutal builds T3 and replaces destroyed radar",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NALASR",
+            "NALASR",
+            "NAFLAK",
+            "TESLA",
+            "NABNKR",
+            "NAPOWR",
+            "NAWEAP",
+            "NAHAND",
+            "NARADR",
+            "NATECH"
+          ],
+          "name": "ai2 brutal builds T3 and replaces destroyed radar",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAPILL",
+            "GAPILL",
+            "NASAM",
+            "ATESLA",
+            "GAWEAP",
+            "GAPILE",
+            "GAPOWR",
+            "GAAIRC",
+            "GATECH",
+            "GAREFN",
+            "GAWEAP",
+            "GAPILE"
+          ],
+          "name": "enemy fills three independent infantry and three vehicle lines",
+          "passed": true
+        },
+        {
+          "details": [
+            "iron_tide",
+            26931.4285714286,
+            [
+              [
+                [
+                  "SREF"
+                ],
+                false,
+                "(4280.0, 8480.0)",
+                true
+              ],
+              [
+                [
+                  "MGTK"
+                ],
+                false,
+                "(4400.0, 8480.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(4640.0, 8240.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "enemy every completed line delivers troops: GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            "iron_tide",
+            26931.4285714286,
+            [
+              [
+                [
+                  "JUMPJET"
+                ],
+                false,
+                "(4080.0, 8440.0)",
+                true
+              ],
+              [
+                [
+                  "CLEG"
+                ],
+                false,
+                "(4280.0, 8000.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(3960.0, 8240.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "enemy every completed line delivers troops: GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy production follows selected mode",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NALASR",
+            "NALASR",
+            "NAFLAK",
+            "TESLA",
+            "NABNKR",
+            "NAPOWR",
+            "NAWEAP",
+            "NAHAND",
+            "NARADR",
+            "NATECH",
+            "NAWEAP",
+            "NAHAND"
+          ],
+          "name": "ai2 fills three independent infantry and three vehicle lines",
+          "passed": true
+        },
+        {
+          "details": [
+            "iron_tide",
+            42957.1428571427,
+            [
+              [
+                [
+                  "APOC"
+                ],
+                false,
+                "(8120.0, 4720.0)",
+                true
+              ],
+              [
+                [
+                  "HARV"
+                ],
+                false,
+                "(8000.0, 4280.0)",
+                true
+              ],
+              [
+                [
+                  "ZEP"
+                ],
+                false,
+                "(8320.0, 4360.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "ai2 every completed line delivers troops: NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            "iron_tide",
+            42957.1428571427,
+            [
+              [
+                [
+                  "BORIS"
+                ],
+                false,
+                "(7960.0, 4680.0)",
+                true
+              ],
+              [
+                [
+                  "FLAKT"
+                ],
+                false,
+                "(8240.0, 4680.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(8400.0, 4480.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "ai2 every completed line delivers troops: NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 production follows selected mode",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy own radar and lab unlock a delivered T3 tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy tech structures were actually destroyed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 own radar and lab unlock a delivered T3 tank",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 tech structures were actually destroyed",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAPILL",
+            "GAPILL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "NASAM",
+            "ATESLA",
+            "GAWEAP",
+            "GAPILE",
+            "GAAIRC",
+            "GATECH",
+            "GAPOWR",
+            "GAPILE",
+            "GAREFN"
+          ],
+          "name": "enemy brutal builds T3 and replaces destroyed radar",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NALASR",
+            "NALASR",
+            "NAWALL",
+            "NAWALL",
+            "NAWALL",
+            "NAWALL",
+            "NAFLAK",
+            "TESLA",
+            "NABNKR",
+            "NAPOWR",
+            "NAWEAP",
+            "NARADR",
+            "NATECH"
+          ],
+          "name": "ai2 brutal builds T3 and replaces destroyed radar",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAPILL",
+            "GAPILL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "GAWALL",
+            "NASAM",
+            "ATESLA",
+            "GAWEAP",
+            "GAPILE",
+            "GAAIRC",
+            "GATECH",
+            "GAPOWR",
+            "GAPILE",
+            "GAREFN",
+            "GAWEAP"
+          ],
+          "name": "enemy fills three independent infantry and three vehicle lines",
+          "passed": true
+        },
+        {
+          "details": [
+            "ra2",
+            24246.2388392856,
+            [
+              [
+                [
+                  "SREF"
+                ],
+                false,
+                "(4280.0, 8480.0)",
+                true
+              ],
+              [
+                [
+                  "MGTK"
+                ],
+                false,
+                "(4400.0, 8480.0)",
+                true
+              ],
+              [
+                [
+                  "SHAD"
+                ],
+                false,
+                "(4640.0, 8240.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "enemy every completed line delivers troops: GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            "ra2",
+            24246.2388392856,
+            [
+              [
+                [],
+                false,
+                "(4080.0, 8440.0)",
+                true
+              ],
+              [
+                [
+                  "CLEG"
+                ],
+                false,
+                "(3960.0, 8240.0)",
+                true
+              ],
+              [
+                [
+                  "TANY"
+                ],
+                false,
+                "(4000.0, 8080.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "enemy every completed line delivers troops: GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy production follows selected mode",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NALASR",
+            "NALASR",
+            "NAWALL",
+            "NAWALL",
+            "NAWALL",
+            "NAWALL",
+            "NAFLAK",
+            "TESLA",
+            "NABNKR",
+            "NAPOWR",
+            "NAWEAP",
+            "NARADR",
+            "NATECH",
+            "NAHAND",
+            "NAWEAP",
+            "NAHAND"
+          ],
+          "name": "ai2 fills three independent infantry and three vehicle lines",
+          "passed": true
+        },
+        {
+          "details": [
+            "ra2",
+            58079.4642857142,
+            [
+              [
+                [],
+                false,
+                "(8120.0, 4720.0)",
+                true
+              ],
+              [
+                [
+                  "APOC"
+                ],
+                false,
+                "(8000.0, 4280.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(8240.0, 4280.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "ai2 every completed line delivers troops: NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            "ra2",
+            58079.4642857142,
+            [
+              [
+                [],
+                false,
+                "(7960.0, 4680.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(8120.0, 4240.0)",
+                true
+              ],
+              [
+                [],
+                false,
+                "(8400.0, 4480.0)",
+                true
+              ]
+            ]
+          ],
+          "name": "ai2 every completed line delivers troops: NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 production follows selected mode",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy builds baseline AA before seeing aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy completes and pays for AA",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy friendly or unseen aircraft do not raise quota",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy early economy waits while hostile aircraft remain hidden",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy visible bomber prompts emergency AA before war factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts a second AA when it sees an enemy airship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs demand six towers even at easy 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs demand six towers even at easy 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs demand six towers even at easy 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs demand six towers even at easy 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs demand six towers even at easy 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy two Kirovs stop emergency building at six towers",
+          "passed": true
+        },
+        {
+          "details": [
+            "JUMPJET"
+          ],
+          "name": "enemy emergency purchase ahead of tech savings JUMPJET",
+          "passed": true
+        },
+        {
+          "details": [
+            "FV"
+          ],
+          "name": "enemy emergency purchase ahead of tech savings FV",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy war factory and barracks tested",
+          "passed": true
+        },
+        {
+          "details": 1925.0,
+          "name": "enemy completed AA hits enemy airship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy replaces destroyed AA under air threat",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy starts third AA site against a surviving Kirov",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 builds baseline AA before seeing aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 completes and pays for AA",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 friendly or unseen aircraft do not raise quota",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 early economy waits while hostile aircraft remain hidden",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 visible bomber prompts emergency AA before war factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts a second AA when it sees an enemy airship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs demand six towers even at easy 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs demand six towers even at easy 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs demand six towers even at easy 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs demand six towers even at easy 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs demand six towers even at easy 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 two Kirovs stop emergency building at six towers",
+          "passed": true
+        },
+        {
+          "details": [
+            "FLAKT"
+          ],
+          "name": "ai2 emergency purchase ahead of tech savings FLAKT",
+          "passed": true
+        },
+        {
+          "details": [
+            "HTK"
+          ],
+          "name": "ai2 emergency purchase ahead of tech savings HTK",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 war factory and barracks tested",
+          "passed": true
+        },
+        {
+          "details": 1969.0,
+          "name": "ai2 completed AA hits enemy airship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 replaces destroyed AA under air threat",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 starts third AA site against a surviving Kirov",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "63 living, including passenger, allow one reserved order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "parallel factories share the final reserved slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "free miner cannot consume another factory's reserved slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AI ally and player remain independently available",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "reserved order delivers unit 64",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "over-limit house saves with original units and paid queue",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "loading preserves all 65 existing units",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "old paid queue waits intact at cap",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "64 remaining still holds production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "vacancy releases queued unit once",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "64 blocks further aircraft but permits missile firing",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied construction announces correct side and EVA",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI sees enemy house as hostile and player as friendly",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI fallback points at enemy start",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally charging is visible outside combat log",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied storm indicates readiness",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI orders own spy to enemy lab",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI orders own tank to its repair depot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI uses charged weather against visible enemy cluster",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "real allied AI launch has its own banner",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally target ping and commander storm voice",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "failed repeat does not repeat friendly announcement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "friendly notice expires separately from timer",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI leaves player orders and other treasuries alone",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "oil scouting and mission memory belong to the acting house",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Circuit Board low bridges restrict the allied yard to a small river",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied computer leaves priority funds for land on Circuit Board",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally uses its own shipyard to buy a legal ship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied AI replaces its lost construction yard through its own war factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "real allied 32-unit offensive retains six home guards",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "remaining outgoing orders retain one formation slot each",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "new allied wave and its formation slots serialize",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "restored allied offensive resumes at its next formation slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy aircraft fires its last volley away from base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy empty jet ignores pending ground wave",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy empty jet lands, reloads and keeps its pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy loaded legacy ground march becomes a return order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy full airport keeps orphan airborne without ammo",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy orphan picks up the newly vacant pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy destruction removes the jets assigned to this airport",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 aircraft fires its last volley away from base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 empty jet ignores pending ground wave",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 empty jet lands, reloads and keeps its pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 loaded legacy ground march becomes a return order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 full airport keeps orphan airborne without ammo",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 orphan picks up the newly vacant pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 destruction removes the jets assigned to this airport",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ally MCV follows swapped duel start",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy MCV follows swapped duel start",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Duel AI uses seat difficulty",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Legacy duel keeps original starts and global difficulty",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy deploys its own MCV",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ai2 deploys its own MCV",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "MCV economy begins construction without double charging",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "completed power plant charges its owner once",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site enemy",
+          "passed": true
+        },
+        {
+          "details": 5.0,
+          "name": "simultaneous hero reveal enemy reborn=false",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site ai2",
+          "passed": true
+        },
+        {
+          "details": 5.0,
+          "name": "simultaneous hero reveal ai2 reborn=false",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site ai3",
+          "passed": true
+        },
+        {
+          "details": 5.0,
+          "name": "simultaneous hero reveal ai3 reborn=false",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site enemy",
+          "passed": true
+        },
+        {
+          "details": 10.0,
+          "name": "simultaneous hero reveal enemy reborn=true",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site ai2",
+          "passed": true
+        },
+        {
+          "details": 10.0,
+          "name": "simultaneous hero reveal ai2 reborn=true",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "minimap marks actual scout site ai3",
+          "passed": true
+        },
+        {
+          "details": 10.0,
+          "name": "simultaneous hero reveal ai3 reborn=true",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Enemy reconnaissance never inserts player minimap marks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied observer shares hero reveal at ally",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied observer shares hero reveal at ai2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied HQ receives no enemy scout mark",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "house without yard or MCV still reveals a surviving base building",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "enemy base returns to explored fog after reveal expires",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Recon markers validate in a battle save",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Loading keeps only remaining radar time",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Scout markers expire without following the units",
+          "passed": true
+        },
+        {
+          "details": [
+            "swarm_drone",
+            "swarm_behemoth",
+            "swarm_spitter",
+            "swarm_hydra",
+            "swarm_claw",
+            "swarm_winged"
+          ],
+          "name": "multi-house hive purchases a mixed roster with saved hatching state",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "swarm hatching never charges a different AI house",
+          "passed": true
+        }
+      ]
+    },
+    "defeat_campaign": {
+      "count": 59,
+      "failed": 0,
+      "checks": [
+        {
+          "details": null,
+          "name": "SEAL and Ivan lose 75 percent of their current weights",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "Apocalypse and Prism weights increase 30 percent",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ENGINEER excluded from generic combat procurement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "SENGINEER excluded from generic combat procurement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "SPY excluded from generic combat procurement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "CMIN excluded from generic combat procurement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "AMCV excluded from generic combat procurement",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "GHOST remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "IVAN remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "MTNK remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "APOC remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "SREF remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "V3 remains a combat candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "31 living never triggers the initial campaign",
+          "passed": true
+        },
+        {
+          "details": [
+            6,
+            23
+          ],
+          "name": "32 total deploys 23 fighters and keeps six plus three support units",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "initial attackers receive real attack-move orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "guards and economic units stay home",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "lost home guard is replaced before splitting reinforcements",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "next ten fighters split five reinforcements and five guards",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "brutal idle recovery requests a new offensive wave instead of recalling raider",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "brutal base alarm leaves offensive role to the campaign",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "campaign roles and alternation are valid save data",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "save restore retains campaign and eleven guards",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "reinforcement alternation resumes after restore",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "64 per-house cap remains absolute",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "hit AI stops locally and answers shooter without discarding route",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "out-of-range attacker does not drag AI away; original target resumes",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "player orders are not affected",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "counterfire takes priority over current explicit AI focus",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "fresh stop discards saved counterfire focus",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "nearby building beats distant strategic objective",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "campaign chooses nearby visible building rather than distant base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "combat production cannot buy an engineer even if it is the only affordable candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "armed planes and ships participate in reinforcement role assignment",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "reserved air and naval forces only pick nearby threats",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "offensive aircraft retain their normal distant sortie targets",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "31 living never triggers the initial campaign",
+          "passed": true
+        },
+        {
+          "details": [
+            6,
+            23
+          ],
+          "name": "32 total deploys 23 fighters and keeps six plus three support units",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "initial attackers receive real attack-move orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "guards and economic units stay home",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "lost home guard is replaced before splitting reinforcements",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "next ten fighters split five reinforcements and five guards",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "brutal idle recovery requests a new offensive wave instead of recalling raider",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "brutal base alarm leaves offensive role to the campaign",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "campaign roles and alternation are valid save data",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "save restore retains campaign and eleven guards",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "reinforcement alternation resumes after restore",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "64 per-house cap remains absolute",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "hit AI stops locally and answers shooter without discarding route",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "out-of-range attacker does not drag AI away; original target resumes",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "player orders are not affected",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "counterfire takes priority over current explicit AI focus",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "fresh stop discards saved counterfire focus",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "nearby building beats distant strategic objective",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "campaign chooses nearby visible building rather than distant base",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "combat production cannot buy an engineer even if it is the only affordable candidate",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "armed planes and ships participate in reinforcement role assignment",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "reserved air and naval forces only pick nearby threats",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "offensive aircraft retain their normal distant sortie targets",
+          "passed": true
+        }
+      ]
+    },
+    "defeat_ops": {
+      "count": 466,
+      "failed": 0,
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2 real opening funds 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 no early subsidy 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 paused subsidy clock 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 consecutive ten second payouts 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 real opening funds 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 no early subsidy 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 paused subsidy clock 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 consecutive ten second payouts 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 real opening funds 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 no early subsidy 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 paused subsidy clock 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 consecutive ten second payouts 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 real opening funds 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 no early subsidy 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 paused subsidy clock 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 consecutive ten second payouts 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 save preserves remaining subsidy time",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 real opening funds 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 no early subsidy 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 paused subsidy clock 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 consecutive ten second payouts 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 save preserves remaining subsidy time",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 AI purchasing decision shares one hero slot across both barracks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 batch reserves exactly one Tanya",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 second AI barracks sees first reservation",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 opposite side has its own Tanya slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 cancelled training releases slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 deployed AI Tanya occupies slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 old duplicate order waits without charging",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 loss permits one replacement from saved queue",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: AI plane receives a real sortie order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: player plane never auto relaunched by enemy AI",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: spy disguises and prioritizes un-stolen lab",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: wounded vehicle receives normal depot repair order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: AI launches charged weather at visible valuable target",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: decision adds no money and bypasses no repair charges",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: flying aircraft and launched storm not repeatedly restarted",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: missing shipyard blocks paid naval production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: unknown roster entry never produces",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: no legal shore prevents committing shipyard production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: specialist production honors treasury",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: specialist uses real airport queue",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: specialist pays once and avoids ground attack army",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: pause freezes special decisions",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: unseen enemy positions never create sortie or spy order",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "MGTK"
+          ],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            99780.9523809524,
+            [
+              [
+                [
+                  "MGTK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SHAD"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1040.0, 1360.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            99780.9523809524,
+            [
+              [
+                [
+                  "CLEG",
+                  "CLEG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "JUMPJET",
+                  "GGI"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1280.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "MGTK",
+            "MGTK"
+          ],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA",
+            "GAWEAT",
+            "GAPOWR",
+            "GAPOWR",
+            "GAWEAP",
+            "GAPILE"
+          ],
+          "name": "allied duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            86317.0182166826,
+            [
+              [
+                [
+                  "MGTK",
+                  "MGTK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SHAD",
+                  "SREF"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1040.0, 1360.0)"
+              ],
+              [
+                [
+                  "SREF",
+                  "BFRT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(920.0, 1480.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            86317.0182166826,
+            [
+              [
+                [
+                  "TANY",
+                  "DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "GGI",
+                  "JUMPJET"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1280.0, 1000.0)"
+              ],
+              [
+                [
+                  "E1",
+                  "CLEG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(840.0, 1200.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "ZEP"
+          ],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            98480.9523809524,
+            [
+              [
+                [
+                  "ZEP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SCHP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            98480.9523809524,
+            [
+              [
+                [
+                  "FLAKT",
+                  "SOV_DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "SHK",
+                  "FLAKT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1120.0, 1400.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "ZEP",
+            "TTNK"
+          ],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR",
+            "NADEPT",
+            "NABNKR",
+            "NAWEAP",
+            "NAHAND"
+          ],
+          "name": "soviet duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            93700.0,
+            [
+              [
+                [
+                  "ZEP",
+                  "TTNK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SCHP",
+                  "ZEP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1000.0)"
+              ],
+              [
+                [
+                  "APOC",
+                  "APOC"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1600.0, 1200.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            93700.0,
+            [
+              [
+                [
+                  "E2",
+                  "SHK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "FLAKT",
+                  "SOV_DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1120.0, 1400.0)"
+              ],
+              [
+                [
+                  "FLAKT",
+                  "FLAKT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1000.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA real AI launches full aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA airborne en route before first shot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA lost target triggers return even with ammunition",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA lands on reserved pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA no target keeps plane on pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA separate decision launches from pad again",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA stranded aircraft climbs and waits when base lost",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ORCA replacement airport recovers airborne aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: transport reserves two actual commandos",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: real boarding adds both passengers",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: loaded helicopter chooses clear assault landing",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: drop is outside building and water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: arrival requests actual unloading",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: unloaded helicopter returns for next team",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: released commandos attack visible building for C4",
+          "passed": true
+        },
+        {
+          "details": "",
+          "name": "ra2: transport phase and references persist",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: naval force rejects unreachable inland target",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: naval force chooses reachable visible ship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: naval choice becomes actual attack order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: separate inland lake cannot be chased through land",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: coastal bombardment approach stays in navigable water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: ship targets coastal structure from firing position",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide real opening funds 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide no early subsidy 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide paused subsidy clock 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide consecutive ten second payouts 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide real opening funds 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide no early subsidy 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide paused subsidy clock 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide consecutive ten second payouts 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide real opening funds 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide no early subsidy 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide paused subsidy clock 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide consecutive ten second payouts 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide real opening funds 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide no early subsidy 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide paused subsidy clock 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide consecutive ten second payouts 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide save preserves remaining subsidy time",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide real opening funds 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide no early subsidy 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide paused subsidy clock 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide consecutive ten second payouts 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide save preserves remaining subsidy time",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide AI purchasing decision shares one hero slot across both barracks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide batch reserves exactly one Tanya",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide second AI barracks sees first reservation",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide opposite side has its own Tanya slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide cancelled training releases slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide deployed AI Tanya occupies slot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide old duplicate order waits without charging",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide loss permits one replacement from saved queue",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: AI plane receives a real sortie order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: player plane never auto relaunched by enemy AI",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: spy disguises and prioritizes un-stolen lab",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: wounded vehicle receives normal depot repair order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: AI launches charged weather at visible valuable target",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: decision adds no money and bypasses no repair charges",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: flying aircraft and launched storm not repeatedly restarted",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: missing shipyard blocks paid naval production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: unknown roster entry never produces",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: no legal shore prevents committing shipyard production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: specialist production honors treasury",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: specialist uses real airport queue",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: specialist pays once and avoids ground attack army",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: pause freezes special decisions",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: unseen enemy positions never create sortie or spy order",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "MGTK"
+          ],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            99780.9523809524,
+            [
+              [
+                [
+                  "MGTK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SHAD"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1040.0, 1360.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            99780.9523809524,
+            [
+              [
+                [
+                  "CLEG",
+                  "CLEG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "JUMPJET",
+                  "GGI"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1280.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "MGTK",
+            "MGTK"
+          ],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA",
+            "GAWEAT",
+            "GAPOWR",
+            "GAPOWR",
+            "GAWEAP",
+            "GAPILE"
+          ],
+          "name": "allied duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            86613.6145733461,
+            [
+              [
+                [
+                  "MGTK",
+                  "MGTK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SHAD",
+                  "SREF"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1040.0, 1360.0)"
+              ],
+              [
+                [
+                  "SREF",
+                  "BFRT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(920.0, 1480.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            86613.6145733461,
+            [
+              [
+                [
+                  "TANY",
+                  "DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "GGI",
+                  "JUMPJET"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1280.0, 1000.0)"
+              ],
+              [
+                [
+                  "E1",
+                  "CLEG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(840.0, 1200.0)"
+              ]
+            ]
+          ],
+          "name": "allied all duel lines accept concurrent orders GAPILE",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "GAAIRC",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NASAM",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "allied queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "GACNST",
+            "GAPOWR",
+            "GAPOWR",
+            "GAREFN",
+            "GAPILE",
+            "GAWEAP",
+            "GAAIRC",
+            "NASAM",
+            "GATECH",
+            "NASAM",
+            "GAWEAP",
+            "NASAM",
+            "GAPOWR",
+            "NASAM",
+            "GAPILE",
+            "ATESLA"
+          ],
+          "name": "allied completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "allied real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied production multiplier 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "allied replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "allied both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "ZEP"
+          ],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            98480.9523809524,
+            [
+              [
+                [
+                  "ZEP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SCHP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            98480.9523809524,
+            [
+              [
+                [
+                  "FLAKT",
+                  "SOV_DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "SHK",
+                  "FLAKT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1120.0, 1400.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [
+            "ZEP",
+            "TTNK"
+          ],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet cannot buy extra lines with an unfunded army",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR",
+            "NADEPT",
+            "NABNKR",
+            "NAWEAP",
+            "NAHAND"
+          ],
+          "name": "soviet duel pays and places both production lines up to difficulty cap",
+          "passed": true
+        },
+        {
+          "details": [
+            93885.7142857143,
+            [
+              [
+                [
+                  "ZEP",
+                  "TTNK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1500.0)"
+              ],
+              [
+                [
+                  "SCHP",
+                  "ZEP"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1200.0, 1000.0)"
+              ],
+              [
+                [
+                  "APOC",
+                  "APOC"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1600.0, 1200.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAWEAP",
+          "passed": true
+        },
+        {
+          "details": [
+            93885.7142857143,
+            [
+              [
+                [
+                  "FLAKT",
+                  "FLAKT"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1550.0, 1450.0)"
+              ],
+              [
+                [
+                  "SOV_DOG",
+                  "SHK"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1120.0, 1400.0)"
+              ],
+              [
+                [
+                  "FLAKT",
+                  "SOV_DOG"
+                ],
+                true,
+                false,
+                -1.0,
+                "(1000.0, 1000.0)"
+              ]
+            ]
+          ],
+          "name": "soviet all duel lines accept concurrent orders NAHAND",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": [
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NARADR",
+              "paid": 0.0,
+              "time": 42.0
+            },
+            {
+              "cost": 1000.0,
+              "elapsed": 0.0,
+              "id": "NAFLAK",
+              "paid": 0.0,
+              "time": 42.0
+            }
+          ],
+          "name": "soviet queues AA while radar is in production",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lab required for T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet pays for and places planned AA guns, advanced defense and lab",
+          "passed": true
+        },
+        {
+          "details": [
+            "NACNST",
+            "NAPOWR",
+            "NAPOWR",
+            "NAREFN",
+            "NAHAND",
+            "NAWEAP",
+            "NARADR",
+            "NAFLAK",
+            "NATECH",
+            "NAFLAK",
+            "NAPOWR",
+            "NAFLAK",
+            "NAWEAP",
+            "NAFLAK",
+            "NAPOWR",
+            "TESLA",
+            "NAHAND",
+            "NALASR"
+          ],
+          "name": "soviet completed AA acquires airborne Kirov",
+          "passed": true
+        },
+        {
+          "details": [],
+          "name": "soviet real war factory orders first unlocked T3 vehicle",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T3 vehicle leaves factory",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet T1 T2 T3 follow runtime prerequisites",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet catalog includes specialists and air; RA3 excluded",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet production multiplier 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet real AI order rejects RA3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet difficulty affects both real queue clocks",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet lost war factory starts rebuilding on installments",
+          "passed": true
+        },
+        {
+          "details": "(1200.0, 1500.0)",
+          "name": "soviet replacement war factory placed",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet builds and delivers aircraft without a visible enemy",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "soviet both war factories place independent orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG real AI launches full aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG airborne en route before first shot",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG lost target triggers return even with ammunition",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG lands on reserved pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG no target keeps plane on pad",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG separate decision launches from pad again",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG stranded aircraft climbs and waits when base lost",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "BEAG replacement airport recovers airborne aircraft",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: transport reserves two actual commandos",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: real boarding adds both passengers",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: loaded helicopter chooses clear assault landing",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: drop is outside building and water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: arrival requests actual unloading",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: unloaded helicopter returns for next team",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: released commandos attack visible building for C4",
+          "passed": true
+        },
+        {
+          "details": "",
+          "name": "iron_tide: transport phase and references persist",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: naval force rejects unreachable inland target",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: naval force chooses reachable visible ship",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: naval choice becomes actual attack order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: separate inland lake cannot be chased through land",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: coastal bombardment approach stays in navigable water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: ship targets coastal structure from firing position",
+          "passed": true
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "iron_tide/scripts/world/house_elimination.gd": "dbc61c301ea0b02ac48b0977d959cdf44bb49f8f637dc021be551ab125e103bc",
+    "iron_tide/scripts/world/battle.gd": "b6ca35f0d6e590687d6de7c3d3027c9ac102b2177d9e4460b379b429364fb3d8",
+    "iron_tide/scripts/units/unit.gd": "52ccbdccfc3e35fb261da8a4d9fbcfc2022d782db435808ab927f6259511c27d",
+    "iron_tide/scripts/buildings/building.gd": "32359d723906a957316abf80e8a4f905849d7b67c606633c63eb25e9c11720bc"
+  }
+}

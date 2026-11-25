@@ -1,0 +1,151 @@
+{
+  "source_save_sha256": "a6b74f68bdf558de38ab3f67b6ce8a84c2b531d5f18a7ea5b0f719f4bb607839",
+  "unit_count": 161,
+  "building_count": 25,
+  "rhinos": 46,
+  "ordinary_ember_rhinos": 45,
+  "cpu": "Intel Core Ultra 5 250K Plus",
+  "gpu": "NVIDIA RTX 5060 Ti",
+  "renderer": "Godot 4.7.2 GL Compatibility",
+  "method": "Private Win32 desktop, uncapped vsync, --fixed-fps 60, 45 warmup frames then 180 frames per phase; own APPDATA with copied meta profile and battle save. AI/combat enabled. Two pre-change runs and final-source run; not a Ryzen 3700X measurement.",
+  "regression": {
+    "checks": 1449,
+    "failed": 0
+  },
+  "runs": {
+    "before_1": [
+      {
+        "phase": "saved_view",
+        "frames": 180,
+        "p50_ms": 27.629,
+        "p95_ms": 37.145,
+        "max_ms": 48.089,
+        "mean_draw_calls": 1565.7
+      },
+      {
+        "phase": "rhinos_selected",
+        "frames": 180,
+        "p50_ms": 28.389,
+        "p95_ms": 39.698,
+        "max_ms": 57.119,
+        "mean_draw_calls": 1467.9
+      },
+      {
+        "phase": "rhinos_moving",
+        "frames": 180,
+        "p50_ms": 41.209,
+        "p95_ms": 50.512,
+        "max_ms": 58.884,
+        "mean_draw_calls": 2764.6
+      }
+    ],
+    "before_2": [
+      {
+        "phase": "saved_view",
+        "frames": 180,
+        "p50_ms": 28.327,
+        "p95_ms": 37.993,
+        "max_ms": 51.999,
+        "mean_draw_calls": 1565.6
+      },
+      {
+        "phase": "rhinos_selected",
+        "frames": 180,
+        "p50_ms": 28.428,
+        "p95_ms": 39.954,
+        "max_ms": 58.207,
+        "mean_draw_calls": 1467.9
+      },
+      {
+        "phase": "rhinos_moving",
+        "frames": 180,
+        "p50_ms": 42.587,
+        "p95_ms": 51.564,
+        "max_ms": 60.369,
+        "mean_draw_calls": 2764.6
+      }
+    ],
+    "after_1": [
+      {
+        "phase": "saved_view",
+        "frames": 180,
+        "p50_ms": 21.727,
+        "p95_ms": 31.605,
+        "max_ms": 42.116,
+        "mean_draw_calls": 768.7
+      },
+      {
+        "phase": "rhinos_selected",
+        "frames": 180,
+        "p50_ms": 25.773,
+        "p95_ms": 37.812,
+        "max_ms": 54.358,
+        "mean_draw_calls": 1160.8
+      },
+      {
+        "phase": "rhinos_moving",
+        "frames": 180,
+        "p50_ms": 30.281,
+        "p95_ms": 42.521,
+        "max_ms": 47.527,
+        "mean_draw_calls": 1439.4
+      }
+    ],
+    "after_2": [
+      {
+        "phase": "saved_view",
+        "frames": 180,
+        "p50_ms": 23.087,
+        "p95_ms": 32.801,
+        "max_ms": 45.88,
+        "mean_draw_calls": 769.7
+      },
+      {
+        "phase": "rhinos_selected",
+        "frames": 180,
+        "p50_ms": 23.431,
+        "p95_ms": 33.786,
+        "max_ms": 55.289,
+        "mean_draw_calls": 858.8
+      },
+      {
+        "phase": "rhinos_moving",
+        "frames": 180,
+        "p50_ms": 22.169,
+        "p95_ms": 32.056,
+        "max_ms": 125.221,
+        "mean_draw_calls": 853.5
+      }
+    ],
+    "after_final": [
+      {
+        "phase": "saved_view",
+        "frames": 180,
+        "p50_ms": 21.736,
+        "p95_ms": 33.701,
+        "max_ms": 50.081,
+        "mean_draw_calls": 768.5
+      },
+      {
+        "phase": "rhinos_selected",
+        "frames": 180,
+        "p50_ms": 26.355,
+        "p95_ms": 37.273,
+        "max_ms": 55.818,
+        "mean_draw_calls": 1160.8
+      },
+      {
+        "phase": "rhinos_moving",
+        "frames": 180,
+        "p50_ms": 30.449,
+        "p95_ms": 43.013,
+        "max_ms": 46.723,
+        "mean_draw_calls": 1439.4
+      }
+    ]
+  },
+  "source_sha256": {
+    "iron_tide/scripts/units/tank_finish.gd": "a1568c04642ead8b3c5758e1cea5bc887327cfada5e275f47887f61a6ea611a3",
+    "iron_tide/scripts/units/tank_finish_dust.gd": "a6dd85d478d6f082ff5c530e957b9e072ef80972ba055c53fa72b485df2d73db"
+  }
+}

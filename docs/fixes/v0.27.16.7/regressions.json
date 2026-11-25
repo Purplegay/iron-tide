@@ -1,0 +1,44 @@
+{
+  "final_cache_fixed": {
+    "checks": 11,
+    "failed": 0
+  },
+  "verify_ai_dispatch": {
+    "checks": 29,
+    "failed": 0
+  },
+  "verify_ai_production_flow": {
+    "checks": 122,
+    "failed": 0
+  },
+  "verify_build_range": {
+    "checks": 225,
+    "failed": 0
+  },
+  "verify_economy_ai": {
+    "checks": 50,
+    "failed": 0
+  },
+  "verify_house_match": {
+    "checks": 248,
+    "failed": 0
+  },
+  "verify_skirmish_operations": {
+    "checks": 466,
+    "failed": 0
+  },
+  "placements": {
+    "same_results": true,
+    "count": 1440,
+    "baseline_ms": [
+      104.465,
+      88.621,
+      87.278
+    ],
+    "current_ms": [
+      81.632,
+      70.745,
+      80.416
+    ]
+  }
+}

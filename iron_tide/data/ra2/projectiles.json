@@ -1,0 +1,906 @@
+{
+  "version": 1,
+  "count": 49,
+  "projectiles": {
+    "InvisibleLow": {
+      "id": "InvisibleLow",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "Electricbounce": {
+      "id": "Electricbounce",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "ShrapnelWeapon": "TeslaFragment",
+        "ShrapnelCount": "2",
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "InvisibleAll": {
+      "id": "InvisibleAll",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes"
+      }
+    },
+    "Invisible3": {
+      "id": "Invisible3",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes"
+      }
+    },
+    "Invisible5": {
+      "id": "Invisible5",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "no"
+      }
+    },
+    "PsychicControl": {
+      "id": "PsychicControl",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    },
+    "Psychic": {
+      "id": "Psychic",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    },
+    "Invisible": {
+      "id": "Invisible",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    },
+    "DOGJUMP": {
+      "id": "DOGJUMP",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "DOGP",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 8,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "FirersPalette": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "GiantNukeUp": {
+      "id": "GiantNukeUp",
+      "aa": false,
+      "aa_raw": null,
+      "image": "NKMSLUP",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": true,
+      "extra": {
+        "Arm": "2",
+        "Acceleration": "1",
+        "DetonationAltitude": "20000",
+        "FirersPalette": "yes"
+      }
+    },
+    "ClusterBits": {
+      "id": "ClusterBits",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 60,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes"
+      }
+    },
+    "FlakTProj": {
+      "id": "FlakTProj",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "120MM",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes",
+        "Inaccurate": "yes",
+        "FlakScatter": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "FlakProj": {
+      "id": "FlakProj",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "no",
+        "Ranged": "yes",
+        "Inaccurate": "yes",
+        "FlakScatter": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "no"
+      }
+    },
+    "ADOGJUMP": {
+      "id": "ADOGJUMP",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "ADOGP",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 8,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "FirersPalette": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "Cannon": {
+      "id": "Cannon",
+      "aa": false,
+      "aa_raw": null,
+      "image": "120MM",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "AAHeatSeeker": {
+      "id": "AAHeatSeeker",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 80,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "no",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "InvisibleHigh": {
+      "id": "InvisibleHigh",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToElevation": "yes"
+      }
+    },
+    "BlimpBombP": {
+      "id": "BlimpBombP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "ZBOMB",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": true,
+      "extra": {
+        "Arm": "10",
+        "Acceleration": "1",
+        "DetonationAltitude": "20000"
+      }
+    },
+    "JUMP": {
+      "id": "JUMP",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "DRONP",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 8,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "FirersPalette": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "Ballistic": {
+      "id": "Ballistic",
+      "aa": false,
+      "aa_raw": null,
+      "image": "120MM",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "no"
+      }
+    },
+    "ASWVirt": {
+      "id": "ASWVirt",
+      "aa": false,
+      "aa_raw": "no",
+      "image": null,
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "no",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "Torpedo": {
+      "id": "Torpedo",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "SUBT",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 12,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "yes",
+        "Level": "yes"
+      }
+    },
+    "MedusaProjectile": {
+      "id": "MedusaProjectile",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "MEDUSA",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 20,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Arm": "1",
+        "High": "yes",
+        "AG": "no",
+        "CourseLockDuration": "15",
+        "Scalable": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "QuadShell": {
+      "id": "QuadShell",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes",
+        "SubjectToElevation": "no",
+        "SubjectToCliffs": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "SQDJUMP": {
+      "id": "SQDJUMP",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": 8,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "Sonic": {
+      "id": "Sonic",
+      "aa": false,
+      "aa_raw": null,
+      "image": null,
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Level": "yes"
+      }
+    },
+    "LargeCometP": {
+      "id": "LargeCometP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "ShrapnelWeapon": "CometFragment",
+        "ShrapnelCount": "5",
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "SuperCometP": {
+      "id": "SuperCometP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "ShrapnelWeapon": "SuperCometFragment",
+        "ShrapnelCount": "5",
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "SmallCometP": {
+      "id": "SmallCometP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "SmallTeslaP": {
+      "id": "SmallTeslaP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "SuperSmallCometP": {
+      "id": "SuperSmallCometP",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "ShrapnelWeapon": "CometFragment",
+        "ShrapnelCount": "3",
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "AAHeatSeeker2": {
+      "id": "AAHeatSeeker2",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 60,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "AirToGroundMissile": {
+      "id": "AirToGroundMissile",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 100,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "NormalBomb": {
+      "id": "NormalBomb",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 1,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "IgnoresFirestorm": "yes"
+      }
+    },
+    "DepthCharge": {
+      "id": "DepthCharge",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 1,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "IgnoresFirestorm": "yes"
+      }
+    },
+    "GrandCannonBall": {
+      "id": "GrandCannonBall",
+      "aa": false,
+      "aa_raw": null,
+      "image": "120MM",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Level": "no",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "no"
+      }
+    },
+    "ProtonBlast": {
+      "id": "ProtonBlast",
+      "aa": false,
+      "aa_raw": null,
+      "image": "TORPEDO",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 1,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Ranged": "yes",
+        "IgnoresFirestorm": "yes"
+      }
+    },
+    "Invisible2": {
+      "id": "Invisible2",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": 3,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes"
+      }
+    },
+    "Lobbed2": {
+      "id": "Lobbed2",
+      "aa": false,
+      "aa_raw": null,
+      "image": "CANISTER",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "High": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "HeatSeeker": {
+      "id": "HeatSeeker",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 8,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "ProtonTorpedo": {
+      "id": "ProtonTorpedo",
+      "aa": false,
+      "aa_raw": null,
+      "image": "TORPEDO",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 1,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "IgnoresFirestorm": "yes"
+      }
+    },
+    "DredMissile": {
+      "id": "DredMissile",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DREDMISS",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 16,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "yes",
+        "FirersPalette": "yes"
+      }
+    },
+    "Lobbed": {
+      "id": "Lobbed",
+      "aa": false,
+      "aa_raw": null,
+      "image": "DISCUS",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Bouncy": "yes",
+        "Floater": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "Cannon2": {
+      "id": "Cannon2",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "120MM",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    },
+    "LLine": {
+      "id": "LLine",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "LLine2": {
+      "id": "LLine2",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "AG": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    },
+    "PulsPr": {
+      "id": "PulsPr",
+      "aa": false,
+      "aa_raw": null,
+      "image": "PULSBALL",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    },
+    "ChemMissile": {
+      "id": "ChemMissile",
+      "aa": false,
+      "aa_raw": "no",
+      "image": "MISLCHEM",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 4,
+      "shadow": false,
+      "proximity": true,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "VeryHigh": "yes",
+        "Cluster": "8",
+        "Ranged": "yes",
+        "Color": "DarkGreen",
+        "IgnoresFirestorm": "yes"
+      }
+    },
+    "DogShard": {
+      "id": "DogShard",
+      "aa": false,
+      "aa_raw": null,
+      "image": "CRYSTAL4",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {}
+    }
+  }
+}

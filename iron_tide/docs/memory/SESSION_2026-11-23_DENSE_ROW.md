@@ -1,0 +1,3 @@
+# Dense nearest-x rows: not promoted
+Kept ring order, epoch invalidation, temporary-blocker fallback and left tie. Dense PackedInt32Array per nonempty zone/domain/y stores nearest x for each column. Godot regression 18000/0. Real headless probe max extra array payload vs equivalent sparse rows 122492/98352 bytes in slot2/3; not heap/RSS. No low-level timing attribution.
+Frozen current-row-index compatible build 3x graphical Release slot2 P95 182.402 -> 294.701 ms; slot3 247.984 -> 274.358 ms. One run per variant/save, all external audits true; not causal proof or clean acceptance. Production remains sparse. Evidence .validation/dense-row-3x/{first-2,first-3,second-2,second-3,bytes2,bytes3,ref-2,ref-3}. Do not retry unconditional dense rows as a new optimization.

@@ -1,0 +1,26 @@
+{
+ "version": 2,
+ "generated": "2026-10-10T04:23:11.452Z",
+ "sources": {},
+ "counts": {
+  "anim": 49
+ },
+ "items": [],
+ "missing_anim": [
+  "GAREFN:activeanimfour=GAREFNL4",
+  "GAYARD:specialanim=GAYARD_S1",
+  "GAYARD:specialanimtwo=GAYARD_S2",
+  "GAYARD:specialanimthree=GAYARD_S3",
+  "NAIRON:superanimthree=NAIRON_G",
+  "NADEPT:specialanim=NADEPT_C1",
+  "NADEPT:specialanimtwo=NADEPT_C2",
+  "NADEPT:specialanimthree=NADEPT_C3",
+  "CAARMR:activeanim=CAARMR_A",
+  "NAYARD:specialanim=NAYARD_S1",
+  "NAYARD:specialanimtwo=NAYARD_S2",
+  "NAYARD:specialanimthree=NAYARD_S3",
+  "GAGAP:activeanim=GAGAP_A",
+  "CAAIRP:activeanimtwo=CAAIRP_F(cell 188x186!=172x172)",
+  "CAWASH18:activeanim=CAWSH18A(cell 90x96!=66x92)"
+ ]
+}

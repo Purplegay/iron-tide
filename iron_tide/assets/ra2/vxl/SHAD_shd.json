@@ -1,0 +1,16 @@
+{
+  "id": "SHAD_shd",
+  "image": "SHAD",
+  "vxl": "SHAD.VXL",
+  "facings": 32,
+  "facing_offset": 16,
+  "frameW": 182,
+  "frameH": 105,
+  "poses": 2,
+  "fps": 20,
+  "source": "local SHAD.VXL",
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 1
+}

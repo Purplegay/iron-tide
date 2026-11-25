@@ -1,0 +1,1 @@
+{"image":"DLPH","source":"local art.ini/[DLPH] + inspected DLPH.SHP layout","seq":{"Walk":{"start":0,"per":6,"facings":8},"Guard":{"start":48,"per":1,"facings":8},"FireUp":{"start":56,"per":6,"facings":8},"Die1":{"start":104,"per":12,"facings":1}}}

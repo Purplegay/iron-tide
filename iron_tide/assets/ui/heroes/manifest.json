@@ -1,0 +1,66 @@
+[
+  {
+    "id": "E1",
+    "name": "守望者",
+    "en": "WARDEN",
+    "role": "FRONTLINE / 01",
+    "color": "#62c9ed",
+    "path": "res://assets/ui/heroes/e1.png"
+  },
+  {
+    "id": "E2",
+    "name": "炉火",
+    "en": "FURNACE",
+    "role": "ASSAULT / 02",
+    "color": "#ef9b4a",
+    "path": "res://assets/ui/heroes/e2.png"
+  },
+  {
+    "id": "MTNK",
+    "name": "北辰",
+    "en": "POLARIS",
+    "role": "ARMORED COMMAND / 03",
+    "color": "#72b9f4",
+    "path": "res://assets/ui/heroes/mtnk.png"
+  },
+  {
+    "id": "HTNK",
+    "name": "铁脊",
+    "en": "IRONSPINE",
+    "role": "HEAVY BREAKTHROUGH / 04",
+    "color": "#e86a53",
+    "path": "res://assets/ui/heroes/htnk.png"
+  },
+  {
+    "id": "TANY",
+    "name": "谭雅",
+    "en": "TANYA",
+    "role": "SPECIAL OPERATIONS / 05",
+    "color": "#55dfc5",
+    "path": "res://assets/ra2/cameo/TANYICON.png"
+  },
+  {
+    "id": "BORIS",
+    "name": "鲍里斯",
+    "en": "BORIS",
+    "role": "STRIKE COORDINATOR / 06",
+    "color": "#e7bd66",
+    "path": "res://assets/ra2/cameo/BRISICON.png"
+  },
+  {
+    "id": "ORCA",
+    "name": "游隼",
+    "en": "PEREGRINE",
+    "role": "AIR SUPERIORITY / 07",
+    "color": "#91c9f9",
+    "path": "res://assets/ui/heroes/orca.png"
+  },
+  {
+    "id": "TTNK",
+    "name": "雷铸",
+    "en": "THUNDERFORGE",
+    "role": "TESLA PLATFORM / 08",
+    "color": "#b99bfa",
+    "path": "res://assets/ui/heroes/ttnk.png"
+  }
+]

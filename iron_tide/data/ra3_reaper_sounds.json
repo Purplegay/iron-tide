@@ -1,0 +1,176 @@
+{
+  "sounds": {
+    "specs": {
+      "RA3_REAPER_SOV_MigFighter_MissileImpact": {
+        "sounds": [
+          "juyari_torpedoexploa",
+          "juyari_torpedoexplob",
+          "juyari_torpedoexploc",
+          "juyari_torpedoexplod",
+          "juyari_torpedoexploe",
+          "juyari_torpedoexplof"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_REAPER_SOV_ProtoSickle_WeaponGrenadeExplo": {
+        "sounds": [
+          "suprotosickl_grndfireexploa",
+          "suprotosickl_grndfireexplob",
+          "suprotosickl_grndfireexploc",
+          "suprotosickl_grndfireexplod",
+          "suprotosickl_grndfireexploe"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      },
+      "RA3_REAPER_SOV_ProtoSickle_MoveLandMS": {
+        "sounds": [
+          "suprotosickl_jumplanda",
+          "suprotosickl_jumplandb",
+          "suprotosickl_jumplandc",
+          "suprotosickl_jumplandd",
+          "suprotosickl_jumplande",
+          "suv4mis_misexplosioa",
+          "suv4mis_misexplosiob",
+          "suv4mis_misexplosioc",
+          "suv4mis_misexplosiod",
+          "suv4mis_misexplosioe"
+        ],
+        "volume": 85,
+        "priority": 9,
+        "loop": false
+      }
+    },
+    "entries": {
+      "juyari_torpedoexplof": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploF.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1517
+      },
+      "juyari_torpedoexploe": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1398
+      },
+      "juyari_torpedoexplod": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1193
+      },
+      "juyari_torpedoexploc": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1199
+      },
+      "juyari_torpedoexplob": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 998
+      },
+      "juyari_torpedoexploa": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_JUYari_torpedoExploA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1197
+      },
+      "suprotosickl_grndfireexploe": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_GrndFireExploE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3480
+      },
+      "suprotosickl_grndfireexplod": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_GrndFireExploD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2264
+      },
+      "suprotosickl_grndfireexploc": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_GrndFireExploC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2173
+      },
+      "suprotosickl_grndfireexplob": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_GrndFireExploB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2489
+      },
+      "suprotosickl_grndfireexploa": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_GrndFireExploA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2337
+      },
+      "suv4mis_misexplosioe": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUV4Mis_misExplosioe.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1536
+      },
+      "suv4mis_misexplosiod": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUV4Mis_misExplosiod.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1451
+      },
+      "suv4mis_misexplosioc": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUV4Mis_misExplosioc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1430
+      },
+      "suv4mis_misexplosiob": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUV4Mis_misExplosiob.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1428
+      },
+      "suv4mis_misexplosioa": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUV4Mis_misExplosioa.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1504
+      },
+      "suprotosickl_jumplande": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_jumpLandE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1571
+      },
+      "suprotosickl_jumplandd": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_jumpLandD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1406
+      },
+      "suprotosickl_jumplandc": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_jumpLandC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1571
+      },
+      "suprotosickl_jumplandb": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_jumpLandB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1675
+      },
+      "suprotosickl_jumplanda": {
+        "file": "res://assets/ra3/soviet/reaper_fx/AudioFile_SUProtoSickl_jumpLandA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1724
+      }
+    }
+  }
+}

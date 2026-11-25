@@ -1,0 +1,61 @@
+{
+  "version": "0.25.51",
+  "date": "2026-11-05",
+  "total_checks": 2373,
+  "failed": 0,
+  "visual_status": "pending_user_visual_confirmation",
+  "environment": {
+    "project": "C:\\Users\\admin\\IronTide",
+    "branch": "codex/ra2-independent",
+    "test_entry": "Godot headless with CREATE_NO_WINDOW and isolated APPDATA",
+    "services": "none",
+    "database": "none",
+    "protocol": "none",
+    "user_save_modified": false
+  },
+  "runs": [
+    {
+      "root": "C:/Users/admin/Temp/iron-field-commission-20261105-final",
+      "suites": {
+        "field_commission": 238,
+        "academy": 756
+      }
+    },
+    {
+      "root": "C:/Users/admin/Temp/iron-field-commission-20261105-c",
+      "suites": {
+        "spy_lab": 35,
+        "captured_production": 88
+      }
+    },
+    {
+      "root": "C:/Users/admin/Temp/iron-field-commission-20261105-e",
+      "suites": {
+        "production_catalog": 1256
+      }
+    }
+  ],
+  "warnings": [
+    "Existing academy exit RID/ObjectDB cleanup warnings; no script errors"
+  ],
+  "source_sha256": {
+    "data/skills.json": "fb4c0280977f86f75aea70983abba1fd049f572e5b8fbdf077f5abe593a3a0b7",
+    "scripts/rules/field_commission.gd": "240865cbd42b725ad15eee0097318097295c45fa9b802e92450dd9f23ae53f0b",
+    "scripts/rules/academy.gd": "309072bcdb89a9ca90a1fac8df3f787ba24bd5c06b25917aa84a60c985275941",
+    "scripts/autoload/battle_request.gd": "6ea1e873c735405aa34041c3b6b628444e81ce4f3009052c157d3699aea67116",
+    "scripts/autoload/game_data.gd": "0e2a15ef1f18817d7939d64af5ffe2c8721951d03755a930ed692e98bc3726df",
+    "scripts/units/unit.gd": "f7ea5315f41580a88bb73228971be3a02e3bf02bc56498a19f82b4f78737b99f",
+    "scripts/buildings/building.gd": "f440ac4bda0cb5790c11dd801c2a8b7a8f80c9aae44d5f5578b9b41c7988e512",
+    "scripts/units/soviet_specials.gd": "fe7f70386d7c16c788af7fd935eadaf8f7b510b1e8f74da2e052bcc53fe5eee7",
+    "scripts/ui/hud.gd": "9fc0e84692626edbcf2253149ab63eac8e59a9e52f339c5b13b8abfd9a317545",
+    "scripts/ui/unlock_guidance.gd": "4079d34c195e8c31b822565c1d9c30d551dc634e65f43290596cfa9a49f1b8f7",
+    "scripts/ui/progression_icon.gd": "94b64d61e07f7801f61f9b004c55569cee3022d6f4b2666733957970700e42f3",
+    "scripts/ui/entity_description.gd": "d6e86e3e362d9712bebf27082b27b7e481ed55959509ed3a159e99b57da18d64",
+    "scripts/admin/gm_unit_panel.gd": "5872848763445a584a37f49d0c020cf71bedc636b4bcb5f36b6ef0cb7fea1e3b",
+    "tests/field_commission_regression.gd": "567e9bbd27ec047abbfb0051f278d5bb68dfc79203dedde87d196ac7057077d6",
+    "tests/field_commission_regression.tscn": "dcbe5c49af1529fcaeff84844334200559fc3709eb0a966e26bde38d4a15f553",
+    "tests/spy_lab_regression.gd": "735ed5b6b2a8f2b0633a25a513fec33a17592c1749a48cbb9fafcce20d678e6a",
+    "tests/captured_production_regression.gd": "8d01d208f53ad953454d082845e006990d41911ff349df220d2d3e1137b0a7e4",
+    "tests/production_catalog_regression.gd": "e0706cc78d1fe82f27b0e68dc8bd3e2a991f6e264298edb80243157245109f0c"
+  }
+}

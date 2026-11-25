@@ -1,0 +1,590 @@
+{
+  "version": 1,
+  "source": "Local EA RA3 SDK v3 + official demo",
+  "units": [
+    {
+      "id": "R3MIRAGE",
+      "name": "幻影坦克（RA3）",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "棱镜支援坦克",
+      "extension_only": true,
+      "expansion": "ra3_preview",
+      "cost": 1600,
+      "build_time": 15.0,
+      "production_seconds_native": true,
+      "hp": 500.0,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 120.0,
+      "radius": 19,
+      "sight": 750.0,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "ra3_clearance": 3,
+      "ra2_prereq": [
+        "GAWEAP"
+      ],
+      "move": {
+        "speed": 120.0,
+        "rot": 180,
+        "accel_time": 0.01,
+        "accelerates": true,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "veteran": {
+        "native_ra3": true,
+        "adapter_revision": 2
+      },
+      "voice": {
+        "select": "RA3_Mirage_select",
+        "move": "RA3_Mirage_move",
+        "attack": "RA3_Mirage_attack",
+        "die": "GenVehicleDie",
+        "created": "RA3_Mirage_created",
+        "move_attack": "RA3_Mirage_move_attack",
+        "move_special": "RA3_Mirage_move_special",
+        "select_mirage": "RA3_Mirage_select_mirage",
+        "select_battle": "RA3_Mirage_select_battle",
+        "select_under_fire": "RA3_Mirage_select_under_fire",
+        "retreat": "RA3_Mirage_retreat"
+      },
+      "desc": "静止时伪装成树木，移动、开火或受伤后现形。棱镜炮能打击地面和水面目标，并折射到附近敌人。按 Q 可停止开炮，掩护周围友方地面部队隐形。它无法防空。",
+      "weapon": {
+        "damage": 200.0,
+        "cooldown": 1.6,
+        "range": 187.5,
+        "projectile_speed": 0,
+        "attack_type": "tesla",
+        "ra2_aa": false,
+        "ra2_weapon_id": "PrismShot",
+        "ra2_warhead": "RA3_PRISM",
+        "burst": 1,
+        "firing_seconds": 1.5,
+        "reload_seconds": 0.1,
+        "damage_delay": 0.1
+      },
+      "elite_weapon": {
+        "damage": 250.0,
+        "cooldown": 1.6,
+        "range": 225.0,
+        "projectile_speed": 0,
+        "attack_type": "tesla",
+        "ra2_aa": false,
+        "ra2_weapon_id": "PrismShot",
+        "ra2_warhead": "RA3_PRISM",
+        "burst": 1,
+        "firing_seconds": 1.5,
+        "reload_seconds": 0.1,
+        "damage_delay": 0.1
+      }
+    }
+  ],
+  "art": {
+    "R3MIRAGE": {
+      "cameo": "res://assets/ra3/mirage/presentation/cameo.png",
+      "portrait": "res://assets/ra3/mirage/presentation/portrait.png"
+    }
+  },
+  "warheads": {
+    "RA3_PRISM": {
+      "verses": {
+        "none": 1.0,
+        "flak": 1.0,
+        "plate": 1.0,
+        "light": 1.0,
+        "medium": 1.0,
+        "heavy": 1.0,
+        "wood": 1.0,
+        "steel": 1.0,
+        "concrete": 1.0,
+        "special_1": 1.0,
+        "special_2": 1.0
+      },
+      "extra": {}
+    }
+  },
+  "adapter": {
+    "distance_scale": 1.5,
+    "speed_world_per_second": 120.0,
+    "instant_primary": false,
+    "native_damage_delay_seconds": 0.1,
+    "secondary_scatter": "one hop, up to 5 normal / 7 heroic; 25 / 40 raw damage",
+    "armor": "uniform PRISM versus YR armor classes; target defense modifiers retained",
+    "clock": "SDK seconds; no RA2 frame conversion; shared match pause/speed only",
+    "distance_note": "Godot world scale matches model frame 96 / camera 64; not an SDK balance multiplier"
+  },
+  "sounds": {
+    "specs": {
+      "RA3_Mirage_select": {
+        "sounds": [
+          "ra3_aumirag_voicrea",
+          "ra3_aumirag_voisela",
+          "ra3_aumirag_voiselb",
+          "ra3_aumirag_voiselc",
+          "ra3_aumirag_voiseld",
+          "ra3_aumirag_voisele"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_move": {
+        "sounds": [
+          "ra3_aumirag_voimova",
+          "ra3_aumirag_voimovb",
+          "ra3_aumirag_voimovc",
+          "ra3_aumirag_voimovd",
+          "ra3_aumirag_voimove",
+          "ra3_aumirag_voimovf",
+          "ra3_aumirag_voimovg"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_attack": {
+        "sounds": [
+          "ra3_aumirag_voiatka",
+          "ra3_aumirag_voiatkb",
+          "ra3_aumirag_voiatkc",
+          "ra3_aumirag_voiatkd",
+          "ra3_aumirag_voiatke",
+          "ra3_aumirag_voiatkf",
+          "ra3_aumirag_voiatkg",
+          "ra3_aumirag_voiatkh"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_created": {
+        "sounds": [
+          "ra3_aumirag_voicreb"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_move_attack": {
+        "sounds": [
+          "ra3_aumirag_voimovatka",
+          "ra3_aumirag_voimovatkb",
+          "ra3_aumirag_voimovatkc",
+          "ra3_aumirag_voimovatkd",
+          "ra3_aumirag_voimovatke"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_move_special": {
+        "sounds": [
+          "ra3_aumirag_voimovspca",
+          "ra3_aumirag_voimovspcb",
+          "ra3_aumirag_voimovspcc",
+          "ra3_aumirag_voimovspcd",
+          "ra3_aumirag_voimovspce"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_select_mirage": {
+        "sounds": [
+          "ra3_aumirag_voiselmira",
+          "ra3_aumirag_voiselmirb",
+          "ra3_aumirag_voiselmirc",
+          "ra3_aumirag_voiselmird",
+          "ra3_aumirag_voiselmire",
+          "ra3_aumirag_voiselmirf",
+          "ra3_aumirag_voiselmirg"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_select_battle": {
+        "sounds": [
+          "ra3_aumirag_voiselbata",
+          "ra3_aumirag_voiselbatb",
+          "ra3_aumirag_voiselbatc",
+          "ra3_aumirag_voiselbatd",
+          "ra3_aumirag_voiselbate"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_select_under_fire": {
+        "sounds": [
+          "ra3_aumirag_voiselundfira",
+          "ra3_aumirag_voiselundfirb",
+          "ra3_aumirag_voiselundfirc"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_Mirage_retreat": {
+        "sounds": [
+          "ra3_aumirag_voireta",
+          "ra3_aumirag_voiretb",
+          "ra3_aumirag_voiretc"
+        ],
+        "volume": 100.0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_MirageFire": {
+        "sounds": [
+          "ra3_aumirag_wea1firea",
+          "ra3_aumirag_wea1fireb",
+          "ra3_aumirag_wea1firec"
+        ],
+        "volume": 100,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      }
+    },
+    "entries": {
+      "ra3_aumirag_voicrea": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiCrea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1611
+      },
+      "ra3_aumirag_voisela": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSela.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 885
+      },
+      "ra3_aumirag_voiselb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1331
+      },
+      "ra3_aumirag_voiselc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1549
+      },
+      "ra3_aumirag_voiseld": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSeld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1323
+      },
+      "ra3_aumirag_voisele": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSele.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 811
+      },
+      "ra3_aumirag_voimova": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMova.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 789
+      },
+      "ra3_aumirag_voimovb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 808
+      },
+      "ra3_aumirag_voimovc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1229
+      },
+      "ra3_aumirag_voimovd": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 763
+      },
+      "ra3_aumirag_voimove": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMove.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1043
+      },
+      "ra3_aumirag_voimovf": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 699
+      },
+      "ra3_aumirag_voimovg": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1152
+      },
+      "ra3_aumirag_voiatka": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 651
+      },
+      "ra3_aumirag_voiatkb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 819
+      },
+      "ra3_aumirag_voiatkc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1141
+      },
+      "ra3_aumirag_voiatkd": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1072
+      },
+      "ra3_aumirag_voiatke": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1181
+      },
+      "ra3_aumirag_voiatkf": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 616
+      },
+      "ra3_aumirag_voiatkg": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1403
+      },
+      "ra3_aumirag_voiatkh": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiAtkh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 691
+      },
+      "ra3_aumirag_voicreb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiCreb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1235
+      },
+      "ra3_aumirag_voimovatka": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovAtka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1293
+      },
+      "ra3_aumirag_voimovatkb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovAtkb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1043
+      },
+      "ra3_aumirag_voimovatkc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovAtkc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 923
+      },
+      "ra3_aumirag_voimovatkd": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovAtkd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1701
+      },
+      "ra3_aumirag_voimovatke": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovAtke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1037
+      },
+      "ra3_aumirag_voimovspca": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovSpca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1195
+      },
+      "ra3_aumirag_voimovspcb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovSpcb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 752
+      },
+      "ra3_aumirag_voimovspcc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovSpcc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 992
+      },
+      "ra3_aumirag_voimovspcd": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovSpcd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 755
+      },
+      "ra3_aumirag_voimovspce": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiMovSpce.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 968
+      },
+      "ra3_aumirag_voiselmira": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMira.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1312
+      },
+      "ra3_aumirag_voiselmirb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMirb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 725
+      },
+      "ra3_aumirag_voiselmirc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMirc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1424
+      },
+      "ra3_aumirag_voiselmird": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMird.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 744
+      },
+      "ra3_aumirag_voiselmire": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMire.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 491
+      },
+      "ra3_aumirag_voiselmirf": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMirf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 848
+      },
+      "ra3_aumirag_voiselmirg": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelMirg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1331
+      },
+      "ra3_aumirag_voiselbata": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelBata.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1427
+      },
+      "ra3_aumirag_voiselbatb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelBatb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 957
+      },
+      "ra3_aumirag_voiselbatc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelBatc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 856
+      },
+      "ra3_aumirag_voiselbatd": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelBatd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1205
+      },
+      "ra3_aumirag_voiselbate": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelBate.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1040
+      },
+      "ra3_aumirag_voiselundfira": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelUndFira.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1029
+      },
+      "ra3_aumirag_voiselundfirb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelUndFirb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 787
+      },
+      "ra3_aumirag_voiselundfirc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiSelUndFirc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1016
+      },
+      "ra3_aumirag_voireta": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiReta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1096
+      },
+      "ra3_aumirag_voiretb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiRetb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1125
+      },
+      "ra3_aumirag_voiretc": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_VoiRetc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1123
+      },
+      "ra3_aumirag_wea1firea": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_wea1FireA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2389
+      },
+      "ra3_aumirag_wea1fireb": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_wea1FireB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1989
+      },
+      "ra3_aumirag_wea1firec": {
+        "file": "res://assets/ra3/mirage/native/audio/AUMirag_wea1FireC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2400
+      }
+    }
+  }
+}

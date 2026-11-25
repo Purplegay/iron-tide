@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Iron Tide RTS"
+config/version="0.31.51"
+config/description="红警3 风格的 RTS 原型：兵种克制 + 局外养成（挂机老家）+ 可视化数值编译器 + GM 后台"
+run/main_scene="res://scenes/main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://icon.svg"
+config/windows_native_icon="res://icon.ico"
+
+[autoload]
+RuntimeCPU="*res://scripts/autoload/runtime_cpu.gd"
+
+UiTheme="*res://scripts/autoload/ui_theme.gd"
+DisplayPreferences="*res://scripts/autoload/display_preferences.gd"
+Events="*res://scripts/autoload/events.gd"
+GameData="*res://scripts/autoload/game_data.gd"
+MetaProgress="*res://scripts/autoload/meta_progress.gd"
+GM="*res://scripts/autoload/gm.gd"
+BattleRequest="*res://scripts/autoload/battle_request.gd"
+Ra2Sfx="*res://scripts/core/ra2_sfx.gd"
+Music="*res://scripts/core/music.gd"
+BattleSaves="*res://scripts/save/battle_saves.gd"
+Expedition="*res://scripts/expedition/run.gd"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/window_width_override=2560
+window/size/window_height_override=1440
+window/size/mode=0
+window/dpi/allow_hidpi=true
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/vsync/vsync_mode=0
+
+[layer_names]
+
+2d_physics/layer_1="units"
+2d_physics/layer_2="structures"
+2d_physics/layer_3="obstacles"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.043, 0.055, 0.075, 1)

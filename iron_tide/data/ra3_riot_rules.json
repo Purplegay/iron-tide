@@ -1,0 +1,71 @@
+{
+  "beam": {
+    "id": "ModuleTag_AlliedFutureTankLaserUpdate1",
+    "SpecialPowerTemplate": "SpecialPower_AlliedFutureTankLaserWeapon",
+    "SweepFX": "",
+    "WeaponTemplate": "AlliedFutureTankLaserSweepWeapon",
+    "BeamOptions": "FIRES_MULTIPLE_LASERS SWEEP_CRISSCROSS DIAGONAL_SWEEPING",
+    "UnpackTime": "0.5s",
+    "TriggerSound": "ALL_FutureTank_DeathRayWeaponFire",
+    "PackTime": "1.0s",
+    "StartAbilityRange": "250.0",
+    "BeamDuration": "1.0s",
+    "DissapateWhenTargetDead": "false",
+    "ActiveModelCondition": "USER_1",
+    "SweepDistance": "40.0",
+    "Options": "FAIL_WITH_INVALID_APPROACH MINIMUM_UNPACK_TIME_AFTER_SPECIAL_POWER_SELECTION",
+    "MinimumUnpackTimeAfterSpecialPowerInitiation": "1.0s",
+    "DamageInterval": "0s"
+  },
+  "weapon": {
+    "id": "AlliedFutureTankLaserSweepWeapon",
+    "RadiusDamageAffects": "ENEMIES NEUTRALS",
+    "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+    "PreAttackType": "PER_SHOT",
+    "AttackRange": "275.0",
+    "ClipSize": "=$UNLIMITED_CLIP_SIZE"
+  },
+  "nuggets": {
+    "DamageNugget": {
+      "Damage": "50.0",
+      "Radius": "5.0",
+      "RadiusAffectsBridges": "true",
+      "DelayTimeSeconds": "0.1s",
+      "DamageType": "EXPLOSIVE",
+      "DeathType": "LASERED",
+      "non_infantry_scalar": 0.3
+    },
+    "LineDamageNugget": {
+      "id": "DefaultDamageNugget",
+      "Damage": "25.0",
+      "LineWidth": "5.0",
+      "DamageType": "EXPLOSIVE",
+      "DamageFXType": "JAPAN_FORCE",
+      "DeathType": "NORMAL",
+      "UseDynamicLineLength": "true",
+      "RadiusAffectsBridges": "true",
+      "OverShootDistance": "0.0",
+      "non_infantry_scalar": 0.3
+    }
+  },
+  "power": {
+    "id": "SpecialPower_AlliedFutureTankLaserWeapon",
+    "TargetType": "LOCATION",
+    "Flags": "WATER_OK CANNOT_LEAVE_ENCLOSURE",
+    "ReloadTime": "15s",
+    "NameOfVoiceNameToUseAsInitiateIntendToDoVoice": "voiceAttackRiotBeam",
+    "WaypointModeTerminal": "false"
+  },
+  "source_sha256": {
+    "Xml/EP1/Allied/Units/AlliedFutureTank.xml": "a9784d9c35f9919edff9b25de38da2e4d3ed6e49fd232e534d6374873ec9da0e",
+    "Schemas/Modules/BeamSpecialAbilityUpdate.xsd": "82e56ac728c8599a51f38068e9304741f3c48bb482dbc975df541798dfed0fd4",
+    "Xml/EP1/GlobalData/Weapon_EP1.xml": "08411baf19cb6111480d8024e5d4d51bd2e6588e215fd50ccbadea7af0b4b481",
+    "Xml/EP1/GlobalData/SpecialPowerTemplates_EP1.xml": "b587f5ecf600d2142989f727bf30e8730545dc74e2800a3177907c4defc37794",
+    "Schemas/Modules/SpecialAbilityUpdate.xsd": "2592cbf21bfcef7578ac991a852454e7fc5fcc0b3fe48bed23928e3313e45464"
+  },
+  "adapter": {
+    "distance_scale": 1.5,
+    "continuous_damage_hz": 15,
+    "note": "DamageInterval=0s fires each laser on the retail 15Hz logic update. audit_riot_cpu.py verifies half SweepDistance, crisscross diagonal endpoints and linear interpolation. First/last update phase and collision geometry remain adapters."
+  }
+}

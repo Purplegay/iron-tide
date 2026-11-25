@@ -1,0 +1,10 @@
+{
+  "scripts/units/allied_abilities.gd": "2eb3c7bcfe5a7153da1f7c0d97fceb4f024f3971d1b985c1124cf8f0ebd0a4c8",
+  "scripts/units/open_topped.gd": "ebb21203a6a74068cd65d46673ece14b54f1a42ba7dbbb9eeac025d972d6a568",
+  "scripts/units/unit.gd": "deafb817d067e4837e82df294330f75b99d3ac7d19e720c015d3f6f32b39d8d9",
+  "scripts/units/unit_logistics.gd": "06998746f310547949cde9d4ae9761c15ecaa0c38e51153451c6f1f117e47bf2",
+  "scripts/world/fog_of_war.gd": "bc0db8d9cc0687d1acf47e660b0e7f348493b8acb20e46a1ada17829a0ea4bc8",
+  "tests/hotpath_equivalence_regression.gd": "ebe9f41a6b2e229666096a62cc3fdc30d312b10d0b907b00e35cc85e27333edb",
+  "tests/hotpath_equivalence_regression.tscn": "e493e54c8c6c4a6f4ce3530d535b46e31e5c3614cfe26b394056a251ff1257f1",
+  "tests/fog_rules_regression.gd": "6cc18578289bde26394db2370b117a00475ec9b8b7cdb7502af5fe03bc39cc56"
+}

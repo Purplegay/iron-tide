@@ -1,0 +1,15 @@
+{
+  "id": "V3WO",
+  "image": "V3WO",
+  "vxl": "V3WO.VXL",
+  "facings": 32,
+  "frameW": 90,
+  "frameH": 57,
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

@@ -1,0 +1,1 @@
+{"id":"NAPSYB","image":"NAPSYB","layers":[{"kind":"activeanim","image":"NAPSYB_A","loopStart":0,"loopEnd":14,"rate":220,"frames":30,"shadow":true,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"NAPSYB_A","loopStart":15,"loopEnd":29,"rate":220,"frames":30,"shadow":true,"reverse":false,"loopCount":-1}}]}

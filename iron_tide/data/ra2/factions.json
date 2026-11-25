@@ -1,0 +1,237 @@
+{
+  "sides": {
+    "allied": [
+      "British",
+      "French",
+      "Germans",
+      "Americans",
+      "Alliance"
+    ],
+    "soviet": [
+      "Russians",
+      "Africans",
+      "Confederation",
+      "Arabs"
+    ],
+    "civilian": [
+      "Neutral"
+    ],
+    "mutant": [
+      "Special"
+    ]
+  },
+  "countries": [
+    {
+      "id": "Americans",
+      "side": "allied",
+      "display": "美国"
+    },
+    {
+      "id": "Alliance",
+      "side": "allied",
+      "display": "韩国"
+    },
+    {
+      "id": "French",
+      "side": "allied",
+      "display": "法国"
+    },
+    {
+      "id": "Germans",
+      "side": "allied",
+      "display": "德国"
+    },
+    {
+      "id": "British",
+      "side": "allied",
+      "display": "英国"
+    },
+    {
+      "id": "Africans",
+      "side": "soviet",
+      "display": "利比亚"
+    },
+    {
+      "id": "Arabs",
+      "side": "soviet",
+      "display": "伊拉克"
+    },
+    {
+      "id": "Confederation",
+      "side": "soviet",
+      "display": "古巴"
+    },
+    {
+      "id": "Russians",
+      "side": "soviet",
+      "display": "苏俄"
+    },
+    {
+      "id": "GDI",
+      "side": "other",
+      "display": null
+    },
+    {
+      "id": "Nod",
+      "side": "other",
+      "display": null
+    },
+    {
+      "id": "Neutral",
+      "side": "other",
+      "display": "平民"
+    },
+    {
+      "id": "Special",
+      "side": "other",
+      "display": "治安官"
+    }
+  ],
+  "rosters": {
+    "allied": {
+      "infantry": [
+        "E1",
+        "ENGINEER",
+        "JUMPJET",
+        "DOG",
+        "CLEG",
+        "SPY",
+        "CCOMAND",
+        "PTROOP",
+        "SNIPE",
+        "TANY",
+        "SENGINEER",
+        "ADOG"
+      ],
+      "vehicles": [
+        "AMCV",
+        "MTNK",
+        "CARRIER",
+        "DEST",
+        "AEGIS",
+        "LCRF",
+        "SHAD",
+        "DLPH",
+        "TNKD",
+        "CMIN",
+        "SREF",
+        "MGTK",
+        "FV"
+      ],
+      "aircraft": [
+        "ORCA",
+        "BEAG"
+      ],
+      "buildings": [
+        "GAPOWR",
+        "GAREFN",
+        "GAPILE",
+        "GADEPT",
+        "GATECH",
+        "GAWEAP",
+        "NAPOWR",
+        "NATECH",
+        "NAHAND",
+        "GAWALL",
+        "NARADR",
+        "NAWEAP",
+        "NAREFN",
+        "NAWALL",
+        "NAPSIS",
+        "NALASR",
+        "NASAM",
+        "GAYARD",
+        "NAIRON",
+        "NADEPT",
+        "GACSPH",
+        "GAWEAT",
+        "TESLA",
+        "NAMISL",
+        "ATESLA",
+        "NAYARD",
+        "GASPYSAT",
+        "GAGAP",
+        "GTGCAN",
+        "NANRCT",
+        "GAPILL",
+        "NAFLAK",
+        "NACLON",
+        "GAOREP",
+        "GAAIRC",
+        "AMRADR"
+      ]
+    },
+    "soviet": {
+      "infantry": [
+        "E2",
+        "SHK",
+        "ENGINEER",
+        "YURI",
+        "IVAN",
+        "DESO",
+        "DOG",
+        "CIVAN",
+        "YURIPR",
+        "FLAKT",
+        "TERROR",
+        "SENGINEER",
+        "ADOG"
+      ],
+      "vehicles": [
+        "HARV",
+        "APOC",
+        "HTNK",
+        "SAPC",
+        "V3",
+        "ZEP",
+        "DRON",
+        "HTK",
+        "SUB",
+        "DRED",
+        "SQD",
+        "SMCV",
+        "TTNK",
+        "HYD",
+        "DTRUCK"
+      ],
+      "aircraft": [],
+      "buildings": [
+        "GAPOWR",
+        "GAREFN",
+        "GAPILE",
+        "GADEPT",
+        "GATECH",
+        "GAWEAP",
+        "NAPOWR",
+        "NATECH",
+        "NAHAND",
+        "GAWALL",
+        "NARADR",
+        "NAWEAP",
+        "NAREFN",
+        "NAWALL",
+        "NAPSIS",
+        "NALASR",
+        "NASAM",
+        "GAYARD",
+        "NAIRON",
+        "NADEPT",
+        "GACSPH",
+        "GAWEAT",
+        "TESLA",
+        "NAMISL",
+        "ATESLA",
+        "NAYARD",
+        "GASPYSAT",
+        "GAGAP",
+        "NANRCT",
+        "GAPILL",
+        "NAFLAK",
+        "NACLON",
+        "GAOREP",
+        "GAAIRC",
+        "AMRADR"
+      ]
+    }
+  }
+}

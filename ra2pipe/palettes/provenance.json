@@ -1,0 +1,9 @@
+{
+  "sha256": "5903B69868B84F494CFBB4E7100398015EF9775B37726019A0D7B5FB6CB33B55",
+  "purpose": "Original RA2 tiberium overlay palette, absent from local stripped MIX pack; no recoloring.",
+  "source": "https://github.com/FS-21/Advanced-SHP-Editor",
+  "path": "Palettes/Red Alert 2/temperat.pal",
+  "git_blob": "ad82f078b07cc09c5e2f1df04639c8c90148c378",
+  "file": "temperat.pal",
+  "bytes": 768
+}

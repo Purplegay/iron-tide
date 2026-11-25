@@ -1,0 +1,133 @@
+{
+  "source": {
+    "file": "rulesmd.ini",
+    "archive": "expandmd01.mix > 0x8218f9f4",
+    "sha256": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef"
+  },
+  "units": {
+    "E1": {
+      "tech_level": 1,
+      "extra": {}
+    },
+    "ENGINEER": {
+      "tech_level": 1,
+      "extra": {}
+    },
+    "JUMPJET": {
+      "tech_level": 3,
+      "extra": {}
+    },
+    "GHOST": {
+      "tech_level": 9,
+      "extra": {}
+    },
+    "DOG": {
+      "tech_level": 2,
+      "extra": {}
+    },
+    "CLEG": {
+      "tech_level": 10,
+      "extra": {}
+    },
+    "SPY": {
+      "tech_level": 5,
+      "extra": {}
+    },
+    "CCOMAND": {
+      "tech_level": 9,
+      "extra": {
+        "RequiresStolenAlliedTech": "yes"
+      }
+    },
+    "PTROOP": {
+      "tech_level": 9,
+      "extra": {
+        "RequiresStolenThirdTech": "yes"
+      }
+    },
+    "SNIPE": {
+      "tech_level": 1,
+      "extra": {}
+    },
+    "TANY": {
+      "tech_level": 9,
+      "extra": {}
+    },
+    "AMCV": {
+      "tech_level": 10,
+      "extra": {}
+    },
+    "MTNK": {
+      "tech_level": 2,
+      "extra": {}
+    },
+    "CARRIER": {
+      "tech_level": 7,
+      "extra": {}
+    },
+    "DEST": {
+      "tech_level": 4,
+      "extra": {}
+    },
+    "AEGIS": {
+      "tech_level": 7,
+      "extra": {}
+    },
+    "LCRF": {
+      "tech_level": 4,
+      "extra": {}
+    },
+    "SHAD": {
+      "tech_level": 7,
+      "extra": {}
+    },
+    "DLPH": {
+      "tech_level": 5,
+      "extra": {}
+    },
+    "TNKD": {
+      "tech_level": 2,
+      "extra": {}
+    },
+    "CMIN": {
+      "tech_level": 1,
+      "extra": {}
+    },
+    "SREF": {
+      "tech_level": 8,
+      "extra": {}
+    },
+    "MGTK": {
+      "tech_level": 9,
+      "extra": {}
+    },
+    "FV": {
+      "tech_level": 3,
+      "extra": {}
+    },
+    "CDEST": {
+      "tech_level": -1,
+      "extra": {}
+    },
+    "ORCA": {
+      "tech_level": 3,
+      "extra": {}
+    },
+    "BEAG": {
+      "tech_level": 3,
+      "extra": {}
+    },
+    "GGI": {
+      "tech_level": 2,
+      "extra": {}
+    },
+    "ROBO": {
+      "tech_level": 2,
+      "extra": {}
+    },
+    "BFRT": {
+      "tech_level": 10,
+      "extra": {}
+    }
+  }
+}

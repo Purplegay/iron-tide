@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://tests/fog_hold_equivalence_regression.gd" id="1"]
+[node name="FogHoldEquivalence" type="Node"]
+script = ExtResource("1")

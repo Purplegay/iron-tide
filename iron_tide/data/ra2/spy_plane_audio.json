@@ -1,0 +1,37 @@
+{
+  "specs": {
+    "SpyPlaneSnapshot": {
+      "sounds": [
+        "vspysnap"
+      ],
+      "volume": 60
+    },
+    "SpyPlaneMoveLoop": {
+      "sounds": [
+        "vspylo2a",
+        "vspylo2b",
+        "vspylo2c"
+      ],
+      "volume": 60,
+      "range": 10
+    }
+  },
+  "entries": {
+    "vspysnap": {
+      "file": "yr_recon/vspysnap.wav",
+      "durMs": 933
+    },
+    "vspylo2a": {
+      "file": "yr_recon/vspylo2a.wav",
+      "durMs": 610
+    },
+    "vspylo2b": {
+      "file": "yr_recon/vspylo2b.wav",
+      "durMs": 623
+    },
+    "vspylo2c": {
+      "file": "yr_recon/vspylo2c.wav",
+      "durMs": 610
+    }
+  }
+}

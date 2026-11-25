@@ -1,0 +1,26 @@
+# Runtime resources are versioned; reference inputs and generated caches stay local.
+/refs/
+/extracted/
+/tools/ra2bundle.mjs
+/iron_tide/.godot/
+/iron_tide/.import/
+/iron_tide/export_presets.cfg
+/ra2pipe/out/
+/.validation/
+*.log
+*.tmp
+__pycache__/
+*.py[cod]
+node_modules/
+.env
+.env.*
+*.itsave
+*.itsave.bak
+
+# Unused music samples (only Rock and Awe is configured in data/music.json).
+/iron_tide/assets/music/ra3-grinder2-excerpt.mp3*
+/iron_tide/assets/music/ra3-red-menace-excerpt.mp3*
+/iron_tide/assets/music/ra3-sdk-music.mp3*
+
+# Local matching Godot release runtime; engine binaries are not versioned.
+/iron_tide/IronTideRuntime.exe

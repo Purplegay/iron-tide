@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="152" viewBox="0 0 40 152">
+  <defs>
+    <linearGradient id="wood"><stop stop-color="#402e25"/><stop offset=".27" stop-color="#886445"/><stop offset=".54" stop-color="#d5b78b"/><stop offset=".78" stop-color="#aa8158"/><stop offset="1" stop-color="#59402c"/></linearGradient>
+    <linearGradient id="steel"><stop stop-color="#424b51"/><stop offset=".46" stop-color="#899494"/><stop offset=".51" stop-color="#dde5dc"/><stop offset=".64" stop-color="#7c8786"/><stop offset="1" stop-color="#343d44"/></linearGradient>
+    <linearGradient id="ochre" x2=".7" y2="1"><stop stop-color="#e3cb9b"/><stop offset=".44" stop-color="#be9c64"/><stop offset="1" stop-color="#705539"/></linearGradient>
+    <linearGradient id="brown" x2=".45" y2="1"><stop stop-color="#9c8062"/><stop offset="1" stop-color="#4c4036"/></linearGradient>
+  </defs>
+  <!-- A slit in the horn nock, separate feather vanes and waxed thread bindings. -->
+  <path fill="url(#wood)" stroke="#4b382c" stroke-width=".65" d="M17.8 8h4.4l-.5 123-1.7 10-1.7-10Z"/>
+  <path fill="#c8b799" stroke="#65533e" stroke-width=".7" d="M17.6 9V2l1.3-1 .65 4.1h1L21.3 1l1.2.8-.1 7.3Z"/>
+  <path fill="url(#brown)" stroke="#514333" stroke-width=".8" d="M19 45C15 38 9 32 5.5 30L3 13l2.8 2-2-4.5 1.6-2.2C10 12 15 16 18.8 20Z"/>
+  <path fill="url(#ochre)" stroke="#635039" stroke-width=".8" d="M21 44l.1-24C25 16 29.6 10.4 34 7l1.3 4.8-1.9 4.2 2.1-1.5-.8 8-2.6 3.6 2.2-.8-1.7 4.8C28 32.6 24.8 37.4 21 44Z"/>
+  <g fill="none" stroke-linecap="round">
+    <path stroke="#73593e" stroke-width="1.4" d="m22 24 11-12m-11 17 11-12m-11 17 10-11m-10 16 9-10"/>
+    <path stroke="#c8b591" stroke-width="1" d="M17 25 6 14m11 16L7 20m10 15-8-8"/>
+    <path stroke="#d8c499" stroke-width=".8" d="m18.7 40-.3-21m3.1 21 1.1-21m-3.9 37 .5 29"/>
+  </g>
+  <g stroke="#65543b" stroke-width="1"><path fill="#ae9b75" d="M17.5 9h5v5h-5zm.1 34h4.8v6h-4.8z"/><path d="m17.5 10 5 1.2m-5 1 5 1.3m-4.8 31 4.6 1.2m-4.6 1.1 4.6 1.2"/></g>
+  <!-- Socketed, two-faced steel broadhead. -->
+  <path fill="url(#steel)" stroke="#404847" stroke-width=".75" d="M17.6 117h4.8v8l5 3.8-7.4 21-7.4-21 5-3.8Z"/>
+  <path fill="#b4bfbc" d="m14 129 5.8-3.2.1 20.5Z"/><path fill="#657070" d="m20 125.8 6 3.6-6 16.9Z"/><path fill="none" stroke="#c8d1c9" stroke-width=".8" d="m18 119 3.8.1m-3.8 2.3h3.8"/>
+</svg>

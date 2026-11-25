@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://tests/strategic_fx_regression.gd" id="1"]
+[node name="StrategicFxRegression" type="Node"]
+script = ExtResource("1")

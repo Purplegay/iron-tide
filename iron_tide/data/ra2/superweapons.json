@@ -1,0 +1,120 @@
+{
+  "version": 1,
+  "source": "RA2 rules.ini [SuperWeaponTypes]",
+  "weapons": {
+    "MultiSpecial": {
+      "id": "MultiSpecial",
+      "type": "MultiMissile",
+      "name": "N U K E !!!",
+      "ui_name": "核弹攻击",
+      "action": "Nuke",
+      "sidebar_image": "NukeIcon",
+      "pre_click": null,
+      "recharge_voice": "00-I154",
+      "recharge_seconds": 600,
+      "is_powered": true,
+      "show_timer": true
+    },
+    "IronCurtainSpecial": {
+      "id": "IronCurtainSpecial",
+      "type": "IronCurtain",
+      "name": "Iron Curtain",
+      "ui_name": "铁幕装置",
+      "action": "IronCurtain",
+      "sidebar_image": "IRCRICON",
+      "pre_click": null,
+      "recharge_voice": "00-I156",
+      "recharge_seconds": 300,
+      "is_powered": true,
+      "show_timer": true
+    },
+    "LightningStormSpecial": {
+      "id": "LightningStormSpecial",
+      "type": "LightningStorm",
+      "name": "Lightning Storm",
+      "ui_name": "闪电风暴",
+      "action": "LightningStorm",
+      "sidebar_image": "BOLTICON",
+      "pre_click": null,
+      "recharge_voice": "00-I156",
+      "recharge_seconds": 600,
+      "is_powered": true,
+      "show_timer": true,
+      "storm": {
+        "deferment_frames": 250,
+        "duration_frames": 180,
+        "damage": 250,
+        "warhead": "IonWH",
+        "hit_delay_frames": 10,
+        "scatter_delay_frames": 5,
+        "cell_spread": 10,
+        "separation": 3,
+        "bolts": [
+          "WCLBOLT1",
+          "WCLBOLT2",
+          "WCLBOLT3"
+        ],
+        "clouds": [
+          "WCCLOUD1",
+          "WCCLOUD2",
+          "WCCLOUD3"
+        ],
+        "bolt_explosion": "EXPLOLB",
+        "start_sound": "WeatherIntro",
+        "strike_sound": "WeatherStrike"
+      }
+    },
+    "ChronoSphereSpecial": {
+      "id": "ChronoSphereSpecial",
+      "type": "ChronoSphere",
+      "name": "Chrono Sphere",
+      "ui_name": "超时空转换",
+      "action": "ChronoSphere",
+      "sidebar_image": "CHROICON",
+      "pre_click": "yes",
+      "recharge_voice": "00-I156",
+      "recharge_seconds": 420,
+      "is_powered": true,
+      "show_timer": true
+    },
+    "ChronoWarpSpecial": {
+      "id": "ChronoWarpSpecial",
+      "type": "ChronoWarp",
+      "name": "Chrono Warp",
+      "ui_name": "超时空发动二",
+      "action": "ChronoWarp",
+      "sidebar_image": "CHROICON",
+      "pre_click": null,
+      "recharge_voice": "",
+      "recharge_seconds": 60,
+      "is_powered": false,
+      "show_timer": true
+    },
+    "ParaDropSpecial": {
+      "id": "ParaDropSpecial",
+      "type": "ParaDrop",
+      "name": "Paratrooper Drop",
+      "ui_name": "伞兵",
+      "action": "ParaDrop",
+      "sidebar_image": "PARAICON",
+      "pre_click": null,
+      "recharge_voice": "",
+      "recharge_seconds": 240,
+      "is_powered": false,
+      "show_timer": false
+    },
+    "AmericanParaDropSpecial": {
+      "id": "AmericanParaDropSpecial",
+      "type": "AmerParaDrop",
+      "name": "American Paratrooper Drop",
+      "ui_name": "空降部队",
+      "action": "AmerParaDrop",
+      "sidebar_image": "APARICON",
+      "pre_click": null,
+      "recharge_voice": "",
+      "recharge_seconds": 240,
+      "is_powered": false,
+      "show_timer": false
+    }
+  }
+}

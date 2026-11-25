@@ -1,0 +1,1 @@
+{"id":"GASPYSAT","image":"GASPST","layers":[{"kind":"activeanim","image":"GASPST_A","loopStart":0,"loopEnd":15,"rate":200,"frames":64,"shadow":false,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"GASPST_A","loopStart":16,"loopEnd":32,"rate":200,"frames":64,"shadow":false,"reverse":false,"loopCount":-1}}]}

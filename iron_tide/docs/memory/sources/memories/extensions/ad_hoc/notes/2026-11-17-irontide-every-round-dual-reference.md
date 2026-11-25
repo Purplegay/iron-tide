@@ -1,0 +1,7 @@
+# IronTide: references required for every optimization round
+
+User explicitly clarified that every optimization must consult both Yuri and web Red Alert 2, not merely the current round. This extends the previously requested remembered complete-function self/inclusive Top10 workflow. For each candidate record the corresponding source modules and revisions, what is actually implemented, the structural change being borrowed, IronTide differences and preserved behavior. Local Yuri reconstruction stubs/comments are not verified original behavior; reference-engine smoothness is not a same-machine, same-load benchmark.
+
+Current references (reverify before reuse): C:/Users/admin/IronTide/refs/ra2yr-resource at b01d3cf93db69aca9b5cb5054ba04e4358963828; web ts-redalert2 at 823c6637bab9ca1edafaa022a1040ed1fc59c274, locally under .validation/ra2web-reference-20261117. Runtime measurements and source drift must still be checked independently.
+
+On 2026-11-17 the user requested first completing five effective optimization rounds in this new batch. Start this batch at 0/5, separate from historical 4/5. Count only behavior-checked, same-load complete-frame improvements supported by repeated paired measurements with CPU environment checks. Rejected candidates, instrumentation, local-only speedups and noisy background-load differences do not count. The longer-term 33 ms / graphical 30 FPS objective remains; five rounds does not itself prove 33 ms.

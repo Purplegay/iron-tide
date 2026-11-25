@@ -1,0 +1,4947 @@
+{
+  "version": "0.27.17.5",
+  "validation": "headless isolated userdata",
+  "cases": {
+    "bridge_parked_before": {
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 3",
+          "passed": false
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 14,
+          "name": "ra2 all twenty-four tanks clear parked bridge traffic",
+          "passed": false
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 3",
+          "passed": false
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 14,
+          "name": "iron_tide all twenty-four tanks clear parked bridge traffic",
+          "passed": false
+        }
+      ],
+      "failed": 4,
+      "metrics": [
+        {
+          "mode": "ra2",
+          "positions": [
+            [
+              "(4445.759, 3812.988)",
+              "(6792.5, 3110.5)",
+              "[(6396.039, 3107.521), (6077.5, 3052.5), (5857.5, 2777.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6792.5, 3217.5), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6786.427, 3125.313)",
+              "(6786.427, 3125.313)",
+              "[(6128.588, 3045.352), (6572.5, 3162.5), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5136.438, 4355.283)",
+              "(6792.5, 3214.5)",
+              "[(6432.649, 3212.416), (6242.5, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6469.723, 3079.751)",
+              "(6857.5, 3110.5)",
+              "[(6469.723, 3079.751), (6352.5, 2997.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5637.5, 4482.5), (5967.5, 4372.5), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(5000.647, 4320.211)",
+              "(6857.5, 3162.5)",
+              "[(6402.631, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5065.921, 4336.825)",
+              "(6857.5, 3214.5)",
+              "[(6402.682, 3211.622), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4924.648, 4300.268)",
+              "(6922.5, 3110.5)",
+              "[(6372.697, 3111.178), (6077.5, 3052.5), (5857.5, 2777.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.273, 3162.498)",
+              "(6922.5, 3162.5)",
+              "[(6099.085, 3050.801), (6737.5, 3162.5), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5224.12, 4377.787)",
+              "(6922.5, 3214.5)",
+              "[(6372.733, 3211.808), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(5429.151, 4424.653)",
+              "(6987.5, 3110.5)",
+              "[(6342.781, 3113.423), (5967.5, 2942.5), (5747.5, 2502.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(5372.964, 4416.066)",
+              "(6987.5, 3162.5)",
+              "[(6342.678, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5300.607, 4397.549)",
+              "(6987.5, 3214.5)",
+              "[(6342.732, 3211.73), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6281.24, 3118.158)",
+              "(6281.24, 3118.158)",
+              "[(6417.609, 3128.509), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6252.12, 3137.52)",
+              "(6252.12, 3137.52)",
+              "[(6563.841, 3210.559), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6251.131, 3214.28)",
+              "(6242.5, 3214.5)",
+              "[(6560.921, 3240.381), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4592.661, 2872.854)",
+              "(6177.5, 3110.5)",
+              "[(4406.319, 3575.536), (4372.5, 3602.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5637.5, 2172.5), (5967.5, 2997.5), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6186.791, 3164.779)",
+              "(6177.5, 3162.5)",
+              "[(6503.376, 3243.867), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4892.125, 2541.932)",
+              "(6177.5, 3214.5)",
+              "[(6521.916, 3215.084), (6572.5, 3272.5), (6077.5, 4207.5), (5802.5, 4427.5), (5087.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (5967.5, 2942.5), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4723.052, 2727.768)",
+              "(6112.5, 3110.5)",
+              "[(6551.758, 3109.164), (6572.5, 3327.5), (6022.5, 4262.5), (5802.5, 4427.5), (5142.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (5967.5, 2942.5), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(4665.156, 2797.774)",
+              "(6112.5, 3162.5)",
+              "[(6552.26, 3159.039), (6572.5, 3382.5), (5967.5, 4317.5), (5802.5, 4427.5), (5142.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (5142.5, 2282.5), (5637.5, 2172.5), (5912.5, 2887.5), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4868.054, 2568.524)",
+              "(6112.5, 3214.5)",
+              "[(6551.87, 3215.755), (6572.5, 3327.5), (6022.5, 4262.5), (5802.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4807.82, 2634.904)",
+              "(6047.5, 3110.5)",
+              "[(6581.758, 3109.344), (6572.5, 3327.5), (6132.5, 4097.5), (5857.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(4837.15, 2602.359)",
+              "(6047.5, 3162.5)",
+              "[(6582.261, 3159.028), (6517.5, 3437.5), (6022.5, 4262.5), (5802.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4693.262, 2761.706)",
+              "(6047.5, 3214.5)",
+              "[(4411.452, 3575.296), (4372.5, 3602.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6472.603, 3109.701)",
+              "(6472.603, 3109.701)",
+              "[]",
+              false
+            ],
+            [
+              "(6460.569, 3192.271)",
+              "(6460.569, 3192.271)",
+              "[]",
+              false
+            ],
+            [
+              "(6457.307, 3239.402)",
+              "(6457.307, 3239.402)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 14
+        },
+        {
+          "mode": "iron_tide",
+          "positions": [
+            [
+              "(4445.759, 3812.988)",
+              "(6792.5, 3110.5)",
+              "[(6396.039, 3107.521), (6077.5, 3052.5), (5857.5, 2777.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6792.5, 3217.5), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6786.427, 3125.313)",
+              "(6786.427, 3125.313)",
+              "[(6128.588, 3045.352), (6572.5, 3162.5), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5136.438, 4355.283)",
+              "(6792.5, 3214.5)",
+              "[(6432.649, 3212.416), (6242.5, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6469.723, 3079.751)",
+              "(6857.5, 3110.5)",
+              "[(6469.723, 3079.751), (6352.5, 2997.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5637.5, 4482.5), (5967.5, 4372.5), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(5000.647, 4320.211)",
+              "(6857.5, 3162.5)",
+              "[(6402.631, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5065.921, 4336.825)",
+              "(6857.5, 3214.5)",
+              "[(6402.682, 3211.622), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4924.648, 4300.268)",
+              "(6922.5, 3110.5)",
+              "[(6372.697, 3111.178), (6077.5, 3052.5), (5857.5, 2777.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.273, 3162.498)",
+              "(6922.5, 3162.5)",
+              "[(6099.085, 3050.801), (6737.5, 3162.5), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5224.12, 4377.787)",
+              "(6922.5, 3214.5)",
+              "[(6372.733, 3211.808), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(5429.151, 4424.653)",
+              "(6987.5, 3110.5)",
+              "[(6342.781, 3113.423), (5967.5, 2942.5), (5747.5, 2502.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(5372.964, 4416.066)",
+              "(6987.5, 3162.5)",
+              "[(6342.678, 3162.5), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5857.5, 4427.5), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(5300.607, 4397.549)",
+              "(6987.5, 3214.5)",
+              "[(6342.732, 3211.73), (5912.5, 2887.5), (5637.5, 2172.5), (5417.5, 2227.5), (4922.5, 2502.5), (4372.5, 3107.5), (4372.5, 3712.5), (4757.5, 4262.5), (5417.5, 4427.5), (5912.5, 4427.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6281.24, 3118.158)",
+              "(6281.24, 3118.158)",
+              "[(6417.609, 3128.509), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6252.12, 3137.52)",
+              "(6252.12, 3137.52)",
+              "[(6563.841, 3210.559), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6251.131, 3214.28)",
+              "(6242.5, 3214.5)",
+              "[(6560.921, 3240.381), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4592.661, 2872.854)",
+              "(6177.5, 3110.5)",
+              "[(4406.319, 3575.536), (4372.5, 3602.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5637.5, 2172.5), (5967.5, 2997.5), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6186.791, 3164.779)",
+              "(6177.5, 3162.5)",
+              "[(6503.376, 3243.867), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4892.125, 2541.932)",
+              "(6177.5, 3214.5)",
+              "[(6521.916, 3215.084), (6572.5, 3272.5), (6077.5, 4207.5), (5802.5, 4427.5), (5087.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (5967.5, 2942.5), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4723.052, 2727.768)",
+              "(6112.5, 3110.5)",
+              "[(6551.758, 3109.164), (6572.5, 3327.5), (6022.5, 4262.5), (5802.5, 4427.5), (5142.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (5967.5, 2942.5), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(4665.156, 2797.774)",
+              "(6112.5, 3162.5)",
+              "[(6552.26, 3159.039), (6572.5, 3382.5), (5967.5, 4317.5), (5802.5, 4427.5), (5142.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (5142.5, 2282.5), (5637.5, 2172.5), (5912.5, 2887.5), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4868.054, 2568.524)",
+              "(6112.5, 3214.5)",
+              "[(6551.87, 3215.755), (6572.5, 3327.5), (6022.5, 4262.5), (5802.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(4807.82, 2634.904)",
+              "(6047.5, 3110.5)",
+              "[(6581.758, 3109.344), (6572.5, 3327.5), (6132.5, 4097.5), (5857.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(4837.15, 2602.359)",
+              "(6047.5, 3162.5)",
+              "[(6582.261, 3159.028), (6517.5, 3437.5), (6022.5, 4262.5), (5802.5, 4427.5), (5032.5, 4427.5), (4702.5, 4207.5), (4372.5, 3712.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(4693.262, 2761.706)",
+              "(6047.5, 3214.5)",
+              "[(4411.452, 3575.296), (4372.5, 3602.5), (4372.5, 3107.5), (4977.5, 2447.5), (5582.5, 2172.5), (5747.5, 2282.5), (5747.5, 2502.5), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6472.603, 3109.701)",
+              "(6472.603, 3109.701)",
+              "[]",
+              false
+            ],
+            [
+              "(6460.569, 3192.271)",
+              "(6460.569, 3192.271)",
+              "[]",
+              false
+            ],
+            [
+              "(6457.307, 3239.402)",
+              "(6457.307, 3239.402)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 14
+        }
+      ]
+    },
+    "bridge_verified_bridge_queue_regression": {
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2ally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2enemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideenemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy no map-wide detour around parked allies",
+          "passed": true
+        }
+      ],
+      "failed": 0,
+      "metrics": [
+        {
+          "house": "ally",
+          "mode": "ra2",
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "enemy",
+          "mode": "ra2",
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[(6462.5, 3114.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[(6462.5, 3162.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[(6462.5, 3210.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "ally",
+          "mode": "iron_tide",
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "enemy",
+          "mode": "iron_tide",
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[(6462.5, 3114.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[(6462.5, 3162.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[(6462.5, 3210.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        }
+      ]
+    },
+    "bridge_verified_native_bridge_traffic_regression": {
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2 last two pixels on the deck are walkable",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 river outside the deck stays blocked",
+          "passed": true
+        },
+        {
+          "details": "(6731.406, 3158.488)",
+          "name": "ra2 column reaches opposite bank MTNK",
+          "passed": true
+        },
+        {
+          "details": "(6727.936, 3188.6)",
+          "name": "ra2 column reaches opposite bank E1",
+          "passed": true
+        },
+        {
+          "details": "(6729.223, 3219.467)",
+          "name": "ra2 column reaches opposite bank HTNK",
+          "passed": true
+        },
+        {
+          "details": "(6225.5, 3152.95)",
+          "name": "ra2 column reaches opposite bank MTNK",
+          "passed": true
+        },
+        {
+          "details": "(6233.854, 3182.213)",
+          "name": "ra2 column reaches opposite bank E1",
+          "passed": true
+        },
+        {
+          "details": "(6245.225, 3212.945)",
+          "name": "ra2 column reaches opposite bank HTNK",
+          "passed": true
+        },
+        {
+          "details": "(6252.003, 3152.453)",
+          "name": "ra2 tank pushed off deck recovers and completes existing order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 dreadnought cannot enter low deck",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 open water on either side remains navigable",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 issued naval move never enters low bridge",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 old ship on bridge returns to nearby open water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 old ship on bridge returns to nearby open water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2 restored hulls have separate positions",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide last two pixels on the deck are walkable",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide river outside the deck stays blocked",
+          "passed": true
+        },
+        {
+          "details": "(6731.406, 3158.488)",
+          "name": "iron_tide column reaches opposite bank MTNK",
+          "passed": true
+        },
+        {
+          "details": "(6727.936, 3188.6)",
+          "name": "iron_tide column reaches opposite bank E1",
+          "passed": true
+        },
+        {
+          "details": "(6729.223, 3219.467)",
+          "name": "iron_tide column reaches opposite bank HTNK",
+          "passed": true
+        },
+        {
+          "details": "(6247.051, 3157.364)",
+          "name": "iron_tide column reaches opposite bank MTNK",
+          "passed": true
+        },
+        {
+          "details": "(6248.834, 3179.895)",
+          "name": "iron_tide column reaches opposite bank E1",
+          "passed": true
+        },
+        {
+          "details": "(6246.361, 3213.872)",
+          "name": "iron_tide column reaches opposite bank HTNK",
+          "passed": true
+        },
+        {
+          "details": "(6252.1, 3153.21)",
+          "name": "iron_tide tank pushed off deck recovers and completes existing order",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide dreadnought cannot enter low deck",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide open water on either side remains navigable",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide issued naval move never enters low bridge",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide old ship on bridge returns to nearby open water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide old ship on bridge returns to nearby open water",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide restored hulls have separate positions",
+          "passed": true
+        }
+      ],
+      "failed": 0,
+      "metrics": []
+    },
+    "bridge_verified_tank_passage_regression": {
+      "checks": [
+        {
+          "details": "[(900.0, 1000.0), (1180.0, 1140.0), (1420.0, 1100.0), (1500.0, 1000.0)]",
+          "name": "ra2: straight passage at 26.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "ra2: straight passage at 38.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "ra2: straight passage at 52.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "ra2: straight passage at 92.0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: computer route budget is exhausted",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: entire player column refreshes even with computer budget exhausted",
+          "passed": true
+        },
+        {
+          "details": 3,
+          "name": "ra2: three ordered vehicles take the opening",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: column arrives",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: bodies stay outside both foundations",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: parked tank can yield inside opening",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: sidestep fits available space",
+          "passed": true
+        },
+        {
+          "details": "[(970.0, 1000.0), (1180.0, 1100.0), (1420.0, 1060.0), (1450.0, 1000.0)]",
+          "name": "ra2: E1 doorway 12.0",
+          "passed": true
+        },
+        {
+          "details": "[(915.0, 1000.0), (1180.0, 1100.0), (1420.0, 1060.0), (1450.0, 1000.0)]",
+          "name": "ra2: GGI doorway 12.0",
+          "passed": true
+        },
+        {
+          "details": "[(970.0, 1000.0), (1450.0, 1000.0)]",
+          "name": "ra2: E1 doorway 28.0",
+          "passed": true
+        },
+        {
+          "details": "[(915.0, 1000.0), (1450.0, 1000.0)]",
+          "name": "ra2: GGI doorway 28.0",
+          "passed": true
+        },
+        {
+          "details": 2,
+          "name": "ra2: single-file infantry pass the real doorway",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: infantry stay outside both foundations",
+          "passed": true
+        },
+        {
+          "details": [
+            "(1430.417, 1000.915)",
+            "(969.6085, 999.2593)"
+          ],
+          "name": "ra2: two opposing infantry orders both arrive",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: idle infantry can step aside within the door",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: infantry sidestep clears the foundation",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1180.0, 1140.0), (1420.0, 1100.0), (1500.0, 1000.0)]",
+          "name": "iron_tide: straight passage at 26.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "iron_tide: straight passage at 38.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "iron_tide: straight passage at 52.0",
+          "passed": true
+        },
+        {
+          "details": "[(900.0, 1000.0), (1500.0, 1000.0)]",
+          "name": "iron_tide: straight passage at 92.0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: computer route budget is exhausted",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: entire player column refreshes even with computer budget exhausted",
+          "passed": true
+        },
+        {
+          "details": 3,
+          "name": "iron_tide: three ordered vehicles take the opening",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: column arrives",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: bodies stay outside both foundations",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: parked tank can yield inside opening",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: sidestep fits available space",
+          "passed": true
+        },
+        {
+          "details": "[(970.0, 1000.0), (1180.0, 1100.0), (1420.0, 1060.0), (1450.0, 1000.0)]",
+          "name": "iron_tide: E1 doorway 12.0",
+          "passed": true
+        },
+        {
+          "details": "[(915.0, 1000.0), (1180.0, 1100.0), (1420.0, 1060.0), (1450.0, 1000.0)]",
+          "name": "iron_tide: GGI doorway 12.0",
+          "passed": true
+        },
+        {
+          "details": "[(970.0, 1000.0), (1450.0, 1000.0)]",
+          "name": "iron_tide: E1 doorway 28.0",
+          "passed": true
+        },
+        {
+          "details": "[(915.0, 1000.0), (1450.0, 1000.0)]",
+          "name": "iron_tide: GGI doorway 28.0",
+          "passed": true
+        },
+        {
+          "details": 2,
+          "name": "iron_tide: single-file infantry pass the real doorway",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: infantry stay outside both foundations",
+          "passed": true
+        },
+        {
+          "details": [
+            "(1430.417, 1000.915)",
+            "(969.6085, 999.2593)"
+          ],
+          "name": "iron_tide: two opposing infantry orders both arrive",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: idle infantry can step aside within the door",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: infantry sidestep clears the foundation",
+          "passed": true
+        }
+      ],
+      "failed": 0,
+      "metrics": []
+    },
+    "bridge_traffic_final": {
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2: nearby blocker remains visible after forty distant allies",
+          "passed": true
+        },
+        {
+          "details": "(1090.985, 600.0)",
+          "name": "ra2: moving tank routes around stationary friendly within thirty seconds",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: idle friend yields only a bounded distance without replacing its orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2: guard order never yields to traffic",
+          "passed": true
+        },
+        {
+          "details": {
+            "arrived": 12,
+            "seconds": 24.1166666666667
+          },
+          "name": "ra2: opposing mixed squads cross throat within ninety seconds",
+          "passed": true
+        },
+        {
+          "details": "(1841.357, 1002.79)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.679, 1061.423)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.953, 1121.512)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.67, 1180.105)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.991, 1239.84)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1841.1, 1298.298)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(457.9125, 1003.367)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.9213, 1061.499)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.9558, 1119.52)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(459.3654, 1179.27)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.6967, 1239.253)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(459.4017, 1298.317)",
+          "name": "ra2: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": 50,
+          "name": "ra2: mixed formation arrives: 50",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "ra2: settled mixed formation has no body overlap: 50",
+          "passed": true
+        },
+        {
+          "details": 39.9560661315918,
+          "name": "ra2: yielding and occupied-slot fallback stay near ordered formation: 50",
+          "passed": true
+        },
+        {
+          "details": 100,
+          "name": "ra2: mixed formation arrives: 100",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "ra2: settled mixed formation has no body overlap: 100",
+          "passed": true
+        },
+        {
+          "details": 50.3342666625977,
+          "name": "ra2: yielding and occupied-slot fallback stay near ordered formation: 100",
+          "passed": true
+        },
+        {
+          "details": 200,
+          "name": "ra2: mixed formation arrives: 200",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "ra2: settled mixed formation has no body overlap: 200",
+          "passed": true
+        },
+        {
+          "details": 52.1730155944824,
+          "name": "ra2: yielding and occupied-slot fallback stay near ordered formation: 200",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: nearby blocker remains visible after forty distant allies",
+          "passed": true
+        },
+        {
+          "details": "(1090.985, 600.0)",
+          "name": "iron_tide: moving tank routes around stationary friendly within thirty seconds",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: idle friend yields only a bounded distance without replacing its orders",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tide: guard order never yields to traffic",
+          "passed": true
+        },
+        {
+          "details": {
+            "arrived": 12,
+            "seconds": 24.1166666666667
+          },
+          "name": "iron_tide: opposing mixed squads cross throat within ninety seconds",
+          "passed": true
+        },
+        {
+          "details": "(1841.357, 1002.79)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.679, 1061.423)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.953, 1121.512)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.67, 1180.105)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1840.991, 1239.84)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(1841.1, 1298.298)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(457.9125, 1003.367)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.9213, 1061.499)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.9558, 1119.52)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(459.3654, 1179.27)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(458.6967, 1239.253)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": "(459.4017, 1298.317)",
+          "name": "iron_tide: no unit remains stuck in throat",
+          "passed": true
+        },
+        {
+          "details": 50,
+          "name": "iron_tide: mixed formation arrives: 50",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "iron_tide: settled mixed formation has no body overlap: 50",
+          "passed": true
+        },
+        {
+          "details": 39.9560661315918,
+          "name": "iron_tide: yielding and occupied-slot fallback stay near ordered formation: 50",
+          "passed": true
+        },
+        {
+          "details": 100,
+          "name": "iron_tide: mixed formation arrives: 100",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "iron_tide: settled mixed formation has no body overlap: 100",
+          "passed": true
+        },
+        {
+          "details": 50.3342666625977,
+          "name": "iron_tide: yielding and occupied-slot fallback stay near ordered formation: 100",
+          "passed": true
+        },
+        {
+          "details": 200,
+          "name": "iron_tide: mixed formation arrives: 200",
+          "passed": true
+        },
+        {
+          "details": 0,
+          "name": "iron_tide: settled mixed formation has no body overlap: 200",
+          "passed": true
+        },
+        {
+          "details": 52.1730155944824,
+          "name": "iron_tide: yielding and occupied-slot fallback stay near ordered formation: 200",
+          "passed": true
+        }
+      ],
+      "failed": 0,
+      "metrics": [
+        {
+          "arrived": 12,
+          "mode": "ra2",
+          "scenario": "opposing_throat",
+          "seconds": 24.1166666666667
+        },
+        {
+          "arrived": 50,
+          "count": 50,
+          "max_slot_offset": 39.9560661315918,
+          "mode": "ra2",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 24.5333333333333,
+          "update_p95_ms": 3.852,
+          "update_p99_ms": 4.295
+        },
+        {
+          "arrived": 100,
+          "count": 100,
+          "max_slot_offset": 50.3342666625977,
+          "mode": "ra2",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 31.2333333333333,
+          "update_p95_ms": 8.471,
+          "update_p99_ms": 9.397
+        },
+        {
+          "arrived": 200,
+          "count": 200,
+          "max_slot_offset": 52.1730155944824,
+          "mode": "ra2",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 31.2333333333333,
+          "update_p95_ms": 17.449,
+          "update_p99_ms": 20.702
+        },
+        {
+          "arrived": 12,
+          "mode": "iron_tide",
+          "scenario": "opposing_throat",
+          "seconds": 24.1166666666667
+        },
+        {
+          "arrived": 50,
+          "count": 50,
+          "max_slot_offset": 39.9560661315918,
+          "mode": "iron_tide",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 24.5333333333333,
+          "update_p95_ms": 3.951,
+          "update_p99_ms": 4.348
+        },
+        {
+          "arrived": 100,
+          "count": 100,
+          "max_slot_offset": 50.3342666625977,
+          "mode": "iron_tide",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 31.2333333333333,
+          "update_p95_ms": 8.544,
+          "update_p99_ms": 9.584
+        },
+        {
+          "arrived": 200,
+          "count": 200,
+          "max_slot_offset": 52.1730155944824,
+          "mode": "iron_tide",
+          "overlaps": 0,
+          "scenario": "mixed_open",
+          "seconds": 31.2333333333333,
+          "update_p95_ms": 17.304,
+          "update_p99_ms": 20.835
+        }
+      ]
+    },
+    "bridge_clock_matrix": {
+      "checks": [
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2ally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2enemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2ally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2ally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "ra2enemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "ra2enemy no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideenemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideally all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideally no map-wide detour around parked allies",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 0",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 1",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 2",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 3",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 4",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 5",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 6",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 7",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 8",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 9",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 10",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 11",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 12",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 13",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 14",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 15",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 16",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 17",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 18",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 19",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 20",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 21",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 22",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy tank stays on dry terrain 23",
+          "passed": true
+        },
+        {
+          "details": 24,
+          "name": "iron_tideenemy all twenty-four tanks clear parked bridge traffic",
+          "passed": true
+        },
+        {
+          "details": null,
+          "name": "iron_tideenemy no map-wide detour around parked allies",
+          "passed": true
+        }
+      ],
+      "failed": 0,
+      "metrics": [
+        {
+          "house": "ally",
+          "mode": "ra2",
+          "physics_hz": 15,
+          "positions": [
+            [
+              "(6768.171, 3141.202)",
+              "(6768.171, 3141.202)",
+              "[(6489.836, 3166.633), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6770.678, 3111.133)",
+              "(6770.678, 3111.133)",
+              "[(6501.93, 3191.25), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6790.357, 3254.662)",
+              "(6790.357, 3254.662)",
+              "[(6625.824, 3202.529), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6820.718, 3108.72)",
+              "(6820.718, 3108.72)",
+              "[(6495.628, 3196.427), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6849.918, 3132.652)",
+              "(6849.918, 3132.652)",
+              "[(6472.339, 3186.499), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6853.67, 3251.939)",
+              "(6853.67, 3251.939)",
+              "[(6596.642, 3206.648), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6917.632, 3114.63)",
+              "(6922.5, 3110.5)",
+              "[(6421.208, 3156.845), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6929.187, 3205.122)",
+              "(6929.187, 3205.122)",
+              "[(6442.336, 3186.549), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6919.859, 3254.013)",
+              "(6919.859, 3254.013)",
+              "[(6566.921, 3210.829), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6980.619, 3113.264)",
+              "(6987.5, 3110.5)",
+              "[(6412.716, 3181.74), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6981.242, 3163.245)",
+              "(6987.5, 3162.5)",
+              "[(6623.071, 3220.786), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6984.435, 3211.892)",
+              "(6987.5, 3214.5)",
+              "[(6887.389, 3213.917), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6250.151, 3079.999)",
+              "(6250.151, 3079.999)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6226.243, 3174.205)",
+              "(6226.243, 3174.205)",
+              "[(6441.1, 3119.967), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6230.667, 3218.867)",
+              "(6230.667, 3218.867)",
+              "[(6265.341, 3146.795), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6176.644, 3084.363)",
+              "(6176.644, 3084.363)",
+              "[(6411.423, 3124.419), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6152.534, 3190.263)",
+              "(6152.534, 3190.263)",
+              "[(6471.381, 3116.939), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.032, 3209.53)",
+              "(6177.5, 3214.5)",
+              "[(6242.109, 3144.72), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6120.799, 3112.398)",
+              "(6112.5, 3110.5)",
+              "[(6295.535, 3122.163), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6118.496, 3161.0)",
+              "(6112.5, 3162.5)",
+              "[(6238.712, 3116.588), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6118.397, 3210.557)",
+              "(6112.5, 3214.5)",
+              "[(6210.418, 3128.448), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6054.943, 3110.415)",
+              "(6047.5, 3110.5)",
+              "[(6972.5, 3114.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6055.512, 3160.687)",
+              "(6047.5, 3162.5)",
+              "[(6320.896, 3143.473), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6055.681, 3211.175)",
+              "(6047.5, 3214.5)",
+              "[(6501.238, 3117.467), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6266.646, 3114.06)",
+              "(6266.646, 3114.06)",
+              "[]",
+              false
+            ],
+            [
+              "(6517.368, 3154.717)",
+              "(6517.368, 3154.717)",
+              "[]",
+              false
+            ],
+            [
+              "(6708.457, 3242.968)",
+              "(6708.457, 3242.968)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 45.9333333333333
+        },
+        {
+          "house": "enemy",
+          "mode": "ra2",
+          "physics_hz": 15,
+          "positions": [
+            [
+              "(6768.171, 3141.202)",
+              "(6768.171, 3141.202)",
+              "[(6489.836, 3166.633), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6770.678, 3111.133)",
+              "(6770.678, 3111.133)",
+              "[(6501.93, 3191.25), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6790.357, 3254.662)",
+              "(6790.357, 3254.662)",
+              "[(6625.824, 3202.529), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6820.718, 3108.72)",
+              "(6820.718, 3108.72)",
+              "[(6495.628, 3196.427), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6849.918, 3132.652)",
+              "(6849.918, 3132.652)",
+              "[(6472.339, 3186.499), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6853.67, 3251.939)",
+              "(6853.67, 3251.939)",
+              "[(6596.642, 3206.648), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6917.632, 3114.63)",
+              "(6922.5, 3110.5)",
+              "[(6421.208, 3156.845), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6929.187, 3205.122)",
+              "(6929.187, 3205.122)",
+              "[(6442.336, 3186.549), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6919.859, 3254.013)",
+              "(6919.859, 3254.013)",
+              "[(6566.921, 3210.829), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6980.619, 3113.264)",
+              "(6987.5, 3110.5)",
+              "[(6412.716, 3181.74), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6981.242, 3163.245)",
+              "(6987.5, 3162.5)",
+              "[(6623.071, 3220.786), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6984.435, 3211.892)",
+              "(6987.5, 3214.5)",
+              "[(6887.389, 3213.917), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6250.151, 3079.999)",
+              "(6250.151, 3079.999)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6226.243, 3174.205)",
+              "(6226.243, 3174.205)",
+              "[(6441.1, 3119.967), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6230.667, 3218.867)",
+              "(6230.667, 3218.867)",
+              "[(6265.341, 3146.795), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6176.644, 3084.363)",
+              "(6176.644, 3084.363)",
+              "[(6411.423, 3124.419), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6152.534, 3190.263)",
+              "(6152.534, 3190.263)",
+              "[(6471.381, 3116.939), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.032, 3209.53)",
+              "(6177.5, 3214.5)",
+              "[(6242.109, 3144.72), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6120.799, 3112.398)",
+              "(6112.5, 3110.5)",
+              "[(6295.535, 3122.163), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6118.496, 3161.0)",
+              "(6112.5, 3162.5)",
+              "[(6238.712, 3116.588), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6118.397, 3210.557)",
+              "(6112.5, 3214.5)",
+              "[(6210.418, 3128.448), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6054.943, 3110.415)",
+              "(6047.5, 3110.5)",
+              "[(6972.5, 3114.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6055.512, 3160.687)",
+              "(6047.5, 3162.5)",
+              "[(6320.896, 3143.473), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6055.681, 3211.175)",
+              "(6047.5, 3214.5)",
+              "[(6501.238, 3117.467), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6266.646, 3114.06)",
+              "(6266.646, 3114.06)",
+              "[(6462.5, 3114.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6517.368, 3154.717)",
+              "(6517.368, 3154.717)",
+              "[(6462.5, 3162.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6708.457, 3242.968)",
+              "(6708.457, 3242.968)",
+              "[(6462.5, 3210.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 45.9333333333333
+        },
+        {
+          "house": "ally",
+          "mode": "ra2",
+          "physics_hz": 60,
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "enemy",
+          "mode": "ra2",
+          "physics_hz": 60,
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[(6462.5, 3114.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[(6462.5, 3162.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[(6462.5, 3210.5), (6022.5, 3052.5), (5747.5, 2502.5), (5637.5, 2172.5), (5527.5, 2172.5), (4372.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "ally",
+          "mode": "iron_tide",
+          "physics_hz": 15,
+          "positions": [
+            [
+              "(6768.171, 3141.202)",
+              "(6768.171, 3141.202)",
+              "[(6489.836, 3166.633), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6770.678, 3111.133)",
+              "(6770.678, 3111.133)",
+              "[(6501.93, 3191.25), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6790.357, 3254.662)",
+              "(6790.357, 3254.662)",
+              "[(6625.824, 3202.529), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6820.718, 3108.72)",
+              "(6820.718, 3108.72)",
+              "[(6495.628, 3196.427), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6849.918, 3132.652)",
+              "(6849.918, 3132.652)",
+              "[(6472.339, 3186.499), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6853.67, 3251.939)",
+              "(6853.67, 3251.939)",
+              "[(6596.642, 3206.648), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6917.632, 3114.63)",
+              "(6922.5, 3110.5)",
+              "[(6421.208, 3156.845), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6929.187, 3205.122)",
+              "(6929.187, 3205.122)",
+              "[(6442.336, 3186.549), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6919.859, 3254.013)",
+              "(6919.859, 3254.013)",
+              "[(6566.921, 3210.829), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6980.619, 3113.264)",
+              "(6987.5, 3110.5)",
+              "[(6412.716, 3181.74), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6981.242, 3163.245)",
+              "(6987.5, 3162.5)",
+              "[(6623.071, 3220.786), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6984.435, 3211.892)",
+              "(6987.5, 3214.5)",
+              "[(6887.389, 3213.917), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6250.151, 3079.999)",
+              "(6250.151, 3079.999)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6226.243, 3174.205)",
+              "(6226.243, 3174.205)",
+              "[(6441.1, 3119.967), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6230.667, 3218.867)",
+              "(6230.667, 3218.867)",
+              "[(6265.341, 3146.795), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6176.644, 3084.363)",
+              "(6176.644, 3084.363)",
+              "[(6411.423, 3124.419), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6152.534, 3190.263)",
+              "(6152.534, 3190.263)",
+              "[(6471.381, 3116.939), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.032, 3209.53)",
+              "(6177.5, 3214.5)",
+              "[(6242.109, 3144.72), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6120.799, 3112.398)",
+              "(6112.5, 3110.5)",
+              "[(6295.535, 3122.163), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6118.496, 3161.0)",
+              "(6112.5, 3162.5)",
+              "[(6238.712, 3116.588), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6118.397, 3210.557)",
+              "(6112.5, 3214.5)",
+              "[(6210.418, 3128.448), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6054.943, 3110.415)",
+              "(6047.5, 3110.5)",
+              "[(6972.5, 3114.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6055.512, 3160.687)",
+              "(6047.5, 3162.5)",
+              "[(6320.896, 3143.473), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6055.681, 3211.175)",
+              "(6047.5, 3214.5)",
+              "[(6501.238, 3117.467), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6266.646, 3114.06)",
+              "(6266.646, 3114.06)",
+              "[]",
+              false
+            ],
+            [
+              "(6517.368, 3154.717)",
+              "(6517.368, 3154.717)",
+              "[]",
+              false
+            ],
+            [
+              "(6708.457, 3242.968)",
+              "(6708.457, 3242.968)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 45.9333333333333
+        },
+        {
+          "house": "enemy",
+          "mode": "iron_tide",
+          "physics_hz": 15,
+          "positions": [
+            [
+              "(6768.171, 3141.202)",
+              "(6768.171, 3141.202)",
+              "[(6489.836, 3166.633), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6770.678, 3111.133)",
+              "(6770.678, 3111.133)",
+              "[(6501.93, 3191.25), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6790.357, 3254.662)",
+              "(6790.357, 3254.662)",
+              "[(6625.824, 3202.529), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6820.718, 3108.72)",
+              "(6820.718, 3108.72)",
+              "[(6495.628, 3196.427), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6849.918, 3132.652)",
+              "(6849.918, 3132.652)",
+              "[(6472.339, 3186.499), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6853.67, 3251.939)",
+              "(6853.67, 3251.939)",
+              "[(6596.642, 3206.648), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6917.632, 3114.63)",
+              "(6922.5, 3110.5)",
+              "[(6421.208, 3156.845), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6929.187, 3205.122)",
+              "(6929.187, 3205.122)",
+              "[(6442.336, 3186.549), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6919.859, 3254.013)",
+              "(6919.859, 3254.013)",
+              "[(6566.921, 3210.829), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6980.619, 3113.264)",
+              "(6987.5, 3110.5)",
+              "[(6412.716, 3181.74), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6981.242, 3163.245)",
+              "(6987.5, 3162.5)",
+              "[(6623.071, 3220.786), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6984.435, 3211.892)",
+              "(6987.5, 3214.5)",
+              "[(6887.389, 3213.917), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6250.151, 3079.999)",
+              "(6250.151, 3079.999)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6226.243, 3174.205)",
+              "(6226.243, 3174.205)",
+              "[(6441.1, 3119.967), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6230.667, 3218.867)",
+              "(6230.667, 3218.867)",
+              "[(6265.341, 3146.795), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6176.644, 3084.363)",
+              "(6176.644, 3084.363)",
+              "[(6411.423, 3124.419), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6152.534, 3190.263)",
+              "(6152.534, 3190.263)",
+              "[(6471.381, 3116.939), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.032, 3209.53)",
+              "(6177.5, 3214.5)",
+              "[(6242.109, 3144.72), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6120.799, 3112.398)",
+              "(6112.5, 3110.5)",
+              "[(6295.535, 3122.163), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6118.496, 3161.0)",
+              "(6112.5, 3162.5)",
+              "[(6238.712, 3116.588), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6118.397, 3210.557)",
+              "(6112.5, 3214.5)",
+              "[(6210.418, 3128.448), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6054.943, 3110.415)",
+              "(6047.5, 3110.5)",
+              "[(6972.5, 3114.5), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6055.512, 3160.687)",
+              "(6047.5, 3162.5)",
+              "[(6320.896, 3143.473), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6055.681, 3211.175)",
+              "(6047.5, 3214.5)",
+              "[(6501.238, 3117.467), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6266.646, 3114.06)",
+              "(6266.646, 3114.06)",
+              "[(6462.5, 3114.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6517.368, 3154.717)",
+              "(6517.368, 3154.717)",
+              "[(6462.5, 3162.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6708.457, 3242.968)",
+              "(6708.457, 3242.968)",
+              "[(6462.5, 3210.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 45.9333333333333
+        },
+        {
+          "house": "ally",
+          "mode": "iron_tide",
+          "physics_hz": 60,
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        },
+        {
+          "house": "enemy",
+          "mode": "iron_tide",
+          "physics_hz": 60,
+          "positions": [
+            [
+              "(6789.265, 3119.084)",
+              "(6792.5, 3110.5)",
+              "[(6699.267, 3194.087), (6792.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6749.173, 3120.339)",
+              "(6749.173, 3120.339)",
+              "[(6503.759, 3197.215), (6792.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6796.123, 3220.774)",
+              "(6796.123, 3220.774)",
+              "[(6529.063, 3205.325), (6792.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6855.79, 3123.762)",
+              "(6855.79, 3123.762)",
+              "[(6682.008, 3218.71), (6857.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6873.775, 3179.77)",
+              "(6873.775, 3179.77)",
+              "[(6777.936, 3172.129), (6857.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6851.428, 3221.14)",
+              "(6851.428, 3221.14)",
+              "[(6500.312, 3213.747), (6857.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6913.792, 3107.108)",
+              "(6922.5, 3110.5)",
+              "[(6828.521, 3121.332), (6922.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6913.509, 3165.186)",
+              "(6922.5, 3162.5)",
+              "[(6757.105, 3212.579), (6922.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6924.068, 3231.566)",
+              "(6924.068, 3231.566)",
+              "[(6470.32, 3212.96), (6922.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6979.534, 3114.544)",
+              "(6987.5, 3110.5)",
+              "[(6752.575, 3182.856), (6987.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6979.03, 3166.763)",
+              "(6987.5, 3162.5)",
+              "[(6578.067, 3219.482), (6987.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6990.001, 3223.039)",
+              "(6987.5, 3214.5)",
+              "[(6748.366, 3214.865), (6792.5, 3327.5), (7012.5, 3272.5), (6987.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6255.69, 3081.205)",
+              "(6255.69, 3081.205)",
+              "[(6792.5, 3114.5), (6242.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6291.065, 3197.574)",
+              "(6291.065, 3197.574)",
+              "[(6513.259, 3132.626), (6242.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6240.697, 3206.103)",
+              "(6242.5, 3214.5)",
+              "[(6233.37, 3146.539), (6242.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6185.857, 3080.897)",
+              "(6185.857, 3080.897)",
+              "[(6345.835, 3114.01), (6177.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6151.826, 3143.159)",
+              "(6151.826, 3143.159)",
+              "[(6559.649, 3131.605), (6177.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6186.198, 3217.87)",
+              "(6186.198, 3217.87)",
+              "[(6524.707, 3136.041), (6177.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6122.384, 3111.055)",
+              "(6112.5, 3110.5)",
+              "[(6204.455, 3104.438), (6112.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6121.694, 3165.451)",
+              "(6112.5, 3162.5)",
+              "[(6189.029, 3130.242), (6112.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6122.096, 3234.222)",
+              "(6122.096, 3234.222)",
+              "[(6547.263, 3142.661), (6112.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6057.36, 3110.84)",
+              "(6047.5, 3110.5)",
+              "[(6403.275, 3107.948), (6047.5, 3110.5)]",
+              false
+            ],
+            [
+              "(6056.989, 3161.131)",
+              "(6047.5, 3162.5)",
+              "[(6506.843, 3111.789), (6047.5, 3162.5)]",
+              false
+            ],
+            [
+              "(6056.708, 3212.253)",
+              "(6047.5, 3214.5)",
+              "[(6261.3, 3157.491), (6047.5, 3214.5)]",
+              false
+            ],
+            [
+              "(6311.682, 3084.029)",
+              "(6311.682, 3084.029)",
+              "[(6462.5, 3114.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6510.5, 3162.5)",
+              "(6510.5, 3162.5)",
+              "[(6462.5, 3162.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ],
+            [
+              "(6604.375, 3176.794)",
+              "(6604.375, 3176.794)",
+              "[(6462.5, 3210.5), (6187.5, 3107.5), (5912.5, 2887.5), (5637.5, 2172.5), (5527.5, 2172.5), (4427.5, 962.5), (4317.5, 962.5), (4317.5, 907.5)]",
+              false
+            ]
+          ],
+          "reached": 24,
+          "seconds": 26.5
+        }
+      ]
+    }
+  },
+  "source_sha256": {
+    "iron_tide/scripts/world/native_maps.gd": "91a6c7d9c1932d79f7d669ed6b1ea01de3fbebc5b077fece7d72a6cd5b9f3be0",
+    "iron_tide/scripts/world/path_service.gd": "51df343d229a7caff56dbbdc58c71d06d1734817de83effcfc5b2721288abda7",
+    "iron_tide/scripts/units/local_traffic.gd": "d1bc88bfc320192fcee2ef1d2fbf7e9e5557406ca153650ce8d242c7a439e3c4",
+    "iron_tide/scripts/units/unit.gd": "75d49e1db85b043092010d59af47fcc2baa2418764570211de1385a9b3e090b6",
+    "iron_tide/tests/bridge_queue_regression.gd": "e5e06b55bdc95869eaea73eb442db12a3e93cdd78cab733e0524ed1ef8a079ce"
+  }
+}

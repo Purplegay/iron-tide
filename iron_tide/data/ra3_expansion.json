@@ -1,0 +1,1579 @@
+{
+  "source": "EA CnC_Modding_Support Uprising XML, Steam Uprising1.1 media",
+  "units": [
+    {
+      "id": "R3FUTURE",
+      "name": "未来坦克 X-1（RA3）",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "突击坦克",
+      "extension_only": true,
+      "expansion": "ra3_uprising",
+      "cost": 3000,
+      "build_time": 30.0,
+      "production_seconds_native": true,
+      "hp": 3000.0,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 67.5,
+      "radius": 26,
+      "sight": 750.0,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "ra2_prereq": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "ra3_clearance": 3,
+      "move": {
+        "speed": 67.5,
+        "rot": 180.0,
+        "accel_time": 0.01,
+        "accelerates": true,
+        "turret": true,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal"
+      },
+      "ra3_native": true,
+      "ra3_armor": "AlliedFutureTankArmor",
+      "voice": {
+        "select": "RA3_R3FUTURE_select",
+        "move": "RA3_R3FUTURE_move",
+        "attack": "RA3_R3FUTURE_attack",
+        "created": "RA3_R3FUTURE_created",
+        "move_attack": "RA3_R3FUTURE_move_attack",
+        "select_battle": "RA3_R3FUTURE_select_battle",
+        "select_under_fire": "RA3_R3FUTURE_select_under_fire",
+        "attack_beam": "RA3_R3FUTURE_attack_beam"
+      },
+      "desc": "中子扰乱炮可波及附近敌人。按 Q 指定位置后展开暴乱光束，交叉扫射该区域，冷却 15 秒。生产时需要附近基地的最高许可和作战实验室（兼防卫局）。",
+      "weapon": {
+        "damage": 10,
+        "cooldown": 3,
+        "range": 375.0,
+        "min_range": 0.0,
+        "projectile_speed": 0,
+        "attack_type": "cannon",
+        "ra2_aa": false,
+        "ra2_warhead": "RA3_EXPANSION",
+        "burst": 1
+      }
+    },
+    {
+      "id": "R3HARBINGER",
+      "name": "先锋武装炮艇（RA3）",
+      "faction": "allied",
+      "role": "air",
+      "role_name": "武装炮艇",
+      "extension_only": true,
+      "expansion": "ra3_uprising",
+      "cost": 3600,
+      "build_time": 40.0,
+      "production_seconds_native": true,
+      "hp": 5000.0,
+      "armor": "air",
+      "ra2_armor": "heavy",
+      "speed": 180.0,
+      "radius": 30,
+      "sight": 750.0,
+      "tags": [
+        "air"
+      ],
+      "built_at": "GAAIRC",
+      "ra2_prereq": [
+        "GAAIRC",
+        "GATECH"
+      ],
+      "ra3_clearance": 3,
+      "move": {
+        "speed": 180.0,
+        "rot": 72.0,
+        "accel_time": 1.0,
+        "accelerates": true,
+        "turret": true,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Fly"
+      },
+      "ra3_native": true,
+      "ra3_armor": "AlliedGunshipAircraftArmor",
+      "voice": {
+        "select": "RA3_R3HARBINGER_select",
+        "move": "RA3_R3HARBINGER_move",
+        "attack": "RA3_R3HARBINGER_attack",
+        "created": "RA3_R3HARBINGER_created",
+        "move_attack": "RA3_R3HARBINGER_move_attack",
+        "select_battle": "RA3_R3HARBINGER_select_battle",
+        "select_under_fire": "RA3_R3HARBINGER_select_under_fire",
+        "attack_special": "RA3_R3HARBINGER_attack_special"
+      },
+      "desc": "两门对撞炮打击地面目标，按 Q 可切换前部机炮。弹匣会自动装填，无法防空。生产时需要附近基地的最高许可和作战实验室（兼防卫局）。",
+      "weapon": {
+        "damage": 100,
+        "cooldown": 2,
+        "range": 600.0,
+        "min_range": 75.0,
+        "projectile_speed": 0,
+        "attack_type": "cannon",
+        "ra2_aa": false,
+        "ra2_warhead": "RA3_EXPANSION",
+        "burst": 1
+      }
+    }
+  ],
+  "art": {
+    "R3FUTURE": {
+      "cameo": "res://assets/ra3/expansion/future/button.png",
+      "portrait": "res://assets/ra3/expansion/future/portrait.png"
+    },
+    "R3HARBINGER": {
+      "cameo": "res://assets/ra3/expansion/harbinger/button.png",
+      "portrait": "res://assets/ra3/expansion/harbinger/portrait.png"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "RA3_R3FUTURE_select": {
+        "sounds": [
+          "ra3_exp_aufutur_voicreateb",
+          "ra3_exp_aufutur_voiselecta",
+          "ra3_exp_aufutur_voiselectb",
+          "ra3_exp_aufutur_voiselectc",
+          "ra3_exp_aufutur_voiselectd",
+          "ra3_exp_aufutur_voiselecte",
+          "ra3_exp_aufutur_voiselectf"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_R3FUTURE_select_layer1"
+        ]
+      },
+      "RA3_R3FUTURE_select_layer1": {
+        "sounds": [
+          "ra3_exp_auwarbo_selecta"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_move": {
+        "sounds": [
+          "ra3_exp_aufutur_voimovea",
+          "ra3_exp_aufutur_voimoveb",
+          "ra3_exp_aufutur_voimovec",
+          "ra3_exp_aufutur_voimoved",
+          "ra3_exp_aufutur_voimovee",
+          "ra3_exp_aufutur_voimovef",
+          "ra3_exp_aufutur_voimoveg",
+          "ra3_exp_aufutur_voimoveh"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_attack": {
+        "sounds": [
+          "ra3_exp_aufutur_voiattacka",
+          "ra3_exp_aufutur_voiattackb",
+          "ra3_exp_aufutur_voiattackc",
+          "ra3_exp_aufutur_voiattackd",
+          "ra3_exp_aufutur_voiattacke",
+          "ra3_exp_aufutur_voiattackf"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_created": {
+        "sounds": [
+          "ra3_exp_aufutur_voicreatea"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_move_attack": {
+        "sounds": [
+          "ra3_exp_aufutur_voimvatta",
+          "ra3_exp_aufutur_voimvattb",
+          "ra3_exp_aufutur_voimvattc",
+          "ra3_exp_aufutur_voimvattd",
+          "ra3_exp_aufutur_voimvatte"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_select_battle": {
+        "sounds": [
+          "ra3_exp_aufutur_voiselbata",
+          "ra3_exp_aufutur_voiselbatb",
+          "ra3_exp_aufutur_voiselbatc",
+          "ra3_exp_aufutur_voiselbatd",
+          "ra3_exp_aufutur_voiselbate"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_R3FUTURE_select_battle_layer1"
+        ]
+      },
+      "RA3_R3FUTURE_select_battle_layer1": {
+        "sounds": [
+          "ra3_exp_auwarbo_selecta"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_select_under_fire": {
+        "sounds": [
+          "ra3_exp_aufutur_voiselunda",
+          "ra3_exp_aufutur_voiselundb",
+          "ra3_exp_aufutur_voiselundc",
+          "ra3_exp_aufutur_voiselundd",
+          "ra3_exp_aufutur_voiselunde"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_R3FUTURE_select_under_fire_layer1"
+        ]
+      },
+      "RA3_R3FUTURE_select_under_fire_layer1": {
+        "sounds": [
+          "ra3_exp_auwarbo_selecta"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3FUTURE_attack_beam": {
+        "sounds": [
+          "ra3_exp_aufutur_voiattacka",
+          "ra3_exp_aufutur_voiattackb",
+          "ra3_exp_aufutur_voiattackc",
+          "ra3_exp_aufutur_voiattackd",
+          "ra3_exp_aufutur_voiattacke",
+          "ra3_exp_aufutur_voiattackf",
+          "ra3_exp_aufutur_voiattspeca",
+          "ra3_exp_aufutur_voiattspecb",
+          "ra3_exp_aufutur_voiattspecc",
+          "ra3_exp_aufutur_voiattspecd"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_select": {
+        "sounds": [
+          "ra3_exp_auharbi_voicreatea",
+          "ra3_exp_auharbi_voiselecta",
+          "ra3_exp_auharbi_voiselectb",
+          "ra3_exp_auharbi_voiselectc",
+          "ra3_exp_auharbi_voiselectd",
+          "ra3_exp_auharbi_voiselecte",
+          "ra3_exp_auharbi_voiselectf",
+          "ra3_exp_auharbi_voiselectg",
+          "ra3_exp_auharbi_voiselecth"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_move": {
+        "sounds": [
+          "ra3_exp_auharbi_voimovea",
+          "ra3_exp_auharbi_voimoveb",
+          "ra3_exp_auharbi_voimovec",
+          "ra3_exp_auharbi_voimoved",
+          "ra3_exp_auharbi_voimovee",
+          "ra3_exp_auharbi_voimovef",
+          "ra3_exp_auharbi_voimoveg",
+          "ra3_exp_auharbi_voimoveh",
+          "ra3_exp_auharbi_voimovei",
+          "ra3_exp_auharbi_voimovej"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_attack": {
+        "sounds": [
+          "ra3_exp_auharbi_voiattacka",
+          "ra3_exp_auharbi_voiattackb",
+          "ra3_exp_auharbi_voiattackc",
+          "ra3_exp_auharbi_voiattackd",
+          "ra3_exp_auharbi_voiattacke",
+          "ra3_exp_auharbi_voiattackf"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_created": {
+        "sounds": [
+          "ra3_exp_auharbi_voicreateb"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_move_attack": {
+        "sounds": [
+          "ra3_exp_auharbi_voimvatta",
+          "ra3_exp_auharbi_voimvattb",
+          "ra3_exp_auharbi_voimvattc",
+          "ra3_exp_auharbi_voimvattd",
+          "ra3_exp_auharbi_voimvatte",
+          "ra3_exp_auharbi_voimvattf"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_select_battle": {
+        "sounds": [
+          "ra3_exp_auharbi_voiselbata",
+          "ra3_exp_auharbi_voiselbatb",
+          "ra3_exp_auharbi_voiselbatc",
+          "ra3_exp_auharbi_voiselbatd",
+          "ra3_exp_auharbi_voiselbate",
+          "ra3_exp_auharbi_voiselbatf",
+          "ra3_exp_auharbi_voiselbatg",
+          "ra3_exp_auharbi_voiselbath"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_select_under_fire": {
+        "sounds": [
+          "ra3_exp_auharbi_voiselunda",
+          "ra3_exp_auharbi_voiselundb",
+          "ra3_exp_auharbi_voiselundc",
+          "ra3_exp_auharbi_voiselundd",
+          "ra3_exp_auharbi_voiselunde",
+          "ra3_exp_auharbi_voiselundf",
+          "ra3_exp_auharbi_voiselundg"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_R3HARBINGER_attack_special": {
+        "sounds": [
+          "ra3_exp_auharbi_voiattspeca",
+          "ra3_exp_auharbi_voiattspecb",
+          "ra3_exp_auharbi_voiattspecc",
+          "ra3_exp_auharbi_voiattspecd",
+          "ra3_exp_auharbi_voiattspece",
+          "ra3_exp_auharbi_voiattspecf",
+          "ra3_exp_auharbi_voiattspecg"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_Weapon1FireMS": {
+        "sounds": [
+          "ra3_exp_aufutur_wea1firev3a",
+          "ra3_exp_aufutur_wea1firev3b",
+          "ra3_exp_aufutur_wea1firev3c",
+          "ra3_exp_aufutur_wea1firev3d",
+          "ra3_exp_aufutur_wea1firev3e"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_EXP_ALL_FutureTank_Weapon1FireMS_layer1"
+        ]
+      },
+      "RA3_EXP_ALL_FutureTank_Weapon1FireMS_layer1": {
+        "sounds": [
+          "ra3_exp_aufutur_wea1firea",
+          "ra3_exp_aufutur_wea1fireb",
+          "ra3_exp_aufutur_wea1firec",
+          "ra3_exp_aufutur_wea1fired",
+          "ra3_exp_aufutur_wea1firee"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_DeathRayWeaponFire": {
+        "sounds": [
+          "ra3_exp_auftank_weapfire1a",
+          "ra3_exp_auftank_weapfire1b",
+          "ra3_exp_auftank_weapfire1c",
+          "ra3_exp_auftank_weapfire1d",
+          "ra3_exp_auftank_weapfire1e",
+          "ra3_exp_auftank_weapfire1f"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_Gunship_ColliderCannonWeaponFire": {
+        "sounds": [
+          "ra3_exp_augunship_cannonfirea",
+          "ra3_exp_augunship_cannonfireb",
+          "ra3_exp_augunship_cannonfirec",
+          "ra3_exp_augunship_cannonfired",
+          "ra3_exp_augunship_cannonfiree"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_Gunship_ColliderCannonExploMS": {
+        "sounds": [
+          "ra3_exp_augunship_cannonexplo1a",
+          "ra3_exp_augunship_cannonexplo1b",
+          "ra3_exp_augunship_cannonexplo1c",
+          "ra3_exp_augunship_cannonexplo1d",
+          "ra3_exp_augunship_cannonexplo1e",
+          "ra3_exp_augunship_cannonexplo1f",
+          "ra3_exp_augunship_cannonexplo1g",
+          "ra3_exp_augunship_cannonexplo1h"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_EXP_ALL_Gunship_ColliderCannonExploMS_layer1"
+        ]
+      },
+      "RA3_EXP_ALL_Gunship_ColliderCannonExploMS_layer1": {
+        "sounds": [
+          "ra3_exp_augunship_cannonexplo2a",
+          "ra3_exp_augunship_cannonexplo2b",
+          "ra3_exp_augunship_cannonexplo2c",
+          "ra3_exp_augunship_cannonexplo2d",
+          "ra3_exp_augunship_cannonexplo2e",
+          "ra3_exp_augunship_cannonexplo2f",
+          "ra3_exp_augunship_cannonexplo2g",
+          "ra3_exp_augunship_cannonexplo2h"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_Gunship_MachineGunWeaponFire": {
+        "sounds": [
+          "ra3_exp_sutwinb_weapfire1a",
+          "ra3_exp_sutwinb_weapfire1b",
+          "ra3_exp_sutwinb_weapfire1c",
+          "ra3_exp_sutwinb_weapfire1d",
+          "ra3_exp_sutwinb_weapfire1e",
+          "ra3_exp_sutwinb_weapfire1f",
+          "ra3_exp_sutwinb_weapfire1g"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_Gunship_Weapon1ToggleMS": {
+        "sounds": [
+          "ra3_exp_augunsh_wea1togglea"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_EXP_ALL_Gunship_Weapon1ToggleMS_layer1"
+        ]
+      },
+      "RA3_EXP_ALL_Gunship_Weapon1ToggleMS_layer1": {
+        "sounds": [
+          "ra3_exp_augunsh_wea1togglea"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_Gunship_Weapon2ToggleMS": {
+        "sounds": [
+          "ra3_exp_augunsh_wea2togglea"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_EXP_ALL_Gunship_Weapon2ToggleMS_layer1"
+        ]
+      },
+      "RA3_EXP_ALL_Gunship_Weapon2ToggleMS_layer1": {
+        "sounds": [
+          "ra3_exp_augunsh_wea2togglea"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_PreFireChargeUp": {
+        "sounds": [],
+        "volume": 0,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_ArmPrimaryWeapon": {
+        "sounds": [
+          "ra3_exp_aufutur_armprimarya",
+          "ra3_exp_aufutur_armprimaryb",
+          "ra3_exp_aufutur_armprimaryc"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_ArmSecondaryWeaponMS": {
+        "sounds": [
+          "ra3_exp_aufutur_armsecondarya",
+          "ra3_exp_aufutur_armsecondaryb",
+          "ra3_exp_aufutur_armsecondaryc"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10,
+        "layers": [
+          "RA3_EXP_ALL_FutureTank_ArmSecondaryWeaponMS_layer1"
+        ]
+      },
+      "RA3_EXP_ALL_FutureTank_ArmSecondaryWeaponMS_layer1": {
+        "sounds": [
+          "ra3_exp_aufutur_armsecondarya",
+          "ra3_exp_aufutur_armsecondaryb",
+          "ra3_exp_aufutur_armsecondaryc"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_Weapon_NeutronScramblerImpactSmall": {
+        "sounds": [
+          "ra3_exp_auftank_neutimpasmaa",
+          "ra3_exp_auftank_neutimpasmab",
+          "ra3_exp_auftank_neutimpasmac",
+          "ra3_exp_auftank_neutimpasmad",
+          "ra3_exp_auftank_neutimpasmae"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      },
+      "RA3_EXP_ALL_FutureTank_Weapon_NeutronScramblerImpactBig": {
+        "sounds": [
+          "ra3_exp_auftank_neutimpabiga",
+          "ra3_exp_auftank_neutimpabigb",
+          "ra3_exp_auftank_neutimpabigc"
+        ],
+        "volume": 85,
+        "range": 20,
+        "loop": false,
+        "priority": 10
+      }
+    },
+    "entries": {
+      "ra3_exp_aufutur_voicreateb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiCreateb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1069
+      },
+      "ra3_exp_aufutur_voiselecta": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1699
+      },
+      "ra3_exp_aufutur_voiselectb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelectb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 684
+      },
+      "ra3_exp_aufutur_voiselectc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelectc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 841
+      },
+      "ra3_exp_aufutur_voiselectd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelectd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1072
+      },
+      "ra3_exp_aufutur_voiselecte": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelecte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1497
+      },
+      "ra3_exp_aufutur_voiselectf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelectf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1073
+      },
+      "ra3_exp_auwarbo_selecta": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUWarBo_selecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2826
+      },
+      "ra3_exp_aufutur_voimovea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMovea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 930
+      },
+      "ra3_exp_aufutur_voimoveb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMoveb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 712
+      },
+      "ra3_exp_aufutur_voimovec": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMovec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 848
+      },
+      "ra3_exp_aufutur_voimoved": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMoved.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 807
+      },
+      "ra3_exp_aufutur_voimovee": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMovee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1496
+      },
+      "ra3_exp_aufutur_voimovef": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMovef.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 953
+      },
+      "ra3_exp_aufutur_voimoveg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMoveg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1025
+      },
+      "ra3_exp_aufutur_voimoveh": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMoveh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 876
+      },
+      "ra3_exp_aufutur_voiattacka": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttacka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 876
+      },
+      "ra3_exp_aufutur_voiattackb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttackb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 592
+      },
+      "ra3_exp_aufutur_voiattackc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttackc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1347
+      },
+      "ra3_exp_aufutur_voiattackd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttackd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 682
+      },
+      "ra3_exp_aufutur_voiattacke": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttacke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 936
+      },
+      "ra3_exp_aufutur_voiattackf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttackf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 861
+      },
+      "ra3_exp_aufutur_voicreatea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiCreatea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1725
+      },
+      "ra3_exp_aufutur_voimvatta": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMvAtta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1086
+      },
+      "ra3_exp_aufutur_voimvattb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMvAttb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1390
+      },
+      "ra3_exp_aufutur_voimvattc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMvAttc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1475
+      },
+      "ra3_exp_aufutur_voimvattd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMvAttd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1072
+      },
+      "ra3_exp_aufutur_voimvatte": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiMvAtte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 581
+      },
+      "ra3_exp_aufutur_voiselbata": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelBata.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1089
+      },
+      "ra3_exp_aufutur_voiselbatb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelBatb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1631
+      },
+      "ra3_exp_aufutur_voiselbatc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelBatc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1626
+      },
+      "ra3_exp_aufutur_voiselbatd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelBatd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1326
+      },
+      "ra3_exp_aufutur_voiselbate": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelBate.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1219
+      },
+      "ra3_exp_aufutur_voiselunda": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelUnda.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1251
+      },
+      "ra3_exp_aufutur_voiselundb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelUndb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1030
+      },
+      "ra3_exp_aufutur_voiselundc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelUndc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1452
+      },
+      "ra3_exp_aufutur_voiselundd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelUndd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1176
+      },
+      "ra3_exp_aufutur_voiselunde": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiSelUnde.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1271
+      },
+      "ra3_exp_aufutur_voiattspeca": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttSpeca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 967
+      },
+      "ra3_exp_aufutur_voiattspecb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttSpecb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1423
+      },
+      "ra3_exp_aufutur_voiattspecc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttSpecc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1093
+      },
+      "ra3_exp_aufutur_voiattspecd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_voiAttSpecd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1162
+      },
+      "ra3_exp_auharbi_voicreatea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiCreatea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1288
+      },
+      "ra3_exp_auharbi_voiselecta": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 725
+      },
+      "ra3_exp_auharbi_voiselectb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelectb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1533
+      },
+      "ra3_exp_auharbi_voiselectc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelectc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 621
+      },
+      "ra3_exp_auharbi_voiselectd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelectd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1105
+      },
+      "ra3_exp_auharbi_voiselecte": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelecte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1223
+      },
+      "ra3_exp_auharbi_voiselectf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelectf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1264
+      },
+      "ra3_exp_auharbi_voiselectg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelectg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1133
+      },
+      "ra3_exp_auharbi_voiselecth": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelecth.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1491
+      },
+      "ra3_exp_auharbi_voimovea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1406
+      },
+      "ra3_exp_auharbi_voimoveb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMoveb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 654
+      },
+      "ra3_exp_auharbi_voimovec": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 702
+      },
+      "ra3_exp_auharbi_voimoved": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMoved.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 902
+      },
+      "ra3_exp_auharbi_voimovee": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 697
+      },
+      "ra3_exp_auharbi_voimovef": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovef.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 918
+      },
+      "ra3_exp_auharbi_voimoveg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMoveg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1427
+      },
+      "ra3_exp_auharbi_voimoveh": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMoveh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1029
+      },
+      "ra3_exp_auharbi_voimovei": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovei.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 905
+      },
+      "ra3_exp_auharbi_voimovej": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMovej.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 592
+      },
+      "ra3_exp_auharbi_voiattacka": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttacka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1151
+      },
+      "ra3_exp_auharbi_voiattackb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttackb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1257
+      },
+      "ra3_exp_auharbi_voiattackc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttackc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1252
+      },
+      "ra3_exp_auharbi_voiattackd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttackd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 718
+      },
+      "ra3_exp_auharbi_voiattacke": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttacke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1367
+      },
+      "ra3_exp_auharbi_voiattackf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttackf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 915
+      },
+      "ra3_exp_auharbi_voicreateb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiCreateb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1532
+      },
+      "ra3_exp_auharbi_voimvatta": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAtta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 898
+      },
+      "ra3_exp_auharbi_voimvattb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAttb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1133
+      },
+      "ra3_exp_auharbi_voimvattc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAttc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1483
+      },
+      "ra3_exp_auharbi_voimvattd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAttd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2354
+      },
+      "ra3_exp_auharbi_voimvatte": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAtte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1235
+      },
+      "ra3_exp_auharbi_voimvattf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiMvAttf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1197
+      },
+      "ra3_exp_auharbi_voiselbata": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBata.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1987
+      },
+      "ra3_exp_auharbi_voiselbatb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBatb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1537
+      },
+      "ra3_exp_auharbi_voiselbatc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBatc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1153
+      },
+      "ra3_exp_auharbi_voiselbatd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBatd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1649
+      },
+      "ra3_exp_auharbi_voiselbate": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBate.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1895
+      },
+      "ra3_exp_auharbi_voiselbatf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBatf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1075
+      },
+      "ra3_exp_auharbi_voiselbatg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBatg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1080
+      },
+      "ra3_exp_auharbi_voiselbath": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelBath.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 819
+      },
+      "ra3_exp_auharbi_voiselunda": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUnda.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1301
+      },
+      "ra3_exp_auharbi_voiselundb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUndb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 743
+      },
+      "ra3_exp_auharbi_voiselundc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUndc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1053
+      },
+      "ra3_exp_auharbi_voiselundd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUndd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 793
+      },
+      "ra3_exp_auharbi_voiselunde": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUnde.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1239
+      },
+      "ra3_exp_auharbi_voiselundf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUndf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1101
+      },
+      "ra3_exp_auharbi_voiselundg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiSelUndg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1179
+      },
+      "ra3_exp_auharbi_voiattspeca": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpeca.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2056
+      },
+      "ra3_exp_auharbi_voiattspecb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpecb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1303
+      },
+      "ra3_exp_auharbi_voiattspecc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpecc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1083
+      },
+      "ra3_exp_auharbi_voiattspecd": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpecd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1255
+      },
+      "ra3_exp_auharbi_voiattspece": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpece.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 931
+      },
+      "ra3_exp_auharbi_voiattspecf": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpecf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 846
+      },
+      "ra3_exp_auharbi_voiattspecg": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUHarbi_voiAttSpecg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1089
+      },
+      "ra3_exp_aufutur_wea1firev3a": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_Wea1FireV3a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2948
+      },
+      "ra3_exp_aufutur_wea1firev3b": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_Wea1FireV3b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3569
+      },
+      "ra3_exp_aufutur_wea1firev3c": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_Wea1FireV3c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3173
+      },
+      "ra3_exp_aufutur_wea1firev3d": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_Wea1FireV3d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3876
+      },
+      "ra3_exp_aufutur_wea1firev3e": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_Wea1FireV3e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2948
+      },
+      "ra3_exp_aufutur_wea1firea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_wea1Firea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3181
+      },
+      "ra3_exp_aufutur_wea1fireb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_wea1Fireb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3262
+      },
+      "ra3_exp_aufutur_wea1firec": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_wea1Firec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3244
+      },
+      "ra3_exp_aufutur_wea1fired": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_wea1Fired.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3192
+      },
+      "ra3_exp_aufutur_wea1firee": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_wea1Firee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2217
+      },
+      "ra3_exp_auftank_weapfire1a": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3000
+      },
+      "ra3_exp_auftank_weapfire1b": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3026
+      },
+      "ra3_exp_auftank_weapfire1c": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3004
+      },
+      "ra3_exp_auftank_weapfire1d": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2995
+      },
+      "ra3_exp_auftank_weapfire1e": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3009
+      },
+      "ra3_exp_auftank_weapfire1f": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_weapFire1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3010
+      },
+      "ra3_exp_augunship_cannonfirea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonFireA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1951
+      },
+      "ra3_exp_augunship_cannonfireb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonFireB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1428
+      },
+      "ra3_exp_augunship_cannonfirec": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonFireC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1721
+      },
+      "ra3_exp_augunship_cannonfired": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonFireD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1641
+      },
+      "ra3_exp_augunship_cannonfiree": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonFireE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1835
+      },
+      "ra3_exp_augunship_cannonexplo1a": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1A.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2950
+      },
+      "ra3_exp_augunship_cannonexplo1b": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1B.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2402
+      },
+      "ra3_exp_augunship_cannonexplo1c": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1C.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2109
+      },
+      "ra3_exp_augunship_cannonexplo1d": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1D.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2132
+      },
+      "ra3_exp_augunship_cannonexplo1e": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1E.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3336
+      },
+      "ra3_exp_augunship_cannonexplo1f": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1F.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2053
+      },
+      "ra3_exp_augunship_cannonexplo1g": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1G.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2627
+      },
+      "ra3_exp_augunship_cannonexplo1h": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo1H.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2337
+      },
+      "ra3_exp_augunship_cannonexplo2a": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2A.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2771
+      },
+      "ra3_exp_augunship_cannonexplo2b": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2B.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2087
+      },
+      "ra3_exp_augunship_cannonexplo2c": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2C.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2225
+      },
+      "ra3_exp_augunship_cannonexplo2d": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2D.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1700
+      },
+      "ra3_exp_augunship_cannonexplo2e": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2E.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2780
+      },
+      "ra3_exp_augunship_cannonexplo2f": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2F.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1788
+      },
+      "ra3_exp_augunship_cannonexplo2g": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2G.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1996
+      },
+      "ra3_exp_augunship_cannonexplo2h": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunship_cannonExplo2H.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2327
+      },
+      "ra3_exp_sutwinb_weapfire1a": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1195
+      },
+      "ra3_exp_sutwinb_weapfire1b": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1544
+      },
+      "ra3_exp_sutwinb_weapfire1c": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1710
+      },
+      "ra3_exp_sutwinb_weapfire1d": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1691
+      },
+      "ra3_exp_sutwinb_weapfire1e": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1703
+      },
+      "ra3_exp_sutwinb_weapfire1f": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1525
+      },
+      "ra3_exp_sutwinb_weapfire1g": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_SUTwinb_weapFire1g.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1767
+      },
+      "ra3_exp_augunsh_wea1togglea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunsh_wea1Togglea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1546
+      },
+      "ra3_exp_augunsh_wea2togglea": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUGunsh_wea2Togglea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1404
+      },
+      "ra3_exp_aufutur_armprimarya": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armPrimarya.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 997
+      },
+      "ra3_exp_aufutur_armprimaryb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armPrimaryb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1008
+      },
+      "ra3_exp_aufutur_armprimaryc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armPrimaryc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 945
+      },
+      "ra3_exp_aufutur_armsecondarya": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armSecondarya.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1677
+      },
+      "ra3_exp_aufutur_armsecondaryb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armSecondaryb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1659
+      },
+      "ra3_exp_aufutur_armsecondaryc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFutur_armSecondaryc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1739
+      },
+      "ra3_exp_auftank_neutimpasmaa": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaSmaa.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1779
+      },
+      "ra3_exp_auftank_neutimpasmab": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaSmab.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1697
+      },
+      "ra3_exp_auftank_neutimpasmac": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaSmac.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1752
+      },
+      "ra3_exp_auftank_neutimpasmad": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaSmad.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1659
+      },
+      "ra3_exp_auftank_neutimpasmae": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaSmae.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1877
+      },
+      "ra3_exp_auftank_neutimpabiga": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaBiga.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4263
+      },
+      "ra3_exp_auftank_neutimpabigb": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaBigb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3372
+      },
+      "ra3_exp_auftank_neutimpabigc": {
+        "file": "res://assets/ra3/expansion/audio/AudioFile_AUFTank_neutImpaBigc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4031
+      }
+    }
+  },
+  "warheads": {
+    "RA3_EXPANSION": {
+      "verses": {
+        "none": 1.0,
+        "flak": 1.0,
+        "plate": 1.0,
+        "light": 1.0,
+        "medium": 1.0,
+        "heavy": 1.0,
+        "wood": 1.0,
+        "steel": 1.0,
+        "concrete": 1.0,
+        "special_1": 1.0,
+        "special_2": 1.0
+      },
+      "extra": {}
+    }
+  }
+}

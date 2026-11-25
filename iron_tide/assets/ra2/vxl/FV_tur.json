@@ -1,0 +1,21 @@
+{
+  "id": "FV_tur",
+  "image": "FV",
+  "vxl": "FVtur.VXL",
+  "source": "LOCAL.MIX",
+  "facings": 32,
+  "frameW": 95,
+  "frameH": 65,
+  "of": "FV",
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "draw_offset": [
+    0,
+    0
+  ],
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

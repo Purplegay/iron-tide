@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/gi_group_selection_regression.gd" id="1"]
+
+[node name="GIGroupSelection" type="Node"]
+script = ExtResource("1")

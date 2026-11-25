@@ -1,0 +1,187 @@
+{
+  "source": "MOUSE.SHP",
+  "palette": "MOUSEPAL.PAL",
+  "source_sha256": "e5a356737787d681dd1a2b1255c7c7d1e9bd8334e5674705f2ccc39cd12634df",
+  "palette_sha256": "4dcbe78b534a58fc972bce4b25aa58a2a56c9a5bb0ffbfcf5d6194be5dbde60c",
+  "png_sha256": "058782f922d59a08d70acecc443f1f514348a5ddc2f0ca5851d68f555d1e3d92",
+  "cell": [
+    55,
+    43
+  ],
+  "cols": 10,
+  "fps": 15,
+  "sequences": {
+    "arrow": {
+      "start": 0,
+      "count": 1,
+      "hotspot": [
+        0,
+        0
+      ],
+      "offset": 0
+    },
+    "select": {
+      "start": 18,
+      "count": 13,
+      "offset": 1,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "move": {
+      "start": 31,
+      "count": 10,
+      "offset": 14,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "blocked": {
+      "start": 384,
+      "count": 1,
+      "offset": 24,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "attack": {
+      "start": 58,
+      "count": 5,
+      "offset": 25,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "harvest": {
+      "start": 53,
+      "count": 5,
+      "offset": 30,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "attack_move": {
+      "start": 404,
+      "count": 9,
+      "offset": 35,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "pan": {
+      "start": 385,
+      "count": 1,
+      "offset": 44,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "deploy": {
+      "start": 110,
+      "count": 9,
+      "offset": 45,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "deploy_infantry": {
+      "start": 239,
+      "count": 10,
+      "offset": 54,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "undeploy": {
+      "start": 120,
+      "count": 9,
+      "offset": 64,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "sell": {
+      "start": 129,
+      "count": 10,
+      "offset": 73,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "sell_blocked": {
+      "start": 149,
+      "count": 1,
+      "offset": 83,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "repair": {
+      "start": 170,
+      "count": 20,
+      "offset": 84,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "repair_blocked": {
+      "start": 190,
+      "count": 1,
+      "offset": 104,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "enter": {
+      "start": 89,
+      "count": 10,
+      "offset": 105,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "enter_blocked": {
+      "start": 99,
+      "count": 1,
+      "offset": 115,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "c4": {
+      "start": 309,
+      "count": 10,
+      "offset": 116,
+      "hotspot": [
+        27,
+        21
+      ]
+    },
+    "sabotage": {
+      "start": 229,
+      "count": 5,
+      "offset": 126,
+      "hotspot": [
+        27,
+        21
+      ]
+    }
+  },
+  "reference": "https://github.com/OpenRA/ra2/blob/master/mods/ra2/cursors.yaml"
+}

@@ -1,0 +1,991 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2 board helicopter above occupied terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 boarding destination snapped outside factory",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 stationary carrier keeps reachable path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 AI meets passenger at reachable pickup",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 passenger keeps fixed pickup as helicopter flies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 changed carrier position triggers one new path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 player stop cancels boarding",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: opposing passenger rejected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: boarding order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: real movement reaches transport and stows passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: stowed passenger removed from targeting and picking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: passenger cannot be hit separately inside transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: source passenger capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: full transport rejects extra passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: existing deployment action requests unloading",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: deep water cannot unload ground passengers",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: player formation command preserves land destination for amphibious transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: air/amphibious route reaches land across shore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: real transport crosses shoreline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: unload restores passenger at legal ground position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: unload preserves health, targeting and ground domain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 LCRF: transport destruction resolves passenger death",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: opposing passenger rejected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: boarding order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: real movement reaches transport and stows passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: stowed passenger removed from targeting and picking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: passenger cannot be hit separately inside transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: source passenger capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: full transport rejects extra passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: existing deployment action requests unloading",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: deep water cannot unload ground passengers",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: player formation command preserves land destination for amphibious transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: air/amphibious route reaches land across shore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: real transport crosses shoreline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: unload restores passenger at legal ground position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: unload preserves health, targeting and ground domain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 SHAD: transport destruction resolves passenger death",
+      "passed": true
+    },
+    {
+      "details": 1,
+      "name": "ra2 ORCA: one ammo point pays for exactly one complete volley",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: empty aircraft automatically returns after final burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: real flight reaches reserved dock and lands",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: landed aircraft becomes ground weapon target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: return discards completed sortie target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: low power pauses rearming",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: reload completes only at powered airport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: rearm clears legacy target and does not create another attack command",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: living old enemy cannot trigger another sortie after ten seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: stop does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: guard does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: full aircraft remains parked when airport loses power",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: new explicit attack starts next sortie",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: new sortie actually takes off and fires",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: stop clears pending burst and legacy target even with empty ammo",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: captured airport reroutes to another same-side dock",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: no airport retains empty ammo and cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: available dock reserves production slot 0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: available dock reserves production slot 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: available dock reserves production slot 2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: available dock reserves production slot 3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ORCA: four docks cap aircraft plus pending orders",
+      "passed": true
+    },
+    {
+      "details": 1,
+      "name": "ra2 BEAG: one ammo point pays for exactly one complete volley",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: empty aircraft automatically returns after final burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: real flight reaches reserved dock and lands",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: landed aircraft becomes ground weapon target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: return discards completed sortie target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: low power pauses rearming",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: reload completes only at powered airport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: rearm clears legacy target and does not create another attack command",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: living old enemy cannot trigger another sortie after ten seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: stop does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: guard does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: full aircraft remains parked when airport loses power",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: new explicit attack starts next sortie",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: new sortie actually takes off and fires",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: stop clears pending burst and legacy target even with empty ammo",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: captured airport reroutes to another same-side dock",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: no airport retains empty ammo and cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: available dock reserves production slot 0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: available dock reserves production slot 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: available dock reserves production slot 2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: available dock reserves production slot 3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 BEAG: four docks cap aircraft plus pending orders",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: real three-aircraft squadron launches from carrier",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: aircraft attack and physically return to moving home",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: home actually moved during sortie",
+      "passed": true
+    },
+    {
+      "details": 3,
+      "name": "ra2 carrier: carrier causes three real bombs, no direct dummy damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: real bombs damage opposing target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: deck reload prevents immediate relaunch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: replacement move cancels old carrier target and leaves recovered aircraft aboard",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: new carrier attack relaunches reloaded surviving aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: lost aircraft cannot regenerate early",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: lost aircraft regenerates after source delay",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 carrier: carrier loss removes remaining squadron",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy transport accepts same-side tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: tank consumes three actual passenger slots",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy unload restores correct targeting side",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: helicopter size limit rejects tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enemy aircraft ignores closer opposing airport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide board helicopter above occupied terrain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide boarding destination snapped outside factory",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide stationary carrier keeps reachable path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide AI meets passenger at reachable pickup",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide passenger keeps fixed pickup as helicopter flies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide changed carrier position triggers one new path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide player stop cancels boarding",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: opposing passenger rejected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: boarding order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: real movement reaches transport and stows passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: stowed passenger removed from targeting and picking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: passenger cannot be hit separately inside transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: source passenger capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: full transport rejects extra passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: existing deployment action requests unloading",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: deep water cannot unload ground passengers",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: player formation command preserves land destination for amphibious transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: air/amphibious route reaches land across shore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: real transport crosses shoreline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: unload restores passenger at legal ground position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: unload preserves health, targeting and ground domain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide LCRF: transport destruction resolves passenger death",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: opposing passenger rejected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: boarding order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: real movement reaches transport and stows passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: stowed passenger removed from targeting and picking",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: passenger cannot be hit separately inside transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: source passenger capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: full transport rejects extra passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: existing deployment action requests unloading",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: deep water cannot unload ground passengers",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: player formation command preserves land destination for amphibious transport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: air/amphibious route reaches land across shore",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: real transport crosses shoreline",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: unload restores passenger at legal ground position",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: unload preserves health, targeting and ground domain",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide SHAD: transport destruction resolves passenger death",
+      "passed": true
+    },
+    {
+      "details": 1,
+      "name": "iron_tide ORCA: one ammo point pays for exactly one complete volley",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: empty aircraft automatically returns after final burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: real flight reaches reserved dock and lands",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: landed aircraft becomes ground weapon target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: return discards completed sortie target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: low power pauses rearming",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: reload completes only at powered airport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: rearm clears legacy target and does not create another attack command",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: living old enemy cannot trigger another sortie after ten seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: stop does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: guard does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: full aircraft remains parked when airport loses power",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: new explicit attack starts next sortie",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: new sortie actually takes off and fires",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: stop clears pending burst and legacy target even with empty ammo",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: captured airport reroutes to another same-side dock",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: no airport retains empty ammo and cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: available dock reserves production slot 0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: available dock reserves production slot 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: available dock reserves production slot 2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: available dock reserves production slot 3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ORCA: four docks cap aircraft plus pending orders",
+      "passed": true
+    },
+    {
+      "details": 1,
+      "name": "iron_tide BEAG: one ammo point pays for exactly one complete volley",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: empty aircraft automatically returns after final burst",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: real flight reaches reserved dock and lands",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: landed aircraft becomes ground weapon target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: return discards completed sortie target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: low power pauses rearming",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: reload completes only at powered airport",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: rearm clears legacy target and does not create another attack command",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: living old enemy cannot trigger another sortie after ten seconds",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: stop does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: guard does not launch parked aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: full aircraft remains parked when airport loses power",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: new explicit attack starts next sortie",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: new sortie actually takes off and fires",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: stop clears pending burst and legacy target even with empty ammo",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: captured airport reroutes to another same-side dock",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: no airport retains empty ammo and cannot fire",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: available dock reserves production slot 0",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: available dock reserves production slot 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: available dock reserves production slot 2",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: available dock reserves production slot 3",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide BEAG: four docks cap aircraft plus pending orders",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: real three-aircraft squadron launches from carrier",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: aircraft attack and physically return to moving home",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: home actually moved during sortie",
+      "passed": true
+    },
+    {
+      "details": 3,
+      "name": "iron_tide carrier: carrier causes three real bombs, no direct dummy damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: real bombs damage opposing target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: deck reload prevents immediate relaunch",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: replacement move cancels old carrier target and leaves recovered aircraft aboard",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: new carrier attack relaunches reloaded surviving aircraft",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: lost aircraft cannot regenerate early",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: lost aircraft regenerates after source delay",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide carrier: carrier loss removes remaining squadron",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy transport accepts same-side tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: tank consumes three actual passenger slots",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy unload restores correct targeting side",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: helicopter size limit rejects tank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enemy aircraft ignores closer opposing airport",
+      "passed": true
+    }
+  ],
+  "evidence": {
+    "engine": "4.7.2-stable (official)",
+    "input": "Viewport.push_input routes mouse/key events through the real battle/HUD",
+    "modes": [
+      "ra2",
+      "iron_tide"
+    ],
+    "project": "C:/Users/admin/Temp/iron-memory-nov8/project/",
+    "user_dir": "C:/Users/admin/Temp/iron-memory-nov8/hotpaths-logistics/profile/CodexIronTideValidation/edgeperf",
+    "zooms": [
+      0.5,
+      1,
+      2,
+      4
+    ]
+  },
+  "failed": 0
+}

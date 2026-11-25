@@ -1,0 +1,4236 @@
+{
+  "hero/TANY/command": {
+    "name": "谭雅 · 破袭专家",
+    "unit": "TANY",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "c4_guard_seconds": 2,
+      "c4_cooldown": 12,
+      "c4_defense": 0.15,
+      "detect_cells": 2,
+      "firing_speed": 0.7,
+      "split_rounds": 3,
+      "split_damage": 0.4,
+      "split_radius": 1,
+      "shock_radius": 1.5,
+      "shock_damage": 0.6,
+      "chain_limit": 2,
+      "chain_radius": 1.5,
+      "chain_delay": 4,
+      "chain_cooldown": 60
+    },
+    "parameter_fields": {
+      "c4_guard_seconds": {
+        "label": "Lv.0 破拆预备 · 减伤秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "c4_cooldown": {
+        "label": "Lv.0 破拆预备 · 触发间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "c4_defense": {
+        "label": "Lv.0 破拆预备 · 减伤比例",
+        "minimum": 0,
+        "maximum": 0.95,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "detect_cells": {
+        "label": "Lv.1 近距识破 · 侦测格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "firing_speed": {
+        "label": "Lv.4 行进双枪 · 开火时移速倍率",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_rounds": {
+        "label": "Lv.2 双枪分击 · 每几轮触发",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_damage": {
+        "label": "Lv.2 双枪分击 · 攻击力比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_radius": {
+        "label": "Lv.2 双枪分击 · 副目标范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shock_radius": {
+        "label": "Lv.3 破拆震波 · 范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shock_damage": {
+        "label": "Lv.3 破拆震波 · 攻击力比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "chain_limit": {
+        "label": "Lv.5 连锁拆除 · 每局次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "chain_radius": {
+        "label": "Lv.5 连锁拆除 · 建筑间距格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "chain_delay": {
+        "label": "Lv.5 连锁拆除 · 炸药延迟秒",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "chain_cooldown": {
+        "label": "Lv.5 连锁拆除 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/TANY/survival": {
+    "name": "谭雅 · 极限脱身",
+    "unit": "TANY",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "trigger_loss": 0.15,
+      "escape_shield": 0.1,
+      "escape_seconds": 3,
+      "escape_cooldown": 30,
+      "flash_threshold": 0.25,
+      "swim_quiet": 2,
+      "swim_shield": 0.15,
+      "swim_duration": 4,
+      "swim_cooldown": 15,
+      "lethal_cap": 0.3333333333333333,
+      "last_cloak": 2,
+      "last_lock": 2,
+      "last_hp": 1,
+      "flash_cooldown": 40,
+      "flash_radius": 2,
+      "flash_seconds": 1.5
+    },
+    "parameter_fields": {
+      "trigger_loss": {
+        "label": "Lv.0 脱离杀线 · 单次生命伤害阈值",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "escape_shield": {
+        "label": "Lv.0 脱离杀线 · 护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "escape_seconds": {
+        "label": "Lv.0 脱离杀线 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "escape_cooldown": {
+        "label": "Lv.0 脱离杀线 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flash_threshold": {
+        "label": "Lv.4 闪光脱离 · 生命阈值",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "swim_quiet": {
+        "label": "Lv.2 潜泳 · 停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "swim_shield": {
+        "label": "Lv.2 潜泳 · 破隐护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "swim_duration": {
+        "label": "Lv.2 潜泳 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "swim_cooldown": {
+        "label": "Lv.2 潜泳 · 护盾冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lethal_cap": {
+        "label": "Lv.1 反猎杀 · 致命单击生命上限比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_cloak": {
+        "label": "Lv.5 最后一搏 · 隐形秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_lock": {
+        "label": "Lv.5 最后一搏 · 禁攻秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_hp": {
+        "label": "Lv.5 最后一搏 · 保留生命值",
+        "minimum": 1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flash_cooldown": {
+        "label": "Lv.4 闪光脱离 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flash_radius": {
+        "label": "Lv.4 闪光脱离 · 范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flash_seconds": {
+        "label": "Lv.4 闪光脱离 · 禁攻秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/BORIS/command": {
+    "name": "鲍里斯 · 前线指挥",
+    "unit": "BORIS",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "sight_cells": 1,
+      "rifle_hits": 3,
+      "suppress_seconds": 1,
+      "suppress_cooldown": 8,
+      "focus_seconds": 4,
+      "focus_charges": 3,
+      "focus_cooldown": 12,
+      "relay_reload": 0.5,
+      "focus_damage": 1.15,
+      "relay_radius": 3,
+      "relay_targets": 4,
+      "relay_seconds": 5,
+      "secondary_radius": 3,
+      "extra_planes_ratio": 0.5
+    },
+    "parameter_fields": {
+      "sight_cells": {
+        "label": "Lv.0 前沿观察 · 视野增加格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rifle_hits": {
+        "label": "Lv.1 步枪压制 · 连续命中次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "suppress_seconds": {
+        "label": "Lv.1 步枪压制 · 禁攻秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "suppress_cooldown": {
+        "label": "Lv.1 步枪压制 · 目标间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "focus_seconds": {
+        "label": "Lv.4 集火口令 · 标记秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "focus_charges": {
+        "label": "Lv.4 集火口令 · 强化次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "focus_cooldown": {
+        "label": "Lv.4 集火口令 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_reload": {
+        "label": "Lv.2 空地接力 · 装填倍率",
+        "minimum": 0.01,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "focus_damage": {
+        "label": "Lv.4 集火口令 · 直击伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_radius": {
+        "label": "Lv.2 空地接力 · 友军范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_targets": {
+        "label": "Lv.2 空地接力 · 步兵数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_seconds": {
+        "label": "Lv.2 空地接力 · 资格秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "secondary_radius": {
+        "label": "Lv.5 双目标空袭 · 副建筑范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "extra_planes_ratio": {
+        "label": "Lv.5 双目标空袭 · 副编队数量比例",
+        "minimum": 0,
+        "maximum": 4,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/BORIS/survival": {
+    "name": "鲍里斯 · 战地电台",
+    "unit": "BORIS",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "stationary_seconds": 2,
+      "move_grace": 0.5,
+      "ranged_defense": 0.15,
+      "control_factor": 0.5,
+      "explosive_lethal_cap": 0.5,
+      "cover_cooldown": 20,
+      "cover_radius": 2,
+      "cover_targets": 2,
+      "cover_shield": 0.1,
+      "cover_seconds": 4,
+      "supply_seconds": 10,
+      "supply_heal": 0.15,
+      "last_range": 6,
+      "last_damage": 1.5,
+      "last_delay": 1.5,
+      "last_radius": 1.5
+    },
+    "parameter_fields": {
+      "stationary_seconds": {
+        "label": "Lv.0 前线掩体 · 静止秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "move_grace": {
+        "label": "Lv.0 前线掩体 · 移动保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ranged_defense": {
+        "label": "Lv.0 前线掩体 · 远程减伤比例",
+        "minimum": 0,
+        "maximum": 0.95,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "control_factor": {
+        "label": "Lv.2 抗扰通讯 · 新控制时长倍率",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "explosive_lethal_cap": {
+        "label": "Lv.1 防爆内衬 · 致命伤生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cover_cooldown": {
+        "label": "Lv.4 电台掩护 · 间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cover_radius": {
+        "label": "Lv.4 电台掩护 · 范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cover_targets": {
+        "label": "Lv.4 电台掩护 · 步兵数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cover_shield": {
+        "label": "Lv.4 电台掩护 · 护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cover_seconds": {
+        "label": "Lv.4 电台掩护 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "supply_seconds": {
+        "label": "Lv.3 接应补给 · 保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "supply_heal": {
+        "label": "Lv.3 接应补给 · 治疗生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_range": {
+        "label": "Lv.5 最后电令 · 目标范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_damage": {
+        "label": "Lv.5 最后电令 · 攻击力比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_delay": {
+        "label": "Lv.5 最后电令 · 预警秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "last_radius": {
+        "label": "Lv.5 最后电令 · 爆炸格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/ORCA/command": {
+    "name": "游隼 · 王牌航线",
+    "unit": "ORCA",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "ammo_base": 4,
+      "ammo_upgraded": 5,
+      "reload_base": 8,
+      "reload_per_rank": 1,
+      "reveal_seconds": 3,
+      "reveal_radius": 1,
+      "aa_damage": 0.2,
+      "aa_range": 3,
+      "aa_cooldown": 1,
+      "formation_speed": 0.15,
+      "detect_cells": 2,
+      "split_damage": 0.35,
+      "split_offset": 0.8,
+      "split_delay": 0.5,
+      "split_radius": 0.6
+    },
+    "parameter_fields": {
+      "ammo_base": {
+        "label": "Lv.0 基础弹仓发数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ammo_upgraded": {
+        "label": "Lv.1 备用挂架弹仓发数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reload_base": {
+        "label": "Lv.0 基础补弹秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reload_per_rank": {
+        "label": "每级减少补弹秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reveal_seconds": {
+        "label": "Lv.0 航拍落点 · 揭示秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reveal_radius": {
+        "label": "Lv.0 航拍落点 · 揭示格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "aa_damage": {
+        "label": "Lv.2 自卫机炮 · 攻击比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "aa_range": {
+        "label": "Lv.2 自卫机炮 · 射程格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "aa_cooldown": {
+        "label": "Lv.2 自卫机炮 · 间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "formation_speed": {
+        "label": "Lv.4 领航编队 · 移速加成",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "detect_cells": {
+        "label": "Lv.3 低空扫描 · 侦测格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_damage": {
+        "label": "Lv.5 末弹分束 · 攻击比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_offset": {
+        "label": "Lv.5 末弹分束 · 两侧偏移格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_delay": {
+        "label": "Lv.5 末弹分束 · 预警秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_radius": {
+        "label": "Lv.5 末弹分束 · 爆炸格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/ORCA/survival": {
+    "name": "游隼 · 滞空保障",
+    "unit": "ORCA",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "empty_seconds": 3,
+      "empty_speed": 0.2,
+      "refill_heal": 0.05,
+      "control_silence": 2,
+      "decoy_radius": 1,
+      "airport_radius": 3,
+      "maintenance_shield": 0.2,
+      "maintenance_duration": 10,
+      "maintenance_cooldown": 30,
+      "maintenance_quiet": 3,
+      "maintenance_heal": 0.02,
+      "repair_seconds": 180,
+      "engineer_seconds": 5,
+      "wreck_health": 10,
+      "descent_seconds": 1,
+      "landing_radius": 4
+    },
+    "parameter_fields": {
+      "empty_seconds": {
+        "label": "Lv.0 离场余速 · 持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "empty_speed": {
+        "label": "Lv.0 离场余速 · 移速加成",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "refill_heal": {
+        "label": "Lv.2 检修签章 · 治疗生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "control_silence": {
+        "label": "Lv.3 抗扰飞控 · 禁攻秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "decoy_radius": {
+        "label": "Lv.1 诱饵抛投 · 截弹格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "airport_radius": {
+        "label": "Lv.4 停机护罩 · 机场距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "maintenance_shield": {
+        "label": "Lv.4 停机护罩 · 护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "maintenance_duration": {
+        "label": "Lv.4 停机护罩 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "maintenance_cooldown": {
+        "label": "Lv.4 停机护罩 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "maintenance_quiet": {
+        "label": "Lv.4 停机护罩 · 脱战秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "maintenance_heal": {
+        "label": "Lv.4 停机护罩 · 每秒治疗比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "repair_seconds": {
+        "label": "Lv.5 迫降返修 · 自动恢复秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "engineer_seconds": {
+        "label": "Lv.5 迫降返修 · 工程师维修秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "wreck_health": {
+        "label": "Lv.5 迫降返修 · 机体生命倍率",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "descent_seconds": {
+        "label": "下降过渡秒数",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "landing_radius": {
+        "label": "迫降寻找陆地半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/TTNK/command": {
+    "name": "雷铸 · 移动变电站",
+    "unit": "TTNK",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "mark_damage": 1.1,
+      "mark_duration": 4,
+      "steal_cap": 0.2,
+      "steal_ratio": 0.5,
+      "steal_duration": 6,
+      "lock_window": 4,
+      "lock_hits": 3,
+      "lock_seconds": 1,
+      "lock_cooldown": 8,
+      "detect_cells": 3,
+      "power_radius": 8,
+      "power_output": 100,
+      "pierce_quiet": 3,
+      "pierce_damage": 0.3,
+      "pierce_cooldown": 12,
+      "pierce_targets": 2
+    },
+    "parameter_fields": {
+      "mark_damage": {
+        "label": "Lv.0 高压标定 · 下一击倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mark_duration": {
+        "label": "Lv.0 高压标定 · 标记秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "steal_cap": {
+        "label": "Lv.1 电磁夺盾 · 护盾上限生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "steal_ratio": {
+        "label": "Lv.1 电磁夺盾 · 敌盾转化比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "steal_duration": {
+        "label": "Lv.1 电磁夺盾 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lock_window": {
+        "label": "Lv.3 传动闭锁 · 连击保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lock_hits": {
+        "label": "Lv.3 传动闭锁 · 命中次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lock_seconds": {
+        "label": "Lv.3 传动闭锁 · 锁定秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lock_cooldown": {
+        "label": "Lv.3 传动闭锁 · 目标间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "detect_cells": {
+        "label": "Lv.2 电磁搜迹 · 侦测格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "power_radius": {
+        "label": "Lv.5 应急供电 · 基地范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "power_output": {
+        "label": "Lv.5 应急供电 · 电量",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "pierce_quiet": {
+        "label": "Lv.4 贯地放电 · 停火秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "pierce_damage": {
+        "label": "Lv.4 贯地放电 · 攻击比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "pierce_cooldown": {
+        "label": "Lv.4 贯地放电 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "pierce_targets": {
+        "label": "Lv.4 贯地放电 · 副目标数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/TTNK/survival": {
+    "name": "雷铸 · 过载保险",
+    "unit": "TTNK",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "shield_wait": 4,
+      "shield_hp": 0.08,
+      "shield_duration": 6,
+      "shield_cooldown": 18,
+      "purge_delay": 2,
+      "purge_cooldown": 30,
+      "recycle_ratio": 0.2,
+      "recycle_cap": 0.15,
+      "recycle_duration": 4,
+      "frozen_speed": 0.5,
+      "protect_radius": 3,
+      "transfer_ratio": 0.2,
+      "transfer_defense": 0.8,
+      "shutdown_seconds": 3,
+      "shutdown_shield": 0.4,
+      "shutdown_health": 0.2,
+      "shutdown_keep_hp": 1
+    },
+    "parameter_fields": {
+      "shield_wait": {
+        "label": "Lv.0 线圈护套 · 停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shield_hp": {
+        "label": "Lv.0 线圈护套 · 护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shield_duration": {
+        "label": "Lv.0 线圈护套 · 护盾秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shield_cooldown": {
+        "label": "Lv.0 线圈护套 · 冷却秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "purge_delay": {
+        "label": "Lv.1 反寄生放电 · 准备秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "purge_cooldown": {
+        "label": "Lv.1 反寄生放电 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "recycle_ratio": {
+        "label": "Lv.2 电能回收 · 损失转盾比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "recycle_cap": {
+        "label": "Lv.2 电能回收 · 护盾上限生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "recycle_duration": {
+        "label": "Lv.2 电能回收 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "frozen_speed": {
+        "label": "Lv.3 绝缘缓行 · 冻结移速倍率",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "protect_radius": {
+        "label": "Lv.4 分流保护 · 保护范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "transfer_ratio": {
+        "label": "Lv.4 分流保护 · 转移伤害比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "transfer_defense": {
+        "label": "Lv.4 分流保护 · 转移伤害减免比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shutdown_seconds": {
+        "label": "Lv.5 紧急停堆 · 停堆秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shutdown_shield": {
+        "label": "Lv.5 紧急停堆 · 护盾生命比例",
+        "minimum": 0,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shutdown_health": {
+        "label": "Lv.5 紧急停堆 · 恢复最低生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shutdown_keep_hp": {
+        "label": "Lv.5 紧急停堆 · 保留生命值",
+        "minimum": 1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/infantry/escort": {
+    "name": "守望者／炉火 · 护卫编队",
+    "unit": "E1 E2",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "veteran_0": 4,
+      "elite_0": 0,
+      "veteran_1": 5,
+      "elite_1": 0,
+      "veteran_2": 2,
+      "elite_2": 3,
+      "veteran_3": 0,
+      "elite_3": 5
+    },
+    "parameter_fields": {
+      "veteran_0": {
+        "label": "Lv.0 一星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "elite_0": {
+        "label": "Lv.0 二星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "veteran_1": {
+        "label": "Lv.1 一星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "elite_1": {
+        "label": "Lv.1 二星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "veteran_2": {
+        "label": "Lv.2 一星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "elite_2": {
+        "label": "Lv.2 二星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "veteran_3": {
+        "label": "Lv.3 一星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "elite_3": {
+        "label": "Lv.3 二星护卫数量",
+        "minimum": 0,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/infantry/survival": {
+    "name": "守望者／炉火 · 生存训练",
+    "unit": "E1 E2",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "dog_cap": 0.25,
+      "sniper_cap": 0.3333333333333333,
+      "toxic_cap": 0.5,
+      "bomb_cap": 0.6666666666666666,
+      "temporal_duration": 2
+    },
+    "parameter_fields": {
+      "dog_cap": {
+        "label": "Lv.0 犬扑与特种枪击 · 致命生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "sniper_cap": {
+        "label": "Lv.1 寄生与狙击 · 致命生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "toxic_cap": {
+        "label": "Lv.3 生化辐射 · 致命生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "bomb_cap": {
+        "label": "Lv.4 自爆 · 致命生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "temporal_duration": {
+        "label": "Lv.5 时空抵抗 · 擦除时间倍率",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/tank/command": {
+    "name": "北辰／铁脊 · 战场指挥",
+    "unit": "MTNK HTNK",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "revive_seconds": 15,
+      "wreck_health": 1.5,
+      "wreck_initial": 0.5,
+      "rebirth_health": 0.5,
+      "rebirth_attack": 0.7,
+      "rebirth_speed": 1.15,
+      "rebirth_sight": 1,
+      "scout_radius": 6,
+      "revive_scout_radius": 9,
+      "scout_seconds": 5,
+      "revive_scout_seconds": 10,
+      "range_aura": 2
+    },
+    "parameter_fields": {
+      "revive_seconds": {
+        "label": "Lv.1 复苏残骸 · 恢复秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "wreck_health": {
+        "label": "Lv.1 复苏残骸 · 最大耐久倍率",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "wreck_initial": {
+        "label": "Lv.1 复苏残骸 · 初始生命比例",
+        "minimum": 0.01,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rebirth_health": {
+        "label": "Lv.1 复苏后 · 最大生命倍率",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rebirth_attack": {
+        "label": "Lv.1 复苏后 · 攻击倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rebirth_speed": {
+        "label": "Lv.1 复苏后 · 移速倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rebirth_sight": {
+        "label": "Lv.1 复苏后 · 视野增加格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scout_radius": {
+        "label": "Lv.0 首次侦察 · 范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "revive_scout_radius": {
+        "label": "Lv.1 再次侦察 · 范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scout_seconds": {
+        "label": "Lv.0 首次侦察 · 秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "revive_scout_seconds": {
+        "label": "Lv.1 再次侦察 · 秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "range_aura": {
+        "label": "Lv.3 已部署友军 · 射程增加格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/tank/survival": {
+    "name": "北辰／铁脊 · 不屈装甲",
+    "unit": "MTNK HTNK",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "air_damage": 0.5,
+      "parasite_damage": 0.1,
+      "toxic_damage": 0.7,
+      "lethal_cap": 0.6666666666666666,
+      "frozen_speed": 0.5,
+      "sight_cells": 3,
+      "frozen_fire": 0.5
+    },
+    "parameter_fields": {
+      "air_damage": {
+        "label": "Lv.5 主炮对空 · 伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "parasite_damage": {
+        "label": "Lv.1 反寄生 · 承伤倍率",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "toxic_damage": {
+        "label": "Lv.3 生化辐射 · 承伤倍率",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "lethal_cap": {
+        "label": "Lv.5 爆炸致命伤 · 生命比例上限",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "frozen_speed": {
+        "label": "Lv.4 冻结时 · 移动倍率",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "sight_cells": {
+        "label": "Lv.2 额外视野格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "frozen_fire": {
+        "label": "Lv.4 冻结时 · 武器计时倍率",
+        "minimum": 0.01,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/tank/shield": {
+    "name": "北辰／铁脊 · 静止蓄盾",
+    "unit": "MTNK HTNK",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "initial": 0.15,
+      "growth": 0.05,
+      "limit": 0.5,
+      "delay": 3,
+      "duration": 120,
+      "radius": 110,
+      "damage": 1.1,
+      "growth_interval": 1
+    },
+    "parameter_fields": {
+      "initial": {
+        "label": "首次护盾 · 生命比例",
+        "minimum": 0.001,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "growth": {
+        "label": "每次追加 · 生命比例",
+        "minimum": 0.001,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "limit": {
+        "label": "护盾上限 · 生命比例",
+        "minimum": 0.001,
+        "maximum": 10,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "delay": {
+        "label": "首次静止蓄盾 · 秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "护盾持续秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radius": {
+        "label": "破盾爆炸 · 半径像素",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "damage": {
+        "label": "破盾爆炸 · 攻击倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "growth_interval": {
+        "label": "追加蓄盾间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "hero/training": {
+    "name": "全部英雄 · 火力与生命训练",
+    "unit": "全部英雄",
+    "kind": "英雄养成",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "attack_step": 2,
+      "health_step": 3,
+      "attack_cap": 400,
+      "health_cap": 600,
+      "cost_base": 1000,
+      "cost_linear": 100,
+      "cost_squared": 4
+    },
+    "parameter_fields": {
+      "attack_step": {
+        "label": "每级火力 · 未缩放百分数",
+        "minimum": 0.001,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "health_step": {
+        "label": "每级生命 · 未缩放百分数",
+        "minimum": 0.001,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "attack_cap": {
+        "label": "火力加成上限 · 未缩放百分数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "health_cap": {
+        "label": "生命加成上限 · 未缩放百分数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cost_base": {
+        "label": "训练费用 · 起始军需券",
+        "minimum": 1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cost_linear": {
+        "label": "训练费用 · 每级线性增量",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cost_squared": {
+        "label": "训练费用 · 等级平方系数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    }
+  },
+  "mechanic/ap_tanya_breach": {
+    "name": "三点破门 · 固定机制参数",
+    "unit": "TANY",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "cast_range": 4,
+      "spacing": 0.8,
+      "throw_interval": 0.35,
+      "bomb_health": 0.03,
+      "detonation_delay": 1.9,
+      "radius": 0.9,
+      "count": 3
+    },
+    "parameter_fields": {
+      "cast_range": {
+        "label": "施放距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "spacing": {
+        "label": "投弹间距格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "throw_interval": {
+        "label": "连续投弹间隔秒",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "bomb_health": {
+        "label": "炸药包 · 英雄生命比例",
+        "minimum": 0.001,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "detonation_delay": {
+        "label": "炸药包引爆秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radius": {
+        "label": "爆炸半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "count": {
+        "label": "连续投弹数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_tanya_breach"
+    ]
+  },
+  "mechanic/hero_explosive_armor": {
+    "name": "英雄追加爆炸 · 护甲系数",
+    "unit": "TANY BORIS ORCA",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "building": 0.6,
+      "infantry": 1,
+      "light_medium": 0.8,
+      "heavy": 0.65
+    },
+    "parameter_fields": {
+      "building": {
+        "label": "对建筑伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "infantry": {
+        "label": "对步兵伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "light_medium": {
+        "label": "对轻中甲伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "heavy": {
+        "label": "对其他装甲伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_tanya_breach",
+      "ap_boris_corridor",
+      "ap_peregrine_hunt"
+    ]
+  },
+  "mechanic/ap_boris_corridor": {
+    "name": "红色走廊 · 固定机制参数",
+    "unit": "BORIS",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "range": 6,
+      "spacing": 2,
+      "call_seconds": 0.6,
+      "warning_seconds": 1.2,
+      "strike_interval": 0.8,
+      "base_radius": 1,
+      "count": 3
+    },
+    "parameter_fields": {
+      "range": {
+        "label": "施放距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "spacing": {
+        "label": "连续落点间距格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "call_seconds": {
+        "label": "静止呼叫秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "warning_seconds": {
+        "label": "首发预警秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "strike_interval": {
+        "label": "连续落弹间隔秒",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "base_radius": {
+        "label": "基础爆炸半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "count": {
+        "label": "连续落弹数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_boris_corridor"
+    ]
+  },
+  "mechanic/ps_boris_receipt": {
+    "name": "校射回执 · 固定机制参数",
+    "unit": "BORIS",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "quiet_seconds": 12,
+      "stack_cap": 3,
+      "stack_interval": 2
+    },
+    "parameter_fields": {
+      "quiet_seconds": {
+        "label": "校射保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "stack_cap": {
+        "label": "射章上限",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "stack_interval": {
+        "label": "获取射章间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_boris_receipt"
+    ]
+  },
+  "mechanic/ap_peregrine_hunt": {
+    "name": "隼群追猎 · 固定机制参数",
+    "unit": "ORCA",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "ammo_cost": 2,
+      "missiles": 4,
+      "launch_interval": 0.2,
+      "splash_damage": 0.5,
+      "speed": 420,
+      "chase_margin": 160
+    },
+    "parameter_fields": {
+      "ammo_cost": {
+        "label": "施放消耗弹药数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "missiles": {
+        "label": "必中导弹数量",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "launch_interval": {
+        "label": "导弹发射间隔秒",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "splash_damage": {
+        "label": "副目标伤害倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "speed": {
+        "label": "追踪最低速度像素每秒",
+        "minimum": 1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "chase_margin": {
+        "label": "超出目标速度的追赶速度",
+        "minimum": 1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_peregrine_hunt"
+    ]
+  },
+  "mechanic/ap_leizhu_court": {
+    "name": "三极电庭 · 固定机制参数",
+    "unit": "TTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "placement_radius": 1.4,
+      "range": 5,
+      "tether": 7,
+      "edge_width": 0.225,
+      "tick_seconds": 0.5,
+      "slow_linger": 0.5
+    },
+    "parameter_fields": {
+      "placement_radius": {
+        "label": "电极距中心格数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "range": {
+        "label": "施放距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "tether": {
+        "label": "电庭保持距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "edge_width": {
+        "label": "电极连线半宽格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "tick_seconds": {
+        "label": "电伤结算间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "slow_linger": {
+        "label": "离场减速残留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_leizhu_court"
+    ]
+  },
+  "mechanic/ps_leizhu_charge": {
+    "name": "电荷调度 · 固定机制参数",
+    "unit": "TTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "charge_interval": 1,
+      "charge_seconds": 8,
+      "charges": 3,
+      "court_radius_bonus": 0.5
+    },
+    "parameter_fields": {
+      "charge_interval": {
+        "label": "获取电荷间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "charge_seconds": {
+        "label": "电荷保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "charges": {
+        "label": "触发副电弧所需层数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "court_radius_bonus": {
+        "label": "电庭内额外范围格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_leizhu_charge"
+    ]
+  },
+  "mechanic/hero_cards_legacy": {
+    "name": "守望者／北辰／铁脊技能 · 固定参数",
+    "unit": "E1 MTNK HTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "swap_range": 8,
+      "posts": 3,
+      "post_radius": 1.5,
+      "crown_range": 6,
+      "crown_warning": 0.8,
+      "succession_range": 6,
+      "succession_seconds": 2,
+      "echo_retention": 6,
+      "echo_delay": 1.5,
+      "echo_release": 1,
+      "echo_capacity": 3,
+      "crown_interval": 0.25,
+      "crown_blast": 1,
+      "scrap_drop": 2,
+      "reserve_threshold": 0.3,
+      "reserve_life": 6,
+      "reserve_hp": 0.1
+    },
+    "parameter_fields": {
+      "swap_range": {
+        "label": "双星易位 · 交换距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "posts": {
+        "label": "哨队展开 · 哨位数量",
+        "minimum": 1,
+        "maximum": 16,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "post_radius": {
+        "label": "哨队展开 · 生成距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crown_range": {
+        "label": "铁冠轰击 · 施放距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crown_warning": {
+        "label": "铁冠轰击 · 预警秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "succession_range": {
+        "label": "哨位继任 · 可继任距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "succession_seconds": {
+        "label": "哨位继任 · 引导秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "echo_retention": {
+        "label": "昨日炮击 · 目标保留秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "echo_delay": {
+        "label": "昨日炮击 · 最早开火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "echo_release": {
+        "label": "昨日炮击 · 出弹间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "echo_capacity": {
+        "label": "昨日炮击 · 储存炮击上限",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crown_interval": {
+        "label": "铁冠轰击 · 连续落弹间隔秒",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crown_blast": {
+        "label": "铁冠轰击 · 爆炸半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scrap_drop": {
+        "label": "废铁装甲 · 超时后掉层间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reserve_threshold": {
+        "label": "哨位继任 · 备用触发生命比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reserve_life": {
+        "label": "备用哨位 · 生存秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reserve_hp": {
+        "label": "备用哨位 · 生命比例",
+        "minimum": 0.001,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_watch_posts",
+      "ps_watch_succession",
+      "ap_north_twin",
+      "ps_north_echo",
+      "ap_spine_crown",
+      "ps_spine_scrap"
+    ]
+  },
+  "mechanic/ground_v2": {
+    "name": "交叉折光／折光护幕／连续测距／伪装间隙",
+    "unit": "SREF GGI MGTK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "cross_pulses": 2,
+      "cross_interval": 0.6,
+      "cross_length": 2,
+      "cross_width": 0.3,
+      "mirage_guard": 2,
+      "mirage_cooldown": 12,
+      "ranging_hits": 2,
+      "ranging_duration": 4,
+      "prism_targets": 3,
+      "prism_shield_seconds": 3,
+      "prism_cooldown": 12
+    },
+    "parameter_fields": {
+      "cross_pulses": {
+        "label": "交叉折光 · 脉冲次数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cross_interval": {
+        "label": "交叉折光 · 脉冲间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cross_length": {
+        "label": "交叉折光 · 半长格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cross_width": {
+        "label": "交叉折光 · 半宽格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mirage_guard": {
+        "label": "伪装间隙 · 减伤秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mirage_cooldown": {
+        "label": "伪装间隙 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ranging_hits": {
+        "label": "连续测距 · 触发命中次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ranging_duration": {
+        "label": "连续测距 · 增伤秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "prism_targets": {
+        "label": "折光护幕 · 命中目标数量",
+        "minimum": 1,
+        "maximum": 32,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "prism_shield_seconds": {
+        "label": "折光护幕 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "prism_cooldown": {
+        "label": "折光护幕 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_prism_cross",
+      "ps_mirage_gap",
+      "armor_ranging",
+      "prism_guard"
+    ]
+  },
+  "mechanic/infantry_v2": {
+    "name": "转移阵位／交替推进／追身破片 · 固定参数",
+    "unit": "SNIPE E2 FLAKT",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "advance_prepare": 2,
+      "advance_duration": 5,
+      "advance_cooldown": 10,
+      "relocate_duration": 2,
+      "relocate_cooldown": 8,
+      "shard_delay": 0.8,
+      "shard_cooldown": 4,
+      "shard_radius": 1.2
+    },
+    "parameter_fields": {
+      "advance_prepare": {
+        "label": "交替推进 · 连续移动秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "advance_duration": {
+        "label": "交替推进 · 强化秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "advance_cooldown": {
+        "label": "交替推进 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relocate_duration": {
+        "label": "转移阵位 · 加速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relocate_cooldown": {
+        "label": "转移阵位 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shard_delay": {
+        "label": "追身破片 · 引爆秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shard_cooldown": {
+        "label": "追身破片 · 间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shard_radius": {
+        "label": "追身破片 · 爆炸格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "sniper_relocate",
+      "alternate_advance",
+      "following_shard"
+    ]
+  },
+  "mechanic/submarine_v2": {
+    "name": "深水耐压／深航整流 · 固定参数",
+    "unit": "SUB",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "shield_seconds": 15,
+      "idle_seconds": 4,
+      "cooldown": 20,
+      "fork_distance": 2
+    },
+    "parameter_fields": {
+      "shield_seconds": {
+        "label": "深水耐压 · 护盾秒数",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "idle_seconds": {
+        "label": "深水耐压 · 停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "深水耐压 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "fork_distance": {
+        "label": "深航整流 · 水中累计航程格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_depth_pressure",
+      "wake_fork"
+    ]
+  },
+  "mechanic/ps_burning_payload": {
+    "name": "燃烧挂载 · 固定参数",
+    "unit": "ORCA BEAG",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "tick_seconds": 0.5,
+      "duration": 3,
+      "radius": 1
+    },
+    "parameter_fields": {
+      "tick_seconds": {
+        "label": "燃烧结算间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "燃烧区域持续秒数",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radius": {
+        "label": "燃烧半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_burning_payload"
+    ]
+  },
+  "mechanic/air_observation": {
+    "name": "悬停校枪／低空观察 · 准备时间",
+    "unit": "JUMPJET SHAD SCHP",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "hover_prepare": 2,
+      "observe_prepare": 2
+    },
+    "parameter_fields": {
+      "hover_prepare": {
+        "label": "悬停校枪 · 静止秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "observe_prepare": {
+        "label": "低空观察 · 停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "hover_sighting",
+      "ps_low_observation"
+    ]
+  },
+  "mechanic/ap_furnace_bastion": {
+    "name": "金鳞战垒／炉火防空 · 固定参数",
+    "unit": "E2",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "shield_seconds": 10,
+      "blast_radius": 1.5,
+      "summon_cooldown": 60,
+      "summon_spacing": 54,
+      "summon_count": 2
+    },
+    "parameter_fields": {
+      "shield_seconds": {
+        "label": "金鳞战垒 · 护盾持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "blast_radius": {
+        "label": "金鳞战垒 · 溅射半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "summon_cooldown": {
+        "label": "防空护卫 · 召唤冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "summon_spacing": {
+        "label": "防空护卫 · 出现间距像素",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "summon_count": {
+        "label": "防空护卫 · 每次召唤车辆数",
+        "minimum": 1,
+        "maximum": 16,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_furnace_bastion",
+      "ps_furnace_flak"
+    ]
+  },
+  "mechanic/armor_v2": {
+    "name": "压阵装甲／弹道留档／左右分猎／发射隔舱",
+    "unit": "APOC V3",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "prepare": 3,
+      "guard_seconds": 5,
+      "combat_window": 3,
+      "credits": 3,
+      "frontal_cosine": 0.5,
+      "archive_seconds": 8,
+      "shield_seconds": 3,
+      "shield_cooldown": 12,
+      "splash_damage": 0.1,
+      "splash_radius": 1
+    },
+    "parameter_fields": {
+      "prepare": {
+        "label": "压阵装甲 · 静止准备秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "guard_seconds": {
+        "label": "压阵装甲 · 减伤秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "combat_window": {
+        "label": "压阵装甲 · 受击交火判定秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "credits": {
+        "label": "压阵装甲 · 防空装填额度次数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "frontal_cosine": {
+        "label": "压阵装甲 · 正面角度余弦",
+        "minimum": -1,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "archive_seconds": {
+        "label": "弹道留档 · 同目标标记秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shield_seconds": {
+        "label": "发射隔舱 · 护盾秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shield_cooldown": {
+        "label": "发射隔舱 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "splash_damage": {
+        "label": "左右分猎 · 溅射伤害比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "splash_radius": {
+        "label": "左右分猎 · 溅射半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_anchor_armor",
+      "ps_ballistic_archive",
+      "split_hunt",
+      "launch_bulkhead"
+    ]
+  },
+  "mechanic/soviet_v2": {
+    "name": "两极串联／高射扇幕 · 固定参数",
+    "unit": "SHK HTK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "break_range": 4,
+      "link_range": 3,
+      "ticks": 6,
+      "tick_seconds": 0.5,
+      "cooldown": 8,
+      "window": 3,
+      "flak_radius": 0.8
+    },
+    "parameter_fields": {
+      "break_range": {
+        "label": "两极串联 · 断链距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "link_range": {
+        "label": "两极串联 · 接链距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ticks": {
+        "label": "两极串联 · 电伤次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "tick_seconds": {
+        "label": "两极串联 · 电伤间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "两极串联 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "window": {
+        "label": "两极串联 · 第二目标窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flak_radius": {
+        "label": "高射扇幕 · 溅射半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_polar_link",
+      "ap_flak_fan"
+    ]
+  },
+  "mechanic/ap_gun_ballast": {
+    "name": "重炮压舱 · 固定参数",
+    "unit": "DEST HYD AEGIS",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "duration": 4,
+      "damage_taken": 1.05,
+      "speed": 0.85,
+      "water_combat_window": 2
+    },
+    "parameter_fields": {
+      "duration": {
+        "label": "持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "damage_taken": {
+        "label": "受伤倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "speed": {
+        "label": "航速倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "water_combat_window": {
+        "label": "驱逐舰交火记录秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_gun_ballast"
+    ]
+  },
+  "mechanic/drone_v2": {
+    "name": "诱导跃扑／跳宿猎杀 · 固定参数",
+    "unit": "DRON",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "pounce_duration": 3,
+      "guard_range": 2,
+      "burrow_duration": 2,
+      "hits": 3,
+      "threshold": 0.4,
+      "cooldown": 10,
+      "tear_ticks": 3,
+      "tear_interval": 1
+    },
+    "parameter_fields": {
+      "pounce_duration": {
+        "label": "诱导跃扑 · 加速窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "guard_range": {
+        "label": "诱导跃扑 · 无敌触发距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "burrow_duration": {
+        "label": "诱导跃扑 · 寄生加速秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "hits": {
+        "label": "跳宿猎杀 · 所需寄生次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "threshold": {
+        "label": "跳宿猎杀 · 宿主生命比例阈值",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "跳宿猎杀 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "tear_ticks": {
+        "label": "残留撕裂 · 伤害次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "tear_interval": {
+        "label": "残留撕裂 · 伤害间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_lure_pounce",
+      "host_hunt"
+    ]
+  },
+  "mechanic/ps_convoy_repair": {
+    "name": "伴行维修 · 固定参数",
+    "unit": "MTNK HTNK FV HTK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "radius": 2,
+      "prepare": 3,
+      "duration": 3,
+      "cooldown": 18
+    },
+    "parameter_fields": {
+      "radius": {
+        "label": "同行判定半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "prepare": {
+        "label": "连续同行秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "回血持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_convoy_repair"
+    ]
+  },
+  "mechanic/ap_tractor_warhead": {
+    "name": "牵引弹头 · 固定参数",
+    "unit": "V3 DRED SCHP",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "arm_seconds": 6,
+      "duration": 2,
+      "speed": 0.6
+    },
+    "parameter_fields": {
+      "arm_seconds": {
+        "label": "待发窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "牵引持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "speed": {
+        "label": "牵引速度格每秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_tractor_warhead"
+    ]
+  },
+  "mechanic/ps_impact_calibration": {
+    "name": "弹着校射 · 固定参数",
+    "unit": "SCHP",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "radius": 1.5,
+      "duration": 4,
+      "cooldown": 6
+    },
+    "parameter_fields": {
+      "radius": {
+        "label": "校射半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "校射持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "生成间隔秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_impact_calibration"
+    ]
+  },
+  "mechanic/infiltration_v2": {
+    "name": "潜行余量／撤离护送 · 固定参数",
+    "unit": "GHOST TANY BORIS",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "shore_speed": 1.2,
+      "shore_prepare": 2,
+      "threshold": 0.4,
+      "radius": 2,
+      "targets": 2,
+      "duration": 2,
+      "cooldown": 25
+    },
+    "parameter_fields": {
+      "shore_speed": {
+        "label": "潜行余量 · 移速倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shore_prepare": {
+        "label": "潜行余量 · 水中移动秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "threshold": {
+        "label": "撤离护送 · 生命比例阈值",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radius": {
+        "label": "撤离护送 · 半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "targets": {
+        "label": "撤离护送 · 目标数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "duration": {
+        "label": "撤离护送 · 加速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "cooldown": {
+        "label": "撤离护送 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_shore_reserve",
+      "ps_evacuation_escort"
+    ]
+  },
+  "mechanic/ap_overload_seal": {
+    "name": "过载封条 · 固定参数",
+    "unit": "SHK TTNK R3TESLA",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "range": 5,
+      "radius": 1.2,
+      "count": 3,
+      "interval": 1
+    },
+    "parameter_fields": {
+      "range": {
+        "label": "施放距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radius": {
+        "label": "电爆半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "count": {
+        "label": "最大触发次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "interval": {
+        "label": "最短触发间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_overload_seal"
+    ]
+  },
+  "mechanic/naval_fire_v2": {
+    "name": "拦空测距 · 固定参数",
+    "unit": "AEGIS HYD",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "hits": 3,
+      "charges": 2,
+      "critical": 1.6
+    },
+    "parameter_fields": {
+      "hits": {
+        "label": "拦空测距 · 所需命中轮数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "charges": {
+        "label": "拦空测距 · 快速装填次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "critical": {
+        "label": "交叉火控 · 暴击倍率",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "intercept_ranging",
+      "ps_sea_air_crossfire"
+    ]
+  },
+  "mechanic/talents_legacy": {
+    "name": "伪装余温／接地电容／贯穿声波／俯冲余势",
+    "unit": "MGTK TTNK DLPH BEAG",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "hidden_prepare": 3,
+      "heat_charges": 3,
+      "heat_cooldown": 15,
+      "capacitor_prepare": 2,
+      "capacitor_distance": 1,
+      "capacitor_radius": 1,
+      "capacitor_cooldown": 10,
+      "sonic_hits": 3,
+      "boost_seconds": 2
+    },
+    "parameter_fields": {
+      "hidden_prepare": {
+        "label": "伪装余温 · 潜伏秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "heat_charges": {
+        "label": "伪装余温 · 填弹次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "heat_cooldown": {
+        "label": "伪装余温 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "capacitor_prepare": {
+        "label": "接地电容 · 静止停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "capacitor_distance": {
+        "label": "接地电容 · 离开距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "capacitor_radius": {
+        "label": "接地电容 · 触发半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "capacitor_cooldown": {
+        "label": "接地电容 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "sonic_hits": {
+        "label": "贯穿声波 · 触发射击次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "boost_seconds": {
+        "label": "俯冲余势 · 加速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "mirage_afterheat",
+      "ground_capacitor",
+      "third_sonic",
+      "dive_momentum"
+    ]
+  },
+  "mechanic/yr_talents": {
+    "name": "倒车射击／时空书签／建筑破片 · 固定参数",
+    "unit": "MTNK CLEG HTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "reverse_range": 3,
+      "reverse_heal": 0.01,
+      "bookmark_work": 0.5,
+      "split_targets": 2,
+      "split_radius": 1
+    },
+    "parameter_fields": {
+      "reverse_range": {
+        "label": "倒车射击 · 最远距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "reverse_heal": {
+        "label": "倒车射击 · 每秒回复生命比例",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "bookmark_work": {
+        "label": "时空书签 · 保留工作量比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_targets": {
+        "label": "建筑破片 · 额外目标数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "split_radius": {
+        "label": "建筑破片 · 建筑间距格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "grizzly_reverse",
+      "chrono_bookmark",
+      "rhino_split"
+    ]
+  },
+  "mechanic/domain": {
+    "name": "锚定校射／巡航瞭望／掠翼机动 · 固定参数",
+    "unit": "舰船 飞机",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "prepare": 2,
+      "defense_cap": 0.8
+    },
+    "parameter_fields": {
+      "prepare": {
+        "label": "锚定／巡航 · 准备秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "defense_cap": {
+        "label": "掠翼机动 · 减伤上限比例",
+        "minimum": 0,
+        "maximum": 1,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_bilge_repair",
+      "ps_anchor_reload",
+      "ap_wing_guard",
+      "ps_cruise_scout"
+    ]
+  },
+  "mechanic/ap_mirror_fork": {
+    "name": "折光岔路 · 固定参数",
+    "unit": "MGTK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "shield_seconds": 8,
+      "move_range": 4,
+      "speed_seconds": 2,
+      "count": 2
+    },
+    "parameter_fields": {
+      "shield_seconds": {
+        "label": "转移护盾持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "move_range": {
+        "label": "分身前进距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "speed_seconds": {
+        "label": "本体／分身加速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "count": {
+        "label": "分身数量",
+        "minimum": 1,
+        "maximum": 16,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_mirror_fork"
+    ]
+  },
+  "mechanic/cards_legacy": {
+    "name": "曳光浮标／潮汐诱饵／震地锚／空投弹巢／海底伏雷／接力／放电／装甲",
+    "unit": "各技能对应单位",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "tracer_arm": 6,
+      "mark_seconds": 4,
+      "mark_charges": 3,
+      "bait_targets": 3,
+      "bait_offset": 0.5,
+      "seismic_radius": 1.5,
+      "seismic_warning": 1,
+      "seismic_interval": 1,
+      "slow_linger": 0.5,
+      "ink_arm": 0.8,
+      "mine_health": 0.05,
+      "nests": 3,
+      "nest_spacing": 0.8,
+      "nest_arm": 0.9,
+      "nest_interval": 0.6,
+      "ink_trigger": 1,
+      "nest_trigger": 0.75,
+      "mine_radius": 1,
+      "ink_slow": 0.3,
+      "ink_slow_seconds": 2,
+      "arc_window": 4,
+      "arc_hits": 3,
+      "arc_radius": 1.5,
+      "trip_hits": 3,
+      "trip_cooldown": 4,
+      "crystals": 3,
+      "crystal_seconds": 8,
+      "relay_radius": 2,
+      "relay_cooldown": 12,
+      "relay_window": 4,
+      "scrap_collect": 2,
+      "scrap_spawn": 6,
+      "scrap_seconds": 12,
+      "deck_cooldown": 20
+    },
+    "parameter_fields": {
+      "tracer_arm": {
+        "label": "曳光浮标 · 待发秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mark_seconds": {
+        "label": "曳光浮标 · 标记秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mark_charges": {
+        "label": "曳光浮标 · 破甲次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "bait_targets": {
+        "label": "潮汐诱饵 · 嘲讽目标数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "bait_offset": {
+        "label": "潮汐诱饵 · 生成距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "seismic_radius": {
+        "label": "震地锚 · 半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "seismic_warning": {
+        "label": "震地锚 · 预警秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "seismic_interval": {
+        "label": "震地锚 · 脉冲间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "slow_linger": {
+        "label": "残留场 · 减速保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ink_arm": {
+        "label": "海底伏雷 · 布雷准备秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mine_health": {
+        "label": "伏雷／弹巢 · 生命比例",
+        "minimum": 0.001,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "nests": {
+        "label": "空投弹巢 · 炸弹数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "nest_spacing": {
+        "label": "空投弹巢 · 间距格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "nest_arm": {
+        "label": "空投弹巢 · 引信秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "nest_interval": {
+        "label": "空投弹巢 · 投放间隔秒",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ink_trigger": {
+        "label": "海底伏雷 · 触发半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "nest_trigger": {
+        "label": "空投弹巢 · 触发半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "mine_radius": {
+        "label": "伏雷／弹巢 · 爆炸半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ink_slow": {
+        "label": "海底伏雷 · 减速比例",
+        "minimum": 0,
+        "maximum": 0.95,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "ink_slow_seconds": {
+        "label": "海底伏雷 · 减速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "arc_window": {
+        "label": "零点放电 · 命中累计窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "arc_hits": {
+        "label": "零点放电 · 所需命中次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "arc_radius": {
+        "label": "零点放电 · 副攻击距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "trip_hits": {
+        "label": "重机限幅器 · 所需寄生跳伤次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "trip_cooldown": {
+        "label": "重机限幅器 · 定身冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crystals": {
+        "label": "棱镜回收 · 晶体上限",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crystal_seconds": {
+        "label": "棱镜回收 · 晶体保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_radius": {
+        "label": "战地接力 · 半径格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_cooldown": {
+        "label": "战地接力 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "relay_window": {
+        "label": "战地接力 · 填弹窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scrap_collect": {
+        "label": "废铁装甲 · 收集距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scrap_spawn": {
+        "label": "废铁装甲 · 掉落判定距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "scrap_seconds": {
+        "label": "废铁装甲 · 掉落保留秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "deck_cooldown": {
+        "label": "甲板轮换 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_tracer_mark",
+      "ap_tidal_decoy",
+      "ap_seismic_anchor",
+      "ap_bomb_nests",
+      "ap_ink_mine",
+      "ps_zero_arc",
+      "ps_drone_trip",
+      "ps_prism_recycle",
+      "ps_field_relay",
+      "ps_spine_scrap",
+      "ps_deck_rotation"
+    ]
+  },
+  "mechanic/electric": {
+    "name": "连锁放电／震荡脉冲／乘员协同 · 固定参数",
+    "unit": "SHK BFRT TESLA TTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "crew_window": 2,
+      "crew_cooldown": 3,
+      "shots": 3,
+      "branches": 2,
+      "branch_range": 2,
+      "slow": 0.25
+    },
+    "parameter_fields": {
+      "crew_window": {
+        "label": "乘员协同 · 命中接力窗口秒",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "crew_cooldown": {
+        "label": "乘员协同 · 同目标冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "shots": {
+        "label": "连锁放电 · 主攻击强化次数",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "branches": {
+        "label": "连锁放电 · 副目标数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "branch_range": {
+        "label": "连锁放电 · 副目标距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "slow": {
+        "label": "震荡脉冲 · 减速比例",
+        "minimum": 0,
+        "maximum": 0.95,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_tesla_chain",
+      "ap_shock_pulse",
+      "ps_grounding"
+    ]
+  },
+  "mechanic/faction": {
+    "name": "搜索浮标／重机限幅器／相位稳流 · 固定参数",
+    "unit": "DEST HTNK FV",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "buoy_radius": 165,
+      "buoy_range": 660,
+      "limiter_prepare": 3,
+      "phase_cap": 3,
+      "phase_interval": 3
+    },
+    "parameter_fields": {
+      "buoy_radius": {
+        "label": "搜索浮标 · 搜索半径像素",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "buoy_range": {
+        "label": "搜索浮标 · 施放距离像素",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "limiter_prepare": {
+        "label": "重机限幅器 · 连续行驶秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "phase_cap": {
+        "label": "相位稳流 · 层数上限",
+        "minimum": 1,
+        "maximum": 100,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "phase_interval": {
+        "label": "相位稳流 · 每层准备秒数",
+        "minimum": 0.05,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ap_buoy",
+      "ps_limiter",
+      "ps_phase"
+    ]
+  },
+  "mechanic/core_v2": {
+    "name": "阵地轮值／稳座支架／观察哨线／战线换气／锚钉导弹",
+    "unit": "E1 FV SNIPE GGI HTK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "crew_prepare": 4,
+      "rotation_prepare": 3,
+      "rotation_count": 3,
+      "rotation_cd": 10,
+      "flak_duration": 5,
+      "observer_duration": 6,
+      "breather_duration": 3,
+      "anchor_slow_seconds": 3
+    },
+    "parameter_fields": {
+      "crew_prepare": {
+        "label": "稳座支架 · 乘坐秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rotation_prepare": {
+        "label": "阵地轮值 · 停火秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rotation_count": {
+        "label": "阵地轮值 · 强化发数",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "rotation_cd": {
+        "label": "阵地轮值 · 冷却秒",
+        "minimum": 0.1,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "flak_duration": {
+        "label": "高射扇幕 · 持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "observer_duration": {
+        "label": "观察哨线 · 持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "breather_duration": {
+        "label": "战线换气 · 持续秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "anchor_slow_seconds": {
+        "label": "锚钉导弹 · 减速秒数",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "position_rotation",
+      "steady_seat",
+      "ap_flak_fan",
+      "ap_observer_line",
+      "ap_battle_breather",
+      "ap_anchor_pin"
+    ]
+  },
+  "mechanic/ps_formation_cover": {
+    "name": "编队掩护 · 固定参数",
+    "unit": "ORCA BEAG",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "radius": 2.5,
+      "count": 4
+    },
+    "parameter_fields": {
+      "radius": {
+        "label": "同伴判定距离格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "count": {
+        "label": "计入同伴上限",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "ps_formation_cover"
+    ]
+  },
+  "mechanic/hero_common": {
+    "name": "老英雄 · 基础射程加成",
+    "unit": "E1 E2 MTNK HTNK",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "range_cells": 1
+    },
+    "parameter_fields": {
+      "range_cells": {
+        "label": "英雄额外射程格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "hero_common"
+    ]
+  },
+  "mechanic/native_training": {
+    "name": "原生天赋 · 转换参数",
+    "unit": "各原生天赋",
+    "kind": "机制参数",
+    "desc": "应用后，后续触发读取当前数值。已创建状态按各机制的原有快照规则运行；出生属性请新建单位验证。",
+    "values": {
+      "time_reduction_cap": 0.5,
+      "power_span": 1.2,
+      "siege_cap": 2,
+      "siege_scale": 0.6,
+      "radiation_per_power": 10,
+      "radiation_cap": 12,
+      "fuse_floor": 15
+    },
+    "parameter_fields": {
+      "time_reduction_cap": {
+        "label": "耗时缩短上限比例",
+        "minimum": 0,
+        "maximum": 0.95,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "power_span": {
+        "label": "满档额外强度",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "siege_cap": {
+        "label": "攻城校准 · 射程上限格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "siege_scale": {
+        "label": "攻城校准 · 每格所需强度",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radiation_per_power": {
+        "label": "辐射伤害 · 每强度百分点",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "radiation_cap": {
+        "label": "辐射伤害 · 上限百分点",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      },
+      "fuse_floor": {
+        "label": "引信精调 · 引信下限秒数",
+        "minimum": 0.01,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "native_training"
+    ]
+  },
+  "mechanic/deso_expansion": {
+    "name": "辐域扩散 · 层数上限",
+    "unit": "DESO",
+    "kind": "机制参数",
+    "desc": "数值按当前等级对应的机制读取；已有状态保留创建时快照。",
+    "values": {
+      "stack_cap": 3
+    },
+    "parameter_fields": {
+      "stack_cap": {
+        "label": "扩散层数上限",
+        "minimum": 1,
+        "maximum": 64,
+        "integer": true,
+        "step": 1,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "deso_expansion"
+    ]
+  },
+  "mechanic/bunker_optics": {
+    "name": "掩体光学 · 射程上限",
+    "unit": "NABNKR",
+    "kind": "机制参数",
+    "desc": "数值按当前等级对应的机制读取；已有状态保留创建时快照。",
+    "values": {
+      "extra_cells": 0.5
+    },
+    "parameter_fields": {
+      "extra_cells": {
+        "label": "满级相对重装大兵的额外射程格",
+        "minimum": 0,
+        "maximum": 10000,
+        "integer": false,
+        "step": 0.001,
+        "hint": "比例 0.2 表示 20%；秒、格、次数见参数名称。修改不重置当前状态。"
+      }
+    },
+    "related": [
+      "bunker_optics"
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2: legacy idle guard without assembly slot must be parked",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unchanged valid parking slot does not replan",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: computer guard can yield a blocked lane",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: yield preserves guard role and stance",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: player hold is never overridden",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: deployed defense never yields",
+      "passed": true
+    },
+    {
+      "details": [
+        0,
+        550.0
+      ],
+      "name": "ra2: bounded BFRT acquisition covers ground and air",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: passenger adapters never mutate native weapon",
+      "passed": true
+    },
+    {
+      "details": [
+        2,
+        550.0
+      ],
+      "name": "ra2: bounded BFRT acquisition covers ground and air",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: passenger adapters never mutate native weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: new carrier target immediately triggers acquisition",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unhittable carrier air target does not rescan every tick",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: changing to ground target redirects passenger immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: combined pursuit range includes live ground weapons",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: combined pursuit range includes antiair passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: removing antiair passenger immediately invalidates air pursuit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: captured passenger cannot supply former carrier air range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unit without healing pulse draws no badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: real healing still enables badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: expired pulse returns to zero-cost badge path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: hidden healed unit never exposes badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: idle garrison waits between acquisition scans",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: manual garrison attack bypasses acquisition wait",
+      "passed": true
+    },
+    {
+      "details": [
+        "(1662.247, 921.1575)",
+        0.616666666666667
+      ],
+      "name": "ra2: charger leaves partial route and reaches actual charge range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: arrived charger actually powers coil",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unreachable AI charge releases recruitment and backs off",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unreachable charge can retry later",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: player charging order retained when temporarily blocked",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: legacy idle guard without assembly slot must be parked",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unchanged valid parking slot does not replan",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: computer guard can yield a blocked lane",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: yield preserves guard role and stance",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: player hold is never overridden",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: deployed defense never yields",
+      "passed": true
+    },
+    {
+      "details": [
+        0,
+        550.0
+      ],
+      "name": "iron_tide: bounded BFRT acquisition covers ground and air",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: passenger adapters never mutate native weapon",
+      "passed": true
+    },
+    {
+      "details": [
+        2,
+        550.0
+      ],
+      "name": "iron_tide: bounded BFRT acquisition covers ground and air",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: passenger adapters never mutate native weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: new carrier target immediately triggers acquisition",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unhittable carrier air target does not rescan every tick",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: changing to ground target redirects passenger immediately",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: combined pursuit range includes live ground weapons",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: combined pursuit range includes antiair passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: removing antiair passenger immediately invalidates air pursuit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: captured passenger cannot supply former carrier air range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unit without healing pulse draws no badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: real healing still enables badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: expired pulse returns to zero-cost badge path",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: hidden healed unit never exposes badge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: idle garrison waits between acquisition scans",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: manual garrison attack bypasses acquisition wait",
+      "passed": true
+    },
+    {
+      "details": [
+        "(1662.247, 921.1575)",
+        0.616666666666667
+      ],
+      "name": "iron_tide: charger leaves partial route and reaches actual charge range",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: arrived charger actually powers coil",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unreachable AI charge releases recruitment and backs off",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unreachable charge can retry later",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: player charging order retained when temporarily blocked",
+      "passed": true
+    }
+  ],
+  "failed": 0
+}

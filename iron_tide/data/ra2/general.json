@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "source": "RA2 rules.ini [General]",
+  "repair": {
+    "step": 8,
+    "rate_minutes": 0.016,
+    "percent": 0.15
+  },
+  "aircraft": {
+    "reload_minutes": 0.3
+  },
+  "veteran": {
+    "ratio": 3,
+    "combat": 1.1,
+    "speed": 1.2,
+    "sight": 0,
+    "armor": 1.5,
+    "rof": 0.6,
+    "cap": 2
+  },
+  "prism": {
+    "type": "ATESLA",
+    "modifier": 1.5,
+    "max": 8,
+    "delay": 60,
+    "duration": 15,
+    "height": 420
+  },
+  "build": {
+    "build_speed": 0.7,
+    "buildup_time_minutes": 0.06,
+    "refund_percent": 0.5,
+    "multiple_factory": 0.8,
+    "wall_build_speed": 3,
+    "base_unit": "AMCV,SMCV"
+  }
+}

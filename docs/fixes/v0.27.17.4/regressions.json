@@ -1,0 +1,29 @@
+{
+  "save2_hotspots": {
+    "checks": 514,
+    "failed": 0
+  },
+  "save2_allied": {
+    "checks": 230,
+    "failed": 0
+  },
+  "save2_mirage": {
+    "checks": 47,
+    "failed": 0
+  },
+  "save2_tactics": {
+    "checks": 58,
+    "failed": 0
+  },
+  "save2_minimap": {
+    "checks": 132,
+    "failed": 0
+  },
+  "source_sha256": {
+    "iron_tide/scripts/units/allied_abilities.gd": "72b320a86c2e655320edf747a16fdaf88b9d8c42973cca185732417f25d7ae4b",
+    "iron_tide/scripts/units/ra3_mirage.gd": "c598d84cf9f0fb01828dd25f66741f9526120416dd5e328ad4a5c2e081302316",
+    "iron_tide/scripts/world/skirmish_tactics.gd": "be2fe5b2d1faa579e29aacba122b685efeccf4fcfc2f549d6c141db82ee65d4f",
+    "iron_tide/scripts/ui/minimap.gd": "9f84073b2eb9776f9635b9a1825e4a840e7663e3cbb9e65583bb69319ae7447e",
+    "iron_tide/tests/save2_hotspots_regression.gd": "de31076547f12ff132681ae475a916df31a906d6b68cc76d16fb1ddb305c83ab"
+  }
+}

@@ -1,0 +1,974 @@
+{
+  "scatter": [
+    {
+      "node": "AlliedAntiVehicleVehicleTech3CannonNodeRegular",
+      "weapon": "AlliedAntiVehicleVehicleTech3CannonNode",
+      "count": 5,
+      "range": 125.0,
+      "damage": 25.0,
+      "kind": "PRISM",
+      "delay": 0.1,
+      "raw": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedAntiVehicleVehicleTech3CannonNode",
+          "AttackRange": "125.0",
+          "CanFireWhileMoving": "false",
+          "WeaponSpeed": "999999.0",
+          "RadiusDamageAffects": "ENEMIES NEUTRALS",
+          "AcceptableAimDelta": "180d",
+          "ClipSize": "1",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+          "AutoReloadsClip": "AUTO",
+          "ReAcquireDetailType": "PER_CLIP"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "0.5s",
+              "MaxSeconds": "0.5s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "attrs": {
+                  "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeEnd"
+                },
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "attrs": {
+                  "Damage": "25.0",
+                  "Radius": "0.0",
+                  "DelayTimeSeconds": "0.1s",
+                  "DamageType": "PRISM",
+                  "DamageFXType": "ALLIED_PRIMAGECANNON",
+                  "DeathType": "LASERED"
+                },
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "attrs": {
+                  "Radius": "20.0",
+                  "Suppression": "10",
+                  "DurationSeconds": "3s"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "node": "AlliedAntiVehicleVehicleTech3CannonNodeVeteran1",
+      "weapon": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran1",
+      "count": 7,
+      "range": 150.0,
+      "damage": 40.0,
+      "kind": "PRISM",
+      "delay": 0.1,
+      "raw": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran1",
+          "AttackRange": "150.0",
+          "CanFireWhileMoving": "false",
+          "WeaponSpeed": "999999.0",
+          "RadiusDamageAffects": "ENEMIES NEUTRALS",
+          "AcceptableAimDelta": "180d",
+          "ClipSize": "1",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+          "AutoReloadsClip": "AUTO",
+          "ReAcquireDetailType": "PER_CLIP"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "0.5s",
+              "MaxSeconds": "0.5s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "attrs": {
+                  "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeVeteran2"
+                },
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "attrs": {
+                  "Damage": "40.0",
+                  "Radius": "0.0",
+                  "DelayTimeSeconds": "0.1s",
+                  "DamageType": "PRISM",
+                  "DamageFXType": "ALLIED_PRIMAGECANNONVET2",
+                  "DeathType": "LASERED"
+                },
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "attrs": {
+                  "Radius": "20.0",
+                  "Suppression": "10",
+                  "DurationSeconds": "3s"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "node": "AlliedAntiVehicleVehicleTech3CannonNodeVeteran2",
+      "weapon": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran2",
+      "count": 3,
+      "range": 75.0,
+      "damage": 20.0,
+      "kind": "CANNON",
+      "delay": 0.1,
+      "raw": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedAntiVehicleVehicleTech3CannonNode_Veteran2",
+          "AttackRange": "75.0",
+          "CanFireWhileMoving": "false",
+          "WeaponSpeed": "999999.0",
+          "RadiusDamageAffects": "ENEMIES NEUTRALS",
+          "AcceptableAimDelta": "180d",
+          "ClipSize": "1",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+          "AutoReloadsClip": "AUTO",
+          "ReAcquireDetailType": "PER_CLIP"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "0.5s",
+              "MaxSeconds": "0.5s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "WeaponOCLNugget",
+                "attrs": {
+                  "WeaponOCL": "OCL_AlliedAntiVehicleVehicleTech3CannonNodeEnd"
+                },
+                "children": []
+              },
+              {
+                "type": "DamageNugget",
+                "attrs": {
+                  "Damage": "20.0",
+                  "Radius": "0.0",
+                  "DelayTimeSeconds": "0.1s",
+                  "DamageType": "CANNON",
+                  "DamageFXType": "ALLIED_PRIMAGECANNONVET2",
+                  "DeathType": "NORMAL"
+                },
+                "children": []
+              },
+              {
+                "type": "SuppressionNugget",
+                "attrs": {
+                  "Radius": "20.0",
+                  "Suppression": "10",
+                  "DurationSeconds": "3s"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "mounts": {
+    "front": {
+      "turret": {
+        "type": "WeaponSlotTurret",
+        "attrs": {
+          "ID": "1"
+        },
+        "children": [
+          {
+            "type": "Weapon",
+            "attrs": {
+              "Ordering": "PRIMARY_WEAPON",
+              "Template": "AlliedGunshipAircraftAutoCannon",
+              "ObjectStatus": "GENERIC_TOGGLE_STATE"
+            },
+            "children": []
+          },
+          {
+            "type": "TurretSettings",
+            "attrs": {
+              "TurretTurnRate": "180",
+              "TurretPitchRate": "20",
+              "AllowsPitch": "true",
+              "MinimumPitch": "-30d",
+              "PitchHeight": "90%",
+              "MinIdleScanTime": "1.0s",
+              "MaxIdleScanTime": "5.0s",
+              "MinIdleScanAngle": "0.0",
+              "MaxIdleScanAngle": "90.0",
+              "NaturalTurretAngle": "0d",
+              "RecenterWhenOutOfTurnRange": "false",
+              "ComeToHaltJiggle": "1d"
+            },
+            "children": [
+              {
+                "type": "TurretAITargetChooserData",
+                "attrs": {
+                  "CanAcquireDynamicIfAssignedOutOfRange": "true",
+                  "IdleScanDelay": "=$FAST_IDLE_SCAN_DELAY"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "weapon": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedGunshipAircraftAutoCannon",
+          "AttackRange": "300.0",
+          "UseCenterForRangeCheck": "true",
+          "AcceptableAimDelta": "1d",
+          "CanFireWhileMoving": "true",
+          "ClipSize": "10",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT",
+          "FireSound": "ALL_Gunship_MachineGunWeaponFire",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER",
+          "ReAcquireDetailType": "PER_CLIP"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "0.1s",
+              "MaxSeconds": "0.1s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "0.5s",
+              "MaxSeconds": "0.5s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "DamageNugget",
+                "attrs": {
+                  "Damage": "12.0",
+                  "Radius": "0.0",
+                  "DamageType": "AUTO_CANNON",
+                  "DamageFXType": "SOVIET_MACHINEGUN",
+                  "DeathType": "NORMAL"
+                },
+                "children": [
+                  {
+                    "type": "DamageScalarDetails",
+                    "attrs": {
+                      "Scalar": "50%"
+                    },
+                    "children": [
+                      {
+                        "type": "Filter",
+                        "attrs": {
+                          "Rule": "NONE",
+                          "Include": "STRUCTURE"
+                        },
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "side": {
+      "turret": {
+        "type": "WeaponSlotTurret",
+        "attrs": {
+          "ID": "2"
+        },
+        "children": [
+          {
+            "type": "Weapon",
+            "attrs": {
+              "Ordering": "PRIMARY_WEAPON",
+              "Template": "AlliedGunshipAircraftWeapon",
+              "ForbiddenObjectStatus": "GENERIC_TOGGLE_STATE"
+            },
+            "children": []
+          },
+          {
+            "type": "TurretSettings",
+            "attrs": {
+              "TurretTurnRate": "180",
+              "TurretPitchRate": "180",
+              "AllowsPitch": "true",
+              "MinimumPitch": "-45d",
+              "PitchHeight": "90%",
+              "MinIdleScanTime": "1.0s",
+              "MaxIdleScanTime": "5.0s",
+              "MinIdleScanAngle": "0.0",
+              "MaxIdleScanAngle": "90.0",
+              "MaxDeflectionAntiClockwise": "45d",
+              "MaxDeflectionClockwise": "45d",
+              "NaturalTurretAngle": "270d",
+              "RecenterWhenOutOfTurnRange": "false",
+              "ComeToHaltJiggle": "1d"
+            },
+            "children": [
+              {
+                "type": "TurretAITargetChooserData",
+                "attrs": {
+                  "CanAcquireDynamicIfAssignedOutOfRange": "true",
+                  "IdleScanDelay": "=$MEDIUM_IDLE_SCAN_DELAY"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "weapon": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedGunshipAircraftWeapon",
+          "AimDirection": "0d",
+          "AcceptableAimDelta": "5d",
+          "AttackRange": "400.0",
+          "MinimumAttackRange": "50",
+          "UseCenterForRangeCheck": "true",
+          "CanFireWhileMoving": "true",
+          "ClipSize": "12",
+          "ScatterRadius": "30",
+          "RadiusDamageAffects": "ENEMIES",
+          "FireFX": "FX_Allied_Gunship_Fire",
+          "FireVeteranFX": "FX_Allied_Gunship_Fire",
+          "FireSound": "ALL_Gunship_ColliderCannonWeaponFire",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT",
+          "WeaponSpeed": "500",
+          "MinWeaponSpeed": "500",
+          "MaxWeaponSpeed": "500",
+          "MinTargetPitch": "-45d",
+          "MaxTargetPitch": "45d",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "ProjectileNugget",
+                "attrs": {
+                  "ProjectileTemplate": "AlliedGunshipAircraftWeaponProjectile",
+                  "WarheadTemplate": "AlliedGunshipAircraftWeaponWarhead"
+                },
+                "children": [
+                  {
+                    "type": "VeterancyProjectiles",
+                    "attrs": {
+                      "VeterancyLevel": "HEROIC",
+                      "ProjectileTemplate": "AlliedGunshipAircraftWeaponProjectile_Veteran"
+                    },
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "InformTargetNugget",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "rear": {
+      "turret": {
+        "type": "WeaponSlotTurret",
+        "attrs": {
+          "ID": "3"
+        },
+        "children": [
+          {
+            "type": "Weapon",
+            "attrs": {
+              "Ordering": "PRIMARY_WEAPON",
+              "Template": "AlliedGunshipAircraftWeapon",
+              "ForbiddenObjectStatus": "GENERIC_TOGGLE_STATE"
+            },
+            "children": []
+          },
+          {
+            "type": "TurretSettings",
+            "attrs": {
+              "TurretTurnRate": "180",
+              "TurretPitchRate": "180",
+              "AllowsPitch": "true",
+              "MinimumPitch": "-45d",
+              "PitchHeight": "90%",
+              "MinIdleScanTime": "1.0s",
+              "MaxIdleScanTime": "5.0s",
+              "MinIdleScanAngle": "0.0",
+              "MaxIdleScanAngle": "90.0",
+              "MaxDeflectionAntiClockwise": "45d",
+              "MaxDeflectionClockwise": "45d",
+              "NaturalTurretAngle": "270d",
+              "RecenterWhenOutOfTurnRange": "false",
+              "ComeToHaltJiggle": "1d"
+            },
+            "children": [
+              {
+                "type": "TurretAITargetChooserData",
+                "attrs": {
+                  "CanAcquireDynamicIfAssignedOutOfRange": "true",
+                  "IdleScanDelay": "=$MEDIUM_IDLE_SCAN_DELAY"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "weapon": {
+        "type": "WeaponTemplate",
+        "attrs": {
+          "id": "AlliedGunshipAircraftWeapon",
+          "AimDirection": "0d",
+          "AcceptableAimDelta": "5d",
+          "AttackRange": "400.0",
+          "MinimumAttackRange": "50",
+          "UseCenterForRangeCheck": "true",
+          "CanFireWhileMoving": "true",
+          "ClipSize": "12",
+          "ScatterRadius": "30",
+          "RadiusDamageAffects": "ENEMIES",
+          "FireFX": "FX_Allied_Gunship_Fire",
+          "FireVeteranFX": "FX_Allied_Gunship_Fire",
+          "FireSound": "ALL_Gunship_ColliderCannonWeaponFire",
+          "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT",
+          "WeaponSpeed": "500",
+          "MinWeaponSpeed": "500",
+          "MaxWeaponSpeed": "500",
+          "MinTargetPitch": "-45d",
+          "MaxTargetPitch": "45d",
+          "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER"
+        },
+        "children": [
+          {
+            "type": "FiringDuration",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "ClipReloadTime",
+            "attrs": {
+              "MinSeconds": "2.0s",
+              "MaxSeconds": "2.0s"
+            },
+            "children": []
+          },
+          {
+            "type": "Nuggets",
+            "attrs": {},
+            "children": [
+              {
+                "type": "ProjectileNugget",
+                "attrs": {
+                  "ProjectileTemplate": "AlliedGunshipAircraftWeaponProjectile",
+                  "WarheadTemplate": "AlliedGunshipAircraftWeaponWarhead"
+                },
+                "children": [
+                  {
+                    "type": "VeterancyProjectiles",
+                    "attrs": {
+                      "VeterancyLevel": "HEROIC",
+                      "ProjectileTemplate": "AlliedGunshipAircraftWeaponProjectile_Veteran"
+                    },
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "type": "InformTargetNugget",
+                "attrs": {},
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "shell": {
+    "id": "ModuleTag_BezierProjectileBehavior",
+    "Flags": "ORIENT_TO_FLIGHT_PATH DETONATE_CALLS_KILL FIRE_STRAIGHT_THEN_CURVE",
+    "FirstHeightMin": "0",
+    "FirstHeightMax": "0",
+    "SecondHeightMin": "0",
+    "SecondHeightMax": "0",
+    "FirstPercentIndent": "30",
+    "SecondPercentIndent": "60",
+    "SidewaysDrift": "0",
+    "FlightPathAdjustDistPerSecond": "300.0",
+    "FireStraightDistance": "400.0"
+  },
+  "dying": {
+    "type": "GameObject",
+    "attrs": {
+      "id": "AlliedGunshipAircraft_Dying",
+      "EditorName": "AlliedGunshipAircraft_Dying",
+      "Description": "Desc:AlliedGunshipAircraft_Dying",
+      "KindOf": "PROJECTILE INERT NO_COLLIDE HIDE_IF_FOGGED"
+    },
+    "children": [
+      {
+        "type": "Draws",
+        "attrs": {},
+        "children": [
+          {
+            "type": "ScriptedModelDraw",
+            "attrs": {
+              "id": "ModuleTag_ScriptedModelDraw",
+              "OkToChangeModelColor": "true"
+            },
+            "children": [
+              {
+                "type": "ModelConditionState",
+                "attrs": {
+                  "ParseCondStateType": "PARSE_DEFAULT"
+                },
+                "children": [
+                  {
+                    "type": "Model",
+                    "attrs": {
+                      "Name": "AUGunship_COL"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "Texture",
+                    "attrs": {
+                      "Original": "AUGunship",
+                      "New": "AUGunship_D"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "ParticleSysBone",
+                    "attrs": {
+                      "BoneName": "FXDamage01",
+                      "FXParticleSystemTemplate": "AlliedBomberDyingFire",
+                      "FollowBone": "true"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "ParticleSysBone",
+                    "attrs": {
+                      "BoneName": "FXDamage02",
+                      "FXParticleSystemTemplate": "AlliedBomberDyingFire",
+                      "FollowBone": "true"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "ParticleSysBone",
+                    "attrs": {
+                      "BoneName": "FXDamage01",
+                      "FXParticleSystemTemplate": "AlliedBomberDyingFireLight",
+                      "FollowBone": "true"
+                    },
+                    "children": []
+                  },
+                  {
+                    "type": "ParticleSysBone",
+                    "attrs": {
+                      "BoneName": "FXDamage02",
+                      "FXParticleSystemTemplate": "AlliedBomberDyingSmoke",
+                      "FollowBone": "true"
+                    },
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Behaviors",
+        "attrs": {},
+        "children": [
+          {
+            "type": "Physics",
+            "attrs": {
+              "id": "ModuleTag_Physics",
+              "TumbleRandomly": "true",
+              "MaxXRotationVelocity": "50",
+              "MaxYRotationVelocity": "50",
+              "MaxZRotationVelocity": "0",
+              "KillWhenRestingOnGround": "true"
+            },
+            "children": []
+          },
+          {
+            "type": "CreateObjectDie",
+            "attrs": {
+              "id": "ModuleTag_CreateObjectDie",
+              "CreationList": "AUGunshipAircraft_Die_OCL"
+            },
+            "children": [
+              {
+                "type": "DieMuxData",
+                "attrs": {
+                  "DeathTypes": "ALL"
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "FireWeaponWhenDead",
+            "attrs": {
+              "id": "ModuleTag_AlliedBomberDeathWeapon",
+              "DeathWeapon": "BomberAircraftDeathWeapon",
+              "InitiallyActive": "true"
+            },
+            "children": [
+              {
+                "type": "DieMuxData",
+                "attrs": {
+                  "DeathTypes": "ALL"
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "DestroyDie",
+            "attrs": {
+              "id": "ModuleTag_Die"
+            },
+            "children": [
+              {
+                "type": "DieMuxData",
+                "attrs": {
+                  "DeathTypes": "ALL"
+                },
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "FXListBehavior",
+            "attrs": {
+              "id": "ModuleTag_FXList"
+            },
+            "children": [
+              {
+                "type": "DieMuxData",
+                "attrs": {
+                  "DeathTypes": "ALL"
+                },
+                "children": []
+              },
+              {
+                "type": "Event",
+                "attrs": {
+                  "Index": "onDeath",
+                  "FX": "FX_AlliedBomberDie"
+                },
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Body",
+        "attrs": {},
+        "children": [
+          {
+            "type": "ActiveBody",
+            "attrs": {
+              "id": "ModuleTag_ActiveBody",
+              "MaxHealth": "100"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "AudioArraySound",
+        "attrs": {},
+        "children": [
+          {
+            "type": "AudioEntry",
+            "attrs": {
+              "Sound": "RA3VehicleExplosionLargeNoDelay",
+              "AudioType": "soundAmbient"
+            },
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "VisionInfo",
+        "attrs": {
+          "VisionRange": "300",
+          "ShroudClearingRange": "300"
+        },
+        "children": []
+      }
+    ]
+  },
+  "crash_weapon": {
+    "type": "WeaponTemplate",
+    "attrs": {
+      "id": "BomberAircraftDeathWeapon",
+      "ProjectileCollidesWith": "ALLIES ENEMIES NEUTRAL STRUCTURES WALLS",
+      "RadiusDamageAffects": "ALLIES ENEMIES NEUTRALS",
+      "Flags": "NOT_ATTRACTED_BY_MAGNETS",
+      "RequiredAntiMask": "ANTI_WATER ANTI_GROUND ANTI_STRUCTURE"
+    },
+    "children": [
+      {
+        "type": "Nuggets",
+        "attrs": {},
+        "children": [
+          {
+            "type": "DamageNugget",
+            "attrs": {
+              "Damage": "300.0",
+              "Radius": "50.0",
+              "DamageTaperOff": "0",
+              "DamageType": "EXPLOSIVE",
+              "DeathType": "NORMAL"
+            },
+            "children": [
+              {
+                "type": "DamageScalarDetails",
+                "attrs": {
+                  "Scalar": "50%"
+                },
+                "children": [
+                  {
+                    "type": "Filter",
+                    "attrs": {
+                      "Rule": "ALL",
+                      "Relationship": "ALLIES"
+                    },
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MetaImpactNugget",
+            "attrs": {
+              "ShockWaveAmount": "50.0",
+              "ShockWaveRadius": "50.0",
+              "ShockWaveTaperOff": "1.0"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "shell_warhead": {
+    "type": "WeaponTemplate",
+    "attrs": {
+      "id": "AlliedGunshipAircraftWeaponWarhead",
+      "RadiusDamageAffects": "ALLIES ENEMIES NEUTRALS",
+      "Flags": "ATTACK_NEEDS_LINE_OF_SIGHT NOT_ATTRACTED_BY_MAGNETS",
+      "ProjectileCollidesWith": "ALLIES ENEMIES NEUTRAL STRUCTURES WALLS",
+      "RequiredAntiMask": "ANTI_GROUND ANTI_STRUCTURE ANTI_WATER"
+    },
+    "children": [
+      {
+        "type": "Nuggets",
+        "attrs": {},
+        "children": [
+          {
+            "type": "DamageNugget",
+            "attrs": {
+              "id": "DefaultDamageNugget",
+              "Damage": "100.0",
+              "Radius": "50.0",
+              "DamageTaperOff": "30",
+              "DamageType": "EXPLOSIVE",
+              "DeathType": "EXPLODED"
+            },
+            "children": [
+              {
+                "type": "DamageScalarDetails",
+                "attrs": {
+                  "Scalar": "50%"
+                },
+                "children": [
+                  {
+                    "type": "Filter",
+                    "attrs": {
+                      "Rule": "NONE",
+                      "Include": "INFANTRY"
+                    },
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "MetaImpactNugget",
+            "attrs": {
+              "id": "DefaultMetaImpactNugget",
+              "ShockWaveAmount": "50",
+              "ShockWaveRadius": "50.0",
+              "ShockWaveTaperOff": "25.0",
+              "ForbiddenTargetModelCondition": "STUNNED STUNNED_STANDING_UP STUNNED_FLAILING"
+            },
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  "cannon_armor": {
+    "infantry": 0.2,
+    "anti_vehicle_infantry": 0.1,
+    "commando": 0.25,
+    "engineer": 0.2,
+    "scout": 0.1,
+    "spy": 0.2,
+    "tank": 1.0,
+    "mirage": 1.0,
+    "ifv": 1.7,
+    "miner": 1.5,
+    "artillery": 1.25,
+    "mcv": 1.25,
+    "destroyer": 1.0,
+    "carrier": 1.5,
+    "dolphin": 1.25,
+    "transport": 1.7,
+    "barracks": 1.0,
+    "power": 1.0,
+    "refinery": 1.0,
+    "factory": 1.0,
+    "airfield": 1.0,
+    "naval_yard": 1.0,
+    "construction_yard": 1.0,
+    "tech": 1.0,
+    "defense": 1.0,
+    "advanced_defense": 1.0,
+    "support_superweapon": 1.0,
+    "attack_superweapon": 1.0,
+    "R3MIRAGE": 1.0,
+    "R3FUTURE": 1.0,
+    "R3HARBINGER": 2.0
+  },
+  "source_sha256": {
+    "GlobalData/Weapon.xml": "f4200c36da09284c48b64749d433d6dbd5b94c193002017f6ba04a55869338cd",
+    "EP1/GlobalData/Weapon_EP1.xml": "08411baf19cb6111480d8024e5d4d51bd2e6588e215fd50ccbadea7af0b4b481",
+    "Allied/Props/AlliedAntiVehicleVehicleTech3CannonNode.xml": "427f8bd12227f248abf615d03f948347e0a528c734276a5d38c2b0658f047cb0",
+    "EP1/Allied/Units/AlliedGunshipAircraft.xml": "16c189203c1af10cd21ee8f1890bd8d64eb586b3f5e8a67561b26366b13fee0f",
+    "EP1/Allied/Props/AlliedGunshipAircraftWeaponProjectile.xml": "92754f8bf3759a25f9bc7d1b5f9667511f8312970bf9fd53c8f671799854e580",
+    "EP1/Allied/Props/AlliedGunshipAircraft_Dying.xml": "370616c2bd40b4a11610bfac8f0852c4ac3f1bf420efd8bd142c986a23eeff0f",
+    "GlobalData/Armor.xml": "132937eeb064df87d715ef7a23ec43920a8d3b245a9ef08ff6f4c5e7cc9def73",
+    "EP1/Allied/Units/AlliedFutureTank.xml": "a9784d9c35f9919edff9b25de38da2e4d3ed6e49fd232e534d6374873ec9da0e"
+  },
+  "adapter": {
+    "distance_scale": 1.5,
+    "scatter_policy": "Unique targets per emitted chain; no backtracking. Native internal candidate arbitration unverified.",
+    "shell_curve": "Cubic path with source indents, muzzle direction, fixed native-step travel; terrain flat.",
+    "crash_gravity": 180.0,
+    "impulse_decay_seconds": 0.25
+  }
+}

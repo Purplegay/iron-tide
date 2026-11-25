@@ -1,0 +1,1 @@
+{"checks":[{"name":"unowned selected card is not mislabeled level zero","passed":true},{"name":"acquisition refreshes current selection at level zero","passed":true},{"name":"actual card upgrade succeeds","passed":true},{"name":"upgrade refreshes level without reopening","passed":true},{"name":"all remaining exclusive cards show unowned","passed":true}],"failed":0}

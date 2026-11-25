@@ -1,0 +1,1 @@
+{"image": "DRON", "source": "artmd.ini [DRON] WalkFrames=6 FiringFrames=4, eight facings", "seq": {"Guard": {"start": 48, "per": 1, "facings": 8}, "Walk": {"start": 0, "per": 6, "facings": 8}, "FireUp": {"start": 56, "per": 4, "facings": 8}}}

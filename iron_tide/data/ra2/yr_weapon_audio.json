@@ -1,0 +1,57 @@
+{
+  "source": "YR soundmd.ini and audio.bag",
+  "specs": {
+    "BorisAttack": {
+      "sounds": [
+        "iboratta",
+        "iborattb"
+      ],
+      "volume": 70.0,
+      "range": 10.0
+    },
+    "MigAttack": {
+      "sounds": [
+        "vmigatta"
+      ],
+      "volume": 70.0,
+      "range": 10.0
+    },
+    "SeigeChopperAttackDeployed": {
+      "sounds": [
+        "vchoat2a"
+      ],
+      "volume": 80.0,
+      "range": 10.0
+    }
+  },
+  "entries": {
+    "iboratta": {
+      "file": "yr_weapons/iboratta.wav",
+      "frames": 18443,
+      "sampleRate": 22050,
+      "channels": 1,
+      "sha256": "417bbed112b7fe927d0b643507e969367ad2f48b2321213daa035382dc9f52a2"
+    },
+    "iborattb": {
+      "file": "yr_weapons/iborattb.wav",
+      "frames": 14607,
+      "sampleRate": 22050,
+      "channels": 1,
+      "sha256": "7c402ba138becf0766b49a6e6fba556d4951dcf5558c1008ed48e3769effbf17"
+    },
+    "vmigatta": {
+      "file": "yr_weapons/vmigatta.wav",
+      "frames": 44348,
+      "sampleRate": 22050,
+      "channels": 1,
+      "sha256": "7fc57fdb6edff94fe88b3cbd3f05911242e45a7bdf47caabe3ca4fb94781ffcf"
+    },
+    "vchoat2a": {
+      "file": "yr_weapons/vchoat2a.wav",
+      "frames": 37958,
+      "sampleRate": 22050,
+      "channels": 1,
+      "sha256": "a5e8fed18161874d795fdbfa17c3d28fc50af15af8e088a10aaa255c03037ce4"
+    }
+  }
+}

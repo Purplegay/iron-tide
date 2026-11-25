@@ -1,0 +1,169 @@
+{
+ "fw": 55,
+ "fh": 43,
+ "cols": 30,
+ "count": 450,
+ "states": {
+  "Default": [
+   0,
+   0
+  ],
+  "Mini": [
+   1,
+   1
+  ],
+  "Scroll": [
+   2,
+   9
+  ],
+  "NoScroll": [
+   10,
+   10
+  ],
+  "Select": [
+   18,
+   30
+  ],
+  "Move": [
+   31,
+   40
+  ],
+  "NoMove": [
+   41,
+   41
+  ],
+  "MoveMini": [
+   42,
+   51
+  ],
+  "NoActionMini": [
+   52,
+   52
+  ],
+  "AttackRange": [
+   53,
+   57
+  ],
+  "AttackNoRange": [
+   58,
+   62
+  ],
+  "AttackMini": [
+   63,
+   67
+  ],
+  "Guard": [
+   68,
+   72
+  ],
+  "GuardMini": [
+   73,
+   77
+  ],
+  "Occupy": [
+   89,
+   98
+  ],
+  "NoOccupy": [
+   99,
+   99
+  ],
+  "OccupyMini": [
+   100,
+   109
+  ],
+  "Deploy": [
+   110,
+   118
+  ],
+  "NoDeploy": [
+   119,
+   119
+  ],
+  "Sell": [
+   129,
+   138
+  ],
+  "SellMini": [
+   139,
+   148
+  ],
+  "NoSell": [
+   149,
+   149
+  ],
+  "RepairMove": [
+   150,
+   169
+  ],
+  "SideRepair": [
+   170,
+   189
+  ],
+  "NoRepair": [
+   190,
+   190
+  ],
+  "Power": [
+   339,
+   344
+  ],
+  "Iron": [
+   346,
+   350
+  ],
+  "Chrono": [
+   357,
+   368
+  ],
+  "NoAction": [
+   384,
+   384
+  ],
+  "Pan": [
+   385,
+   393
+  ],
+  "AttackMove": [
+   404,
+   412
+  ],
+  "Beacon": [
+   435,
+   449
+  ]
+ },
+ "centered_only": false,
+ "centered": [
+  "Scroll",
+  "NoScroll",
+  "Select",
+  "Move",
+  "NoMove",
+  "MoveMini",
+  "NoActionMini",
+  "AttackRange",
+  "AttackNoRange",
+  "AttackMini",
+  "Guard",
+  "GuardMini",
+  "Occupy",
+  "NoOccupy",
+  "OccupyMini",
+  "Deploy",
+  "NoDeploy",
+  "Sell",
+  "SellMini",
+  "NoSell",
+  "RepairMove",
+  "SideRepair",
+  "NoRepair",
+  "Power",
+  "Iron",
+  "Chrono",
+  "NoAction",
+  "Pan",
+  "AttackMove",
+  "Beacon"
+ ]
+}

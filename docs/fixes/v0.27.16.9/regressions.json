@@ -1,0 +1,30 @@
+{
+  "check_ai": {
+    "checks": 16,
+    "failed": 0
+  },
+  "final_house": {
+    "checks": 248,
+    "failed": 0
+  },
+  "check_operations": {
+    "checks": 466,
+    "failed": 0
+  },
+  "check_economy": {
+    "checks": 50,
+    "failed": 0
+  },
+  "check_cache": {
+    "checks": 24,
+    "failed": 0
+  },
+  "check_geometry": {
+    "checks": 21184,
+    "failed": 0
+  },
+  "final_camera_scroll": {
+    "checks": 294,
+    "failed": 0
+  }
+}

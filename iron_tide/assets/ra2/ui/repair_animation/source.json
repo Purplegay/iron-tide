@@ -1,0 +1,98 @@
+{
+  "source": {
+    "name": "WRENCH.SHP",
+    "archive": "ra2.mix > cache.mix > 0x97e9df77",
+    "sha256": "d1ee6a305cd65c91a9b29db7c83c2f3acc4e15a3bb41082844e4c4dd0e2de8a2"
+  },
+  "palette": {
+    "name": "PALETTE.PAL",
+    "archive": "ra2.mix > cache.mix > 0x18e978ee",
+    "sha256": "e85c535002573b5f95f7c361c4bdb95ee43e4914ddc926afda9ace995c54242b"
+  },
+  "frames": [
+    {
+      "file": "0.png",
+      "size": [
+        30,
+        29
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "055a804844440994b504e73a4a09fb355db7592482575e08a1498acdba3e33a4"
+    },
+    {
+      "file": "1.png",
+      "size": [
+        37,
+        24
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "d84ddf7c6814acaa829894b910d4fc9dafee48f35c6916f693e01297bf14198d"
+    },
+    {
+      "file": "2.png",
+      "size": [
+        38,
+        23
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "0fdfc0f3614cea86ed44ee027e0d574a51933f68c9a647419d49d29b32c38212"
+    },
+    {
+      "file": "3.png",
+      "size": [
+        33,
+        27
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "d8b1c51c90586f41db75d81d9848cbc673fd807dbf3936802062a55335a07799"
+    },
+    {
+      "file": "4.png",
+      "size": [
+        25,
+        31
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "2cb3f2161ed8fa8a75f44155312621088d0a13db539e1aafcc85436b9c9639d4"
+    },
+    {
+      "file": "5.png",
+      "size": [
+        21,
+        31
+      ],
+      "offset": [
+        12,
+        8
+      ],
+      "sha256": "ebc88320796439d8fa20ab7f8fddfe19a01ae25678a95d812d5bcc99ab4612f3"
+    },
+    {
+      "file": "6.png",
+      "size": [
+        25,
+        31
+      ],
+      "offset": [
+        13,
+        7
+      ],
+      "sha256": "2cb3f2161ed8fa8a75f44155312621088d0a13db539e1aafcc85436b9c9639d4"
+    }
+  ]
+}

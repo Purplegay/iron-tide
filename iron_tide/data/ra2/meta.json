@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-19T09:26:33.428Z",
+  "unresolved": {
+    "aircraft": [
+      "APACHE"
+    ],
+    "buildings": [
+      "NAWAST",
+      "GARADR",
+      "NAHPAD",
+      "CAEURO01",
+      "CAIRSFGL"
+    ]
+  },
+  "sources": {
+    "rules_ini": {
+      "size": 541915,
+      "sha256_16": "fd1e95cea0306ea7"
+    },
+    "art_ini": {
+      "size": 245825,
+      "sha256_16": "b477f861063a9509"
+    },
+    "general_csf": {
+      "size": 283411,
+      "sha256_16": "66b46690dfb475fb"
+    }
+  },
+  "counts": {
+    "infantry": 45,
+    "vehicles": 55,
+    "aircraft": 8,
+    "buildings": 295,
+    "weapons": 176,
+    "warheads": 83,
+    "projectiles": 49,
+    "superweapons": 7,
+    "tech_tree": 403,
+    "localization_labels": 4473,
+    "countries": 13
+  },
+  "armor_order": [
+    "none",
+    "flak",
+    "plate",
+    "light",
+    "medium",
+    "heavy",
+    "wood",
+    "steel",
+    "concrete",
+    "special_1",
+    "special_2"
+  ]
+}

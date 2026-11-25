@@ -1,0 +1,36 @@
+{
+  "total_checks": 1284,
+  "suites": [
+    {
+      "suite": "talent_unlock",
+      "checks": 40,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-direct-talent-20261105\\talent_unlock\\console.log"
+    },
+    {
+      "suite": "talent_cost",
+      "checks": 482,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-direct-talent-20261105\\talent_cost\\console.log"
+    },
+    {
+      "suite": "progression_bookmarks",
+      "checks": 16,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-direct-talent-20261105\\progression_bookmarks\\console.log"
+    },
+    {
+      "suite": "academy",
+      "checks": 746,
+      "failed": 0,
+      "log": "C:\\Users\\admin\\Temp\\iron-direct-talent-20261105\\academy\\console.log"
+    }
+  ],
+  "environment": "headless CREATE_NO_WINDOW; isolated APPDATA; no player data edits",
+  "source_sha256": {
+    "iron_tide\\scripts\\rules\\talent_unlock.gd": "94046827d9746c950efdc9ab88680c5684e04c21c0c8ae5c36196b55e47c48df",
+    "iron_tide\\scripts\\autoload\\meta_progress.gd": "f17dc7438967f83c581c7cb4394379203c7b93904ec2eeb0cc22ba97f3c83543",
+    "iron_tide\\scripts\\screens\\meta_screen.gd": "e46f461bf37b23cacf16791189465355c68d710d255f41f7cd8db2d9f6002a2d"
+  },
+  "visual": "pending_user_visual_confirmation"
+}

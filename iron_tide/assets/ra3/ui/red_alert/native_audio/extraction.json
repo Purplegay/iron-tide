@@ -1,0 +1,58 @@
+{
+  "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Command and Conquer Red Alert 3 Uprising",
+  "game": "RA3 Uprising1.1 Steam",
+  "manifest_sha256": {
+    "StaticStream.big": "74facd9056eee20942bb274a924beffb03d7adbb71b9609e804a39619b2c6081",
+    "GlobalStream.big": "08a415789062b1707edba3c456884b94791097505431e17a03d10ee34df050fd",
+    "EnglishAudio.big": "0cf62fbecc89f15746e523042a6f0422869d98fe41eb742c3104324a81d9a2e4"
+  },
+  "assets": [
+    {
+      "name": "AudioFile:Aeva_RedAlertAct",
+      "stream": "audio",
+      "offset": 27444,
+      "size": 72,
+      "relo_offset": 2996,
+      "relo_size": 8,
+      "imp_offset": 8,
+      "imp_size": 0,
+      "type": 376113229,
+      "instance": 3985110663,
+      "type_hash": 1405623879,
+      "instance_hash": 3011142714,
+      "source": "audio:audioassets.xml",
+      "references": []
+    }
+  ],
+  "files": [
+    {
+      "asset": "AudioFile:Aeva_RedAlertAct",
+      "stream": "audio",
+      "archive": "EnglishAudio.big",
+      "part": "bin",
+      "file": "raw/AudioFile_Aeva_RedAlertAct.bin",
+      "size": 72,
+      "sha256": "6fbd8eeee54458dd5bf64fc689f257e74b013f58f6fae8917a22c2f5ebeea482"
+    },
+    {
+      "asset": "AudioFile:Aeva_RedAlertAct",
+      "stream": "audio",
+      "archive": "EnglishAudio.big",
+      "part": "relo",
+      "file": "raw/AudioFile_Aeva_RedAlertAct.relo",
+      "size": 8,
+      "sha256": "8a94b949b89b0df705b2467cb07b0d09a8ae79043203294828352009554bef5c"
+    },
+    {
+      "asset": "AudioFile:Aeva_RedAlertAct",
+      "stream": "audio",
+      "archive": "EnglishAudio.big",
+      "entry": "data\\audio\\cdata\\166b084d.53c81e47.ed87f687.b37a643a.cdata",
+      "part": "cdata",
+      "file": "raw/AudioFile_Aeva_RedAlertAct.cdata",
+      "size": 97144,
+      "sha256": "03a02f627996f87a8eaec9d2bd6de1fe67bdba368f2daedcb132ac90e025c395"
+    }
+  ],
+  "unresolved_references": []
+}

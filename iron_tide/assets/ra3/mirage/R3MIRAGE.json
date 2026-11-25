@@ -1,0 +1,14 @@
+{
+  "id": "R3MIRAGE",
+  "facings": 32,
+  "frameW": 96,
+  "frameH": 96,
+  "poses": 1,
+  "fps": 0,
+  "fixed_anchor": [
+    48,
+    60
+  ],
+  "source": "RA3 official demo AUAntiVehicleVehicleTech3",
+  "facing_offset": 0
+}

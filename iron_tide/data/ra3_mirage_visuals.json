@@ -1,0 +1,175 @@
+{
+  "source": "EA RA3 Mod SDK v3",
+  "primary_lifetime": 1.5,
+  "scatter_lifetime": 0.5,
+  "beam_fade_in": 0.0,
+  "beam_fade_out": 0.0,
+  "primary_width": 25.0,
+  "scatter_width": 5.0,
+  "owner_disguise_opacity": 0.5,
+  "particles": {
+    "AlliedPrismHitFlash": {
+      "lifetime_frames": [
+        25.0,
+        25.0
+      ],
+      "delay_frames": 0,
+      "colors": [
+        {
+          "age": 0.05,
+          "rgb": [
+            0.819608,
+            0.658824,
+            1.0
+          ]
+        },
+        {
+          "age": 1.0,
+          "rgb": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "alpha": []
+    },
+    "AlliedPrismHitFIre": {
+      "lifetime_frames": [
+        25.0,
+        25.0
+      ],
+      "delay_frames": 5.0,
+      "colors": [
+        {
+          "age": 0.19999998000000002,
+          "rgb": [
+            0.415686,
+            0.462745,
+            1.0
+          ]
+        },
+        {
+          "age": 1.0,
+          "rgb": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "alpha": []
+    },
+    "AlliedPrismFireFlash": {
+      "lifetime_frames": [
+        10.0,
+        10.0
+      ],
+      "delay_frames": 0,
+      "colors": [
+        {
+          "age": 0.09999999000000001,
+          "rgb": [
+            0.819608,
+            0.658824,
+            1.0
+          ]
+        },
+        {
+          "age": 1.0,
+          "rgb": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "alpha": []
+    },
+    "AlliedPrismFireFlash_Vet": {
+      "lifetime_frames": [
+        10.0,
+        10.0
+      ],
+      "delay_frames": 0,
+      "colors": [
+        {
+          "age": 0.09999999000000001,
+          "rgb": [
+            1.0,
+            0.658824,
+            0.658824
+          ]
+        },
+        {
+          "age": 1.0,
+          "rgb": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "alpha": []
+    },
+    "Primage_Disguise": {
+      "lifetime_frames": [
+        20.0,
+        30.0
+      ],
+      "delay_frames": 0,
+      "colors": [
+        {
+          "age": 0.0,
+          "rgb": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "age": 0.5,
+          "rgb": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        {
+          "age": 1.0,
+          "rgb": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      ],
+      "alpha": [
+        {
+          "age": 0.5,
+          "value": 1.0
+        },
+        {
+          "age": 1.0,
+          "value": 0.0
+        }
+      ]
+    }
+  },
+  "adapter": {
+    "particle_frames_per_second": 30,
+    "model_crossfade_seconds": 0.7,
+    "model_crossfade_note": "SAGE transition time is not exposed by SDK; presentation interpolation only"
+  },
+  "source_sha256": {
+    "SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml": "932066544472e30fed1b5c12f94683ba21220159f5c7a91394ec0e94dc449f2d",
+    "SAGEXML/GlobalData/Weapon.xml": "7a82e52aa6142f96271173195366227b21a552657bd683f7a33a22e770e1bad1",
+    "Schemas/xsd/Modules/LaserDraw.xsd": "52c9c2c4b71d5380961c42c22bdbb0c7fe0d5f63ff95b006284d4b797a57cc23",
+    "SAGEXML/Allied/Props/AlliedAntiVehicleVehicleTech3CannonNode.xml": "427f8bd12227f248abf615d03f948347e0a528c734276a5d38c2b0658f047cb0",
+    "SAGEXML/FXParticleSystems/AlliedPrismHitFlash.xml": "1e084b180e891eb813b4287b6e065f54f38ba23bf9f14c9a5365eec5c98ad45b",
+    "SAGEXML/FXParticleSystems/AlliedPrismHitFIre.xml": "7d4237e50872420a8673939b478cff00b467f9cf7845a8b35d9bef86d06c6e09",
+    "SAGEXML/FXParticleSystems/AlliedPrismFireFlash.xml": "ddc9f3a3f492140fdda0cdfa86c1be5b9716b61b614ca0ca5a9ab5e3ed101727",
+    "SAGEXML/FXParticleSystems/AlliedPrismFireFlash_Vet.xml": "7259cc3527483ba73b9aee101c2c468c4762af19562c9fe82d89f9ad4f3cf589",
+    "SAGEXML/FXParticleSystems/Primage_Disguise.xml": "3ce1eda388e521e5f9fc4ecc083657b7ed88f947872e93d6fb701686a9c3e7ed"
+  }
+}

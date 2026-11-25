@@ -1,0 +1,1 @@
+{"id":"GAOREP","image":"GAOREP","layers":[{"kind":"activeanim","image":"GAOREP_A","loopStart":0,"loopEnd":7,"rate":220,"frames":32,"shadow":false,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"GAOREP_A","loopStart":8,"loopEnd":16,"rate":220,"frames":32,"shadow":false,"reverse":false,"loopCount":-1}}]}

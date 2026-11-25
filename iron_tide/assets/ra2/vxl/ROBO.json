@@ -1,0 +1,15 @@
+{
+  "id": "ROBO",
+  "facings": 32,
+  "frameW": 71,
+  "frameH": 48,
+  "facing_offset": 16,
+  "turret": "ROBO_tur",
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "split_shadow": true,
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 2
+}

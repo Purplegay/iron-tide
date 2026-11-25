@@ -1,0 +1,220 @@
+{
+  "profiles": {
+    "mirage": {
+      "explodiness": 8.0,
+      "fling_perturbation": 15.0,
+      "collision": "NONINTERCOLLIDING",
+      "min_lifetime": 4.0,
+      "max_lifetime": 5.0,
+      "bodies": {
+        "BONE_D_01": {
+          "bone": "Bone_D_01",
+          "mass": 1006.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_02": {
+          "bone": "Bone_D_02",
+          "mass": 24.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_03": {
+          "bone": "Bone_D_03",
+          "mass": 284.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_04": {
+          "bone": "Bone_D_04",
+          "mass": 388.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_05": {
+          "bone": "Bone_D_05",
+          "mass": 785.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_06": {
+          "bone": "Bone_D_06",
+          "mass": 688.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_07": {
+          "bone": "Bone_D_07",
+          "mass": 779.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_08": {
+          "bone": "Bone_D_08",
+          "mass": 675.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_09": {
+          "bone": "Bone_D_09",
+          "mass": 497.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_10": {
+          "bone": "Bone_D_10",
+          "mass": 2492.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BONE_D_11": {
+          "bone": "Bone_D_11",
+          "mass": 8503.0,
+          "spinniness": 5.0,
+          "contact_tag": "DEBRIS"
+        }
+      }
+    },
+    "future": {
+      "explodiness": 4.0,
+      "fling_perturbation": 15.0,
+      "collision": "NONINTERCOLLIDING",
+      "min_lifetime": 4.0,
+      "max_lifetime": 5.0,
+      "bodies": {
+        "C3A449B9": {
+          "bone": "Bone_D_01",
+          "mass": 9315.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "C2456DEE": {
+          "bone": "Bone_D_02",
+          "mass": 3504.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "4C019432": {
+          "bone": "Bone_D_03",
+          "mass": 189.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "DA438DD6": {
+          "bone": "Bone_D_04",
+          "mass": 1597.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "BAA702FE": {
+          "bone": "Bone_D_05",
+          "mass": 285.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "AECC7565": {
+          "bone": "Bone_D_06",
+          "mass": 2170.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "C8AD8F7C": {
+          "bone": "Bone_D_07",
+          "mass": 603.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "CBC631A5": {
+          "bone": "Bone_D_08",
+          "mass": 13256.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        },
+        "AA28E40F": {
+          "bone": "Bone_D_09",
+          "mass": 3504.0,
+          "spinniness": 3.0,
+          "contact_tag": "VEHICLE"
+        }
+      }
+    },
+    "harbinger": {
+      "explodiness": 4.0,
+      "fling_perturbation": 15.0,
+      "collision": "NONINTERCOLLIDING",
+      "min_lifetime": 4.0,
+      "max_lifetime": 5.0,
+      "bodies": {
+        "C3A449B9": {
+          "bone": "Bone_D_01",
+          "mass": 2590.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "C2456DEE": {
+          "bone": "Bone_D_02",
+          "mass": 39.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "4C019432": {
+          "bone": "Bone_D_03",
+          "mass": 12355.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "DA438DD6": {
+          "bone": "Bone_D_04",
+          "mass": 261.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "BAA702FE": {
+          "bone": "Bone_D_05",
+          "mass": 1104.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "AECC7565": {
+          "bone": "Bone_D_06",
+          "mass": 159.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "C8AD8F7C": {
+          "bone": "Bone_D_07",
+          "mass": 39.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "CBC631A5": {
+          "bone": "Bone_D_08",
+          "mass": 2903.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "AA28E40F": {
+          "bone": "Bone_D_09",
+          "mass": 4488.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        },
+        "FE073FDE": {
+          "bone": "Bone_D_10",
+          "mass": 69.0,
+          "spinniness": 3.0,
+          "contact_tag": "DEBRIS"
+        }
+      }
+    }
+  },
+  "sources": {
+    "refs/ea-modding-support/Uprising/Schemas/Modules/DynamicsDraw.xsd": "4c765e02039292e1e1faf901f6505f36da28f876e7e8d5c88e618b7ae70ef736",
+    "refs/ea-modding-support/Uprising/Schemas/Includes/Dynamics.xsd": "def16e96a6a09a996d342f8d60a9ff0af7181c15d90158fe2125925e9442ae49",
+    "refs/ea-modding-support/Uprising/Xml/Allied/Props/AlliedAntiVehicleVehicleTech3_Collapse.xml": "93131d0e8d4e2c268a2b401ccd2688faab32168a07a0b6b5384db747a87470d5",
+    "refs/ra3-sdk/installed/SAGEXML/Allied/Props/AlliedAntiVehicleVehicleTech3_Collapse.xml": "93131d0e8d4e2c268a2b401ccd2688faab32168a07a0b6b5384db747a87470d5",
+    "refs/ea-modding-support/Uprising/Xml/EP1/Allied/Props/AlliedFutureTank_Collapse.xml": "148ad84ef22f6338aa9e30e019e5ca6490dea04daf7f071d71ddd1f9eaadd26c",
+    "refs/ea-modding-support/Uprising/Xml/EP1/Allied/Props/AlliedGunshipAircraft_Collapse.xml": "d861f1753761c94c2dc53501bd4b73c5a610ba3df56fea6f1435c8c863efe49d"
+  },
+  "boundary": "Official fields; motion scaling, gravity and ground settling are Godot cosmetic adaptations, not SAGE rigid-body parity."
+}

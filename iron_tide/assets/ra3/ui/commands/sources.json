@@ -1,0 +1,50 @@
+{
+  "note": "Original RA3 SDK UI textures; mapped to existing IronTide stance semantics, not a claim of identical RA3 rules.",
+  "icons": [
+    {
+      "command": "aggressive",
+      "source": "refs/ra3-sdk/ui-reference/RA3SDK_UI_ScreensPack/RA3SDK_UI_ScreensPack/TacticalHUDSelectionDetails/TacticalHUDSelectionDetails_textures/40.tga",
+      "sha256": "fa56aff1e15172064a33e4b6c2582087bdf415612ac12855d3eb2b0c82d8667c",
+      "size": [
+        28,
+        28
+      ]
+    },
+    {
+      "command": "defend",
+      "source": "refs/ra3-sdk/ui-reference/RA3SDK_UI_ScreensPack/RA3SDK_UI_ScreensPack/TacticalHUDSelectionDetails/TacticalHUDSelectionDetails_textures/98.tga",
+      "sha256": "be328a1b564a6a29ffd2c682055ff7a3384b19cef1fddb9ecdcb9c4aba1f03ec",
+      "size": [
+        33,
+        23
+      ]
+    },
+    {
+      "command": "guard",
+      "source": "refs/ra3-sdk/ui-reference/RA3SDK_UI_ScreensPack/RA3SDK_UI_ScreensPack/TacticalHUDSelectionDetails/TacticalHUDSelectionDetails_textures/82.tga",
+      "sha256": "415adee15cbdcdea7a4787167adc6ccb221f1bbd1f91ea3d04381d2913023774",
+      "size": [
+        33,
+        23
+      ]
+    },
+    {
+      "command": "return_fire",
+      "source": "refs/ra3-sdk/ui-reference/RA3SDK_UI_ScreensPack/RA3SDK_UI_ScreensPack/TacticalHUDSelectionDetails/TacticalHUDSelectionDetails_textures/90.tga",
+      "sha256": "67d0b21c3ef8391f4ada48455ef2a9d4e9d49d38aa039732df239820cb816ea5",
+      "size": [
+        33,
+        23
+      ]
+    },
+    {
+      "command": "hold_fire",
+      "source": "refs/ra3-sdk/ui-reference/RA3SDK_UI_ScreensPack/RA3SDK_UI_ScreensPack/TacticalHUDSelectionDetails/TacticalHUDSelectionDetails_textures/132.tga",
+      "sha256": "be02190c84d6618d5aea3c4acf7799bd2c24285e4c46b3812b6daa6456efae6c",
+      "size": [
+        33,
+        24
+      ]
+    }
+  ]
+}

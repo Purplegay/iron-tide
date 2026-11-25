@@ -1,0 +1,20 @@
+{
+  "id": "ORCA_shd",
+  "image": "FALC",
+  "of": "ORCA",
+  "source": "LOCAL.MIX",
+  "facings": 32,
+  "frameW": 76,
+  "frameH": 46,
+  "facing_offset": 16,
+  "poses": 1,
+  "fps": 0,
+  "pose_source": "local VXL + HVA",
+  "shadow_projection": "ground-plane-v2",
+  "draw_offset": [
+    0,
+    0
+  ],
+  "surface_render": "surface-vpl-2x",
+  "detail_scale": 1
+}

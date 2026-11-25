@@ -1,0 +1,146 @@
+{
+  "JUMPJET": {
+    "resource": "res://assets/ra2/cameo/JJETICON.png",
+    "source": "CAMEO.MIX/JJETICON.SHP",
+    "source_sha256": "1bf4f5df299fed051b921dc9c3b1400246446ae1542edbd5ed5607285c3965db",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "9a54fd5ea928d691cf71d3bd4401dcfc84a07a2f19c4312be51c1d45d19b6f84"
+  },
+  "CARRIER": {
+    "resource": "res://assets/ra2/cameo/CARRICON.png",
+    "source": "CAMEO.MIX/CARRICON.SHP",
+    "source_sha256": "a2eb7650a158a0dc4e917db690f18d9e081ca7989ad5241c4681448d9ac9aedf",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "1d507787f729089efb2c9f4184db683a9b51ee13d270358b212c8a610205df42"
+  },
+  "DEST": {
+    "resource": "res://assets/ra2/cameo/desticon.png",
+    "source": "CAMEO.MIX/desticon.SHP",
+    "source_sha256": "05234336f54fd50bdb4865c8bb86bff3a3562cfcb5d592fbb87fae5abab7678d",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "c13fb1ac2242b6a640deb2dbce616541005daa56ada4b39f0d8c1ebf371eb9f5"
+  },
+  "AEGIS": {
+    "resource": "res://assets/ra2/cameo/AGISICON.png",
+    "source": "CAMEO.MIX/AGISICON.SHP",
+    "source_sha256": "65d573c18fcbf0927293384d0ac5681728474ea3108b3a4cd1ab86ea6b2759a3",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "6bbb831fe90ebdfdf71378fa647cc6acaa9bb8a8bdbad2215ebe2e2acf0a8239"
+  },
+  "LCRF": {
+    "resource": "res://assets/ra2/cameo/LANDICON.png",
+    "source": "CAMEO.MIX/LANDICON.SHP",
+    "source_sha256": "4ab611fba15e664a3b36df23bf7f122c636549a46fec69d585d937bfaaaa6d98",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "eda87fbe3e87eb3a737383c76ef727061f461d585f9e65fc6fa94cdb104ba9b0"
+  },
+  "SHAD": {
+    "resource": "res://assets/ra2/cameo/SHADICON.png",
+    "source": "CAMEO.MIX/SHADICON.SHP",
+    "source_sha256": "2691695f264777bb238d19db1e8f8b0a12bf7e9bbbe830840f05d9635dabc951",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "cb9da0540a828ac515db5023f9146588c1f93cd855cf563caf0d0965298b8971"
+  },
+  "DLPH": {
+    "resource": "res://assets/ra2/cameo/DLPHICON.png",
+    "source": "CAMEO.MIX/DLPHICON.SHP",
+    "source_sha256": "b1b3ef215fd0adcc97f9f53cfc0d98a90d1ab03110977051b386ea1a233916d2",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "f5c376d1497a1fa059579a76d503e40ba0f898b51b37ea534903b50ca2c0b9da"
+  },
+  "ORCA": {
+    "resource": "res://assets/ra2/cameo/FALCICON.png",
+    "source": "CAMEO.MIX/FALCICON.SHP",
+    "source_sha256": "32f68d8e7d7954f8f7cdbe24aee39fb59b760f1b3d8a783962d0cef5b991d91f",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "37d843808507a9192fa64c9d272c7ffa19d7a46e5743abed328059039c952694"
+  },
+  "BEAG": {
+    "resource": "res://assets/ra2/cameo/BEAGICON.png",
+    "source": "CAMEO.MIX/BEAGICON.SHP",
+    "source_sha256": "fd9a8ed03936d13367a35ac1f66423d3e1df109fd8d247aeb14ee4560280c27c",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "d765bb174b83176f316744ff0c05ce4c2c7134c1a59f4595dc90dd8faae97f14"
+  },
+  "GAYARD": {
+    "resource": "res://assets/ra2/cameo/ayaricon.png",
+    "source": "CAMEO.MIX/ayaricon.SHP",
+    "source_sha256": "a4d9ad6f17e4cb397b501eeddeb193e81677af93323ac4121837bf7f57e81881",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "f88187069229338d23898145303c846912a085380eb7dab1f65d00e10a3dc3d8"
+  },
+  "GACSPH": {
+    "resource": "res://assets/ra2/cameo/csphicon.png",
+    "source": "CAMEO.MIX/csphicon.SHP",
+    "source_sha256": "357e8577a308aa8f5ed1118e2233ea58a683f2ab47195e752559d691de9e6873",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "d9902f20ee77b805755a35a3fb8799e3b4bc922f49189c424685921a216ed469"
+  },
+  "GAWEAT": {
+    "resource": "res://assets/ra2/cameo/wethicon.png",
+    "source": "CAMEO.MIX/wethicon.SHP",
+    "source_sha256": "e9c65fcf31429f2dd4a8354784604a3a8ee067234a73e8b119b33804355fcdbc",
+    "palette": "CAMEO.PAL",
+    "palette_sha256": "0618a1c94a4248de26deff70b21dec01581886eb24853e49650eba3ee60aac76",
+    "dimensions": [
+      60,
+      48
+    ],
+    "png_sha256": "2bb9c8ba888a50e3826e003ed04211b61ddf4db4c17d252e51ea37b6ba86f319"
+  }
+}

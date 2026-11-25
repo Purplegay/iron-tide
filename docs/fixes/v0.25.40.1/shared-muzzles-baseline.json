@@ -1,0 +1,321 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2 ally MGTK: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "ra2 ally MGTK: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MGTK: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MGTK: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 100.0,
+      "name": "ra2 ally MGTK: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MGTK: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "ra2 ally MGTK: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally TNKD: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "ra2 ally TNKD: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally TNKD: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally TNKD: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 150.0,
+      "name": "ra2 ally TNKD: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 ally TNKD: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "ra2 ally TNKD: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MGTK: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "ra2 enemy MGTK: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MGTK: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MGTK: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 100.0,
+      "name": "ra2 enemy MGTK: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MGTK: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy MGTK: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy TNKD: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "ra2 enemy TNKD: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy TNKD: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy TNKD: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 150.0,
+      "name": "ra2 enemy TNKD: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy TNKD: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "ra2 enemy TNKD: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: emitter and pixel checks require rendering",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "ra2: stationary infantry turns firing frames to target",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MGTK: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "iron_tide ally MGTK: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MGTK: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MGTK: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 100.0,
+      "name": "iron_tide ally MGTK: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MGTK: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally MGTK: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally TNKD: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "iron_tide ally TNKD: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally TNKD: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally TNKD: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 150.0,
+      "name": "iron_tide ally TNKD: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally TNKD: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "iron_tide ally TNKD: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MGTK: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "iron_tide enemy MGTK: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MGTK: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MGTK: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 100.0,
+      "name": "iron_tide enemy MGTK: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MGTK: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy MGTK: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy TNKD: fixed weapon does not shoot sideways or consume cooldown",
+      "passed": true
+    },
+    {
+      "details": 1.56467894776666,
+      "name": "iron_tide enemy TNKD: body turns to target within ROT limit",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy TNKD: fixed weapon art follows body",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy TNKD: aligned fixed weapon fires",
+      "passed": true
+    },
+    {
+      "details": 150.0,
+      "name": "iron_tide enemy TNKD: real projectile preserves heavy-armor damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy TNKD: ordinary move does not turn sideways to fire",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "iron_tide enemy TNKD: attack move starts bounded hull aim",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: emitter and pixel checks require rendering",
+      "passed": false
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stationary infantry turns firing frames to target",
+      "passed": true
+    }
+  ],
+  "evidence": {
+    "engine": "4.7.2-stable (official)",
+    "input": "Viewport.push_input routes mouse/key events through the real battle/HUD",
+    "modes": [
+      "ra2",
+      "iron_tide"
+    ],
+    "project": "C:/Users/admin/Temp/irontide-tank-heroes-20261105-133253/project/",
+    "user_dir": "C:/Users/admin/Temp/irontide-tank-heroes-20261105-133253/shared-muzzles-baseline/profile/CodexIronTideValidation",
+    "zooms": [
+      0.5,
+      1,
+      2,
+      4
+    ]
+  },
+  "failed": 10
+}

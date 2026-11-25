@@ -1,0 +1,31 @@
+{
+  "tracks": [
+    {"id":"allied_combat_1","faction":"allied","stage":"battle","title":"Rock and Awe","file":"res://assets/music/rock-and-awe.mp3","artist":"Tim Wynn"},
+    {"id":"allied_combat_2","faction":"allied","stage":"battle","title":"Bring it!","file":"res://assets/music/bring-it.mp3","artist":"Tim Wynn"},
+    {"id":"allied_uprising","faction":"allied","stage":"uprising","title":"Allied Combat Uprising","file":"res://assets/music/allied-combat-uprising.mp3","artist":"Tim Wynn"},
+    {"id":"allied_victory_1","faction":"allied","stage":"victory","title":"Allied Combat 2 - Triumphal","file":"res://assets/music/allied-combat-2-triumphal.mp3","artist":"Tim Wynn"},
+    {"id":"allied_victory_2","faction":"allied","stage":"victory","title":"Allied Combat Uprising - Triumphal","file":"res://assets/music/allied-combat-uprising-triumphal.mp3","artist":"Tim Wynn"},
+    {"id":"soviet_combat_1","faction":"soviet","stage":"battle","title":"Red Rock for Mother Russia","file":"res://assets/music/red-rock-for-mother-russia.mp3","artist":"Tim Wynn"},
+    {"id":"soviet_combat_2","faction":"soviet","stage":"battle","title":"Battleground of the Bear","file":"res://assets/music/battleground-of-the-bear.mp3","artist":"Tim Wynn"},
+    {"id":"soviet_uprising","faction":"soviet","stage":"uprising","title":"Soviet Combat Uprising","file":"res://assets/music/soviet-combat-uprising.mp3","artist":"Tim Wynn"},
+    {"id":"soviet_victory_1","faction":"soviet","stage":"victory","combat_id":"soviet_combat_1","title":"Soviet Combat 1 - Triumphal","file":"res://assets/music/soviet-combat-1-triumphal.mp3","artist":"Tim Wynn"},
+    {"id":"soviet_victory_2","faction":"soviet","stage":"victory","title":"Soviet Combat Uprising - Triumphal","file":"res://assets/music/soviet-combat-uprising-triumphal.mp3","artist":"Tim Wynn"},
+    {"id":"grinder-2","faction":"shared","stage":"camp","title":"Grinder 2","file":"res://assets/music/grinder-2.mp3","artist":"Frank Klepacki"},
+    {"id":"the-red-menace","faction":"soviet","stage":"superweapon_used","title":"The Red Menace","file":"res://assets/music/the-red-menace.mp3","artist":"Frank Klepacki"},
+    {"id":"soviet-up-yours","faction":"soviet","stage":"enemy_superweapon","title":"Soviet - Up Yours","file":"res://assets/music/soviet-up-yours.mp3","artist":"Frank Klepacki"},
+    {"id":"floating-island-fortress","faction":"shared","stage":"explore","title":"Floating Island Fortress","file":"res://assets/music/floating-island-fortress.mp3","artist":"James Hannigan"},
+    {"id":"yuriko-s-theme","faction":"shared","stage":"yuriko","title":"Yuriko's Theme","file":"res://assets/music/yuriko-s-theme.mp3","artist":"Miriam Stockley,Satomi Morimoto"},
+    {"id":"yuriko-tensionb","faction":"shared","stage":"yuriko_tension","title":"YurikoTensionb","file":"res://assets/music/yuriko-tensionb.mp3","artist":"James Hannigan"},
+    {"id":"american-cowboys","faction":"allied","stage":"superweapon_used","title":"American Cowboys","file":"res://assets/music/american-cowboys.mp3","artist":"Tim Wynn"},
+    {"id":"allied-up-yours","faction":"allied","stage":"enemy_superweapon","title":"Allied - Up Yours","file":"res://assets/music/allied-up-yours.mp3","artist":"Tim Wynn"},
+    {"id":"easter-island-lying-in-wait","faction":"shared","stage":"explore","title":"Easter Island - Lying in Wait","file":"res://assets/music/easter-island-lying-in-wait.mp3","artist":"Tim Wynn"},
+    {"id":"exploring-in-havana","faction":"shared","stage":"explore","title":"Exploring in Havana","file":"res://assets/music/exploring-in-havana.mp3","artist":"Tim Wynn"},
+    {"id":"exploring-in-new-york-city","faction":"shared","stage":"explore","title":"Exploring in New York City","file":"res://assets/music/exploring-in-new-york-city.mp3","artist":"Tim Wynn"},
+    {"id":"exploring-in-vladivostok","faction":"shared","stage":"explore","title":"Exploring in Vladivostok","file":"res://assets/music/exploring-in-vladivostok.mp3","artist":"Tim Wynn"},
+    {"id":"iceland","faction":"shared","stage":"explore","title":"Iceland","file":"res://assets/music/iceland.mp3","artist":"Tim Wynn"},
+    {"id":"mykonos","faction":"shared","stage":"explore","title":"Mykonos","file":"res://assets/music/mykonos.mp3","artist":"Tim Wynn"},
+    {"id":"the-calm-before","faction":"shared","stage":"explore","title":"The Calm Before","file":"res://assets/music/the-calm-before.mp3","artist":"Tim Wynn"},
+    {"id":"the-motherland","faction":"shared","stage":"explore","title":"The Motherland","file":"res://assets/music/the-motherland.mp3","artist":"Tim Wynn"},
+    {"id":"threatened-in-havana","faction":"shared","stage":"explore","title":"Threatened in Havana","file":"res://assets/music/threatened-in-havana.mp3","artist":"Tim Wynn"}
+  ]
+}

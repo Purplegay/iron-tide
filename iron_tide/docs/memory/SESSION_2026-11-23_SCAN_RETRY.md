@@ -1,0 +1,3 @@
+# Repeated scan admission
+Prior five variants excluded. New candidate coalesced a same-frame scan denial only when the budget was full, unit not admitted and its current owner still had a pending scan record. No change to earlier order and retaliation handling. ai_dispatch_regression: 29 checks, zero failures or engine errors.
+Frozen compatible slot2/3, graphic Release 3x P95 ms: 293.052 to 292.569; 288.891 to 344.141. All four external audits flagged. Separate headless counter logged at least 30900/35800 redundant requests. This establishes frequency, not savings. Not promoted. Evidence .validation/scan-repeat-3x/{first-2,first-3,second-2,second-3,regression,hits-2,hits-3,ref-2,ref-3}. Production and player saves untouched.

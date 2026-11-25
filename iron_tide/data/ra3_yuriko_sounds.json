@@ -1,0 +1,1753 @@
+{
+  "sounds": {
+    "specs": {
+      "JAP_Yuriko_VoiceCreate": {
+        "sounds": [
+          "JUYurik_VoiCreatec"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceSelect": {
+        "sounds": [
+          "JUYurik_VoiCreateb",
+          "JUYurik_VoiSelecta",
+          "JUYurik_VoiSelectb",
+          "JUYurik_VoiSelectc",
+          "JUYurik_VoiSelectd",
+          "JUYurik_VoiSelecte",
+          "JUYurik_VoiSelectf"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_Select": {
+        "sounds": [
+          "JUYurik_selecta",
+          "JUYurik_selectb",
+          "JUYurik_selectc",
+          "JUYurik_selectd",
+          "JUYurik_selecte",
+          "JUYurik_selectf",
+          "JUYurik_selectg",
+          "JUYurik_selecth",
+          "JUYurik_selecti",
+          "JUYurik_selectj"
+        ],
+        "volume": 60.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceSelectMS": {
+        "sounds": [
+          "JUYurik_VoiCreateb",
+          "JUYurik_VoiSelecta",
+          "JUYurik_VoiSelectb",
+          "JUYurik_VoiSelectc",
+          "JUYurik_VoiSelectd",
+          "JUYurik_VoiSelecte",
+          "JUYurik_VoiSelectf"
+        ],
+        "volume": 110.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_YurikoOmega_Select"
+        ]
+      },
+      "JAP_Yuriko_VoiceSelectBattle": {
+        "sounds": [
+          "JUYurik_VoiSelBata",
+          "JUYurik_VoiSelBatb",
+          "JUYurik_VoiSelBatc",
+          "JUYurik_VoiSelBatd",
+          "JUYurik_VoiSelBate",
+          "JUYurik_VoiSelBatf"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceSelectBattleMS": {
+        "sounds": [
+          "JUYurik_VoiSelBata",
+          "JUYurik_VoiSelBatb",
+          "JUYurik_VoiSelBatc",
+          "JUYurik_VoiSelBatd",
+          "JUYurik_VoiSelBate",
+          "JUYurik_VoiSelBatf"
+        ],
+        "volume": 110.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_YurikoOmega_Select"
+        ]
+      },
+      "JAP_Yuriko_VoiceSelectUnderFire": {
+        "sounds": [
+          "JUYurik_VoiSelUnda",
+          "JUYurik_VoiSelUndb",
+          "JUYurik_VoiSelUndc",
+          "JUYurik_VoiSelUndd",
+          "JUYurik_VoiSelUnde"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceSelectUnderFireMS": {
+        "sounds": [
+          "JUYurik_VoiSelUnda",
+          "JUYurik_VoiSelUndb",
+          "JUYurik_VoiSelUndc",
+          "JUYurik_VoiSelUndd",
+          "JUYurik_VoiSelUnde"
+        ],
+        "volume": 110.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_YurikoOmega_Select"
+        ]
+      },
+      "JAP_Yuriko_VoiceMove": {
+        "sounds": [
+          "JUYurik_VoiMovea",
+          "JUYurik_VoiMoveb",
+          "JUYurik_VoiMovec",
+          "JUYurik_VoiMoved",
+          "JUYurik_VoiMovee",
+          "JUYurik_VoiMovef",
+          "JUYurik_VoiMoveg"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceMoveAttack": {
+        "sounds": [
+          "JUYurik_VoiMovAtta",
+          "JUYurik_VoiMovAttb",
+          "JUYurik_VoiMovAttc",
+          "JUYurik_VoiMovAttd",
+          "JUYurik_VoiMovAtte",
+          "JUYurik_VoiMovAttf",
+          "JUYurik_VoiMovAttg"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceAttack": {
+        "sounds": [
+          "JUYurik_VoiAttacka",
+          "JUYurik_VoiAttackc",
+          "JUYurik_VoiAttackd",
+          "JUYurik_VoiAttacke",
+          "JUYurik_VoiCreatea"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceGarrison": {
+        "sounds": [
+          "JUYurik_VoiGarrisa",
+          "JUYurik_VoiGarrisb",
+          "JUYurik_VoiGarrisc"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceDie": {
+        "sounds": [
+          "JUYurik_VoiDiea",
+          "JUYurik_VoiDieb",
+          "JUYurik_VoiDiec",
+          "JUYurik_VoiDied",
+          "JUYurik_VoiDiee",
+          "JUYurik_VoiDief",
+          "JUYurik_VoiDieg",
+          "JUYurik_VoiDieh",
+          "JUYurik_VoiDiei",
+          "JUYurik_VoiDiej",
+          "JUYurik_VoiDiek"
+        ],
+        "volume": 80.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceDieFire": {
+        "sounds": [
+          "JUYurik_VoiDieFirea",
+          "JUYurik_VoiDieFireb",
+          "JUYurik_VoiDieFirec",
+          "JUYurik_VoiDieFired",
+          "JUYurik_VoiDieFiree"
+        ],
+        "volume": 80.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoiceDieShock": {
+        "sounds": [
+          "JUYurik_VoiDieShocka",
+          "JUYurik_VoiDieShockb"
+        ],
+        "volume": 80.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoicePsyonicYell": {
+        "sounds": [
+          "JUYurik_VoiAttSpea",
+          "JUYurik_VoiAttSpeb",
+          "JUYurik_VoiAttSpec"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_VoicePsyonicBlastMS": {
+        "sounds": [
+          "JUYurik_VoiAttSpea",
+          "JUYurik_VoiAttSpeb",
+          "JUYurik_VoiAttSpec"
+        ],
+        "volume": 110.0,
+        "range": 27.273,
+        "layers": []
+      },
+      "JAP_Yuriko1EP1_VoiceHurtInitial": {
+        "sounds": [
+          "JUYurik_emoY1FirstHta",
+          "JUYurik_emoY1FirstHtb",
+          "JUYurik_emoY1FirstHtc",
+          "JUYurik_emoY1Hurta",
+          "JUYurik_emoY1Hurtb",
+          "JUYurik_emoY1Hurtc",
+          "JUYurik_emoY1Hurtd",
+          "JUYurik_emoY1Hurte",
+          "JUYurik_emoY1Hurtf",
+          "JUYurik_emoY1Hurth",
+          "JUYurik_emoY1Hurti",
+          "JUYurik_emoY1Hurtj",
+          "JUYurik_emoY1Hurtk",
+          "JUYurik_emoY1Hurtl",
+          "JUYurik_emoY1Hurto",
+          "JUYurik_emoY1Hurtp"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko1EP1_VoiceHurtLarge": {
+        "sounds": [
+          "JUYurik_emoY1Critia",
+          "JUYurik_emoY1Critib",
+          "JUYurik_emoY1Critic",
+          "JUYurik_emoY1Critid",
+          "JUYurik_emoY1Critie"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko2EP1_VoiceHurtInitial": {
+        "sounds": [
+          "JUYurik_emoY2Hurta",
+          "JUYurik_emoY2Hurtb",
+          "JUYurik_emoY2Hurtc",
+          "JUYurik_emoY2Hurtd",
+          "JUYurik_emoY2Hurte",
+          "JUYurik_emoY2Hurtf",
+          "JUYurik_emoY2Hurtg",
+          "JUYurik_emoY2Hurth",
+          "JUYurik_emoY2Hurti",
+          "JUYurik_emoY2Hurtj",
+          "JUYurik_emoY2Hurtk",
+          "JUYurik_emoY2Hurtl",
+          "JUYurik_emoY2Hurtm"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko2EP1_VoiceHurtLarge": {
+        "sounds": [
+          "JUYurik_emoY2Critia",
+          "JUYurik_emoY2Critib",
+          "JUYurik_emoY2Critic",
+          "JUYurik_emoY2Critid",
+          "JUYurik_emoY2Critie",
+          "JUYurik_emoY2Critif",
+          "JUYurik_emoY2Critig"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko1EP1_VoiceHealed": {
+        "sounds": [
+          "JUYurik_emoY1Healeda",
+          "JUYurik_emoY1Healedb",
+          "JUYurik_emoY1Healedc",
+          "JUYurik_emoY1Healedd",
+          "JUYurik_emoY1Healede",
+          "JUYurik_emoY1Healedf",
+          "JUYurik_emoY1Healedg",
+          "JUYurik_emoY1Healedh"
+        ],
+        "volume": 70.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicDomination": {
+        "sounds": [
+          "JUYurik_selecta",
+          "JUYurik_selectb",
+          "JUYurik_selectc",
+          "JUYurik_selectd",
+          "JUYurik_selecte",
+          "JUYurik_selectf",
+          "JUYurik_selectg",
+          "JUYurik_selecth",
+          "JUYurik_selecti",
+          "JUYurik_selectj"
+        ],
+        "volume": 130.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicDomination2": {
+        "sounds": [
+          "JUYurik_psyDoma"
+        ],
+        "volume": 100.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicDominationMS": {
+        "sounds": [
+          "JUYurik_selecta",
+          "JUYurik_selectb",
+          "JUYurik_selectc",
+          "JUYurik_selectd",
+          "JUYurik_selecte",
+          "JUYurik_selectf",
+          "JUYurik_selectg",
+          "JUYurik_selecth",
+          "JUYurik_selecti",
+          "JUYurik_selectj"
+        ],
+        "volume": 130.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_Yuriko_PsychicDomination2"
+        ]
+      },
+      "JAP_Yuriko_PsychokineticBurst1": {
+        "sounds": [
+          "JUYuriko_psychoBurstD",
+          "JUYuriko_psychoBurstE",
+          "JUYuriko_psychoBurstF"
+        ],
+        "volume": 75.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychokineticBurst2": {
+        "sounds": [
+          "JUYurik_PsychoBurst2a"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychokineticBurstMS": {
+        "sounds": [
+          "JUYuriko_psychoBurstD",
+          "JUYuriko_psychoBurstE",
+          "JUYuriko_psychoBurstF"
+        ],
+        "volume": 75.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_Yuriko_PsychokineticBurst2"
+        ]
+      },
+      "JAP_YurikoOmega_PsychoKineticBurst": {
+        "sounds": [
+          "JUYuriko_psychoBurstD",
+          "JUYuriko_psychoBurstE",
+          "JUYuriko_psychoBurstF"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicShieldRepel_Impact": {
+        "sounds": [
+          "JUYurik_psycShieRepela",
+          "JUYurik_psycShieRepelb",
+          "JUYurik_psycShieRepelc",
+          "JUYurik_psycShieRepeld",
+          "JUYurik_psycShieRepele",
+          "JUYurik_psycShieRepelf",
+          "JUYurik_psycShieRepelg",
+          "JUYurik_psycShieRepelh",
+          "JUYurik_psycShieRepeli",
+          "JUYurik_psycShieRepelj",
+          "JUYurik_psycShieRepelk",
+          "JUYurik_psycShieRepell",
+          "JUYurik_psycShieRepelm",
+          "JUYurik_psycShieRepeln",
+          "JUYurik_psycShieRepelo",
+          "JUYurik_psycShieRepelp"
+        ],
+        "volume": 40.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicShieldLoop_attack": {
+        "sounds": [
+          "JUYurik_psycShie1Lb",
+          "JUYurik_psycShie1Ld",
+          "JUYurik_psycShie1Le",
+          "JUYurik_psycShie1Lf"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicShieldLoop": {
+        "sounds": [
+          "JUYurik_psycShie2La",
+          "JUYurik_psycShie2Lb",
+          "JUYurik_psycShie2Lc"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicShieldLoop_decay": {
+        "sounds": [
+          "JUYurik_psycShie3Lb",
+          "JUYurik_psycShie3Lc"
+        ],
+        "volume": 90.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicSlamLoop_attack": {
+        "sounds": [
+          "JUYurik_psyoLoop1a",
+          "JUYurik_psyoLoop1b",
+          "JUYurik_psyoLoop1c",
+          "JUYurik_psyoLoop1d",
+          "JUYurik_psyoLoop1e",
+          "JUYurik_psyoLoop1f",
+          "JUYurik_psyoLoop1g"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicSlamLoop": {
+        "sounds": [
+          "JUYurik_psyoLoop2a",
+          "JUYurik_psyoLoop2b",
+          "JUYurik_psyoLoop2c",
+          "JUYurik_psyoLoop2d",
+          "JUYurik_psyoLoop2e"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicSlamLoop_decay": {
+        "sounds": [
+          "JUYurik_psyoLoop3a",
+          "JUYurik_psyoLoop3b",
+          "JUYurik_psyoLoop3c",
+          "JUYurik_psyoLoop3d",
+          "JUYurik_psyoLoop3e",
+          "JUYurik_psyoLoop3f",
+          "JUYurik_psyoLoop3g"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicSlamLiftStart": {
+        "sounds": [
+          "JUYurik_psyoStara",
+          "JUYurik_psyoStarb",
+          "JUYurik_psyoStarc",
+          "JUYurik_psyoStard",
+          "JUYurik_psyoStare",
+          "JUYurik_psyoStarf"
+        ],
+        "volume": 100.0,
+        "range": 27.273
+      },
+      "JAP_Yuriko_PsychicSlamImpactCursor": {
+        "sounds": [
+          "JUYurik_PsychoBurst2a"
+        ],
+        "volume": 110.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicLoop_attack": {
+        "sounds": [
+          "JUYurik_psyoLoop1a",
+          "JUYurik_psyoLoop1b",
+          "JUYurik_psyoLoop1c",
+          "JUYurik_psyoLoop1d",
+          "JUYurik_psyoLoop1e",
+          "JUYurik_psyoLoop1f",
+          "JUYurik_psyoLoop1g"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicLoop": {
+        "sounds": [
+          "JUYurik_psyoLoop2a",
+          "JUYurik_psyoLoop2b",
+          "JUYurik_psyoLoop2c",
+          "JUYurik_psyoLoop2d",
+          "JUYurik_psyoLoop2e"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicLoop_decay": {
+        "sounds": [
+          "JUYurik_psyoLoop3a",
+          "JUYurik_psyoLoop3b",
+          "JUYurik_psyoLoop3c",
+          "JUYurik_psyoLoop3d",
+          "JUYurik_psyoLoop3e",
+          "JUYurik_psyoLoop3f",
+          "JUYurik_psyoLoop3g"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicVehicleLiftStart": {
+        "sounds": [
+          "JUYurik_psyoStara",
+          "JUYurik_psyoStarb",
+          "JUYurik_psyoStarc",
+          "JUYurik_psyoStard",
+          "JUYurik_psyoStare",
+          "JUYurik_psyoStarf"
+        ],
+        "volume": 50.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicEndExplodeMetal": {
+        "sounds": [
+          "JUYurik_psyoExpla",
+          "JUYurik_psyoExplb",
+          "JUYurik_psyoExplc",
+          "JUYurik_psyoExpld",
+          "JUYurik_psyoExple",
+          "JUYurik_psyoExplf"
+        ],
+        "volume": 35.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicEndExplode": {
+        "sounds": [
+          "APTimeB_explSmala",
+          "APTimeB_explSmalb",
+          "APTimeB_explSmalc",
+          "APTimeB_explSmald"
+        ],
+        "volume": 35.0,
+        "range": 27.273
+      },
+      "JAP_YurikoOmega_PsyonicEndExplodeMS": {
+        "sounds": [
+          "JUYurik_psyoExpla",
+          "JUYurik_psyoExplb",
+          "JUYurik_psyoExplc",
+          "JUYurik_psyoExpld",
+          "JUYurik_psyoExple",
+          "JUYurik_psyoExplf"
+        ],
+        "volume": 35.0,
+        "range": 27.273,
+        "layers": [
+          "JAP_YurikoOmega_PsyonicEndExplode"
+        ]
+      },
+      "JAP_YurikoOmega_PsyonicInfantryBurst": {
+        "sounds": [
+          "JUYurik_enemyBurstA",
+          "JUYurik_enemyBurstB",
+          "JUYurik_enemyBurstC",
+          "JUYurik_enemyBurstD",
+          "JUYurik_enemyBurstE",
+          "JUYurik_enemyBurstF",
+          "JUYurik_enemyBurstG"
+        ],
+        "volume": 75.0,
+        "range": 27.273
+      }
+    },
+    "entries": {
+      "JUYurik_VoiCreatec": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiCreatec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1815
+      },
+      "JUYurik_VoiCreateb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiCreateb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2157
+      },
+      "JUYurik_VoiSelecta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1997
+      },
+      "JUYurik_VoiSelectb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelectb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1878
+      },
+      "JUYurik_VoiSelectc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelectc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2025
+      },
+      "JUYurik_VoiSelectd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelectd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1887
+      },
+      "JUYurik_VoiSelecte": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelecte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2419
+      },
+      "JUYurik_VoiSelectf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelectf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2110
+      },
+      "JUYurik_selecta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selecta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2058
+      },
+      "JUYurik_selectb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1972
+      },
+      "JUYurik_selectc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1834
+      },
+      "JUYurik_selectd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1992
+      },
+      "JUYurik_selecte": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selecte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1840
+      },
+      "JUYurik_selectf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2097
+      },
+      "JUYurik_selectg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1656
+      },
+      "JUYurik_selecth": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selecth.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1864
+      },
+      "JUYurik_selecti": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selecti.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2093
+      },
+      "JUYurik_selectj": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_selectj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1716
+      },
+      "JUYurik_VoiSelBata": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBata.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2075
+      },
+      "JUYurik_VoiSelBatb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBatb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2321
+      },
+      "JUYurik_VoiSelBatc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBatc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2054
+      },
+      "JUYurik_VoiSelBatd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBatd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1861
+      },
+      "JUYurik_VoiSelBate": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBate.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2063
+      },
+      "JUYurik_VoiSelBatf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelBatf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1691
+      },
+      "JUYurik_VoiSelUnda": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelUnda.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1880
+      },
+      "JUYurik_VoiSelUndb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelUndb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1939
+      },
+      "JUYurik_VoiSelUndc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelUndc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2050
+      },
+      "JUYurik_VoiSelUndd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelUndd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1558
+      },
+      "JUYurik_VoiSelUnde": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiSelUnde.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2324
+      },
+      "JUYurik_VoiMovea": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1763
+      },
+      "JUYurik_VoiMoveb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMoveb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2084
+      },
+      "JUYurik_VoiMovec": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1893
+      },
+      "JUYurik_VoiMoved": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMoved.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1859
+      },
+      "JUYurik_VoiMovee": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1518
+      },
+      "JUYurik_VoiMovef": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovef.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1827
+      },
+      "JUYurik_VoiMoveg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMoveg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2212
+      },
+      "JUYurik_VoiMovAtta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAtta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1818
+      },
+      "JUYurik_VoiMovAttb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAttb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2170
+      },
+      "JUYurik_VoiMovAttc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAttc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2189
+      },
+      "JUYurik_VoiMovAttd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAttd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2315
+      },
+      "JUYurik_VoiMovAtte": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAtte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1539
+      },
+      "JUYurik_VoiMovAttf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAttf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1587
+      },
+      "JUYurik_VoiMovAttg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiMovAttg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2134
+      },
+      "JUYurik_VoiAttacka": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttacka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1699
+      },
+      "JUYurik_VoiAttackc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttackc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1834
+      },
+      "JUYurik_VoiAttackd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttackd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1446
+      },
+      "JUYurik_VoiAttacke": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttacke.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1203
+      },
+      "JUYurik_VoiCreatea": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiCreatea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1958
+      },
+      "JUYurik_VoiGarrisa": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiGarrisa.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2026
+      },
+      "JUYurik_VoiGarrisb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiGarrisb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1853
+      },
+      "JUYurik_VoiGarrisc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiGarrisc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1789
+      },
+      "JUYurik_VoiDiea": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1009
+      },
+      "JUYurik_VoiDieb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 607
+      },
+      "JUYurik_VoiDiec": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 812
+      },
+      "JUYurik_VoiDied": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDied.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 777
+      },
+      "JUYurik_VoiDiee": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiee.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 885
+      },
+      "JUYurik_VoiDief": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDief.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 747
+      },
+      "JUYurik_VoiDieg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 640
+      },
+      "JUYurik_VoiDieh": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 678
+      },
+      "JUYurik_VoiDiei": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiei.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 624
+      },
+      "JUYurik_VoiDiej": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiej.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 617
+      },
+      "JUYurik_VoiDiek": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDiek.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 534
+      },
+      "JUYurik_VoiDieFirea": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieFirea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1056
+      },
+      "JUYurik_VoiDieFireb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieFireb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1392
+      },
+      "JUYurik_VoiDieFirec": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieFirec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1544
+      },
+      "JUYurik_VoiDieFired": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieFired.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1992
+      },
+      "JUYurik_VoiDieFiree": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieFiree.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 889
+      },
+      "JUYurik_VoiDieShocka": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieShocka.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 755
+      },
+      "JUYurik_VoiDieShockb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiDieShockb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 768
+      },
+      "JUYurik_VoiAttSpea": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttSpea.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1398
+      },
+      "JUYurik_VoiAttSpeb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttSpeb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1281
+      },
+      "JUYurik_VoiAttSpec": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_VoiAttSpec.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1716
+      },
+      "JUYurik_emoY1FirstHta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1FirstHta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1361
+      },
+      "JUYurik_emoY1FirstHtb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1FirstHtb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 964
+      },
+      "JUYurik_emoY1FirstHtc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1FirstHtc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1251
+      },
+      "JUYurik_emoY1Hurta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1027
+      },
+      "JUYurik_emoY1Hurtb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1126
+      },
+      "JUYurik_emoY1Hurtc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1070
+      },
+      "JUYurik_emoY1Hurtd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1028
+      },
+      "JUYurik_emoY1Hurte": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 992
+      },
+      "JUYurik_emoY1Hurtf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 986
+      },
+      "JUYurik_emoY1Hurth": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurth.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1058
+      },
+      "JUYurik_emoY1Hurti": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurti.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1085
+      },
+      "JUYurik_emoY1Hurtj": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1233
+      },
+      "JUYurik_emoY1Hurtk": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtk.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1025
+      },
+      "JUYurik_emoY1Hurtl": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtl.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1176
+      },
+      "JUYurik_emoY1Hurto": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurto.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1072
+      },
+      "JUYurik_emoY1Hurtp": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Hurtp.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1125
+      },
+      "JUYurik_emoY1Critia": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Critia.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1145
+      },
+      "JUYurik_emoY1Critib": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Critib.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1303
+      },
+      "JUYurik_emoY1Critic": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Critic.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1215
+      },
+      "JUYurik_emoY1Critid": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Critid.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1104
+      },
+      "JUYurik_emoY1Critie": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Critie.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1379
+      },
+      "JUYurik_emoY2Hurta": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurta.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 651
+      },
+      "JUYurik_emoY2Hurtb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 710
+      },
+      "JUYurik_emoY2Hurtc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 790
+      },
+      "JUYurik_emoY2Hurtd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 681
+      },
+      "JUYurik_emoY2Hurte": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurte.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 603
+      },
+      "JUYurik_emoY2Hurtf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 673
+      },
+      "JUYurik_emoY2Hurtg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 671
+      },
+      "JUYurik_emoY2Hurth": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurth.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 638
+      },
+      "JUYurik_emoY2Hurti": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurti.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 508
+      },
+      "JUYurik_emoY2Hurtj": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 800
+      },
+      "JUYurik_emoY2Hurtk": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtk.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 706
+      },
+      "JUYurik_emoY2Hurtl": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtl.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 623
+      },
+      "JUYurik_emoY2Hurtm": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Hurtm.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 684
+      },
+      "JUYurik_emoY2Critia": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critia.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 992
+      },
+      "JUYurik_emoY2Critib": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critib.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 970
+      },
+      "JUYurik_emoY2Critic": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critic.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 917
+      },
+      "JUYurik_emoY2Critid": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critid.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 911
+      },
+      "JUYurik_emoY2Critie": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critie.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 754
+      },
+      "JUYurik_emoY2Critif": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critif.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 697
+      },
+      "JUYurik_emoY2Critig": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY2Critig.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1058
+      },
+      "JUYurik_emoY1Healeda": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healeda.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1150
+      },
+      "JUYurik_emoY1Healedb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1042
+      },
+      "JUYurik_emoY1Healedc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1093
+      },
+      "JUYurik_emoY1Healedd": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedd.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1069
+      },
+      "JUYurik_emoY1Healede": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healede.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1209
+      },
+      "JUYurik_emoY1Healedf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1226
+      },
+      "JUYurik_emoY1Healedg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1262
+      },
+      "JUYurik_emoY1Healedh": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_emoY1Healedh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1371
+      },
+      "JUYurik_psyDoma": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyDoma.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2882
+      },
+      "JUYuriko_psychoBurstD": {
+        "file": "res://assets/ra3/yuriko/audio/JUYuriko_psychoBurstD.wav",
+        "sampleRate": 48000,
+        "channels": 2,
+        "durMs": 2963
+      },
+      "JUYuriko_psychoBurstE": {
+        "file": "res://assets/ra3/yuriko/audio/JUYuriko_psychoBurstE.wav",
+        "sampleRate": 48000,
+        "channels": 2,
+        "durMs": 2958
+      },
+      "JUYuriko_psychoBurstF": {
+        "file": "res://assets/ra3/yuriko/audio/JUYuriko_psychoBurstF.wav",
+        "sampleRate": 48000,
+        "channels": 2,
+        "durMs": 2791
+      },
+      "JUYurik_PsychoBurst2a": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_PsychoBurst2a.wav",
+        "sampleRate": 48000,
+        "channels": 2,
+        "durMs": 2689
+      },
+      "JUYurik_psycShieRepela": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepela.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1615
+      },
+      "JUYurik_psycShieRepelb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1858
+      },
+      "JUYurik_psycShieRepelc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1590
+      },
+      "JUYurik_psycShieRepeld": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepeld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1221
+      },
+      "JUYurik_psycShieRepele": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepele.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1539
+      },
+      "JUYurik_psycShieRepelf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1459
+      },
+      "JUYurik_psycShieRepelg": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelg.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1349
+      },
+      "JUYurik_psycShieRepelh": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelh.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1682
+      },
+      "JUYurik_psycShieRepeli": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepeli.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1703
+      },
+      "JUYurik_psycShieRepelj": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelj.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1763
+      },
+      "JUYurik_psycShieRepelk": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelk.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2003
+      },
+      "JUYurik_psycShieRepell": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepell.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1816
+      },
+      "JUYurik_psycShieRepelm": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelm.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1581
+      },
+      "JUYurik_psycShieRepeln": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepeln.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1664
+      },
+      "JUYurik_psycShieRepelo": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelo.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1648
+      },
+      "JUYurik_psycShieRepelp": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShieRepelp.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1370
+      },
+      "JUYurik_psycShie1Lb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie1Lb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1430
+      },
+      "JUYurik_psycShie1Ld": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie1Ld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1325
+      },
+      "JUYurik_psycShie1Le": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie1Le.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1411
+      },
+      "JUYurik_psycShie1Lf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie1Lf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1035
+      },
+      "JUYurik_psycShie2La": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie2La.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 960
+      },
+      "JUYurik_psycShie2Lb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie2Lb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1049
+      },
+      "JUYurik_psycShie2Lc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie2Lc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1108
+      },
+      "JUYurik_psycShie3Lb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie3Lb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1977
+      },
+      "JUYurik_psycShie3Lc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psycShie3Lc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1618
+      },
+      "JUYurik_psyoLoop1a": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2190
+      },
+      "JUYurik_psyoLoop1b": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2152
+      },
+      "JUYurik_psyoLoop1c": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2328
+      },
+      "JUYurik_psyoLoop1d": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2347
+      },
+      "JUYurik_psyoLoop1e": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2159
+      },
+      "JUYurik_psyoLoop1f": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2031
+      },
+      "JUYurik_psyoLoop1g": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop1g.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2138
+      },
+      "JUYurik_psyoLoop2a": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop2a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3762
+      },
+      "JUYurik_psyoLoop2b": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop2b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3363
+      },
+      "JUYurik_psyoLoop2c": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop2c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3508
+      },
+      "JUYurik_psyoLoop2d": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop2d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3159
+      },
+      "JUYurik_psyoLoop2e": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop2e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2222
+      },
+      "JUYurik_psyoLoop3a": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3a.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2521
+      },
+      "JUYurik_psyoLoop3b": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3b.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2000
+      },
+      "JUYurik_psyoLoop3c": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3c.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2586
+      },
+      "JUYurik_psyoLoop3d": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3d.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2894
+      },
+      "JUYurik_psyoLoop3e": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3e.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2599
+      },
+      "JUYurik_psyoLoop3f": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3f.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2467
+      },
+      "JUYurik_psyoLoop3g": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoLoop3g.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2562
+      },
+      "JUYurik_psyoStara": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStara.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 2857
+      },
+      "JUYurik_psyoStarb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStarb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3808
+      },
+      "JUYurik_psyoStarc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStarc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4133
+      },
+      "JUYurik_psyoStard": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStard.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3839
+      },
+      "JUYurik_psyoStare": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStare.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3765
+      },
+      "JUYurik_psyoStarf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoStarf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4667
+      },
+      "JUYurik_psyoExpla": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExpla.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4090
+      },
+      "JUYurik_psyoExplb": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExplb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3797
+      },
+      "JUYurik_psyoExplc": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExplc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3009
+      },
+      "JUYurik_psyoExpld": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExpld.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3465
+      },
+      "JUYurik_psyoExple": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExple.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4020
+      },
+      "JUYurik_psyoExplf": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_psyoExplf.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3776
+      },
+      "APTimeB_explSmala": {
+        "file": "res://assets/ra3/yuriko/audio/APTimeB_explSmala.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3780
+      },
+      "APTimeB_explSmalb": {
+        "file": "res://assets/ra3/yuriko/audio/APTimeB_explSmalb.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 3706
+      },
+      "APTimeB_explSmalc": {
+        "file": "res://assets/ra3/yuriko/audio/APTimeB_explSmalc.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4705
+      },
+      "APTimeB_explSmald": {
+        "file": "res://assets/ra3/yuriko/audio/APTimeB_explSmald.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 4261
+      },
+      "JUYurik_enemyBurstA": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstA.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1181
+      },
+      "JUYurik_enemyBurstB": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstB.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1111
+      },
+      "JUYurik_enemyBurstC": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstC.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1330
+      },
+      "JUYurik_enemyBurstD": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstD.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1147
+      },
+      "JUYurik_enemyBurstE": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstE.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1260
+      },
+      "JUYurik_enemyBurstF": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstF.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1556
+      },
+      "JUYurik_enemyBurstG": {
+        "file": "res://assets/ra3/yuriko/audio/JUYurik_enemyBurstG.wav",
+        "sampleRate": 48000,
+        "channels": 1,
+        "durMs": 1212
+      }
+    }
+  },
+  "voice": {
+    "created": "JAP_Yuriko_VoiceCreate",
+    "select": "JAP_Yuriko_VoiceSelectMS",
+    "select_battle": "JAP_Yuriko_VoiceSelectBattleMS",
+    "select_under_fire": "JAP_Yuriko_VoiceSelectUnderFireMS",
+    "move": "JAP_Yuriko_VoiceMove",
+    "move_attack": "JAP_Yuriko_VoiceMoveAttack",
+    "attack": "JAP_Yuriko_VoiceAttack",
+    "enter": "JAP_Yuriko_VoiceGarrison",
+    "die": "JAP_Yuriko_VoiceDie",
+    "crush": "JAP_Yuriko_VoiceDie",
+    "die_fire": "JAP_Yuriko_VoiceDieFire",
+    "die_shock": "JAP_Yuriko_VoiceDieShock",
+    "burst_yell": "JAP_Yuriko_VoicePsyonicBlastMS",
+    "hurt_1_HurtInitial": "JAP_Yuriko1EP1_VoiceHurtInitial",
+    "hurt_1_HurtLarge": "JAP_Yuriko1EP1_VoiceHurtLarge",
+    "hurt_2_HurtInitial": "JAP_Yuriko2EP1_VoiceHurtInitial",
+    "hurt_2_HurtLarge": "JAP_Yuriko2EP1_VoiceHurtLarge",
+    "healed": "JAP_Yuriko1EP1_VoiceHealed"
+  }
+}

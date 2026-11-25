@@ -1,0 +1,522 @@
+{
+  "version": 1,
+  "source": "Local Steam Yuri Revenge",
+  "units": [
+    {
+      "id": "ROBO",
+      "name": "机器人坦克",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "两栖机器人",
+      "ra2": true,
+      "expansion": "yr",
+      "cost": 600,
+      "hp": 180,
+      "build_time": 15.600000000000001,
+      "build_time_multiplier": 1.3,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 150,
+      "sight": 330,
+      "radius": 15,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "ra2_prereq": [
+        "GAWEAP",
+        "GAROBO"
+      ],
+      "tech_level": 2,
+      "image": "ROBO",
+      "cameo": "ROBOICON",
+      "movement_zone": "amphibious",
+      "voxel": true,
+      "powered_by": "GAROBO",
+      "immune_to_psionics": true,
+      "immune_to_radiation": true,
+      "desc": "能越过水面，只要有一座己方机器人控制中心正常供电，就能作战。失去控制时会停机，信号恢复后继续原来的命令。遥控坦克无法晋升。",
+      "move": {
+        "speed": 150,
+        "speed_units": 10,
+        "rot": 105.46875,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": true,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "AmphibiousDestroyer",
+        "speed_type": "Hover",
+        "locomotor": "{4A582742-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "weapon": {
+        "name": "Robogun",
+        "attack_type": "shell",
+        "damage": 65,
+        "cooldown": 4,
+        "range": 275,
+        "min_range": 0,
+        "projectile_speed": 660,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_Robogun",
+        "ra2_warhead": "YR_ROBO_AP",
+        "ra2_projectile": "YR_ROBO_Cannon",
+        "ra2_aa": false,
+        "report": "YR_RobotTankAttack"
+      },
+      "voice": {
+        "select": "YR_RobotTankSelect",
+        "select_deactivated": "YR_RobotTankSelectDeactivated",
+        "move": "YR_RobotTankMove",
+        "attack": "YR_RobotTankAttackCommand",
+        "die": "YR_RobotTankDie",
+        "activate": "YR_RobotTankOnline",
+        "deactivate": "YR_RobotTankOffline"
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "GAROBO",
+      "name": "机器人控制中心",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "科技建筑",
+      "ra2": true,
+      "expansion": "yr",
+      "cost": 600,
+      "hp": 600,
+      "build_time": 12,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 26,
+      "sight": 330,
+      "tags": [
+        "structure"
+      ],
+      "builds": [],
+      "foundation": "2x2",
+      "buildup": "GAROBOMK",
+      "ra2_prereq": [
+        "GAWEAP",
+        "GACNST"
+      ],
+      "tech_level": 10,
+      "power": -100,
+      "powered": true,
+      "powers_unit": "ROBO",
+      "desc": "每座耗电 100。只需一座正常运转，就能指挥己方所有遥控坦克。控制中心全部停运或被毁时，坦克会停机。"
+    }
+  ],
+  "source_units": {
+    "ROBO": {
+      "id": "ROBO",
+      "kind": "vehicle",
+      "rules_name": "Robot Tank",
+      "uiname_label": "Robotank",
+      "display_name": "Robot Tank",
+      "image": "ROBO",
+      "category": "AFV",
+      "hp": 180,
+      "armor": "heavy",
+      "speed": 10,
+      "sight": 6,
+      "cost": 600,
+      "tech_level": 2,
+      "points": 25,
+      "prerequisites": [
+        "GAWEAP",
+        "GAROBO"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "cameo": "ROBOICON",
+      "alt_cameo": "ROBOUICO",
+      "voxel": true,
+      "sequence": null,
+      "foundation": null,
+      "buildup": null,
+      "primary": "Robogun",
+      "secondary": null,
+      "elite_primary": null,
+      "elite_secondary": null,
+      "weapon_count": 0,
+      "soylent": 600,
+      "threat_posed": 15,
+      "size": 3,
+      "physical_size": null,
+      "movement_zone": "AmphibiousDestroyer",
+      "locomotor": "{4A582742-9839-11d1-B709-00A024DDAFD1}",
+      "turret": true,
+      "crusher": true,
+      "deployer": false,
+      "deploy_frame": -1,
+      "occupier": false,
+      "extra": {
+        "IsTilter": "yes",
+        "TooBigToFitUnderBridge": "true",
+        "CrateGoodie": "no",
+        "ROT": "5",
+        "Explosion": "TWLT070,S_BANG48,S_BRNL58,S_CLSN58,S_TUMU60",
+        "VoiceSelect": "RobotTankSelect",
+        "VoiceSelectDeactivated": "RobotTankSelectDeactivated",
+        "VoiceMove": "RobotTankMove",
+        "VoiceAttack": "RobotTankAttackCommand",
+        "VoiceFeedback": "",
+        "DieSound": "RobotTankDie",
+        "MoveSound": "RobotTankMoveStart",
+        "ActivateSound": "RobotTankOnline",
+        "DeactivateSound": "RobotTankOffline",
+        "CrushSound": "TankCrush",
+        "MaxDebris": "2",
+        "SpeedType": "Hover",
+        "DamageParticleSystems": "SparkSys,SmallGreySSys",
+        "VeteranAbilities": "STRONGER,FIREPOWER,SIGHT,FASTER",
+        "EliteAbilities": "SELF_HEAL,STRONGER,FIREPOWER,ROF",
+        "Accelerates": "false",
+        "ImmuneToVeins": "yes",
+        "OpportunityFire": "yes",
+        "AllowedToStartInMultiplayer": "no",
+        "ImmuneToPsionics": "yes",
+        "ImmuneToRadiation": "yes",
+        "PoweredUnit": "yes",
+        "Trainable": "no",
+        "BuildTimeMultiplier": "1.3"
+      }
+    }
+  },
+  "source_buildings": {
+    "GAROBO": {
+      "id": "GAROBO",
+      "kind": "building",
+      "rules_name": "Allied Robot Control Center",
+      "uiname_label": "Robocont",
+      "display_name": "Allied Robot Control Center",
+      "image": "GAROBO",
+      "category": null,
+      "hp": 600,
+      "armor": "wood",
+      "speed": null,
+      "sight": 6,
+      "cost": 600,
+      "tech_level": 10,
+      "points": 30,
+      "prerequisites": [
+        "GAWEAP",
+        "GACNST"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance",
+        "Russians",
+        "Confederation",
+        "Africans",
+        "Arabs",
+        "YuriCountry"
+      ],
+      "sides": [
+        "allied",
+        "soviet"
+      ],
+      "cameo": "RBCCICON",
+      "alt_cameo": null,
+      "voxel": false,
+      "sequence": null,
+      "foundation": "2x2",
+      "buildup": "GAROBOMK",
+      "primary": null,
+      "secondary": null,
+      "elite_primary": null,
+      "elite_secondary": null,
+      "weapon_count": 0,
+      "build_cat": "Resource",
+      "factory": null,
+      "power": -100,
+      "powered": true,
+      "adjacent": 2,
+      "capturable": true,
+      "crewed": true,
+      "ai_base_planning_side": 0,
+      "extra": {
+        "Explosion": "TWLT070,S_BANG48,S_BRNL58,S_CLSN58,S_TUMU60",
+        "DebrisAnims": "DBRIS1LG,DBRIS1SM,DBRIS2LG,DBRIS4LG,DBRIS4SM,DBRIS5LG,DBRIS5SM,DBRIS6LG,DBRIS6SM,DBRIS7LG",
+        "MaxDebris": "12",
+        "MinDebris": "6",
+        "HalfDamageSmokeLocation1": "0,0,0",
+        "DamageSmokeOffset": "410, 100, 165",
+        "AIBuildThis": "yes",
+        "TogglePower": "yes",
+        "Powered": "true",
+        "PowersUnit": "ROBO",
+        "ImmuneToPsionics": "no"
+      }
+    }
+  },
+  "weapons": {
+    "YR_Robogun": {
+      "id": "YR_Robogun",
+      "damage": 65,
+      "rof": 60,
+      "range": 5,
+      "projectile": "YR_ROBO_Cannon",
+      "speed": 60,
+      "warhead": "YR_ROBO_AP",
+      "burst": 1,
+      "anim": "GUNFIRE",
+      "report": "YR_RobotTankAttack",
+      "bright": true,
+      "min_range": 0,
+      "ambient_damage": 0,
+      "extra": {}
+    }
+  },
+  "warheads": {
+    "YR_ROBO_AP": {
+      "id": "YR_ROBO_AP",
+      "verses_raw": "25%,25%,15%,75%,100%,100%,65%,45%,60%,60%,100%",
+      "verses": {
+        "none": 0.25,
+        "flak": 0.25,
+        "plate": 0.15,
+        "light": 0.75,
+        "medium": 1,
+        "heavy": 1,
+        "wood": 0.65,
+        "steel": 0.45,
+        "concrete": 0.6,
+        "special_1": 0.6,
+        "special_2": 1
+      },
+      "cell_spread": 0.3,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "S_CLSN16",
+        "S_CLSN22"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    }
+  },
+  "projectiles": {
+    "YR_ROBO_Cannon": {
+      "id": "YR_ROBO_Cannon",
+      "aa": false,
+      "aa_raw": null,
+      "image": "120MM",
+      "inviso": false,
+      "arcing": true,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    }
+  },
+  "art": {
+    "ROBO": {
+      "cameo": "res://assets/ra2/cameo/ROBOICON.png",
+      "vxl": "res://assets/ra2/vxl/ROBO.png"
+    },
+    "GAROBO": {
+      "cameo": "res://assets/ra2/cameo/RBCCICON.png",
+      "shp": "res://assets/ra2/shp/GAROBO.png"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "YR_RobotTankAttack": {
+        "sounds": [
+          "yr_robo_vrobatta"
+        ],
+        "volume": 70,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankSelect": {
+        "sounds": [
+          "yr_robo_vrobsela"
+        ],
+        "volume": 55,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankSelectDeactivated": {
+        "sounds": [
+          "yr_robo_vrobse2a",
+          "yr_robo_vrobse2b",
+          "yr_robo_vrobse2c"
+        ],
+        "volume": 1,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankMove": {
+        "sounds": [
+          "yr_robo_vrobmova",
+          "yr_robo_vrobmovb"
+        ],
+        "volume": 55,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankAttackCommand": {
+        "sounds": [
+          "yr_robo_vrobatca"
+        ],
+        "volume": 55,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankDie": {
+        "sounds": [
+          "yr_robo_vrobdiea"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_RobotTankOnline": {
+        "sounds": [
+          "yr_robo_vrobon"
+        ],
+        "volume": 60,
+        "range": 15,
+        "type": ""
+      },
+      "YR_RobotTankOffline": {
+        "sounds": [
+          "yr_robo_vroboff"
+        ],
+        "volume": 60,
+        "range": 15,
+        "type": ""
+      }
+    },
+    "entries": {
+      "yr_robo_vrobatta": {
+        "file": "yr_robo/vrobatta.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 28020,
+        "durMs": 1271,
+        "bytes": 56084,
+        "sha256": "2c8f65c3f644522481268f282d4cae16b9dbe4db072d9f1e09f6e3fff924fcbd"
+      },
+      "yr_robo_vrobsela": {
+        "file": "yr_robo/vrobsela.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 30406,
+        "durMs": 1379,
+        "bytes": 60856,
+        "sha256": "44b303386d2043ccf849bff80d3c84261471d357de0028b17a72eeb9ec4fe3d9"
+      },
+      "yr_robo_vrobse2a": {
+        "file": "yr_robo/vrobse2a.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 19380,
+        "durMs": 879,
+        "bytes": 38804,
+        "sha256": "2a5c2eacf965b3895a7e1c9357d08fce89aa070dcf81fefe3e4c1c8d69e0dfbb"
+      },
+      "yr_robo_vrobse2b": {
+        "file": "yr_robo/vrobse2b.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22262,
+        "durMs": 1010,
+        "bytes": 44568,
+        "sha256": "299783e20ffd5e968037153f529ad8a6c7750b4a672f5ac6614747b744033b31"
+      },
+      "yr_robo_vrobse2c": {
+        "file": "yr_robo/vrobse2c.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 21758,
+        "durMs": 987,
+        "bytes": 43560,
+        "sha256": "50cfce56ee82eec7883ea07356f1993a9939987462d344ab06e498a955d3a8e1"
+      },
+      "yr_robo_vrobmova": {
+        "file": "yr_robo/vrobmova.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 35996,
+        "durMs": 1632,
+        "bytes": 72036,
+        "sha256": "e0c930123e8914ee90fda408796c1c7a832ac1beaac53d98ca5458ccb1c4731c"
+      },
+      "yr_robo_vrobmovb": {
+        "file": "yr_robo/vrobmovb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 27155,
+        "durMs": 1232,
+        "bytes": 54354,
+        "sha256": "3703200312d261226dd62eaa35e74f0488f8f1e9dab74c7c95d43a67684ebc4d"
+      },
+      "yr_robo_vrobatca": {
+        "file": "yr_robo/vrobatca.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 32673,
+        "durMs": 1482,
+        "bytes": 65390,
+        "sha256": "f5dc1eb18facbd62571245cdd3e62dbf206dcab11eef9ff33ae8617a2230086b"
+      },
+      "yr_robo_vrobdiea": {
+        "file": "yr_robo/vrobdiea.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26771,
+        "durMs": 1214,
+        "bytes": 53586,
+        "sha256": "dbd0a905ef172adeb8c9746b8cb2ad359ab7d55c248af7d62ffd052628331abe"
+      },
+      "yr_robo_vrobon": {
+        "file": "yr_robo/vrobon.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 36452,
+        "durMs": 1653,
+        "bytes": 72948,
+        "sha256": "5ef953833c5a2971b72e95a6cc03ee17328e05300933d438fba324bcedbf2c9d"
+      },
+      "yr_robo_vroboff": {
+        "file": "yr_robo/vroboff.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 19796,
+        "durMs": 898,
+        "bytes": 39636,
+        "sha256": "86e6cb81941bdca89e0c3779e7f14871d9b1bb659b84722dbf87099c4b8c3ed8"
+      }
+    }
+  }
+}

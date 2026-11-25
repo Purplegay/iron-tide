@@ -1,0 +1,3 @@
+用户允许参考 Yuri/网页红警作整体重写。refs/ts-ra2/LICENSE 明确重建的 Chrono Divide 派生材料未经许可；EA Modding Support 和 Red Alert 的 GPLv3+附加条款针对各自发布物，不能当作完整 Yuri 授权。保持独立实现。
+
+本轮候选 .validation/spatial-disc-20261123/source：battle_neighborhood.nearby 增可选 disc，按格行与圆相交水平跨度裁剪，单位 _refresh_target 的 local_search 采用；其他调用保留方形查询。建筑 padding、报复目标补入和原评分未改。固定种子JS几何模型测试20万个点，其中157334个圆内样本没有漏选；不是运行 Godot 函数或实战目标顺序回归。下一步应使用两档场景逐次比较新旧最终选中对象及候选数，确认登记半径对所有实时形态是上界，再跑干净 Release 5×。用户游戏活跃时不跑验收，不改生产和存档，未宣称帧时间收益。

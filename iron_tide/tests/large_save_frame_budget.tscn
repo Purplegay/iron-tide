@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/large_save_frame_budget.gd" id="1"]
+
+[node name="FrameBudget" type="Node"]
+script = ExtResource("1")
+
+

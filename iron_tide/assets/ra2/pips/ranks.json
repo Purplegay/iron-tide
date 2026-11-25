@@ -1,0 +1,38 @@
+{
+  "source": {
+    "name": "PIPS.SHP",
+    "archive": "ra2md.mix > conqmd.mix > 0xef767df4",
+    "sha256": "7525b25f80b5b67e9a5c2977b7624c4b3ce7ad9ce332169c4622eddb91c61486"
+  },
+  "palette": {
+    "name": "PALETTE.PAL",
+    "archive": "ra2.mix > cache.mix > 0x18e978ee",
+    "sha256": "e85c535002573b5f95f7c361c4bdb95ee43e4914ddc926afda9ace995c54242b"
+  },
+  "ranks": {
+    "veteran": {
+      "frame": 14,
+      "size": [
+        8,
+        5
+      ],
+      "offset": [
+        4,
+        8
+      ],
+      "png_sha256": "9305ab73bdeb23cd543b4f0dcd0809f45e967ea7e7494e81c27a6e4570aa0be7"
+    },
+    "elite": {
+      "frame": 15,
+      "size": [
+        8,
+        13
+      ],
+      "offset": [
+        4,
+        1
+      ],
+      "png_sha256": "b32301d20a81ead763387ba9fc19e1baffd724052ae4842bbdb91643b2c95790"
+    }
+  }
+}

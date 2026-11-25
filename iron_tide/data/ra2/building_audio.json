@@ -1,0 +1,30 @@
+{
+  "source": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Command & Conquer Red Alert II",
+  "source_hashes": {
+    "rulesmd.ini": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef",
+    "soundmd.ini": "0a8e85381aef1a0f97074c953bfe99504da00c6220fae1a023a1afd857023232",
+    "audio.idx": "b3be1ac75032d062dce3d7415cb7dbe7ceec0b479bc6450241dee3148b7c12c1",
+    "audio.bag": "8917fb579eb9f312b09f626e8b6b085958a36d0aa86b4e7db3f4cfb87016f69f"
+  },
+  "units": {},
+  "specs": {
+    "PlaceBuilding": {
+      "sounds": [
+        "building_uplace"
+      ],
+      "volume": 1.0,
+      "range": 10.0
+    }
+  },
+  "entries": {
+    "building_uplace": {
+      "file": "building/uplace.wav",
+      "sampleRate": 22050,
+      "channels": 1,
+      "frames": 31359,
+      "durMs": 1422,
+      "bytes": 62762,
+      "sha256": "e9ae877c279d708a8d4c29b0d0447b0736ebcfff7a2a75cab7662cf47fb5a329"
+    }
+  }
+}

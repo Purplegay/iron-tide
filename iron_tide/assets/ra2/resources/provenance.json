@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ore-1",
+    "kind": "ore",
+    "source": "RA2.MIX > 0x5aa5b016 len=4336/TIB01.TEM",
+    "source_sha256": "7b6edd967730e4e0e33b9d6e8115ce0aebbcda98ebde4c106fcc74b3c91035cd",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "854b2198046ff0d9e50c63b6c3c18657cfa7a6a6d4e5df2c4f1c660943a85b4a",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  },
+  {
+    "id": "ore-2",
+    "kind": "ore",
+    "source": "RA2.MIX > 0x5aa5b016 len=4160/TIB02.TEM",
+    "source_sha256": "84c46062f4011f7bb5b1b2e33840b990de8843dae9806a30fdda89a9c718d2e5",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "77b3955a3a131c404c98fde91a74bdb51e5bea0b026f51ed8ed4aa79cd091b0c",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  },
+  {
+    "id": "ore-3",
+    "kind": "ore",
+    "source": "RA2.MIX > 0x5aa5b016 len=3960/TIB03.TEM",
+    "source_sha256": "359a7f306dbf345d4e9a83ecf41fca9f6c4524bec8de1074d0b3fd7535795082",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "c6dc6360cf5e20a4252bae1cfa84629b88626ace6bb1b689fd970362c3c9a26f",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  },
+  {
+    "id": "gems-1",
+    "kind": "gems",
+    "source": "RA2.MIX > 0x5aa5b016 len=4248/GEM01.TEM",
+    "source_sha256": "32c2a43e81a4c6a9cc9e0e106b9a2cf7a1e2f10136c821c989338e7bf4eabf8f",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "9e38b02f54f0333487abe8acff5f9663eadfd9b72e744799e19d8c72087454cf",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  },
+  {
+    "id": "gems-2",
+    "kind": "gems",
+    "source": "RA2.MIX > 0x5aa5b016 len=4352/GEM02.TEM",
+    "source_sha256": "38fb85d8729f4d233fda41ac4360a56f0cace4dd1f62639674e862bae4a86261",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "109aa6a13bb99cdc9f417be320daba919dce0c7fef687b0a389eedce641d5f28",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  },
+  {
+    "id": "gems-3",
+    "kind": "gems",
+    "source": "RA2.MIX > 0x5aa5b016 len=4448/GEM03.TEM",
+    "source_sha256": "6b2409f8043ca1ebc0d727a5d9f0a7b1878bee950c1f3283a3266bc4168a4259",
+    "palette": "RA2.MIX > 0x3b5a96de len=768/TEMPERAT.PAL",
+    "palette_sha256": "5903b69868b84f494cfbb4e7100398015ef9775b37726019a0d7b5fb6cb33b55",
+    "png_sha256": "1c12550e9457d438c1cafc43f9c45ee770a058793098bed644a569803651e491",
+    "cell": [
+      60,
+      60
+    ],
+    "cols": 6,
+    "count": 24,
+    "density_frames": 12
+  }
+]

@@ -1,0 +1,4 @@
+# 3x native profiler
+Frozen compatible source .validation/3x-slow-bridge/old. Evidence .validation/3x-function-nov23/p{2,3}/functions.json: 5743 listed each, executed gameplay 2195/2098. Self/inclusive/calls are GDScript aggregates, not native engine self timing. Debug instrumentation slowed simulation: 67.44/33.35 and 87.85/31.61 sim/wall seconds. Release timing runs separate.
+Self ms slot2/3: Unit._physics_process 1337/1306, refresh_target 695/391, local_traffic.apply 377/389, fire_shot 280/634. Slot3 shp_detail.page_texture 50 calls, self 376 ms. Coverage is only paths executed by these saves.
+Tested increasing SHP detail texture page budget from 64 to 128 MiB. Graphical Release P95 slot2 211.922 to 253.194 ms, slot3 229.133 to 210.746 ms, all four external audits flagged; no claim about eviction frequency or wins. Candidate only in atlas128, no production changes. Do not repeat larger budget as a new idea. Reference 1x slot2 13.5 FPS, slot3 15.5 FPS.

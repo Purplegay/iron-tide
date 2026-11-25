@@ -1,0 +1,1724 @@
+{
+  "thresholds": {
+    "MaxHealthDamagedPercentage": 0.6666666600000001,
+    "MaxHealthReallyDamagedPercentage": 0.33333333000000004
+  },
+  "draws": [
+    {
+      "tag": "TruckDraw",
+      "attrs": {
+        "id": "ModuleTag_Draw",
+        "OkToChangeModelColor": "true",
+        "ExtraPublicBone": "FX_Weapon BONE_EAR_LEFT BONE_EAR_RIGHT B_TREAD_FRONT_LEFT B_TREAD_FRONT_RIGHT B_TREAD_REAR_LEFT B_TREAD_REAR_RIGHT T2_UNIT",
+        "TrackMarks": "EXTireTrack2",
+        "TrackMarksOnlyWhenCorneringQuickly": "false",
+        "TrackMarksLeftBone": "Bone_Tire_Rear_Left",
+        "TrackMarksRightBone": "Bone_Tire_Rear_Right",
+        "LeftFrontTireBone": "Bone_Tire_Front_Left",
+        "RightFrontTireBone": "Bone_Tire_Front_Right",
+        "LeftRearTireBone": "Bone_Tire_Rear_Left",
+        "RightRearTireBone": "Bone_Tire_Rear_Right",
+        "TireRotationMultiplier": "0.0",
+        "PowerslideRotationAddition": "1.25",
+        "InitialRecoilSpeed": "0.1",
+        "MaxRecoilDistance": "0.1",
+        "RecoilDamping": "2.0",
+        "RecoilSettleSpeed": "3.0"
+      },
+      "children": [
+        {
+          "tag": "TreadTerrainParticles",
+          "attrs": {},
+          "children": [],
+          "text": "DefaultTankTerrainParticleMapping"
+        },
+        {
+          "tag": "TreadScrollingMap",
+          "attrs": {
+            "LeftTrack": "B_TREAD_FRONT_LEFT",
+            "RightTrack": "B_TREAD_FRONT_RIGHT",
+            "SpeedMultiplier": "-0.05"
+          },
+          "children": []
+        },
+        {
+          "tag": "TreadScrollingMap",
+          "attrs": {
+            "LeftTrack": "B_TREAD_REAR_LEFT",
+            "RightTrack": "B_TREAD_REAR_RIGHT",
+            "SpeedMultiplier": "-0.05"
+          },
+          "children": []
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT",
+            "RetainSubObjects": "true"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_SKN"
+              },
+              "children": []
+            },
+            {
+              "tag": "WeaponFireFXBone",
+              "attrs": {
+                "WeaponSlotID": "1",
+                "WeaponSlotType": "PRIMARY_WEAPON",
+                "BoneName": "FX_Weapon"
+              },
+              "children": []
+            },
+            {
+              "tag": "WeaponLaunchBone",
+              "attrs": {
+                "WeaponSlotID": "1",
+                "WeaponSlotType": "PRIMARY_WEAPON",
+                "BoneName": "FX_Weapon"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "RetainSubObjects": "true",
+            "ConditionsYes": "DISGUISED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_SKN"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "Bone_Ear_Left",
+                "FXParticleSystemTemplate": "Primage_Disguise_Rays",
+                "FollowBone": "true"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "Bone_Ear_Right",
+                "FXParticleSystemTemplate": "Primage_Disguise_Rays02",
+                "FollowBone": "true"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "RetainSubObjects": "true",
+            "ConditionsYes": "REALLYDAMAGED DISGUISED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_SKN"
+              },
+              "children": []
+            },
+            {
+              "tag": "Texture",
+              "attrs": {
+                "Original": "AUAntiVehicleVehicleTech3",
+                "New": "AUAntiVehicleVehicleTech3_D"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "Bone_Ear_Left",
+                "FXParticleSystemTemplate": "Primage_Disguise_Rays",
+                "FollowBone": "true"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "Bone_Ear_Right",
+                "FXParticleSystemTemplate": "Primage_Disguise_Rays02",
+                "FollowBone": "true"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "RetainSubObjects": "true",
+            "ConditionsYes": "REALLYDAMAGED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_SKN"
+              },
+              "children": []
+            },
+            {
+              "tag": "Texture",
+              "attrs": {
+                "Original": "AUAntiVehicleVehicleTech3",
+                "New": "AUAntiVehicleVehicleTech3_D"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT",
+            "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+            "StateName": "STATE_bored"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            },
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6 MOVING",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_MOVA",
+                "AnimationMode": "LOOP"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6 SELECTED",
+            "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "MOVING"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_MOVA",
+                "AnimationMode": "LOOP"
+              },
+              "children": []
+            },
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "SELECTED",
+            "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+            "StateName": "STATE_SelectedPose"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            },
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6",
+            "Flags": "RESTART_ANIM_WHEN_COMPLETE",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_TRANSITION",
+            "StateName": "TRANS_FromField"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "AUAntiVehicleVehicleTech3_IDLA",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "ScriptedModelDraw",
+      "attrs": {
+        "id": "ModuleTag_DisguiseDraw",
+        "InvertStealthOpacity": "true"
+      },
+      "children": [
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": ""
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "include",
+      "attrs": {
+        "href": "DATA:Includes/HeadlightDraw2.xml",
+        "xpointer": "xmlns(n=uri:ea.com:eala:asset) xpointer(/n:HeadlightDraw2/child::*)"
+      },
+      "children": []
+    },
+    {
+      "tag": "ScriptedModelDraw",
+      "attrs": {
+        "id": "ModuleTag_Draw_FX",
+        "OkToChangeModelColor": "true"
+      },
+      "children": [
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_FX"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "DAMAGED DISGUISED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_FX"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "REALLYDAMAGED DISGUISED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_FX"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "DAMAGED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_FX"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "FX_BONE01",
+                "FXParticleSystemTemplate": "VehicleDamageSmoke",
+                "FollowBone": "true"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "REALLYDAMAGED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "AUAntiVehicleVehicleTech3_FX"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "FX_BONE01",
+                "FXParticleSystemTemplate": "VehicleDamageSmoke",
+                "FollowBone": "true"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "FX_BONE01",
+                "FXParticleSystemTemplate": "VehicleDamageFire",
+                "FollowBone": "true"
+              },
+              "children": []
+            },
+            {
+              "tag": "ParticleSysBone",
+              "attrs": {
+                "BoneName": "FX_BONE01",
+                "FXParticleSystemTemplate": "VehicleDamageFire02",
+                "FollowBone": "true"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "ScriptedModelDraw",
+      "attrs": {
+        "id": "ModuleTag_ShieldDraw",
+        "NoRotate": "true",
+        "OkToChangeModelColor": "false"
+      },
+      "children": [
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": ""
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "AFFECTED_BY_EMP USER_6"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "EXCloakingField"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "PARALYZED USER_6"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "EXCloakingField"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": "EXCloakingField"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "ModelConditionState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "REALLYDAMAGED"
+          },
+          "children": [
+            {
+              "tag": "Model",
+              "attrs": {
+                "Name": ""
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_DEFAULT",
+            "StateName": "STATE_NoField",
+            "Flags": "START_FRAME_FIRST"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "EXCloakingField",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            },
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6 AFFECTED_BY_EMP",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6 PARALYZED",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Script",
+              "attrs": {},
+              "children": [],
+              "text": "Prev = CurDrawablePrevAnimationState()\n\t\t\t\t\t\tif Prev == \"STATE_Field\" then\n\t\t\t\t\t\tCurDrawableSetTransitionAnimState(\"TRANS_FromField\")\n\t\t\t\t\t\tend"
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_NORMAL",
+            "ConditionsYes": "USER_6",
+            "StateName": "STATE_Field"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "EXCloakingField",
+                "AnimationMode": "ONCE"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "AnimationState",
+          "attrs": {
+            "ParseCondStateType": "PARSE_TRANSITION",
+            "StateName": "TRANS_FromField"
+          },
+          "children": [
+            {
+              "tag": "Animation",
+              "attrs": {
+                "AnimationName": "EXCloakingField",
+                "AnimationMode": "ONCE_BACKWARDS"
+              },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "LaserDraw",
+      "attrs": {
+        "id": "ModuleTag_LaserDraw",
+        "Texture1_UTile": "1",
+        "Texture1_VTile": "1",
+        "Texture1_UScrollRate": "0.2",
+        "Texture1_VScrollRate": ".3",
+        "Texture1_NumFrames": "1",
+        "Texture1_FrameRate": "0",
+        "Texture2_UTile": "1",
+        "Texture2_VTile": "1",
+        "Texture2_UScrollRate": "-.2",
+        "Texture2_VScrollRate": "-.3",
+        "Texture2_NumFrames": "1",
+        "Texture2_FrameRate": "0",
+        "LaserWidth": "25",
+        "WeaponSlotID": "1",
+        "LaserStateID": "201"
+      },
+      "children": [
+        {
+          "tag": "FXShader",
+          "attrs": {
+            "ShaderName": "Laser.fx",
+            "TechniqueIndex": "0"
+          },
+          "children": [
+            {
+              "tag": "Constants",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Texture",
+                  "attrs": {
+                    "Name": "Texture1"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "FXAlliedPrismBeam"
+                    }
+                  ]
+                },
+                {
+                  "tag": "Texture",
+                  "attrs": {
+                    "Name": "Texture2"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "FXAlliedPrismBeam"
+                    }
+                  ]
+                },
+                {
+                  "tag": "Float",
+                  "attrs": {
+                    "Name": "ColorEmissive"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    },
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    },
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "LaserDraw",
+      "attrs": {
+        "id": "ModuleTag_LaserDraw_Vet",
+        "Texture1_UTile": "1",
+        "Texture1_VTile": "1",
+        "Texture1_UScrollRate": "0.2",
+        "Texture1_VScrollRate": ".3",
+        "Texture1_NumFrames": "1",
+        "Texture1_FrameRate": "0",
+        "Texture2_UTile": "1",
+        "Texture2_VTile": "1",
+        "Texture2_UScrollRate": "-.2",
+        "Texture2_VScrollRate": "-.3",
+        "Texture2_NumFrames": "1",
+        "Texture2_FrameRate": "0",
+        "LaserWidth": "25",
+        "WeaponSlotID": "1",
+        "LaserStateID": "202"
+      },
+      "children": [
+        {
+          "tag": "FXShader",
+          "attrs": {
+            "ShaderName": "Laser.fx",
+            "TechniqueIndex": "0"
+          },
+          "children": [
+            {
+              "tag": "Constants",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Texture",
+                  "attrs": {
+                    "Name": "Texture1"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "FXAlliedPrismBeam"
+                    }
+                  ]
+                },
+                {
+                  "tag": "Texture",
+                  "attrs": {
+                    "Name": "Texture2"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "FXAlliedPrismBeam_Vet"
+                    }
+                  ]
+                },
+                {
+                  "tag": "Float",
+                  "attrs": {
+                    "Name": "ColorEmissive"
+                  },
+                  "children": [
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    },
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    },
+                    {
+                      "tag": "Value",
+                      "attrs": {},
+                      "children": [],
+                      "text": "4.000000"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "particles": {
+    "VehicleDamageSmoke": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXFire02",
+        "PerParticleAttachedSystem": "",
+        "Priority": "MEDIUM_OR_ABOVE",
+        "Shader": "ALPHA",
+        "SortLevel": "2",
+        "Type": "GPU_PARTICLE",
+        "id": "VehicleDamageSmoke"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "35",
+            "Low": "35"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "10",
+            "Low": "3"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstDelay",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Alphas",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "1",
+                "High": "1",
+                "Low": "1",
+                "RelativeAge": "0"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "2",
+                "High": "0.66",
+                "Low": "0.66",
+                "RelativeAge": "25"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "3",
+                "High": "0.5",
+                "Low": "0.5",
+                "RelativeAge": "50"
+              },
+              "children": []
+            },
+            {
+              "tag": "Alpha",
+              "attrs": {
+                "Frame": "4",
+                "High": "0",
+                "Low": "0",
+                "RelativeAge": "100"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "1",
+                "RelativeAge": "0"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.282353",
+                    "g": "0.282353",
+                    "r": "0.282353"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "25"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.215686",
+                    "g": "0.215686",
+                    "r": "0.215686"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "50"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.141176",
+                    "g": "0.141176",
+                    "r": "0.141176"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "4",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0",
+                    "g": "0",
+                    "r": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "DriftVelocity",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "DetailTexture": "FXDisotrtionFractal01",
+                "FramesPerRow": "6",
+                "GeometryType": "CENTERED_QUAD",
+                "MiscValue1": "0.1",
+                "MiscValue2": "0.04",
+                "MiscValue3": "45",
+                "MiscValue4": "0.05",
+                "Shader": "gpuparticledistort.fx",
+                "SpeedMultiplier": "1",
+                "TotalFrames": "36"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Cylinder",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Offset",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "5"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Ortho",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Position",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "tag": "x",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "y",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "z",
+                      "attrs": {
+                        "High": "0",
+                        "Low": "0"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRate",
+                  "attrs": {
+                    "High": "0.5",
+                    "Low": "0.5"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "0.94",
+                    "Low": "0.94"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "4",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "VehicleDamageFire": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXFireScroll3",
+        "PerParticleAttachedSystem": "",
+        "Priority": "ALWAYS_RENDER",
+        "SortLevel": "1",
+        "Type": "GPU_PARTICLE",
+        "id": "VehicleDamageFire"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "20",
+            "Low": "15"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "10",
+            "Low": "5"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstDelay",
+          "attrs": {
+            "High": "3",
+            "Low": "0"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "2",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "19.999998"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.584314",
+                    "g": "0.67451",
+                    "r": "0.733333"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0",
+                    "g": "0",
+                    "r": "0"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "ColorScale",
+              "attrs": {
+                "High": "5",
+                "Low": "2"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "DriftVelocity",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "DetailTexture": "FXDisotrtionFractal01",
+                "MiscValue1": "0.1",
+                "MiscValue2": "0.07",
+                "MiscValue3": "45",
+                "MiscValue4": "0.25",
+                "Shader": "gpuparticledistort.fx",
+                "SpeedMultiplier": "1"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Cylinder",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Offset",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Outward",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Speed",
+                  "attrs": {
+                    "High": "0.3",
+                    "Low": "-0.2"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "OtherSpeed",
+                  "attrs": {
+                    "High": "0",
+                    "Low": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "SizeRate",
+                  "attrs": {
+                    "High": "-0.15",
+                    "Low": "-0.1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "7",
+                    "Low": "-7"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "VehicleDamageFire02": {
+      "tag": "FXParticleSystemTemplate",
+      "attrs": {
+        "ParticleTexture": "FXFireGrid",
+        "PerParticleAttachedSystem": "",
+        "Priority": "ALWAYS_RENDER",
+        "SortLevel": "1",
+        "Type": "GPU_PARTICLE",
+        "id": "VehicleDamageFire02"
+      },
+      "children": [
+        {
+          "tag": "Lifetime",
+          "attrs": {
+            "High": "10",
+            "Low": "10"
+          },
+          "children": []
+        },
+        {
+          "tag": "Size",
+          "attrs": {
+            "High": "10",
+            "Low": "8"
+          },
+          "children": []
+        },
+        {
+          "tag": "BurstCount",
+          "attrs": {
+            "High": "1",
+            "Low": "1"
+          },
+          "children": []
+        },
+        {
+          "tag": "Colors",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "2",
+                "RelativeAge": "25"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0.560784",
+                    "g": "0.560784",
+                    "r": "0.560784"
+                  },
+                  "children": []
+                }
+              ]
+            },
+            {
+              "tag": "Color",
+              "attrs": {
+                "Frame": "3",
+                "RelativeAge": "100"
+              },
+              "children": [
+                {
+                  "tag": "Color",
+                  "attrs": {
+                    "b": "0",
+                    "g": "0",
+                    "r": "0"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Physics",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {
+                "Swirly": "true"
+              },
+              "children": [
+                {
+                  "tag": "VelocityDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Draw",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Gpu",
+              "attrs": {
+                "FramesPerRow": "4",
+                "SingleRow": "-1",
+                "SpeedMultiplier": "0.1",
+                "TotalFrames": "16"
+              },
+              "children": []
+            }
+          ]
+        },
+        {
+          "tag": "Volume",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Cylinder",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Offset",
+                  "attrs": {
+                    "x": "0",
+                    "y": "0",
+                    "z": "4"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Velocity",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Ortho",
+              "attrs": {},
+              "children": [
+                {
+                  "tag": "Position",
+                  "attrs": {},
+                  "children": [
+                    {
+                      "tag": "x",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "y",
+                      "attrs": {
+                        "High": "0.1",
+                        "Low": "-0.1"
+                      },
+                      "children": []
+                    },
+                    {
+                      "tag": "z",
+                      "attrs": {
+                        "High": "1.5",
+                        "Low": "1"
+                      },
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "tag": "Event",
+          "attrs": {},
+          "children": []
+        },
+        {
+          "tag": "Update",
+          "attrs": {},
+          "children": [
+            {
+              "tag": "Default",
+              "attrs": {
+                "Rotation": "ROTATE_AROUND_VELOCITY"
+              },
+              "children": [
+                {
+                  "tag": "SizeRateDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleZ",
+                  "attrs": {
+                    "High": "7",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularRateZ",
+                  "attrs": {
+                    "High": "0.1",
+                    "Low": "-0.1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDamping",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngleXY",
+                  "attrs": {
+                    "High": "7",
+                    "Low": "0"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularRateXY",
+                  "attrs": {
+                    "High": "1",
+                    "Low": "-1"
+                  },
+                  "children": []
+                },
+                {
+                  "tag": "AngularDampingXY",
+                  "attrs": {
+                    "High": "0.95",
+                    "Low": "0.9"
+                  },
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "damage_emitter": {
+    "bone": "FX_BONE01",
+    "position": [
+      -23.53473472595215,
+      10.434091567993164,
+      0.18455399572849274
+    ]
+  },
+  "damaged_speed_factor": 0.75,
+  "sources": {
+    "refs/ra3-sdk/installed/SAGEXML/Allied/Units/AlliedAntiVehicleVehicleTech3.xml": "932066544472e30fed1b5c12f94683ba21220159f5c7a91394ec0e94dc449f2d",
+    "refs/ea-modding-support/Uprising/Xml/Allied/Units/AlliedAntiVehicleVehicleTech3.xml": "75a6389af3faf404a357e8bada45c581d0a5086863e962ee99613cdc81f05384",
+    "refs/ra3-sdk/installed/Schemas/xsd/Modules/ActiveBody.xsd": "1e9cfdf8b4acf3e93f41391784a3dfec8ab54d515738930b45ccd8d568af713e",
+    "refs/ra3-sdk/installed/SAGEXML/FXParticleSystems/VehicleDamageSmoke.xml": "23b36f8b288270cb6e43bd19de4b395dbff10ffea48ac3b1b27f6da083910af6",
+    "refs/ra3-sdk/installed/SAGEXML/FXParticleSystems/VehicleDamageFire.xml": "b2aa6187ed06a1038f783a3d588a0a1bc694ddb1cb93a09e2ca30b13805e7da4",
+    "refs/ra3-sdk/installed/SAGEXML/FXParticleSystems/VehicleDamageFire02.xml": "97b94eda16fb123113d0a021ee2f756ae5edac81a9ed888cfef1c655d36a20b9",
+    "refs/ra3-mirage/uprising/converted/hierarchies/W3DHierarchy_AUANTIVEHICLEVEHICLETECH3_FX.json": "be370184f8e8440ca575396eed2d3ff10143569ed4e8c017bcabf3239c195ec8",
+    "refs/ra3-community/art/Allied Art Pack/Vehicles/Mirage Tank/AUANTIVEHICLEVEHICLETECH3_FX_HRC.w3x": "f446d3ff212a03d42068ca0d98a8f61af01ea3e7e0718af65e8fe5ec93021b84",
+    "refs/ra3-mirage/uprising/converted/textures/Texture_AUAntiVehicleVehicleTech3_D.png": "44095e15237df4c095b4ecdbc2b26b4e79b3916a3508305842ac21a994176496",
+    "refs/ra3-mirage/uprising/converted/textures/Texture_FXFireScroll3.png": "10b6c8796268c2af5e0256c1b75c491149b9b41d05f5ccb7bd6662804a5e6893",
+    "refs/ra3-mirage/damage-state/converted/textures/Texture_FXFire02.png": "ee45ef7aa4e2ca0079253a81fd60dc08423de99051bdbc8fe816bff4a4b4b045",
+    "refs/ra3-mirage/damage-state/converted/textures/Texture_FXFireGrid.png": "d1f403169c51d2e44a9210818d1d60a6c65a2d8bcf9cd7ffcdf0d560c6b52f73",
+    "refs/ra3-sdk/installed/SAGEXML/GlobalData/Locomotor.xml": "de79b1286d38e685a9e2b9fbdc7664cd578e21ef8de45532f95088b874a01a4e"
+  },
+  "textures": {
+    "AUAntiVehicleVehicleTech3_D": "44095e15237df4c095b4ecdbc2b26b4e79b3916a3508305842ac21a994176496",
+    "FXFireScroll3": "10b6c8796268c2af5e0256c1b75c491149b9b41d05f5ccb7bd6662804a5e6893",
+    "FXFire02": "ee45ef7aa4e2ca0079253a81fd60dc08423de99051bdbc8fe816bff4a4b4b045",
+    "FXFireGrid": "d1f403169c51d2e44a9210818d1d60a6c65a2d8bcf9cd7ffcdf0d560c6b52f73"
+  },
+  "uprising_draw_differences": [
+    "ModuleTag_ShieldDraw",
+    "ModuleTag_LaserDraw_Vet"
+  ],
+  "adapter": "Godot 2D particles at native 30 FPS; no SAGE scene-depth distortion or swirly solver"
+}

@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3]
+
+[sub_resource type="Shader" id="LightningStrip"]
+code = "shader_type canvas_item;
+render_mode unshaded, blend_add;
+// Line2D advances U along the bolt. Both retail strips run along V.
+void vertex() {
+	UV = UV.yx;
+}"
+
+[resource]
+shader = SubResource("LightningStrip")

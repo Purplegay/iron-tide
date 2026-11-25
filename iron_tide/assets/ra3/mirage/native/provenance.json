@@ -1,0 +1,27 @@
+{
+  "art_url": "https://www.moddb.com/mods/red-alert-3-entropy/addons/complete-allied-art-source-pack",
+  "art_archive_md5": "2672e16186da69fe919c86bff93e3020",
+  "credit": "EA assets; community extraction by Ace.of.Spades using Bibber Asset Extractor",
+  "audio_url": "https://sounds.spriters-resource.com/pc_computer/commandconquerredalert3uprising/asset/440577/",
+  "audio_credit": "EA assets; Allied Vehicles pack uploaded by CoffeeMaus",
+  "source_sha256": {
+    "AUANTIVEHICLEVEHICLETECH3_SKL.w3x": "7ece809803406f20b7f2591dc9b36f5c3aeb556f92683605f73564e482809261",
+    "AUANTIVEHICLEVEHICLETECH3_SKN.NEWSKIN.w3x": "b35d9612cddb9b7a0e33368988d3584927806688ee70382136ac04320bbd329b",
+    "AUANTIVEHICLEVEHICLETECH3_SKN.NEWSKIN_TREADS.w3x": "faecce0aada7649df8be12a8205272a087b3005f82ce82a5e2893853b971d75f",
+    "AUANTIVEHICLEVEHICLETECH3_IDLA.w3x": "ea23b27a58b51b2ae71248880c4f0d111bf8c915a35d8b1365f924e6ea6385e7",
+    "AUANTIVEHICLEVEHICLETECH3_MOVA.w3x": "e2658fbde0a947b80fed2f6aa4725f809c5e19b6575240b0af291a5c8ffee4a0",
+    "AUANTIVEHICLEVEHICLETECH3_COL_HRC.w3x": "fea73d16820093f4738c101ed913e09e6ed96770d5d065856bc90d312bb4029a",
+    "AUANTIVEHICLEVEHICLETECH3_COL.NEWSKIN.w3x": "0d3e9a0d48877c3b7a584a2d9d22a2bff1554f4846fc4a6ccb67d5757f36e46f",
+    "AUANTIVEHICLEVEHICLETECH3_COL.NEWSKIN_TREADS.w3x": "8bc8cc1f5f531184d26d98076d1d9b505f6427cffaf378047153c0ca0733e866",
+    "AUAntiVehicleVehicleTech3_D.dds": "a9fcfb8d10a3c4fe52e41957da9764818dcdbe0c1efb30b037d3448d1baf9b88",
+    "SDK_Collapse.xml": "93131d0e8d4e2c268a2b401ccd2688faab32168a07a0b6b5384db747a87470d5"
+  },
+  "animation_warning": "Pack author does not guarantee extracted animation accuracy; bind pose, channel bounds and playback validated separately",
+  "outputs": {
+    "animations.json": "d7cee2ea8c97fa4806b1b3bf79fcec953c611d9007619a938aba0fb633d1650d",
+    "audio_provenance.json": "a03006eb9300d498cd55bd11f79719f80f0433cfb46a7e6bf24993cbc8315710",
+    "burnt.png": "44095e15237df4c095b4ecdbc2b26b4e79b3916a3508305842ac21a994176496",
+    "skin.json": "bf7fac66f2c55ef6fa14570cdddf2de9cf2807653a7688f1c829fc2bb6525674",
+    "wreck.json": "b38e9c39f3f9cecdec2093191df8d16adf867c7780c2b5ec0fe6a316ccd79c78"
+  }
+}

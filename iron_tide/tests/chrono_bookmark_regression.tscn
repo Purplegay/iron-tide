@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/chrono_bookmark_regression.gd" id="1"]
+
+[node name="ChronoBookmarkRegression" type="Node"]
+script = ExtResource("1")

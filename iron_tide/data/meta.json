@@ -1,0 +1,1198 @@
+{
+  "version": 1,
+  "talent_rank_costs": [
+    40,
+    120,
+    240
+  ],
+  "hero_talent_rank_costs": [
+    40,
+    120,
+    240,
+    400,
+    600
+  ],
+  "card_upgrade_costs": {
+    "common": [
+      60,
+      150,
+      240
+    ],
+    "rare": [
+      70,
+      170,
+      270
+    ],
+    "epic": [
+      80,
+      190,
+      300
+    ],
+    "legend": [
+      90,
+      210,
+      330
+    ],
+    "ultimate": [
+      100,
+      230,
+      360
+    ]
+  },
+  "cosmetic_research_rewards": {
+    "chevron_track": 5
+  },
+  "cosmetic_win_rewards": {
+    "ice": 3,
+    "phase_case": 5,
+    "slag_chains": 8,
+    "rangefinder": 12,
+    "wind_crown": 16,
+    "crystal": 20,
+    "spectrum": 25,
+    "blue_arc": 30,
+    "angel": 40,
+    "demon": 50
+  },
+  "cosmetic_prices": {
+    "paint": 300,
+    "wing": 600,
+    "skin": 6000,
+    "weapon_fx": 6000
+  },
+  "talent_shop": {
+    "currency": "cores",
+    "cost": 40,
+    "slot_prices": [
+      40,
+      80
+    ]
+  },
+  "unit_talents": {
+    "V3": {"v3_cluster":{"name":"空爆子母弹","desc":"火箭落入敌群时，向附近其余敌人分出子弹。单目标保留完整弹头。","stat":"子弹伤害","suffix":"%","base":15,"ranks":[{"value":20},{"value":25},{"value":30}]}},
+    "FV": {"fv_intercept":{"name":"拦截导弹","desc":"独立拦截器击落靠近友军的追踪弹。","stat":"装填秒数","suffix":"","base":12,"ranks":[{"value":10},{"value":8},{"value":6}]}},
+    "SAPC": {"fleet_rockets":{"name":"舰载火箭排","desc":"航行每两秒储存一枚火箭，接敌时一次打出库存。","stat":"最大库存","suffix":"","base":2,"ranks":[{"value":3},{"value":4},{"value":5}]}},
+    "LCRF": {"fleet_cannon":{"name":"船首机炮","desc":"加装移动射击的机炮，自动射击地面和水面目标。","stat":"连射弹数","suffix":"","base":2,"ranks":[{"value":3},{"value":4},{"value":5}]}},
+    "NABNKR": {
+      "bunker_optics": {
+        "name": "碉堡射程",
+        "desc": "扩大苏联战斗碉堡驻军的对地射程；有人值守时，视野同步覆盖射程。0～3 级四档，最高 8.5 格，仅新开的扩展对局生效。",
+        "stat": "射程强化档位",
+        "suffix": " / 4",
+        "base": 1,
+        "ranks": [
+          {
+            "value": 2
+          },
+          {
+            "value": 3
+          },
+          {
+            "value": 4
+          }
+        ]
+      }
+    },
+    "SHK": {
+      "tesla_reserve": {
+        "name": "停火蓄电",
+        "desc": "未开火期间逐层蓄电，移动和给磁暴线圈充电时也可积累。下次普通攻击按层数相加增伤，开火后清空全部层数和计时；闪避和强制攻击同样消耗。不给线圈充电额外增伤，也不强化 Q、W 或装配被动。",
+        "stat": "每层额外伤害",
+        "suffix": "%",
+        "base": 5,
+        "intervals": [
+          10,
+          8,
+          5,
+          3
+        ],
+        "stack_limits": [
+          1,
+          2,
+          3,
+          3
+        ],
+        "ranks": [
+          {
+            "value": 10
+          },
+          {
+            "value": 30
+          },
+          {
+            "value": 50
+          }
+        ]
+      }
+    },
+    "MTNK": {
+      "grizzly_reverse": {
+        "name": "掩护倒车",
+        "desc": "按 E 点选任意方向的畅通地面，车体自动转向，让车尾朝向目标，再沿直线倒车，最多 3 格；炮塔照常射击。转向时不触发回血；实际开始倒车后，每秒恢复 1% 最大生命，停车后继续回到规定时长。生效期间重复倒车不叠加、不续时。",
+        "stat": "倒车速度",
+        "suffix": "%",
+        "heal_seconds": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "base": 55,
+        "ranks": [
+          {
+            "value": 65
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 85
+          }
+        ]
+      }
+    },
+    "CLEG": {
+      "chrono_bookmark": {
+        "name": "时间书签",
+        "desc": "攻击间隔缩短，持续擦除期间冷却照常计时。中断时敌人立即解冻；书签时限是保留期限，不是等待时间。期限内由本人重新锁定同一目标，立即继承已完成进度的 50%。改锁其他目标会清除书签。",
+        "stat": "书签时限",
+        "suffix": " 秒",
+        "cooldown_reduction": [
+          20,
+          30,
+          40,
+          50
+        ],
+        "base": 8,
+        "ranks": [
+          {
+            "value": 9
+          },
+          {
+            "value": 10
+          },
+          {
+            "value": 11
+          }
+        ]
+      },
+      "native_chrono_time": {
+        "name": "时空稳定",
+        "native_profile": "chrono_time",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "HTNK": {
+      "rhino_split": {
+        "name": "破墙榴弹",
+        "desc": "主炮直击敌方建筑时，向地基相距 1 格内最近两座敌方建筑溅射。按各自装甲结算，副命中显示 Split，不继续连锁。",
+        "stat": "副命中伤害",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 40
+          },
+          {
+            "value": 55
+          },
+          {
+            "value": 70
+          }
+        ]
+      }
+    },
+    "DESO": {
+      "deso_expansion": {
+        "name": "辐射扩散",
+        "desc": "部署后按时间扩大辐射半径，最多 3 层，每层增加满层总增幅的三分之一。起身清空额外范围；辐射强度、跳伤间隔与衰减规则不变。",
+        "stat": "满三层半径增加",
+        "suffix": "格",
+        "base": 0.5,
+        "intervals": [
+          5,
+          4.8,
+          4.5,
+          1.5
+        ],
+        "ranks": [
+          {
+            "value": 2
+          },
+          {
+            "value": 2.5
+          },
+          {
+            "value": 4
+          }
+        ]
+      },
+      "native_radiation": {
+        "name": "辐射增幅",
+        "native_profile": "radiation",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "R3REAPER": {
+      "reaper_fire_control": {
+        "name": "协同瞄准",
+        "ranks": [
+          {
+            "damage": 1.05,
+            "charge_seconds": 5,
+            "linger": 6
+          },
+          {
+            "damage": 1.07,
+            "charge_seconds": 3.5,
+            "linger": 7
+          },
+          {
+            "damage": 1.1,
+            "charge_seconds": 2,
+            "linger": 7
+          }
+        ],
+        "desc": "停下或部署后，机体自动转向地面目标。前、左、右榴弹炮分别在自己的射程和射界内开火；目标对正车头时，三门都可覆盖。"
+      },
+      "native_leap": {
+        "name": "震地跃击",
+        "native_profile": "leap",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "E1": {
+      "native_deploy_def": {
+        "name": "卧倒防护",
+        "native_profile": "deploy_def",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "GGI": {
+      "native_deploy_def": {
+        "name": "部署防护",
+        "native_profile": "deploy_def",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "SCHP": {
+      "native_siege_range": {
+        "name": "攻城校准",
+        "native_profile": "siege_range",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "IVAN": {
+      "native_fuse": {
+        "name": "引信精调",
+        "native_profile": "fuse",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "CIVAN": {
+      "native_fuse": {
+        "name": "引信精调",
+        "native_profile": "fuse",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "BORIS": {
+      "native_arrival": {
+        "name": "空袭接应",
+        "native_profile": "arrival",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "AMCV": {
+      "native_mcv": {
+        "name": "机动基地装甲",
+        "native_profile": "mcv",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。仅车形态防御系数额外 +10/20/30/40%，展开成建筑后失效。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ],
+          "defense": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      }
+    },
+    "SMCV": {
+      "native_mcv": {
+        "name": "机动基地装甲",
+        "native_profile": "mcv",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。仅车形态防御系数额外 +10/20/30/40%，展开成建筑后失效。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ],
+          "defense": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      }
+    },
+    "DOG": {
+      "native_attack_cd": {
+        "name": "迎敌扑击",
+        "native_profile": "attack_cd",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。面对敌方攻击来源时（正面120度）防御系数额外 +10/20/30/40%；侧后方、无有效敌方来源不生效。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ],
+          "defense": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      }
+    },
+    "SOV_DOG": {
+      "native_attack_cd": {
+        "name": "迎敌扑击",
+        "native_profile": "attack_cd",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。面对敌方攻击来源时（正面120度）防御系数额外 +10/20/30/40%；侧后方、无有效敌方来源不生效。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ],
+          "defense": [
+            0.1,
+            0.2,
+            0.3,
+            0.4
+          ]
+        }
+      }
+    },
+    "SREF": {
+      "native_prism": {
+        "name": "光束分裂",
+        "native_profile": "prism",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "R3MIRAGE": {
+      "native_field": {
+        "name": "幻影扩域",
+        "native_profile": "field",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "R3FUTURE": {
+      "native_riot": {
+        "name": "暴乱循环",
+        "native_profile": "riot",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "R3APOC": {
+      "native_drag": {
+        "name": "强化牵引",
+        "native_profile": "drag",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    },
+    "R3TESLA": {
+      "native_emp": {
+        "name": "磁场扩域",
+        "native_profile": "emp",
+        "desc": "强化本兵种原生机制，四档数值见下方；不强化装配卡牌。",
+        "stat": "机制强度",
+        "suffix": "%",
+        "base": 25,
+        "ranks": [
+          {
+            "value": 50
+          },
+          {
+            "value": 75
+          },
+          {
+            "value": 100
+          }
+        ],
+        "values": {
+          "power": [
+            1.3,
+            1.6,
+            1.9,
+            2.2
+          ]
+        }
+      }
+    }
+  },
+  "technologies": {
+    "unit_queue_1": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "unit_queue_2": {
+      "currency": "cores",
+      "cost": 80
+    },
+    "unit_queue_3": {
+      "currency": "cores",
+      "cost": 160
+    },
+    "unit_queue_4": {
+      "currency": "cores",
+      "cost": 320
+    },
+    "unit_queue_5": {
+      "currency": "cores",
+      "cost": 640
+    },
+    "structure_queue": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "structure_queue_2": {
+      "currency": "cores",
+      "cost": 80
+    },
+    "structure_queue_3": {
+      "currency": "cores",
+      "cost": 160
+    },
+    "repair_auto": {"currency": "cores", "cost": 80},
+    "production_recipes_2": {"currency": "cores", "cost": 80},
+    "production_recipes": {"currency": "cores", "cost": 40},
+    "repair_all": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "auto_w": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "refinery_miner_2": {
+      "currency": "cores",
+      "cost": 80
+    },
+    "refinery_miner": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "joint_ra2_production": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "superweapon_damage_1": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "superweapon_damage_2": {
+      "currency": "cores",
+      "cost": 80
+    },
+    "superweapon_damage_3": {
+      "currency": "cores",
+      "cost": 120
+    },
+    "superweapon_damage_4": {
+      "currency": "cores",
+      "cost": 160
+    },
+    "superweapon_damage_5": {
+      "currency": "cores",
+      "cost": 200
+    },
+    "superweapon_damage_6": {
+      "currency": "cores",
+      "cost": 240
+    },
+    "superweapon_damage_7": {
+      "currency": "cores",
+      "cost": 280
+    },
+    "superweapon_damage_8": {
+      "currency": "cores",
+      "cost": 320
+    },
+    "superweapon_damage_9": {
+      "currency": "cores",
+      "cost": 360
+    },
+    "superweapon_damage_10": {
+      "currency": "cores",
+      "cost": 400
+    },
+    "superweapon_damage_11": {
+      "currency": "cores",
+      "cost": 440
+    },
+    "superweapon_damage_12": {
+      "currency": "cores",
+      "cost": 480
+    },
+    "superweapon_damage_13": {
+      "currency": "cores",
+      "cost": 520
+    },
+    "superweapon_damage_14": {
+      "currency": "cores",
+      "cost": 560
+    },
+    "superweapon_damage_15": {
+      "currency": "cores",
+      "cost": 600
+    },
+    "superweapon_damage_16": {
+      "currency": "cores",
+      "cost": 640
+    },
+    "superweapon_damage_17": {
+      "currency": "cores",
+      "cost": 680
+    },
+    "superweapon_damage_18": {
+      "currency": "cores",
+      "cost": 720
+    },
+    "superweapon_damage_19": {
+      "currency": "cores",
+      "cost": 760
+    },
+    "superweapon_damage_20": {
+      "currency": "cores",
+      "cost": 800
+    },
+    "bunker_optics_1": {
+      "currency": "cores",
+      "cost": 40
+    },
+    "bunker_optics_2": {
+      "currency": "cores",
+      "cost": 80
+    },
+    "bunker_optics_3": {
+      "currency": "cores",
+      "cost": 160
+    }
+  },
+  "_comment": "局外养成（老家）配置。档位决定挂机收益与基础加成；常规强化用军需券购买，突破养成消耗战略核心，永久生效。",
+  "currencies": {
+    "diamonds": {
+      "name": "钻石",
+      "desc": "每日任务与英雄好感奖励，用于购买皮肤和抽取技能"
+    },
+    "credits": {
+      "name": "军需券",
+      "desc": "日常后勤与常规强化"
+    },
+    "cores": {
+      "name": "战略核心",
+      "desc": "购买天赋点、开格、升级天赋和技能卡、训练英雄及研究科技"
+    }
+  },
+  "tiers": [
+    {
+      "id": "t0",
+      "name": "T0 新兵档",
+      "unlock_cost": 0,
+      "income_per_hour": {
+        "credits": 240,
+        "cores": 4
+      },
+      "cap_hours": 6,
+      "stat_bonus": {
+        "attack_bonus": 1,
+        "defense_bonus": 1,
+        "hp_bonus": 1,
+        "speed_bonus": 1
+      },
+      "desc": "临时征召营地，能维持最基本的补给。"
+    },
+    {
+      "id": "t1",
+      "name": "T1 先锋档",
+      "unlock_cost": 1200,
+      "income_per_hour": {
+        "credits": 480,
+        "cores": 8
+      },
+      "cap_hours": 8,
+      "stat_bonus": {
+        "attack_bonus": 1.0125,
+        "defense_bonus": 1.0125,
+        "hp_bonus": 1.0125,
+        "speed_bonus": 1.005
+      },
+      "desc": "前线补给线建立，部队开始换装制式装备。"
+    },
+    {
+      "id": "t2",
+      "name": "T2 精锐档",
+      "unlock_cost": 5600,
+      "income_per_hour": {
+        "credits": 900,
+        "cores": 16
+      },
+      "cap_hours": 10,
+      "stat_bonus": {
+        "attack_bonus": 1.03,
+        "defense_bonus": 1.03,
+        "hp_bonus": 1.03,
+        "speed_bonus": 1.0125
+      },
+      "desc": "合金装甲与火控升级普及到每个班。"
+    },
+    {
+      "id": "t3",
+      "name": "T3 王牌档",
+      "unlock_cost": 22000,
+      "income_per_hour": {
+        "credits": 1700,
+        "cores": 32
+      },
+      "cap_hours": 12,
+      "stat_bonus": {
+        "attack_bonus": 1.055,
+        "defense_bonus": 1.055,
+        "hp_bonus": 1.055,
+        "speed_bonus": 1.0225
+      },
+      "desc": "老兵的战场直觉已刻进部队骨架。"
+    },
+    {
+      "id": "t4",
+      "name": "T4 传奇档",
+      "unlock_cost": 90000,
+      "income_per_hour": {
+        "credits": 3200,
+        "cores": 60
+      },
+      "cap_hours": 16,
+      "stat_bonus": {
+        "attack_bonus": 1.0875,
+        "defense_bonus": 1.0875,
+        "hp_bonus": 1.0875,
+        "speed_bonus": 1.035
+      },
+      "desc": "整个战区都以你的番号为标杆。"
+    }
+  ],
+  "upgrades": [
+    {
+      "id": "atk",
+      "name": "火力校准",
+      "stat": "attack_bonus",
+      "effect_per_level": 0.0075,
+      "max_level": 20,
+      "cost_base": 200,
+      "cost_growth": 1.32,
+      "currency": "credits",
+      "desc": "所有单位攻击力 +0.75%/级"
+    },
+    {
+      "id": "def",
+      "name": "复合装甲",
+      "stat": "defense_bonus",
+      "effect_per_level": 0.0075,
+      "max_level": 20,
+      "cost_base": 200,
+      "cost_growth": 1.32,
+      "currency": "credits",
+      "desc": "所有单位护甲系数 +0.75%/级"
+    },
+    {
+      "id": "hp",
+      "name": "强化结构",
+      "stat": "hp_bonus",
+      "effect_per_level": 0.01,
+      "max_level": 20,
+      "cost_base": 240,
+      "cost_growth": 1.32,
+      "currency": "credits",
+      "desc": "所有单位最大生命 +1%/级"
+    },
+    {
+      "id": "speed",
+      "name": "引擎调校",
+      "stat": "speed_bonus",
+      "effect_per_level": 0.005,
+      "max_level": 10,
+      "cost_base": 300,
+      "cost_growth": 1.4,
+      "currency": "credits",
+      "desc": "所有单位移动速度 +0.5%/级"
+    },
+    {
+      "id": "build",
+      "name": "模块化预制",
+      "stat": "build_bonus",
+      "effect_per_level": 0.0075,
+      "max_level": 15,
+      "cost_base": 260,
+      "cost_growth": 1.34,
+      "currency": "credits",
+      "desc": "建造与生产速度 +0.75%/级"
+    },
+    {
+      "id": "ore_delivery",
+      "name": "矿车交矿增收",
+      "stat": "ore_delivery_bonus",
+      "effect_per_level": 0.005,
+      "max_level": 20,
+      "cost_base": 400,
+      "cost_growth": 1.38,
+      "currency": "credits",
+      "desc": "新开的扩展对局中，己方矿车每次交矿所得资金 +0.5%/级，满级 +10%。可与矿石精炼器叠加。"
+    },
+    {
+      "id": "income",
+      "name": "后勤网络",
+      "stat": "income_bonus",
+      "effect_per_level": 0.08,
+      "max_level": 20,
+      "cost_base": 400,
+      "cost_growth": 1.38,
+      "currency": "credits",
+      "desc": "挂机收益 +8%/级"
+    },
+    {
+      "id": "cap",
+      "name": "仓储扩容",
+      "stat": "cap_bonus",
+      "effect_per_level": 0.5,
+      "max_level": 20,
+      "cost_base": 500,
+      "cost_growth": 1.42,
+      "currency": "credits",
+      "desc": "挂机累积上限 +0.5 小时/级"
+    },
+    {
+      "id": "deploy",
+      "name": "快速部署",
+      "stat": "deploy_bonus",
+      "effect_per_level": 0.005,
+      "max_level": 20,
+      "cost_base": 350,
+      "cost_growth": 1.36,
+      "currency": "credits",
+      "desc": "开局额外 +0.5% 初始资金/级"
+    }
+  ],
+  "unit_upgrades": {
+    "_comment": "单位改造（局外·逐单位）：独立强化火力、装甲及指定兵种机制；Q 固有主动、W 装配主动、1 装配被动、E 特殊操作。",
+    "slots": {
+      "active": 2,
+      "passive": 1
+    },
+    "tracks": [
+      {
+        "id": "atk",
+        "name": "定制火力",
+        "stat": "attack_bonus",
+        "effect_per_level": 0.0075,
+        "max_level": 20,
+        "cost_base": 500,
+        "cost_growth": 1.35,
+        "currency": "credits",
+        "desc": "该单位攻击力 +0.75%/级"
+      },
+      {
+        "id": "def",
+        "name": "定制装甲",
+        "stat": "defense_bonus",
+        "effect_per_level": 0.00625,
+        "max_level": 20,
+        "cost_base": 500,
+        "cost_growth": 1.35,
+        "currency": "credits",
+        "desc": "该单位护甲系数 +0.625%/级，20 级时该项实际减伤约 11.1%"
+      },
+      {
+        "id": "skill",
+        "retired": true,
+        "name": "技能强化",
+        "stat": "skill_bonus",
+        "effect_per_level": 0.06,
+        "max_level": 20,
+        "cost_base": 500,
+        "cost_growth": 1.35,
+        "currency": "credits",
+        "desc": "强化本兵种指定机制；具体变化见下方，不强化 Q 卡牌、W 或装配被动"
+      }
+    ]
+  },
+  "idle": {
+    "tick_seconds": 60,
+    "offline_cap_hours": 26,
+    "settlement": {
+      "win_credits": 800,
+      "win_cores": 20,
+      "lose_credits": 200,
+      "lose_cores": 5,
+      "per_kill_credits": 3,
+      "wave_credits": 180,
+      "wave_cores": 4
+    }
+  }
+}

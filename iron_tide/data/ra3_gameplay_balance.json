@@ -1,0 +1,10 @@
+{
+  "tesla_tank": {
+    "promotion_thresholds": [6600, 13200, 19800],
+    "heroic_charge_seconds": 0.2
+  },
+  "future_riot": {
+    "structure_damage_multiplier": 0.5,
+    "note": "IronTide balance override requested by the player: halve Q damage to structures after native nugget scalars. Not an official Uprising value."
+  }
+}

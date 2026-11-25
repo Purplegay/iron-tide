@@ -1,0 +1,5 @@
+# Shared RTS target windows, independent GDScript prototype
+Evidence .validation/yuri-grid-20261123: a/b sources; run-{2,3}-{a,b} 5x graphical Release 30 seconds, player save/meta frozen. All four host audits require review. Slot2 P95 294.583 to 498.721 ms; slot3 643.635 to 412.853 ms. Sim 152.13 to 153.13 seconds, wall 30.01 to 30.12. No promotion, no published package.
+Candidate caches readonly arrays by integer cell rectangle, invalidates on insert/remove/relocation, copies before adding retaliation targets. Does not cache weapon, faction or visibility eligibility. Not a Yuri engine transplant.
+Separate headless diagnostic checks every hit against the original ordered array. Last samples slot2 11918/38100 hits, slot3 8053/28600 hits, zero differences. This does not prove lockstep battle equivalence. Do not repeat global-invalidation target window cache as a new optimization.
+Acceptance remains graphical Release P95 <=16ms at actual 5x in both saved battles. Per-unit combat callbacks and firing are still running on the original backend.

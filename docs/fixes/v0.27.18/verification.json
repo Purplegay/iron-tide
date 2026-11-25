@@ -1,0 +1,117 @@
+{
+  "version": "0.27.18",
+  "tests": {
+    "final-collector": {
+      "checks": 56,
+      "failed": 0,
+      "metrics": [
+        {
+          "calls": 100000,
+          "disabled_us": 21300,
+          "enabled_us": 36177,
+          "mode": "ra2",
+          "samples": 3168
+        },
+        {
+          "calls": 100000,
+          "disabled_us": 20996,
+          "enabled_us": 35132,
+          "mode": "iron_tide",
+          "samples": 3168
+        }
+      ],
+      "report": "C:\\Users\\admin\\Temp\\iron-call-log-20261109\\final-collector\\result.json"
+    },
+    "final-bridge": {
+      "checks": 16,
+      "failed": 0,
+      "metrics": [],
+      "report": "C:\\Users\\admin\\Temp\\iron-call-log-20261109\\final-bridge\\result.json"
+    }
+  },
+  "sources": {
+    "scripts/buildings/building.gd": "878dfb09f726d3690d1109f9a276351d1909c1d192d4ae6dbcd892cf3db6507e",
+    "scripts/buildings/repair_dock.gd": "8ff03bb7af9152a9dc75022e51a3e5c96c20e38db90a4d609625ee0c760efe66",
+    "scripts/core/ra2_fx.gd": "3839e1c258d6226b9f5a20a292d2972aa8b54096288530a8cbb25c9a3d7ee391",
+    "scripts/screens/battle_screen.gd": "ff82c109344edd4df29333da1f6560620ba97872408cd49be610828c3a2d07fa",
+    "scripts/ui/hud.gd": "dccd18cf26e118654d1e32c7161c6dd39980cb736262fd43af4945edd5ee2a8f",
+    "scripts/ui/minimap.gd": "d9cf7fddbf4d43226727f6dc3663f56827ee7214d611ff9c8e6659021b83c24d",
+    "scripts/units/auto_w.gd": "18e60eb191629d2703d3bc2b60470effce30cc99cc42ffa9c2f43865c0c79884",
+    "scripts/units/local_traffic.gd": "99db4a1fc95256f290e83345007e4ff54bd706cadbf45583004fd03bc9febcc4",
+    "scripts/units/open_topped.gd": "422381493de2b29c5695d197303d761a4a3cfd721742ab8c02ec9d8baf96b43d",
+    "scripts/units/projectile.gd": "af30c6ec970336524c50b657487e37228975bc409bf848d6bc2c9ee31892e188",
+    "scripts/units/unit.gd": "310a59312d120e221074d29378f135bc74bf9310781ac28d38625156e3a92db0",
+    "scripts/units/unit_logistics.gd": "e0d4714bd01e5ae58fce6544b3f0a1cac411aa331be3d5e53604450f8e9c2354",
+    "scripts/world/battle.gd": "0ec0bf68cb6c4c132e70ab3badd423306f53876c39c4b0d65112fb476f9d8d87",
+    "scripts/world/battle_call_counters.gd": "920cbd72a612b73adf76856b8392a3040f28eff4e18bf311ed0f28ce8e0c72d4",
+    "scripts/world/battle_call_log.gd": "3c354d92ea56a94d0950bb338927bb0d05bb2394c13db51f6a1dc3786f24ac62",
+    "scripts/world/battle_neighborhood.gd": "d26c6cdf2488524608464043436a8d4f190d425bb43d36f5c9d00b517bdc23b5",
+    "scripts/world/fog_of_war.gd": "6daec35a87b40ea9121cbc3ecf87d77aa60c32a2a4be643cc918dc010dfbf81a",
+    "scripts/world/house_ai.gd": "e1f6d674ce3bd7cee7ba68e66a0c9bb0cc37a787f523daf91dceaa513fe1f391",
+    "scripts/world/path_service.gd": "b3bb8e7ca78ebdd839151a5d750c66366614fd03e0843c5add76b28c4a98941f",
+    "scripts/world/performance_snapshot.gd": "ca5275867610f146a7a51f8366dc0d01055b96f4bdfd9215006bb5fd0a9cf71c",
+    "scripts/world/skirmish_ai.gd": "5cee16c571ea879e1cccf44b587aaca4b00e8d8183d0bd5358685693d3a89dfb",
+    "scripts/world/vehicle_passages.gd": "9c13bbb8eb004b32895d3eaf78f808e9347b29721fce38cd8af40bc2a9182f26",
+    "tests/battle_call_log_regression.gd": "aef2c18fa85607100b2589b971f038a20b530ce499eb6fff113e7be010dd371b",
+    "tests/battle_call_log_regression.tscn": "89047b4c630554b3d8e69b9f7aea946ad9830853fd7af0a9e8b44ab45b68738a",
+    "tests/battle_call_log_save_regression.gd": "dbcbc7d852c4c466f76f20f263a9d164e45e43d3949bf94e06a5165c5abeb991",
+    "tests/battle_call_log_save_regression.tscn": "a5a262d724515b8189adfe7c412387a648d07be44fe8f4c3b51348f79e240e17"
+  },
+  "registered_entrypoints": 41,
+  "environment": {
+    "headless": true,
+    "hidden_process": true,
+    "custom_user_directory": "CodexIronTideValidation/calllog1109",
+    "player_userdata_modified": false,
+    "services": "none"
+  },
+  "save_replay": {
+    "passed": true,
+    "record_count": 4,
+    "report": "C:\\Users\\admin\\Temp\\iron-call-log-20261109\\live-final\\result.json",
+    "windows": [
+      {
+        "seconds": 30.015011,
+        "units": 346.0,
+        "p95_ms": 103.0,
+        "collection_cpu_us": 773.0,
+        "top_calls": [
+          "auto_w.tick",
+          "unit._physics_process",
+          "unit._tick_skills",
+          "unit_logistics.tick",
+          "building._process"
+        ],
+        "top_estimated_time": [
+          "unit._physics_process",
+          "building._process",
+          "unit._process_combat",
+          "fog_of_war._process",
+          "fog_of_war.rebuild"
+        ]
+      },
+      {
+        "seconds": 30.020418,
+        "units": 353.0,
+        "p95_ms": 70.0,
+        "collection_cpu_us": 624.0,
+        "top_calls": [
+          "building._process",
+          "auto_w.tick",
+          "unit._physics_process",
+          "unit._tick_skills",
+          "unit_logistics.tick"
+        ],
+        "top_estimated_time": [
+          "unit._physics_process",
+          "building._process",
+          "fog_of_war._process",
+          "unit._process_combat",
+          "fog_of_war.rebuild"
+        ]
+      }
+    ],
+    "note": "Replay precedes whitespace-only formatting of logger/counters; final collector and bridge suites use byte-identical final sources."
+  },
+  "save_replay_entrypoint": "Scene parsed with autoloads; missing save input correctly rejected with exit 2. Standalone --script check does not load project autoloads and is not an acceptance route."
+}

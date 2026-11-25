@@ -1,0 +1,128 @@
+{
+  "hero_contracts": [
+    {
+      "id": "yinpian_contract",
+      "hero_id": "FV",
+      "name": "引片「末班放映」契约",
+      "cards": [
+        "ap_convoy_crew",
+        "ps_convoy_mirror"
+      ]
+    },
+    {
+      "id": "laocheng_contract",
+      "hero_id": "HARV",
+      "name": "老秤「第九磅单」契约",
+      "cards": [
+        "ap_convoy_press",
+        "ps_convoy_heat"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "ap_convoy_crew",
+      "name": "点将上车",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "FV"
+      ],
+      "scope_icon": "vehicle",
+      "scope_note": "英雄引片专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "effect": "ap_convoy_crew",
+      "value": 0,
+      "radius": 55,
+      "target": "self",
+      "cooldown_by_rank": [
+        40,
+        36,
+        32,
+        28
+      ],
+      "desc": "手动选择当前科技可生产的普通步兵入座，立即切换炮塔。",
+      "values": {}
+    },
+    {
+      "id": "ps_convoy_mirror",
+      "name": "双机联映",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "FV"
+      ],
+      "scope_icon": "vehicle",
+      "scope_note": "英雄引片专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "effect": "ps_convoy_mirror",
+      "value": 0,
+      "radius": 55,
+      "desc": "三轮有效攻击或维修投出持续六秒的同模式副炮塔，输出为本车的{power_pct}%，冷却十八秒。",
+      "values": {
+        "power": [
+          0.5,
+          0.6,
+          0.7,
+          0.8
+        ]
+      }
+    },
+    {
+      "id": "ap_convoy_press",
+      "name": "磅重锤",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "HARV"
+      ],
+      "scope_icon": "vehicle",
+      "scope_note": "英雄老秤专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "effect": "ap_convoy_press",
+      "value": 0,
+      "radius": 55,
+      "target": "point",
+      "cooldown_by_rank": [
+        32,
+        30,
+        28,
+        26
+      ],
+      "desc": "点选敌方地面车辆或建筑。虚线是驶近路线，实线是弹道；距离超过五格时自动驶入射程。压锤0.6秒后发射。有四分之一原仓矿时打出热锭，伤害翻倍，直线溅射并封路五秒。",
+      "values": {}
+    },
+    {
+      "id": "ps_convoy_heat",
+      "name": "越打越准",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "HARV"
+      ],
+      "scope_icon": "vehicle",
+      "scope_note": "英雄老秤专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "expansion": true,
+      "effect": "ps_convoy_heat",
+      "value": 0,
+      "radius": 55,
+      "desc": "连续实射两秒和四秒时射速升至1.3倍和1.6倍。停火保温{keep}秒后逐档回落。",
+      "values": {
+        "keep": [
+          1,
+          1.5,
+          2,
+          2.5
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,975 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "id": "ap_watch_posts",
+      "name": "一人成军",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "E1"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ap_watch_posts",
+      "value": 0,
+      "cooldown_by_rank": [
+        75,
+        68,
+        61,
+        55
+      ],
+      "desc": "本体自动卧倒，展开三座卧倒固定哨位，部署后自动攻击射程内敌人，超过本人6格消失。持续{life}秒，每座生命为本体的{hp_pct}%，火力为本体卧倒火力的{damage_pct}%。技能2级起，本体与三座哨位解锁对空攻击；本体可按D起身后移动。",
+      "expansion": true,
+      "values": {
+        "life": [
+          10,
+          12,
+          14,
+          16
+        ],
+        "hp": [
+          0.15,
+          0.2,
+          0.25,
+          0.3
+        ],
+        "damage": [
+          0.4,
+          0.5,
+          0.6,
+          0.7
+        ]
+      }
+    },
+    {
+      "id": "ps_watch_succession",
+      "name": "哨位继承",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "E1"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ps_watch_succession",
+      "value": 0,
+      "cooldown_by_rank": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "desc": "阵亡时随机哨像读条2秒继任；被毁转移候补，每局一次。重构生命{hp_pct}%，停火{lock}秒。",
+      "expansion": true,
+      "values": {
+        "hp": [
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ],
+        "lock": [
+          2,
+          1.5,
+          1,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": "ap_north_twin",
+      "name": "双星易位",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "MTNK"
+      ],
+      "scope_icon": "hightech",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ap_north_twin",
+      "value": 0,
+      "cooldown_by_rank": [
+        65,
+        60,
+        55,
+        50
+      ],
+      "desc": "时差车持续{life}秒，生命/伤害{hp_pct}%；默认跟随本体攻击目标，手动指定后可独立攻击。期间不限次易位，间隔{swap}秒，最多8格。",
+      "expansion": true,
+      "values": {
+        "life": [
+          12,
+          14,
+          16,
+          18
+        ],
+        "hp": [
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ],
+        "damage": [
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ],
+        "swap": [
+          2,
+          1.75,
+          1.5,
+          1.25
+        ]
+      }
+    },
+    {
+      "id": "ps_north_echo",
+      "name": "昨日弹仓",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "MTNK"
+      ],
+      "scope_icon": "hightech",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ps_north_echo",
+      "value": 0,
+      "cooldown_by_rank": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "desc": "主炮命中后1.5秒原点重放{damage_pct}%伤害，无需移动；记录间隔{interval}秒，最多三枚。",
+      "expansion": true,
+      "values": {
+        "damage": [
+          0.15,
+          0.2,
+          0.25,
+          0.3
+        ],
+        "interval": [
+          3,
+          2.5,
+          2,
+          1.5
+        ]
+      }
+    },
+    {
+      "id": "ap_spine_crown",
+      "name": "废铁王冠",
+      "type": "active",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "HTNK"
+      ],
+      "scope_icon": "heavy",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ap_spine_crown",
+      "value": 0,
+      "cooldown_by_rank": [
+        40,
+        37,
+        34,
+        30
+      ],
+      "desc": "发射基础一枚与全部废铁，每枚{damage_pct}%主炮伤害；碎铁带{life}秒、减速{slow_pct}%。",
+      "expansion": true,
+      "values": {
+        "damage": [
+          0.2,
+          0.23,
+          0.26,
+          0.3
+        ],
+        "life": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "slow": [
+          0.15,
+          0.2,
+          0.25,
+          0.3
+        ],
+        "radius": [
+          1.5,
+          1.5,
+          2,
+          2
+        ]
+      },
+      "target": "point"
+    },
+    {
+      "id": "ps_spine_scrap",
+      "name": "钢铁拾荒",
+      "type": "passive",
+      "rarity": "ultimate",
+      "allowed_units": [
+        "HTNK"
+      ],
+      "scope_icon": "heavy",
+      "scope_note": "英雄专属",
+      "unlock": "contract",
+      "hero_only": true,
+      "effect": "ps_spine_scrap",
+      "value": 0,
+      "cooldown_by_rank": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "desc": "6格内敌战斗车辆留下残片，2格吸收为装甲；最多{count}块，每块生命上限{hp_pct}%，脱战{idle}秒后逐块掉落。",
+      "expansion": true,
+      "values": {
+        "count": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "hp": [
+          0.04,
+          0.05,
+          0.06,
+          0.07
+        ],
+        "idle": [
+          15,
+          18,
+          21,
+          24
+        ]
+      }
+    },
+    {
+      "id": "ps_field_relay",
+      "name": "战地接力",
+      "type": "passive",
+      "rarity": "rare",
+      "allowed_units": [
+        "E1",
+        "E2",
+        "GGI"
+      ],
+      "scope_icon": "infantry",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_field_relay",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "2格内友军步兵战死，下一次装填缩短{reload_pct}%，保留4秒，间隔12秒。",
+      "expansion": true,
+      "values": {
+        "reload": [
+          0.2,
+          0.25,
+          0.3,
+          0.35
+        ]
+      }
+    },
+    {
+      "id": "ap_tracer_mark",
+      "name": "破甲曳光",
+      "type": "active",
+      "rarity": "rare",
+      "allowed_units": [
+        "MTNK",
+        "HTNK"
+      ],
+      "scope_icon": "vehicle",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_tracer_mark",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "6秒内下一炮给敌车标记4秒，后续三次友军载具炮击增伤{damage_pct}%。",
+      "expansion": true,
+      "values": {
+        "damage": [
+          0.05,
+          0.07,
+          0.09,
+          0.12
+        ]
+      }
+    },
+    {
+      "id": "ps_zero_arc",
+      "name": "零点放电",
+      "type": "passive",
+      "rarity": "rare",
+      "allowed_units": [
+        "SHK",
+        "TTNK",
+        "TESLA"
+      ],
+      "scope_icon": "electric",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_zero_arc",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "连续三击同一目标，第三击跳向1.5格内旁敌，造成{damage_pct}%伤害；转火或4秒未命中清零。",
+      "expansion": true,
+      "values": {
+        "damage": [
+          0.15,
+          0.2,
+          0.25,
+          0.3
+        ]
+      }
+    },
+    {
+      "id": "ap_tidal_decoy",
+      "name": "潮汐诱饵",
+      "type": "active",
+      "rarity": "epic",
+      "allowed_units": [
+        "SUB"
+      ],
+      "scope_icon": "naval",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_tidal_decoy",
+      "value": 0,
+      "cooldown_by_rank": [
+        35,
+        33,
+        31,
+        28
+      ],
+      "desc": "深潜跳脱{dive}秒并加速{speed_pct}%；诱饵{life}秒，生命{hp_pct}%，嘲讽{radius}格内最多三敌，各命中一次解除。",
+      "expansion": true,
+      "values": {
+        "dive": [
+          1,
+          1.25,
+          1.5,
+          2
+        ],
+        "speed": [
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ],
+        "life": [
+          4,
+          5,
+          6,
+          7
+        ],
+        "hp": [
+          0.08,
+          0.1,
+          0.12,
+          0.15
+        ],
+        "radius": [
+          2,
+          2.5,
+          3,
+          3.5
+        ]
+      }
+    },
+    {
+      "id": "ps_deck_rotation",
+      "name": "甲板轮换",
+      "type": "passive",
+      "rarity": "rare",
+      "allowed_units": [
+        "CARRIER"
+      ],
+      "scope_icon": "naval",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_deck_rotation",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "首架舰载机返航使其他正在补充的飞机剩余时间缩短{reload_pct}%，整舰间隔20秒。",
+      "expansion": true,
+      "values": {
+        "reload": [
+          0.08,
+          0.11,
+          0.14,
+          0.17
+        ]
+      }
+    },
+    {
+      "id": "ps_formation_cover",
+      "name": "编队掩护",
+      "type": "passive",
+      "rarity": "common",
+      "allowed_units": [
+        "ORCA",
+        "BEAG"
+      ],
+      "scope_icon": "air",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_formation_cover",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "2.5格内每架装卡同方战机提供一层防空减伤，每层{defense_pct}%，最多四层；自己不计。",
+      "expansion": true,
+      "values": {
+        "defense": [
+          0.03,
+          0.04,
+          0.05,
+          0.06
+        ]
+      }
+    },
+    {
+      "id": "ps_prism_recycle",
+      "name": "棱镜回收",
+      "type": "passive",
+      "rarity": "epic",
+      "allowed_units": [
+        "SREF"
+      ],
+      "scope_icon": "hightech",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_prism_recycle",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "光束或折射击杀获得棱晶，最多三枚，8秒过期；消耗一枚使装填缩短{reload_pct}%，该发主光束额外伤害{damage_pct}%。",
+      "expansion": true,
+      "values": {
+        "reload": [
+          0.12,
+          0.16,
+          0.2,
+          0.24
+        ],
+        "damage": [
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "ap_seismic_anchor",
+      "name": "震地锚",
+      "type": "active",
+      "rarity": "legend",
+      "allowed_units": [
+        "SCHP"
+      ],
+      "scope_icon": "explosive",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_seismic_anchor",
+      "value": 0,
+      "cooldown_by_rank": [
+        40,
+        37,
+        34,
+        30
+      ],
+      "desc": "部署炮形态：预警1秒，1.5格内首击{damage_pct}%；之后区域持续{life}秒，每秒余震{pulse_pct}%，减速{slow_pct}%。",
+      "expansion": true,
+      "values": {
+        "life": [10, 10, 10, 10],
+        "damage": [
+          0.5,
+          0.65,
+          0.8,
+          1
+        ],
+        "pulse": [
+          0.1,
+          0.15,
+          0.2,
+          0.25
+        ],
+        "slow": [
+          0.2,
+          0.25,
+          0.3,
+          0.35
+        ]
+      },
+      "target": "point"
+    },
+    {
+      "id": "ap_bomb_nests",
+      "name": "空投弹巢",
+      "type": "active",
+      "rarity": "common",
+      "allowed_units": [
+        "ZEP"
+      ],
+      "scope_icon": "explosive",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_bomb_nests",
+      "value": 0,
+      "cooldown_by_rank": [
+        50,
+        46,
+        42,
+        38
+      ],
+      "desc": "间隔0.6秒投下三枚弹巢，各0.6秒落地、0.3秒启用；存续{life}秒，触发造成炸弹基准{damage_pct}%伤害。",
+      "expansion": true,
+      "values": {
+        "life": [
+          6,
+          7,
+          8,
+          10
+        ],
+        "damage": [
+          0.25,
+          0.3,
+          0.35,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": "ps_drone_trip",
+      "name": "断电追猎",
+      "type": "passive",
+      "rarity": "epic",
+      "allowed_units": [
+        "DRON"
+      ],
+      "scope_icon": "electric",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ps_drone_trip",
+      "value": 0,
+      "cooldown_by_rank": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "desc": "每第三次寄生伤害令宿主不能移动{lock}秒，不禁开火；间隔4秒。",
+      "expansion": true,
+      "values": {
+        "lock": [
+          0.3,
+          1.4,
+          1.5,
+          2.6
+        ]
+      }
+    },
+    {
+      "id": "ap_ink_mine",
+      "name": "海底伏雷",
+      "type": "active",
+      "rarity": "rare",
+      "allowed_units": [
+        "SQD"
+      ],
+      "scope_icon": "naval",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_ink_mine",
+      "value": 0,
+      "cooldown_by_rank": [
+        35,
+        35,
+        35,
+        35
+      ],
+      "desc": "未抓持时布设墨团雷，0.8秒后启用，持续{life}秒；1格内敌水面舰触发{damage_pct}%触手伤害，减速30%两秒。",
+      "expansion": true,
+      "values": {
+        "life": [
+          10,
+          12,
+          14,
+          16
+        ],
+        "damage": [
+          0.4,
+          0.5,
+          0.6,
+          0.75
+        ]
+      }
+    },
+    {
+      "id": "ap_mirror_fork",
+      "name": "折光岔路",
+      "type": "active",
+      "rarity": "legend",
+      "allowed_units": [
+        "MGTK"
+      ],
+      "scope_icon": "hightech",
+      "scope_note": "仅限所列兵种",
+      "unlock": "gacha",
+      "hero_only": false,
+      "effect": "ap_mirror_fork",
+      "value": 0,
+      "cooldown_by_rank": [
+        40,
+        37,
+        34,
+        30
+      ],
+      "desc": "两辆镜像沿左右45度移动并射击，生命{hp_pct}%，普攻继承本体{damage_pct}%，持续{life}秒；本体与镜像加速{speed_pct}%两秒。被击毁、到期或再次按W时引爆，对{radius}格内敌地面单位和建筑造成本体攻击{blast_pct}%伤害。存续期再按W，转移至当前生命较高的镜像处，获得等于其剩余生命的护盾，持续8秒，并引爆两辆镜像；不额外隐形。",
+      "expansion": true,
+      "values": {
+        "hp": [
+          0.08,
+          0.1,
+          0.12,
+          0.15
+        ],
+        "life": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "speed": [
+          0.2,
+          0.25,
+          0.3,
+          0.35
+        ],
+        "damage": [
+          0.3,
+          0.35,
+          0.4,
+          0.5
+        ],
+        "blast": [
+          0.6,
+          0.75,
+          0.9,
+          1.1
+        ],
+        "radius": [
+          1.5,
+          1.5,
+          1.5,
+          1.5
+        ]
+      }
+    }
+  ],
+  "unit_talents": {
+    "MGTK": {
+      "mirage_afterheat": {
+        "name": "伪装余温",
+        "desc": "伪装3秒后的首发命中，后三次装填缩短10/15/20/25%；触发冷却15秒，剩余次数未用完不重叠。",
+        "base": 10,
+        "ranks": [
+          {
+            "value": 15
+          },
+          {
+            "value": 20
+          },
+          {
+            "value": 25
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "reload": [
+            0.1,
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      }
+    },
+    "DEST": {
+      "naval_tracking": {
+        "name": "航标续追",
+        "desc": "鱼鹰命中潜艇后，本舰及所属鱼鹰继续追踪2/2.5/3/4秒，武器射程和弹药限制保持。",
+        "base": 2,
+        "ranks": [
+          {
+            "value": 2.5
+          },
+          {
+            "value": 3
+          },
+          {
+            "value": 4
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "life": [
+            2,
+            2.5,
+            3,
+            4
+          ]
+        }
+      }
+    },
+    "TTNK": {
+      "ground_capacitor": {
+        "name": "接地电容",
+        "desc": "停火静止2秒蓄电，离开1格自动留置电容4/5/6/7秒；敌人进入1格内时，对范围内全部可见敌方地面单位造成15/20/25/30%电击，随后电容消失；间隔10秒。",
+        "base": 15,
+        "ranks": [
+          {
+            "value": 20
+          },
+          {
+            "value": 25
+          },
+          {
+            "value": 30
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "life": [
+            4,
+            5,
+            6,
+            7
+          ],
+          "damage": [
+            0.15,
+            0.2,
+            0.25,
+            0.3
+          ]
+        }
+      }
+    },
+    "V3": {
+      "lost_missile": {
+        "name": "失联预案",
+        "desc": "离架火箭被敌方拦截，当前剩余补弹时间缩短10/15/20/25%，每轮一次。",
+        "base": 10,
+        "ranks": [
+          {
+            "value": 15
+          },
+          {
+            "value": 20
+          },
+          {
+            "value": 25
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "reload": [
+            0.1,
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      }
+    },
+    "HTK": {
+      "empty_firepower": {
+        "name": "空载火力",
+        "desc": "无人乘坐时，直接对地与对空武器增伤10/15/20/25%；上客暂停，空载恢复。",
+        "base": 10,
+        "ranks": [
+          {
+            "value": 15
+          },
+          {
+            "value": 20
+          },
+          {
+            "value": 25
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "damage": [
+            0.1,
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      }
+    },
+    "DLPH": {
+      "third_sonic": {
+        "name": "三重穿波",
+        "desc": "每第三次声波贯穿目标前沿途及目标后2格，每个目标整条波仅一次，伤害100/110/120/130%。",
+        "base": 100,
+        "ranks": [
+          {
+            "value": 110
+          },
+          {
+            "value": 120
+          },
+          {
+            "value": 130
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "damage": [
+            1,
+            1.1,
+            1.2,
+            1.3
+          ]
+        }
+      }
+    },
+    "CARRIER": {
+      "sortie_afterburn": {
+        "name": "受击加力",
+        "desc": "每架舰载机每次出航首次受伤后，航速+50/60/70/80%、伤害+10/15/20/25%，落舰结束。",
+        "base": 50,
+        "ranks": [
+          {
+            "value": 60
+          },
+          {
+            "value": 70
+          },
+          {
+            "value": 80
+          }
+        ],
+        "stat": "效果",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "speed": [
+            0.5,
+            0.6,
+            0.7,
+            0.8
+          ],
+          "damage": [
+            0.1,
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      }
+    },
+    "BEAG": {
+      "dive_momentum": {
+        "name": "俯冲余势",
+        "desc": "满弹出动后首次对敌投弹，加速10/15/20/25%两秒，并隐身1/1.25/1.5/2秒（对应0～3级）；同次出动不重复触发，落地补满后重新获得一次资格。隐身期间敌方无法常规发现和锁定，已发射弹药和范围伤害仍可命中。",
+        "base": 10,
+        "ranks": [
+          {
+            "value": 15
+          },
+          {
+            "value": 20
+          },
+          {
+            "value": 25
+          }
+        ],
+        "stat": "投弹后加速",
+        "suffix": "%",
+        "expansion": true,
+        "values": {
+          "cloak": [1.0, 1.25, 1.5, 2.0],
+          "speed": [
+            0.1,
+            0.15,
+            0.2,
+            0.25
+          ]
+        }
+      }
+    }
+  }
+}

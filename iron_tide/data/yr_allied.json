@@ -1,0 +1,865 @@
+{
+  "version": 1,
+  "source": "Local Steam Yuri Revenge",
+  "units": [
+    {
+      "id": "GGI",
+      "name": "重装大兵",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "反装甲步兵",
+      "ra2": true,
+      "expansion": "yr",
+      "cost": 400,
+      "build_time": 8,
+      "hp": 100,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 45,
+      "sight": 330,
+      "radius": 7,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "ra2_prereq": [
+        "GAPILE"
+      ],
+      "tech_level": 2,
+      "image": "GGI",
+      "cameo": "GDGIICON",
+      "movement_zone": "infantry",
+      "voxel": false,
+      "deployer": true,
+      "deploy_frame": 315,
+      "deploy_attack_mult": 1,
+      "deploy_defense_mult": 1,
+      "deployed_crushable": false,
+      "deployed_prone": false,
+      "desc": "行走时用机枪作战。部署后改用导弹迎击装甲和飞机，近处有射击盲区。部署期间无法移动，普通坦克也无法将他碾过。",
+      "move": {
+        "speed": 45,
+        "speed_units": 3,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "weapon": {
+        "name": "M60",
+        "attack_type": "bullet",
+        "damage": 15,
+        "cooldown": 1.3333333333333333,
+        "range": 220,
+        "min_range": 0,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_M60",
+        "ra2_warhead": "YR_SA",
+        "ra2_projectile": "YR_InvisibleLow",
+        "ra2_aa": false,
+        "report": "YR_GIAttack"
+      },
+      "elite_weapon": {
+        "name": "M60E",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 1.3333333333333333,
+        "range": 220,
+        "min_range": 0,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_M60E",
+        "ra2_warhead": "YR_SA",
+        "ra2_projectile": "YR_InvisibleLow",
+        "ra2_aa": false,
+        "report": "YR_GIAttack"
+      },
+      "deployed_weapon": {
+        "name": "MissileLauncher",
+        "attack_type": "rocket",
+        "damage": 40,
+        "cooldown": 2.6666666666666665,
+        "range": 440,
+        "min_range": 55,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_MissileLauncher",
+        "ra2_warhead": "YR_GUARDWH",
+        "ra2_projectile": "YR_AAHeatSeeker2",
+        "ra2_aa": true,
+        "report": "YR_GuardianGIDeployedAttack"
+      },
+      "elite_deployed_weapon": {
+        "name": "MissileLauncherE",
+        "attack_type": "rocket",
+        "damage": 50,
+        "cooldown": 1.3333333333333333,
+        "range": 440,
+        "min_range": 55,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "ra2_weapon_id": "YR_MissileLauncherE",
+        "ra2_warhead": "YR_GUARDWH",
+        "ra2_projectile": "YR_AAHeatSeeker2",
+        "ra2_aa": true,
+        "report": "YR_GuardianGIDeployedAttack"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "M60E",
+          "attack_type": "bullet",
+          "damage": 25,
+          "cooldown": 1.3333333333333333,
+          "range": 220,
+          "min_range": 0,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "ra2_weapon_id": "YR_M60E",
+          "ra2_warhead": "YR_SA",
+          "ra2_projectile": "YR_InvisibleLow",
+          "ra2_aa": false,
+          "report": "YR_GIAttack"
+        }
+      },
+      "voice": {
+        "select": "YR_GuardianGISelect",
+        "move": "YR_GuardianGIMove",
+        "attack": "YR_GuardianGIAttackCommand",
+        "feedback": "YR_GuardianGIFear",
+        "special": "YR_GuardianGIMove",
+        "die": "YR_GuardianGIDie",
+        "crush": "YR_InfantrySquish",
+        "deploy": "YR_GuardianGIDeploy",
+        "undeploy": "YR_GIUndeploy"
+      }
+    }
+  ],
+  "source_units": {
+    "GGI": {
+      "id": "GGI",
+      "kind": "infantry",
+      "rules_name": "Guardian GI",
+      "uiname_label": "GuardianGI",
+      "display_name": "Guardian GI",
+      "image": "GGI",
+      "category": "Soldier",
+      "hp": 100,
+      "armor": "none",
+      "speed": 3,
+      "sight": 6,
+      "cost": 400,
+      "tech_level": 2,
+      "points": 10,
+      "prerequisites": [
+        "GAPILE"
+      ],
+      "owner": [
+        "British",
+        "French",
+        "Germans",
+        "Americans",
+        "Alliance"
+      ],
+      "sides": [
+        "allied"
+      ],
+      "cameo": "GDGIICON",
+      "alt_cameo": "GDGIUICO",
+      "voxel": false,
+      "sequence": "GuardianGISequence",
+      "foundation": null,
+      "buildup": null,
+      "primary": "M60",
+      "secondary": "MissileLauncher",
+      "elite_primary": "M60E",
+      "elite_secondary": "MissileLauncherE",
+      "weapon_count": 0,
+      "soylent": 150,
+      "threat_posed": 10,
+      "size": 1,
+      "physical_size": 1,
+      "movement_zone": "Infantry",
+      "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}",
+      "turret": false,
+      "crusher": false,
+      "deployer": true,
+      "deploy_frame": 315,
+      "occupier": false,
+      "extra": {
+        "OpenTransportWeapon": "1",
+        "CrushSound": "InfantrySquish",
+        "Pip": "white",
+        "AllowedToStartInMultiplayer": "no",
+        "VoiceSelect": "GuardianGISelect",
+        "VoiceMove": "GuardianGIMove",
+        "VoiceAttack": "GuardianGIAttackCommand",
+        "VoiceFeedback": "GuardianGIFear",
+        "VoiceSpecialAttack": "GuardianGIMove",
+        "DieSound": "GuardianGIDie",
+        "ImmuneToVeins": "yes",
+        "ImmuneToPsionics": "no",
+        "Bombable": "yes",
+        "DeployFire": "yes",
+        "VeteranAbilities": "STRONGER,FIREPOWER,ROF,SIGHT,FASTER",
+        "EliteAbilities": "SELF_HEAL,STRONGER,FIREPOWER,ROF",
+        "Crushable": "yes",
+        "DeployedCrushable": "no",
+        "DeploySound": "GuardianGIDeploy",
+        "UndeploySound": "GIUndeploy",
+        "IFVMode": "16",
+        "PixelSelectionBracketDelta": "-6"
+      }
+    }
+  },
+  "weapons": {
+    "YR_M60": {
+      "id": "YR_M60",
+      "damage": 15,
+      "rof": 20,
+      "range": 4,
+      "projectile": "YR_InvisibleLow",
+      "speed": 100,
+      "warhead": "YR_SA",
+      "burst": 1,
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "report": "YR_GIAttack",
+      "bright": false,
+      "min_range": 0,
+      "ambient_damage": 0,
+      "extra": {
+        "OccupantAnim": "UCFLASH"
+      }
+    },
+    "YR_M60E": {
+      "id": "YR_M60E",
+      "damage": 25,
+      "rof": 20,
+      "range": 4,
+      "projectile": "YR_InvisibleLow",
+      "speed": 100,
+      "warhead": "YR_SA",
+      "burst": 1,
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "report": "YR_GIAttack",
+      "bright": false,
+      "min_range": 0,
+      "ambient_damage": 0,
+      "extra": {
+        "OccupantAnim": "UCFLASH"
+      }
+    },
+    "YR_MissileLauncher": {
+      "id": "YR_MissileLauncher",
+      "damage": 40,
+      "rof": 40,
+      "range": 8,
+      "projectile": "YR_AAHeatSeeker2",
+      "speed": 30,
+      "warhead": "YR_GUARDWH",
+      "burst": 1,
+      "anim": null,
+      "report": "YR_GuardianGIDeployedAttack",
+      "bright": false,
+      "min_range": 1,
+      "ambient_damage": 0,
+      "extra": {}
+    },
+    "YR_MissileLauncherE": {
+      "id": "YR_MissileLauncherE",
+      "damage": 50,
+      "rof": 20,
+      "range": 8,
+      "projectile": "YR_AAHeatSeeker2",
+      "speed": 40,
+      "warhead": "YR_GUARDWH",
+      "burst": 1,
+      "anim": null,
+      "report": "YR_GuardianGIDeployedAttack",
+      "bright": false,
+      "min_range": 1,
+      "ambient_damage": 0,
+      "extra": {}
+    }
+  },
+  "warheads": {
+    "YR_SA": {
+      "id": "YR_SA",
+      "verses_raw": "100%,80%,80%,50%,25%,25%,75%,50%,25%,100%,100%",
+      "verses": {
+        "none": 1,
+        "flak": 0.8,
+        "plate": 0.8,
+        "light": 0.5,
+        "medium": 0.25,
+        "heavy": 0.25,
+        "wood": 0.75,
+        "steel": 0.5,
+        "concrete": 0.25,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": null,
+      "percent_at_max": null,
+      "prone_damage": 0.7,
+      "inf_death": 1,
+      "wall": false,
+      "wood": false,
+      "anim_list": [
+        "PIFFPIFF",
+        "PIFFPIFF"
+      ],
+      "extra": {
+        "Bullets": "yes"
+      }
+    },
+    "YR_GUARDWH": {
+      "id": "YR_GUARDWH",
+      "verses_raw": "20%,20%,20%,100%,50%,100%,10%,10%,10%,100%,100%",
+      "verses": {
+        "none": 0.2,
+        "flak": 0.2,
+        "plate": 0.2,
+        "light": 1,
+        "medium": 0.5,
+        "heavy": 1,
+        "wood": 0.1,
+        "steel": 0.1,
+        "concrete": 0.1,
+        "special_1": 1,
+        "special_2": 1
+      },
+      "cell_spread": 0.5,
+      "percent_at_max": 0.5,
+      "prone_damage": 0.5,
+      "inf_death": 3,
+      "wall": true,
+      "wood": true,
+      "anim_list": [
+        "XGRYSML1",
+        "XGRYSML2",
+        "EXPLOSML",
+        "XGRYMED1",
+        "XGRYMED2",
+        "EXPLOMED",
+        "EXPLOLRG",
+        "TWLT070"
+      ],
+      "extra": {
+        "Conventional": "yes"
+      }
+    }
+  },
+  "projectiles": {
+    "YR_InvisibleLow": {
+      "id": "YR_InvisibleLow",
+      "aa": false,
+      "aa_raw": null,
+      "image": "none",
+      "inviso": true,
+      "arcing": false,
+      "dropping": false,
+      "rot": null,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "SubjectToCliffs": "yes",
+        "SubjectToElevation": "yes",
+        "SubjectToWalls": "yes"
+      }
+    },
+    "YR_AAHeatSeeker2": {
+      "id": "YR_AAHeatSeeker2",
+      "aa": true,
+      "aa_raw": "yes",
+      "image": "DRAGON",
+      "inviso": false,
+      "arcing": false,
+      "dropping": false,
+      "rot": 60,
+      "shadow": false,
+      "proximity": false,
+      "vertical": false,
+      "extra": {
+        "Arm": "2",
+        "Ranged": "yes",
+        "AG": "yes",
+        "SubjectToCliffs": "no",
+        "SubjectToElevation": "no",
+        "SubjectToWalls": "no"
+      }
+    }
+  },
+  "art": {
+    "GGI": {
+      "shp": "res://assets/ra2/shp/GGI.png",
+      "cameo": "res://assets/ra2/cameo/GDGIICON.png"
+    }
+  },
+  "sounds": {
+    "specs": {
+      "YR_GIAttack": {
+        "sounds": [
+          "yr_ggi_igiat1a",
+          "yr_ggi_igiat1b",
+          "yr_ggi_igiat1c"
+        ],
+        "volume": 65,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIDeployedAttack": {
+        "sounds": [
+          "yr_ggi_iggiat2a",
+          "yr_ggi_iggiat2b"
+        ],
+        "volume": 1,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGISelect": {
+        "sounds": [
+          "yr_ggi_iggisea",
+          "yr_ggi_iggiseb",
+          "yr_ggi_iggisec",
+          "yr_ggi_iggised",
+          "yr_ggi_iggisee",
+          "yr_ggi_iggisef"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIMove": {
+        "sounds": [
+          "yr_ggi_iggimoa",
+          "yr_ggi_iggimob",
+          "yr_ggi_iggimoc",
+          "yr_ggi_iggimod",
+          "yr_ggi_iggimoe"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIAttackCommand": {
+        "sounds": [
+          "yr_ggi_iggiata",
+          "yr_ggi_iggiatb",
+          "yr_ggi_iggiatc",
+          "yr_ggi_iggiatd",
+          "yr_ggi_iggiate"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIFear": {
+        "sounds": [
+          "yr_ggi_iggifea",
+          "yr_ggi_iggifeb",
+          "yr_ggi_iggifec",
+          "yr_ggi_iggifed",
+          "yr_ggi_iggifee",
+          "yr_ggi_iggifef"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIDie": {
+        "sounds": [
+          "yr_ggi_iggidia",
+          "yr_ggi_iggidib",
+          "yr_ggi_iggidic",
+          "yr_ggi_iggidid",
+          "yr_ggi_iggidie"
+        ],
+        "volume": 85,
+        "range": 10,
+        "type": ""
+      },
+      "YR_InfantrySquish": {
+        "sounds": [
+          "yr_ggi_igensqua"
+        ],
+        "volume": 65,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GuardianGIDeploy": {
+        "sounds": [
+          "yr_ggi_iggidepa"
+        ],
+        "volume": 60,
+        "range": 10,
+        "type": ""
+      },
+      "YR_GIUndeploy": {
+        "sounds": [
+          "yr_ggi_igidepa",
+          "yr_ggi_igidepb"
+        ],
+        "volume": 40,
+        "range": 10,
+        "type": ""
+      }
+    },
+    "entries": {
+      "yr_ggi_igiat1a": {
+        "file": "yr_ggi/igiat1a.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 12965,
+        "durMs": 588,
+        "bytes": 25974,
+        "sha256": "cf844e42f343b36e982c1e56b20d8d2b91bc35ecc381d422a0682e2d9c8761ed"
+      },
+      "yr_ggi_igiat1b": {
+        "file": "yr_ggi/igiat1b.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 13894,
+        "durMs": 630,
+        "bytes": 27832,
+        "sha256": "a8186424caaede19021bf7dc5fdfebffc918af94fd3a745130b309a87493df30"
+      },
+      "yr_ggi_igiat1c": {
+        "file": "yr_ggi/igiat1c.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 8609,
+        "durMs": 390,
+        "bytes": 17262,
+        "sha256": "e547cc67927c0e1bab2754da638246eb4b08b76b1b4addac8292795fb3eb6496"
+      },
+      "yr_ggi_iggiat2a": {
+        "file": "yr_ggi/iggiat2a.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22919,
+        "durMs": 1039,
+        "bytes": 45882,
+        "sha256": "8182bd30d549f389cfbd2d4e0d910abf6d2dd259b3b506d2986848cb84bdcba9"
+      },
+      "yr_ggi_iggiat2b": {
+        "file": "yr_ggi/iggiat2b.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 24128,
+        "durMs": 1094,
+        "bytes": 48300,
+        "sha256": "5355858238428e6b741efc06162c531a570fd0fa8a3f41896752f024cc6bd5cd"
+      },
+      "yr_ggi_iggisea": {
+        "file": "yr_ggi/iggisea.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22935,
+        "durMs": 1040,
+        "bytes": 45914,
+        "sha256": "eb6f98592227b97573f90a97a8588a307c24252a65669f32df24d5dc14a6b993"
+      },
+      "yr_ggi_iggiseb": {
+        "file": "yr_ggi/iggiseb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22022,
+        "durMs": 999,
+        "bytes": 44088,
+        "sha256": "eb35999b4e4de9f4f15ffeb9a845fce222cd743738a8b8b717be8321ccc7cc85"
+      },
+      "yr_ggi_iggisec": {
+        "file": "yr_ggi/iggisec.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 24673,
+        "durMs": 1119,
+        "bytes": 49390,
+        "sha256": "f45213c1c0c99804ce5f111c4a07aea0a24c0706b5c67385bbde23bba87ee558"
+      },
+      "yr_ggi_iggised": {
+        "file": "yr_ggi/iggised.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 27419,
+        "durMs": 1243,
+        "bytes": 54882,
+        "sha256": "fc153a2e86bf653c9c52ec98abbecfe12fed238e31992607cf15b69f7617d465"
+      },
+      "yr_ggi_iggisee": {
+        "file": "yr_ggi/iggisee.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 20597,
+        "durMs": 934,
+        "bytes": 41238,
+        "sha256": "711395aa9f91dbff7b37757b3c790172a41758b0a75a424613c6ce30f642aec3"
+      },
+      "yr_ggi_iggisef": {
+        "file": "yr_ggi/iggisef.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 20989,
+        "durMs": 952,
+        "bytes": 42022,
+        "sha256": "3e0454fd5b07713e3a523ba570750ad8eb2bfe49cbcb53fcfac0a09bc09040e3"
+      },
+      "yr_ggi_iggimoa": {
+        "file": "yr_ggi/iggimoa.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 15095,
+        "durMs": 685,
+        "bytes": 30234,
+        "sha256": "7a880f197b5b1921e9593f3bae11430f54e09b6eec54f42cbbc9f093b1a7a63d"
+      },
+      "yr_ggi_iggimob": {
+        "file": "yr_ggi/iggimob.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 16032,
+        "durMs": 727,
+        "bytes": 32108,
+        "sha256": "d92809e4b16e1ec7140649cc7cc1e592acbb67ae5a3c8f4a35444ce1bba108d6"
+      },
+      "yr_ggi_iggimoc": {
+        "file": "yr_ggi/iggimoc.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 17986,
+        "durMs": 816,
+        "bytes": 36016,
+        "sha256": "6659a4d3cf7d19058d7d3650b21b198542a9f6ac41cb5715ca02a19206071a8b"
+      },
+      "yr_ggi_iggimod": {
+        "file": "yr_ggi/iggimod.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 21229,
+        "durMs": 963,
+        "bytes": 42502,
+        "sha256": "a80193e9e9ffe56c52c6182579debba718955088b638720d83a3bb99f3bd9875"
+      },
+      "yr_ggi_iggimoe": {
+        "file": "yr_ggi/iggimoe.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 26226,
+        "durMs": 1189,
+        "bytes": 52496,
+        "sha256": "a21b8cfe71121c083c83d4ae368ff66807fbb6b8e5c2aff47b6275cadbae4e5b"
+      },
+      "yr_ggi_iggiata": {
+        "file": "yr_ggi/iggiata.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 19588,
+        "durMs": 888,
+        "bytes": 39220,
+        "sha256": "b65e2be4461ca3c006fd26514ec9a3d835abb177dbce3218c02f295e25dfdcbe"
+      },
+      "yr_ggi_iggiatb": {
+        "file": "yr_ggi/iggiatb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22046,
+        "durMs": 1000,
+        "bytes": 44136,
+        "sha256": "4e35f233a1fe6df78ec19f4d8e09c856a4d24000f672e256bb8c84e0829fc124"
+      },
+      "yr_ggi_iggiatc": {
+        "file": "yr_ggi/iggiatc.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 16144,
+        "durMs": 732,
+        "bytes": 32332,
+        "sha256": "6f0c926c6e3b3a3f47bca625f6e41339a7f7588edef8f15eb62a4a14fd235911"
+      },
+      "yr_ggi_iggiatd": {
+        "file": "yr_ggi/iggiatd.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 22166,
+        "durMs": 1005,
+        "bytes": 44376,
+        "sha256": "014fe62f384716b610244353f3af805896801e635e81e291f6aa02d8b88def68"
+      },
+      "yr_ggi_iggiate": {
+        "file": "yr_ggi/iggiate.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 24809,
+        "durMs": 1125,
+        "bytes": 49662,
+        "sha256": "2e3f91e76275156debd11967b5919f0a88ae6cc20205ed9227bae3afde663e5e"
+      },
+      "yr_ggi_iggifea": {
+        "file": "yr_ggi/iggifea.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 21998,
+        "durMs": 998,
+        "bytes": 44040,
+        "sha256": "a2f826e363d98036287ec0a057ea2889169b33e988bc2ca9adaeca917dd6fc3a"
+      },
+      "yr_ggi_iggifeb": {
+        "file": "yr_ggi/iggifeb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 19860,
+        "durMs": 901,
+        "bytes": 39764,
+        "sha256": "73f211bbbc75ad84b26d83d4865f9fff31890d0c6f1ca67732ef8207a2414bb2"
+      },
+      "yr_ggi_iggifec": {
+        "file": "yr_ggi/iggifec.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 18979,
+        "durMs": 861,
+        "bytes": 38002,
+        "sha256": "c4d3ea28272871f515a944224aef1c9b6e9f741398f2f3b6bc6a0cf225219d85"
+      },
+      "yr_ggi_iggifed": {
+        "file": "yr_ggi/iggifed.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 18803,
+        "durMs": 853,
+        "bytes": 37650,
+        "sha256": "98036a2068a4eef53e1d3c9f28898f35dcb5a90b97fd49bc49e1a0d9837407a3"
+      },
+      "yr_ggi_iggifee": {
+        "file": "yr_ggi/iggifee.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 25377,
+        "durMs": 1151,
+        "bytes": 50798,
+        "sha256": "1816e4508498d232b6f894bc93f184e5ecdaa1bfdef7328f5d2e3217af93b3c7"
+      },
+      "yr_ggi_iggifef": {
+        "file": "yr_ggi/iggifef.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 23231,
+        "durMs": 1054,
+        "bytes": 46506,
+        "sha256": "2486b3b2a71e36cc557972d71fd79a1c3d11cc6e072f961cbddcacde289cba91"
+      },
+      "yr_ggi_iggidia": {
+        "file": "yr_ggi/iggidia.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 20645,
+        "durMs": 936,
+        "bytes": 41334,
+        "sha256": "069aaa5c55b9500dc16752d88c47f7dad68866fc273c042f0ccee10bcbc74375"
+      },
+      "yr_ggi_iggidib": {
+        "file": "yr_ggi/iggidib.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 17041,
+        "durMs": 773,
+        "bytes": 34126,
+        "sha256": "d4b6d06a7985b5cf5b17c58b941ac5445aa22d2805efb2d1a19dcfd3cba197db"
+      },
+      "yr_ggi_iggidic": {
+        "file": "yr_ggi/iggidic.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 18178,
+        "durMs": 824,
+        "bytes": 36400,
+        "sha256": "239889c6e1c0b07adbbc6f433fb4dde02014b4a506921f6bb5c5b4eaa8a9fabd"
+      },
+      "yr_ggi_iggidid": {
+        "file": "yr_ggi/iggidid.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 16425,
+        "durMs": 745,
+        "bytes": 32894,
+        "sha256": "64620944c653c2f29940ace6ccfd6a7882c3f1e9809c4c2974f59388e0934580"
+      },
+      "yr_ggi_iggidie": {
+        "file": "yr_ggi/iggidie.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 13205,
+        "durMs": 599,
+        "bytes": 26454,
+        "sha256": "f51c8cd75102bd45bf979f254dee7566e8cf4e77175729bb754e5c2b4c42b0d5"
+      },
+      "yr_ggi_igensqua": {
+        "file": "yr_ggi/igensqua.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 12068,
+        "durMs": 547,
+        "bytes": 24180,
+        "sha256": "9d3e892b0c5c0785c690f80f21c360015cdf50e1ac36859df78e4a115a6e2579"
+      },
+      "yr_ggi_iggidepa": {
+        "file": "yr_ggi/iggidepa.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 15568,
+        "durMs": 706,
+        "bytes": 31180,
+        "sha256": "4303510c1ac4cfbbd970a810f80bcca01526c5c9798da1c22378381e9231401a"
+      },
+      "yr_ggi_igidepa": {
+        "file": "yr_ggi/igidepa.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 10963,
+        "durMs": 497,
+        "bytes": 21970,
+        "sha256": "fcdf9c879a5348a60b81e45bbd622a98ac26000fcd0dd3a6b766d105b50e0e98"
+      },
+      "yr_ggi_igidepb": {
+        "file": "yr_ggi/igidepb.wav",
+        "sampleRate": 22050,
+        "channels": 1,
+        "frames": 9009,
+        "durMs": 409,
+        "bytes": 18062,
+        "sha256": "d3441dab83c07f596e14f863416e62e8bbc19003c56da6d078e022fb5a0e6bc4"
+      }
+    }
+  }
+}

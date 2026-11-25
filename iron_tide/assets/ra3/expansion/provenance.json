@@ -1,0 +1,418 @@
+{
+  "source": "Steam Uprising 1.1",
+  "official_xml_commit": "3aad8e412961ab543192ae70f8503dc8e178e095",
+  "files": {
+    "refs\\ra3-expansion\\uprising\\converted\\hierarchies\\W3DHierarchy_AUFUTURETANK_SKL.json": {
+      "sha256": "dd0f1631637739652f73c836bfc6bc9e672b40b6264885c505b67c08617d9167"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUFUTURETANK_SKN.AUFUTURETANK.json": {
+      "sha256": "ba18df6c5336e63012af5b6e233d056abc9f74afd18bafc7a3239b417d4c9551"
+    },
+    "future\\AUFutureTank.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUFutureTank.png",
+      "sha256": "89530040ec8a9f68a3a4884d8b77dfdb35596d2628a1122cef6113e8034e4dc2"
+    },
+    "future\\AUFutureTank_NRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUFutureTank_NRM.png",
+      "sha256": "784aea31745858358b05a07ebd74462245aa2f9b0f0481fdfafd2d66049801f6"
+    },
+    "future\\AUFutureTank_SPM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUFutureTank_SPM.png",
+      "sha256": "565383f9d4109450fe1417271614483d45c0b4ed03d1055aed61a62a1c9ca29a"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUFUTURETANK_SKN.NEWSKIN_TREADS.json": {
+      "sha256": "0aa8e713ca230f8340a45b1b4c1a5436428896c812bd70c9543fadf89f7e9eea"
+    },
+    "future\\AUTreads.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUTreads.png",
+      "sha256": "2faa1a31c62f3c41fce510dd43e72edad9b928063abd35e2a387bbf43734c129"
+    },
+    "future\\AUTreads_NRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUTreads_NRM.png",
+      "sha256": "257ff1602393d9e356c3978537ae8c966735f72e5740982348e885ebe7a68982"
+    },
+    "future\\AUTreads_SPM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUTreads_SPM.png",
+      "sha256": "7846333a42b01cc892c37a94df6ec5eb919306ab82b14ce5f429ced3a904e5de"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ABTA.json": {
+      "sha256": "98dc17f873b9ddaec079a25f17207bc2c32638e862da95b9ca7f7fecfb5a0e2a"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_AIDA.json": {
+      "sha256": "08358348c07cf4f2ba4cd413c56d8ea6c27493be184241a07575abcf66c61d8a"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKA.json": {
+      "sha256": "8d3b7fe2d8ff35909457395143f217b45c67c4544c6e88b3b3f90ea41c8ecbda"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKB.json": {
+      "sha256": "a3ae537f0fc7dd676287e4ad90b62181cfd28619e39ce7f6d8701a588f299080"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKC.json": {
+      "sha256": "3e01ff46b75711f012ee9290f3ac904d5df572b717eeca4f38bc62de50546abb"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKD.json": {
+      "sha256": "fe224f1f3ecdde183b346fbafdfebc6056603cc062775923a4f83980db4a1ed2"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKE.json": {
+      "sha256": "8c010152eb2c3f45fff921b11bdbeaa036cb9a547f2bd91d549677e682460186"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKF.json": {
+      "sha256": "423b2adc10d5e976fa976ef02c21afaa9b23c360c930cadfd9edcbb4b5b81603"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_ATKG.json": {
+      "sha256": "133c28ea8f3e7c50fb591bd4f58d60d35e11d0d29ce876d72eb037784b1f6b03"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_BATA.json": {
+      "sha256": "ff7d97abca997c1f0c35948086c29f1079bce9bcf790e5b066f2ca470acce120"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_BATB.json": {
+      "sha256": "1e1f15c3fad999c497dafe34affac80dec18b6edd47ccb0966ded21e473aa3c2"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_BIDA.json": {
+      "sha256": "52ca0c259b0375a964d47001ce71986524ff895bd70e6b12d9548bb4cef2ba1e"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_MOVA.json": {
+      "sha256": "1a9c6299f0e76aedd1106cee9fa25154ac6d5b4e40c483d4558e52b5e37cb905"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUFUTURETANK_XMOVA.json": {
+      "sha256": "81c251427877ce3e7e4331dc789576d9fbdacda1884d572417329d0abc10ce26"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\hierarchies\\W3DHierarchy_AUFUTURETANK_COL.json": {
+      "sha256": "e95b1c303ed794651049c99325c72cb1e524ea55a2429c0882900dca109d6874"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUFUTURETANK_COL.NEWSKIN.json": {
+      "sha256": "495694341b4495dc604ab04ab7c3a46d0a0aaed1e80a241ba40d43dae0d13f7d"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUFUTURETANK_COL.TREADS.json": {
+      "sha256": "2fd75a7709eb4842ce05bbbc0c9139ab4023d9e443dec168e2c5dc40078d8b30"
+    },
+    "future\\burnt.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUFutureTank_D.png",
+      "sha256": "bd00f0ac90aebfe293cc260ea513e8898c67ab54172517d3780bfe4b0fbc30cf"
+    },
+    "future\\button.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\icons\\PackedTextureImage_Button_AlliedFutureTank.png",
+      "sha256": "85a3d4afe8c57863f3348fd3d9f19a5d915771b5d6fcbda79987e09cfccaee64"
+    },
+    "future\\portrait.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\icons\\PackedTextureImage_Portrait_AlliedFutureTank.png",
+      "sha256": "008ebf5439a6692d265bac4078aa668b43276f9600d8188c325d1477286f813f"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\hierarchies\\W3DHierarchy_AUGUNSHIP_SKL.json": {
+      "sha256": "a52fba48d5aeb8f0dc1a1e110a8a783a9aaf85cc09d2039d987e9c7d3c8beafa"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.CYLINDER01.json": {
+      "sha256": "a97a1b1d7a708d368c90544c6ded00566241204174b649393d835b4d3cda0e11"
+    },
+    "harbinger\\FXAlliedFutureLaser.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedFutureLaser.png",
+      "sha256": "9220d84c78782f3be0932992fbb0d51dd199381328175c245ca45943e0c8d4a9"
+    },
+    "harbinger\\FXBeam.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXBeam.png",
+      "sha256": "fcf03fea8bac7f1643fb31d6db936d6f1744e9f8a7bf351747192e8913809332"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.FXMUZZLEFRONT.json": {
+      "sha256": "696f6d3282b1260b7c717abeed13f2eab4d5da8a4cae709b6c1d663b031f49e5"
+    },
+    "harbinger\\FXMuzzleSoviet01.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXMuzzleSoviet01.png",
+      "sha256": "4aa93de040341dbcb48df8dec844db357ee2746803e05d0579d0a5ade12599de"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.FXMUZZLE_BR.json": {
+      "sha256": "ca84966f637cc553aa08a60cc502c13878aeba12387d0067b52b58e458e8deb3"
+    },
+    "harbinger\\FXPrismMuzzle02.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXPrismMuzzle02.png",
+      "sha256": "e33e4cfd990cc072d3bb6c0577aabb2bddc22052948266cde63f0cb9fdeae3e7"
+    },
+    "harbinger\\FXDistortionFractal01.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXDistortionFractal01.png",
+      "sha256": "73334607961e8c24de47e849680cb3570a43beb624819e7a5990ba8b43b76e0a"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.FXMUZZLE_FR.json": {
+      "sha256": "2a0965f561fb5b4dd5c9706e0e187055d0c8be3362e72b102c6f48ddaf27072d"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.FX_LIGHTS02.json": {
+      "sha256": "b779a3db0cc14ca435e6457bfb8c324f1b4bc8c3b2fa34a08441390cc4ad3dc9"
+    },
+    "harbinger\\FXLenzFlare03.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXLenzFlare03.png",
+      "sha256": "fd1ddb595cbb5733a984aa15d91b10279249c0634d793fea0bf6351515d4db69"
+    },
+    "harbinger\\FX2ndPassA.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FX2ndPassA.png",
+      "sha256": "31de9a8a5bace8ba22b8de90a58b4869753bc2cb2a20632331eff80f818b6dd9"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.NEWSKIN.json": {
+      "sha256": "15812ab41b8b9bbbef3f508a3b94bb5d358392a1e17fbffef013402d44e0b8bc"
+    },
+    "harbinger\\AUGunship.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUGunship.png",
+      "sha256": "86f2b93afec7618e47a4233cadde6bcc50bf944530070f21aaee0b3fa57603f0"
+    },
+    "harbinger\\AUGunship_NRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUGunship_NRM.png",
+      "sha256": "3551696164c997c43628663dc350455e7380e037a391e13c1d39d5a63950a546"
+    },
+    "harbinger\\AUGunship_SPM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUGunship_SPM.png",
+      "sha256": "d1a26be3d4d2ec9ea05f32e65c4149740ed6154818cb1f2d158624d6e02b01d9"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.SKINGUNS.json": {
+      "sha256": "f5e98be77816e3df1a468cde1d4adb67ff3ba70e468b7d49b52f5df72e6b4bc0"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_SKN.SKINMACHINEGUN.json": {
+      "sha256": "0fea766a573d4cddecf145c3f36a351cc39a5f336015595019cdf9a8dbcf4ee5"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\animations\\W3DAnimation_AUGUNSHIP_DEPLOY.json": {
+      "sha256": "4e0ec7f1126f44cae1b039a8559268a38bafb64e9cbacf390ae13be3e32c1f23"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\hierarchies\\W3DHierarchy_AUGUNSHIP_COL.json": {
+      "sha256": "0941d189cf7843a3f61d2660e2429f02e31ade4e88f71c81387ec40fa889cc18"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIP_COL.NEWSKIN.json": {
+      "sha256": "201c021bafe9ed66e32de51274ba35a4b17507ebf95d0ec706e738c87b8a7d2d"
+    },
+    "harbinger\\burnt.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_AUGunship_D.png",
+      "sha256": "94a8ab23db9458d03cee1e01854892616cc9275b9edaf791e8accf8404539bcf"
+    },
+    "harbinger\\button.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\icons\\PackedTextureImage_Button_AlliedHarbingerGunship.png",
+      "sha256": "556a183f62d385686932b13c79c7b935b5ea0e81ee9d95deb7549f65744f8101"
+    },
+    "harbinger\\portrait.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\icons\\PackedTextureImage_Portrait_AlliedHarbingerGunship.png",
+      "sha256": "fc1676fdf600d24694e8e276e546e4ab8a527d4e4a38a05e2efe51c72a3c9792"
+    },
+    "future\\ability.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\icons\\PackedTextureImage_AUA_FutureTank_RiotBeam.png",
+      "sha256": "2b7199733ae2f1db580e599afd5ed6f4c66e6de3d53a6ca7d8c47be9a35aa99d"
+    },
+    "fx\\FXAlliedFutureLaser.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedFutureLaser.png",
+      "sha256": "9220d84c78782f3be0932992fbb0d51dd199381328175c245ca45943e0c8d4a9"
+    },
+    "fx\\FXAlliedFutureElec.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedFutureElec.png",
+      "sha256": "b9ac8a57e2c4ebb96ae842d1df008e681f63063f7948f658e9ad6be07e291abc"
+    },
+    "fx\\FXPrismMuzzle02.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXPrismMuzzle02.png",
+      "sha256": "e33e4cfd990cc072d3bb6c0577aabb2bddc22052948266cde63f0cb9fdeae3e7"
+    },
+    "fx\\FXAlliedProtonColliderHitCoreDiffuse.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderHitCoreDiffuse.png",
+      "sha256": "bbed5e011ec7683c90c218da9dfa89346a6750ce083f5d06a2c97720adf50e62"
+    },
+    "fx\\FXAlliedProtonColliderHitDiffuse.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderHitDiffuse.png",
+      "sha256": "a4957b5627aa43f3e07303f0f23728e8a675bd916841d31cf22bfcc365e3cfc8"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXFUTUREPROJECTILE.GEOSPHERE01.json": {
+      "sha256": "0a4f9933b5da98f0effcbf28381633b1298dbf65c4d1b77a8717c3a5e794c83c"
+    },
+    "fx\\FXYurikoShieldFadeLUT.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXYurikoShieldFadeLUT.png",
+      "sha256": "75cefb55b8958468fb9f020e59388182bb5ecc1f43224e1ff23547af1d82829b"
+    },
+    "fx\\FXNoise01NRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXNoise01NRM.png",
+      "sha256": "d270f597354ad179f4d8cd32d5a45b87f7186c8c4f7fde3a0a6c3b8201b0cab7"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIPPROJECTILE.PROJECTILE01.json": {
+      "sha256": "f453ef41c7d409da3c5da332d9a1fea286f8df6ff0657337c8614b6b319d55a4"
+    },
+    "fx\\FXFracTileNRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXFracTileNRM.png",
+      "sha256": "af7fd8901a14c22baf6d93a6f977bc87392400ce024d53444fdf8e9bb87d3e41"
+    },
+    "fx\\FXAlliedProtonColliderMask2.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderMask2.png",
+      "sha256": "10ac492948521f143ef60e8ee58190a4ea80ff9e973345b4236226c24af6813d"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_AUGUNSHIPPROJECTILE_VET.PROJECTILE01.json": {
+      "sha256": "7c4d42883b1a4bcadb0991f10afb580d39220857f3cfc8eb28b915125c0621cc"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT01.FXALLIEDPROTONCOLLIDERHIT01.json": {
+      "sha256": "7d7dbc8013394e1fc6b16b4f62813040fc9ad3e31ff660197af259cf58216287"
+    },
+    "fx\\FXAlliedProtonColliderMask.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderMask.png",
+      "sha256": "3e4c7ed34a8b1b09ec6ae6fa0d7810d28ccdf8309e804cf3dd0e2ef0abf92a80"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT01V.FXALLIEDPROTONCOLLIDERHIT01.json": {
+      "sha256": "5df9322581cdbfc7c21f1ebf166ba129f81a6d84afcf81c58bc1518605514eaf"
+    },
+    "fx\\FXAlliedProtonColliderHitDiffuseV.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderHitDiffuseV.png",
+      "sha256": "f9bf7a549b5ce71745cd93a4abd5ae3a1af3ef8692e6d741fdcc7e39a3cbd3b6"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT02.FXALLIEDPROTONCOLLIDERHIT02.json": {
+      "sha256": "5ab173d13ac24d1346bcaab1c130e0e4f655f4771e0133ada3c805c7410a19a8"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT02V.FXALLIEDPROTONCOLLIDERHIT02.json": {
+      "sha256": "9b44264d0daca3e6f72cf5c4395f24bf957cf63936c4fd1537d5995c35fa30bb"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT03.FXALLIEDPROTONCOLLIDERHIT03.json": {
+      "sha256": "9c12995f74b1ca80ca72e96409960ac316ca7417b4d61344e225e37da60f573c"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT03V.FXALLIEDPROTONCOLLIDERHIT03.json": {
+      "sha256": "4914c3e8c1578c09ba75f27e51ae9d4c7238a58f6ecbd8b8ae7eb5a1c262d0a5"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT04.FXALLIEDPROTONCOLLIDERHIT04.json": {
+      "sha256": "28c5a6fe07490ab408431617a581658d985584f381268add030cdeb875d65901"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT04V.FXALLIEDPROTONCOLLIDERHIT04.json": {
+      "sha256": "72e71f8f846d2f82c6c4940d716cff2f90073b16ec9520c39bc11ae280553b36"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT05.FXALLIEDPROTONCOLLIDERHIT05.json": {
+      "sha256": "12a14a81d56f137399c038e39983661673d54e845d7984f051f2584d64377e6e"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT05V.FXALLIEDPROTONCOLLIDERHIT05.json": {
+      "sha256": "357942487bfb2b63339d4cd4a2e4c05a8f26a8a0417e503cef40ee984f6eb6ca"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT06.FXALLIEDPROTONCOLLIDERHIT06.json": {
+      "sha256": "e97b23a35562f7decf360e10a77104af1bf37a0e2dc611adf9eb91bc82c2f6e5"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHIT06V.FXALLIEDPROTONCOLLIDERHIT06.json": {
+      "sha256": "b6b85ac631d56969ffa8049273515d9f0d0ab88717142561f39041536ef11fc5"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHITCORE.GEOSPHERE01.json": {
+      "sha256": "82ad693a477a0a6aeb50146d606992bbca3d0f4765b16a392339733a81ffb48e"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHITCOREV.GEOSPHERE01.json": {
+      "sha256": "f73e01f0b857c5b73cca87d1096784304d2a7a2c866bae1ba56bea048d001124"
+    },
+    "fx\\FXAlliedProtonColliderHitCoreDiffuseV.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXAlliedProtonColliderHitCoreDiffuseV.png",
+      "sha256": "34fd36c0de99ffb8791753d968eebf70979ca04de503ce7758e9520757819dba"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHITSHOCKWAVE.SPHERE01.json": {
+      "sha256": "4b753dea025773e3ed68b5355d202e321e1a24090a346e36f59d126eb4ddf2dd"
+    },
+    "fx\\FXJapanLaserMuzzle.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXJapanLaserMuzzle.png",
+      "sha256": "eae4ec3c1be8f6a80f3454c082a14c9fc6821afc4a4fa3861a36ad5cc0b1106e"
+    },
+    "refs\\ra3-expansion\\uprising\\converted\\meshes\\W3DMesh_FXALLIEDPROTONCOLLIDERHITSHOCKWAVEV.SPHERE01.json": {
+      "sha256": "e9c514b78023a953a4ce0032240e0ba6a25ec14d30f63790aaf11fc6bae88cfd"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetCore.xml": {
+      "sha256": "446bb8ef14800bf6929607a5bebf315452fc727d4affc042e2923cf6308a8695"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton01.xml": {
+      "sha256": "20f683337419d184f488bbdc06940bf03d039eb63b7493aef8054d01fc2ecacf"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton05.xml": {
+      "sha256": "ba83f4cb160f1a5b9f521f5def6632449b8149d880d54ad70c9e2241a33afd61"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton02.xml": {
+      "sha256": "3ec9fa4f790bb52ca950a83136e06d026b084a5a963bc7f0ff05c92ce57b2998"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProtonDist.xml": {
+      "sha256": "035090c658e973fcdb4c4cbb1e5ccfec23becbc1c2b9f163205a1216cabb19ba"
+    },
+    "fx\\FXSphereNRM.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXSphereNRM.png",
+      "sha256": "ef1d8bb0e6cffaeb4fb7a938dee8e0f08159f1b16e995b74765d3889815da2a9"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProtonSW.xml": {
+      "sha256": "61cda9215cdc436de01baceb8a96810f29328fd24ddf1a5665e16bebe0b16b7d"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton05.xml": {
+      "sha256": "ae9e55b3b1de2ab795161e9928a7e4d21d4f71c0e8671e0ad4b55af650bfa406"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton02.xml": {
+      "sha256": "6a0bad69902a11290e3afd0c4fd1f1dcb1243e91bdc1839992eddd096eb51ef1"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton01.xml": {
+      "sha256": "f14f02abf7aa94fbadf2120a210155b682bdfa5a30315f720fdc234a680a4c0b"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\AlliedGunshipFireLight.xml": {
+      "sha256": "8c718695692f3bb5b81ad75a645abfab63807347c5b0dc3a551c66b0b7f93a76"
+    },
+    "fx\\FXLenzFlare01.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXLenzFlare01.png",
+      "sha256": "eb440fb563c2544f3450d64bf9a29af3087e65faa406c00ae1ca4c3f76f03ce0"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProtonFlash.xml": {
+      "sha256": "0b688f112a051ef55a2f572c2bd6c0cd7ddb5920d7c75be3a8634c18f0ea3a0f"
+    },
+    "fx\\FXLenzflareHDR01.png": {
+      "source": "refs\\ra3-expansion\\uprising\\converted\\textures\\Texture_FXLenzflareHDR01.png",
+      "sha256": "14818ab23dd620fb8a37529d311a1b6f96a4cb664809633517ad46539ccc5b08"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetFlash.xml": {
+      "sha256": "521e49c90cafe924ec86ad6c44d257a5ffcca8f68c3cca372efa04d91ae4d0ca"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton04.xml": {
+      "sha256": "a26f008641ac8b73863390961637a2ca65c1079a8b6ab84f67a1f3b84b3b9202"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton06.xml": {
+      "sha256": "6063213779804f46c9047ec22438f21ab1b279ccd792006f2eecf1c3324beda3"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetSW.xml": {
+      "sha256": "be6080a18307cad4b99b32101a885b9626c2098b4a5b5adb7e5a11873c8af7c0"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton04.xml": {
+      "sha256": "687d8594f6b9fac664a2f432a41a220c0d2b844a868162af1f583d907b31a259"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton03.xml": {
+      "sha256": "2b8a5eb69907794f4c0a392aeb183188a38d819dac7f957d0d037158952a88c0"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipVetProton03.xml": {
+      "sha256": "dda0c908bf232763a7f98f987dd9782ced46d03fce4c46702fe84b0289e43a17"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProtonCore.xml": {
+      "sha256": "e9bb2b65c154846687aaf0dd2cf45e5671a0bdeb1dea49204aeff840e91848b3"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FXAlliedGunshipProton06.xml": {
+      "sha256": "5963aaa7cf9b6ae4579df5bbb7e06e050aaebb8171f96eafc5f879425e627450"
+    },
+    "refs\\ea-modding-support\\Uprising\\Xml\\FXParticleSystems\\FireHawkConTrail.xml": {
+      "sha256": "d4772e66916e3b98a7eab99721770f23e503d504076e56fba26e47f5943aaf42"
+    },
+    "fx\\FXTracer.png": {
+      "source": "refs\\ra3-expansion\\gunship-trails\\converted\\textures\\Texture_FXTracer.png",
+      "sha256": "99231e5d7b5aaa1cbe949c3e9b5e7c4928752ec9d6da404f2df30b79ca6f735d"
+    },
+    "fx\\FXTracerHeroic.png": {
+      "source": "refs\\ra3-expansion\\gunship-trails\\converted\\textures\\Texture_FXTracerHeroic.png",
+      "sha256": "652314d10c02d74b8677d64c66a89b786a1aad1136d363791aae9cbc46e0109f"
+    },
+    "fx\\FXMissileStreak.png": {
+      "source": "refs\\ra3-expansion\\gunship-trails\\converted\\textures\\Texture_FXMissileStreak.png",
+      "sha256": "22d88bd413935f6590ae128195dbb6f768ecc65b0c7cfea8ebaac131b95aeed9"
+    }
+  },
+  "generated": {
+    "future\\animations.json": "6052e9efce1eee31698dcc0d410d7658ebc7a1e502c11495e1a851ec11a83129",
+    "future\\skin.json": "21da8264c1dad42afe86797a3c6d68ef908da5cca9a1ed5ae4b29daa140b2abd",
+    "future\\wreck.json": "769e20bf1c9af84c33f751987c5d7d9c3ad8c402537057c7a198441d947f2deb",
+    "fx\\fxalliedprotoncolliderhit01.json": "94d3950671fdd001baf9d09baba8511865858ae67d1ab3375822438242ef99cf",
+    "fx\\fxalliedprotoncolliderhit01v.json": "2483cebd36dc2d44486f5ab869e2d1a66b5379d006432f9f911d5c49f6cfbe0b",
+    "fx\\fxalliedprotoncolliderhit02.json": "4afae5f707b750bc942c3ee7d5a77c0b9de584e82ed6ad401f6cd4689a8507ff",
+    "fx\\fxalliedprotoncolliderhit02v.json": "be8a79a92d5892e4975a8a513cbc8f7624e074fe8690df82ed4b4353f9c34e36",
+    "fx\\fxalliedprotoncolliderhit03.json": "07d4c97cdc4145090950c0ab375210e747b949535643ee956697674cf84ce392",
+    "fx\\fxalliedprotoncolliderhit03v.json": "dbc35cb08fc18e00e55c7ae4fe48e675b61e04ef34fa68617885d94d54c9fbea",
+    "fx\\fxalliedprotoncolliderhit04.json": "85903ae32f9d46fac7d5e73bd2206a06ee523664f1ea6afbacc3f9db5134f79f",
+    "fx\\fxalliedprotoncolliderhit04v.json": "c49bbeea952d7362a792099ce43e9594ba13b7a34f3ba1bc17a771015ab8263a",
+    "fx\\fxalliedprotoncolliderhit05.json": "26e73e741c13ec17822f994644f63f185598d79da68908386e99e1dbf1fbb3e6",
+    "fx\\fxalliedprotoncolliderhit05v.json": "ce3274b8f49316dd7fa4f9ed2540d732a9e23b4df6998752258f6df5e1d2fdd7",
+    "fx\\fxalliedprotoncolliderhit06.json": "b62afe801b6745e2c44b6198d3eec8d73fc8dfd7ad1f92670501b16d076427aa",
+    "fx\\fxalliedprotoncolliderhit06v.json": "14cb6d141055a6c11e1ed1d7f186a7c90e196400cc805d303973e0a9fcabb20f",
+    "fx\\fxalliedprotoncolliderhitcore.json": "019621e76775ef3f1349a98ba452aec0d5b9a8b40d95d76daa7aa9658af81a37",
+    "fx\\fxalliedprotoncolliderhitcorev.json": "e38b47749f092cadf8a68b561f54326bbba404516409e940e7f73044be7bbae6",
+    "fx\\fxalliedprotoncolliderhitshockwave.json": "efb1ce37d84b0b5a0055348ade6a4364ea3500f144e31100624beddd3aa7c951",
+    "fx\\fxalliedprotoncolliderhitshockwavev.json": "f7703cac05956cdd60957e44cb393124ac7649852cfbc3f9cff3e8673764df36",
+    "fx\\gunship_effects.json": "8375d133fd6d474691369a30c1a65d28399b0d49368f7819bae237771314659c",
+    "fx\\neutron.json": "40d97a15520ef731421c082669dbb531b71d47510ad69b739488de4bf915a7f8",
+    "fx\\shell.json": "490037791840eb0da7a2b203886bff1f99fec7c15963e787959c27c2e9c540d6",
+    "fx\\shell_vet.json": "e3ee6eebfbc48f0009d8151cf8f3bf2215f0176691cd127f6792c4ee9b91e61c",
+    "harbinger\\animations.json": "99c99538bb7d5e720ac9d21ff48c9666118ba0fed977ecbddcc24ab43f3696b8",
+    "harbinger\\skin.json": "ec4843c4b23d78eb89887d7ad7a0c88fd4f1731022277046af043ed3e99f985e",
+    "harbinger\\wreck.json": "e88a2ab0582d21b956b2d6216fdc546a18d6f3f4d4ce493025daf3e4d8e38ffe"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "material_sha256": "475db7bb9879dc992ebdb7157b6f6260c1400cf1e618044518e5b7a067112eda",
+  "facings": 32,
+  "scale": 4,
+  "tile": [
+    96,
+    64
+  ],
+  "origin": [
+    48,
+    42
+  ],
+  "units": {
+    "MTNK": {
+      "inputs": {
+        "GTNK": {
+          "vxl": "88b326908acb5c2a98860d8f65169e8745ae858c5cbfe98e0bb2f283f49a3b81",
+          "hva": "4a15fc9c2633667812465c4b08f28cab5d595ae4f80eddbb77d1a9f9ed0480a4"
+        },
+        "GTNKtur": {
+          "vxl": "deaee48689e1413a264c8945c5d943d1acb39eb3ab26aad93850901af4d7dffe",
+          "hva": "4a15fc9c2633667812465c4b08f28cab5d595ae4f80eddbb77d1a9f9ed0480a4"
+        },
+        "GTNKbarl": {
+          "vxl": "04c7ffd68d8f12589bf02767c0617014042c3a255567cf939cd6908c36c0d852",
+          "hva": "4a15fc9c2633667812465c4b08f28cab5d595ae4f80eddbb77d1a9f9ed0480a4"
+        }
+      },
+      "anchor": [
+        34,
+        30
+      ],
+      "layers": [
+        {
+          "stem": "mtnk_hero_hull",
+          "visible": 172232,
+          "clipped": 42435,
+          "geometry": "chamfered segmented armor, pistons, rails, cooling fins and emissive reactor"
+        },
+        {
+          "stem": "mtnk_hero_turret",
+          "visible": 177991,
+          "clipped": 12202,
+          "geometry": "chamfered segmented armor, pistons, rails, cooling fins and emissive reactor"
+        }
+      ]
+    },
+    "HTNK": {
+      "inputs": {
+        "HTNK": {
+          "vxl": "0ca8517c29f8bed26c3a3f0138bb36bae01fbb751fc9eaa30bfa1fba352923a2",
+          "hva": "16f3cd28642a66b1a0dc3f6cb4b063889c9f4721e46f12054fd60ed88cdc32ca"
+        },
+        "HTNKtur": {
+          "vxl": "4fc6ca0efb803621ae4dc99357f81eb4bc524cc70a90e386831fa0e63a416451",
+          "hva": "16f3cd28642a66b1a0dc3f6cb4b063889c9f4721e46f12054fd60ed88cdc32ca"
+        },
+        "HTNKbarl": {
+          "vxl": "42a3a41fdc52a5491b172bddcd8aac5b9baedec1d7703f95a68a9b96f8531398",
+          "hva": "16f3cd28642a66b1a0dc3f6cb4b063889c9f4721e46f12054fd60ed88cdc32ca"
+        }
+      },
+      "anchor": [
+        32,
+        31
+      ],
+      "layers": [
+        {
+          "stem": "htnk_hero_hull",
+          "visible": 203662,
+          "clipped": 34593,
+          "geometry": "chamfered segmented armor, pistons, rails, cooling fins and emissive reactor"
+        },
+        {
+          "stem": "htnk_hero_turret",
+          "visible": 186618,
+          "clipped": 20222,
+          "geometry": "chamfered segmented armor, pistons, rails, cooling fins and emissive reactor"
+        }
+      ]
+    }
+  }
+}

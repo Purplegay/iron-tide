@@ -1,0 +1,1 @@
+{"id":"NARADR","image":"NARADR","layers":[{"kind":"activeanim","image":"NARADR_A","loopStart":0,"loopEnd":45,"rate":200,"frames":92,"shadow":true,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"NARADR_A","loopStart":46,"loopEnd":91,"rate":200,"frames":92,"shadow":true,"reverse":false,"loopCount":-1}}]}

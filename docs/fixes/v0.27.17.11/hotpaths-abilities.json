@@ -1,0 +1,1181 @@
+{
+  "checks": [
+    {
+      "details": null,
+      "name": "ra2: local YR rules provenance",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: IFV actual passenger slot enabled",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: E1 real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: E1 actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GGI real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GGI actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GGI IFV AA and blind spot from YR",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ENGINEER real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: ENGINEER actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: repair IFV cannot damage enemies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: repair order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: repair heals actual friendly HP",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stop cancels support order",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GHOST real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GHOST actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: SNIPE real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: SNIPE actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: CLEG real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: CLEG actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: vehicles cannot enter IFV",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: factory capture order accepted (1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": "(149.0, 0.0)",
+      "name": "ra2: engineer walks into capture range (1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: factory capture order accepted (0.707107, 0.707107)",
+      "passed": true
+    },
+    {
+      "details": "(69.30591, 69.30298)",
+      "name": "ra2: engineer walks into capture range (0.707107, 0.707107)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: engineer skill cursor matches right click",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: factory capture order accepted (0.0, -1.0)",
+      "passed": true
+    },
+    {
+      "details": "(0.0, -136.0)",
+      "name": "ra2: engineer walks into capture range (0.0, -1.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: factory capture order accepted (-1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": "(-55.0, 0.0)",
+      "name": "ra2: engineer walks into capture range (-1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: engineer capture accepts capturable enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: capture switches actual ownership and queries",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: successful capture consumes engineer",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: repair building accepts damaged friend",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: building restored and engineer consumed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: C4 order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: C4 plants before delayed destruction",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: engineer recognizes planted charge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: defusing preserves building and engineer",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: C4 detonates through real building death",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: spy accepts enemy refinery",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: spy transfers original half of enemy money",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: spy power blackout consumes source duration",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: blackout remains a house effect after infiltrated plant is destroyed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: infiltration training persists and grants newly produced infantry veteran rank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: temporal shot freezes without ordinary HP damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: frozen target cannot take unrelated damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: interrupt releases temporal freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: continuous beam completes erasure",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: chrono skill accepts clear destination",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: teleport arrives with recovery delay",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: cannot bypass recovery with another cast",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: chrono recovery ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: normal move uses infantry teleport locomotion",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: miner manual movement retains separate refinery-only teleport rules",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: Tanya mind-control immunity applied",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: mind control changes ownership without HP damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: one-link mind control capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: controller death releases ownership",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: dog only targets infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: prism fragments deal immediate actual damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: prism fragment range and ownership respected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: elite promotion selects SuperComet",
+      "passed": true
+    },
+    {
+      "details": 9,
+      "name": "ra2: elite prism exercises multiple actual fragment branches",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: elite recursive fragments do not hit the same actor twice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: spy can copy enemy infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: automatic fire ignores disguised spy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: dog detection exposes disguised spy to allies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stationary mirage uses real extracted tree",
+      "passed": true
+    },
+    {
+      "details": [
+        "TREE04",
+        "TREE03",
+        "TREE02",
+        "TREE01"
+      ],
+      "name": "ra2: new disguises use all four native trees with stable frames and 2x detail",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: stationary mirage conceals from automatic targeting",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: firing reveals mirage model and targeting",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GHOST original amphibious movement accepts water",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GHOST water uses native attack animation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: TANY original amphibious movement accepts water",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: TANY water uses native attack animation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: engineer loads actual repair turret",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: IFV real skill entry unloads passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: native unload restores original model",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: GHOST firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: TANY firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: SNIPE firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: JUMPJET firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: sniper rejects non-infantry targets",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: all new runtime states serialize via whitelist: 已保存：手动存档 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: new snapshot validates",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: parked mirage keeps the same tree across disk save",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored IFV retains capacity",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: save restores both ends of control link",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: save restores erasure progress and target freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: saved temporal link reconstructs frozen presentation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored control can release",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: restored erasure can cancel",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "ra2: previous baseline schema remains readable",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: local YR rules provenance",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: IFV actual passenger slot enabled",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: E1 real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: E1 actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GGI real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GGI actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GGI IFV AA and blind spot from YR",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ENGINEER real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: ENGINEER actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: repair IFV cannot damage enemies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: repair order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: repair heals actual friendly HP",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stop cancels support order",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GHOST real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GHOST actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: SNIPE real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: SNIPE actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: CLEG real boarding accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: CLEG actual passenger changes weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: occupied IFV rejects second passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload command accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: unload restores original missile weapon",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: vehicles cannot enter IFV",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: factory capture order accepted (1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": "(149.0, 0.0)",
+      "name": "iron_tide: engineer walks into capture range (1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: factory capture order accepted (0.707107, 0.707107)",
+      "passed": true
+    },
+    {
+      "details": "(69.30591, 69.30298)",
+      "name": "iron_tide: engineer walks into capture range (0.707107, 0.707107)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: engineer skill cursor matches right click",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: factory capture order accepted (0.0, -1.0)",
+      "passed": true
+    },
+    {
+      "details": "(0.0, -136.0)",
+      "name": "iron_tide: engineer walks into capture range (0.0, -1.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: enter cursor over factory foundation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: factory capture order accepted (-1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": "(-55.0, 0.0)",
+      "name": "iron_tide: engineer walks into capture range (-1.0, 0.0)",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: engineer capture accepts capturable enemy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: capture switches actual ownership and queries",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: successful capture consumes engineer",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: repair building accepts damaged friend",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: building restored and engineer consumed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: C4 order accepted",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: C4 plants before delayed destruction",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: engineer recognizes planted charge",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: defusing preserves building and engineer",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: C4 detonates through real building death",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: spy accepts enemy refinery",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: spy transfers original half of enemy money",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: spy power blackout consumes source duration",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: blackout remains a house effect after infiltrated plant is destroyed",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: infiltration training persists and grants newly produced infantry veteran rank",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: temporal shot freezes without ordinary HP damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: frozen target cannot take unrelated damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: interrupt releases temporal freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: continuous beam completes erasure",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: chrono skill accepts clear destination",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: teleport arrives with recovery delay",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: cannot bypass recovery with another cast",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: chrono recovery ends",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: normal move uses infantry teleport locomotion",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: miner manual movement retains separate refinery-only teleport rules",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: Tanya mind-control immunity applied",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: mind control changes ownership without HP damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: one-link mind control capacity enforced",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: controller death releases ownership",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: dog only targets infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: prism fragments deal immediate actual damage",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: prism fragment range and ownership respected",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: elite promotion selects SuperComet",
+      "passed": true
+    },
+    {
+      "details": 9,
+      "name": "iron_tide: elite prism exercises multiple actual fragment branches",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: elite recursive fragments do not hit the same actor twice",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: spy can copy enemy infantry",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: automatic fire ignores disguised spy",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: dog detection exposes disguised spy to allies",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stationary mirage uses real extracted tree",
+      "passed": true
+    },
+    {
+      "details": [
+        "TREE04",
+        "TREE03",
+        "TREE02",
+        "TREE01"
+      ],
+      "name": "iron_tide: new disguises use all four native trees with stable frames and 2x detail",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: stationary mirage conceals from automatic targeting",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: firing reveals mirage model and targeting",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GHOST original amphibious movement accepts water",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GHOST water uses native attack animation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: TANY original amphibious movement accepts water",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: TANY water uses native attack animation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: engineer loads actual repair turret",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: IFV real skill entry unloads passenger",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: native unload restores original model",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: GHOST firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: TANY firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: SNIPE firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: JUMPJET firing sequence begins at first frame",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: sniper rejects non-infantry targets",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: all new runtime states serialize via whitelist: 已保存：手动存档 1",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: new snapshot validates",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: parked mirage keeps the same tree across disk save",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored IFV retains capacity",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: save restores both ends of control link",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: save restores erasure progress and target freeze",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: saved temporal link reconstructs frozen presentation",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored control can release",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: restored erasure can cancel",
+      "passed": true
+    },
+    {
+      "details": null,
+      "name": "iron_tide: previous baseline schema remains readable",
+      "passed": true
+    }
+  ],
+  "evidence": {
+    "engine": "4.7.2-stable (official)",
+    "input": "Viewport.push_input routes mouse/key events through the real battle/HUD",
+    "modes": [
+      "ra2",
+      "iron_tide"
+    ],
+    "project": "C:/Users/admin/Temp/iron-memory-nov8/project/",
+    "user_dir": "C:/Users/admin/Temp/iron-memory-nov8/hotpaths-abilities/profile/CodexIronTideValidation/edgeperf",
+    "zooms": [
+      0.5,
+      1,
+      2,
+      4
+    ]
+  },
+  "failed": 0
+}

@@ -1,0 +1,3693 @@
+{
+  "version": 1,
+  "generated_from": "data/ra2/*.json (Step A) + assets/ra2/* (Step B)",
+  "note": "RA2 盟军阵营 + 科技树（引擎 schema）。仅增量，不动 data/units.json。",
+  "faction": "allied",
+  "counts": {
+    "units": 27,
+    "buildings": 20,
+    "art": 47
+  },
+  "units": [
+    {
+      "id": "E1",
+      "name": "美国大兵",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 200,
+      "build_time": 4,
+      "hp": 125,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 300,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "用步枪对付敌方步兵。使用特殊技能可卧倒据守，增强火力。想要转移，先让他起身。",
+      "ra2": true,
+      "weapon": {
+        "name": "M60",
+        "attack_type": "bullet",
+        "damage": 15,
+        "cooldown": 1.3333333333333333,
+        "range": 220,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "M60",
+        "ra2_warhead": "SA",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "GIAttack"
+      },
+      "elite_weapon": {
+        "name": "M60E",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 1.3333333333333333,
+        "range": 220,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "M60E",
+        "ra2_warhead": "SA",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "GIAttack"
+      },
+      "voice": {
+        "select": "GISelect",
+        "move": "GIMove",
+        "attack": "GIAttackCommand",
+        "feedback": "GIFear",
+        "special": "GIMove",
+        "die": "GIDie",
+        "crush": "InfantrySquish",
+        "deploy": "GIDeploy",
+        "undeploy": "GIUndeploy"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "M60E",
+          "attack_type": "bullet",
+          "damage": 25,
+          "cooldown": 1.3333333333333333,
+          "range": 220,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "M60E",
+          "ra2_warhead": "SA",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "GIAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE"
+      ],
+      "tech_level": 1,
+      "movement_zone": "infantry",
+      "image": "GI",
+      "cameo": "GIICON",
+      "deployer": true,
+      "deploy_frame": 292,
+      "deploy_attack_mult": 1.5,
+      "deploy_defense_mult": 1.15,
+      "deployed_weapon": {
+        "name": "Para",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 1,
+        "range": 275,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Para",
+        "ra2_warhead": "SSA",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "GIAttackDeployed"
+      },
+      "elite_deployed_weapon": {
+        "name": "ParaE",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 1,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "ParaE",
+        "ra2_warhead": "SSA",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "GIAttackDeployed"
+      }
+    },
+    {
+      "id": "ENGINEER",
+      "name": "工程师",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 500,
+      "build_time": 10,
+      "hp": 75,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 240,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "派他进入己方受损建筑可进行维修，进入可占领的敌方建筑可夺取控制权，两种行动都会消耗工程师。他没有常规武器，但登上多功能步兵车后能将其改为维修车。",
+      "ra2": true,
+      "voice": {
+        "select": "EngAllSelect",
+        "move": "EngAllMove",
+        "attack": "EngAllMove",
+        "feedback": "EngAllFear",
+        "special": "EngAllAttackCommand",
+        "die": "EngAllDie",
+        "crush": "InfantrySquish"
+      },
+      "ra2_prereq": [
+        "Barracks"
+      ],
+      "tech_level": 1,
+      "movement_zone": "infantry",
+      "image": "ENGINEER",
+      "cameo": "ENGNICON"
+    },
+    {
+      "id": "JUMPJET",
+      "name": "火箭飞行兵",
+      "faction": "allied",
+      "role": "air",
+      "role_name": "空军",
+      "cost": 600,
+      "build_time": 12,
+      "hp": 125,
+      "armor": "air",
+      "ra2_armor": "none",
+      "speed": 135,
+      "move": {
+        "speed": 135,
+        "speed_units": 9,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Fly",
+        "speed_type": "Hover",
+        "locomotor": "{92612C46-F71F-11d1-AC9F-006008055BB5}"
+      },
+      "radius": 13,
+      "sight": 400,
+      "tags": [
+        "air"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "飞越地形，从空中打击地面部队和飞机。装甲轻，留意敌方防空火力。",
+      "ra2": true,
+      "weapon": {
+        "name": "20mm",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 2,
+        "range": 275,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "20mm",
+        "ra2_warhead": "SSA",
+        "ra2_projectile": "Invisible3",
+        "ra2_aa": true,
+        "report": "RocketeerAttack"
+      },
+      "elite_weapon": {
+        "name": "20mmE",
+        "attack_type": "bullet",
+        "damage": 25,
+        "cooldown": 0.3333333333333333,
+        "range": 275,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "20mmE",
+        "ra2_warhead": "SSA",
+        "ra2_projectile": "Invisible3",
+        "ra2_aa": true,
+        "report": "RocketeerAttack"
+      },
+      "voice": {
+        "select": "RocketeerSelect",
+        "move": "RocketeerMove",
+        "attack": "RocketeerAttackCommand",
+        "feedback": "RocketeerFear",
+        "special": "RocketeerMove"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "20mmE",
+          "attack_type": "bullet",
+          "damage": 25,
+          "cooldown": 0.3333333333333333,
+          "range": 275,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "20mmE",
+          "ra2_warhead": "SSA",
+          "ra2_projectile": "Invisible3",
+          "ra2_aa": true,
+          "report": "RocketeerAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "tech_level": 3,
+      "movement_zone": "fly",
+      "image": "ROCK",
+      "cameo": "JJETICON"
+    },
+    {
+      "id": "GHOST",
+      "name": "海豹部队",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 125,
+      "armor": "light",
+      "ra2_armor": "flak",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "AmphibiousDestroyer",
+        "speed_type": "Amphibious",
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "能游泳绕过陆上防线，用枪消灭步兵，或贴近敌方建筑安放 C4。",
+      "ra2": true,
+      "weapon": {
+        "name": "MP5",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MP5",
+        "ra2_warhead": "HollowPoint",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SealAttack"
+      },
+      "elite_weapon": {
+        "name": "MP5E",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MP5E",
+        "ra2_warhead": "HollowPoint",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SealAttack"
+      },
+      "voice": {
+        "select": "SealSelect",
+        "move": "SealMove",
+        "attack": "SealAttackCommand",
+        "special": "SealSpecialAttack",
+        "die": "SealDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "SCATTER": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "FASTER": true
+        },
+        "elite_weapon": {
+          "name": "MP5E",
+          "attack_type": "bullet",
+          "damage": 125,
+          "cooldown": 0.6666666666666666,
+          "range": 330,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "MP5E",
+          "ra2_warhead": "HollowPoint",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "SealAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "tech_level": -1,
+      "movement_zone": "amphibiousdestroyer",
+      "image": "SEAL",
+      "cameo": "SEALICON"
+    },
+    {
+      "id": "DOG",
+      "name": "警犬",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 200,
+      "build_time": 4,
+      "hp": 100,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 120,
+      "move": {
+        "speed": 120,
+        "speed_units": 8,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 540,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "能嗅出伪装的间谍，并扑杀近处的步兵。遇到装甲和建筑时需要其他部队支援。",
+      "ra2": true,
+      "weapon": {
+        "name": "BadTeeth",
+        "attack_type": "bullet",
+        "damage": 30,
+        "cooldown": 2,
+        "range": 82.5,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "BadTeeth",
+        "ra2_warhead": "ParasiteDog",
+        "ra2_projectile": "DOGJUMP",
+        "ra2_aa": false,
+        "report": "DogAttack"
+      },
+      "voice": {
+        "select": "DogSelect",
+        "move": "DogMove",
+        "attack": "DogAttackCommand",
+        "feedback": "DogFear",
+        "special": "DogMove",
+        "die": "DogDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true,
+          "SCATTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        }
+      },
+      "ra2_prereq": [
+        "Barracks"
+      ],
+      "tech_level": 2,
+      "movement_zone": "infantry",
+      "image": "DOG",
+      "cameo": "DOGICON"
+    },
+    {
+      "id": "CLEG",
+      "name": "超时空军团兵",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 1500,
+      "build_time": 30,
+      "hp": 125,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582747-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "用传送跨越战场，到达后要稍作恢复才能行动。持续照射可冻结目标直至将其抹除。中途停止照射，目标就会解冻。",
+      "ra2": true,
+      "weapon": {
+        "name": "NeutronRifle",
+        "attack_type": "bullet",
+        "damage": 8,
+        "cooldown": 8,
+        "range": 275,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "NeutronRifle",
+        "ra2_warhead": "ChronoBeam",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "ChronoLegionAttack"
+      },
+      "elite_weapon": {
+        "name": "NeutronRifleE",
+        "attack_type": "bullet",
+        "damage": 16,
+        "cooldown": 8,
+        "range": 275,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "NeutronRifleE",
+        "ra2_warhead": "ChronoBeam",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "ChronoLegionAttack"
+      },
+      "voice": {
+        "select": "ChronoLegionSelect",
+        "move": "ChronoLegionMove",
+        "attack": "ChronoLegionAttackCommand",
+        "feedback": "ChronoLegionFear",
+        "special": "ChronoLegionMove",
+        "die": "ChronoLegionDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "NeutronRifleE",
+          "attack_type": "bullet",
+          "damage": 16,
+          "cooldown": 8,
+          "range": 275,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "NeutronRifleE",
+          "ra2_warhead": "ChronoBeam",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "ChronoLegionAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "TECH"
+      ],
+      "tech_level": 10,
+      "movement_zone": "infantry",
+      "image": "CLEG",
+      "cameo": "CLEGICON"
+    },
+    {
+      "id": "SPY",
+      "name": "间谍",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 100,
+      "armor": "light",
+      "ra2_armor": "flak",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 540,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "伪装后进入敌方建筑执行任务。潜入矿场可偷走一半资金，潜入电厂可让敌方断电，潜入兵营或工厂可获得老兵训练。盟军实验室的科技可解锁超时空突击队，苏联实验室可解锁超时空伊文。扩展新局也能通过对应被动卡的任务解锁。间谍没有常规武器，注意避开警犬。",
+      "ra2": true,
+      "voice": {
+        "select": "SpySelect",
+        "move": "SpyMove",
+        "attack": "SpyAttackCommand",
+        "feedback": "SpyFear",
+        "special": "SpySpecialAttack",
+        "die": "SpyDie",
+        "crush": "InfantrySquish"
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "tech_level": 5,
+      "movement_zone": "infantry",
+      "image": "SPY",
+      "cameo": "SPYICON"
+    },
+    {
+      "id": "CCOMAND",
+      "name": "超时空突击队",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 100,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582747-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "传送到敌军侧翼，用枪消灭步兵，贴近建筑则自动安放 C4。窃取盟军实验室科技即可解锁。扩展新局也可装配「超时空突击许可」，让己方海豹部队击杀敌人完成任务。建实验室前就能累计进度，训练时仍需实验室。",
+      "ra2": true,
+      "weapon": {
+        "name": "ChronoMP5",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "ChronoMP5",
+        "ra2_warhead": "HollowPointNoBuilding",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SealAttack"
+      },
+      "elite_weapon": {
+        "name": "ChronoMP5E",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "ChronoMP5E",
+        "ra2_warhead": "HollowPointNoBuilding",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SealAttack"
+      },
+      "voice": {
+        "select": "ChronoCommandoSelect",
+        "move": "ChronoCommandoMove",
+        "attack": "ChronoCommandoAttackCommand",
+        "special": "ChronoCommandoSpecialAttack",
+        "die": "SealDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "ChronoMP5E",
+          "attack_type": "bullet",
+          "damage": 125,
+          "cooldown": 0.6666666666666666,
+          "range": 330,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "ChronoMP5E",
+          "ra2_warhead": "HollowPointNoBuilding",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "SealAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE"
+      ],
+      "tech_level": 9,
+      "movement_zone": "infantry",
+      "image": "CCOMAND",
+      "cameo": "CCOMICON"
+    },
+    {
+      "id": "PTROOP",
+      "name": "心灵突击队",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 100,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "能夺取敌方部队的控制权，对免疫心控的目标无效。靠近建筑后会自动安放 C4。",
+      "ra2": true,
+      "weapon": {
+        "name": "MindControl",
+        "attack_type": "bullet",
+        "damage": 10,
+        "cooldown": 13.33,
+        "range": 385,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MindControl",
+        "ra2_warhead": "Controller",
+        "ra2_projectile": "PsychicControl",
+        "ra2_aa": false,
+        "report": ""
+      },
+      "elite_weapon": {
+        "name": "MindControlE",
+        "attack_type": "bullet",
+        "damage": 10,
+        "cooldown": 13.33,
+        "range": 770,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MindControlE",
+        "ra2_warhead": "Controller",
+        "ra2_projectile": "PsychicControl",
+        "ra2_aa": false,
+        "report": ""
+      },
+      "voice": {
+        "select": "YuriSelect",
+        "move": "YuriMove",
+        "attack": "YuriAttackCommand",
+        "special": "YuriMove",
+        "die": "YuriDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "MindControlE",
+          "attack_type": "bullet",
+          "damage": 10,
+          "cooldown": 13.33,
+          "range": 770,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "MindControlE",
+          "ra2_warhead": "Controller",
+          "ra2_projectile": "PsychicControl",
+          "ra2_aa": false,
+          "report": ""
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE"
+      ],
+      "tech_level": 9,
+      "movement_zone": "infantry",
+      "image": "PTROOP",
+      "cameo": "PSICICON",
+      "deploy_frame": 299,
+      "deploy_attack_mult": 1.5,
+      "deploy_defense_mult": 1.15
+    },
+    {
+      "id": "SNIPE",
+      "name": "狙击手",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 600,
+      "build_time": 12,
+      "hp": 125,
+      "armor": "unarmored",
+      "ra2_armor": "none",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "Infantry",
+        "speed_type": null,
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "擅长从远处一枪重创步兵。面对装甲或建筑时，交给其他部队更有效。",
+      "ra2": true,
+      "weapon": {
+        "name": "AWP",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 10,
+        "range": 770,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "AWP",
+        "ra2_warhead": "HollowPoint",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SniperAttack"
+      },
+      "elite_weapon": {
+        "name": "AWPE",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 4,
+        "range": 770,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "AWPE",
+        "ra2_warhead": "HollowPoint",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "SniperAttack"
+      },
+      "voice": {
+        "select": "SniperSelect",
+        "move": "SniperMove",
+        "attack": "SniperAttackCommand",
+        "feedback": "SniperFear",
+        "special": "SniperMove",
+        "die": "SniperDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "AWPE",
+          "attack_type": "bullet",
+          "damage": 125,
+          "cooldown": 4,
+          "range": 770,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "AWPE",
+          "ra2_warhead": "HollowPoint",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "SniperAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "RADAR"
+      ],
+      "tech_level": 1,
+      "movement_zone": "infantry",
+      "image": "SNIPE",
+      "cameo": "SNIPICON"
+    },
+    {
+      "id": "TANY",
+      "name": "谭雅",
+      "faction": "allied",
+      "role": "infantry",
+      "role_name": "步兵",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 125,
+      "armor": "light",
+      "ra2_armor": "flak",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 0,
+        "rot_units": 0,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": true,
+        "weight": 0,
+        "movement_zone": "AmphibiousDestroyer",
+        "speed_type": "Amphibious",
+        "locomotor": "{4A582744-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 7,
+      "sight": 480,
+      "tags": [
+        "infantry"
+      ],
+      "built_at": "GAPILE",
+      "voxel": false,
+      "desc": "能游泳接近敌阵，用双枪快速消灭步兵，贴近载具或建筑时自动安放 C4。受伤后会自行恢复生命。",
+      "ra2": true,
+      "weapon": {
+        "name": "DoublePistols",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.3333333333333333,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "DoublePistols",
+        "ra2_warhead": "HollowPoint2",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "TanyaAttack"
+      },
+      "elite_weapon": {
+        "name": "DoublePistolsE",
+        "attack_type": "bullet",
+        "damage": 125,
+        "cooldown": 0.6666666666666666,
+        "range": 440,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "DoublePistolsE",
+        "ra2_warhead": "HollowPoint2",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "TanyaAttack"
+      },
+      "voice": {
+        "select": "TanyaSelect",
+        "move": "TanyaMove",
+        "attack": "TanyaAttackCommand",
+        "special": "TanyaAttackCommand",
+        "die": "TanyaDie",
+        "crush": "InfantrySquish"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "SCATTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "DoublePistolsE",
+          "attack_type": "bullet",
+          "damage": 125,
+          "cooldown": 0.6666666666666666,
+          "range": 440,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "DoublePistolsE",
+          "ra2_warhead": "HollowPoint2",
+          "ra2_projectile": "InvisibleLow",
+          "ra2_aa": false,
+          "report": "TanyaAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAPILE",
+        "GATECH"
+      ],
+      "tech_level": 9,
+      "movement_zone": "amphibiousdestroyer",
+      "image": "TANY",
+      "cameo": "TANYICON"
+    },
+    {
+      "id": "AMCV",
+      "name": "盟军机动基地车",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 3000,
+      "build_time": 40,
+      "hp": 1000,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 3.5,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 18,
+      "sight": 240,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "在开阔陆地展开即可建立盟军建造场，适合开辟分基地或转移建设位置。行军时需要护卫。",
+      "ra2": true,
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "ChronoMinerMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "ra2_prereq": [
+        "GAWEAP",
+        "GADEPT"
+      ],
+      "tech_level": 10,
+      "movement_zone": "normal",
+      "image": "MCV",
+      "cameo": "MCVICON"
+    },
+    {
+      "id": "MTNK",
+      "name": "灰熊坦克",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 700,
+      "build_time": 14,
+      "hp": 300,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 105,
+      "move": {
+        "speed": 105,
+        "speed_units": 7,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": true,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 15,
+      "sight": 320,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "用炮塔迎击地面装甲，是盟军装甲部队的主力。它无法防空，需要随行掩护。",
+      "ra2": true,
+      "weapon": {
+        "name": "105mm",
+        "attack_type": "shell",
+        "damage": 65,
+        "cooldown": 4,
+        "range": 275,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "105mm",
+        "ra2_warhead": "AP",
+        "ra2_projectile": "Cannon",
+        "ra2_aa": false,
+        "report": "GrizzlyTankAttack"
+      },
+      "elite_weapon": {
+        "name": "105mmE",
+        "attack_type": "shell",
+        "damage": 65,
+        "cooldown": 3.3333333333333335,
+        "range": 275,
+        "projectile_speed": 520,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "105mmE",
+        "ra2_warhead": "GRIZAPE",
+        "ra2_projectile": "Cannon",
+        "ra2_aa": false,
+        "report": "GrizzlyTankAttack"
+      },
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "GenAllVehicleMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "105mmE",
+          "attack_type": "shell",
+          "damage": 65,
+          "cooldown": 3.3333333333333335,
+          "range": 275,
+          "projectile_speed": 520,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "105mmE",
+          "ra2_warhead": "GRIZAPE",
+          "ra2_projectile": "Cannon",
+          "ra2_aa": false,
+          "report": "GrizzlyTankAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP"
+      ],
+      "tech_level": 2,
+      "movement_zone": "normal",
+      "image": "GTNK",
+      "cameo": "GTNKICON"
+    },
+    {
+      "id": "CARRIER",
+      "name": "航空母舰",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 800,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 21.09,
+        "rot_units": 1,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 5,
+        "movement_zone": "Water",
+        "speed_type": "Float",
+        "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+      },
+      "radius": 26,
+      "sight": 280,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": true,
+      "desc": "从海上派出舰载机袭击远处的地面目标。飞机返舰补给，母舰则需要防空舰艇护航。",
+      "ra2": true,
+      "voice": {
+        "select": "GenAllWaterSelect",
+        "move": "GenAllWaterMove",
+        "attack": "GenAllWaterAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        }
+      },
+      "ra2_prereq": [
+        "GAYARD",
+        "TECH"
+      ],
+      "tech_level": 7,
+      "movement_zone": "water",
+      "image": "CARRIER",
+      "cameo": "CARRICON"
+    },
+    {
+      "id": "DEST",
+      "name": "驱逐舰",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 600,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 90,
+      "move": {
+        "speed": 90,
+        "speed_units": 6,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 3,
+        "movement_zone": "Water",
+        "speed_type": "Float",
+        "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+      },
+      "radius": 26,
+      "sight": 280,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": true,
+      "desc": "用舰炮攻击岸上和水面目标，遭遇潜艇时可派反潜直升机迎击。",
+      "ra2": true,
+      "weapon": {
+        "name": "155mm",
+        "attack_type": "shell",
+        "damage": 60,
+        "cooldown": 7.333333333333333,
+        "range": 440,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "155mm",
+        "ra2_warhead": "ARTYHE",
+        "ra2_projectile": "Ballistic",
+        "ra2_aa": false,
+        "report": "DestroyerAttack"
+      },
+      "elite_weapon": {
+        "name": "155mmE",
+        "attack_type": "shell",
+        "damage": 60,
+        "cooldown": 7.333333333333333,
+        "range": 440,
+        "projectile_speed": 520,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "155mmE",
+        "ra2_warhead": "ARTYHE",
+        "ra2_projectile": "Ballistic",
+        "ra2_aa": false,
+        "report": "DestroyerAttack"
+      },
+      "voice": {
+        "select": "GenAllWaterSelect",
+        "move": "GenAllWaterMove",
+        "attack": "GenAllWaterAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "155mmE",
+          "attack_type": "shell",
+          "damage": 60,
+          "cooldown": 7.333333333333333,
+          "range": 440,
+          "projectile_speed": 520,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "155mmE",
+          "ra2_warhead": "ARTYHE",
+          "ra2_projectile": "Ballistic",
+          "ra2_aa": false,
+          "report": "DestroyerAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAYARD"
+      ],
+      "tech_level": 4,
+      "movement_zone": "water",
+      "image": "DEST",
+      "cameo": "desticon"
+    },
+    {
+      "id": "AEGIS",
+      "name": "神盾巡洋舰",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 1200,
+      "build_time": 24,
+      "hp": 800,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 21.09,
+        "rot_units": 1,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 4,
+        "movement_zone": "Water",
+        "speed_type": "Float",
+        "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+      },
+      "radius": 26,
+      "sight": 320,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": true,
+      "desc": "为舰队提供专职防空，用导弹拦截来袭飞机。水面和地面目标交给护航编队中的其他舰艇。",
+      "ra2": true,
+      "weapon": {
+        "name": "Medusa",
+        "attack_type": "bullet",
+        "damage": 100,
+        "cooldown": 1,
+        "range": 660,
+        "projectile_speed": 1300,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Medusa",
+        "ra2_warhead": "SAMWH",
+        "ra2_projectile": "MedusaProjectile",
+        "ra2_aa": true,
+        "report": "AegisAttack"
+      },
+      "elite_weapon": {
+        "name": "MedusaE",
+        "attack_type": "bullet",
+        "damage": 100,
+        "cooldown": 0.3333333333333333,
+        "range": 770,
+        "projectile_speed": 1300,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MedusaE",
+        "ra2_warhead": "SAMWH",
+        "ra2_projectile": "MedusaProjectile",
+        "ra2_aa": true,
+        "report": "AegisAttack"
+      },
+      "voice": {
+        "select": "GenAllWaterSelect",
+        "move": "GenAllWaterMove",
+        "attack": "GenAllWaterAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "MedusaE",
+          "attack_type": "bullet",
+          "damage": 100,
+          "cooldown": 0.3333333333333333,
+          "range": 770,
+          "projectile_speed": 1300,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "MedusaE",
+          "ra2_warhead": "SAMWH",
+          "ra2_projectile": "MedusaProjectile",
+          "ra2_aa": true,
+          "report": "AegisAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAYARD",
+        "RADAR"
+      ],
+      "tech_level": 7,
+      "movement_zone": "water",
+      "image": "AEGIS",
+      "cameo": "AGISICON"
+    },
+    {
+      "id": "LCRF",
+      "name": "两栖运输艇",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 900,
+      "build_time": 18,
+      "hp": 300,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 90,
+      "move": {
+        "speed": 90,
+        "speed_units": 6,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 1,
+        "movement_zone": "Amphibious",
+        "speed_type": "Hover",
+        "locomotor": "{4A582742-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 26,
+      "sight": 240,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": true,
+      "desc": "能载着步兵和车辆往返水陆，使用特殊技能即可卸员。运输艇自身没有武器。",
+      "ra2": true,
+      "voice": {
+        "select": "LandingCraftSelect",
+        "move": "LandingCraftMove",
+        "attack": "GenAllWaterAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        }
+      },
+      "ra2_prereq": [
+        "GAYARD"
+      ],
+      "tech_level": 4,
+      "movement_zone": "amphibious",
+      "image": "LCRF",
+      "cameo": "LANDICON"
+    },
+    {
+      "id": "SHAD",
+      "name": "夜鹰直升机",
+      "faction": "allied",
+      "role": "air",
+      "role_name": "空军",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 175,
+      "armor": "air",
+      "ra2_armor": "light",
+      "speed": 210,
+      "move": {
+        "speed": 210,
+        "speed_units": 14,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Fly",
+        "speed_type": "Hover",
+        "locomotor": "{92612C46-F71F-11d1-AC9F-006008055BB5}"
+      },
+      "radius": 13,
+      "sight": 350,
+      "tags": [
+        "air"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "运送步兵飞越障碍，并用机枪掩护。使用特殊技能可卸员，着陆点必须适合乘员通行。",
+      "ra2": true,
+      "weapon": {
+        "name": "BlackHawkCannon",
+        "attack_type": "bullet",
+        "damage": 35,
+        "cooldown": 2.6666666666666665,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "BlackHawkCannon",
+        "ra2_warhead": "SA",
+        "ra2_projectile": "QuadShell",
+        "ra2_aa": false,
+        "report": "BlackOpsAttack"
+      },
+      "elite_weapon": {
+        "name": "BlackHawkCannonE",
+        "attack_type": "bullet",
+        "damage": 40,
+        "cooldown": 2.6666666666666665,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "BlackHawkCannonE",
+        "ra2_warhead": "SSA",
+        "ra2_projectile": "QuadShell",
+        "ra2_aa": false,
+        "report": "BlackOpsAttack"
+      },
+      "voice": {
+        "select": "BlackOpsSelect",
+        "move": "BlackOpsMove",
+        "attack": "BlackOpsAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "BlackHawkCannonE",
+          "attack_type": "bullet",
+          "damage": 40,
+          "cooldown": 2.6666666666666665,
+          "range": 330,
+          "projectile_speed": 1100,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "BlackHawkCannonE",
+          "ra2_warhead": "SSA",
+          "ra2_projectile": "QuadShell",
+          "ra2_aa": false,
+          "report": "BlackOpsAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP"
+      ],
+      "tech_level": 7,
+      "movement_zone": "fly",
+      "image": "SHAD",
+      "cameo": "SHADICON"
+    },
+    {
+      "id": "DLPH",
+      "name": "海豚",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 500,
+      "build_time": 10,
+      "hp": 200,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 120,
+      "move": {
+        "speed": 120,
+        "speed_units": 8,
+        "rot": 126.56,
+        "rot_units": 6,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Water",
+        "speed_type": "Float",
+        "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+      },
+      "radius": 26,
+      "sight": 160,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": false,
+      "desc": "潜入水下，用声波攻击水面或水下目标。遇到飞机时需要舰队掩护。",
+      "ra2": true,
+      "weapon": {
+        "name": "SonicZap",
+        "attack_type": "shell",
+        "damage": 4,
+        "cooldown": 8,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "SonicZap",
+        "ra2_warhead": "SonicWarhead",
+        "ra2_projectile": "Sonic",
+        "ra2_aa": false,
+        "report": "DolphinAttack"
+      },
+      "elite_weapon": {
+        "name": "SonicZapE",
+        "attack_type": "shell",
+        "damage": 8,
+        "cooldown": 5.333333333333333,
+        "range": 330,
+        "projectile_speed": 1100,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "SonicZapE",
+        "ra2_warhead": "SonicWarhead",
+        "ra2_projectile": "Sonic",
+        "ra2_aa": false,
+        "report": "DolphinAttack"
+      },
+      "voice": {
+        "select": "DolphinSelect",
+        "move": "DolphinMove",
+        "attack": "DolphinAttackCommand",
+        "feedback": "DolphinFear",
+        "die": "DolphinDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "SonicZapE",
+          "attack_type": "shell",
+          "damage": 8,
+          "cooldown": 5.333333333333333,
+          "range": 330,
+          "projectile_speed": 1100,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "SonicZapE",
+          "ra2_warhead": "SonicWarhead",
+          "ra2_projectile": "Sonic",
+          "ra2_aa": false,
+          "report": "DolphinAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAYARD",
+        "GATECH"
+      ],
+      "tech_level": 5,
+      "movement_zone": "water",
+      "image": "DLPH",
+      "cameo": "DLPHICON"
+    },
+    {
+      "id": "TNKD",
+      "name": "坦克杀手",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 900,
+      "build_time": 18,
+      "hp": 400,
+      "armor": "heavy",
+      "ra2_armor": "heavy",
+      "speed": 75,
+      "move": {
+        "speed": 75,
+        "speed_units": 5,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 15,
+      "sight": 320,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "专门对付敌方坦克。攻击步兵和建筑时威力较弱，也无法防空。",
+      "ra2": true,
+      "weapon": {
+        "name": "SABOT",
+        "attack_type": "flak",
+        "damage": 150,
+        "cooldown": 4.666666666666667,
+        "range": 275,
+        "projectile_speed": 660,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "SABOT",
+        "ra2_warhead": "UltraAP",
+        "ra2_projectile": "Cannon",
+        "ra2_aa": false,
+        "report": "TankDestroyerAttack"
+      },
+      "elite_weapon": {
+        "name": "SABOTE",
+        "attack_type": "flak",
+        "damage": 175,
+        "cooldown": 4,
+        "range": 371.25,
+        "projectile_speed": 660,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "SABOTE",
+        "ra2_warhead": "UltraAPE",
+        "ra2_projectile": "Cannon",
+        "ra2_aa": false,
+        "report": "TankDestroyerAttack"
+      },
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "GenAllVehicleMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "SABOTE",
+          "attack_type": "flak",
+          "damage": 175,
+          "cooldown": 4,
+          "range": 371.25,
+          "projectile_speed": 660,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "SABOTE",
+          "ra2_warhead": "UltraAPE",
+          "ra2_projectile": "Cannon",
+          "ra2_aa": false,
+          "report": "TankDestroyerAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP",
+        "RADAR"
+      ],
+      "tech_level": 2,
+      "movement_zone": "normal",
+      "image": "TNKD",
+      "cameo": "TNKDICON"
+    },
+    {
+      "id": "CMIN",
+      "name": "超时空采矿车",
+      "faction": "allied",
+      "role": "economy",
+      "role_name": "采矿",
+      "cost": 1400,
+      "build_time": 28,
+      "hp": 1000,
+      "armor": "medium",
+      "ra2_armor": "medium",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 3.5,
+        "movement_zone": "Crusher",
+        "speed_type": null,
+        "locomotor": "{4A582747-9839-11d1-B709-00A024DDAFD1}",
+        "dock": "NAREFN,GAREFN"
+      },
+      "radius": 15,
+      "sight": 160,
+      "tags": [
+        "harvester",
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "采集矿石和宝石，满载后传送回精炼场卸货。可切换空闲时是否自动采矿。建好矿石精炼器后，每趟交货能赚更多资金。",
+      "ra2": true,
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "ChronoMinerMove",
+        "attack": "ChronoMinerMove",
+        "die": "GenVehicleDie"
+      },
+      "harvester": {
+        "income_per_sec": 22,
+        "cargo_cap": 500,
+        "unload_time": 1
+      },
+      "ra2_prereq": [
+        "GAWEAP",
+        "PROC"
+      ],
+      "tech_level": 1,
+      "movement_zone": "crusher",
+      "image": "CMIN",
+      "cameo": "AHRVICON"
+    },
+    {
+      "id": "SREF",
+      "name": "光棱坦克",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 1200,
+      "build_time": 24,
+      "hp": 150,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 60,
+      "move": {
+        "speed": 60,
+        "speed_units": 4,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": true,
+        "crusher": true,
+        "crushable": false,
+        "weight": 3.5,
+        "movement_zone": "Destroyer",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 15,
+      "sight": 320,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "在远处用光束打击地面目标，折射的光束还会击中附近敌人。用前排部队保护它，并留意空袭。",
+      "ra2": true,
+      "weapon": {
+        "name": "Comet",
+        "attack_type": "tesla",
+        "damage": 100,
+        "cooldown": 6.666666666666667,
+        "range": 550,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Comet",
+        "ra2_warhead": "CometWH",
+        "ra2_projectile": "LargeCometP",
+        "ra2_aa": false,
+        "report": "PrismTankAttack"
+      },
+      "elite_weapon": {
+        "name": "SuperComet",
+        "attack_type": "tesla",
+        "damage": 150,
+        "cooldown": 6.666666666666667,
+        "range": 550,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "SuperComet",
+        "ra2_warhead": "CometWH",
+        "ra2_projectile": "SuperCometP",
+        "ra2_aa": false,
+        "report": ""
+      },
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "GenAllVehicleMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "SuperComet",
+          "attack_type": "tesla",
+          "damage": 150,
+          "cooldown": 6.666666666666667,
+          "range": 550,
+          "projectile_speed": 520,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "SuperComet",
+          "ra2_warhead": "CometWH",
+          "ra2_projectile": "SuperCometP",
+          "ra2_aa": false,
+          "report": ""
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "tech_level": 8,
+      "movement_zone": "destroyer",
+      "image": "SREF",
+      "cameo": "SREFICON"
+    },
+    {
+      "id": "MGTK",
+      "name": "幻影坦克",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 200,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 105,
+      "move": {
+        "speed": 105,
+        "speed_units": 7,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 15,
+      "sight": 360,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "停车后会伪装成四种树木中的一种，适合伏击步兵和装甲。移动或开火会暴露位置，遇到空袭需要掩护。",
+      "ra2": true,
+      "weapon": {
+        "name": "MirageGun",
+        "attack_type": "bullet",
+        "damage": 100,
+        "cooldown": 4.666666666666667,
+        "range": 385,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MirageGun",
+        "ra2_warhead": "MirageWH",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "MirageTankAttack"
+      },
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "GenAllVehicleMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP",
+        "GATECH"
+      ],
+      "tech_level": 9,
+      "movement_zone": "normal",
+      "image": "RTNK",
+      "cameo": "RTNKICON"
+    },
+    {
+      "id": "FV",
+      "name": "多功能步兵战斗车",
+      "faction": "allied",
+      "role": "vehicle",
+      "role_name": "载具",
+      "cost": 600,
+      "build_time": 12,
+      "hp": 200,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 150,
+      "move": {
+        "speed": 150,
+        "speed_units": 10,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": true,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Normal",
+        "speed_type": null,
+        "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+      },
+      "radius": 15,
+      "sight": 320,
+      "tags": [
+        "vehicle"
+      ],
+      "built_at": "GAWEAP",
+      "voxel": true,
+      "desc": "空车用导弹反装甲、防空。可载一名步兵，武器随乘员改变。搭载工程师后可维修车辆。用特殊技能或部署指令让乘员下车。",
+      "ra2": true,
+      "weapon": {
+        "name": "HoverMissile",
+        "attack_type": "shell",
+        "damage": 25,
+        "cooldown": 3.3333333333333335,
+        "range": 330,
+        "projectile_speed": 520,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 55,
+        "ra2_weapon_id": "HoverMissile",
+        "ra2_warhead": "HE",
+        "ra2_projectile": "AAHeatSeeker2",
+        "ra2_aa": true,
+        "report": "SeawolfAttack"
+      },
+      "elite_weapon": {
+        "name": "HoverMissileE",
+        "attack_type": "shell",
+        "damage": 80,
+        "cooldown": 3.3333333333333335,
+        "range": 330,
+        "projectile_speed": 520,
+        "burst": 4,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 55,
+        "ra2_weapon_id": "HoverMissileE",
+        "ra2_warhead": "HE",
+        "ra2_projectile": "AAHeatSeeker2",
+        "ra2_aa": true,
+        "report": "SeawolfAttack"
+      },
+      "voice": {
+        "select": "GenAllVehicleSelect",
+        "move": "GenAllVehicleMove",
+        "attack": "GenAllVehicleAttackCommand",
+        "die": "GenVehicleDie"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "HoverMissileE",
+          "attack_type": "shell",
+          "damage": 80,
+          "cooldown": 3.3333333333333335,
+          "range": 330,
+          "projectile_speed": 520,
+          "burst": 4,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 55,
+          "ra2_weapon_id": "HoverMissileE",
+          "ra2_warhead": "HE",
+          "ra2_projectile": "AAHeatSeeker2",
+          "ra2_aa": true,
+          "report": "SeawolfAttack"
+        }
+      },
+      "ra2_prereq": [
+        "GAWEAP"
+      ],
+      "tech_level": 3,
+      "movement_zone": "normal",
+      "image": "FV",
+      "cameo": "FVICON"
+    },
+    {
+      "id": "CDEST",
+      "name": "海岸巡防艇",
+      "faction": "allied",
+      "role": "naval",
+      "role_name": "海军",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 600,
+      "armor": "light",
+      "ra2_armor": "light",
+      "speed": 90,
+      "move": {
+        "speed": 90,
+        "speed_units": 6,
+        "rot": 105.47,
+        "rot_units": 5,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": true,
+        "crushable": false,
+        "weight": 3,
+        "movement_zone": "Water",
+        "speed_type": "Float",
+        "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+      },
+      "radius": 14,
+      "sight": 280,
+      "tags": [
+        "naval",
+        "ship"
+      ],
+      "built_at": "GAYARD",
+      "voxel": true,
+      "desc": "仅在特定地图上登场，常规盟军船厂无法订购。",
+      "ra2": true,
+      "weapon": {
+        "name": "155mm",
+        "attack_type": "shell",
+        "damage": 60,
+        "cooldown": 7.333333333333333,
+        "range": 440,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "155mm",
+        "ra2_warhead": "ARTYHE",
+        "ra2_projectile": "Ballistic",
+        "ra2_aa": false,
+        "report": "DestroyerAttack"
+      },
+      "elite_weapon": {
+        "name": "155mmE",
+        "attack_type": "shell",
+        "damage": 60,
+        "cooldown": 7.333333333333333,
+        "range": 440,
+        "projectile_speed": 520,
+        "burst": 2,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "155mmE",
+        "ra2_warhead": "ARTYHE",
+        "ra2_projectile": "Ballistic",
+        "ra2_aa": false,
+        "report": "DestroyerAttack"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "SELF_HEAL": true,
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "155mmE",
+          "attack_type": "shell",
+          "damage": 60,
+          "cooldown": 7.333333333333333,
+          "range": 440,
+          "projectile_speed": 520,
+          "burst": 2,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "155mmE",
+          "ra2_warhead": "ARTYHE",
+          "ra2_projectile": "Ballistic",
+          "ra2_aa": false,
+          "report": "DestroyerAttack"
+        }
+      },
+      "tech_level": -1,
+      "movement_zone": "water",
+      "image": "CDEST"
+    },
+    {
+      "id": "ORCA",
+      "name": "入侵者战机",
+      "faction": "allied",
+      "role": "air",
+      "role_name": "空军",
+      "cost": 1200,
+      "build_time": 24,
+      "hp": 150,
+      "armor": "air",
+      "ra2_armor": "light",
+      "speed": 210,
+      "move": {
+        "speed": 210,
+        "speed_units": 14,
+        "rot": 63.28,
+        "rot_units": 3,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Fly",
+        "speed_type": null,
+        "locomotor": "{4A582746-9839-11d1-B709-00A024DDAFD1}",
+        "dock": "GAAIRC,AMRADR"
+      },
+      "radius": 13,
+      "sight": 400,
+      "tags": [
+        "air"
+      ],
+      "built_at": "GAAIRC",
+      "voxel": true,
+      "desc": "对地攻击后或弹药耗尽时，自动返回空指部补给。补满弹药后等待你的下一道命令。",
+      "ra2": true,
+      "weapon": {
+        "name": "Maverick",
+        "attack_type": "flak",
+        "damage": 150,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 770,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Maverick",
+        "ra2_warhead": "ORCAAP",
+        "ra2_projectile": "AirToGroundMissile",
+        "ra2_aa": false,
+        "report": "IntruderAttack"
+      },
+      "elite_weapon": {
+        "name": "MaverickE",
+        "attack_type": "flak",
+        "damage": 300,
+        "cooldown": 0.6666666666666666,
+        "range": 495,
+        "projectile_speed": 770,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "MaverickE",
+        "ra2_warhead": "ORCAAP",
+        "ra2_projectile": "AirToGroundMissile",
+        "ra2_aa": false,
+        "report": "IntruderAttack"
+      },
+      "voice": {
+        "select": "IntruderSelect",
+        "move": "IntruderMove",
+        "attack": "IntruderAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "MaverickE",
+          "attack_type": "flak",
+          "damage": 300,
+          "cooldown": 0.6666666666666666,
+          "range": 495,
+          "projectile_speed": 770,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "MaverickE",
+          "ra2_warhead": "ORCAAP",
+          "ra2_projectile": "AirToGroundMissile",
+          "ra2_aa": false,
+          "report": "IntruderAttack"
+        }
+      },
+      "ra2_prereq": [
+        "RADAR"
+      ],
+      "tech_level": 3,
+      "movement_zone": "fly",
+      "image": "FALC",
+      "cameo": "FALCICON"
+    },
+    {
+      "id": "BEAG",
+      "name": "黑鹰战机",
+      "faction": "allied",
+      "role": "air",
+      "role_name": "空军",
+      "cost": 1200,
+      "build_time": 24,
+      "hp": 200,
+      "armor": "air",
+      "ra2_armor": "light",
+      "speed": 210,
+      "move": {
+        "speed": 210,
+        "speed_units": 14,
+        "rot": 63.28,
+        "rot_units": 3,
+        "accel_time": 0,
+        "accelerates": false,
+        "turret": false,
+        "crusher": false,
+        "crushable": false,
+        "weight": 0,
+        "movement_zone": "Fly",
+        "speed_type": null,
+        "locomotor": "{4A582746-9839-11d1-B709-00A024DDAFD1}",
+        "dock": "GAAIRC,AMRADR"
+      },
+      "radius": 13,
+      "sight": 400,
+      "tags": [
+        "air"
+      ],
+      "built_at": "GAAIRC",
+      "voxel": true,
+      "desc": "韩国的精锐对地战机，一轮攻击就能打出强劲火力。弹药耗尽后返回空指部，补满后等待新的命令。",
+      "ra2": true,
+      "weapon": {
+        "name": "Maverick2",
+        "attack_type": "flak",
+        "damage": 200,
+        "cooldown": 0.6666666666666666,
+        "range": 330,
+        "projectile_speed": 770,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Maverick2",
+        "ra2_warhead": "ORCAAP",
+        "ra2_projectile": "AirToGroundMissile",
+        "ra2_aa": false,
+        "report": "BlackEagleAttack"
+      },
+      "elite_weapon": {
+        "name": "Maverick2E",
+        "attack_type": "flak",
+        "damage": 400,
+        "cooldown": 0.6666666666666666,
+        "range": 495,
+        "projectile_speed": 770,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Maverick2E",
+        "ra2_warhead": "ORCAAP",
+        "ra2_projectile": "AirToGroundMissile",
+        "ra2_aa": false,
+        "report": "BlackEagleAttack"
+      },
+      "voice": {
+        "select": "BlackEagleSelect",
+        "move": "BlackEagleMove",
+        "attack": "BlackEagleAttackCommand"
+      },
+      "veteran": {
+        "veteran": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "SIGHT": true,
+          "FASTER": true
+        },
+        "elite": {
+          "STRONGER": true,
+          "FIREPOWER": true,
+          "ROF": true
+        },
+        "elite_weapon": {
+          "name": "Maverick2E",
+          "attack_type": "flak",
+          "damage": 400,
+          "cooldown": 0.6666666666666666,
+          "range": 495,
+          "projectile_speed": 770,
+          "burst": 1,
+          "burst_delay": 0.12,
+          "aoe": 0,
+          "min_range": 0,
+          "ra2_weapon_id": "Maverick2E",
+          "ra2_warhead": "ORCAAP",
+          "ra2_projectile": "AirToGroundMissile",
+          "ra2_aa": false,
+          "report": "BlackEagleAttack"
+        }
+      },
+      "ra2_prereq": [
+        "RADAR"
+      ],
+      "tech_level": 3,
+      "movement_zone": "fly",
+      "image": "BEAG",
+      "cameo": "BEAGICON"
+    }
+  ],
+  "buildings": [
+    {
+      "id": "GACNST",
+      "name": "盟军建造场",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "生产建筑",
+      "cost": 3000,
+      "build_time": 40,
+      "hp": 3000,
+      "armor": "structure",
+      "ra2_armor": "concrete",
+      "radius": 38,
+      "sight": 440,
+      "tags": [
+        "structure",
+        "hq",
+        "production"
+      ],
+      "builds": [],
+      "desc": "常规建筑和防御工事可同时开工。需要迁移时，可收起建造厂变回基地车。研究对应科技后，还能预先安排建造订单。",
+      "ra2": true,
+      "foundation": "4x4",
+      "buildup": "GACNSTMK",
+      "tech_level": -1
+    },
+    {
+      "id": "GAPOWR",
+      "name": "发电厂",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "电力建筑",
+      "cost": 800,
+      "build_time": 16,
+      "hp": 2250,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 22,
+      "sight": 220,
+      "tags": [
+        "structure",
+        "power"
+      ],
+      "builds": [],
+      "desc": "为盟军基地供电。电力不足时，依赖供电的防御和支援设施会停运。",
+      "ra2": true,
+      "foundation": "2x2",
+      "buildup": "GAPOWRMK",
+      "voice": {
+        "die": "PowerPlantDie"
+      },
+      "ra2_prereq": [
+        "GACNST"
+      ],
+      "tech_level": 1,
+      "power": 200
+    },
+    {
+      "id": "GAREFN",
+      "name": "盟军矿石精炼场",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "经济建筑",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 3000,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 34,
+      "sight": 330,
+      "tags": [
+        "structure",
+        "resource",
+        "refinery"
+      ],
+      "builds": [],
+      "desc": "矿车在这里卸货换取资金。每座新精炼场附送一辆采矿车。解锁矿车制造后，还可在这里单独订购。",
+      "ra2": true,
+      "foundation": "4x3",
+      "buildup": "GAREFNMK",
+      "ra2_prereq": [
+        "POWER",
+        "GACNST"
+      ],
+      "tech_level": 1,
+      "power": -50
+    },
+    {
+      "id": "GAOREP",
+      "name": "矿石精炼器",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "经济建筑",
+      "cost": 2500,
+      "build_time": 40,
+      "hp": 2700,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 30,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "resource",
+        "purifier"
+      ],
+      "builds": [],
+      "desc": "每座运转中的精炼器都让矿车的交货收入增加 25%，多座可以叠加。矿区的矿量照旧，缺电时加成暂停。",
+      "ra2": true,
+      "foundation": "3x3",
+      "buildup": "GAOREPMK",
+      "ra2_prereq": [
+        "GATECH",
+        "PROC",
+        "GACNST"
+      ],
+      "tech_level": 10,
+      "power": -200,
+      "powered": true
+    },
+    {
+      "id": "GAPILE",
+      "name": "盟军兵营",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "生产建筑",
+      "cost": 500,
+      "build_time": 10,
+      "hp": 1500,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 26,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "production",
+        "barracks"
+      ],
+      "builds": [
+        "E1",
+        "ENGINEER",
+        "JUMPJET",
+        "GHOST",
+        "DOG",
+        "CLEG",
+        "SPY",
+        "CCOMAND",
+        "PTROOP",
+        "SNIPE",
+        "TANY"
+      ],
+      "desc": "训练盟军步兵。设置集合点可让新兵出营后直接前往指定位置。拥有多座兵营时，点击各兵营的标签可分别下单。",
+      "ra2": true,
+      "foundation": "3x2",
+      "buildup": "GAPILEMK",
+      "ra2_prereq": [
+        "POWER",
+        "GACNST"
+      ],
+      "tech_level": 2,
+      "power": -10
+    },
+    {
+      "id": "GAWEAP",
+      "name": "盟军战车工厂",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "生产建筑",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 3000,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 38,
+      "sight": 220,
+      "tags": [
+        "structure",
+        "production",
+        "factory"
+      ],
+      "builds": [
+        "AMCV",
+        "MTNK",
+        "SHAD",
+        "TNKD",
+        "CMIN",
+        "SREF",
+        "MGTK",
+        "FV"
+      ],
+      "desc": "生产盟军车辆和采矿车。多座工厂可以同时接单，也可以为出厂的车辆设置集合点。",
+      "ra2": true,
+      "foundation": "5x3",
+      "buildup": "GAWEAPMK",
+      "ra2_prereq": [
+        "PROC",
+        "GAPILE",
+        "GACNST"
+      ],
+      "tech_level": 2,
+      "power": -25
+    },
+    {
+      "id": "GAAIRC",
+      "name": "空指部",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "生产建筑",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 1800,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 26,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "production",
+        "airbase",
+        "radar"
+      ],
+      "builds": [
+        "ORCA",
+        "BEAG"
+      ],
+      "desc": "为基地提供雷达，在这里订购战机并为返航的战机补弹。美国的空指部每轮还能空降八名美国大兵。火箭飞行兵在兵营训练，不占机位。",
+      "ra2": true,
+      "foundation": "3x2",
+      "buildup": "GAAIRCMK",
+      "ra2_prereq": [
+        "GAREFN",
+        "GACNST"
+      ],
+      "tech_level": 3,
+      "power": -50
+    },
+    {
+      "id": "GADEPT",
+      "name": "盟军维修厂",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "维修建筑",
+      "cost": 800,
+      "build_time": 16,
+      "hp": 3600,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 30,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "repair"
+      ],
+      "builds": [],
+      "desc": "选中受损的己方地面车辆，再右键维修厂。车辆会依次驶上平台，按修复的生命值付费，修满后自行离开。",
+      "ra2": true,
+      "foundation": "3x3",
+      "buildup": "GADEPTMK",
+      "ra2_prereq": [
+        "GAWEAP",
+        "GACNST"
+      ],
+      "tech_level": 6,
+      "power": -25
+    },
+    {
+      "id": "GATECH",
+      "name": "盟军作战实验室",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "科技建筑",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 1500,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 26,
+      "sight": 330,
+      "tags": [
+        "structure",
+        "tech"
+      ],
+      "builds": [],
+      "desc": "解锁盟军高级部队和建筑。查看生产栏中的项目，即可了解所需设施以及哪些国家可以建造。",
+      "ra2": true,
+      "foundation": "3x2",
+      "buildup": "GATECHMK",
+      "ra2_prereq": [
+        "GAWEAP",
+        "RADAR",
+        "GACNST"
+      ],
+      "tech_level": 8,
+      "power": -100
+    },
+    {
+      "id": "GAPILL",
+      "name": "机枪碉堡",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "防御建筑",
+      "cost": 500,
+      "build_time": 10,
+      "hp": 1200,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 14,
+      "sight": 385,
+      "tags": [
+        "structure",
+        "defense"
+      ],
+      "builds": [],
+      "desc": "造价低，适合用机枪守住步兵进入基地的路线。只能攻击地面目标。",
+      "ra2": true,
+      "foundation": "1x1",
+      "buildup": "GAPILLMK",
+      "weapon": {
+        "name": "Vulcan2",
+        "attack_type": "bullet",
+        "damage": 50,
+        "cooldown": 1.7333333333333334,
+        "range": 302.5,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "Vulcan2",
+        "ra2_warhead": "SA",
+        "ra2_projectile": "InvisibleLow",
+        "ra2_aa": false,
+        "report": "PillboxAttack"
+      },
+      "ra2_prereq": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "tech_level": 1
+    },
+    {
+      "id": "ATESLA",
+      "name": "光棱塔",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "防御建筑",
+      "cost": 1500,
+      "build_time": 30,
+      "hp": 1800,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 14,
+      "sight": 440,
+      "tags": [
+        "structure",
+        "defense"
+      ],
+      "builds": [],
+      "desc": "用光束迎击地面目标。附近每座空闲光棱塔都能为它额外提供相当于基础伤害 150% 的火力，最多八座。支援后需等待 3 秒，缺电时停机。",
+      "ra2": true,
+      "foundation": "1x1",
+      "buildup": "GAPRISMK",
+      "weapon": {
+        "name": "PrismShot",
+        "attack_type": "tesla",
+        "damage": 120,
+        "cooldown": 3,
+        "range": 440,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "PrismShot",
+        "ra2_warhead": "PrismWarhead",
+        "ra2_projectile": "InvisibleHigh",
+        "ra2_aa": false,
+        "report": "PrismTowerAttack"
+      },
+      "ra2_prereq": [
+        "POWER",
+        "RADAR",
+        "GACNST"
+      ],
+      "tech_level": 6,
+      "power": -75,
+      "powered": true,
+      "prism_type": "ATESLA",
+      "prism_support_weapon": "PrismSupport",
+      "prism_support_range": 440
+    },
+    {
+      "id": "GTGCAN",
+      "name": "巨炮",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "防御建筑",
+      "cost": 2000,
+      "build_time": 40,
+      "hp": 2700,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 22,
+      "sight": 550,
+      "tags": [
+        "structure",
+        "defense"
+      ],
+      "builds": [],
+      "desc": "用远程重炮轰击成片的地面目标。开火需要供电，无法防空。",
+      "ra2": true,
+      "foundation": "2x2",
+      "buildup": "GTGCANMK",
+      "weapon": {
+        "name": "GrandCannonWeapon",
+        "attack_type": "shell",
+        "damage": 150,
+        "cooldown": 8,
+        "range": 825,
+        "projectile_speed": 520,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 165,
+        "ra2_weapon_id": "GrandCannonWeapon",
+        "ra2_warhead": "GrandCannonWH",
+        "ra2_projectile": "GrandCannonBall",
+        "ra2_aa": false,
+        "report": "GrandCannonAttack"
+      },
+      "ra2_prereq": [
+        "RADAR",
+        "GACNST"
+      ],
+      "tech_level": 7,
+      "power": -100,
+      "powered": true
+    },
+    {
+      "id": "GAYARD",
+      "name": "盟军造船厂",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "船坞",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 4500,
+      "armor": "structure",
+      "ra2_armor": "concrete",
+      "radius": 38,
+      "sight": 550,
+      "tags": [
+        "structure",
+        "production",
+        "shipyard",
+        "repair",
+        "water"
+      ],
+      "builds": [
+        "CARRIER",
+        "DEST",
+        "AEGIS",
+        "LCRF",
+        "DLPH",
+        "CDEST"
+      ],
+      "desc": "在水面生产舰艇，可设置海上集合点。选中受损的己方舰艇，右键船厂即可进坞维修。费用按修复量计算，修满后自动离港。",
+      "ra2": true,
+      "foundation": "4x4",
+      "buildup": "GAYARDMK",
+      "ra2_prereq": [
+        "PROC",
+        "POWER",
+        "GACNST"
+      ],
+      "tech_level": 4,
+      "power": -25,
+      "powered": true,
+      "water_bound": true
+    },
+    {
+      "id": "GACSPH",
+      "name": "超时空传送仪",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "超级武器",
+      "cost": 2500,
+      "build_time": 40,
+      "hp": 2250,
+      "armor": "structure",
+      "ra2_armor": "concrete",
+      "radius": 34,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "superweapon"
+      ],
+      "builds": [],
+      "desc": "先选中 3×3 格内的部队，再指定已探索的落点。敌我都会被传送，普通步兵会丧生，超时空步兵可以存活。车辆和舰船落在无法通行的地形上也会被毁。幸存者保持队形，稍作停顿后恢复行动。",
+      "ra2": true,
+      "foundation": "4x3",
+      "buildup": "GACSPHMK",
+      "ra2_prereq": [
+        "GATECH",
+        "GACNST"
+      ],
+      "tech_level": 10,
+      "power": -200,
+      "powered": true,
+      "superweapon": {
+        "id": "ChronoSphereSpecial",
+        "type": "ChronoSphere",
+        "name": "Chrono Sphere",
+        "ui_name": "超时空转换",
+        "recharge_seconds": 420,
+        "recharge_voice": "00-I156",
+        "action": "ChronoSphere"
+      }
+    },
+    {
+      "id": "GAWEAT",
+      "name": "天气控制机",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "超级武器",
+      "cost": 5000,
+      "build_time": 40,
+      "hp": 3000,
+      "armor": "structure",
+      "ra2_armor": "concrete",
+      "radius": 30,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "superweapon"
+      ],
+      "builds": [],
+      "desc": "预警后，风暴云会聚集并降下闪电，随后消散。雷击会波及友军和建筑，伤害随护甲而异。风暴期间敌方雷达暂时失效。即使发射设施被毁，已发动的风暴也会继续。",
+      "ra2": true,
+      "foundation": "3x3",
+      "buildup": "GAWETHMK",
+      "ra2_prereq": [
+        "GATECH",
+        "GACNST"
+      ],
+      "tech_level": 10,
+      "power": -200,
+      "powered": true,
+      "superweapon": {
+        "id": "LightningStormSpecial",
+        "type": "LightningStorm",
+        "name": "Lightning Storm",
+        "ui_name": "闪电风暴",
+        "recharge_seconds": 600,
+        "recharge_voice": "00-I156",
+        "action": "LightningStorm",
+        "storm": {
+          "deferment_frames": 250,
+          "duration_frames": 180,
+          "damage": 250,
+          "warhead": "IonWH",
+          "hit_delay_frames": 10,
+          "scatter_delay_frames": 5,
+          "cell_spread": 10,
+          "separation": 3,
+          "bolts": [
+            "WCLBOLT1",
+            "WCLBOLT2",
+            "WCLBOLT3"
+          ],
+          "clouds": [
+            "WCCLOUD1",
+            "WCCLOUD2",
+            "WCCLOUD3"
+          ],
+          "bolt_explosion": "EXPLOLB",
+          "start_sound": "WeatherIntro",
+          "strike_sound": "WeatherStrike"
+        }
+      }
+    },
+    {
+      "id": "GAGAP",
+      "name": "裂缝产生器",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "防御建筑",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 1800,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 14,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "defense"
+      ],
+      "builds": [],
+      "desc": "供电正常时，周围 10 格会对敌方侦察和卫星重新隐入迷雾。敌人靠近仍可看到。选中产生器可查看遮蔽范围。",
+      "ra2": true,
+      "foundation": "1x1",
+      "buildup": "GAGAPMK",
+      "ra2_prereq": [
+        "GATECH",
+        "GACNST"
+      ],
+      "tech_level": 7,
+      "power": -100,
+      "powered": true
+    },
+    {
+      "id": "GASAND",
+      "name": "沙袋",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "围墙",
+      "cost": 25,
+      "build_time": 4,
+      "hp": 300,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 14,
+      "sight": 0,
+      "tags": [
+        "structure",
+        "defense",
+        "wall"
+      ],
+      "builds": [],
+      "desc": "用沙袋筑起地面防线。",
+      "ra2": true,
+      "foundation": "1x1",
+      "voice": {
+        "crush": "WallCrushSandbag"
+      },
+      "ra2_prereq": [
+        "BARRACKS"
+      ],
+      "tech_level": -1
+    },
+    {
+      "id": "GAWALL",
+      "name": "盟军围墙",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "围墙",
+      "cost": 100,
+      "build_time": 4,
+      "hp": 900,
+      "armor": "structure",
+      "ra2_armor": "concrete",
+      "radius": 14,
+      "sight": 55,
+      "tags": [
+        "structure",
+        "defense",
+        "wall"
+      ],
+      "builds": [],
+      "desc": "封住地面通路。靠近同类围墙放置时会自动连接，沿同一直线也能补齐短缺口。每段另行收费，遇到障碍或资金不足就会停止。",
+      "ra2": true,
+      "foundation": "1x1",
+      "ra2_prereq": [
+        "GAPILE"
+      ],
+      "tech_level": 1
+    },
+    {
+      "id": "GASPYSAT",
+      "name": "间谍卫星",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "雷达建筑",
+      "cost": 1500,
+      "build_time": 30,
+      "hp": 3000,
+      "armor": "structure",
+      "ra2_armor": "wood",
+      "radius": 22,
+      "sight": 275,
+      "tags": [
+        "structure",
+        "radar"
+      ],
+      "builds": [],
+      "desc": "正常运转时可看清全图地形和目标，但裂缝遮蔽的区域仍不可见，也无法借此识破隐形单位。断电后恢复战争迷雾。",
+      "ra2": true,
+      "foundation": "2x2",
+      "buildup": "GASPSTMK",
+      "ra2_prereq": [
+        "GATECH",
+        "GACNST"
+      ],
+      "tech_level": 9,
+      "power": -100,
+      "powered": true
+    },
+    {
+      "id": "NASAM",
+      "name": "爱国者飞弹",
+      "faction": "allied",
+      "role": "structure",
+      "role_name": "防御建筑",
+      "cost": 1000,
+      "build_time": 20,
+      "hp": 2700,
+      "armor": "structure",
+      "ra2_armor": "steel",
+      "radius": 14,
+      "sight": 550,
+      "tags": [
+        "structure",
+        "defense"
+      ],
+      "builds": [],
+      "desc": "保持供电即可用导弹拦截来袭飞机，适合保护基地免受空袭。",
+      "ra2": true,
+      "foundation": "1x1",
+      "buildup": "NASAMMK",
+      "weapon": {
+        "name": "RedEye2",
+        "attack_type": "bullet",
+        "damage": 75,
+        "cooldown": 3.6666666666666665,
+        "range": 660,
+        "projectile_speed": 1100,
+        "burst": 1,
+        "burst_delay": 0.12,
+        "aoe": 0,
+        "min_range": 0,
+        "ra2_weapon_id": "RedEye2",
+        "ra2_warhead": "SAMWH",
+        "ra2_projectile": "AAHeatSeeker",
+        "ra2_aa": true,
+        "report": "PatriotAttack"
+      },
+      "ra2_prereq": [
+        "BARRACKS",
+        "GACNST"
+      ],
+      "tech_level": 4,
+      "power": -50,
+      "powered": true
+    }
+  ],
+  "art": {
+    "GACNST": {
+      "shp": "res://assets/ra2/shp/GACNST.png"
+    },
+    "GAPOWR": {
+      "cameo": "res://assets/ra2/cameo/POWRICON.png",
+      "shp": "res://assets/ra2/shp/GAPOWR.png"
+    },
+    "GAREFN": {
+      "cameo": "res://assets/ra2/cameo/REFICON.png",
+      "shp": "res://assets/ra2/shp/GAREFN.png"
+    },
+    "GAOREP": {
+      "cameo": "res://assets/ra2/cameo/gorep.png",
+      "shp": "res://assets/ra2/shp/GAOREP.png"
+    },
+    "GAPILE": {
+      "cameo": "res://assets/ra2/cameo/BRRKICON.png",
+      "shp": "res://assets/ra2/shp/GAPILE.png"
+    },
+    "GAWEAP": {
+      "cameo": "res://assets/ra2/cameo/gwepicon.png",
+      "shp": "res://assets/ra2/shp/GAWEAP.png"
+    },
+    "GAAIRC": {
+      "cameo": "res://assets/ra2/cameo/HELIICON.png"
+    },
+    "GADEPT": {
+      "cameo": "res://assets/ra2/cameo/FIXICON.png"
+    },
+    "GATECH": {
+      "cameo": "res://assets/ra2/cameo/TECHICON.png"
+    },
+    "GAPILL": {
+      "cameo": "res://assets/ra2/cameo/pillicon.png",
+      "shp": "res://assets/ra2/shp/GAPILL.png"
+    },
+    "ATESLA": {
+      "cameo": "res://assets/ra2/cameo/prisicon.png",
+      "shp": "res://assets/ra2/shp/ATESLA.png"
+    },
+    "GTGCAN": {
+      "cameo": "res://assets/ra2/cameo/GCANICON.png"
+    },
+    "GAYARD": {
+      "shp": "res://assets/ra2/shp/GAYARD.png",
+      "cameo": "res://assets/ra2/cameo/ayaricon.png"
+    },
+    "GACSPH": {
+      "cameo": "res://assets/ra2/cameo/csphicon.png"
+    },
+    "GAWEAT": {
+      "cameo": "res://assets/ra2/cameo/wethicon.png"
+    },
+    "GAGAP": {
+      "cameo": "res://assets/ra2/cameo/Gapicon.png"
+    },
+    "GASAND": {
+      "cameo": "res://assets/ra2/cameo/SBAGICON.png"
+    },
+    "GAWALL": {
+      "cameo": "res://assets/ra2/cameo/WALLICON.png"
+    },
+    "GASPYSAT": {
+      "cameo": "res://assets/ra2/cameo/asaticon.png"
+    },
+    "NASAM": {
+      "cameo": "res://assets/ra2/cameo/SAMICON.png"
+    },
+    "E1": {
+      "cameo": "res://assets/ra2/cameo/GIICON.png",
+      "shp": "res://assets/ra2/shp/E1.png"
+    },
+    "ENGINEER": {
+      "cameo": "res://assets/ra2/cameo/ENGNICON.png"
+    },
+    "JUMPJET": {
+      "cameo": "res://assets/ra2/cameo/JJETICON.png"
+    },
+    "GHOST": {
+      "cameo": "res://assets/ra2/cameo/SEALICON.png",
+      "shp": "res://assets/ra2/shp/GHOST.png"
+    },
+    "DOG": {
+      "cameo": "res://assets/ra2/cameo/DOGICON.png",
+      "shp": "res://assets/ra2/shp/DOG.png"
+    },
+    "CLEG": {
+      "cameo": "res://assets/ra2/cameo/CLEGICON.png"
+    },
+    "SPY": {
+      "cameo": "res://assets/ra2/cameo/SPYICON.png"
+    },
+    "CCOMAND": {
+      "cameo": "res://assets/ra2/cameo/CCOMICON.png"
+    },
+    "PTROOP": {
+      "cameo": "res://assets/ra2/cameo/PSICICON.png",
+      "shp": "res://assets/ra2/shp/PTROOP.png"
+    },
+    "SNIPE": {
+      "cameo": "res://assets/ra2/cameo/SNIPICON.png",
+      "shp": "res://assets/ra2/shp/SNIPE.png"
+    },
+    "TANY": {
+      "cameo": "res://assets/ra2/cameo/TANYICON.png"
+    },
+    "AMCV": {
+      "cameo": "res://assets/ra2/cameo/MCVICON.png"
+    },
+    "MTNK": {
+      "cameo": "res://assets/ra2/cameo/GTNKICON.png",
+      "vxl": "res://assets/ra2/vxl/MTNK.png"
+    },
+    "CARRIER": {
+      "cameo": "res://assets/ra2/cameo/CARRICON.png"
+    },
+    "DEST": {
+      "vxl": "res://assets/ra2/vxl/DEST.png",
+      "cameo": "res://assets/ra2/cameo/desticon.png"
+    },
+    "AEGIS": {
+      "cameo": "res://assets/ra2/cameo/AGISICON.png"
+    },
+    "LCRF": {
+      "cameo": "res://assets/ra2/cameo/LANDICON.png"
+    },
+    "SHAD": {
+      "cameo": "res://assets/ra2/cameo/SHADICON.png"
+    },
+    "DLPH": {
+      "cameo": "res://assets/ra2/cameo/DLPHICON.png"
+    },
+    "TNKD": {
+      "cameo": "res://assets/ra2/cameo/TNKDICON.png",
+      "vxl": "res://assets/ra2/vxl/TNKD.png"
+    },
+    "CMIN": {
+      "cameo": "res://assets/ra2/cameo/AHRVICON.png",
+      "vxl": "res://assets/ra2/vxl/CMIN.png"
+    },
+    "SREF": {
+      "cameo": "res://assets/ra2/cameo/SREFICON.png"
+    },
+    "MGTK": {
+      "cameo": "res://assets/ra2/cameo/RTNKICON.png",
+      "vxl": "res://assets/ra2/vxl/MGTK.png"
+    },
+    "FV": {
+      "cameo": "res://assets/ra2/cameo/FVICON.png",
+      "vxl": "res://assets/ra2/vxl/FV.png"
+    },
+    "CDEST": {
+      "vxl": "res://assets/ra2/vxl/CDEST.png"
+    },
+    "ORCA": {
+      "cameo": "res://assets/ra2/cameo/FALCICON.png"
+    },
+    "BEAG": {
+      "cameo": "res://assets/ra2/cameo/BEAGICON.png"
+    }
+  }
+}

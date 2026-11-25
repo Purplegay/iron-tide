@@ -1,0 +1,1092 @@
+{
+  "rules_sha256": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef",
+  "weapons": {
+    "HornetLauncher": {
+      "damage": "1",
+      "rof": "150",
+      "range": "25",
+      "spawner": "yes",
+      "projectile": "Invisible",
+      "speed": "10",
+      "warhead": "Special",
+      "omnifire": "yes"
+    },
+    "M60": {
+      "damage": "15",
+      "rof": "20",
+      "range": "4",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "SA",
+      "report": "GIAttack",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "occupantanim": "UCFLASH"
+    },
+    "M60E": {
+      "damage": "25",
+      "rof": "20",
+      "range": "4",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "SA",
+      "report": "GIAttack",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "occupantanim": "UCFLASH"
+    },
+    "Para": {
+      "damage": "25",
+      "rof": "15",
+      "range": "5",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "SSA",
+      "report": "GIAttackDeployed",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "occupantanim": "UCFLASH"
+    },
+    "ParaE": {
+      "damage": "25",
+      "rof": "15",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "SSA",
+      "report": "GIAttackDeployed"
+    },
+    "20mm": {
+      "damage": "25",
+      "rof": "30",
+      "range": "5",
+      "projectile": "Invisible3",
+      "speed": "100",
+      "warhead": "SSA",
+      "report": "RocketeerAttack"
+    },
+    "20mmE": {
+      "damage": "25",
+      "rof": "5",
+      "range": "5",
+      "projectile": "Invisible3",
+      "speed": "100",
+      "warhead": "SSA",
+      "report": "RocketeerAttack"
+    },
+    "MP5": {
+      "damage": "125",
+      "rof": "10",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPoint",
+      "report": "SealAttack",
+      "assaultanim": "UCBLOOD"
+    },
+    "MP5E": {
+      "damage": "125",
+      "rof": "10",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPoint",
+      "report": "SealAttack",
+      "assaultanim": "UCBLOOD"
+    },
+    "BadTeeth": {
+      "damage": "30",
+      "rof": "30",
+      "range": "1.5",
+      "cellrangefinding": "yes",
+      "projectile": "DOGJUMP",
+      "speed": "30",
+      "warhead": "ParasiteDog",
+      "limbolaunch": "yes",
+      "report": "DogAttack",
+      "fireintransport": "no"
+    },
+    "NeutronRifle": {
+      "damage": "8",
+      "rof": "120",
+      "range": "5",
+      "speed": "100",
+      "projectile": "InvisibleMedium",
+      "warhead": "ChronoBeam",
+      "report": "ChronoLegionAttack",
+      "isradbeam": "yes"
+    },
+    "NeutronRifleE": {
+      "damage": "16",
+      "rof": "120",
+      "range": "5",
+      "speed": "100",
+      "projectile": "InvisibleLow",
+      "warhead": "ChronoBeam",
+      "report": "ChronoLegionAttack",
+      "isradbeam": "yes"
+    },
+    "ChronoMP5": {
+      "damage": "125",
+      "rof": "10",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPointNoBuilding",
+      "report": "SealAttack"
+    },
+    "ChronoMP5E": {
+      "damage": "125",
+      "rof": "10",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPointNoBuilding",
+      "report": "SealAttack"
+    },
+    "MindControl": {
+      "damage": "1",
+      "rof": "200",
+      "range": "7",
+      "projectile": "PsychicControl",
+      "speed": "100",
+      "warhead": "Controller",
+      "anim": "YURICNTL",
+      "fireonce": "yes"
+    },
+    "MindControlE": {
+      "damage": "10",
+      "rof": "200",
+      "range": "14",
+      "projectile": "PsychicControl",
+      "speed": "100",
+      "warhead": "Controller",
+      "anim": "YURICNTL",
+      "fireonce": "yes"
+    },
+    "AWP": {
+      "damage": "125",
+      "rof": "150",
+      "range": "14",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "report": "SniperAttack",
+      "warhead": "HollowPoint",
+      "revealonfire": "no"
+    },
+    "AWPE": {
+      "damage": "125",
+      "rof": "60",
+      "range": "14",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "report": "SniperAttack",
+      "warhead": "HollowPoint",
+      "revealonfire": "no"
+    },
+    "DoublePistols": {
+      "damage": "125",
+      "rof": "5",
+      "range": "6",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPoint2",
+      "report": "TanyaAttack",
+      "assaultanim": "UCBLOOD"
+    },
+    "DoublePistolsE": {
+      "damage": "125",
+      "rof": "10",
+      "range": "8",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "HollowPoint2",
+      "report": "TanyaAttack",
+      "assaultanim": "UCBLOOD"
+    },
+    "105mm": {
+      "damage": "65",
+      "rof": "60",
+      "range": "5",
+      "projectile": "Cannon",
+      "speed": "40",
+      "warhead": "AP",
+      "report": "GrizzlyTankAttack",
+      "anim": "GUNFIRE",
+      "bright": "yes"
+    },
+    "105mmE": {
+      "damage": "65",
+      "rof": "50",
+      "range": "5",
+      "projectile": "Cannon",
+      "speed": "40",
+      "warhead": "GRIZAPE",
+      "report": "GrizzlyTankAttack",
+      "anim": "VTMUZZLE",
+      "bright": "yes",
+      "burst": "2"
+    },
+    "155mm": {
+      "damage": "60",
+      "rof": "110",
+      "range": "8",
+      "minimumrange": "0",
+      "projectile": "Ballistic",
+      "speed": "10",
+      "warhead": "ARTYHE",
+      "report": "DestroyerAttack",
+      "anim": "GUNFIRE",
+      "lobber": "no"
+    },
+    "155mmE": {
+      "damage": "60",
+      "rof": "110",
+      "range": "8",
+      "minimumrange": "0",
+      "projectile": "Ballistic",
+      "speed": "10",
+      "warhead": "ARTYHE",
+      "report": "DestroyerAttack",
+      "anim": "GUNFIRE",
+      "lobber": "no",
+      "burst": "2"
+    },
+    "Medusa": {
+      "damage": "100",
+      "rof": "15",
+      "range": "12",
+      "speed": "120",
+      "projectile": "MedusaProjectile",
+      "warhead": "SAMWH",
+      "report": "AegisAttack",
+      "turboboost": "yes",
+      "omnifire": "yes"
+    },
+    "MedusaE": {
+      "damage": "100",
+      "rof": "5",
+      "range": "14",
+      "speed": "150",
+      "projectile": "MedusaProjectile",
+      "warhead": "SAMWH",
+      "report": "AegisAttack",
+      "turboboost": "yes",
+      "omnifire": "yes",
+      "burst": "2"
+    },
+    "BlackHawkCannon": {
+      "damage": "35",
+      "rof": "40",
+      "range": "6",
+      "projectile": "QuadShell",
+      "speed": "100",
+      "warhead": "SA",
+      "report": "BlackOpsAttack",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "omnifire": "yes"
+    },
+    "BlackHawkCannonE": {
+      "damage": "40",
+      "rof": "40",
+      "range": "6",
+      "projectile": "QuadShell",
+      "speed": "100",
+      "warhead": "SSA",
+      "report": "BlackOpsAttack",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW",
+      "omnifire": "yes"
+    },
+    "SonicZap": {
+      "damage": "4",
+      "ambientdamage": "10",
+      "rof": "120",
+      "range": "6",
+      "projectile": "Sonic",
+      "speed": "100",
+      "warhead": "SonicWarhead",
+      "report": "DolphinAttack",
+      "issonic": "Yes",
+      "decloaktofire": "no"
+    },
+    "SonicZapE": {
+      "damage": "8",
+      "ambientdamage": "15",
+      "rof": "80",
+      "range": "6",
+      "projectile": "Sonic",
+      "speed": "100",
+      "warhead": "SonicWarhead",
+      "report": "DolphinAttack",
+      "issonic": "Yes",
+      "burst": "2",
+      "decloaktofire": "no"
+    },
+    "SABOT": {
+      "damage": "150",
+      "rof": "70",
+      "range": "5",
+      "projectile": "Cannon",
+      "speed": "60",
+      "warhead": "UltraAP",
+      "report": "TankDestroyerAttack",
+      "anim": "GUNFIRE",
+      "bright": "yes"
+    },
+    "SABOTE": {
+      "damage": "175",
+      "rof": "60",
+      "range": "6.75",
+      "projectile": "Cannon",
+      "speed": "60",
+      "warhead": "UltraAPE",
+      "report": "TankDestroyerAttack",
+      "anim": "VTMUZZLE",
+      "bright": "yes",
+      "burst": "2"
+    },
+    "Comet": {
+      "damage": "100",
+      "rof": "100",
+      "range": "10",
+      "projectile": "LargeCometP",
+      "speed": "40",
+      "report": "PrismTankAttack",
+      "warhead": "CometWH",
+      "bright": "yes",
+      "ishousecolor": "true",
+      "laserouterspread": "0,0,0",
+      "laserduration": "15",
+      "islaser": "true"
+    },
+    "SuperComet": {
+      "damage": "150",
+      "rof": "100",
+      "range": "10",
+      "projectile": "SuperCometP",
+      "speed": "10",
+      "report": "PrismTankAttack",
+      "warhead": "CometWH",
+      "bright": "yes",
+      "ishousecolor": "true",
+      "laserouterspread": "0,0,0",
+      "laserduration": "15",
+      "islaser": "true"
+    },
+    "MirageGun": {
+      "damage": "100",
+      "rof": "70",
+      "range": "7",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "MirageWH",
+      "disguisefireonly": "no",
+      "report": "MirageTankAttack",
+      "bright": "yes",
+      "anim": "VTMUZZLE",
+      "disguisefakeblinktime": "15",
+      "revealonfire": "no"
+    },
+    "HoverMissile": {
+      "damage": "25",
+      "rof": "50",
+      "range": "6",
+      "burst": "2",
+      "projectile": "AAHeatSeeker2",
+      "speed": "40",
+      "warhead": "HE",
+      "report": "SeawolfAttack",
+      "minimumrange": "1"
+    },
+    "HoverMissileE": {
+      "damage": "80",
+      "rof": "50",
+      "range": "6",
+      "burst": "4",
+      "projectile": "AAHeatSeeker2",
+      "speed": "40",
+      "warhead": "HE",
+      "report": "SeawolfAttack",
+      "minimumrange": "1"
+    },
+    "Maverick": {
+      "damage": "150",
+      "rof": "10",
+      "range": "6",
+      "projectile": "AirToGroundMissile",
+      "speed": "70",
+      "warhead": "ORCAAP",
+      "report": "IntruderAttack",
+      "burst": "1"
+    },
+    "MaverickE": {
+      "damage": "300",
+      "rof": "10",
+      "range": "9",
+      "projectile": "AirToGroundMissile",
+      "speed": "70",
+      "warhead": "ORCAAP",
+      "report": "IntruderAttack",
+      "burst": "1"
+    },
+    "Maverick2": {
+      "damage": "200",
+      "rof": "10",
+      "range": "6",
+      "projectile": "AirToGroundMissile",
+      "speed": "70",
+      "warhead": "ORCAAP",
+      "report": "BlackEagleAttack",
+      "burst": "1"
+    },
+    "Maverick2E": {
+      "damage": "400",
+      "rof": "10",
+      "range": "9",
+      "projectile": "AirToGroundMissile",
+      "speed": "70",
+      "warhead": "ORCAAP",
+      "report": "BlackEagleAttack",
+      "burst": "1"
+    },
+    "Vulcan2": {
+      "damage": "50",
+      "rof": "26",
+      "range": "5.5",
+      "projectile": "InvisibleLow",
+      "speed": "100",
+      "warhead": "SA",
+      "report": "PillboxAttack",
+      "anim": "MGUN-N,MGUN-NE,MGUN-E,MGUN-SE,MGUN-S,MGUN-SW,MGUN-W,MGUN-NW"
+    },
+    "PrismShot": {
+      "damage": "120",
+      "rof": "45",
+      "range": "8",
+      "speed": "100",
+      "projectile": "InvisibleHigh",
+      "warhead": "PrismWarhead",
+      "laserouterspread": "0,0,0",
+      "laserduration": "15",
+      "islaser": "true",
+      "ishousecolor": "true",
+      "report": "PrismTowerAttack"
+    },
+    "GrandCannonWeapon": {
+      "damage": "150",
+      "rof": "120",
+      "range": "15",
+      "minimumrange": "3",
+      "projectile": "GrandCannonBall",
+      "speed": "1",
+      "report": "GrandCannonAttack",
+      "bright": "yes",
+      "warhead": "GrandCannonWH",
+      "anim": "GCMUZZLE"
+    },
+    "RedEye2": {
+      "damage": "75",
+      "rof": "55",
+      "range": "12",
+      "projectile": "AAHeatSeeker",
+      "speed": "100",
+      "warhead": "SAMWH",
+      "report": "PatriotAttack",
+      "turboboost": "yes"
+    },
+    "MissileLauncher": {
+      "damage": "40",
+      "rof": "40",
+      "range": "8",
+      "burst": "1",
+      "projectile": "AAHeatSeeker2",
+      "speed": "30",
+      "warhead": "GUARDWH",
+      "report": "GuardianGIDeployedAttack",
+      "minimumrange": "1"
+    },
+    "MissileLauncherE": {
+      "damage": "50",
+      "rof": "20",
+      "range": "8",
+      "burst": "1",
+      "projectile": "AAHeatSeeker2",
+      "speed": "40",
+      "warhead": "GUARDWH",
+      "report": "GuardianGIDeployedAttack",
+      "minimumrange": "1"
+    },
+    "Robogun": {
+      "damage": "65",
+      "rof": "60",
+      "range": "5",
+      "projectile": "Cannon",
+      "speed": "60",
+      "warhead": "AP",
+      "report": "RobotTankAttack",
+      "anim": "GUNFIRE",
+      "bright": "yes"
+    }
+  },
+  "warheads": {
+    "SA": {
+      "verses": "100%,80%,80%,50%,25%,25%,75%,50%,25%,100%,100%",
+      "infdeath": "1",
+      "animlist": "PIFFPIFF,PIFFPIFF",
+      "bullets": "yes",
+      "pronedamage": "70%"
+    },
+    "SSA": {
+      "verses": "100%,100%,100%,60%,40%,40%,75%,50%,25%,100%,100%",
+      "infdeath": "1",
+      "animlist": "PIFFPIFF,PIFFPIFF",
+      "bullets": "yes",
+      "pronedamage": "80%"
+    },
+    "HollowPoint": {
+      "verses": "200%,100%,100%,1%,1%,1%,1%,1%,1%,1%,100%",
+      "infdeath": "1",
+      "animlist": "PIFF",
+      "pronedamage": "100%",
+      "bullets": "yes"
+    },
+    "ParasiteDog": {
+      "verses": "100%,100%,100%,0%,0%,0%,0%,0%,0%,0%,0%",
+      "parasite": "yes",
+      "infdeath": "1",
+      "rocker": "yes"
+    },
+    "ChronoBeam": {
+      "verses": "100%,100%,100%,100%,100%,100%,100%,100%,100%,100%,0%",
+      "temporal": "yes"
+    },
+    "HollowPointNoBuilding": {
+      "verses": "200%,100%,75%,1%,1%,1%,0%,0%,0%,75%,100%",
+      "infdeath": "1",
+      "animlist": "PIFF",
+      "pronedamage": "100%",
+      "bullets": "yes"
+    },
+    "Controller": {
+      "verses": "100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%",
+      "mindcontrol": "yes",
+      "animlist": "YURICNTL"
+    },
+    "HollowPoint2": {
+      "verses": "100%,100%,100%,0%,0%,0%,1%,1%,1%,1%,100%",
+      "infdeath": "1",
+      "animlist": "PIFF",
+      "pronedamage": "100%",
+      "bullets": "yes"
+    },
+    "AP": {
+      "cellspread": ".3",
+      "percentatmax": ".5",
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "25%,25%,15%,75%,100%,100%,65%,45%,60%,60%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "S_CLSN16,S_CLSN22",
+      "pronedamage": "50%"
+    },
+    "GRIZAPE": {
+      "cellspread": ".3",
+      "percentatmax": ".5",
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "100%,100%,100%,100%,100%,100%,65%,45%,60%,60%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "VTEXPLOD",
+      "pronedamage": "50%"
+    },
+    "ARTYHE": {
+      "cellspread": "1",
+      "percentatmax": ".25",
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "100%,80%,60%,100%,60%,60%,100%,100%,60%,100%,100%",
+      "conventional": "yes",
+      "rocker": "yes",
+      "infdeath": "2",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG",
+      "deform": "15%",
+      "deformthreshhold": "120",
+      "tiberium": "yes",
+      "bright": "yes",
+      "pronedamage": "50%"
+    },
+    "SAMWH": {
+      "cellspread": ".3",
+      "percentatmax": "1",
+      "verses": "100%,100%,100%,100%,100%,100%,0%,0%,0%,100%,100%",
+      "infdeath": "3",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML",
+      "pronedamage": "100%"
+    },
+    "SonicWarhead": {
+      "cellspread": ".1",
+      "percentatmax": "1",
+      "wood": "yes",
+      "verses": "100%,100%,100%,100%,80%,80%,100%,60%,60%,100%,100%",
+      "infdeath": "3",
+      "rocker": "yes",
+      "pronedamage": "50%",
+      "sonic": "yes"
+    },
+    "UltraAP": {
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "2%,2%,2%,100%,40%,100%,2%,2%,2%,2%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "S_CLSN30",
+      "pronedamage": "50%"
+    },
+    "UltraAPE": {
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "2%,2%,2%,100%,50%,100%,2%,2%,2%,100%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "VTEXPLOD",
+      "pronedamage": "50%"
+    },
+    "CometWH": {
+      "wall": "no",
+      "verses": "100%,100%,100%,75%,50%,50%,200%,200%,200%,100%,100%",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG,TWLT070"
+    },
+    "MirageWH": {
+      "verses": "100%,100%,80%,100%,100%,100%,30%,20%,20%,100%,100%",
+      "animlist": "IRONFX",
+      "infdeath": "4",
+      "bright": "true",
+      "cldisableblue": "true",
+      "cldisablegreen": "true"
+    },
+    "HE": {
+      "cellspread": ".5",
+      "percentatmax": ".5",
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "100%,100%,100%,70%,70%,35%,75%,40%,20%,80%,100%",
+      "conventional": "yes",
+      "rocker": "no",
+      "infdeath": "2",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG,TWLT070",
+      "deform": "10%",
+      "deformthreshhold": "300",
+      "tiberium": "yes",
+      "sparky": "no",
+      "pronedamage": "70%"
+    },
+    "ORCAAP": {
+      "wall": "yes",
+      "wood": "yes",
+      "cellspread": ".4",
+      "percentatmax": "1",
+      "verses": "100%,100%,100%,100%,100%,100%,100%,100%,75%,100%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "S_CLSN16,S_CLSN22,S_CLSN30,S_CLSN42,S_CLSN58",
+      "pronedamage": "50%",
+      "penetratesbunker": "yes"
+    },
+    "PrismWarhead": {
+      "verses": "200%,100%,100%,100%,100%,100%,50%,50%,50%,200%,100%",
+      "infdeath": "5",
+      "wall": "yes"
+    },
+    "GrandCannonWH": {
+      "cellspread": "2",
+      "percentatmax": ".2",
+      "wall": "yes",
+      "wood": "yes",
+      "sparky": "no",
+      "conventional": "yes",
+      "rocker": "yes",
+      "verses": "100%,100%,100%,100%,100%,100%,50%,100%,50%,100%,100%",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG,TWLT070",
+      "pronedamage": "30%"
+    },
+    "GUARDWH": {
+      "wall": "yes",
+      "wood": "yes",
+      "verses": "20%,20%,20%,100%,50%,100%,10%,10%,10%,100%,100%",
+      "conventional": "yes",
+      "infdeath": "3",
+      "animlist": "XGRYSML1,XGRYSML2,EXPLOSML,XGRYMED1,XGRYMED2,EXPLOMED,EXPLOLRG,TWLT070",
+      "pronedamage": "50%",
+      "cellspread": ".5",
+      "percentatmax": ".5"
+    },
+    "Special": {
+      "uiname": "Name:Special",
+      "name": "JP",
+      "suffix": "JP",
+      "prefix": "J",
+      "color": "Grey",
+      "side": "Mutant",
+      "smartai": "yes",
+      "multiplaypassive": "true"
+    }
+  },
+  "entities": {
+    "HORNET": {
+      "strength": 75,
+      "armor": "light"
+    },
+    "E1": {
+      "strength": 125,
+      "armor": "none"
+    },
+    "ENGINEER": {
+      "strength": 75,
+      "armor": "none"
+    },
+    "JUMPJET": {
+      "strength": 125,
+      "armor": "none"
+    },
+    "GHOST": {
+      "strength": 125,
+      "armor": "flak"
+    },
+    "DOG": {
+      "strength": 100,
+      "armor": "none"
+    },
+    "CLEG": {
+      "strength": 125,
+      "armor": "none"
+    },
+    "SPY": {
+      "strength": 100,
+      "armor": "flak"
+    },
+    "CCOMAND": {
+      "strength": 100,
+      "armor": "none"
+    },
+    "PTROOP": {
+      "strength": 100,
+      "armor": "none"
+    },
+    "SNIPE": {
+      "strength": 125,
+      "armor": "none"
+    },
+    "TANY": {
+      "strength": 200,
+      "armor": "flak"
+    },
+    "AMCV": {
+      "strength": 1000,
+      "armor": "heavy"
+    },
+    "MTNK": {
+      "strength": 300,
+      "armor": "heavy"
+    },
+    "CARRIER": {
+      "strength": 800,
+      "armor": "heavy"
+    },
+    "DEST": {
+      "strength": 600,
+      "armor": "heavy"
+    },
+    "AEGIS": {
+      "strength": 800,
+      "armor": "light"
+    },
+    "LCRF": {
+      "strength": 300,
+      "armor": "light"
+    },
+    "SHAD": {
+      "strength": 175,
+      "armor": "light"
+    },
+    "DLPH": {
+      "strength": 200,
+      "armor": "light"
+    },
+    "TNKD": {
+      "strength": 400,
+      "armor": "heavy"
+    },
+    "CMIN": {
+      "strength": 1000,
+      "armor": "medium"
+    },
+    "SREF": {
+      "strength": 150,
+      "armor": "light"
+    },
+    "MGTK": {
+      "strength": 200,
+      "armor": "light"
+    },
+    "FV": {
+      "strength": 200,
+      "armor": "light"
+    },
+    "CDEST": {
+      "strength": 600,
+      "armor": "light"
+    },
+    "ORCA": {
+      "strength": 150,
+      "armor": "light"
+    },
+    "BEAG": {
+      "strength": 200,
+      "armor": "light"
+    },
+    "GACNST": {
+      "strength": 1000,
+      "armor": "concrete"
+    },
+    "GAPOWR": {
+      "strength": 750,
+      "armor": "wood"
+    },
+    "GAREFN": {
+      "strength": 1000,
+      "armor": "wood"
+    },
+    "GAOREP": {
+      "strength": 900,
+      "armor": "wood"
+    },
+    "GAPILE": {
+      "strength": 500,
+      "armor": "steel"
+    },
+    "GAWEAP": {
+      "strength": 1000,
+      "armor": "wood"
+    },
+    "GAAIRC": {
+      "strength": 600,
+      "armor": "steel"
+    },
+    "GADEPT": {
+      "strength": 1200,
+      "armor": "wood"
+    },
+    "GATECH": {
+      "strength": 500,
+      "armor": "wood"
+    },
+    "GAPILL": {
+      "strength": 400,
+      "armor": "steel"
+    },
+    "ATESLA": {
+      "strength": 600,
+      "armor": "steel"
+    },
+    "GTGCAN": {
+      "strength": 900,
+      "armor": "steel"
+    },
+    "GAYARD": {
+      "strength": 1500,
+      "armor": "concrete"
+    },
+    "GACSPH": {
+      "strength": 750,
+      "armor": "concrete"
+    },
+    "GAWEAT": {
+      "strength": 1000,
+      "armor": "concrete"
+    },
+    "GAGAP": {
+      "strength": 600,
+      "armor": "wood"
+    },
+    "GASAND": {
+      "strength": 100,
+      "armor": "wood"
+    },
+    "GAWALL": {
+      "strength": 300,
+      "armor": "concrete"
+    },
+    "GASPYSAT": {
+      "strength": 1000,
+      "armor": "wood"
+    },
+    "NASAM": {
+      "strength": 900,
+      "armor": "steel"
+    },
+    "GGI": {
+      "strength": 100,
+      "armor": "none"
+    },
+    "ROBO": {
+      "strength": 180,
+      "armor": "heavy"
+    },
+    "GAROBO": {
+      "strength": 600,
+      "armor": "wood"
+    }
+  },
+  "projectiles": {
+    "Invisible": {
+      "inviso": "yes",
+      "image": "none"
+    },
+    "InvisibleLow": {
+      "inviso": "yes",
+      "image": "none",
+      "subjecttocliffs": "yes",
+      "subjecttoelevation": "yes",
+      "subjecttowalls": "yes"
+    },
+    "Invisible3": {
+      "inviso": "yes",
+      "image": "none",
+      "aa": "yes",
+      "ag": "yes"
+    },
+    "DOGJUMP": {
+      "image": "DOGP",
+      "aa": "no",
+      "arm": "2",
+      "rot": "8",
+      "shadow": "no",
+      "proximity": "yes",
+      "ranged": "yes",
+      "firerspalette": "yes",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "yes"
+    },
+    "InvisibleMedium": {
+      "inviso": "yes",
+      "image": "none",
+      "subjecttocliffs": "yes",
+      "subjecttoelevation": "yes",
+      "subjecttowalls": "no"
+    },
+    "PsychicControl": {
+      "inviso": "yes",
+      "image": "none"
+    },
+    "Cannon": {
+      "image": "120MM",
+      "arcing": "true",
+      "subjecttocliffs": "yes",
+      "subjecttoelevation": "yes",
+      "subjecttowalls": "yes"
+    },
+    "Ballistic": {
+      "image": "120MM",
+      "arcing": "true",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "yes",
+      "subjecttowalls": "no"
+    },
+    "MedusaProjectile": {
+      "arm": "1",
+      "high": "yes",
+      "shadow": "no",
+      "aa": "yes",
+      "ag": "no",
+      "image": "MEDUSA",
+      "courselockduration": "15",
+      "rot": "20",
+      "scalable": "yes",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    },
+    "QuadShell": {
+      "inviso": "yes",
+      "image": "none",
+      "aa": "yes",
+      "ag": "yes",
+      "subjecttoelevation": "no",
+      "subjecttocliffs": "no",
+      "subjecttowalls": "no"
+    },
+    "Sonic": {
+      "level": "yes"
+    },
+    "LargeCometP": {
+      "shrapnelweapon": "CometFragment",
+      "shrapnelcount": "5",
+      "inviso": "yes",
+      "image": "none",
+      "subjecttocliffs": "yes",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    },
+    "SuperCometP": {
+      "shrapnelweapon": "SuperCometFragment",
+      "shrapnelcount": "5",
+      "inviso": "yes",
+      "image": "none",
+      "subjecttocliffs": "yes",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    },
+    "AAHeatSeeker2": {
+      "arm": "2",
+      "shadow": "no",
+      "proximity": "no",
+      "ranged": "yes",
+      "aa": "yes",
+      "ag": "yes",
+      "image": "DRAGON",
+      "rot": "60",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    },
+    "AirToGroundMissile": {
+      "arm": "2",
+      "shadow": "no",
+      "proximity": "no",
+      "ranged": "yes",
+      "aa": "no",
+      "ag": "yes",
+      "image": "DRAGON",
+      "rot": "100",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    },
+    "InvisibleHigh": {
+      "inviso": "yes",
+      "image": "none",
+      "subjecttoelevation": "yes"
+    },
+    "GrandCannonBall": {
+      "level": "no",
+      "image": "120MM",
+      "arcing": "true",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "yes",
+      "subjecttowalls": "no"
+    },
+    "AAHeatSeeker": {
+      "arm": "2",
+      "shadow": "no",
+      "proximity": "yes",
+      "ranged": "yes",
+      "aa": "yes",
+      "ag": "no",
+      "image": "DRAGON",
+      "rot": "80",
+      "subjecttocliffs": "no",
+      "subjecttoelevation": "no",
+      "subjecttowalls": "no"
+    }
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "scenario": "327 units, 155 buildings, yr_isleland, headless, real clock, 1x",
+  "p95_budget_ms": 30,
+  "runs": {
+    "baseline_5a": {
+      "buildings": 155,
+      "layout": "yr_isleland",
+      "limit_ms": 30.0,
+      "passed": false,
+      "phases": {
+        "battle": {
+          "frames": 278,
+          "max": 171.198,
+          "native_long_paths": 60,
+          "p50": 53.52,
+          "p95": 101.461,
+          "p99": 138.733,
+          "paths": 342,
+          "physics_steps": 226,
+          "selected": 0,
+          "sim_s": 15.008968,
+          "unaffected_routes": 622,
+          "wall_s": 15.044761
+        },
+        "move": {
+          "frames": 143,
+          "max": 288.405,
+          "native_long_paths": 25,
+          "p50": 112.509,
+          "p95": 172.08,
+          "p99": 226.904,
+          "paths": 295,
+          "physics_steps": 227,
+          "selected": 1,
+          "sim_s": 15.0,
+          "unaffected_routes": 821,
+          "wall_s": 15.609338
+        },
+        "selection": {
+          "frames": 217,
+          "max": 338.841,
+          "native_long_paths": 61,
+          "p50": 63.652,
+          "p95": 139.443,
+          "p99": 153.85,
+          "paths": 307,
+          "physics_steps": 225,
+          "selected": 1,
+          "sim_s": 15.0576986666667,
+          "unaffected_routes": 823,
+          "wall_s": 15.245504
+        }
+      },
+      "units": 327
+    },
+    "baseline_5b": {
+      "buildings": 155,
+      "layout": "yr_isleland",
+      "limit_ms": 30.0,
+      "passed": false,
+      "phases": {
+        "battle": {
+          "frames": 226,
+          "max": 147.947,
+          "native_long_paths": 63,
+          "p50": 61.181,
+          "p95": 121.572,
+          "p99": 138.325,
+          "paths": 358,
+          "physics_steps": 225,
+          "selected": 0,
+          "sim_s": 15.0494313333333,
+          "unaffected_routes": 898,
+          "wall_s": 15.022216
+        },
+        "move": {
+          "frames": 220,
+          "max": 238.412,
+          "native_long_paths": 45,
+          "p50": 63.926,
+          "p95": 136.209,
+          "p99": 188.148,
+          "paths": 408,
+          "physics_steps": 225,
+          "selected": 1,
+          "sim_s": 15.0417787272727,
+          "unaffected_routes": 825,
+          "wall_s": 15.173141
+        },
+        "selection": {
+          "frames": 187,
+          "max": 308.934,
+          "native_long_paths": 55,
+          "p50": 73.077,
+          "p95": 163.404,
+          "p99": 189.015,
+          "paths": 345,
+          "physics_steps": 226,
+          "selected": 1,
+          "sim_s": 15.0028026666667,
+          "unaffected_routes": 962,
+          "wall_s": 15.41941
+        }
+      },
+      "units": 327
+    },
+    "verified1": {
+      "buildings": 155,
+      "layout": "yr_isleland",
+      "limit_ms": 30.0,
+      "passed": false,
+      "phases": {
+        "battle": {
+          "frames": 334,
+          "max": 161.605,
+          "native_long_paths": 59,
+          "p50": 46.276,
+          "p95": 85.643,
+          "p99": 106.831,
+          "paths": 400,
+          "physics_steps": 225,
+          "selected": 0,
+          "sim_s": 15.018533,
+          "unaffected_routes": 725,
+          "wall_s": 15.052805
+        },
+        "move": {
+          "frames": 234,
+          "max": 157.492,
+          "native_long_paths": 21,
+          "p50": 62.497,
+          "p95": 111.983,
+          "p99": 144.491,
+          "paths": 290,
+          "physics_steps": 224,
+          "selected": 1,
+          "sim_s": 15.0000000000002,
+          "unaffected_routes": 894,
+          "wall_s": 14.940066
+        },
+        "selection": {
+          "frames": 260,
+          "max": 239.502,
+          "native_long_paths": 50,
+          "p50": 56.861,
+          "p95": 104.457,
+          "p99": 160.238,
+          "paths": 297,
+          "physics_steps": 226,
+          "selected": 1,
+          "sim_s": 15.0070063333334,
+          "unaffected_routes": 987,
+          "wall_s": 15.190727
+        }
+      },
+      "units": 327
+    },
+    "verified2": {
+      "buildings": 155,
+      "layout": "yr_isleland",
+      "limit_ms": 30.0,
+      "passed": false,
+      "phases": {
+        "battle": {
+          "frames": 301,
+          "max": 148.0,
+          "native_long_paths": 62,
+          "p50": 48.607,
+          "p95": 98.595,
+          "p99": 129.612,
+          "paths": 365,
+          "physics_steps": 227,
+          "selected": 0,
+          "sim_s": 15.0979348888889,
+          "unaffected_routes": 702,
+          "wall_s": 15.137824
+        },
+        "move": {
+          "frames": 200,
+          "max": 180.2,
+          "native_long_paths": 19,
+          "p50": 71.463,
+          "p95": 127.333,
+          "p99": 147.159,
+          "paths": 354,
+          "physics_steps": 226,
+          "selected": 1,
+          "sim_s": 15.0235984848484,
+          "unaffected_routes": 732,
+          "wall_s": 15.0831
+        },
+        "selection": {
+          "frames": 275,
+          "max": 273.737,
+          "native_long_paths": 54,
+          "p50": 51.657,
+          "p95": 100.435,
+          "p99": 140.159,
+          "paths": 358,
+          "physics_steps": 225,
+          "selected": 1,
+          "sim_s": 15.0534116262626,
+          "unaffected_routes": 749,
+          "wall_s": 15.088518
+        }
+      },
+      "units": 327
+    },
+    "verified3": {
+      "buildings": 155,
+      "layout": "yr_isleland",
+      "limit_ms": 30.0,
+      "passed": false,
+      "phases": {
+        "battle": {
+          "frames": 290,
+          "max": 175.709,
+          "native_long_paths": 65,
+          "p50": 52.627,
+          "p95": 87.147,
+          "p99": 129.748,
+          "paths": 420,
+          "physics_steps": 225,
+          "selected": 0,
+          "sim_s": 15.0050348013468,
+          "unaffected_routes": 800,
+          "wall_s": 14.918313
+        },
+        "move": {
+          "frames": 165,
+          "max": 193.948,
+          "native_long_paths": 26,
+          "p50": 87.32,
+          "p95": 140.692,
+          "p99": 183.136,
+          "paths": 380,
+          "physics_steps": 225,
+          "selected": 1,
+          "sim_s": 15.0533593333334,
+          "unaffected_routes": 808,
+          "wall_s": 15.127115
+        },
+        "selection": {
+          "frames": 162,
+          "max": 196.344,
+          "native_long_paths": 74,
+          "p50": 87.413,
+          "p95": 164.341,
+          "p99": 194.223,
+          "paths": 294,
+          "physics_steps": 227,
+          "selected": 1,
+          "sim_s": 15.0843106060606,
+          "unaffected_routes": 886,
+          "wall_s": 15.362806
+        }
+      },
+      "units": 327
+    }
+  },
+  "visibility_raster": {
+    "points_per_team": [
+      141,
+      168
+    ],
+    "same": true,
+    "serial_ms": [
+      1.28,
+      1.243,
+      1.232,
+      1.345,
+      1.237,
+      1.244,
+      1.359,
+      1.378,
+      1.254,
+      1.226,
+      1.243,
+      1.224,
+      1.214,
+      1.1,
+      1.242
+    ],
+    "worker_ms": [
+      0.806,
+      0.776,
+      0.741,
+      0.773,
+      0.771,
+      0.847,
+      0.857,
+      0.774,
+      0.753,
+      0.792,
+      0.739,
+      0.944,
+      0.908,
+      0.767,
+      0.736
+    ]
+  },
+  "regression": {
+    "check_ai_dispatch_regression": {
+      "checks": 29,
+      "failed": []
+    },
+    "check_combat_building_fog_regression": {
+      "checks": 88,
+      "failed": []
+    },
+    "check_economy_ai_regression": {
+      "checks": 50,
+      "failed": []
+    },
+    "check_fog_rules_regression": {
+      "checks": 570,
+      "failed": [
+        "ra2: short draw leaves meta unchanged",
+        "ra2: annihilation draw leaves meta unchanged",
+        "iron_tide: short draw leaves meta unchanged",
+        "iron_tide: annihilation draw leaves meta unchanged"
+      ]
+    },
+    "check_house_match_regression": {
+      "checks": 248,
+      "failed": []
+    },
+    "check_skirmish_operations_regression": {
+      "checks": 466,
+      "failed": []
+    },
+    "check_traffic_regression": {
+      "checks": 52,
+      "failed": []
+    },
+    "baseline_draw": {
+      "checks": 568,
+      "failed": [
+        "ra2: short draw leaves meta unchanged",
+        "ra2: annihilation draw leaves meta unchanged",
+        "iron_tide: short draw leaves meta unchanged",
+        "iron_tide: annihilation draw leaves meta unchanged"
+      ]
+    }
+  }
+}

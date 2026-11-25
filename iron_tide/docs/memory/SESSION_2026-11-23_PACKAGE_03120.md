@@ -1,0 +1,2 @@
+# Windows x64 0.31.20 打包
+冻结当前工作树 12453 文件，阶段目录 .validation/package-03120-20261123-210251。import/export/menu 成功。旧大型测试档加载失败。成品另生成含310辆坦克及195座电厂的测试战场，隔离存档，完整 package_smoke.gd 实测 249 项零失败。包内说明标明旧档结果。ZIP 469143567 字节，SHA256 68eb04109a452c925126ac1412cce82fef31c876d0116edf9bc23777f990f7c3，ZIP CRC 和逐文件 SHA256 校验通过。证据 current-battle.log、smoke.json。

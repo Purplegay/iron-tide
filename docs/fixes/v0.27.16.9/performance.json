@@ -1,0 +1,164 @@
+{
+  "fixture": "327 units,155 buildings,yr_isleland; selection phase has only 1 friendly surviving unit; no mass selection claim",
+  "mode": "headless,real time,1x; warm 4 simulation seconds then three 15-simulation-second phases",
+  "runs": {
+    "baseline_memory": {
+      "battle": {
+        "frames": 596,
+        "p50": 13.568,
+        "p95": 59.779,
+        "p99": 79.162,
+        "max": 140.735,
+        "sim_s": 15.0089646666666,
+        "wall_s": 15.032,
+        "physics_steps": 226,
+        "hz": 20,
+        "selected": 0
+      },
+      "move": {
+        "frames": 276,
+        "p50": 53.045,
+        "p95": 93.107,
+        "p99": 132.704,
+        "max": 193.599,
+        "sim_s": 15.0128382592593,
+        "wall_s": 14.969,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 1
+      },
+      "selection": {
+        "frames": 366,
+        "p50": 43.385,
+        "p95": 77.801,
+        "p99": 143.091,
+        "max": 321.876,
+        "sim_s": 15.0281576666667,
+        "wall_s": 15.497,
+        "physics_steps": 228,
+        "hz": 15,
+        "selected": 1
+      }
+    },
+    "improved_memory": {
+      "battle": {
+        "frames": 654,
+        "p50": 13.222,
+        "p95": 50.975,
+        "p99": 63.188,
+        "max": 74.337,
+        "sim_s": 15.0044444444444,
+        "wall_s": 15.004,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 0
+      },
+      "move": {
+        "frames": 340,
+        "p50": 46.183,
+        "p95": 75.803,
+        "p99": 101.494,
+        "max": 135.289,
+        "sim_s": 15.0328743333333,
+        "wall_s": 14.944,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 1
+      },
+      "selection": {
+        "frames": 431,
+        "p50": 37.654,
+        "p95": 67.202,
+        "p99": 84.318,
+        "max": 193.399,
+        "sim_s": 15.0560145555556,
+        "wall_s": 15.187,
+        "physics_steps": 227,
+        "hz": 15,
+        "selected": 1
+      }
+    },
+    "baseline_confirm": {
+      "battle": {
+        "frames": 444,
+        "p50": 34.736,
+        "p95": 70.616,
+        "p99": 90.839,
+        "max": 106.682,
+        "sim_s": 15.0008360952381,
+        "wall_s": 14.977,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 0
+      },
+      "move": {
+        "frames": 270,
+        "p50": 55.442,
+        "p95": 82.017,
+        "p99": 105.504,
+        "max": 156.603,
+        "sim_s": 15.021386,
+        "wall_s": 14.89,
+        "physics_steps": 224,
+        "hz": 15,
+        "selected": 1
+      },
+      "selection": {
+        "frames": 294,
+        "p50": 51.156,
+        "p95": 91.639,
+        "p99": 116.769,
+        "max": 167.997,
+        "sim_s": 15.0531252380953,
+        "wall_s": 15.218,
+        "physics_steps": 227,
+        "hz": 15,
+        "selected": 1
+      }
+    },
+    "improved_confirm": {
+      "battle": {
+        "frames": 636,
+        "p50": 14.221,
+        "p95": 53.918,
+        "p99": 61.967,
+        "max": 79.794,
+        "sim_s": 15.0113636363636,
+        "wall_s": 15.015,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 0
+      },
+      "move": {
+        "frames": 324,
+        "p50": 47.717,
+        "p95": 74.272,
+        "p99": 82.073,
+        "max": 111.974,
+        "sim_s": 15.0400531212121,
+        "wall_s": 15.076,
+        "physics_steps": 226,
+        "hz": 15,
+        "selected": 1
+      },
+      "selection": {
+        "frames": 450,
+        "p50": 35.878,
+        "p95": 68.414,
+        "p99": 78.949,
+        "max": 158.715,
+        "sim_s": 15.0144923333333,
+        "wall_s": 15.012,
+        "physics_steps": 225,
+        "hz": 15,
+        "selected": 1
+      }
+    }
+  },
+  "source_sha256": {
+    "iron_tide\\scripts\\world\\house_ai.gd": "cb86d0ba08fcfbed77c1f0cdd370f3160068429137588ef0b3cd1add472b708b",
+    "iron_tide\\scripts\\world\\ai_strategy_budget.gd": "6b4fb86e3f4300979cc7363b05a6e22fcc2f33d416cf1676ac3b9aa12aa3de14",
+    "iron_tide\\scripts\\core\\ra2_art.gd": "a024d7f92aac143d9057e86b4c088c56657e5b7f634ac3b0cd94d8fb804ac652",
+    "iron_tide\\assets\\ra2\\shp_geometry.json": "7a70030c6b4a2505023973391384558dc6ab403f20b9339662f7f01603daffac"
+  }
+}

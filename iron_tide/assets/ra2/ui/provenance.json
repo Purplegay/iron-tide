@@ -1,0 +1,194 @@
+[
+  {
+    "name": "top-0.png",
+    "source": "SIDEC01.MIX/TOP.SHP",
+    "frame": 0,
+    "dimensions": [
+      168,
+      32
+    ],
+    "source_sha256": "65168d36a1f1f046f64f7a58834a5e783c72e9aace68e54624410addd16d4aff",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "3775dbf36252692c14ac6461d81a2d78644f7722d577de66a0985208b69076f7"
+  },
+  {
+    "name": "tab01-0.png",
+    "source": "SIDEC01.MIX/TAB01.SHP",
+    "frame": 0,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "4ccc72d4817f4167f13c44c383114f6e412b8035935f64171b458fc0b2930ab7",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "b0f1db10a5a095579f8422d2160113c6ed07acad9d1a4960aaf8f2d124727358"
+  },
+  {
+    "name": "tab01-1.png",
+    "source": "SIDEC01.MIX/TAB01.SHP",
+    "frame": 1,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "4ccc72d4817f4167f13c44c383114f6e412b8035935f64171b458fc0b2930ab7",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "69f9f612234424efbf3aba502ea54f605b048ff63eb253e060318721fdb10d31"
+  },
+  {
+    "name": "tab01-2.png",
+    "source": "SIDEC01.MIX/TAB01.SHP",
+    "frame": 2,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "4ccc72d4817f4167f13c44c383114f6e412b8035935f64171b458fc0b2930ab7",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "49d06473e772f89044077e9ce8a5000ef1af1c05a00a57ae7d46ab3367fe28be"
+  },
+  {
+    "name": "tab01-3.png",
+    "source": "SIDEC01.MIX/TAB01.SHP",
+    "frame": 3,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "4ccc72d4817f4167f13c44c383114f6e412b8035935f64171b458fc0b2930ab7",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "66f1371d328ef82644e3c860a984560ef24888baaeaff5dfd4432fe7a2e1d925"
+  },
+  {
+    "name": "tab01-4.png",
+    "source": "SIDEC01.MIX/TAB01.SHP",
+    "frame": 4,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "4ccc72d4817f4167f13c44c383114f6e412b8035935f64171b458fc0b2930ab7",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "b0f1db10a5a095579f8422d2160113c6ed07acad9d1a4960aaf8f2d124727358"
+  },
+  {
+    "name": "tab02-0.png",
+    "source": "SIDEC01.MIX/TAB02.SHP",
+    "frame": 0,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "09bb64365f32c94bd981340f310513beff30e3068e50337b554c574099ebfef8",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "bd93b9fa80de86f983a8ef049b0109178213c92d72cf1faac7f7ab22543aa1e3"
+  },
+  {
+    "name": "tab02-1.png",
+    "source": "SIDEC01.MIX/TAB02.SHP",
+    "frame": 1,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "09bb64365f32c94bd981340f310513beff30e3068e50337b554c574099ebfef8",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "3eaf4b0d18319baa458ad2412f3274e9945dc9b8a13b7b2177f094acd9556895"
+  },
+  {
+    "name": "tab02-2.png",
+    "source": "SIDEC01.MIX/TAB02.SHP",
+    "frame": 2,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "09bb64365f32c94bd981340f310513beff30e3068e50337b554c574099ebfef8",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "c7f3175e538e6aee222fb941332d26016bb742c42808fefaf87bde84533388d7"
+  },
+  {
+    "name": "tab02-3.png",
+    "source": "SIDEC01.MIX/TAB02.SHP",
+    "frame": 3,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "09bb64365f32c94bd981340f310513beff30e3068e50337b554c574099ebfef8",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "254fd46bb8b2f849492c3b225f69f2f45d69e6c2dc41a7e7008ad07301928f38"
+  },
+  {
+    "name": "tab02-4.png",
+    "source": "SIDEC01.MIX/TAB02.SHP",
+    "frame": 4,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "09bb64365f32c94bd981340f310513beff30e3068e50337b554c574099ebfef8",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "bd93b9fa80de86f983a8ef049b0109178213c92d72cf1faac7f7ab22543aa1e3"
+  },
+  {
+    "name": "tab03-0.png",
+    "source": "SIDEC01.MIX/TAB03.SHP",
+    "frame": 0,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "7f968186dd39be21961789e9a72984f41ec92f12c3cfc29a20557b6cd98e055a",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "b5b6dd2c375a6b210767ffd47f7d95900bbcc16cbdc1feb1b6018ca80afef88e"
+  },
+  {
+    "name": "tab03-1.png",
+    "source": "SIDEC01.MIX/TAB03.SHP",
+    "frame": 1,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "7f968186dd39be21961789e9a72984f41ec92f12c3cfc29a20557b6cd98e055a",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "a586146eee436b8c71954864cf971e9b277b4b76a239d2f0317f83ca5011f880"
+  },
+  {
+    "name": "tab03-2.png",
+    "source": "SIDEC01.MIX/TAB03.SHP",
+    "frame": 2,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "7f968186dd39be21961789e9a72984f41ec92f12c3cfc29a20557b6cd98e055a",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "9a10c4ffe2db967f48011b32933e3e0f4a7a8b48f36be77e12d6ba7f6668a8a7"
+  },
+  {
+    "name": "tab03-3.png",
+    "source": "SIDEC01.MIX/TAB03.SHP",
+    "frame": 3,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "7f968186dd39be21961789e9a72984f41ec92f12c3cfc29a20557b6cd98e055a",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "3d2435881664f405bb122d52cbc64ec67759da5b7d9d247303989c5036c8500e"
+  },
+  {
+    "name": "tab03-4.png",
+    "source": "SIDEC01.MIX/TAB03.SHP",
+    "frame": 4,
+    "dimensions": [
+      28,
+      27
+    ],
+    "source_sha256": "7f968186dd39be21961789e9a72984f41ec92f12c3cfc29a20557b6cd98e055a",
+    "palette_sha256": "6eec39eef6fbc919c37692aea02dd6f0038e9fa801366268a9231c8c35532f47",
+    "png_sha256": "b5b6dd2c375a6b210767ffd47f7d95900bbcc16cbdc1feb1b6018ca80afef88e"
+  }
+]

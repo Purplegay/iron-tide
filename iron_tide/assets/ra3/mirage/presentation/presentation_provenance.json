@@ -1,0 +1,177 @@
+{
+  "source": "EA official RA3 demo; same archive as ../provenance.json",
+  "records": [
+    {
+      "asset": "PackedTextureImage:Button_AlliedAntiVehiclevehicleTech3_on",
+      "source_sha256": "5251aabba674222c500d3a3231c76fe333455b4f7d97962ef268089b438bfae7",
+      "output": "cameo.png",
+      "output_sha256": "481fca179bc9851ff2ba9b0aa61b927df85e5c189ab66a1f18e816f03366579c",
+      "atlas": "Texture:PackedImages_008",
+      "atlas_sha256": "e9d2809731679e1d1ebc812990b569947f59c2de4311eca62a0d3aa417cd07a6",
+      "rect": [
+        109,
+        109,
+        106,
+        106
+      ]
+    },
+    {
+      "asset": "PackedTextureImage:Portrait_AlliedAntiVehicleVehicleTech3",
+      "source_sha256": "94754885b541b0b549eeaa35842425b6ef55dbd633388aa111bdad557da2f6bc",
+      "output": "portrait.png",
+      "output_sha256": "585f3f4c42f2bed2628fb18629cc427403850147a260fb0ca3cd72e7ff32ac43",
+      "atlas": "Texture:PackedImagesPortraits_002",
+      "atlas_sha256": "883ebe9877f55a6352fd7eaee315005f58f936276d6e1d425cdb135f835be6fc",
+      "rect": [
+        104,
+        157,
+        101,
+        76
+      ]
+    },
+    {
+      "asset": "PackedTextureImage:AUA_Mirage_GapGenerator",
+      "source_sha256": "f83cf645a51312669a2f9b004a88880308a6d1a7505c774fced626e745260824",
+      "output": "field_on.png",
+      "output_sha256": "303cfe74bc9238c7549cbb30660e5de289cc07107cf9da1fa271c0af608083e8",
+      "atlas": "Texture:PackedImages_004",
+      "atlas_sha256": "f5fa75be888fabadea4f3aff6c0cd2c9018c84e8cfebc9d922fa64aa111cfebc",
+      "rect": [
+        1,
+        85,
+        82,
+        82
+      ]
+    },
+    {
+      "asset": "PackedTextureImage:AUA_Mirage_StrikeMode",
+      "source_sha256": "9b26b353c564a2fddc34b1a754fbacd26b16e27a11b4dbc88a789c0b5451e192",
+      "output": "field_off.png",
+      "output_sha256": "ab9cd8416a600f23452e47020d9fac9248dc8f63d8cfaa89c5511ef23c59635b",
+      "atlas": "Texture:PackedImages_004",
+      "atlas_sha256": "f5fa75be888fabadea4f3aff6c0cd2c9018c84e8cfebc9d922fa64aa111cfebc",
+      "rect": [
+        85,
+        85,
+        82,
+        82
+      ]
+    },
+    {
+      "asset": "Texture:FXAlliedPrismBeam",
+      "source_sha256": "52fd6e9976a7ffd3fbb434fb0e5c057e102ad275ab0a90e92114ce4f84ede2c2",
+      "output": "FXAlliedPrismBeam.png",
+      "output_sha256": "ba67d12ada70dc649bbd69a23c0ec419769ff8385be9369939105e3898f085a0"
+    },
+    {
+      "asset": "Texture:FXAlliedPrismBeam_Vet",
+      "source_sha256": "bffcff635b4708b8ee19c47e4e5124ef21f86cd895818f1a2f72074394e398cb",
+      "output": "FXAlliedPrismBeam_Vet.png",
+      "output_sha256": "2f753a41c75ddf79ca5066af0cb199dc00282bd8370cbfd3cda857d7e064b0cb"
+    },
+    {
+      "asset": "Texture:FXLenzFlare01",
+      "source_sha256": "cc3585cd351219ba4fbba7ff04020d0bbbe129cb6bbb4bdece9068aeef78a1c4",
+      "output": "FXLenzFlare01.png",
+      "output_sha256": "eb440fb563c2544f3450d64bf9a29af3087e65faa406c00ae1ca4c3f76f03ce0"
+    },
+    {
+      "asset": "Texture:FXFireScroll3",
+      "source_sha256": "e4d01a1431bccfb845d89d9867b2a89c0c87cf00e9b2736a6e91b23483869169",
+      "output": "FXFireScroll3.png",
+      "output_sha256": "4b1fda20050862143706043479e39a3f774ba9a76b44923e4f70f4fcc1ea1f0a"
+    },
+    {
+      "asset": "Texture:FXDisotrtionFractal01",
+      "source_sha256": "d09a8e742c67d0f74914c2f6fb675a66a1e3b741a362e4a7a55ec8f5bde3365f",
+      "output": "FXDisotrtionFractal01.png",
+      "output_sha256": "dcae470bd3aaf8736af962923a93d5693fdb677bb2541484a9f120d046dbcaf5"
+    },
+    {
+      "asset": "Texture:FXCloud03",
+      "source_sha256": "db1a61307954cdae63d8a105eee7a8561bcff2abe63c1e843c5d5b619e7f05f8",
+      "output": "FXCloud03.png",
+      "output_sha256": "ad9f2fb5ebe5bfa504ce40a88f64d24e2f0cd8d940dffc3142231789653bd6cf"
+    },
+    {
+      "asset": "Texture:FXFracTileNRM",
+      "source_sha256": "b77eb3139ae72c43c045df8abdb30f3d025a44474c68b6a36c3febdc3352c5ae",
+      "output": "FXFracTileNRM.png",
+      "output_sha256": "af7fd8901a14c22baf6d93a6f977bc87392400ce024d53444fdf8e9bb87d3e41"
+    },
+    {
+      "asset": "Texture:FXLightStreaks",
+      "source_sha256": "089e4e98cf6b42a58e08a1b322e1e8e12f824a6a48ab7e2625735e385283087d",
+      "output": "FXLightStreaks.png",
+      "output_sha256": "1f76f4279ab267efb1bebe26af86e39cbf83fe5bba18810cd7f592389c8aad8e"
+    },
+    {
+      "asset": "Texture:FXBuzzerRef",
+      "source_sha256": "2df69a2a2dfb1b8299a12599d1349691642d8161a00aa395710836d34cc86c46",
+      "output": "FXBuzzerRef.png",
+      "output_sha256": "f73e50e668949c62f01dd197f2dfeade050a6fbcd9da7ad3c8ea1306b0fb0d03"
+    },
+    {
+      "asset": "Texture:EXTireTrack2",
+      "source_sha256": "3057de5c62088813262aefa5bf9bed5af1053cef0346621cb17628617d9e29ae",
+      "output": "EXTireTrack2.png",
+      "output_sha256": "846010e7d0dc7f1d13c059e6fec68df1ea6624859935986ffff369eb1df1285a"
+    },
+    {
+      "asset": "Texture:EXTnkTrack",
+      "source_sha256": "ebfee011433e8e516a7b13f62d0f64035e4b3605f58738d1320435e04cf44c66",
+      "output": "EXTnkTrack.png",
+      "output_sha256": "d1a9bc761ae9b67607dec8dc9277f301033d2bf39a1c3724cdccc9b1bfcdacc4"
+    },
+    {
+      "asset": "W3DMesh:EXCLOAKINGFIELD.SPHERE02",
+      "source_sha256": "9c7947e2f9a363ca4f80fdca65c8708e78f485890bb6682b9657e89f20d92e70",
+      "output": "excloakingfield.json",
+      "output_sha256": "db6295a223d2572429ef06930b3b5a3b614021f2067ad49bb1b1e55f00b8d66d",
+      "vertex_layout": "p0:00:3f32 n0:0C:3f32 c0:18:4u8n t0:1C:2f32",
+      "source_bounds": [
+        -178.1012725830078,
+        -179.93270874023438,
+        -8.69611644744873,
+        178.10130310058594,
+        179.93270874023438,
+        117.31397247314453
+      ],
+      "bone_count": 0
+    },
+    {
+      "asset": "W3DMesh:FXMIRAGERAYS",
+      "source_sha256": "a3f490e47df9869c0cead42b3386a17f3775278308943832cf9c3b081fc5b107",
+      "output": "fxmiragerays.json",
+      "output_sha256": "7ed8cc5dc772020db090b7fd58655faff52e3787cf0be798a18914350db52014",
+      "vertex_layout": "p0:00:3f32 n0:0C:3f32 c0:18:4u8n t0:1C:2f32 t1:24:2f32",
+      "source_bounds": [
+        -29.5233154296875,
+        -29.872072219848633,
+        -6.5356831550598145,
+        30.406341552734375,
+        30.084043502807617,
+        41.72647476196289
+      ],
+      "bone_count": 0
+    },
+    {
+      "asset": "W3DMesh:FXMIRAGEDISGUISE",
+      "source_sha256": "d2a1ad059446bc0a40e03da8fe48a56230a3f4745bc1c78a35d168b4979b7731",
+      "output": "fxmiragedisguise.json",
+      "output_sha256": "ee4edaff20be75a42e59e3c2f4741dc90c579467849b67f2be3cb65b8f7f0667",
+      "vertex_layout": "p0:00:3f32 n0:0C:3f32 c0:18:4u8n t0:1C:2f32 t1:24:2f32",
+      "source_bounds": [
+        -12.555773735046387,
+        -13.308137893676758,
+        3.1198229789733887,
+        12.346394538879395,
+        11.850099563598633,
+        31.227649688720703
+      ],
+      "bone_count": 0
+    }
+  ],
+  "historical_record": true,
+  "runtime_replacements": "../uprising/provenance.json"
+}

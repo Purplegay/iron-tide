@@ -1,0 +1,4 @@
+[gd_scene load_steps=2 format=3]
+[ext_resource type="Script" path="res://tests/expedition_field_operations_regression.gd" id="1"]
+[node name="FieldOperations" type="Node"]
+script = ExtResource("1")
