@@ -79,8 +79,7 @@ static func threatens_landing(target, unit) -> bool:
 	if target is Building and not target.is_operational(): return false
 	var gun: Dictionary = target._weapon_for_target(null) if target is Unit else target.weapon
 	if gun.is_empty(): return false
-	var raw: Dictionary = GameData.ra2_projectile(str(gun.get("ra2_projectile",""))).get("extra", {})
-	if str(raw.get("AG","yes")).to_lower() in ["no","false","0"]: return false
+	if GameData.projectile_blocks_ground(str(gun.get("ra2_projectile", ""))): return false
 	var distance: float = target.position.distance_to(unit.position)
 	return distance >= float(gun.get("min_range",0)) and distance <= float(gun.range) and CombatMath.full_damage(gun,unit.armor,target.bonuses,null,unit.ra2_armor) > 0.0
 

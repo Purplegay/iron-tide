@@ -17,6 +17,13 @@ func exercise_mode(mode: String) -> void:
 	var own_building=battle._place_building("GAPOWR","ally",Vector2(1450,1750),true)
 	own_building._buildup_play=-1
 	own.set_selected(true)
+	for missile_id in ["V3ROCKET", "DMISL", "CMISL"]:
+		var missile = actor(missile_id, "ally", Vector2(1600, 1600))
+		missile.set_meta(Outline.FRIEND_META, true)
+		missile.set_meta(Outline.ATTACK_META, true)
+		missile.selected = true
+		Outline.begin(missile)
+		check(missile.get_node_or_null("SelectionOutline") == null, mode + ": no outline for " + missile_id)
 	var tracker=battle.attack_target_outlines
 	tracker.refresh(battle)
 	check(friend.has_meta(Outline.FRIEND_META) and building.has_meta(Outline.FRIEND_META),mode+": allied AI units and buildings receive white outline")

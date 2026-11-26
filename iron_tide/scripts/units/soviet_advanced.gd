@@ -168,7 +168,7 @@ static func fly(missile, delta: float) -> void:
 	if state.get("cluster_rank",-1)>=0: Unit.PoolCards.cluster(missile,owner,state)
 	var candidates := impact_candidates(world, missile.position, state.warhead)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(60, candidates.size())
-	var affects_allies := Ra2Damage._extra(state.warhead,"AffectsAllies").to_lower() not in ["no","false","0"]
+	var affects_allies := not GameData.warhead_blocks_friendly_damage(state.warhead)
 	for target in candidates:
 		if target == missile or not AlliedAbilities.alive(target) or (target.side == missile.side and not affects_allies): continue
 		if target is Unit and (target.embarked_in != null or target.is_air_target()): continue

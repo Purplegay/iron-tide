@@ -180,7 +180,10 @@ func tick(seconds:float) -> void:
 		if story_retry==0.0:greet_from_support()
 	for objective:Dictionary in data.objectives:
 		if Missions.NAMES.has(objective.kind):
-			missions.tick(objective,data,seconds);continue
+			var pending_loot:bool=objective.has("school_gift") and not objective.done and not objective.failed
+			missions.tick(objective,data,seconds)
+			if pending_loot and objective.done:SchoolField.speak_objective_loot(self,objective)
+			continue
 		if objective.done or objective.get("failed",false):continue
 		if objective.get("has_npc",false) and not world.units.any(func(unit):return world.actor_alive(unit) and unit.special.get("expedition_contact","")==objective.id):
 			objective.failed=true
@@ -227,6 +230,8 @@ func complete(objective:Dictionary) -> void:
 		if is_instance_valid(world.fog):world.fog._reveal("ally",world.enemy_base_center,800.0,world.fog.EXPEDITION_INTEL_SIGHT_SECONDS)
 		Events.emit_message("截获战场情报 · 标记敌军主基地 · 胜利额外 +%d 补给"%objective.reward,UiKit.COL_SIDE_MISSION)
 	else:Events.emit_message("军需物资已回收 · 胜利后 +%d 补给、1 个维修包"%objective.reward,UiKit.COL_SIDE_MISSION)
+
+	if objective.has("school_gift"):SchoolField.speak_objective_loot(self,objective)
 
 func deploy_support_squads() -> void:
 	var seats: Array = BattleRequest.skirmish_config.get("houses", [])
@@ -320,7 +325,7 @@ func title(objective:Dictionary) -> String:
 
 func compact_summary() -> String:
 	var lines:PackedStringArray=[]
-	if data.has("shelter_at"):lines.append(SchoolField.SHELTER + (" · 已听到饭盒声，本场获胜后带回第一章" if data.get("shelter_heard",false) else " · 派部队前往粉色标记"))
+	if SchoolField.shelter_visible(data):lines.append(SchoolField.SHELTER + (" · 已听到饭盒声，本场获胜后带回第一章" if data.get("shelter_heard",false) else " · 派部队前往粉色标记"))
 	if data.has("archive_at"):lines.append(SchoolField.ARCHIVE+(" · 已拾取" if data.get("archive_taken",false) else " · 由百合子拾取"))
 	for objective:Dictionary in data.get("objectives",[]):
 		if not data.get("tracked","").is_empty() and data.tracked!=objective.id:continue
@@ -339,7 +344,7 @@ func compact_summary() -> String:
 
 func summary() -> String:
 	var text:PackedStringArray=[]
-	if data.has("shelter_at"):text.append(SchoolField.SHELTER+" · 派部队靠近雨棚，听到饭盒声后获胜。")
+	if SchoolField.shelter_visible(data):text.append(SchoolField.SHELTER+" · 派部队靠近雨棚，听到饭盒声后获胜。")
 	if data.has("archive_at"):text.append(SchoolField.ARCHIVE+" · "+("已收好，胜利后带回" if data.get("archive_taken",false) else "派百合子接近粉色档案"))
 	for objective:Dictionary in data.get("objectives",[]):
 		if objective.has("school_gift"):text.append("普通小队完成本项并获胜可带回："+SchoolField.Bonds.loot_text(objective))
@@ -388,7 +393,7 @@ func markers() -> Array:
 	for kind:String in data.get("school_finds",{}):
 		var item:Dictionary=data.school_finds[kind]
 		result.append({"key":"school_"+kind,"position":item.position,"title":"百合子支线 · "+SchoolField.FINDS[kind],"color":SchoolField.PINK,"optional":true,"preferred":true,"status":"done" if item.taken else "active"})
-	if data.has("shelter_at"):
+	if SchoolField.shelter_visible(data):
 		result.append({"key":"school_shelter","position":data.shelter_at,"title":SchoolField.SHELTER,"color":SchoolField.PINK,"optional":true,"preferred":true,"status":"done" if data.get("shelter_heard",false) else "active"})
 	if data.has("archive_at"):
 		var archive:=SchoolField.marker(data)
@@ -465,10 +470,15 @@ func _draw() -> void:
 		if Missions.NAMES.has(objective.kind):
 			if (not objective.done and not objective.failed) or objective.get("phase","")=="station":
 				for m:Dictionary in missions.marks(objective):
+					# The crate draws its own title. Only the ground box needs a range ring.
+					var is_box:bool=objective.kind=="box" and m.key==objective.id
+					if is_box and objective.phase=="carry":
+						continue
 					var repair:bool=objective.kind=="fuel" and objective.get("phase","")=="station"
 					var site=missions.outpost(objective) if repair and objective.has("outpost") else null
 					if repair and objective.has("outpost") and (site==null or site.side!="ally"):continue
 					draw_arc(m.position,Missions.REPAIR_RADIUS if repair else Missions.REACH,0,TAU,64,Color("91d9a9") if repair else Color(UiKit.COL_SIDE_MISSION,0.85),3)
+					if is_box:continue
 					var transform_to_screen:=get_global_transform_with_canvas()
 					draw_set_transform_matrix(transform_to_screen.affine_inverse())
 					var anchor:Vector2=transform_to_screen*Vector2(m.position)+Vector2(0,-44)

@@ -76,7 +76,6 @@ static func draw(unit) -> void:
 	if float(s.get("decoy_flash",0))>0:
 		for direction in [-1,1]:unit.draw_line(center,center+Vector2(direction*32,15),Color(1,.8,.4,.8),2,true)
 	if float(s.get("steady_left",0))>0:unit.draw_arc(center,unit.radius+10,0,TAU,28,Color(.85,.8,1,.8),1.5,true)
-	if s.has("maintenance_shield"):unit.draw_arc(center,unit.radius+13,0,TAU,28,Color(.4,1,.65,.8),2,true)
 
 static func entries(unit) -> Array:
 	var level:=rank(unit)

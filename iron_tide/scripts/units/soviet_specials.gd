@@ -610,6 +610,11 @@ static func _dispatch_migs(unit, target, jets: Array) -> void:
 	preload("res://scripts/units/boris_sortie.gd").configure(unit,target,jets)
 	preload("res://scripts/units/boris_fire_control.gd").dispatched(unit,jets)
 
+static func nearest_exit(point: Vector2, map_size: float) -> Vector2:
+	var left_right := Vector2(0.0 if point.x <= map_size * 0.5 else map_size, point.y)
+	var top_bottom := Vector2(point.x, 0.0 if point.y <= map_size * 0.5 else map_size)
+	return left_right if point.distance_squared_to(left_right) <= point.distance_squared_to(top_bottom) else top_bottom
+
 static func fly_mig(jet, delta: float) -> void:
 	var run: Dictionary = jet.special.strike_run
 	preload("res://scripts/units/boris_sortie.gd").update_target(jet)
@@ -631,7 +636,7 @@ static func fly_mig(jet, delta: float) -> void:
 		if run.radio_left <= 0.0:
 			run.erase("radio_left")
 			Ra2Sfx.play(str(NativeRules.data().lighting.airstrikeattackvoice),Vector2.INF,true)
-	var dest: Vector2 = run.origin if run.outbound else target.position
+	var dest: Vector2 = nearest_exit(jet.position, jet._battle_world().map_size) if run.outbound else target.position
 	jet.hull_angle = jet.position.direction_to(dest).angle()
 	jet.position = jet.position.move_toward(dest, jet.move_speed * delta * (float(run.get("inbound_speed_factor",1.0)) if not run.outbound else 1.0))
 	var gun: Dictionary = jet._active_weapon()
@@ -652,7 +657,7 @@ static func fly_mig(jet, delta: float) -> void:
 			preload("res://scripts/units/boris_fire_control.gd").prepare_mig(shot,jet)
 			jet._battle_world().projectiles_root.add_child(shot)
 		Ra2Sfx.play_weapon(gun, jet.position)
-	if run.outbound and jet.position.distance_to(run.origin) < 1.0:
+	if run.outbound and jet.position.is_equal_approx(nearest_exit(jet.position, jet._battle_world().map_size)):
 		preload("res://scripts/units/boris_radio.gd").exited(jet)
 		AlliedAbilities.consume(jet)
 	jet.queue_redraw()

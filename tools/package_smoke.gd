@@ -31,7 +31,25 @@ func verify_export(path: String) -> void:
 	check(bridge_recorded,"packaged JSON contains bounded bridge diagnostics")
 	exports.append(path)
 
+func verify_battle_assets() -> void:
+	var documents := ["ra2_allied.json"]
+	for name in ["warheads", "general", "economy", "units", "buildings", "factions", "weapons", "projectiles", "animations", "sound_specs", "sfx_index", "eva_specs", "eva_index"]:
+		documents.append("ra2/%s.json" % name)
+	for document in documents:
+		check(not GameData.raw_docs.get(document, {}).is_empty(), "rules loaded from package: " + document)
+	check(not GameData.get_unit("E1").is_empty(), "GI definition available")
+	for id in ["GACNST", "GAPILE", "GAPILL", "GAPOWR", "GAREFN", "GAWEAP"]:
+		check(not GameData.get_building(id).is_empty(), "building definition available: " + id)
+	var images := ["cursors/mouse", "ui/top-0", "ui/soviet/top-0"]
+	for kind in ["ore", "gems"]:
+		for variant in range(1, 4):
+			images.append("resources/%s-%d" % [kind, variant])
+	for image in images:
+		var path := "res://assets/ra2/%s.png" % image
+		check(ResourceLoader.exists(path) and load(path) is Texture2D, "battle texture available: " + path)
+
 func run() -> void:
+	verify_battle_assets()
 	check(not OS.has_feature("editor"),"running actual exported release executable")
 	check(ProjectSettings.get_setting("application/config/version")==OS.get_environment("IRON_PACKAGE_VERSION"),"package version")
 	for path in ["res://assets/music/rock-and-awe.mp3","res://assets/ra2/fx/CRIVEXP.png"]:

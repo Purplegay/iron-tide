@@ -242,6 +242,7 @@ func collateral_and_kills(mode: String, side: String) -> void:
 	var had_allies: bool = wh_extra.has("AffectsAllies")
 	var old_allies = wh_extra.get("AffectsAllies")
 	wh_extra["AffectsAllies"] = "no"
+	GameData.rebuild_static_combat_rules()
 	friendly = fixture_actor("DEST", side)
 	for ambient in [10.0, 0.0]:
 		raw["ambient_damage"] = ambient
@@ -263,6 +264,7 @@ func collateral_and_kills(mode: String, side: String) -> void:
 		wh_extra["AffectsAllies"] = old_allies
 	else:
 		wh_extra.erase("AffectsAllies")
+	GameData.rebuild_static_combat_rules()
 	for u in [source, aim, friendly]:
 		remove_actor(u)
 	await get_tree().process_frame

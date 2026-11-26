@@ -87,7 +87,9 @@ func _entry(world,unit) -> Dictionary:
 func allow(world, unit) -> bool:
 	if not world.skirmish or not BattleRequest.is_ai_house(unit.side): return true
 	if not _admit(world,unit):
-		_entry(world,unit).path_tick = Engine.get_physics_frames()
+		var entry := _entry(world,unit)
+		var tick := Engine.get_physics_frames()
+		if entry.get("path_tick", -1) != tick: entry.path_tick = tick
 		return false
 	var waiting: Dictionary = world.allied_state.get(WAITING,{})
 	if waiting.has(unit):
@@ -101,7 +103,8 @@ func allow(world, unit) -> bool:
 func allow_scan(world, unit) -> bool:
 	if not world.skirmish or not BattleRequest.is_ai_house(unit.side): return true
 	if not _admit(world,unit):
-		_entry(world,unit).scan = true
+		var entry := _entry(world,unit)
+		if not entry.has("scan"): entry.scan = true
 		return false
 	var waiting:Dictionary = world.allied_state.get(WAITING,{})
 	if waiting.has(unit):
@@ -119,7 +122,7 @@ func submit(world, unit, order: Dictionary) -> void:
 		_apply(world,unit,order)
 	else:
 		_entry(world,unit).order = order
-		unit.special.ai_dispatch_pending = true
+		if not unit.special.has("ai_dispatch_pending"): unit.special.ai_dispatch_pending = true
 
 static func cancel_order(world,unit) -> void:
 	if not unit.special.erase("ai_dispatch_pending"): return
@@ -137,7 +140,12 @@ func defer_job(world,unit,kind:String,value) -> bool:
 			if entry.jobs.is_empty(): entry.erase("jobs")
 			if entry.size()==1: waiting.erase(unit)
 		return false
-	_entry(world,unit).get_or_add("jobs",{})[kind] = value
+	var jobs: Dictionary = _entry(world,unit).get_or_add("jobs",{})
+	# Marker jobs and object targets are idempotent. Leave structured intents
+	# and micro timing on their existing latest-payload path.
+	if kind == "operations" or kind == "recover" or kind == "board":
+		if is_same(jobs.get(kind), value): return true
+	jobs[kind] = value
 	return true
 
 func pump(world) -> void:

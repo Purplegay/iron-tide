@@ -29,6 +29,18 @@ const INFANTRY_FACINGS := 8
 const FACING_OFFSET := 0
 
 static var _cache: Dictionary = {}
+static var _theaters: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(SHP_DIR + "theaters/index.json"))
+static var _theater: Dictionary = _theaters.NEWURBAN
+
+static func set_building_theater(name: String) -> void:
+	var next: Dictionary = _theaters.get(name.to_upper(), _theaters.TEMPERATE)
+	if is_same(next, _theater): return
+	for id in _theater.sheets: _cache.erase(id)
+	_theater = next
+
+static func theater_sheet_id(id: String) -> String:
+	return _theater.sheets.get(id, id)
+
 static var _weapon_descriptors: Dictionary = {}
 static var _shp_geometry: Dictionary = {}
 static var _unit_shadow_cache: Dictionary = {}
@@ -76,7 +88,7 @@ static func _shadow_union(body: Dictionary, turret: Dictionary, body_frame: int,
 static func art(id: String) -> Dictionary:
 	if _cache.has(id):
 		return _cache[id]
-	var m := _load(id)
+	var m := _load(theater_sheet_id(id))
 	_cache[id] = m
 	return m
 
@@ -175,7 +187,7 @@ static var _grade_cache: Dictionary = {}
 
 ## 单 sprite 的提亮 modulate。同一 key 只算一次。返回 Color(lift,lift,lift)。
 static func sprite_grade(m: Dictionary) -> Color:
-	if m.is_empty() or not m.has("tex") or GRADE_TARGET <= 0.0:
+	if m.is_empty() or not m.has("tex") or m.get("palette_lit",false) or GRADE_TARGET <= 0.0:
 		return Color.WHITE
 	var key := str(m.get("key", ""))
 	if key == "":
@@ -240,7 +252,7 @@ static func _load(id: String) -> Dictionary:
 					fh = float(j.get("frameH", 0.0))
 					extra = { "turret": str(j.get("turret", "")), "dmg": int(j.get("dmg", 1)), "count": int(j.get("count", 0)),
 						"split_shadow": bool(j.get("split_shadow", false)),
-						"detail_scale": float(j.get("detail_scale", 1.0)),
+						"detail_scale": float(j.get("detail_scale", 1.0)), "palette_lit": bool(j.get("palette_lit",false)),
 						"facing_offset": int(j.get("facing_offset", 0)),
 						"poses": int(j.get("poses", 1)), "fps": float(j.get("fps", 0.0)), "draw_offset": j.get("draw_offset", [0, 0]), "fixed_anchor": j.get("fixed_anchor", []) }
 			if fw <= 0.0:
@@ -275,7 +287,7 @@ static func _load(id: String) -> Dictionary:
 					if typeof(rr) == TYPE_ARRAY:
 						rects = rr
 					extra2 = { "dmg": int(j2.get("dmg", 1)), "count": int(j2.get("count", 0)), "cell": j2.get("cell", []),
-						"wall_layout": j2.get("wall_layout", {}), "baked_layers": j2.get("baked_layers", []) }
+						"fixed_anchor": j2.get("fixed_anchor", []), "wall_layout": j2.get("wall_layout", {}), "baked_layers": j2.get("baked_layers", []) }
 			var frame_regions: Array[Rect2] = []
 			var full_page := Rect2(Vector2.ZERO, tex2.get_size())
 			for region in rects:
@@ -619,6 +631,7 @@ static var _bldanim_cache: Dictionary = {}
 ##   frames —— 可见帧数；shadow=true 时黑影帧 = 同一动作的帧号 + frames（SHP 后半就是黑影）
 ##   dmg    —— 受损态变体（同结构），无则沿用普通帧
 static func building_anims(id: String) -> Array:
+	if _theater.layers.has(id): return _theater.layers[id]
 	if _bldanim_cache.has(id):
 		return _bldanim_cache[id]
 	var out: Array = []

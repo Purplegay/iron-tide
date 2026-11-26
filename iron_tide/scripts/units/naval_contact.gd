@@ -105,6 +105,7 @@ static func detected(world, observer: String, target) -> bool:
 	var point:Vector2=target.global_position
 	var sensors := sensor_group(observer)
 	var tree: SceneTree = world.get_tree()
+	if tree.has_group(&"psychic_sensors") and preload("res://scripts/world/yuri_support.gd").reveals(world,observer,point): return true
 	if not tree.has_group(sensors): return false
 	for scout in tree.get_nodes_in_group(sensors):
 		if scout.side != observer or not world.is_ancestor_of(scout): continue
@@ -120,5 +121,4 @@ static func weapon_allows(unit: Unit, target) -> bool:
 	# targets need neither a hero-rank lookup nor a second type test.
 	if not underwater_type(target): return unit.unit_id != "ASW"
 	if Unit.TankHero.rank(unit)>=0:return unit.position.distance_squared_to(target.position)<=unit.attack_range*unit.attack_range
-	var flags: Dictionary = GameData.ra2_source_units.get(unit.unit_id, {}).get("extra", {})
-	return int(flags.get("NavalTargeting", 0)) in [1, 2, 3, 4, 5]
+	return GameData.unit_naval_targeting(unit.unit_id) in [1, 2, 3, 4, 5, 7]

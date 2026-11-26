@@ -1,0 +1,15 @@
+{
+ "id": "SMIN_turret_shd",
+ "image": "SMIN",
+ "source": "ra2md.mix > localmd.mix > 0x8f2993f4",
+ "frameW": 114,
+ "frameH": 70,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 1,
+ "detail_scale": 1,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "shadow_projection": "ground-plane-v2",
+ "of": "SMIN"
+}

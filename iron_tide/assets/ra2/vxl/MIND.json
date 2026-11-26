@@ -1,0 +1,10 @@
+{
+ "frameW": 79,
+ "frameH": 60,
+ "facings": 32,
+ "turret": "",
+ "facing_offset": 16,
+ "detail_scale": 2,
+ "palette_lit": true,
+ "surface_render": "surface-vpl-2x"
+}

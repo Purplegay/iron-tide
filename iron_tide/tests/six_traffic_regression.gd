@@ -42,7 +42,7 @@ func _ready():
 				infantry.velocity=velocity
 				probe.apply(infantry,1.0/15)
 				check(infantry.velocity==expected and probe.stalled_blockers(infantry,infantry.move_target)==blockers,mode+owner+str(velocity)+" infantry no-op preserves movement/blockers")
-				check(probe.nearby.is_empty() and probe.query_left==0 and not probe.query_origin.is_finite(),mode+" infantry invalidates unused query before any role change")
+				check(probe.nearby.is_empty() and not probe.query_origin.is_finite(),mode+" infantry invalidates unused query before any role change")
 		measure(probe,unit,mode,"vehicle")
 		measure(probe,infantry,mode,"infantry")
 		await finish()
@@ -56,4 +56,4 @@ func measure(probe,unit,mode:String,kind:String):
 				unit.velocity=Vector2(150,0)
 				if pass_index%2==0:probe.original_apply(unit,1.0/15)
 				else:probe.apply(unit,1.0/15)
-			micro.append({"mode":mode,"kind":kind,"variant":"before" if pass_index%2==0 else "after","us":Time.get_ticks_usec()-begin})
+			micro.append({"basis":"same-engine-frame calls; not a runtime speedup estimate","mode":mode,"kind":kind,"variant":"before" if pass_index%2==0 else "after","us":Time.get_ticks_usec()-begin})

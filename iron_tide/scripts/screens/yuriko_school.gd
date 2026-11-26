@@ -13,6 +13,7 @@ const GIFT_PORTRAITS := [
 	preload("res://assets/ra3/yuriko/school_days/gift_blush_rescue.png"),
 	preload("res://assets/ra3/yuriko/school_days/gift_blush_casual.png"),
 	preload("res://assets/ra3/yuriko/school_days/gift_blush_uniform.png"),
+	preload("res://assets/ra3/yuriko/Portrait_Yuriko_Wedding.png"),
 ]
 const SPEAKER_PORTRAITS:={
 	"小满":preload("res://assets/ra3/yuriko/school_days/cast/xiaoman.webp"),
@@ -37,6 +38,8 @@ const DETAILS:={"Shield":["护盾持续 5 秒","护盾持续 7 秒","护盾持�
 
 var shop_day:=""
 var shop_wallet:Label
+var shop_count:=0
+var reroll_button:Button
 var buy_buttons:Dictionary={}
 var give_buttons:Dictionary={}
 var daily_scenes:Dictionary={}
@@ -45,10 +48,12 @@ var stage:Control
 var message:Label
 var tab:=0
 var from_base:=false
+var from_cg_collection:=false
 var current:Dictionary={}
 var model
 var photo:TextureRect
 var pose:="STATE_bored"
+var preview_playing:=true
 var zoom:=1.0
 var drag:=false
 const HUB_PORTRAITS := ["uniform", "casual", "rescue", "swim"]
@@ -59,6 +64,8 @@ var story_portraits:Dictionary={"swim":SWIM_PORTRAIT}
 func _ready() -> void:
 	from_base=get_tree().get_meta("yuriko_from_base",false)
 	if from_base:get_tree().remove_meta("yuriko_from_base")
+	from_cg_collection=get_tree().get_meta("yuriko_from_cg_collection",false)
+	if from_cg_collection:get_tree().remove_meta("yuriko_from_cg_collection")
 	scenery=TextureRect.new()
 	scenery.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
 	scenery.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_COVERED
@@ -86,7 +93,7 @@ func _ready() -> void:
 	stage=Control.new()
 	add_child(stage)
 	stage.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	hub(1 if Book.contact_ready() else 0)
+	hub(8 if from_cg_collection else (1 if Book.contact_ready() else 0))
 
 func label(parent:Control,value:String,px:int,color:=INK) -> Label:
 	var item:=Label.new()
@@ -116,7 +123,7 @@ func button(parent:Control,value:String,action:Callable,primary:=false) -> Butto
 	b.add_theme_color_override("font_hover_color",Color.WHITE)
 	b.add_theme_color_override("font_pressed_color",Color.WHITE)
 	b.add_theme_color_override("font_disabled_color",Color("#696e68"))
-	b.pressed.connect(action)
+	if action.is_valid():b.pressed.connect(action)
 	parent.add_child(b)
 	return b
 
@@ -137,7 +144,7 @@ func episode_source(ep:Dictionary) -> String:
 		return "在远征中完成奖励含「日常日记」的小队目标并获胜，可得一本。与百合子相遇后，可用日记永久解锁这篇活动。"
 	var previous := int(ep.unlock)
 	if previous == 0:
-		return "在远征「海岸」找到雨棚（战场情报达到一级后，各战区均可发现），听到饭盒声后获胜，即可带回第一章。"
+		return "派地面部队寻找远征战区的雨棚（战场情报达到 2 级后会标出位置），听到饭盒声后获胜，即可带回第一章。"
 	if ep.kind != "chapter":
 		return "读完第 %d 章学期手记，这篇活动就会开放。" % previous
 	if previous < 4:
@@ -225,7 +232,7 @@ func hub(index:int) -> void:
 		selected = 0
 	scenery.material = null
 	scenery.texture = scene_texture(selected)
-	if tab in [0, 1, 2]:
+	if tab in [0, 1, 2, 6]:
 		var portrait := TextureButton.new()
 		portrait.name = "HubPortrait"
 		portrait.ignore_texture_size = true
@@ -237,11 +244,15 @@ func hub(index:int) -> void:
 		portrait.pressed.connect(func():
 			hub_portrait_index = (hub_portrait_index + 1) % HUB_PORTRAITS.size()
 			portrait.texture_normal = story_portraits[HUB_PORTRAITS[hub_portrait_index]])
-	var box:=panel(Rect2(.035,.055,.93 if tab==5 else .51,.89),PAPER,27)
+	var box:=panel(Rect2(.035,.055,.51,.89),PAPER,27)
 	var top:=HBoxContainer.new()
 	box.add_child(top)
 	label(top,SCENE_NAMES[selected]+"　／　百合子手记",16,TEAL).size_flags_horizontal=Control.SIZE_EXPAND_FILL
-	button(top,"返回驻防基地" if from_base else "返回主菜单",func():get_tree().change_scene_to_file("res://scenes/meta.tscn" if from_base else "res://scenes/main.tscn"))
+	var exit_title := "返回 CG 收藏" if from_cg_collection else ("返回驻防基地" if from_base else "返回主菜单")
+	var exit_scene := "res://scenes/cg_collection.tscn" if from_cg_collection else ("res://scenes/meta.tscn" if from_base else "res://scenes/main.tscn")
+	var exit_button := button(stage,exit_title,func():get_tree().change_scene_to_file(exit_scene))
+	exit_button.name = "ExitButton"
+	exit_button.set_anchors_and_offsets_preset(Control.PRESET_TOP_RIGHT, Control.PRESET_MODE_MINSIZE, 16)
 	label(box,"放学后，雨停以前",38)
 	var nav:=HBoxContainer.new()
 	box.add_child(nav)
@@ -249,6 +260,7 @@ func hub(index:int) -> void:
 		var b:=button(nav,VIEW_NAMES[i],hub.bind(i),i==tab)
 		b.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 		Unread.Dot.mark(b,Unread.section(i),"有未读内容")
+	button(nav,"CG 集",hub.bind(8),tab==8).size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	message=label(box,"",16,TEAL)
 	if tab in [0,1]:
 		var next:=Book.suggested("chapter" if tab==0 else "activity")
@@ -285,6 +297,7 @@ func hub(index:int) -> void:
 	elif tab==4:correspondence(box)
 	elif tab==6:affinity_archive(box)
 	elif tab==7:gift_replies(box)
+	elif tab==8:preload("res://scripts/screens/yuriko_cg.gd").gallery(self,box)
 	else:scene_gallery(box, selected, unlocked)
 
 func affinity_archive(box:VBoxContainer) -> void:
@@ -308,11 +321,12 @@ func scene_texture(index:int) -> Texture2D:
 	return HARBOR if index == 1 else CLASSROOM
 
 func scene_gallery(box:VBoxContainer, selected:int, unlocked:Dictionary) -> void:
-	message.text = "点击彩色场景即可设为手记背景。"
+	message.text = "点彩色卡片更换背景。在右侧人物上按住左键拖动可转身，滚动滚轮可调远近。"
+	show_model_preview(Book.snapshot().skin, Color.TRANSPARENT)
 	var list := scrolling(box)
 	var grid := GridContainer.new()
 	grid.name = "SceneCards"
-	grid.columns = 3
+	grid.columns = 2
 	grid.add_theme_constant_override("h_separation", 14)
 	grid.add_theme_constant_override("v_separation", 14)
 	list.add_child(grid)
@@ -328,7 +342,7 @@ func scene_gallery(box:VBoxContainer, selected:int, unlocked:Dictionary) -> void
 		var card := button(grid, "", select_scene.bind(i), i == selected)
 		card.name = "SceneCard%d" % i
 		card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		card.custom_minimum_size.y = 225
+		card.custom_minimum_size.y = 180
 		card.disabled = not available
 		card.accessibility_name = title
 		card.tooltip_text = title if available else "读完《%s》即可解锁" % ep.title
@@ -382,7 +396,7 @@ func add_fragments(list:VBoxContainer) -> void:
 			status = "解锁 · 带回本篇残章"
 			if state.get("fragments",{}).has(str(int(ep.fragment))):
 				status = "解锁 · 与百合子相遇"
-				hint = "你已带回本篇残章。到「海岸」或使用一级战场情报定位雨棚，听到饭盒声后获胜，即可阅读。"
+				hint = "你已带回本篇残章。派地面部队寻找雨棚，或用 2 级战场情报定位，听到饭盒声后获胜，即可阅读。"
 		var row := source_row(list,hint)
 		var entry:=button(row,"%s　　%s　·　%s"%[ep.title,ep.place,status],read_episode.bind(ep) if available else show_source.bind(hint))
 		entry.size_flags_horizontal=Control.SIZE_EXPAND_FILL
@@ -390,6 +404,7 @@ func add_fragments(list:VBoxContainer) -> void:
 		Unread.Dot.mark(entry,Unread.episode(ep),"未读")
 
 func gift_replies(box:VBoxContainer) -> void:
+	add_gift_portrait()
 	message.text="赠礼回应"
 	button(box,"返回私信与礼物",hub.bind(4))
 	var list:=scrolling(box)
@@ -418,7 +433,7 @@ func open_reply(id:String,key:String) -> void:
 	if Book.commit(next):hub(7)
 	else:message.text="阅读记录未保存，请重试。"
 
-func correspondence(box:VBoxContainer) -> void:
+func add_gift_portrait() -> void:
 	var portrait:=TextureRect.new()
 	portrait.name="GiftPortrait"
 	portrait.texture=GIFT_PORTRAITS[Book.snapshot().skin]
@@ -427,6 +442,9 @@ func correspondence(box:VBoxContainer) -> void:
 	portrait.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	portrait.mouse_filter=Control.MOUSE_FILTER_IGNORE
 	place_portrait(portrait)
+
+func correspondence(box:VBoxContainer) -> void:
+	add_gift_portrait()
 	message.text="好感 Lv.%d / %d"%[Book.affinity_level(),Book.AFFINITY_CAP]
 	Unread.Dot.mark(button(box,"回看赠礼回应",hub.bind(7)),Unread.replies(),"有未读内容")
 	var list:=scrolling(box)
@@ -442,6 +460,8 @@ func correspondence(box:VBoxContainer) -> void:
 	Unread.Dot.mark(button(list,"好感手记 · 两个人的放学路",hub.bind(6)),Unread.section(6),"有未读内容")
 	label(list,"送给百合子",19,TEAL)
 	shop_wallet=label(list,"",16)
+	reroll_button=button(list,"",reroll_prices)
+	reroll_button.tooltip_text="重新抽取全部礼物的价格。每天零点恢复一次免费刷新，付费次数也从头计算。"
 	for id:String in Bonds.GIFTS:
 		var gift:Dictionary=Bonds.GIFTS[id]
 		var row:=HFlowContainer.new()
@@ -463,7 +483,12 @@ func correspondence(box:VBoxContainer) -> void:
 func refresh_gift_shop(day:String=Time.get_date_string_from_system()) -> void:
 	if not is_instance_valid(shop_wallet):return
 	shop_day=day
+	shop_count=Bonds.refresh_count(day)
+	var cost:=Bonds.refresh_cost(shop_count)
 	var funds:=MetaProgress.balance("cores")
+	reroll_button.text="免费刷新礼物价格" if cost==0 else "刷新礼物价格　%d 战略核心"%cost
+	reroll_button.icon=null if cost==0 else preload("res://scripts/ui/resource_cost_icon.gd").texture("cores")
+	reroll_button.disabled=funds<cost
 	shop_wallet.text="%s　｜　可用战略核心 %d"%[shop_day,floori(funds)]
 	for id:String in buy_buttons:
 		var owned:=int(MetaProgress.yuriko_school.get("gifts",{}).get(id,0))
@@ -475,9 +500,14 @@ func refresh_gift_shop(day:String=Time.get_date_string_from_system()) -> void:
 		buy_buttons[id].text="购买 ×1　%d 战略核心（%s %s%%）"%[price,"加价" if delta>0 else "降价",percent_text]
 		buy_buttons[id].disabled=funds<price
 
+func reroll_prices() -> void:
+	var problem:=Bonds.reroll_gifts(shop_day,shop_count)
+	refresh_gift_shop()
+	message.text="三件礼物已重新报价。" if problem.is_empty() else problem
+
 func buy_present(id:String) -> void:
 	var quoted_price:=Bonds.gift_price(id,shop_day)
-	var problem:=Bonds.buy_gift(id,shop_day)
+	var problem:=Bonds.buy_gift(id,shop_day,shop_count)
 	refresh_gift_shop()
 	message.text=problem if not problem.is_empty() else "%s ×1 已入库，花费 %d 战略核心。"%[Bonds.GIFTS[id].name,quoted_price]
 
@@ -486,12 +516,14 @@ func choose_affinity(level:int,key:String) -> void:
 	else:message.text="加成未保存，请重试。"
 
 func present(id:String) -> void:
+	var had_head:=Book.journal_head_unlocked()
 	var reply:=Bonds.give(id)
 	if reply.is_empty():
 		message.text="礼物未送出，请检查库存和存档。"
 		return
 	hub(4)
 	message.text=reply+"　好感 %d"%int(MetaProgress.yuriko_school.affinity)
+	if not had_head and Book.journal_head_unlocked():message.text+="　·　试衣间已解锁手记头型"
 
 func study(box:VBoxContainer) -> void:
 	message.text="可用灵能点　%d　　已习得　%d / 15"%[Book.balance(),MetaProgress.yuriko_school.get("learned",[]).size()]
@@ -623,6 +655,7 @@ func advance(answer:int) -> void:
 	if ep.is_empty():return
 	var new_scene := not unlocked_scenes().has(scene_index(ep))
 	var finishing_story:bool=ep.id=="letter" and not Book.contact_ready()
+	var had_head:=Book.journal_head_unlocked()
 	var outfit_index:=Book.OUTFIT_CHAPTERS.find(ep.id)
 	var unlocks_outfit:=outfit_index>0 and not Book.outfit_unlocked(outfit_index)
 	if not Book.advance(ep,answer):
@@ -633,30 +666,109 @@ func advance(answer:int) -> void:
 		hub(1 if finishing_story else tab)
 		if new_scene:message.text += "　·　已解锁背景：" + SCENE_NAMES[scene_index(ep)]
 		if unlocks_outfit:message.text+="　·　试衣间已解锁 "+Psi.SKINS[outfit_index]
+		if not had_head and Book.journal_head_unlocked():message.text+="　·　试衣间已解锁手记头型"
 	else:read_episode(ep)
 
-func wardrobe(box:VBoxContainer) -> void:
-	var selected:int=Book.snapshot().skin
-	message.text="当前出战衣装　"+Psi.SKINS[selected]
-	var list:=scrolling(box)
-	for i in Psi.SKINS.size():
-		var b:=button(list,Psi.SKINS[i]+"　·　"+Book.outfit_label(i),wear.bind(i),i==selected)
-		b.disabled=not Book.outfit_unlocked(i)
-		b.icon=load(Psi.ART+Psi.PORTRAITS[i]+".png")
-		b.add_theme_constant_override("icon_max_width",45)
-	label(list,"实验服与校服使用各自的骨架。两套校服共用衣物模型，章节动作和脚下灵能颜色不同。",17)
-	var motion:=OptionButton.new()
-	for s in ["待机","走动","施法"]:motion.add_item(s)
-	list.add_child(motion)
-	motion.item_selected.connect(func(i:int):pose=["STATE_bored","MOVING","USER_8"][i])
-	label(list,"拖动人物可转身，滚轮调整远近。",17)
-	var actions:=HBoxContainer.new()
-	list.add_child(actions)
-	button(actions,"向左转",rotate_model.bind(-.35))
-	button(actions,"向右转",rotate_model.bind(.35))
-	button(actions,"拉近",adjust_zoom.bind(.15))
-	button(actions,"拉远",adjust_zoom.bind(-.15))
-	var viewer:=panel(Rect2(.565,.09,.40,.82),Color("#183733db"),12)
+const HEAD_NAMES := ["原版头型", "手记头型"]
+const CARDS_PER_PAGE := 4
+var wardrobe_section := 0
+var wardrobe_pages := [0, 0]
+var wardrobe_catalog: VBoxContainer
+
+func wardrobe(box: VBoxContainer) -> void:
+	var selected := int(Book.snapshot().skin)
+	var journal := selected == Book.WEDDING_OUTFIT or Book.journal_head_equipped()
+	var heading := label(box, "试衣间", 31)
+	box.move_child(heading, message.get_index())
+	message.text = "出战搭配　%s　/　%s" % [Psi.SKINS[selected], HEAD_NAMES[int(journal)]]
+	wardrobe_catalog = VBoxContainer.new()
+	wardrobe_catalog.add_theme_constant_override("separation", 18)
+	wardrobe_catalog.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	box.add_child(wardrobe_catalog)
+	refresh_wardrobe(wardrobe_section)
+	var viewer := panel(Rect2(.565,.09,.40,.855), Color("#234b45"), 16)
+	show_model_preview(selected, Color.TRANSPARENT, viewer)
+	label(viewer, Psi.SKINS[selected], 22, Color.WHITE)
+	var actions := HBoxContainer.new()
+	viewer.add_child(actions)
+	for control in [["向左转",rotate_model.bind(-.35)], ["向右转",rotate_model.bind(.35)], ["拉近",adjust_zoom.bind(.15)], ["拉远",adjust_zoom.bind(-.15)]]:
+		button(actions, control[0], control[1]).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	photo.tooltip_text = "按住左键拖动转身，滚动滚轮调整远近。"
+	var row := HBoxContainer.new()
+	viewer.add_child(row)
+	row.add_theme_constant_override("separation", 10)
+	var motion := OptionButton.new()
+	motion.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	motion.add_theme_font_size_override("font_size", 18)
+	motion.add_theme_stylebox_override("normal", paper(Color("#edf0e7"), 9))
+	motion.add_theme_color_override("font_color", INK)
+	for action in ["待机", "走动", "施法"]: motion.add_item("动作　·　" + action)
+	row.add_child(motion)
+	var playback := button(row, "暂停", Callable())
+	playback.pressed.connect(func():
+		preview_playing = not preview_playing
+		playback.text = "暂停" if preview_playing else "播放")
+	motion.item_selected.connect(func(i:int):
+		pose = ["STATE_bored", "MOVING", "USER_8"][i]
+		preview_playing = true
+		playback.text = "暂停")
+
+func refresh_wardrobe(section: int, delta := 0) -> void:
+	wardrobe_section = section
+	for child in wardrobe_catalog.get_children():
+		wardrobe_catalog.remove_child(child)
+		child.queue_free()
+	var outfits := section == 0
+	var count := Psi.SKINS.size() if outfits else HEAD_NAMES.size()
+	var pages := maxi(1, ceili(float(count) / CARDS_PER_PAGE))
+	var page := clampi(int(wardrobe_pages[section]) + delta, 0, pages - 1)
+	wardrobe_pages[section] = page
+	var tabs := HBoxContainer.new()
+	wardrobe_catalog.add_child(tabs)
+	button(tabs, "衣装　%d" % Psi.SKINS.size(), refresh_wardrobe.bind(0), outfits)
+	button(tabs, "头部外观　%d" % HEAD_NAMES.size(), refresh_wardrobe.bind(1), not outfits)
+	var selected := int(Book.snapshot().skin)
+	var bridal := selected == Book.WEDDING_OUTFIT
+	var journal := bridal or Book.journal_head_equipped()
+	for line in 2:
+		var row := HBoxContainer.new()
+		row.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		row.add_theme_constant_override("separation", 14)
+		wardrobe_catalog.add_child(row)
+		for column in 2:
+			var i := page * CARDS_PER_PAGE + line * 2 + column
+			if i >= count:
+				var spacer := Control.new()
+				spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+				row.add_child(spacer)
+				continue
+			var equipped := selected == i if outfits else int(journal) == i
+			var available := Book.outfit_unlocked(i) if outfits else not bridal and (i == 0 or Book.journal_head_unlocked())
+			var title: String = Psi.SKINS[i] if outfits else HEAD_NAMES[i]
+			var status := Book.outfit_label(i) if outfits else ("已解锁" if available else "未解锁")
+			if bridal and not outfits: status = "婚纱固定搭配手记头型"
+			if equipped: status = "出战中" if outfits else "使用中"
+			var card := button(row, title + "\n" + status, wear.bind(i) if outfits else wear_head.bind(i == 1), equipped)
+			card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			card.alignment = HORIZONTAL_ALIGNMENT_LEFT
+			card.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+			card.disabled = not available
+			if outfits:
+				card.icon = load(Psi.ART + Psi.PORTRAITS[i] + ".png")
+				card.add_theme_constant_override("icon_max_width", 88)
+				card.add_theme_constant_override("h_separation", 14)
+	if not outfits and not Book.journal_head_unlocked():
+		label(wardrobe_catalog, "手记头型需好感达到 %d 级并读完第五章《靠窗第三排》。当前好感 %d 级，第五章%s。" % [Book.JOURNAL_HEAD_AFFINITY, Book.affinity_level(), "已读完" if MetaProgress.yuriko_school.get("read", {}).has(Book.JOURNAL_HEAD_CHAPTER) else "未读完"], 16)
+	var pager := HBoxContainer.new()
+	wardrobe_catalog.add_child(pager)
+	label(pager, ("共 %d 套衣装" if outfits else "共 %d 种头部外观") % count, 16, TEAL).size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	button(pager, "上一页", refresh_wardrobe.bind(section, -1)).disabled = page == 0
+	label(pager, "%d / %d" % [page + 1, pages], 16).autowrap_mode = TextServer.AUTOWRAP_OFF
+	button(pager, "下一页", refresh_wardrobe.bind(section, 1)).disabled = page + 1 == pages
+
+func show_model_preview(selected:int,background:Color, viewer:VBoxContainer = null) -> void:
+	preview_playing=true
+	if viewer == null: viewer = panel(Rect2(.565,.09,.40,.82),background,12)
 	photo=TextureRect.new()
 	photo.expand_mode=TextureRect.EXPAND_IGNORE_SIZE
 	photo.stretch_mode=TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -674,22 +786,33 @@ func wardrobe(box:VBoxContainer) -> void:
 	pose="STATE_bored"
 	zoom=1.0
 	frame_model()
-	label(viewer,Psi.SKINS[selected],18,Color.WHITE).horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
+
+func wear_head(journal:bool) -> void:
+	if Book.wear_journal_head(journal):hub(3)
+	else:message.text="头部外观未能装备。"
 
 func wear(i:int) -> void:
 	if Book.wear(i):hub(3)
 	else:message.text="衣装未能保存。"
 
 func frame_model() -> void:
-	var head:Vector3=model.body.transform*model.rig.transform*model.rig.get_bone_global_pose(model.head_bone).origin
-	var center:=Vector3(0,maxf(8,head.y*.52),0)
+	var rig:Skeleton3D=model.rig
+	var bounds:=AABB(rig.to_global(rig.get_bone_global_pose(0).origin),Vector3.ZERO)
+	for bone in range(1,rig.get_bone_count()):
+		bounds=bounds.expand(rig.to_global(rig.get_bone_global_pose(bone).origin))
+	var center:=bounds.get_center()
 	var camera:Camera3D=model.get_camera_3d()
 	camera.position=center+Vector3(0,3,60)
 	camera.look_at(center)
-	camera.size=maxf(22,head.y*1.42)/zoom
+	# Include depth projected onto the tilted camera and room beyond joint tips for the mesh.
+	var up:=camera.global_basis.y.abs()
+	var safe_size:=maxf(bounds.size.x,up.dot(bounds.size))+8.0
+	camera.size=maxf(39.0/zoom,safe_size)
 
 func rotate_model(amount:float) -> void:
-	if is_instance_valid(model):model.body.rotate_y(amount)
+	if is_instance_valid(model):
+		model.body.rotate_y(amount)
+		frame_model()
 
 func adjust_zoom(amount:float) -> void:
 	zoom=clampf(zoom+amount,.7,1.6)
@@ -698,12 +821,14 @@ func adjust_zoom(amount:float) -> void:
 func turn_input(event:InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT:drag=event.pressed
+		if event.pressed and event.button_index==MOUSE_BUTTON_MIDDLE:adjust_zoom(.15)
 		if event.pressed and event.button_index==MOUSE_BUTTON_WHEEL_UP:adjust_zoom(.1)
 		if event.pressed and event.button_index==MOUSE_BUTTON_WHEEL_DOWN:adjust_zoom(-.1)
 	elif event is InputEventMouseMotion and drag and (event.button_mask & MOUSE_BUTTON_MASK_LEFT) != 0:
 		rotate_model(event.relative.x*.012)
 
 func _process(dt:float) -> void:
-	if is_instance_valid(model):
-		model.pose(pose,dt,false)
+	if is_instance_valid(model) and preview_playing:
+		model.pose(pose,dt,false,true)
+		frame_model()
 		model.hover_fx.advance(dt,Psi.COLORS[model.outfit],true)

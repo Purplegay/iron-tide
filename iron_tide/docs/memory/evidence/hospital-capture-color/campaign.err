@@ -1,0 +1,10 @@
+SCRIPT ERROR: Invalid access to property or key 'unit_id' on a base object of type 'previously freed'.
+   at: <anonymous lambda> (res://tests/hollywood_campaign.gd:175)
+   GDScript backtrace (most recent call first):
+       [0] <anonymous lambda> (res://tests/hollywood_campaign.gd:175)
+       [1] capture_aid (res://tests/hollywood_campaign.gd:175)
+SCRIPT ERROR: Invalid access to property or key 'unit_id' on a base object of type 'previously freed'.
+   at: <anonymous lambda> (res://tests/hollywood_campaign.gd:175)
+   GDScript backtrace (most recent call first):
+       [0] <anonymous lambda> (res://tests/hollywood_campaign.gd:175)
+       [1] capture_aid (res://tests/hollywood_campaign.gd:175)

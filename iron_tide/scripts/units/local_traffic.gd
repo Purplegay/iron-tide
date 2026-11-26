@@ -9,8 +9,15 @@ var yield_target := Vector2.INF
 var yield_left := 0.0
 var yield_origin := Vector2.INF
 var nearby: Array = []
-var query_left := 0.0
 var query_origin := Vector2.INF
+var _query_world: Battle
+var _query_radius := 0.0
+var _query_mask := 0
+var _query_max_radius := 0.0
+var _query_region: Dictionary = {}
+# Keep rejected broad-phase members so same-cell arrivals and layer changes
+# cannot hide behind a valid bucket revision. These are not steering candidates.
+var _query_watch: Array = []
 
 const CONGESTION := "friendly_congestion_escape"
 const CONGESTION_SECONDS := 2.0
@@ -45,6 +52,7 @@ func tick_congestion(unit: Unit, delta: float) -> void:
 	for i in unit.get_slide_collision_count():
 		var other = unit.get_slide_collision(i).get_collider()
 		if _ground_friend(unit,other) and not friendly_unit_pair(unit,other) and unit.position.distance_squared_to(other.position) < pow(unit.radius+other.radius+8.0,2): blocked=true; break
+	if not blocked: ensure_candidates(unit)
 	if not blocked and not nearby.is_empty():
 		# Yielding brakes before physical contact, so include the current local lane.
 		var waypoint: Vector2 = unit.move_target
@@ -54,6 +62,7 @@ func tick_congestion(unit: Unit, delta: float) -> void:
 		# ownership/deployment policy. Those predicates cannot make them blockers.
 		for other in nearby:
 			if not is_instance_valid(other) or not other is Unit: continue
+			if (other.collision_layer & 1) == 0: continue
 			var offset: Vector2 = other.position-unit.position
 			if offset.dot(direction)<=0.0 or offset.length_squared()>=pow(unit.radius+other.radius+8.0,2): continue
 			if _ground_friend(unit,other) and not friendly_unit_pair(unit,other): blocked=true; break
@@ -69,7 +78,7 @@ func tick_congestion(unit: Unit, delta: float) -> void:
 		state.origin = unit.position
 		state.clear_seconds = 0.0
 		# These transient steering probes must not retain the old solid-body detour.
-		query_left=0.0
+		invalidate_query()
 		unit._dodge_t=0.0
 
 # Resolve a parked hull intersection locally, preserving the unit's current orders.
@@ -144,9 +153,14 @@ func bridge_direction(unit: Unit, direction: Vector2) -> Vector2:
 	# the same A* cell centre. The original path still owns entry, exit and orders.
 	return (axis*80.0+right*clampf(lane-lateral,-50.0,50.0)).normalized()
 
-func reset() -> void:
-	query_left = 0.0
+func invalidate_query() -> void:
+	query_origin = Vector2.INF
+	_query_region.clear()
+	_query_watch.clear()
 	nearby.clear()
+
+func reset() -> void:
+	invalidate_query()
 	yield_origin = Vector2.INF
 	yield_target = Vector2.INF
 	yield_left = 0.0
@@ -164,49 +178,81 @@ func tick_idle(unit: Unit, delta: float) -> bool:
 	unit._face_if_moving()
 	return true
 
-func apply(unit:Unit, delta: float) -> void:
-	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(26)
-	# Ground infantry passes every friendly ground body; enemies and other
-	# domains never receive separation. Its consumers do not use vehicle steering.
+# Candidate membership lives for the battle until its dependencies change.
+# Every consumer validates coverage and live membership before reuse.
+func ensure_candidates(unit: Unit, force := false) -> void:
 	if not unit.is_air and not unit.is_naval and AlliedAbilities.infantry(unit):
-		query_left = 0.0
-		query_origin = Vector2.INF
-		nearby.clear()
+		invalidate_query()
 		return
-	query_left -= delta
+	var world := unit._navigation_world() as Battle
+	var radius := unit.radius + 60.0 + maxf(60.0, unit.move_speed * 0.8) + 64.0
+	var mask := 8 if unit.is_air else 1
+	if not force and _can_reuse_candidates(unit, world, radius, mask):
+		return
+	_rebuild_candidates(unit, world, radius, mask)
+
+func _can_reuse_candidates(unit: Unit, world: Battle, radius: float, mask: int) -> bool:
+	# Physics-only bodies have no complete membership change journal. Preserve
+	# the original physical query rather than claiming an unsafe sparse hit.
+	if world == null or world.units.size() < 96 or world != _query_world:
+		return false
+	if mask != _query_mask or radius > _query_radius:
+		return false
+	if query_origin.distance_squared_to(unit.global_position) > 24.0 * 24.0:
+		return false
+	var index = world.neighborhood
+	if index.max_unit_radius > _query_max_radius:
+		return false
+	if not index.unit_region_unchanged(_query_region, unit.global_position, radius + index.max_unit_radius):
+		return false
+	for candidate in _query_watch:
+		if not is_instance_valid(candidate) or not candidate is Unit:
+			continue
+		var actor: Unit = candidate
+		if (actor.collision_layer & mask) != 0 and unit.global_position.distance_squared_to(actor.global_position) <= pow(radius + actor.radius, 2.0):
+			return false
+	return true
+
+func _rebuild_candidates(unit: Unit, world: Battle, radius: float, mask: int) -> void:
+	nearby.clear()
+	_query_watch.clear()
+	_query_region.clear()
+	var query_position := unit.global_position
+	if world != null and world.units.size() >= 96:
+		var index = world.neighborhood
+		var reach: float = radius + index.max_unit_radius
+		for candidate in index.nearby(query_position, reach, true):
+			if not is_instance_valid(candidate) or not candidate is Unit or candidate == unit:
+				continue
+			var actor: Unit = candidate
+			var distance: float = radius + actor.radius
+			if (actor.collision_layer & mask) != 0 and query_position.distance_squared_to(actor.global_position) <= distance * distance:
+				nearby.append(actor)
+			else:
+				_query_watch.append(actor)
+		_query_region = index.unit_region_stamp(query_position, reach)
+		_query_max_radius = index.max_unit_radius
+	else:
+		shape.radius = radius
+		query.shape = shape
+		query.transform = Transform2D(0.0, query_position)
+		query.collision_mask = mask
+		query.exclude = [unit.get_rid()]
+		for hit in unit.get_world_2d().direct_space_state.intersect_shape(query, 256):
+			nearby.append(hit.collider)
+	_query_world = world
+	_query_radius = radius
+	_query_mask = mask
+	query_origin = query_position
+
+func apply(unit:Unit, _delta: float) -> void:
+	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(26)
+	ensure_candidates(unit)
+	if not unit.is_air and not unit.is_naval and AlliedAbilities.infantry(unit): return
 	var speed: float = unit.velocity.length()
 	var forward: Vector2 = unit.velocity.normalized()
 	var remaining: float = unit.global_position.distance_to(unit.move_target)
 	var look := minf(maxf(60.0, speed * 0.8), remaining)
-	# Cache only candidate membership for 0.1 s; positions/states are read live.
-	# The extra margin covers newcomers between refreshes; teleports/orders reset it.
-	if query_left <= 0.0 or query_origin.distance_to(unit.global_position) > 24.0:
-		var radius := unit.radius + 60.0 + maxf(60.0, unit.move_speed * 0.8) + 64.0
-		var mask := 8 if unit.is_air else 1
-		var world := unit._navigation_world() as Battle
-		nearby.clear()
-		var query_position := unit.global_position
-		if world != null and world.units.size() >= 96:
-			# Occupancy follows transforms, including teleports. Test current layer
-			# and circle extents before retaining candidates for the next tick.
-			for candidate in world.neighborhood.nearby(query_position, radius + world.neighborhood.max_unit_radius, true):
-				if not is_instance_valid(candidate) or not candidate is Unit: continue
-				var actor: Unit = candidate
-				if actor == unit or (actor.collision_layer & mask) == 0:
-					continue
-				var distance: float = radius + actor.radius
-				if query_position.distance_squared_to(actor.global_position) <= distance * distance:
-					nearby.append(actor)
-		else:
-			shape.radius = radius
-			query.shape = shape
-			query.transform = Transform2D(0.0, unit.global_position)
-			query.collision_mask = mask
-			query.exclude = [unit.get_rid()]
-			for hit in unit.get_world_2d().direct_space_state.intersect_shape(query, 256):
-				nearby.append(hit.collider)
-		query_origin = unit.global_position
-		query_left = 0.1
 	# Passing ground units never steer away from friendly hulls. Keep the
 	# refreshed query for turn planning and the tick that restores collision.
 	if not unit.is_air and not unit.is_naval and passing(unit): return
@@ -223,6 +269,7 @@ func apply(unit:Unit, delta: float) -> void:
 	for candidate in nearby:
 		if not is_instance_valid(candidate) or not candidate is Unit: continue
 		var other:Unit=candidate
+		if (other.collision_layer & _query_mask) == 0: continue
 		var offset: Vector2 = other.global_position - position
 		var clearance: float = actor_radius + other.radius + 4.0
 		var distance_squared := offset.length_squared()
@@ -267,11 +314,13 @@ func apply(unit:Unit, delta: float) -> void:
 # when a stopped ally actually obstructs the current leg, then route around
 # the surrounding group as a whole. These circles belong to one request.
 func stalled_blockers(unit: Unit, waypoint: Vector2) -> Array:
+	ensure_candidates(unit, true)
 	var blockers := []
 	var blocked := false
 	for other in nearby:
 		if not is_instance_valid(other) or not other is Unit or other._dead or other.embarked_in != null:
 			continue
+		if (other.collision_layer & _query_mask) == 0: continue
 		if not BattleRequest.friendly(other.side,unit.side) or other.is_air or other.is_naval != unit.is_naval or other._deployed:
 			continue
 		if friendly_unit_pair(unit,other): continue
@@ -358,12 +407,12 @@ static func mobile_ai_guard(unit: Unit) -> bool:
 	# Keep its role/stance after a short collision-checked yield.
 	return BattleRequest.is_ai_house(unit.side) and unit.special.get("ai_campaign_role")=="guard" and not unit.special.has("action")
 
-func can_settle(unit: Unit) -> bool:
+func can_settle(unit: Unit, distance_limit := 40.0) -> bool:
 	# A finished friend may have yielded into the exact slot. Accept a free
 	# nearby landing within one grid cell instead of circling that occupied slot.
-	if unit.is_air or unit.is_naval or unit.is_harvester or unit.global_position.distance_to(unit.move_target) > 40.0:
+	if unit.is_air or unit.is_naval or unit.is_harvester or unit.global_position.distance_to(unit.move_target) > distance_limit:
 		return false
-	shape.radius = 100.0
+	shape.radius = maxf(100.0, distance_limit + unit.radius + 4.0)
 	query.shape = shape
 	query.transform = Transform2D(0.0, unit.global_position)
 	query.collision_mask = 1

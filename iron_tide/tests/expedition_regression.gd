@@ -230,7 +230,8 @@ func satisfy_objective(tasks) -> void:
   for n in 2:tasks.actor("convoy"+str(n)).position=tasks.state.points[2]
   tasks.tick(1.0)
  elif kind=="defend":
-  for n in 181:tasks.tick(1.0)
+  for n in 360:
+   if not battle.ended:tasks.tick(1.0)
  else:
   for point:Vector2 in tasks.state.points:
    var unit=battle.spawn_unit("E1","ally",point);unit.hold_position=true

@@ -1,0 +1,40 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+IronTide CPU placement: {"elapsed_ms":0,"platform":"Windows","policy":"","scope":"this game process only","status":"unchanged"}
+HOLLYWOOD true 盟军任务默认原版配置
+HOLLYWOOD true 洛杉矶矿区使用原图矿石变体和城市图集
+HOLLYWOOD true 原战役编号进入尤里战场
+HOLLYWOOD true 全屏原版简报正在播放
+HOLLYWOOD true 开场机场通讯介绍工程师和伞兵增援
+HOLLYWOOD true 跳过影片后战场恢复
+HOLLYWOOD true 任务原图各有一座国际机场和科技医院
+HOLLYWOOD true 医院开场使用中立灰色涂装
+HOLLYWOOD true 中立医院不提供自愈
+HOLLYWOOD true 占领前机场无充能或玩家支援
+HOLLYWOOD true 本关美国空指部禁用八人空降
+HOLLYWOOD true 普通步兵无法进驻 CATHOSP
+HOLLYWOOD true 右键下达工程师占领 CATHOSP
+HOLLYWOOD true 到达后换边并消耗工程师 CATHOSP
+HOLLYWOOD true 科技设施禁止出售 CATHOSP
+HOLLYWOOD true 普通步兵无法进驻 CALA05
+HOLLYWOOD true 机场航站楼屋顶像素可点击
+HOLLYWOOD true 右键下达工程师占领 CALA05
+HOLLYWOOD true 到达后换边并消耗工程师 CALA05
+HOLLYWOOD true 科技设施禁止出售 CALA05
+HOLLYWOOD true 医院使用当前玩家涂装
+HOLLYWOOD true 机场屋顶使用当前玩家涂装
+HOLLYWOOD true 医院每50规则帧为远处己方步兵恢复20生命
+HOLLYWOOD true 占领机场出现带原版图标的伞兵按钮
+HOLLYWOOD true 充能未满四分钟
+HOLLYWOOD true 低电状态机场满四分钟仍就绪
+HOLLYWOOD true 无效落点保留充能
+HOLLYWOOD true 合法落点派出运输机并重新充能
+HOLLYWOOD true 任务支援装载六名盟军大兵
+HOLLYWOOD true 运输机升空后快照有效
+HOLLYWOOD true 医院使用当前玩家涂装
+HOLLYWOOD true 机场屋顶使用当前玩家涂装
+HOLLYWOOD true 读档保留两处归属、支援与运输机载员
+HOLLYWOOD true 地图实际投下六名美国大兵，实投 6，机上剩余 0
+HOLLYWOOD false 六人完成下降并恢复地面步兵
+HOLLYWOOD true 丢失机场移除玩家援助
+HOLLYWOOD true 丢失医院后停止自愈

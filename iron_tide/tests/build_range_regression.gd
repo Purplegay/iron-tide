@@ -248,7 +248,7 @@ func check_yard_reach(mode: String) -> void:
 	var data := GameData.get_building("GAPOWR")
 	var source_rect := Placement.aabb(battle.footprint_of(base), base.position)
 	var local := Placement.aabb(Building.placement_poly(data))
-	var expected_distance := 660.0 if mode == MatchRules.EXTENDED else 110.0
+	var expected_distance := 660.0
 	check(is_equal_approx(preview.source_distance(battle, data, base.data), expected_distance), mode + " yard exact reach in world grid units")
 	check(preview.source_distance(battle, data, data) == 110.0, mode + " ordinary power plant never inherits yard bonus")
 	check(preview.source_distance(battle, GameData.get_building("GAYARD"), base.data) == 660.0, mode + " native shipyard Adjacent is preserved")
@@ -275,7 +275,7 @@ func check_yard_reach(mode: String) -> void:
 			if gap <= expected_distance and gap > expected_distance - 40.0 and result.ok: boundary_legal += 1
 			if gap > expected_distance and gap < expected_distance + 40.0 and not result.ok: boundary_rejected += 1
 	check(mismatch == 0 and boundary_legal > 0 and boundary_rejected > 0, mode + " 2025 centers independently match exact distance, overlay and real placement", mismatch)
-	check(far_spot.is_finite() == (mode == MatchRules.EXTENDED), mode + " extension grants real new build space; RA2 remains unchanged")
+	check(far_spot.is_finite(), mode + " yard grants usable space beyond eight cells")
 	# The extra region belongs to an operational friendly yard, not the player forever.
 	base.under_construction = true
 	preview.update(battle)
@@ -288,7 +288,7 @@ func check_yard_reach(mode: String) -> void:
 	base.side = "enemy"
 	preview.update(battle)
 	check(preview.cells.is_empty(), mode + " captured-away yard immediately loses ally territory")
-	check(preview.allows_placement(battle, Rect2(local.position + Vector2(1600, 1880), local.size), data, "enemy") == (mode == MatchRules.EXTENDED), mode + " same reach rule applies to actual owner")
+	check(preview.allows_placement(battle, Rect2(local.position + Vector2(1600, 1880), local.size), data, "enemy"), mode + " same reach rule applies to actual owner")
 	base.side = "ally"
 	for id in ["GAPILL", "ATESLA", "GAWALL", "GAYARD"]:
 		preview.update(battle)

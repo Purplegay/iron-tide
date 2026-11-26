@@ -8,10 +8,10 @@ const OPTIONS := {
 	"map_size": [2400, 3200, 4000],
 	"map_layout": preload("res://scripts/world/skirmish_maps.gd").IDS,
 	"starting_funds": [4000, 8000, 10000, 12000, 20000, 30000, 50000],
-	"enemy_base": ["allied", "swarm", "soviet"],
+	"enemy_base": ["allied", "swarm", "soviet", "yuri"],
 	"difficulty": [0, 1, 2, 3, 4, 5, 6],
-	"enemy_country": ["美国", "韩国", "法国", "德国", "英国", "苏俄", "古巴", "伊拉克", "利比亚", "虫群巢穴"],
-	"country": ["美国", "韩国", "法国", "德国", "英国", "苏俄", "古巴", "伊拉克", "利比亚"],
+	"enemy_country": ["美国", "韩国", "法国", "德国", "英国", "苏俄", "古巴", "伊拉克", "利比亚", "尤里", "虫群巢穴"],
+	"country": ["美国", "韩国", "法国", "德国", "英国", "苏俄", "古巴", "伊拉克", "利比亚", "尤里"],
 	"fog_of_war": [true, false],
 }
 const DEFAULTS := {
@@ -21,6 +21,7 @@ const DEFAULTS := {
 }
 
 static func enemy_base_for(country: String) -> String:
+	if country == "尤里": return "yuri"
 	if country == "虫群巢穴": return "swarm"
 	return "soviet" if country in ["苏俄", "古巴", "伊拉克", "利比亚"] else "allied"
 
@@ -31,7 +32,7 @@ static func normalize(values: Dictionary) -> Dictionary:
 		if typeof(value) == typeof(DEFAULTS[key]) and value in OPTIONS[key]:
 			clean[key] = value
 	if not values.get("enemy_country") in OPTIONS.enemy_country:
-		clean.enemy_country = "苏俄" if clean.enemy_base == "soviet" else "虫群巢穴" if clean.enemy_base == "swarm" else "美国"
+		clean.enemy_country = "苏俄" if clean.enemy_base == "soviet" else "尤里" if clean.enemy_base == "yuri" else "虫群巢穴" if clean.enemy_base == "swarm" else "美国"
 	if clean.rules_mode == "ra2":
 		if clean.enemy_country == "虫群巢穴": clean.enemy_country = "美国"
 	else:

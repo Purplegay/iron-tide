@@ -283,6 +283,7 @@ func reveal_attack(attacker, target) -> void:
 	# Hidden first shots must update targetability, sprites and the fog texture in
 	# the same call. Already visible volleys only refresh their expiry/position.
 	var changed := not is_visible_at(observer, origin)
+	var ping_origin := changed and BattleRequest.friendly(observer, "ally")
 	var player_building_changed := false
 	if target is Building and visible_cells.has(attacker.side) and battle.actor_visible_to(attacker.side, target):
 		if _hold_building(attacker.side, target):
@@ -301,6 +302,8 @@ func reveal_attack(attacker, target) -> void:
 			# building footprint above is stamped for the attacking house only.
 			if player_building_changed or BattleRequest.friendly("ally", observer):
 				_publish_combat_sight()
+	if ping_origin:
+		Events.emit_radar_ping(origin, "firing_origin")
 
 ## A successful strategic launch exposes the source footprint and the target area.
 ## Existing held cells preserve expiry across saves without tracking a moved source.
@@ -429,7 +432,9 @@ func _filter_transient(node) -> void:
 	# Shared debris renderer lives at the origin and checks each fragment in _draw.
 	if node.is_in_group("per_piece_fog_visibility"): return
 	# Beams store world endpoints rather than setting their Node2D position.
-	if node.get("from") is Vector2 and node.get("to") is Vector2:
+	if node is Effects.Beam and node.sight_from.is_finite() and node.sight_to.is_finite():
+		node.visible = is_visible_at("ally", node.sight_from) and is_visible_at("ally", node.sight_to)
+	elif node.get("from") is Vector2 and node.get("to") is Vector2:
 		node.visible = is_visible_at("ally", node.get("from")) and is_visible_at("ally", node.get("to"))
 	else:
 		node.visible = is_visible_at("ally", node.global_position)
@@ -760,6 +765,9 @@ func rebuild() -> void:
 	_expire_held_sight()
 	SupportSystems.apply_intelligence(self)
 	if battle.units.size() >= 128: _begin_live_masks()
+	var hollywood: Dictionary = battle.allied_state.get("hollywood", {})
+	if hollywood.get("briefing", false):
+		_reveal("ally", battle.Hollywood.briefing_point(hollywood), battle.Hollywood.BRIEFING_SIGHT)
 	var batches := {}
 	for team in _live_masks:
 		var batch := SightBatch.new()

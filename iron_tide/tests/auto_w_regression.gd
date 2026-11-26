@@ -142,9 +142,14 @@ func check_guards() -> void:
 		battle.paused=false;battle.ended=false;u._stun_timer=0;u.repairing=false;u.special.erase("gm_stationary");battle.cast_slot=-1
 		u.special.erase("chrono_left");u.embarked_in=null;u.hp=6000
 	u.set_meta("auto_w_think",0.2)
-	Auto.tick(u,0.1)
-	check(u.ability_at(UnitSkillLayout.index(u,1)).cd_left==0,"auto check is throttled")
-	Auto.tick(u,0.11)
+	var old_scale := Engine.time_scale
+	Engine.time_scale = 3.0
+	var hit_left := float(u.special.auto_w_hit_left)
+	Auto.tick(u,0.3)
+	check(is_equal_approx(u.special.auto_w_hit_left, hit_left - 0.3),"3x damage memory follows simulation time")
+	check(u.ability_at(UnitSkillLayout.index(u,1)).cd_left==0,"3x auto check is throttled in real time")
+	Auto.tick(u,0.33)
+	Engine.time_scale = old_scale
 	check(u.ability_at(UnitSkillLayout.index(u,1)).cd_left>0,"scheduled check uses actual cast")
 	clear_actors()
 	u=make("DEST","ap_buoy")

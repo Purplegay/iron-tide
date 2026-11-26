@@ -10,6 +10,7 @@ static func migrate(meta) -> bool:
 	return changed
 
 static func effective(meta,id:String) -> Dictionary:
+	if id in meta.Academy.Stars.IDS:return {"active":[""],"passive":""}
 	var fallback:Dictionary={} if (id in meta.Academy.Commandos.IDS or id in ["ORCA","TTNK","FV","HARV"]) else meta.unit_loadout(id)
 	var row:Dictionary=UnitSkillLayout.normalize(id,meta.academy.get("hero_loadouts",{}).get(id,fallback),true)
 	for i in row.active.size():
@@ -18,6 +19,7 @@ static func effective(meta,id:String) -> Dictionary:
 	return row
 
 static func equip(meta,id:String,slot:String,skill:String) -> bool:
+	if id in meta.Academy.Stars.IDS:return false
 	if not meta.Academy.HEROES.has(id) or slot not in ["active","passive"]:return false
 	if not meta.can_set_unit_skill(skill) or not UnitSkillLayout.compatible(id,skill,true):return false
 	if slot=="active" and not UnitSkillLayout.equippable(id,skill,true):return false

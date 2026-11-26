@@ -615,15 +615,17 @@ func build_routes() -> void:
 	body.add_child(label(Campaign.title(run.stage)+" · "+Campaign.task_name(Campaign.task(run.stage),run.stage),24,UiKit.COL_ACCENT_2))
 	var issue:=Army.roster_error(run)
 	if not issue.is_empty():body.add_child(label(issue+"；请到「军团与天赋」整编。",16,UiKit.COL_WARN))
-	if not SchoolField.Book.met() and not SchoolField.encounter(run,""):
-		body.add_child(label("百合子线索 · 留意「海岸」战区。派部队前往雨棚，听到饭盒声后获胜，即可带回第一章。",16,SchoolField.PINK))
+	if not SchoolField.Book.met() and not SchoolField.shelter_intel(run):
+		body.add_child(label("百合子线索 · 留意各战区的雨棚。战场情报达到 2 级后会直接标出位置。",16,SchoolField.PINK))
+	if SchoolField.Book.recruited_before() and not run.get("yuriko_recruited",false):
+		body.add_child(label(SchoolField.Book.RETURN_HINT,16,SchoolField.PINK))
 	var choices:=grid(body,2,420)
 	for index in run.routes.size():
 		var route:Dictionary=run.routes[index];var box:=panel(choices)
 		box.add_child(label(route.title+(" · 精英" if route.elite else ""),21,UiKit.COL_GOLD))
 		var preview=preload("res://scripts/ui/map_preview.gd").new();preview.custom_minimum_size=Vector2(300,150);box.add_child(preview);preview.show_map(route.map,route.size)
-		if SchoolField.encounter(run,route.map):
-			box.add_child(label(SchoolField.SHELTER+" · 选择此战区寻找百合子",17,SchoolField.PINK))
+		if not SchoolField.Book.met() and SchoolField.shelter_intel(run):
+			box.add_child(label(SchoolField.SHELTER+" · 派地面部队前往粉色标记，听到饭盒声后获胜。",17,SchoolField.PINK))
 		if SchoolField.find_stage(run) and (SchoolField.Book.met() or run.get("yuriko_recruited",false)):
 			var names:String=SchoolField.FINDS[SchoolField.find_kind(run)]
 			box.add_child(label("百合子支线 · "+names+"。派地面部队前往粉色标记，获胜后带回。",15,SchoolField.PINK))
@@ -703,7 +705,7 @@ func build_shop() -> void:
 	if Expedition.bargain_level()>=1:
 		var bulk:=row(body)
 		var locks:=Expedition.lockable_discounts().size()
-		var lock_button:=button(bulk,"一键锁定打折商品 · %d 件 · 免费"%locks,func():result(Expedition.lock_discounts()))
+		var lock_button:=button(bulk,"一键锁定打折商品 · %d 件"%locks,func():result(Expedition.lock_discounts()))
 		lock_button.disabled=locks==0
 		if Expedition.bargain_level()>=2:
 			var quote:=Expedition.plan_discount_purchases(run.duplicate(true))
@@ -718,7 +720,7 @@ func build_shop() -> void:
 	cost_button(services,("已持有 · " if run.get("relics",{}).get(Growth.RELIC,false) else "购买藏品 · ")+Growth.RELIC_NAME+("" if run.get("relics",{}).get(Growth.RELIC,false) else " · 40"),service.bind("relic","","a"),Growth.RELIC_PRICE,not run.get("relics",{}).get(Growth.RELIC,false))
 	body.add_child(label(Growth.RELIC_NAME+"：每关免费强化一个兵种一次；攻防各 +1 级，最高 5 级，独立于战术装备。",14,UiKit.COL_DIM))
 	for id:String in Catalog.Heroes.wounded(run):cost_button(body,"救治 "+str(MetaProgress.Academy.HEROES[id])+" · 60",rescue.bind(id),60)
-	body.add_child(label("每店首次刷新免费，之后 "+("5／10／15 封顶（暗线地图）" if Relics.owned(run,"bargain_map") else "10／20／30 封顶")+"。满员时也能锁定招募商品，等有空位再买。锁定不限数量，可全部锁定并跨店保留；全部锁定时暂停刷新，保留免费次数与补给。黄色定向商品跟随标记羁绊。未锁定的末格优先提供未持有藏品，专属藏品按已有兵种筛选。同一件商品每店只出现一次；可升级装备显示购买前后等级，满级不可购买。",14,UiKit.COL_DIM))
+	body.add_child(label("每店首次刷新免费，之后 "+("5／10／15 封顶（暗线地图）" if Relics.owned(run,"bargain_map") else "10／20／30 封顶")+"。满编时仍可招募，新兵留在预备队。锁定不限数量，可全部锁定并跨店保留；全部锁定时暂停刷新，保留免费次数与补给。黄色定向商品跟随标记羁绊。未锁定的末格优先提供未持有藏品，专属藏品按已有兵种筛选。同一件商品每店只出现一次；可升级装备显示购买前后等级，满级不可购买。",14,UiKit.COL_DIM))
 	var choices:=grid(body)
 	for index in run.shop.size():
 		var item:Dictionary=run.shop[index]
@@ -795,18 +797,15 @@ func build_army() -> void:
 	var run:Dictionary=Expedition.state
 	var roster_issue:=Army.roster_error(run)
 	if not roster_issue.is_empty():body.add_child(label(roster_issue,18,UiKit.COL_WARN))
-	var total:=0
-	var reserve_types:=0
-	for id:String in Army.available(run):
-		total+=Army.quantity(run,id)
-		if id not in run.active_roster:reserve_types+=1
-	body.add_child(label("出战编制 %d / %d · 预备 %d 种（不限种类）· 跨关部队 %d / %d"%[run.active_roster.size(),Campaign.slots(run),reserve_types,total,Campaign.population(run.stage)],19,UiKit.COL_GOLD))
+	var plan:=Army.deployment(run)
+	var capacity:=Campaign.population(run.stage)
+	body.add_child(label("出战编制 %d / %d · 出战人数 %d / %d · 预备 %d 个"%[run.active_roster.size(),Campaign.slots(run),capacity-int(plan.remaining),capacity,plan.reserve.size()],19,UiKit.COL_GOLD))
 	body.add_child(label("出战与预备兵种可互换：把一方拖到另一方，或依次点击两者。拖到「拖回预备栏」可单独撤下。",14,UiKit.COL_ACCENT_2))
 	var board:=preload("res://scripts/expedition/roster_box.gd").new()
 	board.name="FormationBox"
 	board.changed.connect(result,CONNECT_DEFERRED)
 	body.add_child(board)
-	body.add_child(label("每种步兵最多带 8 人，其余最多 4 台。超过兵种或本章人数上限的步兵自动出售返还补给，优先普通、低军衔单位，英雄保留。补员只补空缺；整备只回血。其余超限部队可使用上方「一键售出多余人员」，也可手动遣散。",14))
+	body.add_child(label("点卡片右侧的 − 或 +，每次调整 1 个出战单位。减到 0 会腾出编制格。步兵每种最多出战 8 人，其他兵种最多 4 个，限造兵种按其限额出战。预备队人数不限。",14))
 	body.add_child(label("攻防分别按局外等级 ÷ 4 四舍五入带入，最高 5 级。每次强化攻防各 +1，相当于局外各 +4 级；不回写局外。",14,UiKit.COL_DIM))
 	if run.get("relics",{}).get(Growth.RELIC,false):body.add_child(label(Growth.RELIC_NAME+(" · 本关免费强化 1 次可用" if Growth.free_available(run) else " · 本关免费次数已使用，下关恢复"),14,UiKit.COL_GOLD))
 	var filters:=OptionButton.new()

@@ -1,0 +1,15 @@
+{
+ "id": "YAREFN",
+ "layers": [
+  {
+   "kind": "idleanim",
+   "image": "YAREFN_A",
+   "frames": 2,
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 1,
+   "rate": 900,
+   "loopCount": -1
+  }
+ ]
+}

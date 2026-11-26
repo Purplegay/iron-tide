@@ -15,6 +15,8 @@ static func entries(unit) -> Array:
 	if unit is Building:
 		if BattleRequest.is_ai_house(unit.side):add(rows,"建筑护盾",s.get("brutal_shield",0),unit.max_hp*0.5)
 		return rows
+	if s.has("convoy_rescue_shield") and unit.buff_value("convoy_rescue")>0:
+		add(rows,"车队救援护盾",s.convoy_rescue_shield)
 	if s.has("furnace_prone"):
 		add(rows,"熔炉壁垒",s.furnace_prone,Unit.TankHero.Shield.maximum(unit))
 	elif s.has(Unit.TankHero.Shield.KEY):

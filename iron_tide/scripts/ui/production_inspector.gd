@@ -113,8 +113,14 @@ func _select_description(control: Control) -> void:
 		_descriptions[id] = {"source": weakref(control), "label": description}
 	description.visible = not _folded
 
+func _shows_introduction() -> bool:
+	return is_visible_in_tree() and not _folded
+
 func bind(button: Button, caption: String, data: Dictionary = {}) -> void:
 	button.docked_details = true
+	if not data.is_empty():
+		button.dock_shows_introduction = _shows_introduction
+		button.introduction_tooltip = "%s\n%s" % [caption, EntityDescription.text(data)]
 	button.set_meta("docked_details_bound", true)
 	button.set_meta("inspector_title", caption)
 	button.set_meta("inspector_data", data)

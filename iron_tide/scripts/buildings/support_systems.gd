@@ -4,7 +4,7 @@ extends RefCounted
 static var _rules: Dictionary = {}
 
 static func shared_charge(source) -> bool:
-	return source.sw_type() in ["AmerParaDrop","ForceShield","SpyPlane"]
+	return source.sw_type() in ["AmerParaDrop","ParaDrop","ForceShield","SpyPlane"]
 
 static func charge_controller(source, exclude_self := false):
 	if not shared_charge(source): return source

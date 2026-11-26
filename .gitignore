@@ -7,6 +7,7 @@
 /iron_tide/export_presets.cfg
 /ra2pipe/out/
 /.validation/
+/iron_tide/.validation/
 *.log
 *.tmp
 __pycache__/

@@ -48,20 +48,39 @@ func exercise(mode: String) -> void:
 		if plane.special.para_left < 8: break
 	var troops: Array = battle.units.filter(func(u): return u.unit_id=="E1" and u.special.has("para_height"))
 	check(troops.size() > 0 and troops.size()<8 and troops[0].is_air_target() and not troops[0].set_deployed(true,false),prefix+"infantry leaves aircraft progressively under parachute")
+	var first_drop:Vector2 = troops[0].position
+	for frame in 60: troops[0]._physics_process(1.0 / 60.0)
+	var saved_height:float = troops[0].special.para_height
 	var codec := Snapshot.new()
 	var snap := codec.capture(battle)
 	check(BattleSaves.validate(snap).is_empty(),prefix+"aircraft and open parachutes validate in mid-drop save",BattleSaves.validate(snap))
 	codec.restore(battle,snap)
 	get_tree().paused=false
 	battle.paused=false
+	var resumed = battle.units.filter(func(u): return u.special.has("para_height") and u.position == first_drop)[0]
+	check(is_equal_approx(resumed.special.para_height, saved_height) and is_equal_approx(resumed.special.para_age, 1.0), prefix+"loading preserves partial descent and canopy age")
 	plane = battle.units.filter(func(u): return u.unit_id=="PDPLANE")[0]
 	for i in 500:
 		plane._physics_process(0.1)
 		if plane._dead: break
 	troops = battle.units.filter(func(u): return u.unit_id=="E1" and u.special.has("para_height"))
 	check(plane._dead and troops.size()==8,prefix+"resume delivers eight GIs exactly once then plane exits")
+	var first = troops.back()
+	var drop_height:float = first.special.para_height
+	battle.paused = true
+	first._physics_process(1.0)
+	check(first.special.para_height == drop_height, prefix+"pause suspends descent")
+	battle.paused = false
+	var steps := 0
+	while first.special.has("para_height") and steps < 2400:
+		first._physics_process(1.0 / 60.0)
+		steps += 1
+	var seconds := steps / 60.0
+	check(seconds >= 4.0 and seconds <= 4.4 and not first.special.has("para_height"), prefix+"normal drop takes about four simulation seconds", {"seconds":seconds, "start_px":drop_height})
 	for u in troops:
-		u._physics_process(45)
+		for step in steps:
+			if not u.special.has("para_height"): break
+			u._physics_process(1.0 / 60.0)
 	check(troops.all(func(u): return battle.actor_alive(u) and not u.is_air_target() and u.is_in_group("ground_units") and not u.is_in_group("air_units") and not u.special.has("para_height") and u.collision_layer!=0),prefix+"touchdown restores live ground infantry")
 	battle.select_unit(troops[0],false)
 	battle._issue_order(troops[0].position + Vector2(0,120))

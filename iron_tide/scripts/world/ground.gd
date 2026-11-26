@@ -11,6 +11,7 @@ var grid_step := 80.0
 var show_grid := false
 var grid_alpha := 0.045
 var _surface := Polygon2D.new()
+var overpass
 
 func _ready() -> void:
 	var surface_material := ShaderMaterial.new()
@@ -21,8 +22,20 @@ func _ready() -> void:
 	if not native_id.is_empty():
 		_surface.material=null
 		_surface.texture=load("res://assets/maps/yr/%s_terrain.png"%native_id)
+		if native_id=="yr_sov01":modulate=Color(0.704,0.704,0.704)
+		if native_id=="yr_all02umd":
+			# The map bake uses palette RGB without lighting. Apply the flat map's
+			# daylight here so terrain and replacement bridge tiles share the tint.
+			var light:Dictionary=GameData.raw_docs["hollywood_combat.json"].daylight
+			var intensity:float=light.ambient+light.ground
+			modulate=Color(light.red*intensity,light.green*intensity,light.blue*intensity)
 		if not preload("res://scripts/world/native_maps.gd").data(native_id).bridges.is_empty():
 			bridge_art.prepare(native_id)
+		if native_id in ["yr_all02umd", "yr_hills"]:
+			_surface.texture = load("res://assets/maps/yr/%s_bridge_ground.png" % native_id)
+			overpass = preload("res://scripts/world/hills_overpass.gd").new() if native_id == "yr_hills" else preload("res://scripts/world/hollywood_overpass.gd").new()
+			overpass.setup(bridge_art)
+			add_child(overpass)
 	_surface.show_behind_parent = true
 	add_child(_surface)
 	setup(map_size)
@@ -37,7 +50,10 @@ func setup(size: float) -> void:
 
 func set_broken_bridges(broken: Array) -> void:
 	broken_bridges = broken.duplicate()
-	bridge_art.rebuild(native_id, broken_bridges)
+	if overpass != null:
+		overpass.refresh(broken_bridges)
+	else:
+		bridge_art.rebuild(native_id, broken_bridges)
 	queue_redraw()
 
 func _draw() -> void:

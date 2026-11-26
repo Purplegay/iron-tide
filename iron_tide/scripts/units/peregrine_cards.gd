@@ -144,4 +144,3 @@ static func draw_world(world) -> void:
 
 static func draw(unit) -> void:
 	preload("res://scripts/units/peregrine_defense.gd").draw(unit)
-	if float(unit.special.get(KEY,{}).get("rearm_shield",0))>0:unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+8,0,TAU,32,Color(.3,.85,1,.7),1.5,true)

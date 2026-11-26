@@ -24,6 +24,10 @@ func setup(battle,restored:bool) -> bool:
 		state={"kind":Rules.context().task,"stage":Rules.context().stage,"elapsed":0.0,"progress":0.0,"phase":0,"outcome":0,"points":[],"targets":[],"arrived":[],"waves":0,"rescued":[],"next_wave":45.0,"relocate":30.0}
 		world.allied_state.expedition_task=state
 		if not prepare():return false
+	if state.kind=="defend" and not state.has("relay_work"):
+		state.relay_work=[0.0,0.0]
+		if restored:state.progress=minf(360.0,float(state.progress)*2.0)
+		separate_control_points()
 	if state.kind=="control":
 		separate_control_points()
 	if state.kind=="control" and not state.has("control_scores"):
@@ -318,9 +322,15 @@ func tick(delta:float) -> void:
 			var defense=actor("defense")
 			if defense==null:finish(false)
 			else:
-				var defenders:=point_counts(defense.position).x
-				state.progress=minf(180.0,state.progress+delta*Relics.progress_rate(maxi(1,defenders)))
-				if state.progress>=180:finish(true)
+				state.progress+=delta
+				for slot in 2:
+					if float(state.relay_work[slot])>=20.0:continue
+					var forces:=point_counts(state.points[slot*2])
+					if forces.x==0 or forces.y>0:continue
+					state.relay_work[slot]=minf(20.0,float(state.relay_work[slot])+delta*Relics.progress_rate(forces.x))
+					if float(state.relay_work[slot])>=20.0:state.progress+=45.0
+				state.progress=minf(360.0,state.progress)
+				if state.progress>=360.0:finish(true)
 		"escort":
 			var missing:=0
 			for n in 3:
@@ -413,7 +423,8 @@ func wave() -> void:
 	if int(state.waves)>=12:return
 	state.waves+=1
 	var tactic:=preload("res://scripts/expedition/elite_tactics.gd").current()
-	var roster:=Campaign.wave_units(state.stage,Rules.context().get("elite",false),tactic)
+	var elite:bool=Rules.context().get("elite",false)
+	var roster:=Campaign.defense_wave(state.stage,state.waves,elite,tactic) if state.kind=="defend" else Campaign.wave_units(state.stage,elite,tactic)
 	var home:Vector2=world.enemy_base_center
 	var goal:Vector2=state.get("counter_point",state.points[1] if state.kind!="defend" else world.player_start())
 	for index in roster.size():
@@ -438,6 +449,7 @@ func shield_point(index:int) -> int:
 func point_occupied(index:int) -> bool:
 	match str(state.kind):
 		"boss":return int(state.stage)==Campaign.TOTAL and shield_point(index)==1
+		"defend":return float(state.relay_work[index/2])>=20.0
 		"capture":return float(state.progress)>=CONTROL_POINT_CAP
 		"control":return float(state.control_scores[index])>=CONTROL_POINT_CAP
 		"research":return index in [0,2] and float(state.get("labs",[0.0,0.0])[0 if index==0 else 1])>=45.0
@@ -445,6 +457,7 @@ func point_occupied(index:int) -> bool:
 
 func point_title(index:int) -> String:
 	match str(state.kind):
+		"defend":return ("抢修中继站" if index==0 else "截获敌军电报")+(" · 已完成" if point_occupied(index) else " · 坚守减 45 秒")
 		"capture":return "前线据点 · 控制 60 秒"
 		"control":return "据点 %d · %d/%d"%[index+1,int(state.control_scores[index]),CONTROL_POINT_CAP]
 		"boss":return "破盾区 %d · %s"%[index+1,["待进驻","我方控制","敌军控制","交战中"][shield_point(index)]]
@@ -491,16 +504,20 @@ func summary() -> String:
 		return "核心护盾已解除 · 摧毁核心指挥部即可获胜"
 	if state.kind=="boss" and int(state.stage)==20:return "机动指挥车 · 敌营内转移\n摧毁指挥车即过关，可先完成支线。"
 	if state.kind=="boss":return "%s · 阶段 %d · %s"%[name,int(state.phase)+1,"先破标记节点" if actor("command")!=null and actor("command").special.get("expedition_protected",false) else "指挥目标可攻击"]
-	var targets:Dictionary={"capture":60,"rescue":2,"supply":2,"defend":180,"escort":2}
+	if state.kind=="defend":
+		var seconds:=ceili(360.0-float(state.progress))
+		return "%s · 剩余 %d:%02d\n%s · %s"%[name,seconds/60,seconds%60,point_title(0),point_title(2)]
+	var targets:Dictionary={"capture":60,"rescue":2,"supply":2,"escort":2}
 	return name+(" · %d / %d"%[int(state.progress),int(targets[state.kind])] if targets.has(state.kind) else " · 摧毁金色标记目标")
 
 func _draw() -> void:
 	if not is_instance_valid(world) or state.is_empty():return
 	for i in visible_points():
-		draw_marker(state.points[i],220 if state.kind=="boss" else 180,point_title(i),point_occupied(i))
+		draw_marker(state.points[i],220 if state.kind in ["boss","defend"] else 180,point_title(i),point_occupied(i))
 		match str(state.kind):
 			"capture":draw_point_progress(i,state.progress,60,"占领")
 			"control":draw_point_progress(i,state.control_scores[i],CONTROL_POINT_CAP,"占领")
+			"defend":draw_point_progress(i,state.relay_work[i/2],20,"作业")
 			"research":draw_point_progress(i,state.labs[0 if i==0 else 1],45,"接管")
 			"rescue":draw_point_progress(i,state.get("rescue"+str(i),0.0),20,"救援")
 	if state.kind=="escort" and state.has("escort_pending"):
@@ -515,7 +532,7 @@ func _draw() -> void:
 func visible_points() -> Array:
 	match str(state.kind):
 		"capture":return [1]
-		"research":return [0,2]
+		"research","defend":return [0,2]
 		"rescue":
 			var remaining:Array=[]
 			for index:int in [0,2]:

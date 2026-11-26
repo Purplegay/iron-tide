@@ -6,6 +6,7 @@ const Insights=preload("res://scripts/expedition/insights.gd")
 signal changed(ok:bool)
 var picked:=""
 var times:Dictionary={}
+var plan:Dictionary={}
 
 class Slot extends Button:
 	var board
@@ -30,7 +31,8 @@ class Slot extends Button:
 func _ready() -> void:
 	add_theme_constant_override("separation",14)
 	var run:Dictionary=Expedition.state
-	for unit:Dictionary in Army.inventory(run):
+	plan=Army.deployment(run)
+	for unit:Dictionary in plan.field+plan.reserve:
 		if not str(unit.get("hero","")).is_empty():continue
 		var due:=Plan.delay_for(unit.id,"",run,str(unit.get("variant","")))
 		times[unit.id]=minf(float(times.get(unit.id,INF)),due)
@@ -67,8 +69,16 @@ func tile(parent:Control,id:String,index:int) -> void:
 	button.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	button.toggle_mode=true
 	button.text="拖回预备栏" if index<0 else "空槽 %d"%[index+1]
+	var current:=int(plan.counts.get(id,0))
+	var maximum:=0
 	if not id.is_empty():
-		button.text="%s ×%d"%[Army.training_name(id),Army.quantity(Expedition.state,id)]
+		var owned:=int(plan.owned.get(id,0))
+		button.text=Army.training_name(id)
+		if index>=0:
+			maximum=mini(mini(Army.limit(id),owned),current+int(plan.remaining))
+			button.text+="\n当前 %d / 最多 %d"%[current,maximum]
+		else:
+			button.text+="\n预备 %d"%owned
 		if times.has(id):button.text+="\n首批 "+Insights.time_text(times[id])
 		var portrait:=UnitIcon.new()
 		portrait.animate=false;portrait.show_status=false
@@ -82,14 +92,31 @@ func tile(parent:Control,id:String,index:int) -> void:
 		for state in ["normal","hover","pressed","hover_pressed","focus"]:
 			var style:=button.get_theme_stylebox(state).duplicate() as StyleBox
 			style.content_margin_left=52
+			if index>=0:style.content_margin_right=54
 			button.add_theme_stylebox_override(state,style)
+	if index>=0 and not id.is_empty():
+		var controls:=HBoxContainer.new()
+		button.add_child(controls)
+		controls.set_anchors_and_offsets_preset(Control.PRESET_CENTER_RIGHT)
+		controls.offset_left=-52;controls.offset_right=-4
+		controls.offset_top=-11;controls.offset_bottom=11
+		controls.add_theme_constant_override("separation",2)
+		for delta:int in [-1,1]:
+			var step:=Button.new()
+			step.text="−" if delta<0 else "+"
+			step.add_theme_font_size_override("font_size",13)
+			step.custom_minimum_size=Vector2(22,22)
+			step.tooltip_text=("减少" if delta<0 else "增加")+" 1 个"+Army.training_name(id)+"出战"
+			step.disabled=current<=0 if delta<0 else current>=maximum
+			controls.add_child(step)
+			step.pressed.connect(func():changed.emit(Expedition.adjust_deployment(id,delta)))
 	parent.add_child(button)
 	button.pressed.connect(choose.bind(button))
 
 func select_unit(id:String) -> void:
 	picked=id
 	for tile_button in find_children("*","Button",true,false):
-		tile_button.set_pressed_no_signal(not id.is_empty() and tile_button.unit_id==id)
+		if tile_button is Slot:tile_button.set_pressed_no_signal(not id.is_empty() and tile_button.unit_id==id)
 
 func choose(target:Slot) -> void:
 	if picked.is_empty() or target.unit_id==picked:

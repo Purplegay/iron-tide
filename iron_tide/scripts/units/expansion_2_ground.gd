@@ -131,7 +131,7 @@ static func entries(unit) -> Array:
 
 static func draw(unit) -> void:
 	var s:Dictionary=unit.special.get(KEY,{})
-	if s.has("prism_shield") or s.has("mirage_guard"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+7,0,TAU,32,Color(.35,.85,1,.7),1.5,true)
+	if s.has("mirage_guard"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+7,0,TAU,32,Color(.35,.85,1,.7),1.5,true)
 	if s.has("prism_cross"):
 		var cross:Dictionary=s.prism_cross
 		for axis:Vector2 in [cross.axis,cross.axis.orthogonal()]:

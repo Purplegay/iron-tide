@@ -32,14 +32,13 @@ func exercise(mode:String) -> void:
 						var expected:Vector2=mover.velocity
 						var contacts:Array=probe.nearby.duplicate()
 						var origin:Vector2=probe.query_origin
-						var left:float=probe.query_left
 						var turn:bool=Steering.open_corridor(mover,angle)
 						var blockers:Array=probe.stalled_blockers(mover,mover.move_target)
 						probe.reset();mover.velocity=velocity
 						probe.apply(mover,1.0/15)
 						var label:String=mode+str(dense)+str(pass_state)+owner+str(speed)+str(angle)
 						check(mover.velocity.is_equal_approx(expected),label+" same separation")
-						check(probe.nearby==contacts and probe.query_origin==origin and probe.query_left==left,label+" same query and refresh cadence")
+						check(probe.nearby==contacts and probe.query_origin==origin,label+" same ordered query without fixed expiry")
 						check(Steering.open_corridor(mover,angle)==turn and probe.stalled_blockers(mover,mover.move_target)==blockers,label+" same turn corridor and blockers")
 		mover.side="ally"
 		mover.special[probe.CONGESTION]={"passing":true,"origin":mover.position,"clear_seconds":0.0}
@@ -49,7 +48,7 @@ func exercise(mode:String) -> void:
 				mover.velocity=Vector2(150,0)
 				if i%2==0:probe.original_apply(mover,1.0/15)
 				else:probe.apply(mover,1.0/15)
-			micro.append({"mode":mode,"dense":dense,"variant":"before" if i%2==0 else "after","us":Time.get_ticks_usec()-t})
+			micro.append({"basis":"same-engine-frame calls; not a runtime speedup estimate","mode":mode,"dense":dense,"variant":"before" if i%2==0 else "after","us":Time.get_ticks_usec()-t})
 		mover.special.erase(probe.CONGESTION)
 		mover.velocity=Vector2(150,0);probe.apply(mover,1.0/15)
 		var expected:Vector2=mover.velocity

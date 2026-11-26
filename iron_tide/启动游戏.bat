@@ -3,7 +3,7 @@ chcp 65001 >nul
 setlocal
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0launch_game.ps1"
 if errorlevel 1 (
-  echo Startup failed. See the import log shown above.
+  echo 游戏启动或运行时发生错误。请查看上方信息，按任意键关闭窗口。
   pause
   exit /b 1
 )

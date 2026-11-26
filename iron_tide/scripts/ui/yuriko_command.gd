@@ -131,7 +131,8 @@ func build() -> void:
 	var u = Psi.hero(world)
 	if u != null: notice.text="选中百合子可使用已习得的灵能技能。"
 	elif preload("res://scripts/expedition/rules.gd").active() and not preload("res://scripts/expedition/rules.gd").context().get("yuriko_recruited",false):
-		notice.text="与百合子重逢后，完成她的情报委托并获胜，即可在本轮远征召唤。"
+		var book=preload("res://scripts/units/yuriko_school.gd")
+		notice.text=book.RETURN_HINT if book.recruited_before() else "与百合子重逢后，完成她的情报委托并获胜，即可在本轮远征召唤。"
 		summon.disabled=true
 	elif world.allied_state.get("yuriko_summoned",false): notice.text="本战区的召唤次数已用完。"
 	else: notice.text="需要一座完工的己方兵营和畅通的出口。每场可召唤一次，支援 %d 秒。"%Psi.deployment_duration(world)

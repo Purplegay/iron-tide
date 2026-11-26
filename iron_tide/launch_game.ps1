@@ -47,12 +47,30 @@ try {
     if (-not $PrepareOnly) {
         # Normal play must not inherit an opt-in performance probe from a shell.
         $env:IRON_TIDE_CALL_LOG = '0'
-        # Preserve the normal player log location and save directory.
+        # Capture only this run's stderr. Godot keeps its normal player log as well.
+        $taskRunLog = Join-Path $taskLogRoot ($taskStamp + '-runtime.log')
+        $taskStart = @{
+            FilePath = $taskRuntime
+            WorkingDirectory = $PSScriptRoot
+            RedirectStandardError = $taskRunLog
+            Wait = $true
+            PassThru = $true
+        }
         if ($taskRuntime -eq $taskEngine) {
-            Start-Process -FilePath $taskEngine -WorkingDirectory $PSScriptRoot -ArgumentList @('--path', ('"' + $PSScriptRoot + '"')) | Out-Null
-        } else {
-            # Release templates disable path overrides; the executable sits beside project.godot.
-            Start-Process -FilePath $taskRuntime -WorkingDirectory $PSScriptRoot | Out-Null
+            $taskStart.ArgumentList = @('--path', ('"' + $PSScriptRoot + '"'))
+        }
+        $taskGame = Start-Process @taskStart
+        $taskFailure = Select-String -LiteralPath $taskRunLog -Encoding UTF8 -Pattern '^\s*(?:(?:SCRIPT ERROR|ERROR|FATAL(?: ERROR)?|PANIC)\s*:|CrashHandlerException\b)' -List -Context 0,20
+        if ($taskFailure -or $taskGame.ExitCode -ne 0) {
+            Write-Host ("Game exit code: " + $taskGame.ExitCode)
+            if ($taskFailure) {
+                Write-Host $taskFailure.Line
+                $taskFailure.Context.PostContext | ForEach-Object { Write-Host $_ }
+            } else {
+                Get-Content -LiteralPath $taskRunLog -Encoding UTF8 -Tail 20
+            }
+            Write-Host ("Runtime log: " + $taskRunLog)
+            exit 1
         }
     }
     Write-Host 'Ready.'

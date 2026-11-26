@@ -8,6 +8,7 @@ const AutoSkills=preload("res://scripts/rules/auto_skill_loadout.gd")
 static func skill_slots(unit_id:String,is_hero:=false,owned:Variant=null) -> Dictionary:
 	var pending:={"active":false,"passive":false}
 	if is_hero:
+		if unit_id in Academy.Stars.IDS:return pending
 		if not Academy.HEROES.has(unit_id) or Academy.hero_build_count(MetaProgress,unit_id)<Academy.hero_requirement(unit_id):return pending
 	elif not GameData.unit_index.has(unit_id) and not preload("res://scripts/rules/skill_scope.gd").defense(unit_id):return pending
 	var loadout:=Loadouts.effective(MetaProgress,unit_id) if is_hero else MetaProgress.unit_effective_loadout(unit_id)

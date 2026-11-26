@@ -104,9 +104,3 @@ static func entries(unit) -> Array:
 		var ready:bool=float(s.get("stationary",0))>=P.number("hero/BORIS/survival","stationary_seconds")
 		if ready or s.has("radio_grace"):out.append(V.row("战地电台 · 远程减伤 15%",float(s.get("radio_grace",0)),false,"guard"))
 	return out
-
-static func draw(unit) -> void:
-	if not active(unit):return
-	var s:Dictionary=unit.special.get(KEY,{})
-	if not s.has("shield"):return
-	unit.draw_arc(Vector2(0,-unit._visual_lift()-8),unit.radius+8,0,TAU,24,Color(0.25,0.9,1,0.7),1.5,true)

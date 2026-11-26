@@ -17,7 +17,7 @@ var aim_anchor := Vector2.INF
 var aim_press_screen := Vector2.ZERO
 var aim_cursor_screen := Vector2.ZERO
 const DROP_TIME := 0.55
-const AREA_HINT := {"volkov":"炮击圈内敌军", "seojin":"呼叫四架飞机轰炸圈内敌军", "edith":"追踪圈内敌军，照亮脚下一格，持续 30 秒", "sami":"治疗圈内己方地面部队", "yusuf":"将己方矿车圈入范围后签收运费"}
+const AREA_HINT := {"volkov":"炮击圈内敌军", "seojin":"呼叫四架飞机轰炸圈内敌军", "edith":"追踪圈内敌军，照亮脚下一格，持续 30 秒", "sami":"治疗圈内己方地面部队"}
 var rearm_seconds := 600.0
 const DRIVE_TIME := 1.5
 
@@ -100,6 +100,22 @@ func press() -> void:
 		if other!=self and other.world==world and other.aiming:
 			other.aiming=false
 			other.refresh()
+	if id == "yusuf":
+		var rates := Gifts.freight_rates(Gifts.rank(id))
+		var fee: int = rates.base
+		for unit in world.units:
+			if available(unit) and unit.is_harvester:
+				fee += int(rates.bonus)
+		var joint := pair_present()
+		if joint:
+			fee *= 2
+			start_cooldown(Gifts.use_cooldown(240,id,Expedition.state))
+		world.credit_side("ally", fee)
+		var center := get_canvas_transform().affine_inverse() * get_viewport_rect().get_center()
+		show_freight_receipt(center, fee)
+		Ra2Sfx.play("Bonus")
+		finish(joint)
+		return
 	if id == "greta":
 		var joint := pair_present()
 		for unit in world.units:
@@ -131,7 +147,6 @@ func press() -> void:
 	if state.has("breach_left"):salvo()
 	else:
 		aiming=true
-		if id == "yusuf": Ra2Sfx.play("MenuBuild")
 		if AREA_HINT.has(id): show_instruction("左键点地面，%s。右键取消。" % AREA_HINT[id])
 		elif id == "mara": show_instruction("按住左键锁定中间的轰炸圈，拖动调整航向，松开呼叫飞机。右键取消。")
 		elif id == "qiao": show_instruction(RULER_TARGET)
@@ -356,22 +371,6 @@ func fire_at(point:Vector2,_target=null) -> bool:
 				bomb.lane = i
 				bomb.joint = joint
 			joint = false
-		"yusuf":
-			var miner: Unit
-			var nearest := float(area.radius * area.radius)
-			for unit in world.units:
-				if not available(unit) or not unit.is_harvester: continue
-				var distance := point.distance_squared_to(unit.position)
-				if distance <= nearest:
-					miner = unit
-					nearest = distance
-			if miner == null:hint("请在己方矿车附近签收运费。");return false
-			var fee := 10000 if joint else 5000
-			if joint:
-				start_cooldown(Gifts.use_cooldown(240,id,Expedition.state))
-			world.credit_side("ally",fee)
-			show_freight_receipt(miner.art_center(), fee)
-			Ra2Sfx.play("Bonus")
 		"edith":
 			var marked := false
 			for actor in world.units + world.buildings:

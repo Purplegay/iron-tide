@@ -236,7 +236,9 @@ func run() -> void:
 	check(model.action=="FIRING_A REACT_2","real shot selects vehicle attack sequence")
 	press_key(screen.hud,KEY_R)
 	check(command.pending=="Slam","R arms lift")
+	var tank_paint:ShaderMaterial=tank.material
 	click_ground(command,tank.position)
+	check(tank.side=="enemy" and tank_paint!=null and tank.material.shader==tank_paint.shader and tank.material.get_shader_parameter("target_color")==tank_paint.get_shader_parameter("target_color"),"lift keeps enemy tank house color")
 	check(tank.special.has("psi_holder") and command.pending=="Throw","first ground click lifts vehicle and switches to the landing cursor")
 	check_cooldown(command.strip,"Slam",0,3)
 	check(not command.strip.slots["Slam"].disabled,"R remains available for the landing click during lift cooldown")
@@ -253,7 +255,11 @@ func run() -> void:
 	check(command.pending.is_empty() and tank.special.has("psi_flight"),"next ground click throws stored vehicle without a second R")
 	check_cooldown(command.strip,"Slam",3,3)
 	check(not u.has_node("YurikoAudioSlam"),"throw releases the hold loop")
+	bystander.hp=1
+	var score:Dictionary=w.allied_state.battle_music_director
+	var previous_kills:=int(score.get("yuriko_kills",0))
 	Psi.carried_tick(tank,2.0)
+	check(tank.material==tank_paint and bystander._dead and int(score.get("yuriko_kills",0))>=previous_kills+2,"throw credits both impact victim and thrown tank to Yuriko")
 	check(tank._dead and not tank.special.has("psi_flight") and tank.position.distance_to(u.position+Vector2(0,90))<1,"thrown vehicle lands")
 	check(bystander.hp<splash_hp,"thrown vehicle damages nearby ground targets")
 	w.production_technology.unlock("auto_w","ally")

@@ -1,0 +1,81 @@
+{
+ "id": "NATBNK",
+ "layers": [
+  {
+   "kind": "specialanim",
+   "image": "NATBNK_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 9,
+   "frames": 20,
+   "rate": 220,
+   "loopCount": -1,
+   "dmg": {
+    "image": "NATBNK_A",
+    "shadow": true,
+    "loopStart": 10,
+    "loopEnd": 19,
+    "frames": 20,
+    "rate": 220,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "specialanimtwo",
+   "image": "NATBNK_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 9,
+   "frames": 20,
+   "rate": 220,
+   "loopCount": -1,
+   "dmg": {
+    "image": "NATBNK_B",
+    "shadow": true,
+    "loopStart": 10,
+    "loopEnd": 19,
+    "frames": 20,
+    "rate": 220,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "specialanimthree",
+   "image": "NATBNK_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 9,
+   "frames": 20,
+   "rate": 440,
+   "loopCount": -1,
+   "dmg": {
+    "image": "NATBNK_A",
+    "shadow": true,
+    "loopStart": 10,
+    "loopEnd": 19,
+    "frames": 20,
+    "rate": 440,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "specialanimfour",
+   "image": "NATBNK_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 9,
+   "frames": 20,
+   "rate": 440,
+   "loopCount": -1,
+   "dmg": {
+    "image": "NATBNK_B",
+    "shadow": true,
+    "loopStart": 10,
+    "loopEnd": 19,
+    "frames": 20,
+    "rate": 440,
+    "loopCount": -1
+   }
+  }
+ ]
+}

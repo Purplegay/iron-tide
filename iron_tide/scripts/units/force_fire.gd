@@ -43,7 +43,7 @@ static func reason(world, actor, target) -> String:
 	if not blocked.is_empty(): return blocked
 	if actor is Unit:
 		if actor.embarked_in != null or actor._stun_timer > 0.0 or AlliedAbilities.frozen(actor): return "当前状态无法攻击"
-		if actor.is_harvester or not actor.power_disabled_reason().is_empty(): return "当前单位无法开火"
+		if actor.is_ordinary_harvester() or not actor.power_disabled_reason().is_empty(): return "当前单位无法开火"
 		if actor.logistics.ammo_max > 0 and actor.logistics.ammo <= 0: return "弹药不足，先返场补充"
 		if not actor.attack_domain_valid(target): return "武器不能攻击这种目标"
 		if actor.is_deployed() and CommandoCombat.distance_to(actor, target) > OpenTopped.command_range(actor, target): return "部署状态下目标超出射程"
@@ -56,7 +56,7 @@ static func weapon_reason(owner_side: String, target, weapon: Dictionary) -> Str
 	if weapon.is_empty() or float(weapon.get("damage", 0.0)) <= 0.0: return "没有可用于攻击的武器"
 	var wh := str(weapon.get("ra2_warhead", ""))
 	if target is Building and target.ignores_warhead(wh): return "该弹头不能破坏围墙"
-	if BattleRequest.friendly(target.side,owner_side) and Ra2Damage._extra(wh, "AffectsAllies").to_lower() in ["no", "false", "0"]: return "该武器不能伤害友军"
+	if BattleRequest.friendly(target.side,owner_side) and GameData.warhead_blocks_friendly_damage(wh): return "该武器不能伤害友军"
 	if not target is ForceFirePoint and Ra2Damage.has(wh) and GameData.ra2_verse(wh, Ra2Damage.armor_of(target)) == 0.0: return "武器对该目标无效"
 	return ""
 
@@ -123,7 +123,7 @@ static func impact_candidates(shot) -> Array:
 			if not AlliedAbilities.alive(actor): return false
 			if actor is Unit: return actor.embarked_in == null and actor.is_air_target() == air
 			return not air)
-	if Ra2Damage._extra(shot.ra2_warhead, "AffectsAllies").to_lower() in ["no", "false", "0"]:
+	if GameData.warhead_blocks_friendly_damage(shot.ra2_warhead):
 		result = result.filter(func(actor): return not BattleRequest.friendly(actor.side,shot.owner_side))
 	return result
 

@@ -1,0 +1,62 @@
+{
+ "id": "YACNST",
+ "layers": [
+  {
+   "kind": "idleanim",
+   "image": "YACNST_C",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 300,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YACNST_C",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 300,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "activeanim",
+   "image": "YACNST_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 2,
+   "frames": 6,
+   "rate": 200,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YACNST_A",
+    "shadow": true,
+    "loopStart": 3,
+    "loopEnd": 5,
+    "frames": 6,
+    "rate": 200,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "productionanim",
+   "image": "YACNST_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 17,
+   "frames": 36,
+   "rate": 200,
+   "loopCount": 1,
+   "dmg": {
+    "image": "YACNST_B",
+    "shadow": true,
+    "loopStart": 18,
+    "loopEnd": 35,
+    "frames": 36,
+    "rate": 200,
+    "loopCount": 1
+   }
+  }
+ ]
+}

@@ -36,13 +36,6 @@ static func has(warhead_id: String) -> bool:
 	return not _wh(warhead_id).is_empty()
 
 
-static func _num(warhead_id: String, key: String, def: float) -> float:
-	var v = _wh(warhead_id).get(key, null)
-	if v == null or str(v) == "":
-		return def
-	return float(v)
-
-
 static func _extra(warhead_id: String, key: String) -> String:
 	var e = _wh(warhead_id).get("extra", null)
 	if typeof(e) != TYPE_DICTIONARY:
@@ -53,46 +46,39 @@ static func _extra(warhead_id: String, key: String) -> String:
 
 ## CellSpread（单位：格）
 static func cells(warhead_id: String) -> float:
-	return _num(warhead_id, "cell_spread", 0.0)
+	return GameData.ra2_cell_spread(warhead_id)
 
 
 ## PercentAtMax（0..1，缺省 100%）
 static func percent_at_max(warhead_id: String) -> float:
-	return _num(warhead_id, "percent_at_max", 1.0)
+	return GameData.warhead_combat_rule(warhead_id).get("percent_at_max", 1.0)
 
 
 ## ProneDamage（0..1，缺省 1.0 = 不减免）
 static func prone_damage(warhead_id: String) -> float:
-	return _num(warhead_id, "prone_damage", 1.0)
+	return GameData.warhead_combat_rule(warhead_id).get("prone_damage", 1.0)
 
 
 static func is_rocker(warhead_id: String) -> bool:
-	return _extra(warhead_id, "Rocker").to_lower() == "yes"
+	return GameData.warhead_combat_rule(warhead_id).get("rocker", false)
 
 
 static func is_sparky(warhead_id: String) -> bool:
-	return _extra(warhead_id, "Sparky").to_lower() == "yes"
+	return GameData.warhead_combat_rule(warhead_id).get("sparky", false)
 
 
 static func is_bright(warhead_id: String) -> bool:
-	return _extra(warhead_id, "Bright").to_lower() == "yes"
+	return GameData.warhead_combat_rule(warhead_id).get("bright", false)
 
 
 ## Deform= 形变比例（"15%" / 0.15 / 15 都接受）
 static func deform_ratio(warhead_id: String) -> float:
-	var s := _extra(warhead_id, "Deform").replace("%", "").strip_edges()
-	if s == "":
-		return 0.0
-	var v := float(s)
-	return v / 100.0 if v > 1.0 else v
+	return GameData.warhead_combat_rule(warhead_id).get("deform_ratio", 0.0)
 
 
 ## DeformThreshhold= 低于该伤害不产生形变
 static func deform_threshold(warhead_id: String) -> float:
-	var s := _extra(warhead_id, "DeformThreshhold").strip_edges()
-	if s == "":
-		return 0.0
-	return float(s)
+	return GameData.warhead_combat_rule(warhead_id).get("deform_threshold", 0.0)
 
 
 # ---------------------------------------------------------------- 伤害量纲
@@ -163,7 +149,7 @@ static func anim_index(warhead_id: String, damage: float) -> int:
 	var list := GameData.ra2_impact_anims(warhead_id)
 	if list.is_empty():
 		return -1
-	if _extra(warhead_id, "EMEffect").to_lower() == "yes":
+	if GameData.warhead_combat_rule(warhead_id).get("em_effect", false):
 		return randi() % list.size()
 	return clampi(int(floorf(maxf(damage, 0.0) / ANIM_DAMAGE_STEP)), 0, list.size() - 1)
 

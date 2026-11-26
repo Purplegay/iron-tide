@@ -2,19 +2,22 @@ extends RefCounted
 
 const EconomyCycle = preload("res://scripts/world/economy_cycle.gd")
 
+static func vehicle_type(building) -> String:
+	var source:Dictionary = GameData.ra2_source_buildings.get(building.building_id,{}).get("extra",{})
+	return str(building.data.get("undeploys_into",source.get("UndeploysInto","")))
+
 static func check(world, building) -> Dictionary:
 	if not is_instance_valid(building) or not world.buildings.has(building) or building._dead \
 			or building.hp <= 0.0 or building.is_queued_for_deletion() or world.ended:
 		return {"ok": false, "reason": "建筑当前不可收起"}
-	var source: Dictionary = GameData.ra2_source_buildings.get(building.building_id, {}).get("extra", {})
-	var uid := str(source.get("UndeploysInto", ""))
+	var uid := vehicle_type(building)
 	if uid.is_empty() or GameData.get_unit(uid).is_empty():
 		return {"ok": false, "reason": "该建筑不能收起为基地车"}
 	if building.under_construction or building._buildup_play >= 0.0:
 		return {"ok": false, "reason": "等待建造场展开完成"}
 	if world.paused:
 		return {"ok": false, "reason": "游戏暂停中"}
-	if not world.skirmish and building.side == "ally":
+	if not world.skirmish and building.side == "ally" and building.is_hq:
 		var others := 0
 		for b in world.buildings:
 			if is_instance_valid(b) and b != building and b.side == "ally" and b.is_hq and not b._dead:
@@ -59,5 +62,5 @@ static func execute(world, building) -> bool:
 		world.select_unit(mcv, false)
 		world._emit_selection()
 	if mcv.side == "ally":
-		Events.emit_message("建造场已收起 · 已付建造进度保留，重新展开后继续。", Color(0.6, 0.95, 0.8))
+		Events.emit_message("矿场已收起。" if mcv.unit_id=="SMIN" else "建造场已收起 · 已付建造进度保留，重新展开后继续。", Color(0.6, 0.95, 0.8))
 	return true

@@ -27,7 +27,7 @@ class Layer extends Node2D:
 
 static func eligible(actor) -> bool:
 	if not (actor is Unit or actor is Building) or actor._dead or actor.hp<=0.0 or not actor.is_visible_in_tree(): return false
-	if actor is Unit and actor.embarked_in != null: return false
+	if actor is Unit and (actor.embarked_in != null or actor.unit_id in ["V3ROCKET", "DMISL", "CMISL"]): return false
 	return actor.has_meta(ATTACK_META) or actor.has_meta(FRIEND_META) or (actor is Unit and actor.selected)
 
 static func clear(actor) -> void:

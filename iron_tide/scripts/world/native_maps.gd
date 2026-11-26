@@ -5,12 +5,13 @@ const NAMES := ["尤复 · Islands on the Land","尤复 · Ice Age","尤复 · C
 const CELL := 55.0
 static var _cache:Dictionary={}
 
-static func has(id:String) -> bool:return id in IDS
+static func has(id:String) -> bool:return id in ["yr_all02umd","yr_sov07","yr_sov01"] or id in IDS
 
 static func data(id:String) -> Dictionary:
 	if not has(id):return {}
 	if not _cache.has(id):
 		var row:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/maps/%s.json"%id))
+		if id == "yr_sov07": preload("res://scripts/world/head_games_sites.gd").native_catalog(row)
 		var mask:=PackedByteArray();mask.resize(int(row.side)*int(row.side))
 		row.ore_ground = {}
 		for tile:Array in row.cells:
@@ -75,6 +76,38 @@ static func data(id:String) -> Dictionary:
 				if not bounds.has_point(center): continue
 				for section: Rect2 in sections:
 					if section.has_point(center): row.bridge_section_by_cell[cell] = section; break
+		if id in ["yr_all02umd", "yr_hills"]:
+			# BRIDGE1 spans three raw ry cells. Keep the original section keys for saves.
+			row.deck_horizontal = {}
+			row.deck_anchors = {}
+			row.deck_entries = {}
+			var terrain := {}
+			for tile: Array in row.cells:
+				terrain[Vector2i(tile[0],tile[1])] = tile
+			for tile: Array in row.bridges:
+				var anchor := Vector2i(tile[0],tile[1])
+				if str(tile[2]).ends_with("2"): row.deck_horizontal[anchor] = true
+				for lane in range(3):
+					var lateral := Vector2i.DOWN if str(tile[2]).ends_with("2") else Vector2i.RIGHT
+					var cell := anchor + lateral * (lane - (2 if id == "yr_all02umd" else 1))
+					if not terrain.has(cell): continue
+					row.deck_anchors[cell] = anchor
+					if cell != anchor:
+						var index := cell.y * int(row.side) + cell.x
+						row.bridge_base[cell] = int(mask[index])
+						row.bridge_section_by_cell[cell] = row.bridge_section_by_cell[anchor]
+						mask[index] = 1 | (mask[index] & 2)
+						row.ore_ground.erase(cell)
+			for cell: Vector2i in row.deck_anchors:
+				var anchor: Vector2i = row.deck_anchors[cell]
+				
+				var axis := Vector2i.RIGHT if row.deck_horizontal.has(anchor) else Vector2i.DOWN
+				for direction in [axis,-axis]:
+					var bank: Vector2i = cell + direction
+					if row.deck_anchors.has(bank) or not terrain.has(bank): continue
+					var tile: Array = terrain[bank]
+					if int(tile[2]) == 11 and ((id == "yr_all02umd" and int(tile[3]) == 4 and int(tile[4]) in [277,279]) or (id == "yr_hills" and int(tile[4]) in [821,823,824,826])):
+						row.deck_entries[bank] = true
 		row.mask=mask
 		_cache[id]=row
 	return _cache[id]
@@ -187,24 +220,38 @@ static func populate(world) -> void:
 	# Preserve native neutral sites for which we have verified building art.
 	for site:Array in row.structures:
 		var id:String=site[0]
-		if not RA2Art.has_art(id):continue
+		if world.map_layout()=="yr_sov01" and site[3]==0:continue
+		if world.map_layout()=="yr_all02umd" and id=="CAOILD" and Vector2(site[1],site[2])==Vector2(60.5,48.5): continue # Enemy-owned well is placed by Hollywood.setup.
+		var campaign_art:bool=false
+		if world.map_layout()=="yr_all02umd":
+			campaign_art=ResourceLoader.exists("res://assets/ra2/hollywood/city/"+id+".png")
+		if not campaign_art and not RA2Art.has_art(id):continue
 		var point:=Vector2(site[1],site[2])*CELL
 		var source:Dictionary=row.site_types[id]
-		var dimensions:PackedStringArray=str(source.foundation).split("x")
+		var dimensions:PackedStringArray=str(source.foundation).to_lower().split("x")
 		if dimensions.size()==2:
 			point+=Vector2(-(float(dimensions[1])-1),(float(dimensions[0])-1))*CELL*.5
-		if world.buildings.any(func(b):return b.position.distance_to(point)<b.radius+50):continue
+		if world.map_layout() not in ["yr_all02umd","yr_sov07","yr_sov01"] and world.buildings.any(func(b):return b.position.distance_to(point)<b.radius+50):continue
 		if id in ["CAOILD","CAHSE01","CABHUT"]:
 			load("res://scripts/world/civilian_sites.gd").create(world,id,point)
 		else:
 			var definition:Dictionary={"id":id,"name":"中立建筑 · "+id,"faction":"civilian","hp":float(source.strength),"armor":"structure","ra2_armor":str(source.armor),"radius":38.0,"sight":float(source.sight)*CELL,"foundation":str(source.foundation),"cost":0,"power":0,"tags":["civilian"],"base_normal":false}
-			if str(source.canbeoccupied).to_lower()=="yes":
+			if world.map_layout()=="yr_sov01":definition.name=preload("res://data/time_shift_assets.json").data.defs.get(id,{}).get("name","旧金山建筑")
+			if world.map_layout()=="yr_sov07": definition.name=preload("res://scripts/world/head_games_sites.gd").NAMES.get(id,definition.name)
+			# ALL02UMD disables occupation for these four original mission sites.
+			var closed:bool = world.map_layout()=="yr_all02umd" and id in ["CALA05","CARUS08","CARUS10","CARUS11"]
+			if str(source.canbeoccupied).to_lower()=="yes" and not closed:
 				definition.garrison_slots=int(source.maxnumberoccupants)
 				definition.garrison_weapons=GameData.get_building("NABNKR").garrison_weapons
+			if campaign_art: definition.hollywood_art=true
 			var building:=Building.new()
 			building.setup(definition,"neutral",point,world,true)
+			world.Hollywood.configure_facility(building)
 			world.add_child(building);world.buildings.append(building)
 			building._buildup_play=-1
+		if world.map_layout() in ["yr_sov07","yr_sov01"] and site.size()>3:
+			var placed = world.buildings.back()
+			placed.hp = placed.max_hp * float(site[3]) / 256.0
 	bind_bridge_huts(world)
 
 # Retail huts are separate structures; associate each with its adjacent deck.

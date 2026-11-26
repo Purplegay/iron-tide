@@ -1,0 +1,24 @@
+{
+ "id": "YATECH",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "YATECH_A",
+   "loopStart": 0,
+   "loopEnd": 32,
+   "frames": 128,
+   "rate": 200,
+   "shadow": false,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YATECH_A",
+    "loopStart": 33,
+    "loopEnd": 63,
+    "frames": 128,
+    "rate": 200,
+    "shadow": false,
+    "loopCount": -1
+   }
+  }
+ ]
+}

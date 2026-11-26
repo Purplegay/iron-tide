@@ -5,7 +5,7 @@ static func inspect(t,tasks) -> void:
 	var marks:Array=minimap.objective_marks()
 	var kind:String=tasks.state.kind
 	var stage:int=tasks.state.stage
-	var expected:int={"capture":1,"control":3,"research":2,"rescue":2,"escort":4,"supply":2,"radar":1,"assault":1,"annihilate":0,"boss":3,"defend":1}[kind]
+	var expected:int={"capture":1,"control":3,"research":2,"rescue":2,"escort":4,"supply":2,"radar":1,"assault":1,"annihilate":0,"boss":3,"defend":3}[kind]
 	t.check(minimap.objectives==tasks and marks.size()==expected,"minimap shows only current public task targets "+str(stage))
 	if stage==1:
 		var had_storms:bool=t.battle.allied_state.has("lightning_storms")

@@ -1,0 +1,2694 @@
+{
+ "units": [
+  {
+   "id": "INIT",
+   "name": "尤里新兵",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 200,
+   "hp": 100,
+   "armor": "unarmored",
+   "ra2_armor": "none",
+   "speed": 60,
+   "radius": 7,
+   "sight": 495,
+   "tech_level": 1,
+   "built_at": "YABRCK",
+   "image": "INIT",
+   "move": {
+    "speed": 60,
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": true
+   },
+   "weapon": {
+    "name": "PsychicJab",
+    "ra2_weapon_id": "YR_HOL_PsychicJab",
+    "damage": 25,
+    "range": 247.5,
+    "cooldown": 1,
+    "attack_type": "bullet",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_SAFlame",
+    "ra2_aa": false,
+    "projectile_speed": 1100,
+    "report": "InitiateAttack"
+   },
+   "voice": {
+    "select": "InitiateSelect",
+    "move": "InitiateMove",
+    "attack": "InitiateAttackCommand",
+    "die": "InitiateDie"
+   },
+   "elite_weapon": {
+    "name": "PsychicJabE",
+    "ra2_weapon_id": "YR_HOL_PsychicJabE",
+    "damage": 30,
+    "range": 330,
+    "cooldown": 1,
+    "attack_type": "bullet",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_SAFlame",
+    "ra2_aa": false,
+    "projectile_speed": 1100,
+    "report": "InitiateAttack"
+   },
+   "ra2_prereq": [
+    "YABRCK"
+   ],
+   "desc": "用心灵火焰攻击地面目标，可进入生化反应炉供电。"
+  },
+  {
+   "id": "YENGINEER",
+   "name": "尤里工程师",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 500,
+   "hp": 75,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 220,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "EngYuriSelect",
+    "move": "EngYuriMove",
+    "attack": "EngYuriCapture"
+   },
+   "weapon": {
+    "name": "DefuseKit",
+    "ra2_weapon_id": "YR_HOL_DefuseKit",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_warhead": "YR_HOL_BombDisarm",
+    "damage": 1,
+    "range": 82.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "DefuseKit",
+    "ra2_aa": true
+   },
+   "secondary_weapon": {
+    "name": "VirtualScanner",
+    "ra2_weapon_id": "YR_HOL_VirtualScanner",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_warhead": "YR_HOL_SA",
+    "damage": 1,
+    "range": 275,
+    "cooldown": 1,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_aa": true
+   },
+   "tech_level": 1,
+   "ra2_prereq": [
+    "BARRACKS"
+   ],
+   "image": "ENGINEER",
+   "built_at": "YABRCK",
+   "desc": "进入敌方可占领建筑可接管设施，也能修复受损的己方建筑。"
+  },
+  {
+   "id": "BRUTE",
+   "name": "狂兽人",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 200,
+   "ra2_armor": "plate",
+   "sight": 440,
+   "cost": 500,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 10,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "Punch",
+    "damage": 100,
+    "cooldown": 4,
+    "range": 77,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Battering",
+    "ra2_projectile": "InvisibleLow",
+    "report": "BruteSmashAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "Smash",
+    "damage": 100,
+    "cooldown": 4,
+    "range": 60.50000000000001,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Smashing",
+    "ra2_projectile": "InvisibleLow",
+    "report": "BruteSmashAttack",
+    "ra2_aa": false
+   },
+   "desc": "近身攻击步兵和车辆。用步兵火力在它靠近前将它击倒。",
+   "tech_level": 5,
+   "ra2_prereq": [
+    "YABRCK"
+   ],
+   "image": "BRUTE",
+   "built_at": "YABRCK"
+  },
+  {
+   "id": "VIRUS",
+   "name": "病毒狙击手",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 100,
+   "ra2_armor": "none",
+   "sight": 495,
+   "cost": 700,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 8,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "Virusgun",
+    "damage": 125,
+    "cooldown": 6.666666666666667,
+    "range": 550,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Virus",
+    "ra2_projectile": "InvisibleLow",
+    "report": "VirusAttack",
+    "ra2_aa": false
+   },
+   "desc": "远距离狙击步兵。",
+   "tech_level": 1,
+   "ra2_prereq": [
+    "YABRCK",
+    "RADAR"
+   ],
+   "image": "VIRUS",
+   "built_at": "YABRCK"
+  },
+  {
+   "id": "YURI",
+   "name": "尤里复制人",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 800,
+   "hp": 100,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 660,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "YuriCloneSelect",
+    "move": "YuriCloneMove",
+    "attack": "YuriCloneAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "deployer": true,
+   "undeploy_ticks": 150,
+   "fire_up_ticks": 6,
+   "weapon": {
+    "name": "MindControl",
+    "ra2_weapon_id": "YR_HOL_MindControl",
+    "ra2_projectile": "PsychicControl",
+    "ra2_warhead": "YR_HOL_Controller",
+    "damage": 1,
+    "range": 385,
+    "cooldown": 13.333333333333334,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "PsiWave",
+    "ra2_weapon_id": "YR_HOL_PsiWave",
+    "ra2_projectile": "Psychic",
+    "ra2_warhead": "YR_HOL_PsiPulse",
+    "damage": 250,
+    "range": 55,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "YuriDeploy",
+    "ra2_aa": false
+   },
+   "tech_level": 10,
+   "ra2_prereq": [
+    "YABRCK",
+    "NAPSIS"
+   ],
+   "image": "YURI",
+   "built_at": "YABRCK",
+   "desc": "控制敌方地面单位。消灭控制者可以解放被控制的部队。"
+  },
+  {
+   "id": "YURIPR",
+   "name": "尤里改",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 150,
+   "ra2_armor": "flak",
+   "sight": 495,
+   "cost": 1500,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 8,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "SuperMindControl",
+    "damage": 1,
+    "cooldown": 13.333333333333334,
+    "range": 385,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_ControllerBuilding",
+    "ra2_projectile": "PsychicControl",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "SuperPsiWave",
+    "damage": 250,
+    "cooldown": 3.3333333333333335,
+    "range": 55,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_SuperPsiPulse",
+    "ra2_projectile": "Psychic",
+    "report": "YuriDeploy",
+    "ra2_aa": false
+   },
+   "desc": "控制一个敌方地面单位或建筑。",
+   "tech_level": 10,
+   "ra2_prereq": [
+    "YABRCK",
+    "YATECH"
+   ],
+   "image": "YURIX",
+   "built_at": "YABRCK"
+  },
+  {
+   "id": "LTNK",
+   "name": "狂风坦克",
+   "desc": "用坦克炮攻击地面目标，也可以进驻坦克碉堡。",
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "armor": "heavy",
+   "ra2_armor": "heavy",
+   "ra2": true,
+   "hp": 300,
+   "cost": 700,
+   "sight": 440,
+   "speed": 105,
+   "radius": 16,
+   "weapon": {
+    "name": "ATGUN",
+    "ra2_weapon_id": "YR_HOL_ATGUN",
+    "damage": 65,
+    "range": 275,
+    "cooldown": 4,
+    "attack_type": "cannon",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_AP",
+    "ra2_aa": false,
+    "projectile_speed": 1100,
+    "report": "LasherTankAttack"
+   },
+   "elite_weapon": {
+    "name": "ATGUNE",
+    "ra2_weapon_id": "YR_HOL_ATGUNE",
+    "damage": 65,
+    "range": 275,
+    "cooldown": 3.3333333333333335,
+    "attack_type": "cannon",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_RHINAPE",
+    "ra2_aa": false,
+    "projectile_speed": 1100,
+    "report": "TankDestroyerAttack"
+   },
+   "move": {
+    "turret": true,
+    "crusher": true,
+    "rot_units": 5,
+    "speed_units": 7,
+    "movement_zone": "Destroyer"
+   },
+   "build_time_multiplier": 1,
+   "tech_level": 2,
+   "ra2_prereq": [
+    "YAWEAP"
+   ],
+   "image": "LTNK",
+   "built_at": "YAWEAP"
+  },
+  {
+   "id": "YTNK",
+   "name": "盖特坦克",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 600,
+   "hp": 210,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 550,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "movement_zone": "Destroyer",
+    "crushable": false,
+    "turret": true,
+    "rot_units": 10
+   },
+   "voice": {
+    "select": "GattlingTankSelect",
+    "move": "GattlingTankMove",
+    "attack": "GattlingTankAttackCommand"
+   },
+   "weapon": {
+    "name": "AGGattling",
+    "ra2_weapon_id": "YR_HOL_AGGattling",
+    "ra2_projectile": "Invisiblelow",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 330,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "AGGattlingE",
+    "ra2_weapon_id": "YR_HOL_AGGattlingE",
+    "ra2_projectile": "Invisiblelow",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 330,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "AAGattling",
+    "ra2_weapon_id": "YR_HOL_AAGattling",
+    "ra2_projectile": "Invisible4",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 440,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": true
+   },
+   "guns": [
+    {
+     "name": "AGGattling",
+     "ra2_weapon_id": "YR_HOL_AGGattling",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling",
+     "ra2_weapon_id": "YR_HOL_AAGattling",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling2",
+     "ra2_weapon_id": "YR_HOL_AGGattling2",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling2",
+     "ra2_weapon_id": "YR_HOL_AAGattling2",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 30,
+     "range": 440,
+     "cooldown": 0.5333333333333333,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling3",
+     "ra2_weapon_id": "YR_HOL_AGGattling3",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SSA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling3",
+     "ra2_weapon_id": "YR_HOL_AAGattling3",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 40,
+     "range": 440,
+     "cooldown": 0.26666666666666666,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": true
+    }
+   ],
+   "elite_guns": [
+    {
+     "name": "AGGattlingE",
+     "ra2_weapon_id": "YR_HOL_AGGattlingE",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattlingE",
+     "ra2_weapon_id": "YR_HOL_AAGattlingE",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling2E",
+     "ra2_weapon_id": "YR_HOL_AGGattling2E",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling2E",
+     "ra2_weapon_id": "YR_HOL_AAGattling2E",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 0.5333333333333333,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling3E",
+     "ra2_weapon_id": "YR_HOL_AGGattling3E",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SSA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling3E",
+     "ra2_weapon_id": "YR_HOL_AAGattling3E",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 0.26666666666666666,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": true
+    }
+   ],
+   "stages": [
+    200,
+    400,
+    600
+   ],
+   "elite_stages": [
+    100,
+    200,
+    300
+   ],
+   "rate_up": 1,
+   "rate_down": 50,
+   "tech_level": 4,
+   "ra2_prereq": [
+    "YAWEAP"
+   ],
+   "image": "YTNK",
+   "built_at": "YAWEAP",
+   "desc": "连续射击时提高火力，能攻击地面和空中目标。"
+  },
+  {
+   "id": "SMIN",
+   "name": "奴隶矿场",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 1750,
+   "hp": 2000,
+   "ra2_armor": "medium",
+   "armor": "medium",
+   "radius": 15,
+   "sight": 220,
+   "speed": 45,
+   "move": {
+    "speed_units": 3,
+    "movement_zone": "Crusher",
+    "crushable": false,
+    "turret": true,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "SlaveMinerSelect",
+    "move": "SlaveMinerMove",
+    "attack": "SlaveMinerAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "20mmRapid",
+    "ra2_weapon_id": "YR_HOL_20mmRapid",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HARVWH",
+    "damage": 30,
+    "range": 302.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "WarMinerAttack",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "20mmRapidE",
+    "ra2_weapon_id": "YR_HOL_20mmRapidE",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_HowitzerWH",
+    "damage": 50,
+    "range": 316.25,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 880,
+    "report": "RhinoTankAttack",
+    "ra2_aa": false
+   },
+   "deploys_into": "YAREFN",
+   "worker": "SLAV",
+   "workers": 5,
+   "regen_ticks": 500,
+   "reload_ticks": 25,
+   "build_time_multiplier": 0.8,
+   "tech_level": 1,
+   "ra2_prereq": [
+    "YAWEAP"
+   ],
+   "image": "SMIN",
+   "built_at": "YAWEAP",
+   "desc": "驶近矿区后展开为奴隶矿场，派出矿工采集资源。"
+  },
+  {
+   "id": "PCV",
+   "name": "尤里基地车",
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "cost": 3000,
+   "hp": 1000,
+   "armor": "heavy",
+   "ra2_armor": "heavy",
+   "speed": 60,
+   "move": {
+    "speed": 60,
+    "speed_units": 4,
+    "rot": 105.47,
+    "rot_units": 5,
+    "accel_time": 0,
+    "accelerates": false,
+    "turret": false,
+    "crusher": true,
+    "crushable": false,
+    "weight": 3.5,
+    "movement_zone": "Normal",
+    "speed_type": null,
+    "locomotor": "{4A582741-9839-11d1-B709-00A024DDAFD1}"
+   },
+   "radius": 18,
+   "sight": 440,
+   "tags": [
+    "vehicle"
+   ],
+   "built_at": "YAWEAP",
+   "voxel": true,
+   "desc": "在空旷陆地展开为尤里建造厂。",
+   "ra2": true,
+   "voice": {
+    "select": "GenAllVehicleSelect",
+    "move": "ChronoMinerMove",
+    "attack": "GenAllVehicleAttackCommand",
+    "die": "GenVehicleDie"
+   },
+   "ra2_prereq": [
+    "YAWEAP",
+    "YAGRND"
+   ],
+   "tech_level": 10,
+   "movement_zone": "normal",
+   "image": "PCV",
+   "cameo": "MCVICON",
+   "deploys_into": "YACNST"
+  },
+  {
+   "id": "MIND",
+   "name": "精神控制车",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 500,
+   "ra2_armor": "heavy",
+   "sight": 495,
+   "cost": 1750,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "heavy",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "MultipleMindControlTank",
+    "damage": 3,
+    "cooldown": 0.6666666666666666,
+    "range": 330,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Controller",
+    "ra2_projectile": "PsychicControl",
+    "ra2_aa": false
+   },
+   "desc": "可以同时控制多个地面单位，控制过多会损失生命。",
+   "tech_level": 2,
+   "ra2_prereq": [
+    "YAWEAP",
+    "YATECH"
+   ],
+   "image": "MIND",
+   "built_at": "YAWEAP"
+  },
+  {
+   "id": "TELE",
+   "name": "磁电坦克",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 150,
+   "ra2_armor": "light",
+   "sight": 550,
+   "cost": 1000,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "light",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 75,
+   "move": {
+    "speed_units": 5,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "MagneticBeam",
+    "damage": 5000,
+    "cooldown": 1.3333333333333333,
+    "range": 660,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_LocomotorBeam",
+    "ra2_projectile": "InvisibleHigh",
+    "report": "MagnetronAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "MagneShake",
+    "damage": 80,
+    "cooldown": 7.333333333333333,
+    "range": 550,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_MagneShakeWH",
+    "ra2_projectile": "InvisibleHigh",
+    "report": "MagnetronMagneShake",
+    "ra2_aa": false
+   },
+   "desc": "用磁力拖近车辆，用震荡攻击建筑。",
+   "tech_level": 2,
+   "ra2_prereq": [
+    "YAWEAP",
+    "NAPSIS"
+   ],
+   "image": "TELE",
+   "built_at": "YAWEAP"
+  },
+  {
+   "id": "CAOS",
+   "name": "神经突击车",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 130,
+   "ra2_armor": "light",
+   "sight": 330,
+   "cost": 1000,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "light",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "ChaosAttack",
+    "damage": 600,
+    "cooldown": 3,
+    "range": 165,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_PsychGasCreate",
+    "ra2_projectile": "InvisibleLow",
+    "report": "ChaosDroneAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "VirtualScanner",
+    "damage": 1,
+    "cooldown": 1,
+    "range": 275,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_SA",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_aa": true
+   },
+   "desc": "释放混乱气体，让附近的地面部队攻击自己人。",
+   "tech_level": 4,
+   "ra2_prereq": [
+    "YAWEAP"
+   ],
+   "image": "CAOS",
+   "built_at": "YAWEAP"
+  },
+  {
+   "id": "DISK",
+   "name": "镭射幽浮",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 600,
+   "ra2_armor": "light",
+   "sight": 495,
+   "cost": 1750,
+   "role": "air",
+   "role_name": "空军",
+   "armor": "air",
+   "tags": [
+    "air"
+   ],
+   "radius": 17,
+   "speed": 225,
+   "move": {
+    "speed_units": 15,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "DiskLaser",
+    "damage": 90,
+    "cooldown": 5.333333333333333,
+    "range": 385,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_DiskWH",
+    "ra2_projectile": "InvisibleAll",
+    "report": "FloatingDiscAttack",
+    "ra2_aa": true
+   },
+   "secondary_weapon": {
+    "name": "DiskDrain",
+    "damage": 1,
+    "cooldown": 3.3333333333333335,
+    "range": 82.5,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_AntiB",
+    "ra2_projectile": "InvisibleVertical",
+    "report": "KirovAttack",
+    "ra2_aa": false
+   },
+   "desc": "用激光对空对地，靠近电厂或矿场可干扰敌方经济。",
+   "tech_level": 2,
+   "ra2_prereq": [
+    "YAWEAP",
+    "YATECH"
+   ],
+   "image": "DISK",
+   "built_at": "YAWEAP"
+  },
+  {
+   "id": "YHVR",
+   "name": "尤里两栖运输艇",
+   "faction": "yuri",
+   "role": "naval",
+   "role_name": "海军",
+   "cost": 900,
+   "hp": 300,
+   "armor": "light",
+   "ra2_armor": "heavy",
+   "speed": 90,
+   "move": {
+    "speed": 90,
+    "speed_units": 6,
+    "rot": 105.47,
+    "rot_units": 5,
+    "accel_time": 0,
+    "accelerates": false,
+    "turret": false,
+    "crusher": false,
+    "crushable": false,
+    "weight": 1,
+    "movement_zone": "Amphibious",
+    "speed_type": "Hover",
+    "locomotor": "{4A582742-9839-11d1-B709-00A024DDAFD1}"
+   },
+   "radius": 26,
+   "sight": 330,
+   "tags": [
+    "naval",
+    "ship"
+   ],
+   "built_at": "YAYARD",
+   "voxel": true,
+   "desc": "运送步兵和车辆。驶到岸边后部署即可卸载。",
+   "ra2": true,
+   "voice": {
+    "select": "LandingCraftSelect",
+    "move": "LandingCraftMove",
+    "attack": "GenAllWaterAttackCommand",
+    "die": "GenVehicleDie"
+   },
+   "veteran": {
+    "veteran": {
+     "STRONGER": true,
+     "FIREPOWER": true,
+     "SIGHT": true,
+     "FASTER": true
+    },
+    "elite": {
+     "SELF_HEAL": true,
+     "STRONGER": true,
+     "FIREPOWER": true,
+     "ROF": true
+    }
+   },
+   "ra2_prereq": [
+    "YAYARD"
+   ],
+   "tech_level": 2,
+   "movement_zone": "amphibious",
+   "image": "YHVR",
+   "cameo": "LANDICON"
+  },
+  {
+   "id": "BSUB",
+   "name": "雷鸣潜艇",
+   "faction": "yuri",
+   "role": "naval",
+   "role_name": "海军",
+   "cost": 2000,
+   "hp": 1200,
+   "armor": "heavy",
+   "ra2_armor": "heavy",
+   "speed": 75,
+   "move": {
+    "speed": 75,
+    "speed_units": 5,
+    "rot": 42.19,
+    "rot_units": 2,
+    "accel_time": 0.6,
+    "accelerates": true,
+    "turret": false,
+    "crusher": false,
+    "crushable": false,
+    "weight": 4,
+    "movement_zone": "Water",
+    "speed_type": "Float",
+    "locomotor": "{2BEA74E1-7CCA-11d3-BE14-00104B62A16C}"
+   },
+   "radius": 26,
+   "sight": 440,
+   "tags": [
+    "naval",
+    "ship"
+   ],
+   "built_at": "YAYARD",
+   "voxel": true,
+   "desc": "用鱼雷攻击舰船，也能从远海发射巡航导弹打击陆地目标。",
+   "ra2": true,
+   "weapon": {
+    "name": "BoomerTorpedo",
+    "attack_type": "shell",
+    "damage": 60,
+    "cooldown": 8,
+    "range": 385,
+    "projectile_speed": 520,
+    "burst": 2,
+    "burst_delay": 0.12,
+    "aoe": 0,
+    "min_range": 0,
+    "ra2_weapon_id": "BoomerTorpedo",
+    "ra2_warhead": "YR_SOV_APSplash",
+    "ra2_projectile": "Torpedo",
+    "ra2_aa": false,
+    "report": "SubAttack"
+   },
+   "elite_weapon": {
+    "name": "SubTorpedoE",
+    "attack_type": "shell",
+    "damage": 100,
+    "cooldown": 8,
+    "range": 385,
+    "projectile_speed": 520,
+    "burst": 2,
+    "burst_delay": 0.12,
+    "aoe": 0,
+    "min_range": 0,
+    "ra2_weapon_id": "YR_SOV_SubTorpedoE",
+    "ra2_warhead": "YR_SOV_APSplash",
+    "ra2_projectile": "Torpedo",
+    "ra2_aa": false,
+    "report": "SubAttack"
+   },
+   "voice": {
+    "select": "TyphoonSubSelect",
+    "move": "TyphoonSubMove",
+    "attack": "TyphoonSubAttackCommand",
+    "feedback": "SubFear",
+    "die": "GenSmallWaterDie"
+   },
+   "veteran": {
+    "veteran": {
+     "STRONGER": true,
+     "FIREPOWER": true,
+     "ROF": true,
+     "SIGHT": true,
+     "FASTER": true
+    },
+    "elite": {
+     "SELF_HEAL": true,
+     "STRONGER": true,
+     "FIREPOWER": true,
+     "ROF": true
+    },
+    "elite_weapon": {
+     "name": "SubTorpedoE",
+     "attack_type": "shell",
+     "damage": 100,
+     "cooldown": 8,
+     "range": 385,
+     "projectile_speed": 520,
+     "burst": 2,
+     "burst_delay": 0.12,
+     "aoe": 0,
+     "min_range": 0,
+     "ra2_weapon_id": "YR_SOV_SubTorpedoE",
+     "ra2_warhead": "YR_SOV_APSplash",
+     "ra2_projectile": "Torpedo",
+     "ra2_aa": false,
+     "report": "SubAttack"
+    }
+   },
+   "ra2_prereq": [
+    "YAYARD",
+    "RADAR"
+   ],
+   "tech_level": 2,
+   "movement_zone": "water",
+   "image": "BSUB",
+   "cameo": "SubICON",
+   "build_time_multiplier": 1,
+   "shore_weapon": {
+    "name": "CruiseLauncher",
+    "ra2_weapon_id": "CruiseLauncher",
+    "damage": 200,
+    "range": 1100,
+    "min_range": 440,
+    "cooldown": 3.3333333333333335,
+    "burst": 2,
+    "burst_delay": 0.35,
+    "attack_type": "missile",
+    "projectile_speed": 330,
+    "ra2_warhead": "YR_CMISLWH",
+    "ra2_aa": false,
+    "aoe": 55
+   }
+  },
+  {
+   "id": "CMISL",
+   "name": "巡航导弹",
+   "desc": "雷鸣潜艇发射的巡航导弹，可被防空火力拦截。",
+   "faction": "yuri",
+   "role": "air",
+   "role_name": "支援",
+   "hp": 50,
+   "cost": 0,
+   "armor": "heavy",
+   "ra2_armor": "special_2",
+   "speed": 270,
+   "radius": 8,
+   "sight": 55,
+   "tags": [
+    "air"
+   ],
+   "tech_level": -1,
+   "ra2": true
+  }
+ ],
+ "buildings": [
+  {
+   "id": "YACNST",
+   "name": "尤里建造场",
+   "desc": "建造尤里基地设施，可以收起为基地车。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "4x4",
+   "armor": "structure",
+   "ra2_armor": "concrete",
+   "hp": 1000,
+   "cost": 3000,
+   "power": 0,
+   "powered": false,
+   "sight": 550,
+   "radius": 48,
+   "tags": [
+    "structure",
+    "hq"
+   ],
+   "builds": [],
+   "base_normal": true,
+   "capturable": false,
+   "buildup": "YACNSTMK",
+   "tech_level": -1,
+   "ra2_prereq": [],
+   "image": "YACNST",
+   "water_bound": false,
+   "undeploys_into": "PCV"
+  },
+  {
+   "id": "YABRCK",
+   "name": "尤里兵营",
+   "desc": "训练新兵、工程师和心灵控制部队。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "2x3",
+   "armor": "structure",
+   "ra2_armor": "steel",
+   "hp": 500,
+   "cost": 500,
+   "power": -10,
+   "powered": false,
+   "sight": 275,
+   "radius": 36,
+   "tags": [
+    "structure",
+    "barracks",
+    "production"
+   ],
+   "builds": [
+    "INIT",
+    "YENGINEER",
+    "BRUTE",
+    "VIRUS",
+    "YURI",
+    "YURIPR"
+   ],
+   "base_normal": true,
+   "capturable": false,
+   "buildup": "YABRCKMK",
+   "tech_level": 2,
+   "ra2_prereq": [
+    "POWER",
+    "YACNST"
+   ],
+   "image": "YABRCK",
+   "water_bound": false
+  },
+  {
+   "id": "YAWEAP",
+   "name": "尤里战车工厂",
+   "desc": "尤里基地的装甲车辆工厂。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "5x3",
+   "armor": "structure",
+   "ra2_armor": "wood",
+   "hp": 1000,
+   "cost": 2000,
+   "power": -25,
+   "powered": false,
+   "sight": 220,
+   "radius": 60,
+   "tags": [
+    "structure",
+    "factory",
+    "production"
+   ],
+   "builds": [
+    "LTNK",
+    "YTNK",
+    "SMIN",
+    "PCV",
+    "MIND",
+    "TELE",
+    "CAOS",
+    "DISK"
+   ],
+   "base_normal": true,
+   "capturable": false,
+   "buildup": "YAWEAPMK",
+   "tech_level": 2,
+   "ra2_prereq": [
+    "PROC",
+    "YABRCK",
+    "YACNST"
+   ],
+   "image": "YAWEAP",
+   "water_bound": false
+  },
+  {
+   "id": "YAYARD",
+   "name": "尤里船坞",
+   "faction": "yuri",
+   "role": "structure",
+   "role_name": "船坞",
+   "cost": 1000,
+   "hp": 1500,
+   "armor": "structure",
+   "ra2_armor": "concrete",
+   "radius": 38,
+   "sight": 550,
+   "tags": [
+    "structure",
+    "shipyard",
+    "production",
+    "water",
+    "repair"
+   ],
+   "builds": [
+    "YHVR",
+    "BSUB"
+   ],
+   "desc": "建在水面，生产两栖运输艇和雷鸣潜艇。雷鸣潜艇需要心灵感应器。",
+   "ra2": true,
+   "foundation": "4x4",
+   "buildup": "GAYARDMK",
+   "ra2_prereq": [
+    "YACNST",
+    "POWER",
+    "PROC"
+   ],
+   "tech_level": 4,
+   "power": -25,
+   "powered": true,
+   "water_bound": true,
+   "image": "YAYARD",
+   "capturable": false
+  },
+  {
+   "id": "YAREFN",
+   "name": "奴隶矿场（展开）",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure",
+    "refinery"
+   ],
+   "cost": 1750,
+   "hp": 2000,
+   "ra2_armor": "medium",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 330,
+   "builds": [],
+   "foundation": "2x2",
+   "power": 0,
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "20mmRapid",
+    "ra2_weapon_id": "YR_HOL_20mmRapid",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HARVWH",
+    "damage": 30,
+    "range": 302.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "WarMinerAttack",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "20mmRapidE",
+    "ra2_weapon_id": "YR_HOL_20mmRapidE",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_HowitzerWH",
+    "damage": 50,
+    "range": 316.25,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 880,
+    "report": "RhinoTankAttack",
+    "ra2_aa": false
+   },
+   "undeploys_into": "SMIN",
+   "unsellable": true,
+   "base_normal": false,
+   "capturable": false,
+   "buildup": "YAREFNMK",
+   "worker": "SLAV",
+   "workers": 5,
+   "regen_ticks": 500,
+   "reload_ticks": 25,
+   "build_time_multiplier": 1.15,
+   "tech_level": 1,
+   "ra2_prereq": [
+    "POWER",
+    "YACNST"
+   ],
+   "image": "YAREFN",
+   "water_bound": false,
+   "desc": "部署后派出矿工采矿。附近矿石耗尽时可以收起矿场，驶向下一片矿区。"
+  },
+  {
+   "id": "YAPOWR",
+   "name": "生物反应炉",
+   "desc": "提供 150 电力，可让己方步兵进入以增加供电。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "2x2",
+   "armor": "structure",
+   "ra2_armor": "wood",
+   "hp": 700,
+   "cost": 600,
+   "power": 150,
+   "powered": false,
+   "sight": 220,
+   "radius": 24,
+   "tags": [
+    "structure",
+    "power"
+   ],
+   "builds": [],
+   "base_normal": true,
+   "capturable": false,
+   "garrison_slots": 5,
+   "extra_power": 100,
+   "size_limit": 15,
+   "buildup": "YAPOWRMK",
+   "tech_level": 1,
+   "ra2_prereq": [
+    "YACNST"
+   ],
+   "image": "YAPOWR",
+   "water_bound": false
+  },
+  {
+   "id": "YATECH",
+   "name": "尤里作战实验室",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 500,
+   "ra2_armor": "wood",
+   "sight": 330,
+   "cost": 2000,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure",
+    "tech"
+   ],
+   "armor": "structure",
+   "foundation": "3x2",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -100,
+   "powered": false,
+   "desc": "尤里研究高阶作战技术的设施。",
+   "tech_level": 8,
+   "ra2_prereq": [
+    "YAWEAP",
+    "YACNST",
+    "RADAR"
+   ],
+   "image": "YATECH",
+   "water_bound": false,
+   "superweapon": {
+    "id": "ForceShieldSpecial",
+    "type": "ForceShield",
+    "name": "Force Shield",
+    "ui_name": "力场护盾",
+    "recharge_seconds": 300,
+    "recharge_voice": "00-I156",
+    "action": "ForceShield",
+    "radius": 220,
+    "duration": 33.333333333333336,
+    "blackout": 66.66666666666667
+   }
+  },
+  {
+   "id": "NAPSIS",
+   "name": "心灵感应器",
+   "desc": "提供雷达并解锁雷鸣潜艇。心灵探测充能完成后，点击地图可侦察一片区域。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "2x2",
+   "armor": "structure",
+   "ra2_armor": "wood",
+   "hp": 750,
+   "cost": 1000,
+   "power": -50,
+   "powered": false,
+   "sight": 550,
+   "radius": 24,
+   "tags": [
+    "structure",
+    "radar"
+   ],
+   "builds": [],
+   "base_normal": true,
+   "capturable": false,
+   "buildup": "NAPSISMK",
+   "tech_level": 3,
+   "ra2_prereq": [
+    "YACNST",
+    "PROC"
+   ],
+   "image": "NAPSIS",
+   "water_bound": false,
+   "superweapon": {
+    "id": "PsychicRevealSpecial",
+    "type": "PsychicReveal",
+    "name": "心灵感应器",
+    "ui_name": "心灵探测",
+    "recharge_seconds": 240
+   }
+  },
+  {
+   "id": "YAGRND",
+   "name": "部队回收厂",
+   "desc": "选中己方地面部队，右键回收厂。部队进入后被回收，所得资金归入己方账户。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "3x3",
+   "armor": "structure",
+   "ra2_armor": "wood",
+   "hp": 900,
+   "cost": 600,
+   "power": -50,
+   "powered": false,
+   "sight": 330,
+   "radius": 36,
+   "tags": [
+    "structure"
+   ],
+   "builds": [],
+   "base_normal": true,
+   "capturable": false,
+   "buildup": "YAGRNDMK",
+   "tech_level": 9,
+   "ra2_prereq": [
+    "YAWEAP",
+    "YACNST"
+   ],
+   "image": "YAGRND",
+   "water_bound": false
+  },
+  {
+   "id": "NACLON",
+   "name": "复制中心",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "wood",
+   "sight": 275,
+   "cost": 2500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "2x2",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false,
+   "desc": "己方兵营每训练一名步兵，复制中心会尝试从自己的出口放出一名副本。",
+   "tech_level": 9,
+   "ra2_prereq": [
+    "YATECH",
+    "YACNST"
+   ],
+   "image": "NACLON",
+   "water_bound": false
+  },
+  {
+   "id": "YAGGUN",
+   "name": "盖特机炮",
+   "desc": "持续射击逼近的地面部队或飞机。断电时停止射击。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "1x1",
+   "armor": "structure",
+   "ra2_armor": "steel",
+   "hp": 810,
+   "cost": 1000,
+   "power": -50,
+   "powered": true,
+   "sight": 550,
+   "radius": 12,
+   "tags": [
+    "structure",
+    "defense"
+   ],
+   "builds": [],
+   "base_normal": false,
+   "capturable": false,
+   "guns": [
+    {
+     "name": "AGGattling",
+     "ra2_weapon_id": "YR_HOL_AGGattling",
+     "burst": 2,
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "ra2_aa": false,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop1"
+    },
+    {
+     "name": "AAGattCann",
+     "ra2_weapon_id": "YR_HOL_AAGattCann",
+     "burst": 2,
+     "damage": 30,
+     "range": 660,
+     "cooldown": 1.0666666666666667,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "ra2_aa": true,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop1"
+    },
+    {
+     "name": "AGGattling2",
+     "ra2_weapon_id": "YR_HOL_AGGattling2",
+     "burst": 2,
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SA",
+     "ra2_aa": false,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop2"
+    },
+    {
+     "name": "AAGattCann2",
+     "ra2_weapon_id": "YR_HOL_AAGattCann2",
+     "burst": 2,
+     "damage": 30,
+     "range": 660,
+     "cooldown": 0.5333333333333333,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "ra2_aa": true,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop2"
+    },
+    {
+     "name": "AGGattling3",
+     "ra2_weapon_id": "YR_HOL_AGGattling3",
+     "burst": 2,
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SSA",
+     "ra2_aa": false,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop3"
+    },
+    {
+     "name": "AAGattCann3",
+     "ra2_weapon_id": "YR_HOL_AAGattCann3",
+     "burst": 2,
+     "damage": 30,
+     "range": 660,
+     "cooldown": 0.26666666666666666,
+     "attack_type": "bullet",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "ra2_aa": true,
+     "projectile_speed": 1100,
+     "report": "GattlingGunAttackLoop3"
+    }
+   ],
+   "weapon": {
+    "name": "AGGattling",
+    "ra2_weapon_id": "YR_HOL_AGGattling",
+    "burst": 2,
+    "damage": 25,
+    "range": 330,
+    "cooldown": 1.0666666666666667,
+    "attack_type": "bullet",
+    "ra2_projectile": "Invisiblelow",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "ra2_aa": true,
+    "projectile_speed": 1100,
+    "report": "GattlingGunAttackLoop1"
+   },
+   "buildup": "YAGGUNMK",
+   "tech_level": 4,
+   "ra2_prereq": [
+    "BARRACKS",
+    "YACNST"
+   ],
+   "image": "YAGGUN",
+   "water_bound": false
+  },
+  {
+   "id": "YAPSYT",
+   "name": "心灵控制塔",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 455,
+   "ra2_armor": "steel",
+   "sight": 275,
+   "cost": 1500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure",
+    "defense"
+   ],
+   "armor": "structure",
+   "foundation": "1x1",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -100,
+   "powered": false,
+   "desc": "控制附近的敌方地面部队。摧毁塔可解放被控制的部队。",
+   "tech_level": 7,
+   "ra2_prereq": [
+    "NAPSIS",
+    "YACNST"
+   ],
+   "image": "YAPSYT",
+   "water_bound": false
+  },
+  {
+   "id": "NATBNK",
+   "name": "坦克碉堡",
+   "desc": "容纳一辆坦克。驻车可以在掩体内开火。",
+   "ra2": true,
+   "role": "structure",
+   "role_name": "建筑",
+   "faction": "yuri",
+   "foundation": "2x2",
+   "armor": "structure",
+   "ra2_armor": "steel",
+   "hp": 1000,
+   "cost": 400,
+   "power": 0,
+   "powered": false,
+   "sight": 330,
+   "radius": 24,
+   "tags": [
+    "structure",
+    "defense"
+   ],
+   "builds": [],
+   "base_normal": false,
+   "capturable": false,
+   "garrison_slots": 1,
+   "buildup": "NATBNKMK",
+   "tech_level": 3,
+   "ra2_prereq": [
+    "YACNST"
+   ],
+   "image": "NATBNK",
+   "water_bound": false
+  },
+  {
+   "id": "GAFWLL",
+   "name": "尤里围墙",
+   "faction": "yuri",
+   "role": "structure",
+   "role_name": "围墙",
+   "cost": 100,
+   "hp": 300,
+   "armor": "structure",
+   "ra2_armor": "concrete",
+   "radius": 14,
+   "sight": 55,
+   "tags": [
+    "structure",
+    "defense",
+    "wall"
+   ],
+   "builds": [],
+   "desc": "封住地面通路。靠近同类围墙放置时会自动连接，沿同一直线也能补齐短缺口。每段另行收费，遇到障碍或资金不足就会停止。",
+   "ra2": true,
+   "foundation": "1x1",
+   "ra2_prereq": [
+    "YABRCK"
+   ],
+   "tech_level": 2,
+   "image": "GAFWLL",
+   "power": 0,
+   "capturable": false,
+   "water_bound": false
+  },
+  {
+   "id": "YAPPET",
+   "name": "心灵控制器",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "concrete",
+   "sight": 275,
+   "cost": 5000,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure",
+    "defense",
+    "superweapon"
+   ],
+   "armor": "structure",
+   "foundation": "3x3",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false,
+   "tech_level": 10,
+   "ra2_prereq": [
+    "YATECH",
+    "YACNST"
+   ],
+   "image": "YAPPET",
+   "water_bound": false,
+   "superweapon": {
+    "id": "PsychicDominatorSpecial",
+    "type": "PsychicDominator",
+    "name": "心灵控制器",
+    "ui_name": "心灵控制器",
+    "recharge_seconds": 600
+   },
+   "desc": "充能后选取地面区域，夺取中心附近敌方地面单位的控制权，并重创周围建筑。"
+  },
+  {
+   "id": "YAGNTC",
+   "name": "基因突变器",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "concrete",
+   "sight": 275,
+   "cost": 2500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure",
+    "defense",
+    "superweapon"
+   ],
+   "armor": "structure",
+   "foundation": "3x3",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false,
+   "tech_level": 10,
+   "ra2_prereq": [
+    "YATECH",
+    "YACNST"
+   ],
+   "image": "YAGNTC",
+   "water_bound": false,
+   "superweapon": {
+    "id": "GeneticConverterSpecial",
+    "type": "GeneticConverter",
+    "name": "基因突变器",
+    "ui_name": "基因突变器",
+    "recharge_seconds": 300
+   },
+   "desc": "充能后选取地面区域，将范围内的步兵转化为己方狂兽人。"
+  }
+ ],
+ "source_units": {
+  "INIT": {
+   "id": "INIT",
+   "hp": 100,
+   "cost": 200,
+   "armor": "none",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 1,
+   "adjacent": 0,
+   "size": 1,
+   "extra": {
+    "Size": "1"
+   }
+  },
+  "YENGINEER": {
+   "id": "YENGINEER",
+   "hp": 75,
+   "cost": 500,
+   "armor": "none",
+   "owner": [
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry",
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance"
+   ],
+   "tech_level": 1,
+   "adjacent": 0,
+   "size": 1,
+   "extra": {
+    "Size": "1"
+   }
+  },
+  "BRUTE": {
+   "id": "BRUTE",
+   "hp": 200,
+   "cost": 500,
+   "armor": "plate",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 5,
+   "adjacent": 0,
+   "size": 2,
+   "extra": {
+    "Size": "2"
+   }
+  },
+  "VIRUS": {
+   "id": "VIRUS",
+   "hp": 100,
+   "cost": 700,
+   "armor": "none",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 1,
+   "adjacent": 0,
+   "size": 1,
+   "extra": {
+    "Size": "1"
+   }
+  },
+  "YURI": {
+   "id": "YURI",
+   "hp": 100,
+   "cost": 800,
+   "armor": "none",
+   "owner": [
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry",
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance"
+   ],
+   "tech_level": 10,
+   "adjacent": 0,
+   "size": 1,
+   "extra": {
+    "Size": "1"
+   }
+  },
+  "YURIPR": {
+   "id": "YURIPR",
+   "hp": 150,
+   "cost": 1500,
+   "armor": "flak",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 10,
+   "adjacent": 0,
+   "size": 1,
+   "extra": {
+    "BuildLimit": "1",
+    "SpeedType": "Amphibious",
+    "Size": "1"
+   }
+  },
+  "LTNK": {
+   "id": "LTNK",
+   "hp": 300,
+   "cost": 700,
+   "armor": "heavy",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 3,
+   "extra": {
+    "Size": "3"
+   }
+  },
+  "YTNK": {
+   "id": "YTNK",
+   "hp": 210,
+   "cost": 600,
+   "armor": "light",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 4,
+   "adjacent": 0,
+   "size": 3,
+   "extra": {
+    "Size": "3"
+   }
+  },
+  "SMIN": {
+   "id": "SMIN",
+   "hp": 2000,
+   "cost": 1750,
+   "armor": "medium",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 1,
+   "adjacent": 0,
+   "size": 3,
+   "extra": {
+    "DeploysInto": "YAREFN",
+    "Size": "3"
+   }
+  },
+  "PCV": {
+   "id": "PCV",
+   "hp": 1000,
+   "cost": 3000,
+   "armor": "heavy",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 10,
+   "adjacent": 0,
+   "size": 6,
+   "extra": {
+    "DeploysInto": "YACNST",
+    "Size": "6"
+   }
+  },
+  "MIND": {
+   "id": "MIND",
+   "hp": 500,
+   "cost": 1750,
+   "armor": "heavy",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 6,
+   "extra": {
+    "Size": "6"
+   }
+  },
+  "TELE": {
+   "id": "TELE",
+   "hp": 150,
+   "cost": 1000,
+   "armor": "light",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 6,
+   "extra": {
+    "Size": "6"
+   }
+  },
+  "CAOS": {
+   "id": "CAOS",
+   "hp": 130,
+   "cost": 1000,
+   "armor": "light",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 4,
+   "adjacent": 0,
+   "size": 2,
+   "extra": {
+    "NavalTargeting": "6",
+    "Size": "2"
+   }
+  },
+  "DISK": {
+   "id": "DISK",
+   "hp": 600,
+   "cost": 1750,
+   "armor": "light",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 6,
+   "extra": {
+    "SpeedType": "Hover",
+    "Size": "6"
+   }
+  },
+  "YHVR": {
+   "id": "YHVR",
+   "hp": 300,
+   "cost": 900,
+   "armor": "heavy",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 15,
+   "extra": {
+    "Passengers": "12",
+    "SizeLimit": "6",
+    "Naval": "yes",
+    "SpeedType": "Hover",
+    "Size": "15"
+   }
+  },
+  "BSUB": {
+   "id": "BSUB",
+   "hp": 1200,
+   "cost": 2000,
+   "armor": "heavy",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 0,
+   "size": 20,
+   "extra": {
+    "Naval": "yes",
+    "Underwater": "yes",
+    "NavalTargeting": "7",
+    "LandTargeting": "2",
+    "SpeedType": "Float",
+    "Size": "20"
+   }
+  },
+  "CMISL": {
+   "hp": 50,
+   "cost": 0,
+   "tech_level": -1,
+   "extra": {
+    "Spawned": "yes"
+   }
+  }
+ },
+ "source_buildings": {
+  "YACNST": {
+   "id": "YACNST",
+   "hp": 1000,
+   "cost": 3000,
+   "armor": "concrete",
+   "owner": [
+    "YuriCountry"
+   ],
+   "tech_level": -1,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "UndeploysInto": "PCV"
+   }
+  },
+  "YABRCK": {
+   "id": "YABRCK",
+   "hp": 500,
+   "cost": 500,
+   "armor": "steel",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "YAWEAP": {
+   "id": "YAWEAP",
+   "hp": 1000,
+   "cost": 2000,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "YAYARD": {
+   "id": "YAYARD",
+   "hp": 1500,
+   "cost": 1000,
+   "armor": "concrete",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 4,
+   "adjacent": 12,
+   "size": 1,
+   "extra": {
+    "Naval": "yes",
+    "BaseNormal": "no",
+    "WaterBound": "yes"
+   }
+  },
+  "YAREFN": {
+   "id": "YAREFN",
+   "hp": 2000,
+   "cost": 1750,
+   "armor": "medium",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 1,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "UndeploysInto": "SMIN",
+    "BaseNormal": "no"
+   }
+  },
+  "YAPOWR": {
+   "id": "YAPOWR",
+   "hp": 700,
+   "cost": 600,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 1,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "Passengers": "5",
+    "SizeLimit": "15"
+   }
+  },
+  "YATECH": {
+   "id": "YATECH",
+   "hp": 500,
+   "cost": 2000,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 8,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "NAPSIS": {
+   "id": "NAPSIS",
+   "hp": 750,
+   "cost": 1000,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 3,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "YAGRND": {
+   "id": "YAGRND",
+   "hp": 900,
+   "cost": 600,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 9,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "NACLON": {
+   "id": "NACLON",
+   "hp": 1000,
+   "cost": 2500,
+   "armor": "wood",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 9,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "BuildLimit": "1"
+   }
+  },
+  "YAGGUN": {
+   "id": "YAGGUN",
+   "hp": 810,
+   "cost": 1000,
+   "armor": "steel",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 4,
+   "adjacent": 4,
+   "size": 1,
+   "extra": {
+    "BaseNormal": "no"
+   }
+  },
+  "YAPSYT": {
+   "id": "YAPSYT",
+   "hp": 455,
+   "cost": 1500,
+   "armor": "steel",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 7,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {}
+  },
+  "NATBNK": {
+   "id": "NATBNK",
+   "hp": 1000,
+   "cost": 400,
+   "armor": "steel",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 3,
+   "adjacent": 3,
+   "size": 1,
+   "extra": {
+    "BaseNormal": "no"
+   }
+  },
+  "GAFWLL": {
+   "id": "GAFWLL",
+   "hp": 300,
+   "cost": 100,
+   "armor": "concrete",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 2,
+   "adjacent": 8,
+   "size": 1,
+   "extra": {
+    "BaseNormal": "no"
+   }
+  },
+  "YAPPET": {
+   "id": "YAPPET",
+   "hp": 1000,
+   "cost": 5000,
+   "armor": "concrete",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 10,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "BuildLimit": "1"
+   }
+  },
+  "YAGNTC": {
+   "id": "YAGNTC",
+   "hp": 1000,
+   "cost": 2500,
+   "armor": "concrete",
+   "owner": [
+    "British",
+    "French",
+    "Germans",
+    "Americans",
+    "Alliance",
+    "Russians",
+    "Confederation",
+    "Africans",
+    "Arabs",
+    "YuriCountry"
+   ],
+   "tech_level": 10,
+   "adjacent": 2,
+   "size": 1,
+   "extra": {
+    "BuildLimit": "1"
+   }
+  }
+ },
+ "art": {
+  "YACNST": {
+   "cameo": "res://assets/ra2/cameo/YCONICON.png"
+  },
+  "YABRCK": {
+   "cameo": "res://assets/ra2/cameo/BRCKICON.png"
+  },
+  "YAWEAP": {
+   "cameo": "res://assets/ra2/cameo/YWEPICON.png"
+  },
+  "YAYARD": {
+   "cameo": "res://assets/ra2/cameo/YYRDICON.png"
+  },
+  "YAREFN": {
+   "cameo": "res://assets/ra2/cameo/SMINICON.png"
+  },
+  "YAPOWR": {
+   "cameo": "res://assets/ra2/cameo/YPWRICON.png"
+  },
+  "YATECH": {
+   "cameo": "res://assets/ra2/cameo/YTCHICON.png"
+  },
+  "NAPSIS": {
+   "cameo": "res://assets/ra2/cameo/PSISICON.png"
+  },
+  "YAGRND": {
+   "cameo": "res://assets/ra2/cameo/GRNDICON.png"
+  },
+  "NACLON": {
+   "cameo": "res://assets/ra2/cameo/CLONICON.png"
+  },
+  "YAGGUN": {
+   "cameo": "res://assets/ra2/cameo/GGUNICON.png"
+  },
+  "YAPSYT": {
+   "cameo": "res://assets/ra2/cameo/PSYTICON.png"
+  },
+  "NATBNK": {
+   "cameo": "res://assets/ra2/cameo/TBNKICON.png"
+  },
+  "GAFWLL": {
+   "cameo": "res://assets/ra2/cameo/CITWICON.png"
+  },
+  "YAPPET": {
+   "cameo": "res://assets/ra2/cameo/PUPTICON.png"
+  },
+  "YAGNTC": {
+   "cameo": "res://assets/ra2/cameo/GTNCICON.png"
+  },
+  "INIT": {
+   "cameo": "res://assets/ra2/cameo/INITICON.png"
+  },
+  "YENGINEER": {
+   "cameo": "res://assets/ra2/cameo/ENGNICON.png"
+  },
+  "BRUTE": {
+   "cameo": "res://assets/ra2/cameo/BRUTICON.png"
+  },
+  "VIRUS": {
+   "cameo": "res://assets/ra2/cameo/VRUSICON.png"
+  },
+  "YURI": {
+   "cameo": "res://assets/ra2/cameo/YCLNICON.png"
+  },
+  "YURIPR": {
+   "cameo": "res://assets/ra2/cameo/YYPRICON.png"
+  },
+  "LTNK": {
+   "cameo": "res://assets/ra2/cameo/LTNKICON.png"
+  },
+  "YTNK": {
+   "cameo": "res://assets/ra2/cameo/YTNKICON.png"
+  },
+  "SMIN": {
+   "cameo": "res://assets/ra2/cameo/SMINICON.png"
+  },
+  "PCV": {
+   "cameo": "res://assets/ra2/cameo/YPCVICON.png"
+  },
+  "MIND": {
+   "cameo": "res://assets/ra2/cameo/MINDICON.png"
+  },
+  "TELE": {
+   "cameo": "res://assets/ra2/cameo/TELEICON.png"
+  },
+  "CAOS": {
+   "cameo": "res://assets/ra2/cameo/CAOSICON.png"
+  },
+  "DISK": {
+   "cameo": "res://assets/ra2/cameo/DISKICON.png"
+  },
+  "YHVR": {
+   "cameo": "res://assets/ra2/cameo/YHVRICON.png"
+  },
+  "BSUB": {
+   "cameo": "res://assets/ra2/cameo/BSUBICON.png"
+  }
+ },
+ "warheads": {
+  "YR_CMISLWH": {
+   "verses": {
+    "none": 1,
+    "flak": 0.9,
+    "plate": 0.8,
+    "light": 1,
+    "medium": 0.8,
+    "heavy": 0.8,
+    "wood": 0.85,
+    "steel": 0.65,
+    "concrete": 0.28,
+    "special_1": 0.8,
+    "special_2": 0
+   },
+   "cell_spread": 1.5
+  }
+ }
+}

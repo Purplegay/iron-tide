@@ -12,7 +12,7 @@ import { detailSupportModel } from './allied_support_detail.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const [game, output, scope = 'ground'] = process.argv.slice(2);
-if (!game || !output || !['ground', 'aircraft', 'naval', 'all', 'sample', 'asw-deck', 'v3-empty', 'grizzly','allied-support','soviet-air','soviet-support','torpedo','apocalypse','tesla-tank'].includes(scope)) throw new Error('Usage: node ra2pipe/vehicle_surfaces.mjs <YR directory> <new external candidate> [ground|aircraft|naval|all|sample|asw-deck|grizzly|allied-support]');
+if (!game || !output || !['ground', 'aircraft', 'naval', 'all', 'faction-voxels', 'sample', 'asw-deck', 'v3-empty', 'grizzly','allied-support','soviet-air','soviet-support','torpedo','apocalypse','tesla-tank'].includes(scope)) throw new Error('Usage: node ra2pipe/vehicle_surfaces.mjs <YR directory> <new external candidate> [faction-voxels|ground|aircraft|naval|all|sample|asw-deck|grizzly|allied-support]');
 const out = path.resolve(output);
 for (const protectedRoot of [root, fs.realpathSync(game)])
   if (out === protectedRoot || out.startsWith(protectedRoot + path.sep)) throw new Error('Candidate must be external');
@@ -46,12 +46,20 @@ if(scope==='sample') specs={MTNK:'GTNK',CMIN:'CMIN',ROBO:'ROBO'};
 if(scope==='grizzly') specs={MTNK:'GTNK'};
 if(scope==='allied-support') specs={FV:'FV',CMIN:'CMIN',CMON:'CMON'};
 const project = path.join(root, 'iron_tide');
-if (scope === 'all') {
+if (scope === 'all' || scope === 'faction-voxels') {
+  // In addition to the two main rosters, include alternate vehicle states,
+  // support flights, their ammunition and original campaign vehicles.
+  const factionIds = new Set(['ROBO','BFRT','CMON','HORV','ASW','HORNET','DESTWO','DREDWO','V3WO','SCHD','ZBOMB','SUBT','PDPLANE','CARGOPLANE','HOWI','HIND','VLAD','XCOMET']);
+  for (const file of ['ra2_allied','yr_soviet']) {
+    const roster = JSON.parse(fs.readFileSync(path.join(project,'data',file+'.json')));
+    for (const unit of roster.units) factionIds.add(unit.id);
+  }
   specs = {};
   for (const name of fs.readdirSync(path.join(project, 'assets/ra2/vxl')).sort()) {
     if (!name.endsWith('.json') || /_(tur\w*|shd)\.json$/i.test(name)) continue;
     const metadata = JSON.parse(fs.readFileSync(path.join(project, 'assets/ra2/vxl', name)));
     const id = name.slice(0, -5);
+    if (scope === 'faction-voxels' && !factionIds.has(id)) continue;
     specs[id] = (metadata.vxl || metadata.image || id).replace(/\.vxl$/i, '');
   }
 }
@@ -84,7 +92,7 @@ for (const [id, base] of Object.entries(specs)) {
   posesAudit[id] = { image: base, poses, sections: models.flat().map(m => m.hva.sections.map(s => s.name)) };
   const bake = (group, shadow) => Array.from({ length: facings * poses }, (_, i) =>
     renderSurface({ limbs: group.flatMap(m => poseVxl(m.model, m.hva, Math.floor(i / facings)).limbs) },
-      { pal, vpl, facing: i % facings, facings, shadow, shadowGround: 0 }));
+      { pal, vpl, facing: i % facings, facings, shadow, shadowGround: 0, yrVoxelLight: !shadow }));
   const frames = models.map(m => bake(m, false));
   const shadows = models.map(m => bake(m, true));
   const all = [...frames.flat(), ...shadows.flat()];
@@ -123,7 +131,7 @@ for (const [id, base] of Object.entries(specs)) {
     const { animated_limbs, adaptation, ...retained } = metadata;
     json(`assets/ra2/vxl/${name}.json`, { ...retained, facings, frameW: cw, frameH: ch, facing_offset: facings / 2,
       poses, fps: metadata.fps || (poses > 1 ? 20 : 0), pose_source: 'local VXL + HVA', shadow_projection: 'ground-plane-v2',
-      surface_render:'surface-vpl-2x', detail_scale:shadow?1:2,
+      surface_render:'surface-vpl-2x', detail_scale:shadow?1:2, ...(!shadow ? {palette_lit:true} : {}),
       ...(name === id && parts.length ? { split_shadow: true, turret: metadata.turret || id + '_tur' } : {}), ...(metadata.of ? { draw_offset: [0, 0] } : {}) });
   }
   const weaponPath = path.join(project, `assets/ra2/unitweapon/${id}.json`);

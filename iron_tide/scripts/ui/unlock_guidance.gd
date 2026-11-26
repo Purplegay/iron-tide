@@ -109,6 +109,8 @@ func _plan_token(token: String, visiting: Array, plan: Array, contexts: Array) -
 func _plan_candidate(id: String, visiting: Array, plan: Array, contexts: Array) -> bool:
 	if owned.has(id):
 		return true
+	if not GameData.mission_tech_block_reason(id).is_empty():
+		return false
 	if visiting.has(id) or not GameData.building_index.has(id) or not battle.country_block_reason(id).is_empty():
 		return false
 	if _status(id) == "未建造":
@@ -144,6 +146,9 @@ func _alternatives(contexts: Array) -> Array:
 func describe(id: String) -> Dictionary:
 	if not GameData.is_ra2(id):
 		return {"detail": "", "summary": ""}
+	var mission_reason := GameData.mission_product_block_reason(id, owned)
+	if not mission_reason.is_empty():
+		return {"detail": "解锁条件\n" + mission_reason, "summary": mission_reason, "restriction": mission_reason}
 	if not GameData.get_unit(id).is_empty():
 		var roster_reason := GameData.unit_production_block_reason(id, battle.allied_state)
 		if not roster_reason.is_empty():

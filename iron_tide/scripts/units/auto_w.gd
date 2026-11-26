@@ -53,7 +53,10 @@ static func card_id(actor) -> String:
 
 static func enabled(actor) -> bool:
 	if not unlocked(actor) or not supported(card_id(actor)): return false
-	var state: Dictionary = world_of(actor).allied_state.get("auto_w_preferences", BattleRequest.combat_context.get("auto_w_preferences", {}))
+	return preference_enabled(actor, world_of(actor))
+
+static func preference_enabled(actor, world) -> bool:
+	var state: Dictionary = world.allied_state.get("auto_w_preferences", BattleRequest.combat_context.get("auto_w_preferences", {}))
 	return bool(state.get(type_id(actor), state.get(DEFAULT,true)))
 
 static func set_group(world, actors: Array, value: bool) -> bool:
@@ -175,7 +178,7 @@ static func tick(actor, delta: float) -> void:
 		actor.special.auto_w_hit_left = maxf(0, float(actor.special.auto_w_hit_left) - delta)
 	# evaluate() checks the live card, owner, tech and preference on the think tick.
 	if actor.side != "ally" or not BattleRequest.extensions_enabled(): return
-	var left := float(actor.get_meta("auto_w_think", float(actor.get_instance_id() % 15) / 60.0)) - delta
+	var left := float(actor.get_meta("auto_w_think", float(actor.get_instance_id() % 15) / 60.0)) - delta / maxf(1.0, Engine.time_scale)
 	actor.set_meta("auto_w_think", left if left > 0 else INTERVAL)
 	if left <= 0: evaluate(actor)
 
@@ -225,10 +228,21 @@ static func evaluate(actor) -> bool:
 	if is_instance_valid(actor) and actor is Unit and actor.embarked_in != null:
 		preload("res://scripts/world/battle_call_counters.gd").iterations(79,1)
 		return false
-	if not enabled(actor) or not AlliedAbilities.alive(actor) or (AlliedAbilities.frozen(actor) and card_id(actor) != "ap_chrono_return"): return false
+	if not unlocked(actor) or not AlliedAbilities.alive(actor): return false
 	var world = world_of(actor)
+	if not preference_enabled(actor, world): return false
 	if world.paused or world.ended or world.get_tree().paused or world.cast_slot >= 0 or not world.command_mode.is_empty(): return false
-	var id := card_id(actor)
+	var index := -1
+	var ability: Ability
+	var id := ""
+	if actor is Building:
+		id = card_id(actor)
+	else:
+		index = UnitSkillLayout.index(actor, 1)
+		ability = actor.ability_at(index)
+		if ability == null: return false
+		id = ability.id
+	if not supported(id) or (AlliedAbilities.frozen(actor) and id != "ap_chrono_return"): return false
 	if actor is Building:
 		if not TESLA.ready(actor): return false
 		if id=="ap_focus_fire":
@@ -241,8 +255,6 @@ static func evaluate(actor) -> bool:
 		return TESLA.use(actor) if enemies.size() >= (1 if actor.hp < actor.max_hp * 0.4 else 2) else false
 	if actor.embarked_in != null or actor._stun_timer > 0 or actor.repairing or not actor.power_disabled_reason().is_empty(): return false
 	if actor.special.has("hero_wreck") or actor.special.has("walker_jump") or actor.special.has("para_height") or actor.special.get("gm_stationary",false): return false
-	var index := UnitSkillLayout.index(actor, 1)
-	var ability: Ability = actor.ability_at(index)
 	if not actor.ability_ready(index) or ability.is_active(): return false
 	if id=="ap_convoy_press":return preload("res://scripts/units/convoy_cards.gd").automatic(actor,ability)
 	if id in Unit.PoolCards.ACTIVES: return Unit.PoolCards.automatic(actor, ability, index)

@@ -5,16 +5,23 @@ const Sites = preload("res://scripts/world/civilian_sites.gd")
 static func slots(building) -> int:
 	return int(building.data.get("garrison_slots", 0))
 
+static func civilian_garrison(building) -> bool:
+	return building is Building and slots(building) > 0 and (building.building_id == "CAHSE01" or "civilian" in building.data.get("tags", []))
+
 static func can_enter(unit, target) -> bool:
 	if not target is Building or slots(target) == 0 or unit.embarked_in != null: return false
-	var neutral_house: bool = target.building_id == "CAHSE01" and target.side == "neutral"
+	var neutral_house: bool = civilian_garrison(target) and target.side == "neutral"
 	if target.side != unit.side and not neutral_house: return false
 	var native := preload("res://scripts/core/yr_death_rules.gd").type_data(unit.unit_id)
-	return AlliedAbilities.infantry(unit) and (AlliedAbilities.flag(unit,"Occupier") or str(native.get("occupier","no")).to_lower() == "yes") \
+	var eligible := AlliedAbilities.infantry(unit) and (AlliedAbilities.flag(unit,"Occupier") or str(native.get("occupier","no")).to_lower() == "yes")
+	if target.data.has("extra_power"):
+		return AlliedAbilities.infantry(unit) and float(native.get("size",1)) <= float(target.data.size_limit) and target.is_operational() and target.special.get("occupants",[]).size() < slots(target)
+	if target.building_id == "NATBNK": eligible = unit.unit_id == "LTNK" or unit.unit_id=="TTNK" and BattleRequest.mission_id=="yr_head_games"
+	return eligible \
 		and target.is_operational() and target.hp > target.max_hp * 0.25 and target.special.get("occupants", []).size() < slots(target)
 
 static func can_repair(unit, target) -> bool:
-	return unit.unit_id in ["ENGINEER", "SENGINEER"] and target is Building and target.building_id == "CABHUT" \
+	return unit.unit_id in ["ENGINEER", "SENGINEER", "YENGINEER"] and target is Building and target.building_id == "CABHUT" \
 		and target.special.has("bridge_span") and not target.special.get("bridge_repaired", false)
 
 static func enter(unit, target) -> void:
@@ -44,6 +51,7 @@ static func evacuate(building, destroyed := false, report_blocked := false) -> v
 
 static func _evacuate(building, leaving: Array, destroyed: bool) -> void:
 	var occupants: Array = building.special.get("occupants", [])
+	var released_occupant := false
 	for unit in leaving:
 		if not AlliedAbilities.alive(unit): occupants.erase(unit); continue
 		var placed := false
@@ -57,6 +65,7 @@ static func _evacuate(building, leaving: Array, destroyed: bool) -> void:
 				unit.order_stop()
 				occupants.erase(unit)
 				placed = true
+				released_occupant = true
 				break
 			if placed: break
 		if not placed and destroyed:
@@ -67,7 +76,11 @@ static func _evacuate(building, leaving: Array, destroyed: bool) -> void:
 		building.attack_target = null
 		ForceFire.clear(building)
 	building.queue_redraw()
-	if building.building_id == "CAHSE01" and occupants.is_empty() and not destroyed and building.side != "neutral": AlliedAbilities.change_side(building, "neutral")
+	if civilian_garrison(building) and occupants.is_empty() and not destroyed and building.side != "neutral":
+		var announce: bool = released_occupant and building.side == "ally"
+		AlliedAbilities.change_side(building, "neutral")
+		if announce:
+			Ra2Sfx.play_player_eva(building.battle, "EVA_StructureAbandoned")
 	building.battle._emit_selection()
 
 static func tick_building(building) -> void:
@@ -77,8 +90,8 @@ static func tick_building(building) -> void:
 	if building.special.occupants.is_empty():
 		building.attack_target = null
 		ForceFire.clear(building)
-		if building.side != "neutral" and building.building_id == "CAHSE01": AlliedAbilities.change_side(building, "neutral")
-	elif building.hp <= building.max_hp * 0.25:
+		if building.side != "neutral" and civilian_garrison(building): AlliedAbilities.change_side(building, "neutral")
+	elif not building.data.has("extra_power") and building.hp <= building.max_hp * 0.25:
 		evacuate(building)
 		return
 	if building.special.occupants.size() != old_count and building.battle.selected_building == building:
@@ -106,11 +119,22 @@ static func has_gunner(building, forced_target = null) -> bool:
 	return false
 
 static func weapon(unit) -> Dictionary:
+	if unit.embarked_in.data.has("extra_power"): return {}
+	if unit.embarked_in.building_id == "NATBNK":
+		var gun: Dictionary = unit.data.get("elite_weapon" if unit.veteran_level >= 2 else "weapon", {}).duplicate()
+		var settings: Dictionary = preload("res://scripts/core/yr_death_rules.gd").data().combat
+		gun.range += float(settings.bunkerweaponrangebonus) * Ra2Damage.PX_PER_CELL
+		gun.damage *= float(settings.bunkerdamagemultiplier)
+		gun.cooldown *= float(settings.bunkerrofmultiplier)
+		return gun
 	var key := "EliteOccupyWeapon" if unit.veteran_level >= 2 else "OccupyWeapon"
 	var id := str(AlliedAbilities.source(unit).get(key, "UCPara"))
 	if unit.embarked_in.data.has("garrison_weapons"):
 		var weapon_id := str(preload("res://scripts/core/yr_death_rules.gd").type_data(unit.unit_id).get(key.to_lower(), id))
 		var native: Dictionary = unit.embarked_in.data.garrison_weapons.get(weapon_id, {})
+		if unit.unit_id=="INIT":
+			native=AlliedAbilities.weapon("YR_HOL_UCElitePsychicJab" if unit.veteran_level>=2 else "YR_HOL_UCPsychicJab")
+			native.projectile_speed=0.0 # InvisibleHigh, originating at the building fire port.
 		if native.is_empty(): return {}
 		var rules: Dictionary = preload("res://scripts/core/yr_death_rules.gd").data().combat
 		var adjusted := native.duplicate()
@@ -148,7 +172,9 @@ static func order_block_reason(building, target, forced := false) -> String:
 	if target is Unit and target.is_air_target(): return "驻军只能攻击地面目标"
 	var distance: float = building.position.distance_to(target.position)
 	if target is Building: distance -= target.footprint_clearance(target.position.direction_to(building.position))
-	if distance > bunker_range(building): return "目标超出驻军射程"
+	var reach := bunker_range(building)
+	if building.building_id == "NATBNK": reach = float(weapon(building.special.occupants[0]).range)
+	if distance > reach: return "目标超出驻军射程"
 	if forced and not has_gunner(building,target): return "驻军武器对该目标无效"
 	return ""
 
@@ -156,11 +182,16 @@ static func tick(unit, delta: float) -> void:
 	var building = unit.embarked_in
 	if not AlliedAbilities.alive(building): return
 	unit.position = building.position
+	if building.data.has("extra_power"): return
 	unit._cd_timer -= delta
 	unit._think_timer -= delta
 	AlliedAbilities.tick_actor(unit, delta)
 	if not AlliedAbilities.alive(unit) or not building.is_operational() or unit.fire_stance == "none": return
-	if unit._cd_timer > 0: return
+	if unit._cd_timer > 0:
+		if building.building_id=="NATBNK":
+			var tracking=building.attack_target if AlliedAbilities.alive(building.attack_target) else unit.attack_target
+			if AlliedAbilities.alive(tracking): unit.HollywoodTurrets.aim_in_bunker(unit,tracking,delta)
+		return
 	# No target and no acquisition due: avoid rebuilding the garrison weapon
 	# and querying bunker technology for every idle occupant on every tick.
 	if not is_instance_valid(building.attack_target) and unit._think_timer>0.0:return
@@ -190,6 +221,7 @@ static func tick(unit, delta: float) -> void:
 		# original fire cadence, including weapons faster than TARGET_REFRESH.
 		unit._think_timer=0.0
 		unit.attack_target = target
+		if building.building_id=="NATBNK" and not unit.HollywoodTurrets.aim_in_bunker(unit,target,delta): return
 		unit._fire_shot(target)
 		unit._cd_timer = float(w.get("cooldown", 1.0))*preload("res://scripts/buildings/tesla_pulse.gd").reload_multiplier(building)
 		unit.special.garrison_reload_duration=unit._cd_timer

@@ -100,7 +100,7 @@ func click_command(button:Button) -> void:
 		event.position=point
 		get_viewport().push_input(event,true)
 
-func action(caption:String) -> void:
+func action(caption:String, consumed:bool=true) -> void:
 	var rt=screen.expedition_runtime
 	rt.refresh_status()
 	for frame in 3:await get_tree().process_frame
@@ -109,7 +109,7 @@ func action(caption:String) -> void:
 		if b.is_visible_in_tree() and b.text==caption:
 			check(screen.hud.expedition_panel.size.x<=340,"active commands stay within the narrow HUD")
 			click_command(b)
-			check(not b.is_visible_in_tree(),"consumed field choice disappears")
+			if consumed:check(not b.is_visible_in_tree(),"consumed field choice disappears")
 			return
 	check(false,"available HUD action "+caption)
 
@@ -143,7 +143,16 @@ func box_case() -> void:
 	other.position=mission.cargo+Vector2(110,0)
 	ops.tick(1)
 	check(not mission.done and ops.missions.hint(mission).contains(first.display_name),"a non-carrier at the depot cannot deliver the box")
+	battle.select_all_combat()
+	check(other in battle.selected_units and first not in battle.selected_units,"F2 skips the runner")
+	battle.select_unit(first,false)
+	battle.select_same_type_now()
+	check(other in battle.selected_units and first not in battle.selected_units,"T skips even its carrier prototype")
+	await action("送回交付点",false)
+	check(first.has_move_order and first.move_target.distance_to(mission.depot)<40 and not mission.done,"HUD sends carrier to the delivery point")
 	ops.tick(1);await action("放下黑匣子");ops.tick(1)
+	battle.select_all_combat()
+	check(first in battle.selected_units,"F2 includes the former carrier")
 	check(mission.phase=="open" and not first.special.has("field_box"),"drop does not immediately return to same soldier")
 	var second=soldier(mission.cargo);ops.tick(1)
 	check(second.special.get("field_box","")==mission.id,"another soldier can pick it up")

@@ -47,7 +47,7 @@ func check_formation_relics() -> void:
 	check(Expedition.formation_slots().size()==11,"new expedition returns to its base capacity")
 
 func check_catalog_and_shop() -> void:
-	new_ready("美国",26)
+	new_ready("美国",30)
 	for id:String in ["bridge_station","silent_radio","field_dispatch","chrono_decree","alert_array","chrono_anchor","joint_roster","formation_warrant"]:
 		check(Relics.ITEMS.has(id),"persistent catalog includes "+id)
 	var next:Dictionary=Expedition.state.duplicate(true)

@@ -2,7 +2,10 @@ extends CanvasLayer
 ## Screen-space RA2 cursor. It never handles input or changes an order.
 
 const SOVIET_CURSORS := preload("res://assets/ra2/cursors/soviet_superweapons.png")
-const SHEET := preload("res://assets/ra2/cursors/mouse.png")
+const MOUSE_SHEET_PATH := "res://assets/ra2/cursors/mouse.png"
+const MOUSE_ATLAS_PATH := "res://assets/ra2/cursors/mouse_atlas.png"
+const MOUSE_ATLAS_META_PATH := "res://assets/ra2/cursors/mouse_atlas.json"
+const ReaperSplit = preload("res://scripts/units/ra3_reaper_split.gd")
 var battle
 var sprite: Sprite2D
 var state := ""
@@ -19,6 +22,11 @@ var _previous_mode := Input.MOUSE_MODE_VISIBLE
 func _ready() -> void:
 	layer = 100
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	var sheet := ResourceLoader.load(MOUSE_SHEET_PATH) as Texture2D if ResourceLoader.exists(MOUSE_SHEET_PATH) else null
+	if sheet == null or not FileAccess.file_exists("res://assets/ra2/cursors/mouse.json"):
+		push_warning("战场光标资源缺失，已使用系统鼠标。")
+		set_process(false)
+		return
 	metadata = JSON.parse_string(FileAccess.get_file_as_string("res://assets/ra2/cursors/mouse.json"))
 	sprite = Sprite2D.new()
 	sprite.centered = false
@@ -26,6 +34,8 @@ func _ready() -> void:
 	add_child(sprite)
 	sprite.hide()
 	# YR MouseCursorType::SpyPlane, MOUSE.SHA 504..511, interval 4 at 15 ticks/s.
+	# YR MouseCursorType::AirStrike, MOUSE.SHA frames 480..487.
+	metadata.sequences["boris_airstrike"] = {"count":8,"offset":0,"hotspot":[27,21],"fps":3.75}
 	metadata.sequences["spy_plane"] = {"count":8,"offset":0,"hotspot":[27,21],"fps":3.75}
 	metadata.sequences["para_drop"] = {"count":10,"offset":0,"hotspot":[27,21],"fps":3.75}
 	# MOUSE.SHA, YR mouse table entries 0x35 and 0x39. Iron has no timed advance.
@@ -37,12 +47,57 @@ func _ready() -> void:
 		for index in int(sequence.count):
 			var cell := int(sequence.offset) + index
 			var texture := AtlasTexture.new()
-			texture.atlas = preload("res://assets/ra2/cursors/spy_plane.png") if key == "spy_plane" else SHEET
+			texture.atlas = preload("res://assets/ra2/cursors/spy_plane.png") if key == "spy_plane" else sheet
+			if key == "boris_airstrike": texture.atlas = preload("res://assets/ra2/cursors/boris_airstrike.png")
 			if key in ["nuke","iron"]: texture.atlas = SOVIET_CURSORS
 			if key == "para_drop": texture.atlas = preload("res://assets/ra2/cursors/american_paradrop.png")
 			texture.region = Rect2((cell % int(metadata.cols)) * int(metadata.cell[0]), (cell / int(metadata.cols)) * int(metadata.cell[1]), metadata.cell[0], metadata.cell[1])
 			frames.append(texture)
 		textures[key] = frames
+	_load_atlas_aliases()
+
+func _load_atlas_aliases() -> void:
+	if not ResourceLoader.exists(MOUSE_ATLAS_PATH) or not FileAccess.file_exists(MOUSE_ATLAS_META_PATH):
+		return
+	var atlas := ResourceLoader.load(MOUSE_ATLAS_PATH) as Texture2D
+	var atlas_meta: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(MOUSE_ATLAS_META_PATH))
+	var states: Dictionary = atlas_meta.get("states", {})
+	for source_name in states:
+		var range: Array = states[source_name]
+		var key := _atlas_key(source_name)
+		if key.is_empty() or textures.has(key):
+			continue
+		var frames: Array = []
+		for cell in range(int(range[0]), int(range[1]) + 1):
+			var texture := AtlasTexture.new()
+			texture.atlas = atlas
+			texture.region = Rect2((cell % int(atlas_meta.cols)) * int(atlas_meta.fw), (cell / int(atlas_meta.cols)) * int(atlas_meta.fh), int(atlas_meta.fw), int(atlas_meta.fh))
+			frames.append(texture)
+		textures[key] = frames
+		metadata.sequences[key] = {"count": frames.size(), "hotspot": [27, 21], "fps": 15.0}
+	# These are the semantic names used by the battle resolver. They retain the
+	# original atlas art while keeping the older cursor API stable.
+	_alias_cursor("blocked", "no_action")
+	_alias_cursor("patrol", "guard")
+	_alias_cursor("reverse_attack", "attack_move")
+	_alias_cursor("reverse_cover", "guard")
+	_alias_cursor("reaper_split", "attack_range")
+	_alias_cursor("repair", "side_repair")
+	_alias_cursor("repair_blocked", "no_repair")
+	_alias_cursor("sell_blocked", "no_sell")
+	_alias_cursor("enter", "occupy")
+	_alias_cursor("enter_blocked", "no_occupy")
+	_alias_cursor("deploy", "deploy")
+	_alias_cursor("undeploy", "deploy")
+
+func _atlas_key(source_name: String) -> String:
+	return source_name.to_snake_case()
+
+func _alias_cursor(alias: String, source: String) -> void:
+	if textures.has(alias) or not textures.has(source):
+		return
+	textures[alias] = textures[source]
+	metadata.sequences[alias] = metadata.sequences[source].duplicate(true)
 
 func _process(delta: float) -> void:
 	refresh(delta)
@@ -59,6 +114,8 @@ func release_pointer() -> void:
 		_owns_pointer = false
 
 func refresh(delta: float) -> void:
+	if sprite == null:
+		return
 	var mouse := get_viewport().get_mouse_position()
 	var active: bool = is_instance_valid(battle) and battle.world_input_enabled() \
 		and not battle._pointer_over_ui() and get_viewport().get_visible_rect().has_point(mouse)
@@ -102,7 +159,7 @@ func _native_frame(texture: AtlasTexture) -> Image:
 
 func engineer_cursor(engineer, target) -> String:
 	if preload("res://scripts/units/civilian_orders.gd").can_repair(engineer,target): return "repair"
-	if target.side == engineer.side or (target.side == "neutral" and target.building_id == "CAHSE01"): return "repair"
+	if target.side == engineer.side or (target.side == "neutral" and preload("res://scripts/units/civilian_orders.gd").civilian_garrison(target)): return "repair"
 	return "enter"
 
 func sample_pointer(world: Vector2) -> String:
@@ -132,7 +189,9 @@ func resolve(world: Vector2, empty_pixels := false, friendly_hint = null, sample
 		var source = battle._armed_superweapon
 		match source.sw_type():
 			"SpyPlane": return "spy_plane"
-			"AmerParaDrop": return "para_drop" if source.sw_ready() and preload("res://scripts/world/american_paradrop.gd").valid_zone(battle,world) else "blocked"
+			"AmerParaDrop","ParaDrop": return "para_drop" if source.sw_ready() and preload("res://scripts/world/american_paradrop.gd").valid_zone(battle,world) else "blocked"
+			"LightningStorm": return "power" if source.sw_ready() else "blocked"
+			"Chronosphere", "ChronoSphere": return "chrono" if source.sw_ready() else "blocked"
 			"IronCurtain", "MultiMissile":
 				if not source.sw_ready() or not preload("res://scripts/units/soviet_specials.gd").can_aim_at(source,world): return "blocked"
 				return "iron" if source.sw_type()=="IronCurtain" else "nuke"
@@ -150,6 +209,12 @@ func resolve(world: Vector2, empty_pixels := false, friendly_hint = null, sample
 				return engineer_cursor(caster, site)
 	if battle.cast_slot >= 0 or battle.command_mode == "superweapon":
 		return "attack"
+	if battle.command_mode == Unit.ReverseAttack.ID:
+		return "reverse_attack" if battle.selected_units.size() == 1 else "blocked"
+	if battle.command_mode == Unit.YRTalents.REVERSE:
+		return "reverse_cover" if battle.selected_units.size() == 1 else "blocked"
+	if battle.command_mode == ReaperSplit.ID:
+		return "reaper_split" if battle.selected_units.size() == 1 else "blocked"
 	if battle.command_mode in ["repair", "sell"]:
 		var action: String = battle.command_mode
 		var building = battle._pick_building_at(world, "")
@@ -158,7 +223,9 @@ func resolve(world: Vector2, empty_pixels := false, friendly_hint = null, sample
 		return "attack" if ForceFire.available(battle, ForceFire.pick(battle, world, sampled_actor, empty_pixels or sampled_actor != null)) else "blocked"
 	if battle.command_mode == "attack_move":
 		return "attack_move"
-	if battle.command_mode in ["move", "patrol"]:
+	if battle.command_mode == "patrol":
+		return "patrol"
+	if battle.command_mode == "move":
 		return "move"
 	var target = null if empty_pixels else battle._pick_enemy_at(world)
 	if target != null and not battle.actor_alive(target):
@@ -198,6 +265,8 @@ func resolve(world: Vector2, empty_pixels := false, friendly_hint = null, sample
 		var boarding: Dictionary = battle.boarding_order_status(special_target)
 		if not boarding.is_empty():
 			return "enter" if not boarding.passengers.is_empty() else "enter_blocked"
+	if battle.hero_miner_attack_order(target):
+		return attack_cursor(target)
 	if battle._cursor_on_ore(world):
 		return "harvest"
 	var depot = battle.repair_facility_from_pick(world, friendly_building)
@@ -220,6 +289,7 @@ func attack_cursor(target) -> String:
 		if not battle.actor_alive(unit) or unit.embarked_in != null or not unit.attack_domain_valid(target): continue
 		if CommandoCombat.building_c4(unit, target): return "c4"
 		if CommandoCombat.sabotage(unit, target): return "sabotage"
+		if unit.unit_id == "BORIS" and target is Building: return "boris_airstrike"
 	return "attack"
 
 func can_attack(target) -> bool:
@@ -229,7 +299,7 @@ func can_attack(target) -> bool:
 		if AlliedAbilities.can_order(unit, target, "allied_disguise"): return true
 		if not is_instance_valid(unit) or unit.hp <= 0.0 or unit.is_queued_for_deletion() or unit.embarked_in != null:
 			continue
-		if unit.is_harvester or unit.weapon.is_empty():
+		if unit.is_ordinary_harvester() or unit.weapon.is_empty():
 			continue
 		if unit.attack_domain_valid(target):
 			return true

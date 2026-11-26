@@ -1,0 +1,695 @@
+{
+ "units": {
+  "BRUTE": {
+   "id": "BRUTE",
+   "name": "狂兽人",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 200,
+   "ra2_armor": "plate",
+   "sight": 440,
+   "cost": 500,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 10,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "Punch",
+    "damage": 100,
+    "cooldown": 4,
+    "range": 77,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Battering",
+    "ra2_projectile": "InvisibleLow",
+    "report": "BruteSmashAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "Smash",
+    "damage": 100,
+    "cooldown": 4,
+    "range": 60.50000000000001,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Smashing",
+    "ra2_projectile": "InvisibleLow",
+    "report": "BruteSmashAttack",
+    "ra2_aa": false
+   },
+   "desc": "近身攻击步兵和车辆。用步兵火力在它靠近前将它击倒。"
+  },
+  "VIRUS": {
+   "id": "VIRUS",
+   "name": "病毒狙击手",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 100,
+   "ra2_armor": "none",
+   "sight": 495,
+   "cost": 700,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 8,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "Virusgun",
+    "damage": 125,
+    "cooldown": 6.666666666666667,
+    "range": 550,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Virus",
+    "ra2_projectile": "InvisibleLow",
+    "report": "VirusAttack",
+    "ra2_aa": false
+   },
+   "desc": "远距离狙击步兵。"
+  },
+  "YURIPR": {
+   "id": "YURIPR",
+   "name": "尤里改",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 150,
+   "ra2_armor": "flak",
+   "sight": 495,
+   "cost": 1500,
+   "role": "infantry",
+   "role_name": "步兵",
+   "armor": "unarmored",
+   "tags": [
+    "infantry"
+   ],
+   "radius": 8,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "SuperMindControl",
+    "damage": 1,
+    "cooldown": 13.333333333333334,
+    "range": 385,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_ControllerBuilding",
+    "ra2_projectile": "PsychicControl",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "SuperPsiWave",
+    "damage": 250,
+    "cooldown": 3.3333333333333335,
+    "range": 55,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_SuperPsiPulse",
+    "ra2_projectile": "Psychic",
+    "report": "YuriDeploy",
+    "ra2_aa": false
+   },
+   "desc": "控制一个敌方地面单位或建筑。"
+  },
+  "MIND": {
+   "id": "MIND",
+   "name": "精神控制车",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 500,
+   "ra2_armor": "heavy",
+   "sight": 495,
+   "cost": 1750,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "heavy",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "MultipleMindControlTank",
+    "damage": 3,
+    "cooldown": 0.6666666666666666,
+    "range": 330,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_Controller",
+    "ra2_projectile": "PsychicControl",
+    "ra2_aa": false
+   },
+   "desc": "可以同时控制多个地面单位，控制过多会损失生命。"
+  },
+  "TELE": {
+   "id": "TELE",
+   "name": "磁电坦克",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 150,
+   "ra2_armor": "light",
+   "sight": 550,
+   "cost": 1000,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "light",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 75,
+   "move": {
+    "speed_units": 5,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "MagneticBeam",
+    "damage": 5000,
+    "cooldown": 1.3333333333333333,
+    "range": 660,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_LocomotorBeam",
+    "ra2_projectile": "InvisibleHigh",
+    "report": "MagnetronAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "MagneShake",
+    "damage": 80,
+    "cooldown": 7.333333333333333,
+    "range": 550,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_MagneShakeWH",
+    "ra2_projectile": "InvisibleHigh",
+    "report": "MagnetronMagneShake",
+    "ra2_aa": false
+   },
+   "desc": "用磁力拖近车辆，用震荡攻击建筑。"
+  },
+  "CAOS": {
+   "id": "CAOS",
+   "name": "神经突击车",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 130,
+   "ra2_armor": "light",
+   "sight": 330,
+   "cost": 1000,
+   "role": "vehicle",
+   "role_name": "载具",
+   "armor": "light",
+   "tags": [
+    "vehicle"
+   ],
+   "radius": 17,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "crushable": false
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "ChaosAttack",
+    "damage": 600,
+    "cooldown": 3,
+    "range": 165,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_PsychGasCreate",
+    "ra2_projectile": "InvisibleLow",
+    "report": "ChaosDroneAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "VirtualScanner",
+    "damage": 1,
+    "cooldown": 1,
+    "range": 275,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_SA",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_aa": true
+   },
+   "desc": "释放混乱气体，让附近的地面部队攻击自己人。"
+  },
+  "DISK": {
+   "id": "DISK",
+   "name": "镭射幽浮",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 600,
+   "ra2_armor": "light",
+   "sight": 495,
+   "cost": 1750,
+   "role": "air",
+   "role_name": "空军",
+   "armor": "air",
+   "tags": [
+    "air"
+   ],
+   "radius": 17,
+   "speed": 225,
+   "move": {
+    "speed_units": 15,
+    "crushable": false
+   },
+   "immune_to_psionics": false,
+   "weapon": {
+    "name": "DiskLaser",
+    "damage": 90,
+    "cooldown": 5.333333333333333,
+    "range": 385,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_DiskWH",
+    "ra2_projectile": "InvisibleAll",
+    "report": "FloatingDiscAttack",
+    "ra2_aa": true
+   },
+   "secondary_weapon": {
+    "name": "DiskDrain",
+    "damage": 1,
+    "cooldown": 3.3333333333333335,
+    "range": 82.5,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_warhead": "YR_S07_AntiB",
+    "ra2_projectile": "InvisibleVertical",
+    "report": "KirovAttack",
+    "ra2_aa": false
+   },
+   "desc": "用激光对空对地，靠近电厂或矿场可干扰敌方经济。"
+  }
+ },
+ "buildings": {
+  "SOV07_BEACON": {
+   "id": "SOV07_BEACON",
+   "name": "心灵信标",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 750,
+   "ra2_armor": "wood",
+   "sight": 550,
+   "cost": 1000,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "2x2",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -100,
+   "powered": false,
+   "desc": "摧毁信标，解救对应基地。"
+  },
+  "CATRAN03": {
+   "id": "CATRAN03",
+   "name": "尤里的城堡",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "wood",
+   "sight": 330,
+   "cost": 0,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "4x4",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": 0,
+   "powered": false,
+   "desc": "摧毁城堡，结束尤里的抵抗。"
+  },
+  "YAPSYT": {
+   "id": "YAPSYT",
+   "name": "心灵控制塔",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 455,
+   "ra2_armor": "steel",
+   "sight": 275,
+   "cost": 1500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "1x1",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -100,
+   "powered": false,
+   "desc": "控制附近的敌方地面部队。摧毁塔可解放被控制的部队。"
+  },
+  "CASLAB": {
+   "id": "CASLAB",
+   "name": "秘密实验室",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "steel",
+   "sight": 330,
+   "cost": 0,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "3x3",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": 0,
+   "powered": false,
+   "desc": "尤里控制的技术设施。"
+  },
+  "YATECH": {
+   "id": "YATECH",
+   "name": "尤里作战实验室",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 500,
+   "ra2_armor": "wood",
+   "sight": 330,
+   "cost": 2000,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "3x2",
+   "radius": 35,
+   "builds": [],
+   "capturable": true,
+   "power": -100,
+   "powered": false,
+   "desc": "尤里研究高阶作战技术的设施。"
+  },
+  "NACLON": {
+   "id": "NACLON",
+   "name": "复制中心",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "wood",
+   "sight": 275,
+   "cost": 2500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "2x2",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false,
+   "desc": "尤里的兵员复制设施。"
+  }
+ },
+ "warheads": {
+  "YR_S07_Battering": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 0.3,
+    "steel": 0.3,
+    "concrete": 0.2,
+    "special_1": 2,
+    "special_2": 1
+   },
+   "inf_death": 10,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_Smashing": {
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 1,
+    "medium": 0.2,
+    "heavy": 1,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "inf_death": 10,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_Virus": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.01,
+    "medium": 0.01,
+    "heavy": 0.01,
+    "wood": 0.01,
+    "steel": 0.01,
+    "concrete": 0.01,
+    "special_1": 0.01,
+    "special_2": 1
+   },
+   "inf_death": 8,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_ControllerBuilding": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 1,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 1,
+    "steel": 1,
+    "concrete": 1,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "inf_death": 0,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "yes"
+   }
+  },
+  "YR_S07_SuperPsiPulse": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.5,
+    "medium": 0.5,
+    "heavy": 0.5,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "inf_death": 6,
+   "cell_spread": 5,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_Controller": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 1,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "inf_death": 0,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "yes"
+   }
+  },
+  "YR_S07_LocomotorBeam": {
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 1,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 1,
+    "special_2": 0
+   },
+   "inf_death": 0,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_MagneShakeWH": {
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 0,
+    "medium": 1,
+    "heavy": 0,
+    "wood": 1,
+    "steel": 1,
+    "concrete": 1,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "inf_death": 0,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_PsychGasCreate": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.5,
+    "medium": 0.5,
+    "heavy": 0.5,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "inf_death": 1,
+   "cell_spread": 3,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_SA": {
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.8,
+    "light": 0.5,
+    "medium": 0.25,
+    "heavy": 0.25,
+    "wood": 0.75,
+    "steel": 0.5,
+    "concrete": 0.25,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "inf_death": 1,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_DiskWH": {
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.5,
+    "medium": 0.5,
+    "heavy": 0.5,
+    "wood": 1,
+    "steel": 1,
+    "concrete": 1,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "inf_death": 7,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  },
+  "YR_S07_AntiB": {
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 1,
+    "steel": 1,
+    "concrete": 1,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "inf_death": 0,
+   "cell_spread": 0,
+   "extra": {
+    "MindControl": "no"
+   }
+  }
+ }
+}

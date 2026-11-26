@@ -1,0 +1,24 @@
+{
+ "id": "SOV07_BEACON",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "SOV07_NAPSYB_A",
+   "loopStart": 0,
+   "loopEnd": 14,
+   "frames": 30,
+   "rate": 220,
+   "shadow": true,
+   "loopCount": -1,
+   "dmg": {
+    "image": "SOV07_NAPSYB_A",
+    "loopStart": 15,
+    "loopEnd": 29,
+    "frames": 30,
+    "rate": 220,
+    "shadow": true,
+    "loopCount": -1
+   }
+  }
+ ]
+}

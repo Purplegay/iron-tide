@@ -18,10 +18,12 @@ static func pivot_angle(unit: Unit, wanted: float, error: float) -> float:
 static func open_corridor(unit: Unit, wanted: float) -> bool:
 	var reach := maxf(100.0, unit.move_speed * 0.8)
 	if not unit.has_move_order or unit.position.distance_to(unit.move_target) <= maxf(160.0, reach * 1.5): return false
-	# apply_separation has refreshed this local physics query before steering.
+	# Other consumers may run before separation or after a reset in this step.
+	unit._local_traffic.ensure_candidates(unit)
 	if unit._local_traffic.query_origin.distance_to(unit.global_position) > 24.0: return false
 	for other in unit._local_traffic.nearby:
 		if not is_instance_valid(other) or other.is_queued_for_deletion() or not other is Node2D: continue
+		if other is CollisionObject2D and (other.collision_layer & (8 if unit.is_air else 1)) == 0: continue
 		var radius = other.get("radius")
 		var clearance: float = unit.radius + (float(radius) if radius != null else 40.0) + reach
 		if unit.global_position.distance_to(other.global_position) < clearance: return false

@@ -110,4 +110,3 @@ static func draw(unit) -> void:
 	preload("res://scripts/units/leizhu_command.gd").draw(unit)
 	preload("res://scripts/units/leizhu_cards.gd").draw(unit)
 	preload("res://scripts/units/leizhu_defense.gd").draw(unit)
-	if unit.special.get(KEY,{}).has("shield"):unit.draw_arc(Vector2.ZERO,unit.radius+8,0,TAU,32,Color(.65,.8,1,.7),1.5,true)

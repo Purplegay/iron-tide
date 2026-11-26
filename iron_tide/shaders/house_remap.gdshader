@@ -30,12 +30,14 @@ uniform float cos_tol : hint_range(0.9, 1.0) = 0.995;    // 方向匹配阈值�
 uniform float min_len : hint_range(0.0, 1.0) = 0.10;     // 亮度下限（近黑不改，方向不可靠）
 uniform float strength : hint_range(0.0, 1.0) = 1.0;     // 混合强度（1 = 完全重映射）
 
+uniform bool psi_lift = false;
 uniform bool fracture_ink = false;
 uniform bool temporal_active = false;
 uniform float temporal_progress : hint_range(0.0, 1.0) = 0.0;
 uniform float temporal_phase = 0.0;
 uniform float c4_flash : hint_range(0.0, 1.0) = 0.0;
 uniform int paint_mode = 0;
+uniform bool hollywood_paint = false;
 uniform int unit_skin = 0;
 uniform float crystal_growth = 0.0;
 uniform float signature_charge = 0.0;
@@ -49,6 +51,19 @@ void vertex() {
 	skin_local = VERTEX;
 	// Colored UI primitives/text and shadows retain their ordinary appearance.
 	sprite_tint = step(0.999, min(COLOR.r, min(COLOR.g, COLOR.b)));
+}
+
+// The retail Purple HSV sets an upper bound. Roll off the bright painted
+// surfaces in Hollywood daylight, keeping dark markings distinct.
+vec3 house_paint(float level) {
+	if (!hollywood_paint) {
+		return target_color * level;
+	}
+	float shade = clamp(level, 0.0, 1.0);
+	float highlight = smoothstep(0.30, 1.0, shade);
+	float peak = max(target_color.r, max(target_color.g, target_color.b));
+	vec3 pigment = mix(target_color, vec3(peak), 0.27 * highlight);
+	return pigment * shade * (1.0 - 0.18 * highlight);
 }
 
 void fragment() {
@@ -67,7 +82,21 @@ void fragment() {
 		}
 		// TNKD turbine draw uses a reserved vertex tint for its fixed blue exhaust.
 		bool fixed_exhaust=distance(draw_tint.rgb,vec3(0.73,0.98,1.0))<0.01;
-		if (paint_mode == 4 && sprite_tint > 0.5 && textureSize(TEXTURE, 0).x > 8) {
+		if ((paint_mode >= 6 && paint_mode <= 10) && textureSize(TEXTURE, 0).x > 8) {
+			// City sheets retain the original red ramp; ordinary hospital/shop sheets bake it blue.
+			vec3 texel = texture(TEXTURE, UV).rgb;
+			if (paint_mode >= 8 && length(texel) > min_len && dot(normalize(texel), bn) >= cos_tol) {
+				rgb = house_paint(dot(texel, base_color) / bb) * draw_tint.rgb;
+			} else if (paint_mode <= 8 && texel.r > 0.0 && texel.g == 0.0 && texel.b == 0.0) {
+				rgb = house_paint(texel.r * 255.0 / 252.0) * draw_tint.rgb;
+			} else if (paint_mode == 8 && texel.r >= 0.09 && texel.r >= texel.g && texel.g > texel.b && texel.r - texel.g < 0.075 && texel.g - texel.b < 0.12) {
+				// Keep the brown panels visible beneath a light house-color wash.
+				rgb = mix(texel, house_paint(texel.r), 0.20) * draw_tint.rgb;
+			} else if ((paint_mode == 7 || paint_mode == 10) && texel.r >= 0.25 && texel.r - texel.b >= 0.06 && abs(texel.r - texel.g) <= 0.04) {
+				// Hospital limestone palette, including its shaded face. Keep the red cross and glazing.
+				rgb = mix(texel, house_paint(texel.r), 0.20) * draw_tint.rgb;
+			}
+		} else if (paint_mode == 4 && sprite_tint > 0.5 && textureSize(TEXTURE, 0).x > 8) {
 			rgb = vec3(dot(rgb, vec3(0.299, 0.587, 0.114)));
 		} else if (paint_mode >= 1 && paint_mode <= 3 && textureSize(TEXTURE, 0).x > 8) {
 			// Match the unlit atlas pixel. The dive tint changes hue before fragment COLOR is read.
@@ -82,10 +111,11 @@ void fragment() {
 			if (band) {
 				// Voxel hulls keep the baked ramp shading. SQD artwork uses a lifted ramp.
 				float value = paint_mode == 3 ? shade : 0.25 + 0.75 * shade;
-				rgb = target_color * value * max(draw_tint.r, max(draw_tint.g, draw_tint.b));
+				rgb = house_paint(value) * max(draw_tint.r, max(draw_tint.g, draw_tint.b));
 			}
 		} else if (paint_mode == 0 && !fixed_exhaust && sim >= cos_tol && lv > 0.0 && (unit_skin < 6 || textureSize(TEXTURE,0).x > 8)) {
-			rgb = mix(rgb, target_color * lv, strength);
+			vec3 paint = textureSize(TEXTURE, 0).x > 8 ? house_paint(lv) : target_color * lv;
+			rgb = mix(rgb, paint, strength);
 		}
 		if (unit_skin >= 2 && sprite_tint > 0.5 && textureSize(TEXTURE,0).x > 8 && sim < cos_tol && len > 0.12) {
 			float light = dot(rgb,vec3(0.299,0.587,0.114));
@@ -176,6 +206,13 @@ void fragment() {
 		if (c4_flash > 0.0 && sprite_tint > 0.5 && textureSize(TEXTURE, 0).x > 8 && len > 0.12) {
 			float light = dot(rgb, vec3(0.299, 0.587, 0.114));
 			rgb = mix(rgb, vec3(0.45 + light * 0.7, light * 0.12, light * 0.07), c4_flash * 0.85);
+		}
+		if (psi_lift) {
+			vec2 step_uv = TEXTURE_PIXEL_SIZE * 2.0;
+	vec2 slope = vec2(texture(TEXTURE, UV + vec2(step_uv.x,0.0)).a - texture(TEXTURE, UV - vec2(step_uv.x,0.0)).a,
+		texture(TEXTURE, UV + vec2(0.0,step_uv.y)).a - texture(TEXTURE, UV - vec2(0.0,step_uv.y)).a);
+	float rim = pow(clamp(length(slope),0.0,1.0),4.0);
+			rgb += vec3(2.0,2.0,10.0)*rim*0.65;
 		}
 		COLOR = vec4(rgb, alpha);
 	}

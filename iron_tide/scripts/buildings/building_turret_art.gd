@@ -19,6 +19,8 @@ var recoil_image: Image
 var _recoil_elapsed := -1.0
 var drawn_source := Rect2()
 var drawn_image: Image
+var gatling: Dictionary = {}
+var spin_pose := 0
 
 func setup(id: String) -> void:
 	var path := "res://assets/ra2/bldturret/" + id + ".json"
@@ -29,6 +31,7 @@ func setup(id: String) -> void:
 		return
 	art = RA2Art.art(str(descriptor.get("image", "")))
 	origins = descriptor.get("origins", [])
+	if descriptor.has("stages"): gatling = descriptor
 	muzzles = descriptor.get("muzzles", [])
 	recoil = descriptor.get("recoil", {})
 	if not recoil.is_empty():
@@ -96,7 +99,7 @@ func _pose_origins() -> Array:
 	return recoil.poses[pose - 1].origins if pose > 0 else origins
 
 func muzzle_point(base: Vector2, body_size: Vector2, scale: float) -> Vector2:
-	var f := facing()
+	var f := facing() + spin_pose * int(art.get("facings",0))
 	if f < 0 or f >= muzzles.size() or f >= origins.size():
 		return Vector2.INF
 	var pose := recoil_pose()
@@ -108,9 +111,9 @@ func muzzle_point(base: Vector2, body_size: Vector2, scale: float) -> Vector2:
 
 func draw_on(canvas: CanvasItem, base: Vector2, body_size: Vector2, scale: float, tint := Color.WHITE) -> void:
 	var texture: Texture2D = art.get("tex")
-	if texture == null or origins.size() != int(art.get("facings", 0)):
+	if texture == null or origins.size() < int(art.get("facings", 0)):
 		return
-	frame = facing()
+	frame = facing() + spin_pose * int(art.facings)
 	var pose := recoil_pose()
 	var anchors := _pose_origins()
 	var origin := Vector2(float(anchors[frame][0]), float(anchors[frame][1]))

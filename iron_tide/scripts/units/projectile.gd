@@ -101,11 +101,12 @@ func setup(p_from: Vector2, p_target, p_weapon: Dictionary, p_damage: float, p_b
 		if is_instance_valid(p_source) and p_source is Building: world = p_source.battle
 		if world != null and Rect2(Vector2.ZERO, Vector2.ONE * world.map_size).has_point(scattered):
 			target_point = scattered
-	_apply_ra2_projectile(str(p_weapon.get("ra2_projectile", "")))
+	var projectile_id := str(p_weapon.get("ra2_projectile", ""))
+	_apply_ra2_projectile(projectile_id)
 	if ra2_homing and p_source is Unit and p_source.unit_id == "SUB":
 		_heading = Vector2.from_angle(p_source.hull_angle)
-	var projectile_rules: Dictionary = GameData.ra2_projectile(str(p_weapon.get("ra2_projectile", ""))).get("extra", {})
-	splinters = {"weapon": str(projectile_rules.get("ShrapnelWeapon", "")), "count": int(projectile_rules.get("ShrapnelCount", 0)), "visited": []}
+	var projectile_rules: Dictionary = GameData.projectile_combat_rule(projectile_id)
+	splinters = {"weapon": projectile_rules.get("shrapnel_weapon", ""), "count": projectile_rules.get("shrapnel_count", 0), "visited": []}
 	if p_source is Unit and p_source.unit_id=="HTNK" and target is Building and str(attacker_bonus.impact_weapon).trim_prefix("YR_SOV_") in ["120mm","120mmE"] and Unit.YRTalents.enabled(p_source,Unit.YRTalents.SPLIT):
 		splinters[Unit.YRTalents.SPLIT]=Unit.YRTalents.value(p_source,Unit.YRTalents.SPLIT)*0.01
 	if p_source is Unit and p_source.unit_id == "SREF":
@@ -139,13 +140,14 @@ func setup(p_from: Vector2, p_target, p_weapon: Dictionary, p_damage: float, p_b
 		global_position = _arc_from
 		_heading = forward
 		splinters.drop_height = height
-		splinters.drop_accel = maxf(1.0,float(projectile_rules.get("Acceleration",1)))
+		splinters.drop_accel = projectile_rules.get("drop_accel", 1.0)
 		splinters.drop_speed = maxf(1.0,float(GameData.ra2_weapon(str(p_weapon.ra2_weapon_id)).get("speed",20)))
 	if p_weapon.get("flak_scatter", false): splinters.flak_airburst = ra2_aa
 	if ForceFire.active(p_source, p_target): splinters["force_fire"] = true
-	var raw := GameData.ra2_weapon(str(p_weapon.get("ra2_weapon_id", "")))
-	is_sonic = GameData._ra2_flag(raw.get("extra", {}).get("IsSonic"))
+	var weapon_id := str(p_weapon.get("ra2_weapon_id", ""))
+	is_sonic = GameData.weapon_is_sonic(weapon_id)
 	if is_sonic:
+		var raw := GameData.ra2_weapon(weapon_id)
 		_sonic_origin = p_from
 		_heading = p_from.direction_to(target_point)
 		if _heading.is_zero_approx():
@@ -156,7 +158,7 @@ func setup(p_from: Vector2, p_target, p_weapon: Dictionary, p_damage: float, p_b
 			_sonic_range=p_from.distance_to(target_point)+110.0
 			_sonic_damage=base_damage*float(attacker_bonus.expansion_sonic)
 			splinters.expansion_sonic_hits=[]
-		_sonic_affects_allies = Ra2Damage._extra(ra2_warhead, "AffectsAllies").to_lower() not in ["no", "false", "0"]
+		_sonic_affects_allies = not GameData.warhead_blocks_friendly_damage(ra2_warhead)
 		attacker_bonus = p_bonus.duplicate(true)
 		if is_instance_valid(p_source):
 			_sonic_source = weakref(p_source)
@@ -360,8 +362,7 @@ func _sonic_pulse(front: Vector2) -> void:
 				if not _sonic_affects_allies:
 					continue
 				if not _sonic_source_type.is_empty() and str(t.get("unit_id")) == _sonic_source_type:
-					var extra: Dictionary = GameData.ra2_source_units.get(_sonic_source_type, {}).get("extra", {})
-					if GameData._ra2_flag(extra.get("TypeImmune")):
+					if GameData.unit_sonic_type_immune(_sonic_source_type):
 						continue
 			if attacker_bonus.has("expansion_sonic"):
 				if BattleRequest.friendly(str(t.get("side")),owner_side) or splinters.expansion_sonic_hits.has(t):continue

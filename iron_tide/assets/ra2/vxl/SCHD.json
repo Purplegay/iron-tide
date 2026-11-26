@@ -13,5 +13,6 @@
   "surface_render": "surface-vpl-2x",
   "detail_scale": 2,
   "split_shadow": true,
-  "turret": "SCHD_tur"
+  "turret": "SCHD_tur",
+  "palette_lit": true
 }

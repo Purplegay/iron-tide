@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/boris_slot3_hang_probe.gd" id="1"]
+
+[node name="BorisSlot3HangProbe" type="Node"]
+script = ExtResource("1")

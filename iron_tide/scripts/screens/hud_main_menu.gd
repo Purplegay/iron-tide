@@ -9,6 +9,17 @@ var title_ctrl: Control
 var save_panel
 
 func _ready() -> void:
+	var missing := GameData.missing_battle_resources()
+	if not missing.is_empty():
+		var dialog := AcceptDialog.new()
+		dialog.title = "游戏资源不完整"
+		dialog.dialog_text = "无法进入战场。请将完整游戏包解压到新文件夹，再从那里启动游戏。\n\n缺少或无法读取的文件：\n" + "\n".join(missing)
+		dialog.ok_button_text = "退出游戏"
+		dialog.confirmed.connect(get_tree().quit)
+		dialog.canceled.connect(get_tree().quit)
+		add_child(dialog)
+		dialog.popup_centered()
+		return
 	Music.set_context("menu")
 	set_anchors_preset(Control.PRESET_FULL_RECT)
 	_build()
@@ -69,7 +80,8 @@ func _build() -> void:
 	var play_modes := HBoxContainer.new()
 	play_modes.add_theme_constant_override("separation", 12)
 	vb.add_child(play_modes)
-	_add_menu_button(play_modes, "战 役", "banner", "选择关卡，进入战场", func(): get_tree().change_scene_to_file("res://scenes/lobby.tscn"))
+	_add_menu_button(play_modes, "战 役", "banner", "选择阵营与任务", func(): get_tree().change_scene_to_file("res://scenes/campaign_command.tscn"))
+	_add_menu_button(play_modes, "遭遇战", "banner", "设置地图和对手", func(): get_tree().change_scene_to_file("res://scenes/lobby.tscn"))
 	var expedition := _add_menu_button(play_modes, "肉鸽远征", "compass", "招募部队，率领幸存者连闯 %d 关" % preload("res://scripts/expedition/catalog.gd").TOTAL, func(): get_tree().change_scene_to_file("res://scenes/expedition.tscn"))
 	var attention = preload("res://scripts/expedition/attention.gd")
 	preload("res://scripts/ui/attention_dot.gd").mark(expedition, attention.any(Expedition.state), attention.summary(Expedition.state))
@@ -91,6 +103,10 @@ func _build() -> void:
 	guide.add_theme_constant_override("icon_max_width", 22)
 	guide.pressed.connect(preload("res://scripts/expedition/field_guide.gd").open.bind(self))
 	references.add_child(guide)
+	var collection := kit.make_button("CG 收藏",16)
+	collection.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	collection.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/cg_collection.tscn"))
+	references.add_child(collection)
 	var progression := HBoxContainer.new()
 	progression.add_theme_constant_override("separation", 12)
 	vb.add_child(progression)

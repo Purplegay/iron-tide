@@ -2,9 +2,9 @@ extends RefCounted
 
 const ID := "YURIKO"
 const ART := "res://assets/ra3/yuriko/"
-const SKINS := ["实验服 · I","校服 · II","校服 · III"]
-const PORTRAITS := ["Portrait_Japan_Yuriko_01","Portrait_Japan_Yuriko_03","Portrait_Japan_Yuriko_02"]
-const COLORS := [Color("#94df72"),Color("#ac9cff"),Color("#f48a56")]
+const SKINS := ["实验服 · I","校服 · II","校服 · III","婚纱 · 同一站下车"]
+const PORTRAITS := ["Portrait_Japan_Yuriko_01","Portrait_Japan_Yuriko_03","Portrait_Japan_Yuriko_02","Portrait_Yuriko_Wedding"]
+const COLORS := [Color("#94df72"),Color("#ac9cff"),Color("#f48a56"),Color("#f3d6ac")]
 const THROW_RADIUS := 37.5
 const BASE_DURATION := 180
 const GUARD_OFFSETS := [Vector2(60,0),Vector2(45,45),Vector2(45,-45),Vector2(30,60),Vector2(30,-60)]
@@ -276,7 +276,7 @@ static func cast_at(u,key: String,p:Vector2,level:int) -> bool:
 			AlliedAbilities.change_side(t,u.side)
 			t.set_fire_stance("free")
 			guard_marker(world,t,u)
-		Ra2Sfx.play("JAP_Yuriko_PsychicDominationMS",p)
+		Ra2Sfx.play("JAP_Yuriko_PsychicDomination2",p)
 		u.special.psi_guards = targets
 		u.special.psi_cast_anim = 2.0
 		u.special.psi_cd_Lure = cooldown_duration(u,"Lure")
@@ -294,6 +294,11 @@ static func cast_at(u,key: String,p:Vector2,level:int) -> bool:
 	return true
 
 static func guard_marker(world,t,caster=null) -> void:
+	if not is_instance_valid(caster):
+		for candidate in world.units:
+			if AlliedAbilities.alive(candidate) and candidate.unit_id == ID and t in candidate.special.get("psi_guards", []):
+				caster = candidate
+				break
 	if t.has_node("YurikoGuardMarker"):
 		if is_instance_valid(caster):t.get_node("YurikoGuardMarker").caster_ref=weakref(caster)
 		return
@@ -367,8 +372,13 @@ static func crush_pose(t,dt:float) -> void:
 static func apply_lift_material(t) -> void:
 	if t.has_meta("psi_lift_material"):return
 	var original:Material=t.material
-	var mat:=ShaderMaterial.new()
-	mat.shader=preload("res://shaders/yuriko_lift.gdshader")
+	var mat: ShaderMaterial
+	if original is ShaderMaterial and original.shader == HouseColor.shader_res():
+		mat = original.duplicate()
+		mat.set_shader_parameter("psi_lift", true)
+	else:
+		mat = ShaderMaterial.new()
+		mat.shader = preload("res://shaders/yuriko_lift.gdshader")
 	t.set_meta("psi_lift_material",mat)
 	if original!=null:t.set_meta("psi_previous_material",original)
 	t.material=mat
@@ -460,7 +470,7 @@ static func update_guard(world: Battle, hero: Unit, guard: Unit) -> void:
 	if guard.attack_ordered: guard.order_stop(false)
 	var attack_move := not regroup
 	if distance_to_slot > 32 and (not guard.has_move_order or guard.move_target.distance_to(slot) > 24 or guard.attack_move != attack_move):
-		guard.order_move(slot, attack_move)
+		guard.order_move(slot, attack_move, null, PackedVector2Array(), false)
 
 static func tick(u,dt:float) -> void:
 	var world = u._battle_world()

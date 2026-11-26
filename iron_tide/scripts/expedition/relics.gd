@@ -2,17 +2,19 @@ extends RefCounted
 
 const COLORS := {"普通":"#D7DCE2","优质":"#80D7A6","稀有":"#75BEFF","史诗":"#C89AFF","传说":"#FFD166","典藏":"#FF8073"}
 const ITEMS := {
+	"reserve_credit":{"name":"前线拨款令","rarity":"稀有","family":"经营","min_stage":26,"max_level":5,"price":140,"icon":"coin","desc":"每级在每场战斗开始时增加 1000 战场资金，最多增加 5000。"},
+	"field_procurement":{"name":"军需议价函","rarity":"稀有","family":"经营","min_stage":27,"max_level":4,"price":120,"icon":"receipt_stamp","desc":"每级让付费刷新商店少花 2 补给，最多少花 8。先算已有折扣，费用最低为零。"},
 	"chrono_decree":{"name":"逆时密令","rarity":"典藏","family":"经营","price":0,"icon":"hourglass","desc":"每场一次，选择后续一个到场批次，与队首互换抵达时间。不复制单位，不改变跨关减时。"},
 	"field_dispatch":{"name":"战地接驳令","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"heal","desc":"本关首次使用维修包后，选择一批待抵达援军，使其剩余等待减半。10 秒内未选择时，自动选择列表中的最后一批。"},
-	"formation_warrant":{"name":"扩编委任状","family":"经营","min_stage":16,"price":180,"icon":"receipt_stamp","desc":"本轮出战编制增加 1 格，可多派 1 种兵种。与联合作战名册叠加，跨关人口仍按本章上限计算。"},
-	"joint_roster":{"name":"联合作战名册","family":"经营","min_stage":21,"price":220,"icon":"escort","desc":"本轮出战编制增加 1 格，可多派 1 种兵种。与扩编委任状叠加，跨关人口仍按本章上限计算。"},
+	"formation_warrant":{"name":"扩编委任状","family":"经营","min_stage":16,"price":180,"icon":"receipt_stamp","desc":"本轮出战编制增加 1 格，可多派 1 种兵种。与联合作战名册叠加，出战人数仍按本章上限计算。"},
+	"joint_roster":{"name":"联合作战名册","family":"经营","min_stage":21,"price":220,"icon":"escort","desc":"本轮出战编制增加 1 格，可多派 1 种兵种。与扩编委任状叠加，出战人数仍按本章上限计算。"},
 	"silent_radio":{"name":"静默电台","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"rad_growth","desc":"发动 RED ALERT 时，除原有总攻效果外，额外复制全部尚未抵达的普通军团，按原计划抵达。若原军团已到齐，则从发动时起按原间隔派出整份副本。副本仅限本关。"},
 	"bridge_station":{"name":"桥头调度站","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"defense","desc":"本轮远征的桥头小屋和完好桥段无法被炸毁。已断的桥仍需工程师修复。"},
 	"capture_manual":{"name":"据点协同手册","rarity":"优质","max_level":3,"family":"经营","price":100,"icon":"escort","desc":"多支部队共同推进远征主线或支线读条时缩短用时。每升一级，人数带来的减时上限提高 10 个百分点，一级至三级分别为 40%、50%、60%。每处 8 个友方地面单位即可达到上限。"},
 	"signal_timer":{"name":"信物校时器","rarity":"稀有","max_level":5,"family":"经营","price":120,"icon":"hourglass","desc":"每级让所有信物的开场等待和使用后的冷却缩短 10%，最多减半。满级时，原本开场等 300 秒的信物只等 150 秒。"},
-	"alert_array":{"name":"战区监听阵列","rarity":"史诗","drop_weight":0.4,"max_level":3,"family":"经营","price":140,"icon":"antiair","desc":"每层使有效警戒值收入增加 20%，最高 +60%；不增加储存次数。"},
+	"alert_array":{"name":"战区监听阵列","rarity":"史诗","drop_weight":0.4,"max_level":3,"family":"经营","price":140,"icon":"antiair","desc":"每层使充满警戒槽所需的警戒值降低 5%，三层共降低 15%。"},
 	"chrono_anchor":{"max_level":3,"name":"超时空稳定锚","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"reload","desc":"军团超时空增援的跨局减时上限从 50% 逐层升至 60%／70%／80%。每局重新倒计时；上局推进的传送时间折半累积，军团人数损失按比例扣回减时收益。本局工厂自产单位不加入军团，也不计损失比例。"},
-	"red_alert_warrant":{"name":"警戒授权","rarity":"传说","drop_weight":0.15,"family":"经营","price":160,"icon":"red_coordinates","desc":"每场战斗开局补满 1 次 RED ALERT，最多储存 1 次；总攻持续 30 秒，生产耗时减半、单位攻速 +50%、威力 +30%。"},
+	"red_alert_warrant":{"name":"警戒授权","rarity":"传说","drop_weight":0.15,"family":"经营","price":160,"icon":"red_coordinates","desc":"每关开局获得半槽警戒值（50%）。若已储存一次总攻，则保留该次数。"},
 	"bastion_heart":{"name":"不落要塞之心","family":"究极构筑","units":["E1","GGI"],"min_stage":16,"price":260,"icon":"guard","desc":"部署停稳 3 秒获得 15% 护盾，12 秒冷却。护盾实际吸收的伤害蓄为反击能量，最多最大生命的 40%；下次部署直击消耗能量，每吸收 1% 生命对应伤害 +3%，最高 +120%。固守 9 层时，满能量反击再补 10% 护盾。玩法：持盾承伤→蓄能重击→补盾守线。"},
 	"grizzly_engine":{"name":"灰熊穿插引擎","family":"究极构筑","units":["MTNK"],"min_stage":16,"price":260,"icon":"vehicle","desc":"持续移动 2 秒装填 3 发追击弹，10 秒冷却，刷新不累加；每发直击 +25%，每 0.25 秒最多消耗一发。打完三发恢复 8% 生命，并刷新行军首击及灰熊竞速飞轮冷却；装甲 9 层另补满 3 发羁绊突击弹。玩法：穿插装填→三连击→接行军首击再突进。"},
 	"rhino_siege":{"name":"犀牛饱和攻城炉","family":"究极构筑","units":["HTNK"],"min_stage":16,"price":260,"icon":"explosive","desc":"停稳 3 秒后，5 秒内累计 3 次有效直击开启 6 秒饱和射击：直击 +40%，并压制被命中单位，使其对我方直击伤害降低 20%、持续 4 秒。移动会中断射击窗口和蓄力；每 0.25 秒最多计一次。重炮 9 层每次开启窗口刷新纵深压制强击冷却。玩法：停车校射→持续压制→换阵地重新蓄力。"},
@@ -99,4 +101,5 @@ static func victory_supplies(run:Dictionary) -> int:
 	return (25 if owned(run,"supply_ledger") else 0)+(mini(40,int(int(run.supplies)/10)) if owned(run,"reserve_bond") else 0)
 
 static func refresh_price(run:Dictionary,base:int) -> int:
-	return ceili(base*0.5) if owned(run,"bargain_map") else base
+	var discounted:=ceili(base*0.5) if owned(run,"bargain_map") else base
+	return maxi(0,discounted-2*level(run,"field_procurement"))

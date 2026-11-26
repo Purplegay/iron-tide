@@ -5,7 +5,7 @@ const CHAPTERS := ["前线接触", "工业战线", "异能危机", "机动决战
 const TITLES := ["前线前哨", "断敌补给", "车队护送", "风险路线", "钢铁关隘", "工业争夺", "桥头控制", "雷达突袭", "双线战区", "防空堡垒", "解救小队", "战区争夺", "特装实验场", "后勤危机", "磁暴核心", "闪击前线", "空地协同", "战略研究所", "高危猎场", "机动指挥军", "纵深备战", "复合战线", "突破封锁", "最后整备战", "钢铁壁垒", "终局备战", "空地围猎", "最后研究所", "决战前夜", "终极战区"]
 const TASKS := ["capture", "supply", "escort", "assault", "boss", "control", "capture", "radar", "defend", "boss", "rescue", "control", "research", "escort", "boss", "supply", "annihilate", "research", "defend", "boss", "supply", "control", "capture", "defend", "boss", "supply", "annihilate", "research", "defend", "boss"]
 const TASK_NAMES := {"capture":"占领前哨", "supply":"破坏补给", "escort":"护送车队", "assault":"击破指挥部", "annihilate":"摧毁全部敌方建筑", "boss":"章末决战", "control":"据点争夺", "radar":"雷达突袭", "defend":"坚守战线", "rescue":"解救小队", "research":"夺取研究所"}
-const TASK_DESCRIPTIONS := {"capture":"占领前哨至 60 点。圈内友方地面部队越多，占领越快，每多一支的收益越小。8 支达到人数减时上限，基础为 30%，据点协同手册可提高至 60%。敌军进圈时暂停占领，已有进度保留。", "supply":"摧毁两座标记补给设施即可获胜，无需清理残兵。", "escort":"护送三辆任务车辆深入战区，至少两辆抵达远端终点；丢失两辆则失败。20 秒后开始超时空侵袭预警，落点提前 5 秒标记，敌军抵达后每 40 秒再次预警；暂停车队不会暂停敌袭。", "assault":"摧毁标记敌方指挥部即可获胜。", "annihilate":"清除所有敌对阵营的建筑，包括防御设施和围墙。无需消灭残余部队。",  "boss":"破坏外围节点开启指挥目标，按公开阶段推进。", "control":"分别控制三个据点，每处上限 60 点。圈内友方地面部队越多，占领越快，每多一支的收益越小。8 支达到人数减时上限，基础为 30%，据点协同手册可提高至 60%。敌军进圈时暂停占领，已得分不减少，合计 180 点获胜。", "radar":"摧毁标记雷达；六分钟内完成获得额外补给，超时援军增多。", "defend":"保护指挥所，坚守进度达到 180 点即获胜。附近守军越多，进度越快。失去指挥所则失败。", "rescue":"控制两处关押点，每处单支部队需要 20 秒，多支可更快救出人质。", "research":"分别接管两座实验室，每处单支部队需要 45 秒，多支更快，进度保留；每座胜利额外获得 40 补给。"}
+const TASK_DESCRIPTIONS := {"capture":"占领前哨至 60 点。圈内友方地面部队越多，占领越快，每多一支的收益越小。8 支达到人数减时上限，基础为 30%，据点协同手册可提高至 60%。敌军进圈时暂停占领，已有进度保留。", "supply":"摧毁两座标记补给设施即可获胜，无需清理残兵。", "escort":"护送三辆任务车辆深入战区，至少两辆抵达远端终点；丢失两辆则失败。20 秒后开始超时空侵袭预警，落点提前 5 秒标记，敌军抵达后每 40 秒再次预警；暂停车队不会暂停敌袭。", "assault":"摧毁标记敌方指挥部即可获胜。", "annihilate":"清除所有敌对阵营的建筑，包括防御设施和围墙。无需消灭残余部队。",  "boss":"破坏外围节点开启指挥目标，按公开阶段推进。", "control":"分别控制三个据点，每处上限 60 点。圈内友方地面部队越多，占领越快，每多一支的收益越小。8 支达到人数减时上限，基础为 30%，据点协同手册可提高至 60%。敌军进圈时暂停占领，已得分不减少，合计 180 点获胜。", "radar":"摧毁标记雷达；六分钟内完成获得额外补给，超时援军增多。", "defend":"保护指挥所 6 分钟。可派地面部队抢修中继站、截获敌军电报。每处单兵需要 20 秒，多人更快；敌军进圈时暂停，已有进度保留。每完成一项，坚守时间缩短 45 秒。敌军每 45 秒派出一支增援编队。指挥所失守则失败。", "rescue":"控制两处关押点，每处单支部队需要 20 秒，多支可更快救出人质。", "research":"分别接管两座实验室，每处单支部队需要 45 秒，多支更快，进度保留；每座胜利额外获得 40 补给。"}
 const NEW_MAPS := ["yr_unrepent", "yr_irvineca", "yr_monsterm", "yr_transylv", "yr_highexpr", "yr_moonpatr", "yr_hidvally", "yr_dunepatr", "yr_dryheat", "yr_groundze", "yr_fourcorners", "yr_tourofegypt", "yr_bayopigs", "yr_pacific", "yr_seaofiso", "yr_tsunami", "yr_potomac", "yr_amazon", "yr_lostlake", "yr_shrapnel", "yr_arena", "yr_oceansid", "yr_hills", "yr_valley", "yr_dustbowl", "yr_newhghts", "yr_hailmary", "yr_grinder"]
 const TERRAIN := {
 	"yr_bayopigs":"海岸",
@@ -169,6 +169,24 @@ static func map_name(id:String) -> String:
 static func map_description(id:String) -> String:
 	if preload("res://scripts/world/native_maps.gd").has(id):return "%s · %s"%[TERRAIN.get(id,"原版地形"),"可尝试部署舰队" if id in NAVAL else "内陆战区"]
 	return str(preload("res://scripts/world/skirmish_maps.gd").MAPS.get(id,{}).get("desc",""))
+
+const DEFENSE_GROUPS := [
+	["DRON", "TTNK", "HTK"],
+	["V3", "HTNK", "FLAKT"],
+	["DESO", "TTNK", "DRON"],
+	["APOC", "HTK", "SHK"],
+	["ZEP", "HTK", "HTNK"],
+]
+
+static func defense_wave(stage:int, wave:int, elite:bool, tactic:String) -> Array[String]:
+	var roster:Array[String]=[]
+	var group:Array=DEFENSE_GROUPS[(wave-1+chapter(stage)) % DEFENSE_GROUPS.size()]
+	var escorts:=["HTK","FLAKT","HTNK"]
+	for i in 2+chapter(stage)+(2 if elite else 0):
+		roster.append(group[i] if i<group.size() else escorts[(i-group.size())%escorts.size()])
+	if tactic=="rapid_raiders":roster.append_array(["E2","E2"])
+	if tactic=="armor_column":roster.append("HTNK")
+	return roster
 
 static func wave_units(stage:int,elite:bool,tactic:String,convoy_raid:=false) -> Array[String]:
 	var roster:Array[String]=[]

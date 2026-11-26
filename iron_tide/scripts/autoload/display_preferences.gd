@@ -11,6 +11,8 @@ var resolution_index := DEFAULT_INDEX
 var fullscreen := false
 var show_production_details := true
 var automatic_building_repair := false
+var campaign_growth := false
+var campaign_difficulty := 1
 var save_error: Error = OK
 var applying := false
 var _display_revision := 0
@@ -31,8 +33,14 @@ func reload() -> void:
 	fullscreen = false
 	show_production_details = true
 	automatic_building_repair = false
+	campaign_growth = false
+	campaign_difficulty = 1
 	var config := ConfigFile.new()
 	if config.load(SETTINGS_PATH) == OK:
+		var growth = config.get_value("campaign", "growth", false)
+		if growth is bool: campaign_growth = growth
+		var level = config.get_value("campaign", "difficulty", 1)
+		if level is int and level in [0, 1, 2]: campaign_difficulty = level
 		var repair = config.get_value("hud", "automatic_building_repair", false)
 		if repair is bool: automatic_building_repair = repair
 		var details = config.get_value("hud", "show_production_details", true)
@@ -75,6 +83,8 @@ func save() -> void:
 	var config := ConfigFile.new()
 	config.set_value("hud", "show_production_details", show_production_details)
 	config.set_value("hud", "automatic_building_repair", automatic_building_repair)
+	config.set_value("campaign", "growth", campaign_growth)
+	config.set_value("campaign", "difficulty", campaign_difficulty)
 	config.set_value("display", "version", SETTINGS_VERSION)
 	config.set_value("display", "width", RESOLUTIONS[resolution_index].x)
 	config.set_value("display", "height", RESOLUTIONS[resolution_index].y)

@@ -1,6 +1,7 @@
 extends Control
 ## Native Uprising gauge, preserving the complete faction housing and aspect ratio.
 const ART := preload("res://assets/ra3/ui/red_alert/experience_panel.png")
+var maximum := preload("res://scripts/expedition/red_alert.gd").THRESHOLD
 var value := 0.0
 var soviet := false
 # Negative means inactive; only the native left dial displays assault time.
@@ -40,7 +41,7 @@ func _draw() -> void:
 	draw_texture_rect_region(ART, Rect2(Vector2.ZERO, housing_size), Rect2(origin, housing_size))
 	if time_fraction >= 0.0:
 		_draw_time_ring(origin)
-	var fraction := clampf(value / 49000.0, 0.0, 1.0)
+	var fraction := clampf(value / maximum, 0.0, 1.0)
 	# Only the native glass cells change illumination; the housing stays intact.
 	var glass := Rect2(76, 40 if soviet else 29, 122, 22)
 	draw_texture_rect_region(ART, glass, Rect2(origin + glass.position, glass.size), Color(0.28, 0.30, 0.32))

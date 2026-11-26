@@ -1,6 +1,7 @@
 extends RefCounted
 ## Resource badges share the dimensions of the progression icons.
 const SHAPES := {
+	"war_points":["#f6bb62","M12 2L21 7V14L12 22L3 14V7ZM13 5L8 13H12L11 18L16 10H12Z"],
 	"cores":["#ffcc68","M12 2L21 7V17L12 22L3 17V7ZM12 6L17 12L12 18L7 12Z"],
 	"credits":["#a9e386","M2 6H22V18H2ZM5 9H7M17 15H19M12 9L15 12L12 15L9 12Z"],
 	"diamonds":["#7ce5ff","M2 8L7 3H17L22 8L12 21ZM2 8H22M8 8L12 21L16 8"],

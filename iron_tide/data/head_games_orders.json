@@ -1,0 +1,1757 @@
+{
+ "routes": [
+  {
+   "origin": [
+    19.5,
+    79.5
+   ],
+   "source": [
+    "CAHSE01",
+    21.5,
+    78.5
+   ],
+   "unit": "CIVSFM",
+   "area": "sw"
+  },
+  {
+   "origin": [
+    7.5,
+    100.5
+   ],
+   "source": [
+    "CAHSE01",
+    9.5,
+    99.5
+   ],
+   "unit": "CIVSF",
+   "area": "sw"
+  },
+  {
+   "origin": [
+    24.5,
+    92.5
+   ],
+   "source": [
+    "CAHSE01",
+    26.5,
+    91.5
+   ],
+   "unit": "CIVSTM",
+   "area": "sw"
+  },
+  {
+   "origin": [
+    23.5,
+    83.5
+   ],
+   "source": [
+    "CAEUR04",
+    26.5,
+    81.5
+   ],
+   "unit": "CIVSFM",
+   "area": "sw"
+  },
+  {
+   "origin": [
+    0.5,
+    101.5
+   ],
+   "source": [
+    "CAFARM01",
+    -0.5,
+    101.5
+   ],
+   "unit": "COW",
+   "area": "sw"
+  },
+  {
+   "origin": [
+    94.5,
+    136.5
+   ],
+   "source": [
+    "CAEUR2",
+    95.5,
+    134.5
+   ],
+   "unit": "CIVSFM",
+   "area": "ne"
+  },
+  {
+   "origin": [
+    96.5,
+    128.5
+   ],
+   "source": [
+    "CAFRMA",
+    97.5,
+    126.5
+   ],
+   "unit": "CIVSF",
+   "area": "ne"
+  },
+  {
+   "origin": [
+    112.5,
+    133.5
+   ],
+   "source": [
+    "CAEUR1",
+    113.5,
+    131.5
+   ],
+   "unit": "CIVSTM",
+   "area": "ne"
+  },
+  {
+   "origin": [
+    106.5,
+    127.5
+   ],
+   "source": [
+    "CAHSE01",
+    108.5,
+    126.5
+   ],
+   "unit": "CIVSTM",
+   "area": "ne"
+  }
+ ],
+ "garrison": [
+  {
+   "wing": 1,
+   "count": 5,
+   "unit": "E1",
+   "target": 59,
+   "at": [
+    56.5,
+    44.5
+   ]
+  },
+  {
+   "wing": 1,
+   "count": 5,
+   "unit": "E1",
+   "target": 59,
+   "at": [
+    69.5,
+    54.5
+   ]
+  },
+  {
+   "wing": 1,
+   "count": 5,
+   "unit": "E1",
+   "target": 59,
+   "at": [
+    85.5,
+    54.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 5,
+   "unit": "INIT",
+   "target": 59,
+   "at": [
+    110.5,
+    72.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 5,
+   "unit": "INIT",
+   "target": 59,
+   "at": [
+    120.5,
+    81.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 4,
+   "unit": "LTNK",
+   "target": 61,
+   "at": []
+  },
+  {
+   "wing": 0,
+   "count": 5,
+   "unit": "E2",
+   "target": 59,
+   "at": [
+    125.5,
+    88.5
+   ]
+  },
+  {
+   "wing": 0,
+   "count": 5,
+   "unit": "E2",
+   "target": 59,
+   "at": [
+    123.5,
+    94.5
+   ]
+  },
+  {
+   "wing": 0,
+   "count": 5,
+   "unit": "E2",
+   "target": 59,
+   "at": [
+    171.5,
+    108.5
+   ]
+  },
+  {
+   "wing": 0,
+   "count": 3,
+   "unit": "TTNK",
+   "target": 61,
+   "at": []
+  },
+  {
+   "wing": -1,
+   "count": 9,
+   "unit": "INIT",
+   "target": 62,
+   "at": [
+    108.5,
+    56.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 9,
+   "unit": "INIT",
+   "target": 62,
+   "at": [
+    118.5,
+    52.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 9,
+   "unit": "INIT",
+   "target": 62,
+   "at": [
+    120.5,
+    61.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 9,
+   "unit": "INIT",
+   "target": 62,
+   "at": [
+    132.5,
+    73.5
+   ]
+  },
+  {
+   "wing": -1,
+   "count": 9,
+   "unit": "INIT",
+   "target": 62,
+   "at": [
+    128.5,
+    70.5
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "id": "0a2f2edc",
+   "name": "Def_AArmor Lt AITrig",
+   "wing": 0,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "GGI": 4,
+    "MTNK": 3
+   },
+   "guard": true
+  },
+  {
+   "id": "08cf099c",
+   "name": "Def_AArmor Hvy (E_M) AITrig_01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "MTNK": 3,
+    "MGTK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0a2f2c3c",
+   "name": "Def_AArmor Hvy (E_M) AITrig_02",
+   "wing": 1,
+   "condition": 0,
+   "entity": "APOC",
+   "count": 2,
+   "op": 3,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "MTNK": 3,
+    "MGTK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0a2f2aec",
+   "name": "Def_AArmor Hvy (H) AITrig_01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "MGTK": 5
+   },
+   "guard": true
+  },
+  {
+   "id": "0a2f299c",
+   "name": "Def_AArmor Hvy (H) AITrig_02",
+   "wing": 1,
+   "condition": 0,
+   "entity": "APOC",
+   "count": 2,
+   "op": 3,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "MGTK": 5
+   },
+   "guard": true
+  },
+  {
+   "id": "0a2f284c",
+   "name": "Def_AInfantry (E_M) AITrig",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 0,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "E1": 5,
+    "ADOG": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0a2f26fc",
+   "name": "Def_AInfantry (H) AITrig",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 0,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "GHOST": 4,
+    "ADOG": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "043b30bc",
+   "name": "Def_Engineer_Spy AITrig_01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "SENGINEER",
+   "count": 3,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "ADOG": 3
+   },
+   "guard": true
+  },
+  {
+   "id": "043b0edc",
+   "name": "Def_Engineer_Spy AITrig_02",
+   "wing": 1,
+   "condition": 0,
+   "entity": "SPY",
+   "count": 1,
+   "op": 3,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "ADOG": 3
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7851c",
+   "name": "Def_SArmor Lt AITrig",
+   "wing": 0,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "SHK": 3,
+    "HTNK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7b36c",
+   "name": "Def_SArmor Hvy (E_M) AITrig_01",
+   "wing": 0,
+   "condition": 0,
+   "entity": "APOC",
+   "count": 2,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "HTNK": 2,
+    "APOC": 1,
+    "DRON": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7b21c",
+   "name": "Def_SArmor Hvy (E_M) AITrig_02",
+   "wing": 0,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "HTNK": 2,
+    "APOC": 1,
+    "DRON": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7cdcc",
+   "name": "Def_SArmor Hvy (H) AITrig_01",
+   "wing": 0,
+   "condition": 0,
+   "entity": "APOC",
+   "count": 2,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "APOC": 2,
+    "DRON": 2,
+    "SHK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7cc7c",
+   "name": "Def_SArmor Hvy (H) AITrig_02",
+   "wing": 0,
+   "condition": 0,
+   "entity": "HTNK",
+   "count": 4,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "APOC": 2,
+    "DRON": 2,
+    "SHK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7c1fc",
+   "name": "Def_SInfantry (E_M) AITrig",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 0,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "E2": 5,
+    "FLAKT": 2,
+    "DOG": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "0cc7db8c",
+   "name": "Def_SInfantry (H) AITrig",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 0,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "E2": 3,
+    "FLAKT": 2,
+    "DOG": 2,
+    "SHK": 2
+   },
+   "guard": true
+  },
+  {
+   "id": "08cf114c",
+   "name": "AI_AInfantry_E01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "E1": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf2edc",
+   "name": "AI_AInfantry_M01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "ADOG": 2,
+    "E1": 3,
+    "GGI": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf2d8c",
+   "name": "AI_SInfantry_E01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "E2": 6
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf2c3c",
+   "name": "AI_SInfantry_M01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "DOG": 2,
+    "E2": 5,
+    "FLAKT": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf2aec",
+   "name": "AI_AInfantry_H01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "ADOG": 2,
+    "GGI": 4,
+    "GHOST": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf299c",
+   "name": "AI_SInfantry_H01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "E2": 5,
+    "FLAKT": 3,
+    "SHK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf16fc",
+   "name": "AI_YInfantry_E01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "INIT": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf15ac",
+   "name": "AI_YInfantry_M01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "INIT": 4,
+    "YURI": 1,
+    "VIRUS": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf251c",
+   "name": "AI_YInfantry_H01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "INIT": 3,
+    "YURI": 1,
+    "VIRUS": 2,
+    "BRUTE": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf23cc",
+   "name": "AI_YInfantry_H02",
+   "wing": -1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 70,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "YURIPR": 1,
+    "YURI": 2,
+    "VIRUS": 2,
+    "BRUTE": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf227c",
+   "name": "AI_AArmor_E01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "MTNK": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf212c",
+   "name": "AI_AArmor_M01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "MTNK": 3,
+    "FV": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf3edc",
+   "name": "AI_AArmor_H01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "MTNK": 4,
+    "MGTK": 2,
+    "FV": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf3d8c",
+   "name": "AI_SArmor_E01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "HTNK": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf3c3c",
+   "name": "AI_SArmor_M01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "HTNK": 3,
+    "TTNK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf3aec",
+   "name": "AI_SArmor_H01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "HTNK": 2,
+    "APOC": 2,
+    "TTNK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf284c",
+   "name": "AI_SArmor_H02",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "APOC": 4,
+    "TTNK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf26fc",
+   "name": "AI_AADA_01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "FV": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf363c",
+   "name": "AI_AADA_02",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "JUMPJET": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf34ec",
+   "name": "AI_SADA_01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "HTK": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf339c",
+   "name": "AI_SADA_02",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "FLAKT": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf324c",
+   "name": "AI_YArmor_E01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "LTNK": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf30fc",
+   "name": "AI_YArmor_M01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {},
+   "guard": false
+  },
+  {
+   "id": "08cf4edc",
+   "name": "AI_YArmor_H01",
+   "wing": -1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 60,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "LTNK": 4,
+    "YTNK": 2,
+    "MIND": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf4d8c",
+   "name": "AI_YArmor_H02",
+   "wing": -1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 60,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "MIND": 2,
+    "YTNK": 2,
+    "LTNK": 2,
+    "TELE": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf4c3c",
+   "name": "AI_ABombard_01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    0
+   ],
+   "team": {
+    "FV": 2,
+    "MTNK": 1,
+    "SREF": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf399c",
+   "name": "AI_ABombard_02",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 30,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SREF": 4,
+    "MTNK": 2,
+    "FV": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf384c",
+   "name": "AI_SBombard_01",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NARADR",
+   "count": 1,
+   "op": 3,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    0
+   ],
+   "team": {
+    "HTNK": 1,
+    "V3": 2,
+    "HTK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf476c",
+   "name": "AI_SBombard_02",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 30,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "APOC": 2,
+    "V3": 3,
+    "HTK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf461c",
+   "name": "AI_YBombard_01",
+   "wing": -1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "MIND": 1,
+    "YTNK": 1,
+    "YURI": 2,
+    "BRUTE": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf44cc",
+   "name": "AI_YBombard_02",
+   "wing": -1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 30,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "MIND": 2,
+    "YTNK": 2,
+    "YURI": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf437c",
+   "name": "AI_STerror_E+M",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "DRON": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf422c",
+   "name": "AI_STerror_H01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 30,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "DRON": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf40dc",
+   "name": "AI_YChaos_M01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 30,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "CAOS": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf5edc",
+   "name": "AI_YChaos_H01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 30,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "CAOS": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf5d8c",
+   "name": "AI_ASpy_01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "SPY": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf4aec",
+   "name": "AI_ASpy_02",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 70,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SPY": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf499c",
+   "name": "AI_ASpy_03",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    1,
+    0,
+    0
+   ],
+   "team": {
+    "SPY": 1
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf588c",
+   "name": "AI_ARocketeer_E",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "JUMPJET": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf573c",
+   "name": "AI_ARocketeer_M+H",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 30,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "JUMPJET": 8
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf55ec",
+   "name": "AI_AChrono_M01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 30,
+   "difficulty": [
+    0,
+    1,
+    0
+   ],
+   "team": {
+    "CLEG": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf549c",
+   "name": "AI_AChrono_H01",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "CLEG": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf534c",
+   "name": "AI_AHarrier_E",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "ORCA": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf51fc",
+   "name": "AI_AHarrier_M01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    0
+   ],
+   "team": {
+    "ORCA": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf50ac",
+   "name": "AI_AHarrier_H01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "ORCA": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf6edc",
+   "name": "AI_AHarrier_H02",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "ORCA": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf5c3c",
+   "name": "AI_ASpec Ops_01",
+   "wing": 1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SHAD": 1,
+    "ENGINEER": 2,
+    "GHOST": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf5aec",
+   "name": "AI_ASpec Ops_02",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NAIRON",
+   "count": 1,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SHAD": 1,
+    "GHOST": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf69bc",
+   "name": "AI_ASpec Ops_03",
+   "wing": 1,
+   "condition": 0,
+   "entity": "NAMISL",
+   "count": 1,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SHAD": 1,
+    "GHOST": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf686c",
+   "name": "AI_SChopper_E",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    0
+   ],
+   "team": {
+    "SCHP": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf671c",
+   "name": "AI_SChopper_M01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "SCHP": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf65cc",
+   "name": "AI_SChopper_H01",
+   "wing": 0,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SCHP": 4
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf647c",
+   "name": "AI_SKirov_M",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 60,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "ZEP": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf632c",
+   "name": "AI_SKirov_H",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 60,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "ZEP": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf61dc",
+   "name": "AI_SSpec Ops_01",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NATECH",
+   "count": 1,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "HTK": 1,
+    "DESO": 3
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf608c",
+   "name": "AI_SSpec Ops_02",
+   "wing": 0,
+   "condition": 0,
+   "entity": "NAIRON",
+   "count": 1,
+   "op": 3,
+   "weight": 40,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "SHAD": 1,
+    "GHOST": 5
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf6d8c",
+   "name": "AI_YDisc_01",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 500,
+   "op": 4,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "DISK": 2
+   },
+   "guard": false
+  },
+  {
+   "id": "08cf6c3c",
+   "name": "AI_YDisc_02",
+   "wing": -1,
+   "condition": 4,
+   "entity": "<none>",
+   "count": 15000,
+   "op": 3,
+   "weight": 70,
+   "difficulty": [
+    0,
+    0,
+    1
+   ],
+   "team": {
+    "DISK": 2
+   },
+   "guard": false
+  }
+ ],
+ "cow": {
+  "id": "COW",
+  "name": "奶牛",
+  "ra2": true,
+  "role": "infantry",
+  "faction": "civilian",
+  "tags": [
+   "infantry",
+   "civilian"
+  ],
+  "hp": 150,
+  "armor": "unarmored",
+  "ra2_armor": "none",
+  "radius": 10,
+  "speed": 60,
+  "sight": 220,
+  "cost": 0
+ }
+}

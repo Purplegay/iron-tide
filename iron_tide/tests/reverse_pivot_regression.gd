@@ -41,12 +41,14 @@ func exercise(mode:String) -> void:
 	check(Talents.start_reverse(tank,origin+Vector2(90,0)),"front order accepted")
 	tank._physics_process(0.01);tank.order_stop()
 	check(not tank.special.has(Talents.REVERSE) and not tank.special.has("reverse_heal_left"),"stop during pivot cancels without healing")
-	Talents.start_reverse(tank,origin+Vector2(90,0));tank._physics_process(0.01)
-	Talents.start_reverse(tank,origin+Vector2(0,90))
+	check(not Talents.start_reverse(tank,origin+Vector2(90,0)),"stop preserves cooldown")
+	for frame in 480:tank._physics_process(1.0/60)
+	check(Talents.start_reverse(tank,origin+Vector2(0,90)),"reverse ready after eight seconds")
 	for frame in 600:
 		if not tank.special.has(Talents.REVERSE):break
 		tank._physics_process(1.0/60)
-	check(tank.position.distance_to(origin+Vector2(0,90))<0.1,"new reverse command replaces old pivot destination")
+	check(tank.position.distance_to(origin+Vector2(0,90))<0.1,"available reverse reaches new destination")
+	for frame in 480:tank._physics_process(1.0/60)
 	tank.position=origin;tank.hull_angle=0
 	var wall=battle._place_building("NAWALL","enemy",origin+Vector2(70,0),true)
 	battle._refresh_pathing()

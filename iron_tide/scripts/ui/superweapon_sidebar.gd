@@ -8,6 +8,7 @@ const WEAPONS := {
 	"MultiMissile": ["核弹攻击","NUKEICON"],
 	"SpyPlane": ["侦察机","SPYPICON"],
 	"AmerParaDrop": ["美国大兵空降","APARICON"],
+	"ParaDrop": ["机场伞兵援助","PARAICON"],
 }
 const WIDTH := 84
 const HEIGHT := 40

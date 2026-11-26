@@ -2,7 +2,8 @@ extends RefCounted
 const P=preload("res://scripts/rules/progression_parameters.gd")
 ## Permanent progression is written through MetaProgress's atomic profile replacement.
 const LEGACY_HEROES := {"E1":"守望者", "E2":"炉火", "MTNK":"北辰", "HTNK":"铁脊"}
-const HEROES := {"E1":"守望者", "E2":"炉火", "MTNK":"北辰", "HTNK":"铁脊", "TANY":"谭雅", "BORIS":"鲍里斯", "ORCA":"游隼", "TTNK":"雷铸", "FV":"引片", "HARV":"老秤"}
+const HEROES := {"E1":"守望者", "E2":"炉火", "MTNK":"北辰", "HTNK":"铁脊", "TANY":"谭雅", "BORIS":"鲍里斯", "ORCA":"游隼", "TTNK":"雷铸", "FV":"引片", "HARV":"老秤", "CLNT":"克林特", "ARND":"阿诺", "STLN":"史泰龙"}
+const Stars = preload("res://scripts/rules/hollywood_heroes.gd")
 const Commandos = preload("res://scripts/units/expansion_2_commandos.gd")
 const HERO_REQUIREMENT := 50
 const ContractPool=preload("res://scripts/rules/hero_contract_pool.gd")
@@ -21,7 +22,7 @@ static var SURVIVAL_STAGES:Array:
 	get:return P.traits("hero/infantry/survival",SURVIVAL_STAGES_DEFAULT)
 
 static func hero_requirement(id:String) -> int:
-	if id in ["FV","HARV"]:return 1
+	if id in Stars.IDS or id in ["FV","HARV"]:return 1
 	if id in ["ORCA","TTNK"]:return 5
 	if id in Commandos.IDS:return 5
 	return 20 if id in ["MTNK","HTNK"] else HERO_REQUIREMENT
@@ -86,6 +87,7 @@ static func hero_talent_cost(action:String, rank:int,hero_id:="") -> int:
 	if hero_id=="ORCA" and action=="survival":cap=preload("res://scripts/units/peregrine_defense.gd").OPEN_RANK
 	if hero_id=="TTNK" and action=="escort":cap=preload("res://scripts/units/leizhu_command.gd").OPEN_RANK
 	if hero_id=="TTNK" and action=="survival":cap=preload("res://scripts/units/leizhu.gd").OPEN_RANK
+	if hero_id in Stars.IDS: cap=2
 	var costs:Array=GameData.meta_config.get("hero_talent_rank_costs",[])
 	if rank<0 or rank>=cap or rank>=costs.size():return 0
 	return maxi(0,int(costs[rank]))
@@ -243,7 +245,7 @@ static func built(meta, world, id: String, unit, factory:Building=null) -> void:
 			diamonds += int(DIAMOND_TASKS.t3.reward)
 		meta.academy.daily = daily
 		meta.currency.diamonds = meta.balance("diamonds") + diamonds
-		if HEROES.has(hero_id) and hero_id not in ["FV","HARV"]:
+		if HEROES.has(hero_id) and hero_id not in Stars.IDS and hero_id not in ["FV","HARV"]:
 			var totals: Dictionary = meta.academy.get_or_add("hero_builds", {})
 			totals[hero_id] = int(totals.get(hero_id, 0)) + 1
 			var new_hero: bool = BattleRequest.extensions_enabled() and not world.allied_state.get("named_heroes",{}).has(hero_id)
@@ -252,7 +254,7 @@ static func built(meta, world, id: String, unit, factory:Building=null) -> void:
 				recent.erase(hero_id)
 				recent.push_front(hero_id)
 		meta.save()
-	if id in ["FV","HARV"]:
+	if id in Stars.IDS or id in ["FV","HARV"]:
 		return
 	if not HEROES.has(id) or not BattleRequest.extensions_enabled() or id in ["MTNK","HTNK","ORCA","TTNK"]: return
 	promote(meta,world,id,unit,factory)
@@ -264,6 +266,9 @@ static func promote(meta,world,id:String,unit,factory:Building=null) -> void:
 		var roster=preload("res://scripts/expedition/heroes.gd")
 		if id not in roster.owned(expedition) or id in roster.wounded(expedition):return
 		meta=BattleRequest.combat_context.expedition_hero_profile
+	if id in Stars.IDS:
+		if not expedition.is_empty():Stars.promote(unit)
+		return
 	if id in ["FV","HARV"]:
 		if not expedition.is_empty():preload("res://scripts/units/convoy_heroes.gd").promote(unit,world,meta)
 		return
@@ -495,7 +500,7 @@ static func purchase(meta, action: String, id := "") -> bool:
 			meta.currency.cores=meta.balance("cores")-cost
 			meta.academy.get_or_add(key,{})[id]=rank+1
 		"firepower","health","skin":
-			if action=="skin" and id in ["ORCA","TTNK"]:return false
+			if action=="skin" and (id in Stars.IDS or id in ["ORCA","TTNK"]):return false
 			if not HEROES.has(id) or int(meta.academy.get("hero_builds", {}).get(id, 0)) < hero_requirement(id): return false
 			if action == "skin":
 				if id in ["FV","HARV"] and not meta.academy.get("hero_contracts",{}).get(id,{}).get("complete",false):return false

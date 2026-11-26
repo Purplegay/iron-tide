@@ -163,9 +163,6 @@ static func draw_world(world) -> void:
 		if event.side!="ally" and not world.position_visible_to("ally",event.point):continue
 		Iso.outline(world,Iso.ground_circle(event.point,P.number("hero/BORIS/survival","last_radius")*R.CELL),Color(1,.35,.15,.8),2)
 
-static func draw_shield(unit) -> void:
-	unit.draw_arc(Vector2(0,-unit._visual_lift()-8),unit.radius+8,0,TAU,24,Color(.4,.8,1,.7),1.5,true)
-
 static func entries(unit) -> Array:
 	const V=preload("res://scripts/units/expansion_visual.gd")
 	var rows:Array=[]

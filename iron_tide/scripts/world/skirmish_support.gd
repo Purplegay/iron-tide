@@ -5,13 +5,17 @@ const Ops = preload("res://scripts/world/skirmish_operations.gd")
 static func consider(ai, launcher, visible: Array) -> void:
 	var world = ai.battle
 	match launcher.sw_type():
-		"AmerParaDrop":
+		"AmerParaDrop", "ParaDrop":
 			for target in visible:
 				if not target is Building or target.data.get("tags",[]).has("civilian"): continue
 				for i in 8:
 					var at: Vector2 = target.position + Vector2.from_angle(i * TAU / 8.0) * 230
 					if world.position_visible_to(ai.house_id, at) and launcher.fire_superweapon(at): return
-		"SpyPlane":
+		"PsychicDominator", "GeneticConverter":
+			for target in visible:
+				if launcher.sw_type() == "GeneticConverter" and not AlliedAbilities.infantry(target): continue
+				if launcher.fire_superweapon(target.position): return
+		"SpyPlane", "PsychicReveal":
 			if world.fog == null: return
 			var goal:Vector2=ai.objective()
 			for point in [goal, world.allied_state.get("oil_mid_point",goal), (goal+ai.base_center)*0.5]:

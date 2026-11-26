@@ -22,7 +22,7 @@ const GUIDE := {
 	"cache":["偶数关的常规物资点。","派友方部队进入蓝色军需标记，清除附近敌军，累计控制 20 秒。","本关胜利后获得 50 补给和 1 个维修包。"],
 	"intel":["奇数关的常规情报点。","派友方部队靠近蓝色情报标记，排除敌军干扰，累计控制 20 秒。","暂时揭开敌军主基地附近的迷雾，本关胜利后获得 35 补给。"],
 	"radio":["主线为「解救小队」时会避开这项支线。其他路线有机会收到两个电台的呼救。","派己方地面部队到监听点取得识别码，再前往对应电台。也可直接前往电台；选错会遇到伏兵，仍可接应另一处。","在真电台接回失联步兵，最多 3 人加入本场战斗。"],
-	"box":["护送车队主线和最终关以外的路线有机会发现黑匣子。","让己方地面部队碰触闪框箱子，再由头顶有箱子的单位送到蓝色交付点。携带者会间歇暴露位置，可在远征面板点「放下黑匣子」交给另一支部队。","成功交付并赢下本关后，带回 1 个维修包，下一关选路线时可提前查看首波敌军情报。"],
+	"box":["护送车队主线和最终关以外的路线有机会发现黑匣子。","让己方地面部队碰触闪框箱子，再点远征面板的「送回交付点」，携带者就会前往蓝色交付点。携带期间，F2 全选和 T 同型选择都会跳过它。携带者会间歇暴露位置，也可以点「放下黑匣子」让其他部队接手。","成功交付并赢下本关后，带回 1 个维修包，下一关选路线时可提前查看首波敌军情报。"],
 	"fuel":["护送车队主线以外的路线有机会遇到油罐车和一座停机的中立科技前哨站。","派地面部队与车会合，在车旁选择护送或拆车。护送时保护油罐车抵达停靠点。","送达后前哨站提供防空，绿色圈内受损的己方地面载具持续恢复。拆车则在胜利后带回 1 个维修包。"],
 	"divert":["多敌军路线有机会部署一支带通讯车的敌方车队。","可直接摧毁通讯车，也可派己方地面部队到中继台发送假撤退令。","直接排除通讯车，本关胜利后获得 45 补给。发送撤退令会暂时调开车队，车队在集结点重整后重新参战。"],
 	"engineer":["后续仍有可用的侧桥地图时，路线有机会遇到受困工兵。","派己方地面部队接近工兵，把他安全撤出。工兵阵亡或失去控制会使救援失败。","本关胜利后揭示下一关的侧桥路线，选中对应地图即可获得工兵支援。"],
@@ -126,7 +126,7 @@ func _ready() -> void:
 		commanders.item_selected.connect(show_commander.bind(known, archive.detail))
 		commanders.select(0)
 		show_commander(0, known, archive.detail)
-	var ids := HeroStories.BOOK.keys()
+	var ids := HeroStories.BOOK.keys().filter(func(id):return id not in MetaProgress.Academy.Stars.IDS or MetaProgress.Academy.hero_build_count(MetaProgress,id)>0)
 	var stories := reader(tabs, "英雄故事", "英雄目录 · %d" % ids.size())
 	var heroes: ItemList = stories.list
 	for id: String in ids:
@@ -171,7 +171,7 @@ func show_hero_story(index: int, ids: Array, passage: VBoxContainer) -> void:
 		profile_header(passage,load("res://assets/ra3/yuriko/Portrait_Japan_Yuriko_01.png"),"百合子","升阳帝国 · 灵能特工")
 		if preload("res://scripts/units/yuriko_school.gd").recruit_ready():
 			reading_section(passage,story.title,story.story)
-			reading_section(passage,"招募",story.clue+" 完成标有她名字的情报支线并获胜，之后可从战场菜单召唤。")
+			reading_section(passage,"招募",preload("res://scripts/units/yuriko_school.gd").RETURN_HINT if preload("res://scripts/units/yuriko_school.gd").recruited_before() else story.clue+" 完成标有她名字的情报支线并获胜，之后可从战场菜单召唤。")
 		else:
 			reading_section(passage,"港口手记","她还没有留下联络方式。")
 		reading_section(passage,"灵能天赋","在主菜单「百合子手记」完成章节与日常，在灵能练习中分配技能点。之后召唤的百合子会使用已习得的强化。")
@@ -200,7 +200,9 @@ func show_hero_story(index: int, ids: Array, passage: VBoxContainer) -> void:
 	instructions.add_theme_constant_override("separation", 10)
 	recruitment.add_child(instructions)
 	var start := 5 if id in MetaProgress.Academy.Commandos.IDS or id in ["ORCA","TTNK","FV","HARV"] else 1
-	reading_section(instructions, "出现条件", "第 %d 关起，同阵营路线可能出现「%s」的英雄线索。完成支线即可招募这名英雄。" % [start, names[story.kind]])
+	if id in MetaProgress.Academy.Stars.IDS:
+		reading_section(instructions,"出现条件","英雄入册后，各阵营远征都可能遇到这条线索。")
+	else:reading_section(instructions, "出现条件", "第 %d 关起，同阵营路线可能出现「%s」的英雄线索。完成支线即可招募这名英雄。" % [start, names[story.kind]])
 	reading_section(instructions, "行动", "%s\n%s" % [story.clue, GUIDE[story.kind][1]])
 	reading_section(instructions, "结果", "完成标有%s线索的委托并赢下本关，%s会加入本轮远征，从下一关起随队增援。" % [HeroStories.name_of(id), HeroStories.name_of(id)])
 	reading_section(passage, "同行归档", "带这名英雄同行，选择标有其篇名的路线。完成对应支线并赢下本关即可归档，跨周目保留。油罐车委托需要护送到站。")
@@ -278,6 +280,7 @@ func show_mission(index:int,list:ItemList,detail:VBoxContainer) -> void:
 			if person.has("permit"):
 				add_text(detail,"%s · %s　→　%s"%[person.country,str(person.name).get_slice(" · ",0),GameData.get_unit(person.permit).name],15,UiKit.COL_TEXT)
 	for id: String in HeroStories.BOOK:
+		if id in MetaProgress.Academy.Stars.IDS and MetaProgress.Academy.hero_build_count(MetaProgress,id)==0:continue
 		if id=="YURIKO" and not preload("res://scripts/units/yuriko_school.gd").recruit_ready():continue
 		var entry: Dictionary = HeroStories.BOOK[id]
 		if entry.kind == key:

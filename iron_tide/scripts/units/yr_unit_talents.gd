@@ -1,6 +1,7 @@
 extends RefCounted
 const P=preload("res://scripts/rules/progression_parameters.gd")
 const REVERSE:="grizzly_reverse"
+const REVERSE_COOLDOWN := 8.0
 const BOOK:="chrono_bookmark"
 const SPLIT:="rhino_split"
 const GROWTH:="deso_expansion"
@@ -22,6 +23,9 @@ static func cooldown_multiplier(unit) -> float:
 	return 1.0-float(reductions[rank])*0.01
 
 static func reverse_ready(unit) -> bool:
+	return reverse_allowed(unit) and unit.special.get("reverse_cd",0.0)<=0
+
+static func reverse_allowed(unit) -> bool:
 	return AlliedAbilities.alive(unit) and unit.unit_id=="MTNK" and unit.embarked_in==null and not unit.repairing and unit._stun_timer<=0 and not AlliedAbilities.frozen(unit) and enabled(unit,REVERSE)
 
 static func reverse_end(unit,point:Vector2) -> Vector2:
@@ -45,6 +49,7 @@ static func start_reverse(unit,point:Vector2) -> bool:
 	unit.special["reverse_heal_triggered"]=unit.special.has("reverse_heal_left")
 	unit.special.erase("reverse_attack")
 	unit.special[REVERSE]=end
+	unit.special.reverse_cd=REVERSE_COOLDOWN
 	return true
 
 static func end_reverse(unit) -> void:

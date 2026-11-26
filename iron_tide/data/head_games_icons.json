@@ -1,0 +1,23 @@
+{
+ "BRUTE": {
+  "cameo": "res://assets/ra2/cameo/BRUTICON.png"
+ },
+ "VIRUS": {
+  "cameo": "res://assets/ra2/cameo/VRUSICON.png"
+ },
+ "YURIPR": {
+  "cameo": "res://assets/ra2/cameo/YYPRICON.png"
+ },
+ "MIND": {
+  "cameo": "res://assets/ra2/cameo/MINDICON.png"
+ },
+ "TELE": {
+  "cameo": "res://assets/ra2/cameo/TELEICON.png"
+ },
+ "CAOS": {
+  "cameo": "res://assets/ra2/cameo/CAOSICON.png"
+ },
+ "DISK": {
+  "cameo": "res://assets/ra2/cameo/DISKICON.png"
+ }
+}

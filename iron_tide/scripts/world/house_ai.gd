@@ -300,6 +300,7 @@ func next_structure(buildings: Array) -> Dictionary:
 					return GameData.get_building(power_id if outpost else battle.roster_id("GAREFN",house_id))
 		ai_state.site_retry=20.0
 	var candidates := ["NADEPT"] if soviet else []
+	if enemy_base == "yuri": candidates.append_array(["YAGRND","NACLON","YAGNTC","YAPPET"])
 	if soviet and difficulty>=2: candidates.append_array(["NANRCT","NAINDP","NAIRON","NAMISL"])
 	var support := Operations.next_building(self,owned)
 	if not support.is_empty(): candidates.append(support)
@@ -327,6 +328,7 @@ func train_army(buildings: Array, units: Array, next: Dictionary, defense_reserv
 	if naval_turn==0 and kirovs==0: Operations.train_navy(self,reserve,true,contacts)
 	var available: float = funds-Tactics.committed(battle,house_id)
 	var matchups := {}
+	var combat_products := {}
 	for b in buildings:
 		if b.building_id==yard or not b.is_operational() or not b.production.is_empty() or b.production_paused() or b.exit_blocked or b.buildable.is_empty(): continue
 		var uid := Tactics.emergency_aa_product(battle,house_id,b,kirovs,counts,available-maxf(defense_reserve,power_reserve))
@@ -337,7 +339,7 @@ func train_army(buildings: Array, units: Array, next: Dictionary, defense_reserv
 			var budget := available - maxf(float(next.get("cost",0)) + defense_reserve,power_reserve)
 			if budget<=0: continue
 			var opponents := Tactics.production_contacts(battle,house_id,contacts)
-			uid=choose_combat_unit(b,budget,counts,opponents,matchups)
+			uid=choose_combat_unit(b,budget,counts,opponents,matchups,combat_products)
 		if uid.is_empty(): continue
 		var price: float = battle.production_price(GameData.get_unit(uid),house_id)
 		if price<=available-power_reserve and b.enqueue(uid):
@@ -346,14 +348,17 @@ func train_army(buildings: Array, units: Array, next: Dictionary, defense_reserv
 
 	if naval_turn!=0 or kirovs>0: Operations.train_navy(self,reserve,false,contacts)
 
-func choose_combat_unit(line, budget: float, counts: Dictionary, opponents: Array, matchups: Dictionary = {}) -> String:
+func choose_combat_unit(line, budget: float, counts: Dictionary, opponents: Array, matchups: Dictionary = {}, combat_products: Dictionary = {}) -> String:
 	var best := ""
 	var best_score := -INF
 	var flagship := "APOC" if battle.roster_faction(house_id)=="soviet" else "SREF"
 	for uid: String in line.buildable:
-		if not GameData.ai_product_allowed(uid) or not GameData.unit_in_production_catalog(uid): continue
-		var data := GameData.get_unit(uid)
-		if not Tactics.combat_product(data): continue
+		if not combat_products.has(uid):
+			var eligible := GameData.ai_product_allowed(uid) and GameData.unit_in_production_catalog(uid)
+			var product: Dictionary = GameData.get_unit(uid) if eligible else {}
+			combat_products[uid] = product if eligible and Tactics.combat_product(product) else {}
+		var data: Dictionary = combat_products[uid]
+		if data.is_empty(): continue
 		if battle.production_price(data,house_id)>budget or not line.can_queue(uid): continue
 		var count := int(counts.get(uid,0))
 		if uid==flagship and count==0: return uid

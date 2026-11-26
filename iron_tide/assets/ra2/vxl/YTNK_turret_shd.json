@@ -1,0 +1,15 @@
+{
+ "id": "YTNK_turret_shd",
+ "image": "YTNK",
+ "source": "ra2md.mix > localmd.mix > 0x18eedfed",
+ "frameW": 84,
+ "frameH": 54,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 2,
+ "detail_scale": 1,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "shadow_projection": "ground-plane-v2",
+ "of": "YTNK"
+}

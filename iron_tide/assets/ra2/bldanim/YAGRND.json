@@ -1,0 +1,81 @@
+{
+ "id": "YAGRND",
+ "layers": [
+  {
+   "kind": "idleanim",
+   "image": "YAGRND_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 10,
+   "frames": 11,
+   "rate": 300,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAGRND_A",
+    "shadow": true,
+    "loopStart": 0,
+    "loopEnd": 10,
+    "frames": 11,
+    "rate": 400,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "idleanimtwo",
+   "image": "YAGRND_C",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 20,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAGRND_C",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 20,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "activeanim",
+   "image": "YAGRND_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 1,
+   "frames": 96,
+   "rate": 400,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAGRND_B",
+    "shadow": true,
+    "loopStart": 49,
+    "loopEnd": 50,
+    "frames": 96,
+    "rate": 400,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "specialanim",
+   "image": "YAGRND_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 47,
+   "frames": 96,
+   "rate": 400,
+   "loopCount": 1,
+   "dmg": {
+    "image": "YAGRND_B",
+    "shadow": true,
+    "loopStart": 48,
+    "loopEnd": 95,
+    "frames": 96,
+    "rate": 400,
+    "loopCount": 1
+   }
+  }
+ ]
+}

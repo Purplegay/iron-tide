@@ -531,7 +531,7 @@ func _draw_yr_talent(clock:float) -> void:
 			var healing:=maxf(0,clock-route.turn)
 			draw_rect(Rect2(50,136,94*(0.50+minf(healing,duration)*0.01),6),Color.GREEN_YELLOW)
 			var phase:="自动转向 · 尚未回血" if clock<route.turn else ("沿路线倒车" if healing<2 else ("停车回血" if healing<duration else "回血结束"))
-			label="%s · 速度 %d%% · 回血剩余 %.1f / %d 秒" % [phase,amount,maxf(duration-healing,0),duration]
+			label="%s · 速度 %d%% · 回血 %.1f 秒 · 冷却 %.1f 秒" % [phase,amount,maxf(duration-healing,0),maxf(Unit.YRTalents.REVERSE_COOLDOWN-clock,0)]
 		Unit.YRTalents.BOOK:
 			var returning:=clock>=3
 			if clock<2 or returning:_trace(origin,MAIN_POINT,Color.SKY_BLUE,clock)

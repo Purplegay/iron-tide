@@ -88,7 +88,7 @@ static func retain_center_gap(world, span: Rect2, values: Dictionary, parts: Arr
 static func hit(world, point: Vector2, damage: float, source = null) -> void:
 	if world == null or damage <= 0.0 or world.allied_state.get("expedition_bridge_guard",false): return
 	migrate(world)
-	if not world.path_service.bridge_at(point).has_area(): return
+	if not Native.has(world.map_layout()) and not world.path_service.bridge_at(point).has_area(): return
 	var section := section_at(world,point)
 	if section.has_area(): damage_section(world,section,damage,source)
 
@@ -107,7 +107,11 @@ static func damage_section(world, section: Rect2, damage: float, source = null) 
 
 static func collapse_units(world, span: Rect2, source = null) -> void:
 	for unit in world.units.duplicate():
-		if not world.actor_alive(unit) or unit.embarked_in != null or unit.is_air_target() or not span.has_point(unit.position): continue
+		if not world.actor_alive(unit) or unit.embarked_in != null or unit.is_air_target(): continue
+		if world.map_layout()=="yr_hills":
+			if unit.special.has("hollywood_on_deck") and section_at(world,unit.position)==span: unit._die(source)
+			continue
+		if not span.has_point(unit.position): continue
 		if not unit._domain_ok(unit.position): unit._die(source)
 
 static func reset_health(world, span: Rect2) -> void:
@@ -138,9 +142,17 @@ static func restore(world) -> void:
 		for cell in row.bridge_section_by_cell:
 			if health(world,row.bridge_section_by_cell[cell]) <= 0.0:
 				overrides[cell] = int(row.bridge_base[cell])
-	world.path_service.set_bridge_damage(overrides,broken)
-	if not native: world.path_service.set_water(world.water_rects,decks)
+	var service: PathService = world.path_service
+	var bounds := Rect2()
+	if native and service.native_map_id == world.map_layout() and not service.time_shift_area.has_area():
+		bounds = _route_change_bounds(service, overrides, broken)
+	var before := service.route_snapshot_outside(bounds) if bounds.has_area() else {}
+	var epoch: int = world.path_epoch()
+	service.set_bridge_damage(overrides,broken)
+	if not native: service.set_water(world.water_rects,decks)
 	world._refresh_pathing()
+	if bounds.has_area() and world.path_epoch() == epoch + 1 and service.route_matches_outside(bounds,before):
+		world.record_route_change(bounds)
 	Sites.ensure_visual(world)
 	for child in world.get_children():
 		if child is Ground:
@@ -182,3 +194,19 @@ static func projectile_hit(projectile, damage: float) -> void:
 	var world = projectile.get_parent()
 	while world != null and not world is Battle: world = world.get_parent()
 	blast(world,projectile.target_point,damage,projectile.ra2_warhead,projectile.aoe,projectile)
+
+## Union all changed native flags and exact broken deck rectangles. The native
+## cell, rather than the visible sprite, is the source of the flag geometry.
+static func _route_change_bounds(service: PathService, flags: Dictionary, broken: Array) -> Rect2:
+	var bounds := Rect2()
+	var size := Vector2.ONE * Native.CELL
+	for pair in [[service.bridge_flags, flags], [flags, service.bridge_flags]]:
+		for key: Vector2i in pair[0]:
+			if pair[0][key] == pair[1].get(key, -1): continue
+			var box := Rect2(Vector2(key) * Native.CELL, size)
+			bounds = bounds.merge(box) if bounds.has_area() else box
+	for pair in [[service.broken_bridge_decks, broken], [broken, service.broken_bridge_decks]]:
+		for box: Rect2 in pair[0]:
+			if pair[1].has(box): continue
+			bounds = bounds.merge(box) if bounds.has_area() else box
+	return bounds.grow(service.cell + 2.0) if bounds.has_area() else bounds

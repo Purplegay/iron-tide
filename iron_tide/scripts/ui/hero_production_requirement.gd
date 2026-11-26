@@ -11,6 +11,9 @@ func _ready() -> void:
 	add_theme_font_size_override("normal_font_size",get_theme_font_size("font_size","Label"))
 
 func show_requirement(hero:String,count:int) -> void:
+	if hero in Academy.Stars.IDS:
+		text="中立英雄 · 各阵营均可在中立英雄制造所招募，同一位英雄同时在场一人。"
+		return
 	if hero in ["FV","HARV"]:
 		text=("已解锁" if count>0 else "尚未解锁")+"　·　"+("己方步兵登上普通多功能步兵车，当场晋升，每局一次。" if hero=="FV" else "同一辆武装矿车先打伤敌人，再采矿入仓。后续局首辆付费生产的武装矿车晋升，每局一次。")
 		return

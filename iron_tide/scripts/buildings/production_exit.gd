@@ -4,6 +4,7 @@ extends RefCounted
 ## rules.ini ExitCoord distinguishes the barracks and vehicle factory routes;
 ## these raster anchors adapt those routes to our bottom-anchored Godot sprites.
 const PORTS := {
+	"NEUTRALSTUDIO": {"size":Vector2(250,148),"pixel":Vector2(107,109),"out":Vector2(-1,0.5)},
 	"GAWEAP": {"size": Vector2(266, 224), "pixel": Vector2(224, 199), "out": Vector2(1, 0.5), "roof": Vector2(155, 145)},
 	"GAPILE": {"size": Vector2(250, 148), "pixel": Vector2(137, 130), "out": Vector2(-1, 0.5)},
 }

@@ -178,6 +178,25 @@ func exercise_mode(mode: String) -> void:
 		battle.camera.position = Vector2(1800, 1550); battle.camera.force_update_scroll()
 		await get_tree().process_frame; await RenderingServer.frame_post_draw
 		stage.get_texture().get_image().save_png(output_dir.path_join(mode + "-death.png"))
+	var reactor = add("YAPOWR", "enemy", Vector2(940, 680))
+	battle._countries.enemy = "Americans"
+	for site_house in ["YuriCountry", "Yuri2", "Yuri3", "Yuri4"]:
+		reactor.special.hollywood_house = site_house
+		check(Crew.crew_id(reactor, rng) == "INIT", "mission crew uses " + site_house)
+	var codec := Snapshot.new()
+	var saved := codec.capture(battle)
+	var restored_id: int = codec.ids[reactor]
+	codec.restore(battle, saved)
+	reactor = codec.objects[restored_id]
+	battle.allied_state.crew_rng.seed = 812
+	before = battle.units.size()
+	reactor.receive_hit(100000.0)
+	var survivors: Array = battle.units.slice(before)
+	check(survivors.size() == 1 and survivors[0].unit_id == "INIT" and survivors[0].side == "enemy", "restored Yuri reactor releases enemy initiate on destruction")
+	var captured = add("YAPOWR", "enemy", Vector2(900, 850))
+	captured.special.hollywood_house = "Yuri2"
+	AlliedAbilities.change_side(captured, "ally")
+	check(Crew.crew_id(captured, rng) == "E1", "captured Yuri reactor follows American controller")
 	await check_rocketeer_crash(mode)
 	screen.free(); Music.stop(); Ra2Sfx.stop_all()
 	get_tree().paused = false

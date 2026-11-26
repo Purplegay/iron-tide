@@ -77,7 +77,7 @@ static func index(unit, slot: int) -> int:
 
 static func info(unit, slot: int) -> Dictionary:
 	if slot==2 and unit.unit_id=="MTNK" and unit.YRTalents.enabled(unit,unit.YRTalents.REVERSE):
-		return {"id":unit.YRTalents.REVERSE,"name":"掩护倒车","desc":MetaProgress.talent_options("MTNK").grizzly_reverse.desc,"glyph":"move","ready":unit.YRTalents.reverse_ready(unit)}
+		return {"id":unit.YRTalents.REVERSE,"name":"掩护倒车","desc":MetaProgress.talent_options("MTNK").grizzly_reverse.desc,"glyph":"move","ready":unit.YRTalents.reverse_ready(unit),"cooldown":unit.YRTalents.REVERSE_COOLDOWN,"cd_left":unit.special.get("reverse_cd",0.0)}
 	var split=preload("res://scripts/units/ra3_reaper_split.gd")
 	if slot==1 and split.unlocked(unit):
 		return {"id":split.ID,"name":split.LABEL,"desc":split.HINT,"glyph":"attack","ready":split.engaged(unit)}

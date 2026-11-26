@@ -24,7 +24,7 @@ static func ranges(world) -> Array[Dictionary]:
 		var minimum := 0.0
 		var active := true
 		if actor is Unit:
-			if actor.embarked_in != null or actor.is_harvester or actor._active_weapon().is_empty():
+			if actor.embarked_in != null or actor.is_ordinary_harvester() or actor._active_weapon().is_empty():
 				continue
 			if actor.unit_id == "DRED": radius = OpenTopped.command_range(actor,actor.attack_target)
 			minimum = actor.min_range
@@ -48,7 +48,7 @@ static func ranges(world) -> Array[Dictionary]:
 			var key := [actor.unit_id, radius, minimum, active]
 			if represented.has(key): continue
 			represented[key] = true
-		result.append({"center": actor.global_position, "radius": radius,
+		result.append({"center": actor.global_position + (actor.bridge_contact_offset() if actor is Unit else Vector2.ZERO), "radius": radius,
 			"minimum": maxf(0.0, minimum), "active": active})
 	# Use the displayed cursor so UI, modifiers and double-click suppression all agree.
 	if world.selected_units.size() == 1 and world.command_mode.is_empty() and is_instance_valid(world.command_cursor) and world.command_cursor.state in ["deploy", "deploy_infantry"]:
@@ -56,7 +56,7 @@ static func ranges(world) -> Array[Dictionary]:
 		if AlliedAbilities.alive(unit) and not unit.is_deployed():
 			var weapon: Dictionary = unit.deployed_weapon()
 			if float(weapon.get("range", 0.0)) > 0.0:
-				result.append({"center": unit.global_position, "radius": weapon.range, "minimum": weapon.get("min_range", 0.0), "active": true, "deploy_preview": true})
+				result.append({"center": unit.global_position + unit.bridge_contact_offset(), "radius": weapon.range, "minimum": weapon.get("min_range", 0.0), "active": true, "deploy_preview": true})
 	return result
 
 static func dashed_ring(canvas: Node2D, points: PackedVector2Array, color: Color, width: float) -> void:

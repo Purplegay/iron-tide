@@ -118,6 +118,7 @@ const SUPPORT_READY_VOICES := {
 	"LightningStorm": "EVA_LightningStormReady", "MultiMissile": "EVA_NuclearMissileReady",
 	"ChronoSphere": "EVA_ChronosphereReady", "IronCurtain": "EVA_IronCurtainReady",
 	"AmerParaDrop": "EVA_ReinforcementsReady",
+	"ParaDrop": "EVA_ReinforcementsReady",
 }
 
 func play_support_ready(world, weapon_type := "") -> void:
@@ -203,9 +204,31 @@ func _start_eva(item: Dictionary) -> void:
 	_eva_cur_pri = int(item.get("pri", 1))
 	a_eva_plays += 1
 
+func play_victory_eva(faction: String) -> void:
+	if not eva_enabled:
+		return
+	stop_eva()
+	if faction == "yuri": faction = "japan"
+	if faction in ["allied", "soviet", "japan"]:
+		_queue_eva("RA3_VICTORY", "victory/" + faction, EVA_PRI.CRITICAL, 0)
+
+func play_hollywood_line(clip: String) -> void:
+	if eva_enabled and clip in ["xa2ev01", "xa2ev02", "xa2ev03", "xa2ev04", "xa2ev05", "xa2ev06", "xa2yu01", "xa2gg01", "xa2ar01", "xa2sl01", "cevau71", "cevau54", "cevau92", "cevau93", "xs3yu05"]:
+		_queue_eva(clip, "hollywood/" + clip, 4, 0)
+
+func play_time_shift_line(clip:String) -> bool:
+	return eva_enabled and _queue_eva(clip,"time_shift/"+clip,4,0)
+
+func play_head_games_line(clip: String) -> bool:
+	return eva_enabled and _queue_eva(clip,"head_games/"+clip,4,0)
+
 func _stream_eva(file_name: String) -> AudioStreamWAV:
 	if file_name == "":
 		return null
+	if file_name.begins_with("victory/"):
+		return _cached_stream(file_name, "res://assets/ra3/ui/" + file_name + ".wav")
+	if file_name.begins_with("time_shift/") or file_name.begins_with("hollywood/") or file_name.begins_with("head_games/"):
+		return _cached_stream(file_name, "res://assets/ra2/" + file_name + ".wav")
 	return _cached_stream("eva:" + file_name, GameData.ra2_eva_path(file_name))
 
 func set_master_linear(v: float) -> void:

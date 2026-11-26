@@ -99,7 +99,7 @@ static func train_navy(ai, reserve:float, priority := false, contacts: Dictionar
 		var basin := naval_basin(yard)
 		if basin.zone == 0: continue
 		var next_ship := ""
-		var ferry := "SAPC" if ai.enemy_base == "soviet" else "LCRF"
+		var ferry: String = {"soviet":"SAPC", "yuri":"YHVR"}.get(ai.enemy_base,"LCRF")
 		if world.map_layout() in ["strait","island_cross"] and count(ai,ferry) == 0 and yard.can_queue(ferry) and budget >= world.production_price(GameData.get_unit(ferry),ai.house_id):
 			if yard.enqueue(ferry): continue
 		var opponents := Tactics.production_contacts(world,ai.house_id,contacts)
@@ -509,7 +509,7 @@ static func unit_decision(ai,unit,visible, batch: Dictionary = {}) -> void:
 		preload("res://scripts/world/skirmish_fortress_crew.gd").load_nearby(ai, unit)
 	elif unit.unit_id == "SHAD":
 		transport(ai, unit, visible_contacts(ai, visible, batch))
-	elif unit.unit_id in ["LCRF", "SAPC"]:
+	elif unit.unit_id in ["LCRF", "SAPC", "YHVR"]:
 		preload("res://scripts/world/skirmish_landing.gd").tick(ai, unit, visible_contacts(ai, visible, batch))
 	elif unit.is_naval:
 		if not unit.weapon.is_empty(): naval_orders(ai,unit,visible_contacts(ai, visible, batch))

@@ -6,6 +6,8 @@ var membership := {}
 # Same relocation order, with structures omitted for unit-only movement queries.
 var unit_buckets := {}
 var unit_membership := {}
+var unit_membership_revision := 0
+var _unit_cell_revisions := {}
 var structure_buckets := {}
 var max_footprint := 0.0
 var max_unit_radius := 0.0
@@ -27,6 +29,7 @@ func relocate(actor: Node2D) -> void:
 	if actor is Unit:
 		unit_membership[actor] = cell
 		unit_buckets.get_or_add(cell, []).append(actor)
+		_touch_unit_cell(cell)
 	else:
 		structure_buckets.get_or_add(cell, []).append(actor)
 
@@ -43,10 +46,57 @@ func remove(actor: Node2D) -> void:
 		var units: Array = unit_buckets[cell]
 		units.erase(actor)
 		if units.is_empty(): unit_buckets.erase(cell)
+		_touch_unit_cell(cell)
 	else:
 		var structures: Array = structure_buckets[cell]
 		structures.erase(actor)
 		if structures.is_empty(): structure_buckets.erase(cell)
+
+# Membership changes only: same-cell movement is checked by the caller's watch.
+func _touch_unit_cell(cell: Vector2i) -> void:
+	unit_membership_revision += 1
+	if unit_buckets.has(cell):
+		_unit_cell_revisions[cell] = unit_membership_revision
+	else:
+		_unit_cell_revisions.erase(cell)
+
+# Snapshot every covered cell, including empty cells, without changing query order.
+func unit_region_stamp(point: Vector2, reach: float) -> Dictionary:
+	if not is_finite(reach):
+		return {"first":Vector2i.ZERO,"last":Vector2i.ZERO,"versions":{},"global":unit_membership_revision,"all":true}
+	var margin := Vector2.ONE * reach
+	var first := Vector2i(((point - margin) / CELL).floor())
+	var last := Vector2i(((point + margin) / CELL).floor())
+	var all_units := (last.x - first.x + 1) * (last.y - first.y + 1) > membership.size()
+	var versions := {}
+	if not all_units:
+		for y in range(first.y, last.y + 1):
+			for x in range(first.x, last.x + 1):
+				var cell := Vector2i(x, y)
+				versions[cell] = _unit_cell_revisions.get(cell, 0)
+	return {"first":first,"last":last,"versions":versions,"global":unit_membership_revision,"all":all_units}
+
+func unit_region_unchanged(stamp: Dictionary, point: Vector2, reach: float) -> bool:
+	if stamp.is_empty(): return false
+	# A full-query snapshot already includes every registered unit.
+	if stamp.all:
+		return int(stamp["global"]) == unit_membership_revision
+	if not is_finite(reach): return false
+	var margin := Vector2.ONE * reach
+	var first := Vector2i(((point - margin) / CELL).floor())
+	var last := Vector2i(((point + margin) / CELL).floor())
+	var old_first: Vector2i = stamp.first
+	var old_last: Vector2i = stamp.last
+	if first.x < old_first.x or first.y < old_first.y or last.x > old_last.x or last.y > old_last.y:
+		return false
+	if int(stamp["global"]) == unit_membership_revision: return true
+	var versions: Dictionary = stamp.versions
+	for cell: Vector2i in versions:
+		if int(versions[cell]) != int(_unit_cell_revisions.get(cell, 0)):
+			return false
+	# Unrelated distant changes need not be rechecked by the next consumer.
+	stamp["global"] = unit_membership_revision
+	return true
 
 func nearby(point: Vector2, reach: float, units_only := false) -> Array:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(40)

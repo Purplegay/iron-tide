@@ -1,0 +1,16 @@
+{
+ "id": "YAGGUN_turret",
+ "image": "YAGGUN",
+ "source": "ra2md.mix > localmd.mix > 0xa8ec57cc",
+ "frameW": 69,
+ "frameH": 43,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 2,
+ "detail_scale": 2,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "palette_lit": true,
+ "vxl": "YAGGUN.VXL",
+ "of": "YAGGUN"
+}

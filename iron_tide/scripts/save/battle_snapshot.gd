@@ -122,6 +122,16 @@ func capture(world) -> Dictionary:
 		context["death_sight"] = remaining
 	if preload("res://scripts/world/native_maps.gd").has(world.map_layout()):
 		context["native_map_sha"]=FileAccess.get_sha256("res://data/maps/%s.json"%world.map_layout())
+	if context.mission_id == "yr_hollywood" and world.allied_state.get("hollywood", {}).get("briefing", false):
+		var film = world.get_node_or_null("HollywoodFilm")
+		if film != null and not film.is_queued_for_deletion():
+			context["hollywood_briefing_clip"] = film.clip_id
+	if context.mission_id == "yr_head_games" and world.allied_state.has("head_brief_stage"):
+		var film = world.get_node_or_null("HollywoodFilm")
+		if film != null and not film.is_queued_for_deletion() and film.clip_id in ["S07_F00E", "S07_P01E"]:
+			context["head_briefing_clip"] = film.clip_id
+		elif not world.allied_state.get("head_intro_done", true):
+			context["head_briefing_clip"] = world.allied_state.get("head_resume_clip", "S07_P01E")
 	for key in Schema.GM_FIELDS: context.gm[key] = GM.get(key)
 	return {"records": records, "context": context, "special_rules": BattleSaves.digest(var_to_bytes(preload("res://scripts/world/special_rules.gd").data())),
 		"death_rules": BattleSaves.digest(var_to_bytes(preload("res://scripts/core/yr_death_rules.gd").data()))}
@@ -212,7 +222,16 @@ func restore(world, snapshot: Dictionary) -> void:
 		if object is CollisionObject2D:
 			object.collision_layer = record.collision[0]
 			object.collision_mask = record.collision[1]
+		if object is Unit or object is Building:
+			GameData.apply_hollywood_fx(object.data)
+			if world.mission.get("id")=="yr_head_games": object.refresh_house_color()
 		if object is Unit:
+			if world.mission.get("id") == "yr_hollywood" and object.side == "enemy" and object.special.has("hollywood_house") and object.unit_id in preload("res://scripts/world/hollywood_bases.gd").RESIDENTS:
+				object.side = "neutral"
+				object.set_fire_stance("none")
+				object.refresh_house_color()
+			if object.side == "neutral":
+				BattleRequest.sync_unit_target_groups(object, false)
 			# setup() used the base unit outfit before the saved hero identity was restored.
 			if object.special.has("academy_hero") or object.special.get("convoy_projected_skin",false): object.refresh_house_color()
 			if object.unit_id=="YURIKO":
@@ -265,6 +284,7 @@ func restore(world, snapshot: Dictionary) -> void:
 			preload("res://scripts/buildings/tesla_pulse.gd").configure(object)
 			if object.building_id == "CAOILD": object.refresh_house_color()
 			preload("res://scripts/world/american_paradrop.gd").configure(object)
+			world.Hollywood.configure_facility(object)
 			if object.building_id == "GAYARD" and not object._is_repair:
 				# Older saves carry both the previous tags and the derived capability.
 				object._is_repair = GameData.get_building("GAYARD").tags.has("repair")
@@ -280,12 +300,17 @@ func restore(world, snapshot: Dictionary) -> void:
 				for id in GameData.get_building(object.building_id).builds:
 					if not object.buildable.has(id): object.buildable.append(id)
 					if not object.data.builds.has(id): object.data.builds.append(id)
+			if world.mission.get("id")=="yr_head_games" and GameData.HEAD_PRODUCTS.has(object.building_id):
+				for product in GameData.units_from_building("yuri",object.building_id):
+					if not object.buildable.has(product.id): object.buildable.append(product.id)
 			if object.building_id=="NAWEAP" and BattleRequest.extensions_enabled():
 				for data in GameData.units_from_building("soviet","NAWEAP"):
 					if data.has("soviet_ra3") and not object.buildable.has(data.id):object.buildable.append(data.id)
 			object._turret_art.setup(object.building_id)
+			if object.building_id=="YAGGUN": object._turret_art.spin_pose=int(object.special.get("barrel_phase",0))
 			preload("res://scripts/rules/joint_ra2_production.gd").sync_catalog(object)
 			preload("res://scripts/expedition/rules.gd").sync_training_permits(object)
+			object.apply_mission_production_limits()
 			# Foundation geometry is derived, not saved gameplay state. Field coverage
 			# could mutate the serialized array into world coordinates. Rebuild it to
 			# match the collision polygon created by setup(), also for ordinary buildings.
@@ -318,6 +343,11 @@ func restore(world, snapshot: Dictionary) -> void:
 	for pair in context.rally: world.rally_points[objects[pair[0]].get_instance_id()] = pair[1]
 	preload("res://scripts/world/civilian_sites.gd").restore_crossings(world)
 	preload("res://scripts/world/native_maps.gd").recover_low_bridge_ships(world)
+	if world.mission.get("id")=="yr_head_games": world.HeadGames.recover_entry(world)
+	if world.mission.get("id")=="yr_head_games":
+		for id in ["CATRAN01","CATRAN02"]:
+			var lamp=world.get_node_or_null("TransylvaniaLights/"+id)
+			if lamp:lamp.visible=not world.allied_state.get("s07_dark_"+id,false)
 	for child in world.get_children():
 		if child is WaterLayer: child.rects = world.water_rects; child.queue_redraw()
 	preload("res://scripts/world/storm_presentation.gd").sync(world)
@@ -330,6 +360,10 @@ func restore(world, snapshot: Dictionary) -> void:
 	for building in world.buildings:
 		if SupportSystems.shared_charge(building) and SupportSystems.charge_controller(building)==building:
 			SupportSystems.sync_charge(building)
+	if world.allied_state.has("time_shift"):
+		var phase:int=world.allied_state.time_shift.phase
+		world.TimeShift.bounds(world,1 if phase==3 else 2 if phase==4 else 0,phase in [1,2])
+		world.TimeShift.sync_crossing_visual(world, world.allied_state.time_shift)
 	world._update_depth_order()
 	if world.fog != null:
 		world.fog._scouts.clear()
@@ -363,5 +397,13 @@ func restore(world, snapshot: Dictionary) -> void:
 	Events.funds_changed.emit(world.funds)
 	world.invalidate_ai_population()
 	world.refresh_control_group_badges()
+	if context.mission_id == "yr_hollywood" and world.allied_state.get("hollywood", {}).get("briefing", false):
+		var clip: String = context.get("hollywood_briefing_clip", "")
+		if clip in ["A02_F00E", "A02_P01E", "A02_P02E"]:
+			world.allied_state.hollywood.resume_briefing_clip = clip
+	if context.mission_id == "yr_head_games" and world.allied_state.has("head_brief_stage"):
+		var clip = context.get("head_briefing_clip", "")
+		if clip in ["S07_F00E", "S07_P01E"]:
+			world.allied_state.head_resume_clip = clip
 	world.hud.pause_after_load()
 	Ra2Sfx.stop_all()

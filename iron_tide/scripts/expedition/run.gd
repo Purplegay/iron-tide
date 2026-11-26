@@ -33,9 +33,6 @@ func load_run() -> bool:
 		MetaProgress.save()
 	if not loaded.has("known_dialogue"):
 		loaded.known_dialogue=GainJournal.keys_of(GainJournal.dialogue(int(loaded.cycle)))
-	if sell_excess_infantry(loaded)>0:
-		state=loaded.duplicate(true)
-		return commit(loaded)
 	Market.normalize_shop(loaded,true)
 	state=loaded
 	flush_income()
@@ -92,12 +89,8 @@ func commit(next:Dictionary) -> bool:
 	if not flush_income():return false
 	Market.normalize_shop(next)
 	if not valid(next):error="远征状态无效，未保存";return false
-	var before_sale:=int(next.supplies)
-	var auto_sold:=sell_excess_infantry(next)
-	var auto_refund:=int(next.supplies)-before_sale
-	if auto_sold>0 and not next.get("battle_reports",[]).is_empty() and next.get("supply_action","")=="战斗胜利":next.battle_reports[-1].auto_sale={"count":auto_sold,"supplies":auto_refund}
 	if not state.is_empty() and state.get("id","")==next.get("id",""):
-		var delta_supplies:=before_sale-int(state.supplies)
+		var delta_supplies:=int(next.supplies)-int(state.supplies)
 		if delta_supplies!=0:
 			var ledger:Dictionary=next.get("supply_ledger",{}).duplicate(true)
 			var category:=str(next.get("supply_action","其他收入" if delta_supplies>0 else "其他支出"))
@@ -105,11 +98,6 @@ func commit(next:Dictionary) -> bool:
 			var flow:="in" if delta_supplies>0 else "out"
 			entry[flow]=int(entry.get(flow,0))+absi(delta_supplies);ledger[category]=entry
 			next.supply_ledger=ledger
-		if auto_refund>0:
-			var sale_ledger:Dictionary=next.get("supply_ledger",{}).duplicate(true)
-			var sale_entry:Dictionary=sale_ledger.get("自动出售",{"in":0,"out":0})
-			sale_entry["in"]=int(sale_entry.get("in",0))+auto_refund;sale_ledger["自动出售"]=sale_entry
-			next.supply_ledger=sale_ledger
 	GainJournal.capture(state,next)
 	next.erase("supply_action")
 	var payload:=var_to_bytes(next)
@@ -197,7 +185,7 @@ func offer_partners(next:Dictionary) -> void:
 func heroes(country:String) -> Array:
 	var result:Array=[]
 	for id:String in MetaProgress.Academy.HEROES:
-		if GameData.get_unit(id).get("faction","")!=GameData.ra2_country_side(country):continue
+		if id not in MetaProgress.Academy.Stars.IDS and GameData.get_unit(id).get("faction","")!=GameData.ra2_country_side(country):continue
 		if MetaProgress.Academy.hero_build_count(MetaProgress,id)>=MetaProgress.Academy.hero_requirement(id):result.append(id)
 	return result
 
@@ -250,19 +238,19 @@ func grant(next:Dictionary,item:Dictionary) -> void:
 			var paid:Dictionary=next.get_or_add("equipment_paid",{})
 			paid[item.id]=int(paid.get(item.id,0))+int(item.get("paid",0))
 		"unit":
-			var count:=recruit_count(next,item,Catalog.squad_size(item.id))
+			var count:=Catalog.squad_size(item.id)
 			if count>0:Army.add_unit(next,item.id,count)
 		"training":Growth.upgrade(next,item.id)
 		"relic":Relics.grant(next,item.id)
 		"native":Army.Talents.grant(next,item)
 		"specialization":next.specializations[item.id]=str(item.get("branch","a"))
 		"special_unit":
-			var count:=recruit_count(next,item,int(item.get("count",1)))
+			var count:=int(item.get("count",1))
 			if count<=0:return
 			var token:=str(next.id)+":"+str(next.stage)+":"+str(next.special_squads.size())
 			next.special_squads.append({"id":item.id,"token":token,"tier":item.tier,"native_rank":item.get("native_rank",-1),"count":count,"max_count":count})
 			Army.license_unit(next,item.id)
-			if item.id not in next.active_roster and next.active_roster.size()<Campaign.slots(next):next.active_roster.append(item.id)
+			Army.auto_field(next,item.id)
 		"reinforce":
 			var count:=refill_count(next,item.id)
 			if count>0:next.reinforcements.append({"id":item.id,"count":count})
@@ -271,11 +259,6 @@ func grant(next:Dictionary,item:Dictionary) -> void:
 			next.free_purchase_stage=int(next.stage)
 		"repair_kit":next.kits+=int(item.get("amount",1))
 		"supplies":next.supplies+=int(item.get("amount",100))
-
-func recruit_count(next:Dictionary,item:Dictionary,requested:int) -> int:
-	var count:=mini(requested,Army.room(next,item.id))
-	next.supplies+=(requested-count)*Catalog.dismissal_value(item.id)
-	return count
 
 func ready(next:Dictionary) -> void:
 	next.phase="ready"
@@ -364,6 +347,7 @@ func purchase_problem(run:Dictionary,index:int) -> String:
 	if index<0 or index>=run.get("shop",[]).size():return "商品已变化，请重新选择"
 	var item:Dictionary=run.shop[index]
 	if item.sold:return "已售罄"
+	if not Market.recruit_fits(run,item):return "剩余名额不足以招募整队该兵种"
 	var key:=Market.shop_key(item)
 	for other_index in run.shop.size():
 		if other_index<index and Market.shop_key(run.shop[other_index])==key:return "本店已有同款商品"
@@ -526,6 +510,7 @@ func settle(world,win:bool) -> bool:
 		return commit(next)
 	next.survivors=collect(world)
 	next.chrono_discounts=preload("res://scripts/expedition/reinforcement_plan.gd").carry(state,world,next.survivors)
+	next.survivors.append_array(Army.deployment(state).reserve)
 	next.reinforcements=[]
 	Army.synchronize(next)
 	Heroes.update_wounded(next,world)
@@ -588,16 +573,15 @@ func collect(world,heal:=true) -> Array:
 		if not world.actor_alive(unit) or unit.side!="ally" or not unit.unit_id in state.catalog:continue
 		if not unit.special.get(preload("res://scripts/expedition/reinforcement_plan.gd").MEMBER,false):continue
 		if unit.special.has("expedition_mission_unit") or unit.special.has("expansion_temporary") or unit.special.has("furnace_flak_life") or unit.special.has("hero_wreck") or unit.is_harvester or unit.deploy_building_id()!="":continue
-		result.append({"id":unit.unit_id,"excluded":unit.excluded_from_army_selection,"hp":minf(1.0,unit.hp/maxf(1,unit.max_hp)+(recovery(unit.unit_id) if heal else 0.0)),"rank":unit.veteran_level,"xp":unit._vet_kills,"hero":unit.special.get("academy_hero",""),"variant":unit.special.get("expedition_variant","")})
+		var promoted:bool = unit.special.get(preload("res://scripts/expedition/red_alert.gd").PROMOTED,false)
+		result.append({"id":unit.unit_id,"excluded":unit.excluded_from_army_selection,"hp":minf(1.0,unit.hp/maxf(1,unit.max_hp)+(recovery(unit.unit_id) if heal else 0.0)),"rank":1 if promoted else unit.veteran_level,"xp":0.0 if promoted else unit._vet_kills,"alert_start_one":promoted,"hero":unit.special.get("academy_hero",""),"variant":unit.special.get("expedition_variant","")})
 	result.sort_custom(survivor_before)
-	for row:Dictionary in Army.inventory(state):
-		if row.id not in state.active_roster and str(row.get("hero","")).is_empty():result.append(row.duplicate(true))
 	# Queued chronoshift reinforcements never entered the battle, so they cannot
 	# be dead or wounded. Carry each pending unit into the next camp intact.
 	if is_instance_valid(world):
 		for pending:Dictionary in world.allied_state.get("expedition_reinforcement_plan",[]):
 			if pending.get("radio_copy",false) or str(pending.id).begins_with("R3"):continue
-			result.append({"id":str(pending.get("id","")),"excluded":bool(pending.get("excluded",false)),"hp":float(pending.get("hp",1.0)),"rank":int(pending.get("rank",0)),"xp":float(pending.get("xp",0.0)),"hero":str(pending.get("hero","")),"variant":str(pending.get("variant",""))})
+			result.append({"id":str(pending.get("id","")),"excluded":bool(pending.get("excluded",false)),"hp":float(pending.get("hp",1.0)),"alert_start_one":bool(pending.get("alert_start_one",false)),"rank":int(pending.get("rank",0)),"xp":float(pending.get("xp",0.0)),"hero":str(pending.get("hero","")),"variant":str(pending.get("variant",""))})
 	return result
 
 func survivor_before(a:Dictionary,b:Dictionary) -> bool:
@@ -615,6 +599,7 @@ func retreat(world) -> bool:
 	next.retreat_used=true;next.supplies-=80
 	next.survivors=collect(world,false)
 	next.chrono_discounts=preload("res://scripts/expedition/reinforcement_plan.gd").carry(state,world,next.survivors)
+	next.survivors.append_array(Army.deployment(state).reserve)
 	next.reinforcements=[]
 	Army.synchronize(next)
 	next.kits=int(world.allied_state.get("expedition_kits",next.kits))
@@ -645,9 +630,8 @@ func item_problem(run:Dictionary,item:Dictionary) -> String:
 	if str(item.get("id","")).begins_with("R3"):return "红警3兵种不参与远征"
 	if item.kind=="blueprint":return "量产图纸已取消；全部天赋由同兵种共享"
 	if item.kind=="special_unit" and not Market.special_useful(run,item.id,int(item.tier)):return "该兵种已解锁全部天赋或无需特装攻防加成"
-	if item.kind in ["unit","special_unit"] and Army.room(run,item.id)<=0:return "该兵种已满员、达到限造数量或本章人数已满"
 	if item.kind=="buff" and int(run.buffs.get(item.id,0))>=3:return "该装备已满 3 级"
-	if item.kind=="reinforce" and refill_count(run,item.id)<=0:return "该兵种或本章人数已满，无需补员"
+	if item.kind=="reinforce" and refill_count(run,item.id)<=0:return "该兵种已有足够人员，无需补员"
 	if item.kind=="equipment_slot":return "装备数量已无限制，无需扩容，请选择其他事件选项"
 	if item.kind=="trait_buff":
 		if not Army.TRAITS.has(item.id) or int(run.get("trait_buffs",{}).get(item.id,0))>=9:return "该羁绊已满 9 层，请选择其他奖励或刷新商品"
@@ -671,6 +655,17 @@ func formation_slots() -> Array:
 	for id:String in state.active_roster:
 		if id not in cells and cells.has(""):cells[cells.find("")]=id
 	return cells
+
+func adjust_deployment(id:String,delta:int) -> bool:
+	if state.get("phase","")!="ready" or id not in state.active_roster or absi(delta)!=1:return false
+	var plan:=Army.deployment(state)
+	var count:=int(plan.counts[id])+delta
+	if count<0 or count>mini(int(plan.owned.get(id,0)),Army.limit(id)) or (delta>0 and plan.remaining<=0):return false
+	var next:=state.duplicate(true)
+	next.deployment_counts=plan.counts
+	next.deployment_counts[id]=count
+	if count==0:next.active_roster.erase(id);next.deployment_counts.erase(id)
+	return commit(next)
 
 func move_formation(id:String,target:int) -> bool:
 	if state.get("phase","")!="ready" or id not in Army.available(state):return false
@@ -715,37 +710,6 @@ func dismiss(id:String,count:int) -> bool:
 func dismiss_before(a:Dictionary,b:Dictionary) -> bool:
 	if str(a.get("variant","")).is_empty()!=str(b.get("variant","")).is_empty():return not str(a.get("variant","")).is_empty()
 	return survivor_before(a,b)
-
-func sell_excess_infantry(next:Dictionary) -> int:
-	if next.phase in ["battle","failed"]:return 0
-	var rows:=Army.inventory(next)
-	var counts:Dictionary={}
-	var total:=0
-	for row:Dictionary in rows:
-		if not str(row.get("hero","")).is_empty():continue
-		counts[row.id]=int(counts.get(row.id,0))+1
-		total+=1
-	rows.sort_custom(dismiss_before)
-	var sold:=0
-	var refund:=0
-	# Resolve per-type excess first, then total population, so retained types are
-	# not sold unnecessarily while another type still exceeds its own limit.
-	for pass_index in 2:
-		for index in range(rows.size()-1,-1,-1):
-			var row:Dictionary=rows[index]
-			if not str(row.get("hero","")).is_empty() or GameData.unit_production_category(GameData.get_unit(row.id))!="infantry":continue
-			var excess:bool=int(counts[row.id])>Army.limit(row.id) if pass_index==0 else total>Campaign.population(int(next.stage))
-			if not excess:continue
-			counts[row.id]-=1;total-=1;sold+=1
-			refund+=Catalog.dismissal_value(row.id)
-			rows.remove_at(index)
-	if sold>0:
-		next.survivors=rows
-		next.reinforcements=[]
-		next.supplies+=refund
-		next.last_auto_sale={"stage":int(next.stage),"count":sold,"supplies":refund}
-		Army.synchronize(next)
-	return sold
 
 func excess_sale(run:Dictionary) -> Dictionary:
 	var rows:=Army.inventory(run)
@@ -815,7 +779,7 @@ func service(kind:String,id:String="",branch:String="a",expected_price:int=-1) -
 		"relic":item={"kind":"relic","id":Growth.RELIC,"price":Growth.RELIC_PRICE}
 		"refill":
 			if id not in state.licenses:return false
-			if refill_count(state,id)<=0:error="该兵种或本章人数已满，无需补员";return false
+			if refill_count(state,id)<=0:error="该兵种已有足够人员，无需补员";return false
 			item={"kind":"reinforce","id":id,"price":0 if state.get("repair_coupon",false) else 40}
 		"kit":item={"kind":"repair_kit","id":"repair_kit","price":40}
 	if item.is_empty() or not item_valid(state,item):return false

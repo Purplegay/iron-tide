@@ -13,6 +13,13 @@ var _radio_phase := 0.0
 const RADIO_PULSE_SECONDS := 1.4
 var objectives
 var _dragging: bool = false
+var _right_press := Vector2.INF
+var _radar_history := PackedVector2Array()
+var _radar_cursor := -1
+var _radar_jump_ms := -1000
+const Hotkeys = preload("res://scripts/ui/battle_hotkeys.gd")
+const CampaignMarks = preload("res://scripts/ui/campaign_objective_marks.gd")
+const PUBLIC_PINGS := ["friendly_support", "campaign_site", "campaign_discovery"]
 var _ore_marks: Array = []
 var _ore_signature := PackedInt64Array()
 var _ore_projection := Transform2D.IDENTITY
@@ -34,11 +41,17 @@ var _pings: Array = []   # (B3) 雷达事件闪烁：{pos, kind, t, life}
 var _projection_basis := Transform2D.IDENTITY
 var _projection_size := Vector2.INF
 var _projection_map := -1.0
+var _layout := ""
+var _world_edge := PackedVector2Array()
+var _edge_uv := PackedVector2Array()
+const NativeMaps = preload("res://scripts/world/native_maps.gd")
 var _projection := Transform2D.IDENTITY
 
 func setup(p_battle) -> void:
+	clip_contents = true
 	battle = p_battle
 	objectives = null
+	clear_radar_events()
 	if _camera_layer == null:
 		_camera_layer = Node2D.new()
 		add_child(_camera_layer)
@@ -55,12 +68,41 @@ func setup(p_battle) -> void:
 
 ## (B3) 收到雷达事件（受袭/建成）：入队并限流，供 _draw 闪烁。
 func _on_radar_ping(world_pos: Vector2, kind: String) -> void:
-	var life := 3.0
-	if kind == "ready":
-		life = 2.2
+	if not is_instance_valid(battle) or battle.ended or not world_pos.is_finite(): return
+	_world_to_minimap()
+	if not Geometry2D.is_point_in_polygon(world_pos, _world_edge): return
+	if kind not in PUBLIC_PINGS and not battle.position_visible_to("ally", world_pos): return
+	var life := 2.2 if kind == "ready" else (5.0 if kind in ["campaign_site", "campaign_discovery"] else 3.0)
+	for pg in _pings:
+		if pg.kind == kind and (pg.pos as Vector2).distance_squared_to(world_pos) < 55.0 * 55.0:
+			return
+	# Replace repeat alerts at the same spot rather than filling the history with one fight.
+	for i in range(_radar_history.size() - 1, -1, -1):
+		if _radar_history[i].distance_squared_to(world_pos) < 55.0 * 55.0:
+			_radar_history.remove_at(i)
+	_radar_history.append(world_pos)
+	if _radar_history.size() > 8: _radar_history.remove_at(0)
+	_radar_cursor = _radar_history.size() - 1
+	_radar_jump_ms = -1000
 	_pings.append({"pos": world_pos, "kind": kind, "t": 0.0, "life": life})
 	if _pings.size() > 24:
 		_pings = _pings.slice(_pings.size() - 24)
+	queue_redraw()
+
+func clear_radar_events() -> void:
+	_pings.clear()
+	_radar_history.clear()
+	_radar_cursor = -1
+	_radar_jump_ms = -1000
+	queue_redraw()
+
+func jump_to_radar_event() -> bool:
+	if not _can_use_radar() or _radar_history.is_empty(): return false
+	var now := Time.get_ticks_msec()
+	_radar_cursor = _radar_history.size() - 1 if now - _radar_jump_ms > 400 else posmod(_radar_cursor - 1, _radar_history.size())
+	_radar_jump_ms = now
+	battle.center_on(_radar_history[_radar_cursor])
+	return true
 
 func _process(delta: float) -> void:
 	if not _pings.is_empty():
@@ -85,9 +127,29 @@ func _process(delta: float) -> void:
 
 func _map_rect() -> Rect2:
 	var boundary := _map_boundary()
+	if boundary.is_empty(): return Rect2()
 	var rect := Rect2(boundary[0], Vector2.ZERO)
 	for point in boundary: rect = rect.expand(point)
 	return rect
+
+func _update_boundary(layout: String, map: float) -> void:
+	_world_edge = PackedVector2Array([Vector2.ZERO, Vector2(map, 0), Vector2(map, map), Vector2(0, map)])
+	if NativeMaps.has(layout):
+		# Retail map edges run diagonally through the world cell grid.
+		var low := Vector2.INF
+		var high := -Vector2.INF
+		for cell: Array in NativeMaps.data(layout).cells:
+			var center := Vector2(cell[0] + cell[1] + 1, cell[1] - cell[0])
+			low = low.min(center)
+			high = high.max(center)
+		low -= Vector2.ONE
+		high += Vector2.ONE
+		var corners := [low, Vector2(high.x, low.y), high, Vector2(low.x, high.y)]
+		for i in corners.size():
+			var d: Vector2 = corners[i]
+			_world_edge[i] = Vector2(d.x - d.y, d.x + d.y) * (0.5 * NativeMaps.CELL)
+	_edge_uv.clear()
+	for point in _world_edge: _edge_uv.append(point / map)
 
 func _world_to_minimap() -> Transform2D:
 	if battle == null or float(battle.map_size) <= 0.0:
@@ -97,21 +159,25 @@ func _world_to_minimap() -> Transform2D:
 	var basis: Transform2D = battle.get_viewport().get_canvas_transform()
 	basis.origin = Vector2.ZERO
 	var map := float(battle.map_size)
-	if basis == _projection_basis and size == _projection_size and map == _projection_map:
+	var layout := battle.map_layout()
+	if layout != _layout or map != _projection_map:
+		_update_boundary(layout, map)
+		_layout = layout
+	elif basis == _projection_basis and size == _projection_size:
 		return _projection
 	_projection_basis = basis
 	_projection_size = size
 	_projection_map = map
-	var bounds := Rect2(Vector2.ZERO, Vector2.ZERO)
-	for corner in [Vector2(map, 0), Vector2(map, map), Vector2(0, map)]:
+	var bounds := Rect2(basis * _world_edge[0], Vector2.ZERO)
+	for corner in _world_edge:
 		bounds = bounds.expand(basis * corner)
 	var fit := maxf(0.000001, minf(size.x / maxf(bounds.size.x, 0.000001), size.y / maxf(bounds.size.y, 0.000001)))
 	_projection = Transform2D(basis.x * fit, basis.y * fit, (size - bounds.size * fit) * 0.5 - bounds.position * fit)
 	return _projection
 
 func _map_boundary() -> PackedVector2Array:
-	var map := float(battle.map_size) if battle != null else 0.0
-	return _world_to_minimap() * PackedVector2Array([Vector2.ZERO, Vector2(map, 0), Vector2(map, map), Vector2(0, map)])
+	var projection := _world_to_minimap()
+	return projection * _world_edge
 
 func _to_map(local: Vector2) -> Vector2:
 	var rect := _map_rect()
@@ -119,6 +185,12 @@ func _to_map(local: Vector2) -> Vector2:
 		return Vector2.ZERO
 	var map := float(battle.map_size)
 	var point := _world_to_minimap().affine_inverse() * local
+	if NativeMaps.has(_layout) and not Geometry2D.is_point_in_polygon(point, _world_edge):
+		var nearest := _world_edge[0]
+		for i in _world_edge.size():
+			var candidate := Geometry2D.get_closest_point_to_segment(point, _world_edge[i], _world_edge[(i+1)%_world_edge.size()])
+			if point.distance_squared_to(candidate) < point.distance_squared_to(nearest): nearest = candidate
+		point = nearest
 	return point.clamp(Vector2.ZERO, Vector2.ONE * map)
 
 func _view_outline() -> PackedVector2Array:
@@ -141,8 +213,11 @@ func _view_outline() -> PackedVector2Array:
 	var clipped := Geometry2D.intersect_polygons(polygon, boundary)
 	return clipped[0] if not clipped.is_empty() else PackedVector2Array()
 
+func _can_use_radar() -> bool:
+	return is_instance_valid(battle) and battle.world_input_enabled() and not campaign_radar_offline() and not LightningStorm.radar_jammed(battle, "ally")
+
 func _gui_input(event: InputEvent) -> void:
-	if battle == null or not battle.world_input_enabled() or LightningStorm.radar_jammed(battle, "ally"):
+	if not _can_use_radar():
 		cancel_drag()
 		return
 	if event is InputEventMouseButton:
@@ -150,19 +225,62 @@ func _gui_input(event: InputEvent) -> void:
 			# Start only over the drawn map. An active drag may cross the border.
 			_dragging = event.pressed and Geometry2D.is_point_in_polygon(event.position, _map_boundary())
 			if _dragging:
-				battle.center_on(_to_map(event.position))
+				_right_press = Vector2.INF
+				battle.center_on(_focus_point(event.position))
 			accept_event()
-	elif event is InputEventMouseMotion and _dragging:
-		battle.center_on(_to_map(event.position))
-		accept_event()
+		elif event.button_index == MOUSE_BUTTON_RIGHT:
+			var on_map := Geometry2D.is_point_in_polygon(event.position, _map_boundary())
+			if event.pressed:
+				_right_press = event.position if on_map and not _dragging else Vector2.INF
+			else:
+				var clicked := _right_press.is_finite() and _right_press.distance_to(event.position) <= 6.0
+				_right_press = Vector2.INF
+				if clicked and on_map and not battle.radar_ground_order(_to_map(event.position), event.shift_pressed, event.ctrl_pressed):
+					battle.center_on(_focus_point(event.position))
+			accept_event()
+	elif event is InputEventMouseMotion:
+		if _right_press.distance_to(event.position) > 6.0: _right_press = Vector2.INF
+		if _dragging:
+			battle.center_on(_to_map(event.position))
+			accept_event()
+
+func _focus_point(local: Vector2) -> Vector2:
+	var best := _to_map(local)
+	# Mission diamonds and visible event flashes have a few pixels of click tolerance.
+	var error := 100.0
+	var projection := _world_to_minimap()
+	for pg in _pings:
+		if pg.kind not in PUBLIC_PINGS and not battle.position_visible_to("ally", pg.pos): continue
+		var distance := local.distance_squared_to(projection * (pg.pos as Vector2))
+		if distance < error:
+			error = distance
+			best = pg.pos
+	for mark in objective_marks():
+		var distance := local.distance_squared_to(mark.local)
+		if distance < error:
+			error = distance
+			best = mark.position
+	return best
+
+# Keep event history for manual recall, but stop flashing the previous objective.
+func clear_objective_flashes() -> void:
+	_pings = _pings.filter(func(pg): return pg.kind != "campaign_site")
+	queue_redraw()
 
 func cancel_drag() -> void:
 	_dragging = false
+	_right_press = Vector2.INF
 
 func objective_marks() -> Array:
 	var result:Array=[]
-	if not is_instance_valid(battle) or not is_instance_valid(objectives) or LightningStorm.radar_jammed(battle,"ally"):return result
-	var projection:=_world_to_minimap()
+	if not is_instance_valid(battle) or LightningStorm.radar_jammed(battle,"ally"):return result
+	var campaign_marks: Array = CampaignMarks.marks(battle, true)
+	if campaign_marks.is_empty() and not is_instance_valid(objectives): return result
+	var projection := _world_to_minimap()
+	for marker: Dictionary in campaign_marks:
+		marker.local = projection * Vector2(marker.position)
+		result.append(marker)
+	if not is_instance_valid(objectives): return result
 	for marker:Dictionary in objectives.minimap_markers():
 		var entry:=marker.duplicate()
 		entry.local=projection*Vector2(marker.position)
@@ -176,8 +294,12 @@ func objective_marks() -> Array:
 	return result
 
 func _get_tooltip(at_position: Vector2) -> String:
+	if not is_instance_valid(battle): return ""
+	if LightningStorm.radar_jammed(battle, "ally"): return "雷达受风暴干扰，暂时无法操作。"
+	if campaign_radar_offline(): return "雷达离线。恢复雷达设施供电后可操作。"
+	var help := "左键点击或拖动，移动镜头；右键命令部队移动或设置集结点。\n按 %s 跳到最近的雷达事件，快速连按可回看。" % Hotkeys.label("radar_event")
 	if not radio_contact_id.is_empty():
-		return "雷达受风暴干扰" if LightningStorm.radar_jammed(battle, "ally") else str(Contacts.PEOPLE[radio_contact_id].name) + " · 通讯中，左键点击或拖动可移动镜头"
+		return str(Contacts.PEOPLE[radio_contact_id].name) + " · 通讯中\n" + help
 	var hints:PackedStringArray=[]
 	for marker:Dictionary in objective_marks():
 		if marker.status=="base":
@@ -187,8 +309,11 @@ func _get_tooltip(at_position: Vector2) -> String:
 			var optional:bool=marker.get("optional",false)
 			var status:String={"done":"已完成","locked":"已失败" if optional else "受保护，先完成前置目标","active":"进行中"}[marker.status]
 			hints.append(("支线 · " if optional else "主线 · ")+str(marker.title)+" · "+status)
-	if not hints.is_empty():return "\n".join(hints)+"\n左键点击定位。浅蓝色为普通支线；圆点表示进行中，勾表示已完成，横线表示不可用。"
-	return "左键点击或拖动定位战场；菱形标记为公开任务目标。" if is_instance_valid(objectives) else "左键点击或拖动定位战场。"
+	if is_instance_valid(objectives):
+		help += "\n菱形标记是公开任务目标：圆点表示进行中，勾表示已完成，横线表示不可用。"
+	elif not battle.skirmish:
+		help += "\n菱形标记指示任务地点，左键可跳到该位置。"
+	return help if hints.is_empty() else "\n".join(hints) + "\n" + help
 
 func _draw_objectives() -> void:
 	for marker:Dictionary in objective_marks():
@@ -286,15 +411,18 @@ func _draw() -> void:
 	if LightningStorm.radar_jammed(battle, "ally"):
 		draw_string(ThemeDB.fallback_font, Vector2(12, 24), "雷达受风暴干扰", HORIZONTAL_ALIGNMENT_LEFT, -1, 14, Color(0.7, 0.8, 0.9))
 		return
+	if campaign_radar_offline():
+		draw_string(ThemeDB.fallback_font,Vector2(12,24),"雷达离线 · 需要空指部供电",HORIZONTAL_ALIGNMENT_LEFT,-1,14,Color.SILVER)
+		return
 	draw_set_transform_matrix(projection)
-	draw_rect(Rect2(Vector2.ZERO, Vector2.ONE * map), Color(0.09, 0.11, 0.14))
+	draw_colored_polygon(_world_edge, Color(0.09, 0.11, 0.14))
 	if preload("res://scripts/world/native_maps.gd").has(battle.map_layout()) and battle.ground._surface.texture!=null:
-		draw_texture_rect(battle.ground._surface.texture,Rect2(Vector2.ZERO,Vector2.ONE*map),false)
+		draw_colored_polygon(_world_edge, Color.WHITE, _edge_uv, battle.ground._surface.texture)
 	else:
 		for water in battle.water_rects:
 			draw_rect(water, Color(0.10, 0.25, 0.36))
 	if battle.fog != null and battle.fog.texture != null:
-		draw_texture_rect(battle.fog.texture, Rect2(Vector2.ZERO, Vector2.ONE * map), false)
+		draw_colored_polygon(_world_edge, Color.WHITE, _edge_uv, battle.fog.texture)
 	draw_set_transform_matrix(Transform2D.IDENTITY)
 	# 资源点（T11）矿体已散成多枚小矿格：按邻近聚合成「一处一块」显示，避免糊成一片点阵
 	var revision: int = battle.fog.minimap_mask_revision if battle.fog != null else - 1
@@ -312,6 +440,7 @@ func _draw() -> void:
 		var p2: Vector2 = projection * b.global_position
 		var col := Color(0.65, 0.65, 0.6) if b.side == "neutral" else Color(0.4, 0.7, 1.0) if BattleRequest.friendly(b.side,"ally") else Color(1.0, 0.45, 0.4)
 		var sz: float = max(4.0, float(b.radius) * k * 1.6)
+		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.head_games() or HouseColor.hollywood_enemy(b.side): col = b._col
 		draw_rect(Rect2(p2 - Vector2(sz, sz) * 0.5, Vector2(sz, sz)), col)
 	# 单位
 	for u in battle.units:
@@ -319,18 +448,20 @@ func _draw() -> void:
 			continue
 		var p3: Vector2 = projection * u.global_position
 		var col2 := Color(0.55, 0.85, 1.0) if BattleRequest.friendly(u.side,"ally") else Color(1.0, 0.55, 0.45)
+		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.head_games() or HouseColor.hollywood_enemy(u.side): col2 = u._col
 		draw_circle(p3, 1.8, col2)
 	# 雷达事件闪烁（B3）：受袭红环 / 建成黄环，随时间扩散淡出
 	for pg in _pings:
-		if pg["kind"] != "friendly_support" and not battle.position_visible_to("ally", pg["pos"]):
+		if pg["kind"] not in PUBLIC_PINGS and not battle.position_visible_to("ally", pg["pos"]):
 			continue
 		var pp: Vector2 = projection * (pg["pos"] as Vector2)
 		var f: float = 1.0 - float(pg["t"]) / float(pg["life"])
 		var blink: float = 0.35 + 0.65 * absf(sin(float(pg["t"]) * 9.0))
-		var base: Color = Color(1.0, 0.9, 0.3, 0.9) if pg["kind"] == "ready" else Color(1.0, 0.35, 0.3, 0.95)
+		var base: Color = Color(1.0, 0.9, 0.3, 0.9) if pg["kind"] in ["ready","campaign_site","campaign_discovery"] else Color(1.0, 0.35, 0.3, 0.95)
+		if pg["kind"] == "firing_origin": base = Color("#ff982f")
 		if pg["kind"] == "friendly_support": base = Color("#81dfff")
 		base.a *= blink
-		draw_arc(pp, 4.0 + 5.0 * (1.0 - f), 0.0, TAU, 16, base, 2.0)
+		draw_arc(pp, 8.0 + 12.0 * (1.0 - f) if pg["kind"] in ["campaign_site","campaign_discovery"] else 4.0 + 5.0 * (1.0 - f), 0.0, TAU, 16, base, 2.0)
 		draw_circle(pp, 2.0, base)
 	# Hero reconnaissance uses battle time, including the remaining duration from a save.
 	var marks: Dictionary = battle.allied_state.get("hero_scout_marks", {})
@@ -345,7 +476,11 @@ func _draw() -> void:
 	# 边框
 	draw_rect(Rect2(Vector2.ZERO, s), Color(0.3, 0.45, 0.62), false, 2.0)
 
+func campaign_radar_offline() -> bool:
+	return is_instance_valid(battle) and battle.allied_state.has("hollywood") and not battle.Hollywood.radar_online(battle)
+
 func _draw_camera_outline() -> void:
+	if campaign_radar_offline():return
 	if battle == null or LightningStorm.radar_jammed(battle, "ally"): return
 	var outline := _view_outline()
 	if outline.size() >= 3:

@@ -72,6 +72,7 @@ func _ready() -> void:
 func exercise_layout(dimensions: Vector2) -> void:
 	minimap.size = dimensions
 	await get_tree().process_frame
+	get_window().focus_entered.emit()
 	var label := str(dimensions) + ": "
 	# Independent camera-axis projection, not the production transform helper.
 	for fraction in [Vector2.ZERO, Vector2(1, 0), Vector2(0, 1), Vector2.ONE, Vector2(0.5, 0.5), Vector2(0.25, 0.75)]:
@@ -162,9 +163,13 @@ func exercise_camera_outline() -> void:
 		minimap.queue_redraw()
 		await get_tree().process_frame
 		await RenderingServer.frame_post_draw
+		await get_tree().process_frame
+		await RenderingServer.frame_post_draw
 		var pixels := get_viewport().get_texture().get_image()
 		pixels.save_png(output_dir.path_join("outline-%d.png" % index))
+		# The captured framebuffer is in physical pixels, while Control geometry is in viewport units.
 		var viewport_size := get_viewport().get_visible_rect().size
+		var pixel_scale := Vector2(pixels.get_size()) / viewport_size
 		var expected := PackedVector2Array()
 		var right: float = screen.hud.prod_panel.get_global_rect().position.x
 		for corner in [Vector2.ZERO, Vector2(right, 0), Vector2(right, viewport_size.y), Vector2(0, viewport_size.y)]:
@@ -181,7 +186,7 @@ func exercise_camera_outline() -> void:
 		check(straight, "camera pose %d: footprint edges are horizontal or vertical" % index)
 		for side in range(4):
 			var midpoint: Vector2 = (expected[side] + expected[(side + 1) % 4]) * 0.5
-			var pixel: Vector2 = minimap.get_global_transform_with_canvas() * midpoint
+			var pixel: Vector2 = (minimap.get_global_transform_with_canvas() * midpoint) * pixel_scale
 			check(has_outline_pixel(pixels, pixel), "camera pose %d: rendered side %d follows camera projection" % [index, side],
 				{"angle": pose.angle, "zoom": pose.zoom, "pixel": str(pixel)})
 	battle.camera.zoom = Vector2(0.45, 0.225)
@@ -210,7 +215,8 @@ func has_outline_pixel(pixels: Image, at: Vector2) -> bool:
 			if point.x < 0 or point.y < 0 or point.x >= pixels.get_width() or point.y >= pixels.get_height():
 				continue
 			var color := pixels.get_pixelv(point)
-			# The view outline is pale cyan; unit/ore markers have a lower red channel.
-			if color.r > 0.6 and color.g > 0.7 and color.b > 0.7:
+			# Fractional viewport scaling may blend the thin cyan line into dark terrain.
+			# Keep a red floor above the blue water background and require near-equal green/blue.
+			if color.r > 0.34 and color.g > color.r and color.b > color.r and absf(color.b - color.g) < 0.07:
 				return true
 	return false

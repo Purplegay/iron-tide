@@ -82,8 +82,7 @@ static func target_allowed(projectile,target) -> bool:
 	if battle==null or not battle.actor_visible_to(projectile.owner_side,target):return false
 	# Preserve the native SUB naval targeting permission even after the launcher has died.
 	if NavalContact.underwater_type(target):
-		var flags:Dictionary=GameData.ra2_source_units.get("SUB",{}).get("extra",{})
-		if int(flags.get("NavalTargeting",0)) not in [1,2,3,4,5]:return false
+		if GameData.unit_naval_targeting("SUB") not in [1,2,3,4,5]:return false
 	return true
 
 static func hit(target,source,amount:float,bonus:Dictionary) -> void:
@@ -128,6 +127,3 @@ static func entries(unit) -> Array:
 	if s.has("pressure_cd"):out.append(V.row("深水耐压冷却",s.pressure_cd,false,"reload"))
 	elif eligible(unit):out.append(V.row("深水耐压 · 停火蓄盾",maxf(0,4-float(s.get("pressure_idle",0))),false,"guard"))
 	return out
-
-static func draw(unit) -> void:
-	if unit.special.get(KEY,{}).has("pressure_shield"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+7,0,TAU,32,Color(.25,.8,1,.8),2,true)

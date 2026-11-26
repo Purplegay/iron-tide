@@ -98,7 +98,10 @@ func _draw_cameo() -> void:
 	var fit := minf(available.x / source.x, available.y / source.y)
 	var image_size := source * fit
 	var origin := Vector2(2, 2) + (available - image_size) * 0.5
-	draw_texture_rect(cameo_texture, Rect2(origin, image_size), false)
+	var image_rect := Rect2(origin, image_size)
+	draw_texture_rect(cameo_texture, image_rect, false)
+	if data.get("id","") in MetaProgress.Academy.Stars.IDS:
+		preload("res://scripts/ui/hero_portraits.gd").draw_name(self, image_rect, data.id)
 	var border := col.lerp(Color(1.0, 0.35, 0.3), 0.55) if damaged else col
 	draw_rect(Rect2(Vector2.ONE * 0.5, extent - Vector2.ONE), border, false, 1.0)
 	if show_status:

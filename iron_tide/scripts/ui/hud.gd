@@ -66,6 +66,7 @@ const SIDEBAR_WIDTH := 376.0
 var log_box: VBoxContainer
 var log_panel: PanelContainer
 var log_btn: Button
+var mission_objectives: Label
 var _logs: Array = []
 
 # 选中 / 生产
@@ -365,7 +366,7 @@ func _ra2_header(label: Label, soviet := false) -> void:
 	label.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 func _layout_hud() -> void:
-	if _topbar == null or _minimap_frame == null:
+	if not is_inside_tree() or _topbar == null or _minimap_frame == null:
 		return
 	var content_top := _topbar.get_global_rect().end.y + 6.0 if _topbar.visible else 6.0
 	fps_label.position = Vector2(12, content_top)
@@ -793,6 +794,7 @@ func _toggle_log() -> void:
 		return
 	if log_panel != null:
 		log_panel.visible = not log_panel.visible
+		if log_panel.visible: _refresh_mission_objectives()
 		if log_btn != null:
 			log_btn.text = "情报 [收起]" if log_panel.visible else "情报 [展开]"
 
@@ -828,7 +830,18 @@ func _build_log(root: Control) -> void:
 	var log_scroll := ScrollContainer.new()
 	log_scroll.custom_minimum_size = Vector2(0, 180)
 	log_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	log_panel.add_child(log_scroll)
+	if BattleRequest.mission_id == "yr_hollywood" and not BattleRequest.skirmish:
+		var column := VBoxContainer.new()
+		log_panel.add_child(column)
+		column.add_child(kit.make_label("本关总目标", 16, kit.COL_GOLD))
+		mission_objectives = kit.make_label("", 15, kit.COL_TEXT)
+		mission_objectives.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		column.add_child(mission_objectives)
+		column.add_child(kit.divider())
+		column.add_child(log_scroll)
+		log_btn.tooltip_text = "查看本关总目标、进度和战报"
+	else:
+		log_panel.add_child(log_scroll)
 	log_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	log_scroll.add_child(log_box)
 
@@ -1146,7 +1159,7 @@ func _layout_red_alert() -> void:
 	_layout_radio_dock()
 
 func _layout_selection_strip() -> void:
-	if not is_instance_valid(sel_strip_box) or not is_instance_valid(_topbar): return
+	if not is_inside_tree() or not is_instance_valid(sel_strip_box) or not is_instance_valid(_topbar): return
 	_layout_red_alert()
 	var bottom := get_viewport().get_visible_rect().size.y - 228.0
 	if is_instance_valid(red_alert_panel) and red_alert_panel.is_visible_in_tree():
@@ -1516,12 +1529,50 @@ func _refresh_top() -> void:
 	if battle.waves_cleared > 0:
 		kill_label.text += "   波次 %d" % battle.waves_cleared
 
+func _refresh_mission_objectives() -> void:
+	if mission_objectives == null or battle == null: return
+	var state: Dictionary = battle.allied_state.get("hollywood", {})
+	var total := preload("res://scripts/world/hollywood_mission.gd").FACTORIES.size()
+	var remaining := int(state.get("remaining", total))
+	var phase := int(state.get("phase", 1))
+	var base_status := "完成第一项目标后继续"
+	if phase == 2: base_status = "进行中"
+	if phase >= 3: base_status = "已完成"
+	mission_objectives.text = "让城里的回收厂全部停运（%d/%d 座）\n清除尤里两处基地的剩余建筑（%s）\n可选：派地面部队探索片场，靠近克林特、阿诺或史泰龙，他们就会加入盟军。" % [total - remaining, total, base_status]
+
 func _refresh_timer() -> void:
+	_refresh_mission_objectives()
 	if battle == null:
 		return
 	if battle.ended:
 		wave_label.text = "战斗结束"
 		timer_label.text = ""
+		return
+	if battle.allied_state.has("hollywood"):
+		var state: Dictionary = battle.allied_state.hollywood
+		wave_label.text = "摧毁回收厂（剩余 %d 座）" % state.remaining if state.phase == 1 else "摧毁剩余敌方建筑"
+		if state.get("briefing",false): wave_label.text = "战前简报 · 洛杉矶机场"
+		if state.phase == 3: wave_label.text = "城区已解放"
+		timer_label.text = "已救下 %d 人" % int(state.get("rescued",0))
+		return
+	if battle.allied_state.has("time_shift"):
+		var s:Dictionary=battle.allied_state.time_shift
+		wave_label.text="找到并接管苏军基地" if s.phase==4 and not s.get("base_found",false) else battle.TimeShift.OBJECTIVES[int(s.phase)]
+		timer_label.text="充能剩余 %d 秒"%ceili(s.timer) if s.phase==3 else ""
+		return
+	if battle.mission.get("id") == "yr_head_games":
+		var state: Dictionary = battle.allied_state
+		var freed := int(state.has("head_games_freed_0")) + int(state.has("head_games_freed_1"))
+		timer_label.text = ""
+		if state.has("head_brief_stage"):
+			wave_label.text = "战前简报 · 特兰西瓦尼亚"
+		elif state.has("s07_castle_down"):
+			wave_label.text = "尤里的城堡已摧毁"
+		elif freed == 2:
+			wave_label.text = "摧毁尤里的城堡"
+		else:
+			wave_label.text = "摧毁心灵信标，解放两座基地"
+			timer_label.text = "已解放基地 %d / 2" % freed
 		return
 	if not battle.prepared:
 		wave_label.text = "部署阶段"
@@ -1537,8 +1588,6 @@ func _refresh_timer() -> void:
 		timer_label.text = ""
 
 func _fmt(v: float) -> String:
-	if v >= 10000.0:
-		return "%.1f万" % (v / 10000.0)
 	return str(int(v))
 
 func _on_message(text: String, color: Color) -> void:
@@ -2385,7 +2434,7 @@ func _refresh_deploy_cmd() -> void:
 	if is_instance_valid(battle.selected_building):
 		var status := ConstructionRepack.check(battle, battle.selected_building)
 		btn.disabled = not status.ok
-		btn.tooltip_text = "收起基地车 (J)\n保留生命比例与已付建造进度，不另收费"
+		btn.tooltip_text = "收起矿场 (J)\n保留生命比例和现有矿工" if battle.selected_building.building_id=="YAREFN" else "收起基地车 (J)\n保留生命比例与已付建造进度，不另收费"
 		if not status.ok:
 			btn.tooltip_text += "\n不可用：" + str(status.reason)
 		btn.tooltip_text=Hotkeys.hint(btn.tooltip_text)
@@ -2401,9 +2450,11 @@ func _refresh_deploy_cmd() -> void:
 		ok = true
 		if not u.deploy_building_id().is_empty():
 			var status: Dictionary = battle.construction_deploy_check(u)
-			logistics_hint = "展开建造厂 (J)\n原地展开，不另扣资金；保留当前生命比例"
+			logistics_hint = "展开奴隶矿场 (J)\n在矿区附近部署，最多容纳五名矿工" if u.unit_id=="SMIN" else "展开建造厂 (J)\n原地展开，不另扣资金；保留当前生命比例"
 			if not status.ok:
 				logistics_hint += "\n当前无法展开：" + str(status.reason)
+		elif u.unit_id=="YURI":
+			logistics_hint = "心灵波 (J)\n杀伤周围三格内的敌方步兵"
 		elif u.special.has("peregrine"):
 			var maintained:bool=u.special.peregrine.has("maintenance")
 			logistics_hint="起飞 (J)\n结束维护并清除维护盾；空中自补继续" if maintained else "下降维护 (J)\n需在同方有效机场 3 格内合法空地；不占机场位，维护时停火，3 秒未受敌伤后回血"
@@ -2444,6 +2495,7 @@ func _on_view_changed(label: String) -> void:
 		view_btn.text = "视角 " + label
 
 func _defense_status(b) -> String:
+	if b.data.has("extra_power"): return "供电人员 %d / %d · 满血供电 %d" % [b.special.get("occupants",[]).size(),b.data.garrison_slots,b.installed_power()]
 	if b.data.has("charged_weapon"):
 		var n := preload("res://scripts/units/tesla_support.gd").count(b)
 		var low: bool = battle.side_power_low(b.side)
@@ -2477,10 +2529,10 @@ func _show_building_info(b) -> void:
 	if b.side == "ally" and (b.is_hq or b.data.get("tags", []).has("purifier") or b.building_id == "GAROBO"):
 		_add_economy_status()
 		_refresh_economy_status(b)
-	if b.side == "ally" and str(b.building_id) in ["GACNST", "NACNST"]:
-		var repack: Button = kit.make_button("收起基地车  J", 14)
+	if b.side == "ally" and str(b.building_id) in ["GACNST", "NACNST","YAREFN"]:
+		var repack: Button = kit.make_button("收起矿场  J" if b.building_id=="YAREFN" else "收起基地车  J", 14)
 		repack.custom_minimum_size.y = 48
-		var icon := GameData.ra2_cameo_path(str(GameData.ra2_source_buildings.get(b.building_id,{}).get("extra",{}).get("UndeploysInto","")))
+		var icon := GameData.ra2_cameo_path(ConstructionRepack.vehicle_type(b))
 		if ResourceLoader.exists(icon):
 			repack.icon = load(icon)
 			repack.expand_icon = true
@@ -2838,10 +2890,11 @@ func _auto_focus_building_tab(b) -> void:
 func _construction_choices() -> Array:
 	var native: String = battle.roster_faction()
 	var choices := GameData.buildings_for_faction(native)
-	var foreign := "soviet" if native == "allied" else "allied"
-	if battle.has_construction_roster(foreign):
+	for foreign in ["allied","soviet","yuri"]:
+		if foreign == native or not battle.has_construction_roster(foreign): continue
+		if foreign == "yuri" and not battle.skirmish: continue
 		for building in GameData.buildings_for_faction(foreign):
-			if GameData.is_ra2(str(building.id)): choices.append(building)
+			if GameData.is_ra2(str(building.id)) and building.id!="NEUTRALSTUDIO": choices.append(building)
 	return choices
 
 func _building_catalog() -> Array:
@@ -2866,6 +2919,9 @@ func _building_catalog() -> Array:
 
 ## 某建筑当前是否可建造（RA3 侧栏置灰口径）：{ ok: bool, reason: String }
 func _build_state(bid: String) -> Dictionary:
+	if bid==MetaProgress.Academy.Stars.STUDIO:
+		var studio_reason:String=battle.structure_production_block_reason(bid)
+		return {"ok":studio_reason.is_empty(),"reason":studio_reason}
 	var disabled_reason := GameData.building_production_block_reason(bid)
 	if not disabled_reason.is_empty():
 		return {"ok": false, "reason": disabled_reason}
@@ -2905,15 +2961,21 @@ func _unit_catalog() -> Array:
 		return GameData.catalog_sorted(available, "unit")
 	var native: String = battle.roster_faction()
 	var catalog := GameData.faction_unit_catalog(native)
+	if not BattleRequest.skirmish:
+		catalog = catalog.filter(func(id: String): return not id.begins_with("R3") and id != "YURIKO")
 	var extra: Array = []
 	for b in battle.buildings:
 		if not battle.actor_alive(b) or b.side != "ally" or b.under_construction or b.is_refinery(): continue
 		if b.faction == native and b.building_id not in ["GAPILE", "NAHAND"]: continue
 		for id in b.buildable:
-			if catalog.has(id) or extra.has(id) or not GameData.is_ra2(id) or str(id).begins_with("R3"): continue
+			if catalog.has(id) or extra.has(id) or not (GameData.is_ra2(id) or GameData.hollywood_production_unit(id)) or str(id).begins_with("R3"): continue
 			if id in GameData.STOLEN_INFANTRY and not GameData.unit_production_block_reason(id, battle.allied_state).is_empty(): continue
 			extra.append(id)
-	return GameData.catalog_sorted(catalog + extra, "unit") if not extra.is_empty() else catalog
+	if not extra.is_empty(): catalog = GameData.catalog_sorted(catalog + extra, "unit")
+	if not GameData.mission_production_tech().is_empty():
+		var owned := _owned_building_ids()
+		catalog = catalog.filter(func(id): return GameData.mission_product_block_reason(str(id), owned).is_empty())
+	return catalog
 
 ## 某单位当前是否可生产：{ ok: bool, reason: String }
 func _unit_state(uid: String) -> Dictionary:
@@ -2923,7 +2985,7 @@ func _unit_state(uid: String) -> Dictionary:
 	var country_reason: String = battle.country_block_reason(uid)
 	if not country_reason.is_empty():
 		return { "ok": false, "reason": country_reason }
-	if GameData.is_ra2(uid):
+	if GameData.is_ra2(uid) or GameData.hollywood_production_unit(uid):
 		var p = _producer_for(uid)
 		if p != null:
 			var reason: String = p.queue_block_reason(uid)
@@ -3154,7 +3216,8 @@ func _update_production_live() -> void:
 	for uid in _prod_buttons.keys():
 		var btn: Button = _prod_buttons[uid]
 		if is_instance_valid(btn):
-			btn.guide_highlight = str(uid) == _unlock_focus
+			var cue:float = battle.allied_state.get("hollywood",{}).get("cameo_left",0.0) if uid=="BFRT" else 0.0
+			btn.guide_highlight = str(uid) == _unlock_focus or (cue>0 and fmod(cue,0.5)<0.3)
 			var data := GameData.get_entity(str(uid))
 			var cost: float = battle.production_price(data, "ally")
 			var label: Label = _prod_status_labels.get(uid)
@@ -3199,6 +3262,17 @@ func _update_production_live() -> void:
 			if is_instance_valid(label):
 				label.set_meta("idle_caption", "%s · %.1fs" % [_fmt(cost), production_seconds(data)])
 				label.text = state if state != "" else str(label.get_meta("idle_caption"))
+				if str(uid) in MetaProgress.Academy.Stars.IDS:
+					var trainer = _producer_for(str(uid))
+					var seconds := production_seconds(data, trainer)
+					var timing := "%.1f秒" % seconds
+					if is_instance_valid(trainer) and not trainer.production.is_empty() and trainer.production[0] == uid:
+						timing = "剩%.1f秒" % (seconds * (1.0 - trainer.queue_progress(str(uid))))
+						state = _production_status("训练中", cost, trainer)
+					elif is_instance_valid(trainer) and trainer.production.has(uid):
+						state = "等待训练"
+					label.text = "$%d · %s" % [int(cost), timing]
+					if not state.is_empty(): label.text += "\n" + state.trim_prefix(str(data.get("name", "")))
 				label.add_theme_color_override("font_color", color)
 			var detail := str(btn.get_meta("base_tooltip", ""))
 			detail += "\n预计 %.1fs（当前倍速，资金充足时）" % production_seconds(data)
@@ -3473,6 +3547,8 @@ func _refresh_production() -> void:
 					hint = "苏联飞行器由战车工厂生产" if battle.roster_faction() == "soviet" else "战机由空指部生产"
 				"naval":
 					hint = "舰艇由造船厂生产，船厂需建在水面"
+					if not GameData.mission_tech_block_reason(battle.roster_id("GAYARD", "ally")).is_empty():
+						hint = "本关科技限制了造船厂建造"
 			if preload("res://scripts/expedition/rules.gd").active() and is_instance_valid(_factories.current()):
 				hint = "当前工厂暂无可生产兵种"
 			prod_box.add_child(kit.make_label(hint, 13, kit.COL_DIM))
@@ -3555,7 +3631,6 @@ func _cancel_unit(uid: String) -> void:
 func _queue(uid: String, n: int = 1) -> void:
 	var current = _factories.current()
 	if is_instance_valid(current) and current.resume_production(uid):
-		_refresh_production()
 		return
 	var p = _producer_for(uid)
 	if p == null:
@@ -3569,7 +3644,8 @@ func _queue(uid: String, n: int = 1) -> void:
 		_refresh_production()
 		return
 	if prod_tab not in ["building", "defense"] and _cat_match(GameData.get_unit(uid)) and p != _factories.current():
-		_factories.choose(p)
+		_factories.remember(p, prod_tab)
+		_unlock_focus = ""
 		Events.emit_message("已切换至%s %d · 生产%s" % [p.display_name, _factories.number_for(p), _entity_name(uid)], kit.RA_CYAN)
 	var got: int = p.enqueue_many(uid, n)
 	if got < n:
@@ -3578,7 +3654,9 @@ func _queue(uid: String, n: int = 1) -> void:
 			reason = "生产状态已变化，请重试"
 		var partial := "已加入 %d/%d 个；" % [got, n] if got > 0 else ""
 		Events.emit_message("%s：%s%s" % [_entity_name(uid), partial, reason], kit.COL_WARN)
-	_refresh_production()
+	# Accepted orders already refreshed the selected factory through the queue signal.
+	if got == 0:
+		_refresh_production()
 	_refresh_top()
 
 ## —— 长按连造（Shift 点击 / 长按一次排 5 个）——
@@ -3935,6 +4013,9 @@ func _input(event: InputEvent) -> void:
 		KEY_F9:
 			_open_saves()
 			get_viewport().set_input_as_handled()
+		KEY_PERIOD:
+			if not shift and is_instance_valid(minimap) and minimap.jump_to_radar_event():
+				get_viewport().set_input_as_handled()
 		KEY_SPACE:
 			_toggle_pause()
 		KEY_TAB:
@@ -4122,7 +4203,7 @@ func _leave() -> void:
 		battle.end_battle(false)
 	get_tree().paused = false
 	BattleClock.leave_battle()
-	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	get_tree().change_scene_to_file("res://scenes/lobby.tscn" if BattleRequest.skirmish else "res://scenes/campaign_command.tscn")
 
 # ================================================================== 单位技能栏（红警3 式）
 # 固定 Q 固有主动、W 装配主动、被动、E 特殊操作；空槽不挪位。
@@ -4205,12 +4286,13 @@ func _rebuild_ability_bar() -> void:
 			split_btn.pressed.connect(func(): _cast_ability(1))
 			ability_box.add_child(split_btn)
 			preload("res://scripts/units/auto_w.gd").add_control(ability_box,battle.ReaperSplit.selected(battle),split_btn,self)
-		elif building.side == "ally" and not building.is_dead() and not str(GameData.ra2_source_buildings.get(building.building_id,{}).get("extra",{}).get("UndeploysInto","")).is_empty():
+		elif building.side == "ally" and not building.is_dead() and not ConstructionRepack.vehicle_type(building).is_empty():
 			ability_panel.show()
 			ability_title.text = "%s　技能" % building.display_name
-			var fold := kit.make_button("收起基地车  "+Hotkeys.label("skill_e"),13)
+			var fold := kit.make_button(("收起矿场  " if building.building_id=="YAREFN" else "收起基地车  ")+Hotkeys.label("skill_e"),13)
 			fold.name = "RepackSkill"
-			fold.icon = load(GameData.ra2_cameo_path(str(GameData.ra2_source_buildings[building.building_id].extra.UndeploysInto)))
+			var path := GameData.ra2_cameo_path(ConstructionRepack.vehicle_type(building))
+			if ResourceLoader.exists(path): fold.icon=load(path)
 			fold.expand_icon = true
 			fold.custom_minimum_size = Vector2(165,38)
 			fold.pressed.connect(func(): _cast_ability(2))
@@ -4223,6 +4305,8 @@ func _rebuild_ability_bar() -> void:
 			var capacity := preload("res://scripts/units/civilian_orders.gd").slots(building)
 			var hint := "选中步兵，右键进驻" if occupants.is_empty() else "点击头像撤出"
 			ability_title.text = "驻军 %d / %d　%s" % [occupants.size(), capacity, hint]
+			if building.data.has("extra_power"):
+				ability_title.text = "%s　%s" % [_defense_status(building), "右键派步兵进入" if occupants.is_empty() else "点击头像撤出"]
 			if building.building_id == "NABNKR" and BattleRequest.extensions_enabled():
 				var tier:int=building.battle.production_technology.bunker_level(building.side)
 				ability_title.text += ("　射程天赋 Lv.%d" % (tier-1) if tier>0 else "　射程天赋未启用") if BattleRequest.combat_context.get("bunker_talent_version",0)>=1 else "　旧局射程科技 %d/3" % tier
@@ -4492,7 +4576,7 @@ func _update_ability_live() -> void:
 			if nl != null and is_instance_valid(nl):
 				nl.modulate = Color(0.62, 0.66, 0.74, 1)
 			if cd != null and is_instance_valid(cd):
-				cd.text = "—" if (toggle and float(info.get("cd_left", 0.0)) <= 0.0) or actual < 0 else "%ds" % int(ceil(BattleClock.real_seconds(float(info.get("cd_left", 0.0)))))
+				cd.text = "—" if (toggle and float(info.get("cd_left", 0.0)) <= 0.0) or (actual < 0 and float(info.get("cd_left",0.0)) <= 0.0) else "%ds" % int(ceil(BattleClock.real_seconds(float(info.get("cd_left", 0.0)))))
 
 # ================================================================== 增益/减益栏（buff 栏）
 # 贴在技能栏正上方：列出当前选中单位的限时增益/减益（色块 + 名称数值 + 倒计时）。

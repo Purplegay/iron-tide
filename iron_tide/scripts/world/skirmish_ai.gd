@@ -351,8 +351,8 @@ func _try_build() -> void:
 		battle.request_structure(Power.before_build(self,factory), house_id)
 		return
 	var wanted := ""
-	var radar := "NARADR" if enemy_base == "soviet" else "GAAIRC"
-	var lab := "NATECH" if enemy_base == "soviet" else "GATECH"
+	var radar: String = battle.roster_id("NARADR" if enemy_base == "soviet" else "GAAIRC",house_id)
+	var lab: String = battle.roster_id("NATECH" if enemy_base == "soviet" else "GATECH",house_id)
 	var yard: String = battle.roster_id("GAYARD",house_id)
 	if wanted.is_empty() and owned.has(battle.roster_id("GAWEAP",house_id)):
 		# Leave the coastal opening enough time to launch its first patrol ship.
@@ -369,6 +369,7 @@ func _try_build() -> void:
 	if wanted == "":
 		var sequence := ["GAPOWR", "GAREFN", "GAPILE", "GAWEAP", "GAYARD"]
 		sequence.append_array(["NARADR", "GADEPT", "NATECH"] if enemy_base == "soviet" else ["GAAIRC", "GATECH"])
+		if enemy_base == "yuri": sequence.append_array(["YAGRND","NACLON","YAGNTC","YAPPET"])
 		if difficulty >= 2 and enemy_base == "soviet":
 			sequence.append_array(["NANRCT", "NAINDP", "NAIRON", "NAMISL"])
 		for entry in sequence:
@@ -401,6 +402,7 @@ func _try_defense(owned: Array) -> void:
 	if owned.has(battle.roster_id("GAREFN",house_id)) and owned.has(battle.roster_id("GAWEAP",house_id)):
 		priority.append("TESLA" if soviet else "ATESLA")
 		if soviet: priority.append_array(["NALASR","NABNKR"])
+	if enemy_base == "yuri": priority = ["YAGGUN","YAPSYT","NATBNK"]
 	for id in priority:
 		if id != aa and owned.has(id): continue
 		if GameData.ra2_prereq_ok(id, owned, battle.allied_state, house_id) and _can_fund_structure(id,true) and Operations.has_build_spot(self,id):
@@ -408,6 +410,7 @@ func _try_defense(owned: Array) -> void:
 			return
 
 func _has_miner() -> bool:
+	if enemy_base == "yuri": return Economy.miners(self,false)>0
 	for unit in battle.units:
 		if is_instance_valid(unit) and unit.side == house_id and unit.is_harvester and unit.hp > 0.0 and not unit._dead:
 			return true

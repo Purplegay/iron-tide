@@ -1,0 +1,62 @@
+{
+ "id": "YAPOWR",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "YAPOWR_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 7,
+   "frames": 16,
+   "rate": 220,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAPOWR_A",
+    "shadow": true,
+    "loopStart": 8,
+    "loopEnd": 15,
+    "frames": 16,
+    "rate": 220,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "activeanimtwo",
+   "image": "YAPOWR_B",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 7,
+   "frames": 16,
+   "rate": 220,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAPOWR_B",
+    "shadow": true,
+    "loopStart": 8,
+    "loopEnd": 15,
+    "frames": 16,
+    "rate": 220,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "idleanim",
+   "image": "YAPOWR_C",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 4,
+   "frames": 10,
+   "rate": 175,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAPOWR_C",
+    "shadow": true,
+    "loopStart": 5,
+    "loopEnd": 9,
+    "frames": 10,
+    "rate": 175,
+    "loopCount": -1
+   }
+  }
+ ]
+}

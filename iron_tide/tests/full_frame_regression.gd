@@ -84,6 +84,7 @@ func check_target_equivalence() -> void:
 	var cases:=0
 	var definitions := {"perf_plain":{},"perf_control":{"MindControl":"yes"},"perf_temporal":{"Temporal":"true"},"perf_both":{"MindControl":true,"Temporal":true}}
 	for name in definitions:GameData.ra2_warheads[name]={"extra":definitions[name]}
+	GameData.rebuild_static_combat_rules()
 	for id in ["MTNK","ASW","PTROOP","CLEG","DOG","SNIPE","SPY"]:
 		var unit:Unit=battle.spawn_unit(id,"ally",Vector2(1700,1800))
 		for target in targets:
@@ -117,6 +118,7 @@ func check_target_equivalence() -> void:
 		unit.attack_target=null
 		unit.attack_ordered=false
 	for name in definitions:GameData.ra2_warheads.erase(name)
+	GameData.rebuild_static_combat_rules()
 	check(mismatches.is_empty(),prefix+"weapon/domain decisions match retained reference across "+str(cases)+" live states",mismatches)
 	metrics.append({"target_equivalence_cases":cases})
 

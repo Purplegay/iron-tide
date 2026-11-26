@@ -1,0 +1,15 @@
+{
+ "id": "CASLAB",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "CASLAB_F",
+   "loopStart": 0,
+   "loopEnd": 16,
+   "frames": 32,
+   "rate": 300,
+   "shadow": false,
+   "loopCount": -1
+  }
+ ]
+}

@@ -76,6 +76,7 @@ var radius: float = 8.0
 var sight: float = 300.0
 var is_air: bool = false
 ## 海军的移动域标记：只用「水面网格」寻路，且不允许登岸。
+var occluded_by_bridge := false # Presentation state rebuilt by the battle depth pass.
 var is_naval: bool = false
 var is_amphibious := false
 var powered_unit := preload("res://scripts/units/powered_unit.gd").new()
@@ -108,6 +109,7 @@ var _weapon_art: Dictionary = {}
 var _turret_draw_rect := Rect2()
 var _turret_draw_source := Rect2()
 # 最近一帧的绘制参数（供 hit_test()/art_center() 复用；铁律：判定几何 = 绘制几何）
+var shield_sprite: Sprite2D
 var _body_bounds := Rect2() # Visible body in local drawing coordinates, excluding ground shadow.
 const DamageParticles = preload("res://scripts/units/vehicle_damage_particles.gd")
 var _has_damage_particles := false
@@ -206,6 +208,8 @@ var _path_pts: PackedVector2Array = PackedVector2Array()
 var _path_i: int = 0
 var _path_epoch: int = -1
 var _blocked_move_goal := Vector2.INF
+const YRBlockage = preload("res://scripts/units/yr_blockage_policy.gd")
+var _yr_blockage := YRBlockage.new()
 var _nav_stuck_t: float = 0.0
 var _nav_stuck_best: float = INF
 var _nav_stuck_waypoint: Vector2 = Vector2.INF
@@ -331,6 +335,7 @@ func _exit_tree() -> void:
 func setup(p_data: Dictionary, p_side: String, p_pos: Vector2) -> void:
 	buffs.clear()
 	data = p_data
+	GameData.apply_hollywood_fx(data)
 	side = p_side
 	fire_stance = "defend" if side == "ally" else "free"
 	faction = str(p_data.get("faction", "allied"))
@@ -366,6 +371,7 @@ func setup(p_data: Dictionary, p_side: String, p_pos: Vector2) -> void:
 	_hover_locomotor = not is_air and str(p_data.get("move",{}).get("speed_type","")).to_lower()=="hover"
 	_samples_tracks = unit_id in VehicleTracks.TRACKED
 
+	if unit_id=="SLAV": cargo_cap=float(data.storage)
 	var hv: Dictionary = p_data.get("harvester", {})
 	if not hv.is_empty():
 		cargo_cap = float(hv.get("cargo_cap", 200))
@@ -446,7 +452,9 @@ func setup(p_data: Dictionary, p_side: String, p_pos: Vector2) -> void:
 	veteran_level = 0
 	_vet_kills = 0.0
 	_vet_self_heal = 0.0
-	if unit_id in ["BORIS","TANY"]:
+	if p_data.get("self_healing",false):
+		_hero_heal_interval = float(GameData.ra2_general.repair.rate_minutes) * 60.0
+	elif unit_id in ["BORIS","TANY"]:
 		var row := preload("res://scripts/core/yr_death_rules.gd").type_data(unit_id)
 		if GameData._ra2_flag(row.get("selfhealing",false)):
 			_hero_heal_interval = float(GameData.ra2_general.repair.rate_minutes) * 60.0
@@ -773,6 +781,9 @@ func deployed_weapon() -> Dictionary:
 	return result
 
 func _weapon_for_target(target) -> Dictionary:
+	# Vision and HUD queries can run after the victim is freed, before retargeting.
+	if not is_instance_valid(target):
+		target = null
 	if special.has("hero_wreck"):return {}
 	if special.has("convoy_projection"):return special.convoy_projection
 	var current:=_loadout_weapon_for_target(target)
@@ -800,6 +811,10 @@ func _weapon_for_target(target) -> Dictionary:
 
 func _effective_native_weapon(target = null) -> Dictionary:
 	if embarked_in is Building: return preload("res://scripts/units/civilian_orders.gd").weapon(self)
+	if unit_id == "TELE" and target is Building: return data.secondary_weapon
+	if unit_id == "DISK" and target is Building and (target.power>0 or target.is_refinery()): return data.secondary_weapon
+	if unit_id == "BRUTE" and target is Unit and not target.data.get("tags", []).has("infantry"):
+		return data.secondary_weapon
 	if CommandoCombat.handles(self): return CommandoCombat.weapon_for(self, target)
 	if unit_id == "FV" and not logistics.passengers.is_empty():
 		var passenger = logistics.passengers[0]
@@ -817,9 +832,14 @@ func _effective_native_weapon(target = null) -> Dictionary:
 # Only these native types have an alternate resolver. Runtime state (rank,
 # cargo, target and deployment) is still evaluated inside that resolver.
 const NATIVE_WEAPON_RESOLVERS := {"GHOST": true, "TANY": true, "CCOMAND": true,
-	"PTROOP": true, "FV": true, "CLEG": true, "MGTK": true}
+	"PTROOP": true, "FV": true, "CLEG": true, "MGTK": true, "BRUTE": true, "TELE": true, "DISK": true}
 
 func _loadout_weapon_for_target(target) -> Dictionary:
+	if unit_id == "BSUB" and is_instance_valid(target) and not (target is Unit and target.is_naval) and not (target is Building and target.data.get("water_bound",false)):
+		return data.shore_weapon
+	if unit_id in ["YTNK","STLN","DNOA"] and not embarked_in is Building:
+		var gun := HollywoodInfantry.choose(self,target)
+		return OpenTopped.weapon(self,gun) if embarked_in is Unit else gun
 	if unit_id == "BORIS" and is_instance_valid(target) and target is Building: return data.special_weapon
 	if unit_id == "SQD" and is_instance_valid(target) and target is Unit and SovietSpecials.organic(target):
 		return data.get("elite_special_weapon", data.special_weapon) if veteran_level >= 2 else data.special_weapon
@@ -835,7 +855,12 @@ func _loadout_weapon_for_target(target) -> Dictionary:
 	var base:=_ra2_weapon_override if not _ra2_weapon_override.is_empty() else weapon
 	return OpenTopped.weapon(self, base) if embarked_in is Unit else base
 
+const StudioTalents = preload("res://scripts/rules/hollywood_heroes.gd")
+const HollywoodInfantry = preload("res://scripts/units/hollywood_infantry.gd")
+const HollywoodFx = preload("res://scripts/units/hollywood_unit_fx.gd")
+
 func _fire_sequence() -> String:
+	if special.has("prone_left"): return "FireProne"
 	if unit_id == "DESO" and _deployed and special.get("rad_unpack", false): return "Deploy"
 	if is_air_target() and _seq.has("FireFly"): return "FireFly"
 	if _swimming() and _seq.has("WetAttack"): return "WetAttack"
@@ -915,9 +940,7 @@ func _ready() -> void:
 	else:
 		MetaProgress.register_model_display(self)
 	add_to_group("combatants")
-	BattleRequest.sync_house_groups(self)
-	add_to_group("allies" if side == "ally" else "enemies")
-	add_to_group("enemy_targets" if side == "ally" else "ally_targets")
+	BattleRequest.sync_unit_target_groups(self)
 	add_to_group("air_units" if is_air else "ground_units")
 	_think_timer = randf() * TARGET_REFRESH
 
@@ -948,6 +971,9 @@ func _physics_process(delta: float) -> void:
 	if special.has("return_window"):
 		special.return_window-=delta
 		if special.return_window<=0:special.erase("return_window")
+	if special.has("reverse_cd"):
+		special.reverse_cd-=delta
+		if special.reverse_cd<=0.000001:special.erase("reverse_cd")
 	if special.has("plate_cooldown"):
 		special.plate_cooldown-=delta
 		if special.plate_cooldown<=0:special.erase("plate_cooldown")
@@ -990,7 +1016,7 @@ func _physics_process(delta: float) -> void:
 		book.left-=delta
 		if book.left<=0 or not AlliedAbilities.alive(book.target) or (AlliedAbilities.alive(attack_target) and not is_same(attack_target,book.target)): special.erase(YRTalents.BOOK)
 	if not _dead and special.has("reverse_heal_left"):YRTalents.tick_reverse_heal(self,delta)
-	if special.has(YRTalents.REVERSE) and not YRTalents.reverse_ready(self):YRTalents.end_reverse(self)
+	if special.has(YRTalents.REVERSE) and not YRTalents.reverse_allowed(self):YRTalents.end_reverse(self)
 	if not _dead and (passive.get("id") in FACTION_TICK_PASSIVES or special.has("decoy_origin") or special.has("echo_bonus_left") or special.has("echo_left") or special.has("buoy_left") or special.has("twin_left") or special.has("slope_left") or special.has("plate_flash")):
 		FactionCards.tick(self,delta)
 	if tank_finish!=null:tank_finish.tick(self,delta)
@@ -1040,7 +1066,7 @@ func _physics_process(delta: float) -> void:
 	if not _dead and special.has("strike_run"):
 		SovietSpecials.fly_mig(self, delta)
 		return
-	if not _dead and unit_id in ["V3ROCKET", "DMISL"]:
+	if not _dead and unit_id in ["V3ROCKET", "DMISL", "CMISL"]:
 		SovietWeapons.fly(self, delta)
 		return
 	if not _dead and data.has("self_repair") and hp < max_hp and not AlliedAbilities.frozen(self):
@@ -1059,6 +1085,7 @@ func _physics_process(delta: float) -> void:
 		if _dying > 0.0:
 			_dying = maxf(0.0, _dying - delta)
 			_anim += delta
+			if unit_id=="DNOA": HollywoodInfantry.sequence_sound(self,special.get("death_sequence","Die1"),int(_anim*13))
 			if flight.crash_lift >= 0.0: flight.update_air_death()
 			_request_pose_redraw()
 			if _dying <= 0.0:
@@ -1070,9 +1097,13 @@ func _physics_process(delta: float) -> void:
 			preload("res://scripts/units/civilian_orders.gd").tick(self, delta)
 			return
 		if (unit_id == "DRON" and embarked_in.special.get("parasite") == self) or (unit_id == "SQD" and embarked_in.special.get("squid") == self): return
+		if embarked_in is Unit and embarked_in.unit_id in ["LCRF", "SAPC"]:
+			global_position = embarked_in.global_position
 		OpenTopped.tick(self, delta)
 		return
 	AlliedAbilities.tick_actor(self, delta)
+	if special.has("chaos_seconds") or special.has("magnet_seconds") or special.has("mind_links"):
+		preload("res://scripts/units/head_games_weapons.gd").tick(self,delta)
 	if data.has("soviet_ra3"):
 		preload("res://scripts/units/ra3_soviet.gd").tick(self,delta)
 		if is_queued_for_deletion() or special.has("walker_jump"):return
@@ -1085,6 +1116,15 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2.ZERO
 		_request_pose_redraw()
 		return
+	if special.has("studio"):StudioTalents.tick(self,delta)
+	if special.has("controller") and int((_anim+delta)*5)!=int(_anim*5): _request_pose_redraw()
+	if (special.has("prone_left") or special.has("psi_reload") or special.has("psi_elapsed") or special.has("cheer_elapsed")) and HollywoodInfantry.tick(self,delta): return
+	if unit_id=="SLAV" and _fire_anim_time>=0: HollywoodInfantry.sequence_sound(self,"FireUp",int(_fire_anim_time*16))
+	if unit_id=="DNOA":
+		var clip:String = "Walk" if _moving() else (idle_pose.clip if idle_pose!=null else "")
+		var phase:int = int(_walk_phase*int(_seq.Walk.per)) if clip=="Walk" else (int(idle_pose.elapsed*idle_pose.FPS) if idle_pose!=null else 0)
+		HollywoodInfantry.sequence_sound(self,clip,phase)
+	if unit_id=="SLAV" and special.get("shoveling",false): _request_pose_redraw()
 	if special.has("ra3_impulse"): preload("res://scripts/units/ra3_meta_impact.gd").tick(self, delta)
 	if special.has("mcv_repack_left") or special.has("mcv_resume_path"):
 		if preload("res://scripts/world/construction_transition.gd").tick(self, delta): return
@@ -1169,6 +1209,7 @@ func _physics_process(delta: float) -> void:
 	if _think_timer <= 0.0 or ((attack_ordered or (side != "ally" and attack_target != null and _think_timer > TARGET_REFRESH)) and not AlliedAbilities.alive(attack_target)):
 		_refresh_target()
 		_think_timer = _target_refresh_interval()
+	if unit_id=="YTNK": HollywoodInfantry.gatling(self,delta)
 	if unit_id == "BORIS" or CommandoCombat.handles(self) or data.has("anti_air_weapon") or special.has("peregrine"): _refresh_weapon_derived()
 
 	if special.has("ra3_riot_point"):
@@ -1274,6 +1315,7 @@ func _process_combat(delta: float) -> void:
 	# Empty ground orders have no pursuit, shot or waypoint to resolve.
 	# Still yield to traffic, and retain special naval and crusher contact rules.
 	if not is_instance_valid(target) and not has_move_order and not attack_ordered and not patrolling:
+		if special.has("campaign_area_guard") and preload("res://scripts/units/ai_engagement.gd").area_guard(self, null, 0.0, delta): return
 		if _deployed:
 			velocity = Vector2.ZERO
 		else:
@@ -1304,7 +1346,14 @@ func _process_combat(delta: float) -> void:
 		else:
 			var live_weapon := _weapon_for_target(target)
 			has_target = _weapon_domain_valid(target, false, live_weapon)
-			if has_target: reach = OpenTopped.command_range(self, target, live_weapon, [], false)
+			if has_target:
+				# Ordinary weapons already expose their live range on the unit.
+				# Naval contact and dual-weapon selection still resolve per target.
+				if unit_id == "DRED" or unit_id == "DEST" or data.has("anti_air_weapon"):
+					reach = OpenTopped.command_range(self, target, live_weapon, [], false)
+				else:
+					reach = attack_range
+				if special.has("studio"):reach+=StudioTalents.range_bonus(self,target)
 	var dist := CommandoCombat.distance_to(self, target) if has_target else 0.0
 	var in_range := has_target and dist <= reach and dist >= min_range
 	if has_target and (in_range or attack_ordered or attack_move or fire_stance == "free") and CommandoCombat.begin_c4(self, target):
@@ -1315,6 +1364,8 @@ func _process_combat(delta: float) -> void:
 		_chase_target(_attack_approach(target), delta, true)
 		_face_if_moving()
 		_move_water_safe()
+		return
+	if special.has("campaign_area_guard") and preload("res://scripts/units/ai_engagement.gd").area_guard(self, target if has_target else null, reach, delta):
 		return
 	if AlliedAbilities.infantry_teleporter(self) and not hold_position and (attack_ordered or attack_move or fire_stance == "free"):
 		if has_target and attack_ordered and not in_range:
@@ -1345,7 +1396,7 @@ func _process_combat(delta: float) -> void:
 			velocity = Vector2.ZERO
 		elif unit_id == "DRED":
 			var goal := _chase_goal
-			if not goal.is_finite() or not has_move_order or goal.distance_to(target.position) < min_range or goal.distance_to(target.position) > OpenTopped.command_range(self,target):
+			if not goal.is_finite() or not has_move_order or goal.distance_to(target.position) < min_range or goal.distance_to(target.position) > (OpenTopped.command_range(self,target) if special.has("studio") or AlliedAbilities.flag(self, "OpenTopped") else reach):
 				goal = SovietWeapons.DreadFlight.firing_position(self,target)
 			if goal.is_finite(): _chase_target(goal,delta)
 			else: velocity = Vector2.ZERO
@@ -1381,9 +1432,18 @@ func _process_combat(delta: float) -> void:
 
 	# 3) 普通移动：边走边打 —— 自动索敌不再打断/取消移动（修复「攻击中不能移动」）
 	if has_move_order:
-		_tick_path_stuck(delta)
-		var settle := _local_traffic.can_settle(self)
-		if global_position.distance_to(move_target) <= ARRIVE_EPS or settle:
+		var blockage := _ordinary_move_blockage(delta)
+		if blockage == YRBlockage.Action.WAIT and not _local_traffic.passing(self):
+			velocity = Vector2.ZERO
+			return
+		if blockage == YRBlockage.Action.CLEAR:
+			_tick_path_stuck(delta)
+		elif blockage == YRBlockage.Action.DETOUR:
+			_recover_stalled_path(_current_move_waypoint(), false)
+		var settle := blockage == YRBlockage.Action.FINISH or (blockage == YRBlockage.Action.CLEAR and _local_traffic.can_settle(self))
+		var correct_layer := _at_order_layer()
+		if correct_layer and (global_position.distance_to(move_target) <= ARRIVE_EPS or settle):
+			_yr_blockage.clear()
 			if settle:
 				move_target = global_position
 			has_move_order = false
@@ -1429,6 +1489,9 @@ func _finish_target_order() -> void:
 		# Empty aircraft resume the pending tail on their next full reload.
 	elif planned:
 		special.finished_attack_route = true
+	if logistics.ammo_max > 0 and logistics.air_state == "flying" and order_queue.is_empty() \
+			and not has_move_order and not attack_ordered and GameData._ra2_flag(logistics.source.get("AirportBound", false)):
+		logistics.request_return()
 
 func _advance_queue() -> void:
 	var skipped_attack := false
@@ -1436,6 +1499,16 @@ func _advance_queue() -> void:
 		var next = order_queue.pop_front()
 		if next is Vector2 or (next is Dictionary and next.has("position")):
 			var point: Vector2 = next if next is Vector2 else next.position
+			if next is Dictionary and next.has("deck"):
+				special.erase("hollywood_deck_goal")
+				special.erase("hollywood_street_goal")
+				if next.deck: special.hollywood_deck_goal = point
+				elif special.has("hollywood_on_deck"): special.hollywood_street_goal = point
+				var route := _path_for(point)
+				if route.size()<2: continue
+				order_move(point,next.get("attack_move",false),null,route)
+				if has_move_order: return
+				continue
 			order_move(point, next is Dictionary and next.get("attack_move", false), _field_for(point))
 			if has_move_order: return
 			continue
@@ -1479,6 +1552,7 @@ func _start_interaction(action: String, target) -> bool:
 	return accepted
 
 func order_target(target, forced: bool, append: bool, offset := Vector2.ZERO) -> void:
+	if not append and special.has("psi_elapsed"): HollywoodInfantry.start_folding(self)
 	if append and (has_move_order or attack_ordered or not order_queue.is_empty()):
 		order_queue.append({"target": target, "forced": forced})
 		return
@@ -1511,11 +1585,21 @@ func start_target_order(target, forced: bool, planned: bool, offset := Vector2.Z
 	if special.has(YRTalents.BOOK) and not is_same(special[YRTalents.BOOK].target,target): special.erase(YRTalents.BOOK)
 	attack_target = target
 	attack_ordered = true
+	if special.has("studio"):StudioTalents.mark(self,target)
 	attack_move = false
 	if forced: special[ForceFire.KEY] = target
 	if planned or forced: special.planned_attack = true
 
 func _idle_move(delta: float) -> void:
+	if unit_id == "DNOA" and special.has("rexy_guard_origin"):
+		var post:Vector2 = special.rexy_guard_origin
+		var destination := post
+		if AlliedAbilities.alive(attack_target) and not BattleRequest.friendly(side,attack_target.side) and _automatic_target_allowed(attack_target) and _weapon_domain_valid(attack_target):
+			destination = _attack_approach(attack_target)
+		if global_position.distance_to(destination) > ARRIVE_EPS:
+			_chase_target(destination, delta, true)
+			_face_if_moving()
+			return
 	if (not hold_position or _local_traffic.mobile_ai_guard(self)) and not _deployed and _local_traffic.tick_idle(self, delta):
 		return
 	# No movement order means no ambient separation velocity. Moving units
@@ -1607,6 +1691,8 @@ func _mv(key: String, def):
 		var m = data.get("move", null)
 		if m is Dictionary and m.has(key):
 			v = m[key]
+		elif key=="rot" and unit_id in ["LTNK","YTNK"] and m is Dictionary:
+			v=float(m.rot_units)*360.0/256.0*BattleClock.RULE_TICKS_PER_SECOND
 	_mv_cache[key] = v
 	return v
 
@@ -1616,6 +1702,7 @@ func _ramped_speed(delta: float) -> float:
 	var top:=move_speed*Ra3Expansion.damaged_speed_factor(self) if Ra3Expansion.handles(self) else move_speed
 	if data.has("soviet_ra3") and hp/max_hp<=0.5:top*=float(data.soviet_ra3.max_speed_damaged)
 	if Ra3Mirage.handles(self): top *= Ra3Mirage.damaged_speed_factor(self)
+	if special.has("prone_left"): top*=0.5
 	var t := float(_mv("accel_time", 0.0))
 	if t <= 0.0:
 		_spd_cur = top
@@ -1700,6 +1787,13 @@ func _crush_tick(delta: float) -> void:
 			e.receive_hit(99999.0, "crush", {})
 
 ## 综合 A* 路径、流场与直行，求出本帧的行进方向
+func _at_order_layer() -> bool:
+	if special.get("hollywood_deck_goal", Vector2.INF) == move_target:
+		return special.has("hollywood_on_deck")
+	if special.get("hollywood_street_goal", Vector2.INF) == move_target:
+		return not special.has("hollywood_on_deck")
+	return true
+
 func _steer_dir(p: Vector2, use_field: bool = true) -> Vector2:
 	if use_field and special.has("ai_route_goal"):
 		if not ai_path_allowed(): return Vector2.ZERO
@@ -1710,7 +1804,7 @@ func _steer_dir(p: Vector2, use_field: bool = true) -> Vector2:
 		return Vector2.ZERO
 	var off := p - global_position
 	var d := off.length()
-	if d <= 0.1:
+	if d <= 0.1 and (not has_move_order or _at_order_layer()):
 		return Vector2.ZERO
 	if use_field and _path_pts.size() >= 2:
 		# Wait for a refresh before following a route through changed terrain.
@@ -1763,6 +1857,30 @@ func _path_dir() -> Vector2:
 	return off.normalized()
 
 ## 无进展检测：被友军/建筑卡住时重算路径并向侧面闪避（RA2 的阻塞绕行）。
+func _current_move_waypoint() -> Vector2:
+	return _path_pts[clampi(_path_i, 1, _path_pts.size()-1)] if _path_pts.size() >= 2 else move_target
+
+func _ordinary_move_blockage(delta: float) -> int:
+	# Special locomotors and explicit attack orders retain their own recovery.
+	if not has_move_order or is_air or is_naval or is_harvester or is_amphibious or _deployed or repairing or hold_position or patrolling or attack_move or attack_ordered or _drive_turning or unit_id == "R3APOC" or special.has("rolling_crush") or special.has(FoundationTransit.ANCHOR) or special.has("ai_route_goal"):
+		_yr_blockage.clear()
+		return YRBlockage.Action.CLEAR
+	if global_position.distance_squared_to(move_target) <= ARRIVE_EPS * ARRIVE_EPS and _at_order_layer():
+		_yr_blockage.clear()
+		return YRBlockage.Action.CLEAR
+	var traffic: Dictionary = special.get(_local_traffic.CONGESTION, {})
+	# Keep the long clock while the existing congestion escape still overlaps a hull.
+	var blocked: bool = not traffic.is_empty() and (not traffic.get("passing", false) or float(traffic.get("clear_seconds", 0.0)) <= 0.0)
+	if blocked:
+		_dodge_t = 0.0
+		_nav_stuck_t = 0.0
+		_nav_stuck_best = INF
+		_nav_stuck_waypoint = Vector2.INF
+	var action := _yr_blockage.tick(Engine.get_physics_frames(), delta, move_target, blocked, true, global_position.distance_to(move_target) if blocked else INF)
+	if action == YRBlockage.Action.FINISH and (not _at_order_layer() or not _domain_ok(global_position) or not _local_traffic.can_settle(self, YRBlockage.CLOSE_DISTANCE)):
+		return YRBlockage.Action.RETRY
+	return action
+
 func _tick_path_stuck(delta: float, retaliation := false, chasing := false) -> void:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(5)
 	if (not has_move_order and not retaliation) or _deployed or special.has("rolling_crush"):
@@ -1776,9 +1894,7 @@ func _tick_path_stuck(delta: float, retaliation := false, chasing := false) -> v
 		return
 	_dodge_t = maxf(0.0, _dodge_t - delta)
 	# 绕障可能暂时远离终点；按当前路点的进展判断，避免每 0.9 秒打断正常绕行。
-	var waypoint := move_target
-	if _path_pts.size() >= 2:
-		waypoint = _path_pts[clampi(_path_i, 1, _path_pts.size() - 1)]
+	var waypoint := _current_move_waypoint()
 	if waypoint != _nav_stuck_waypoint:
 		_nav_stuck_waypoint = waypoint
 		_nav_stuck_best = INF
@@ -1792,6 +1908,9 @@ func _tick_path_stuck(delta: float, retaliation := false, chasing := false) -> v
 	var retry_after := 0.55 + _chase_retry_interval if chasing else 0.9
 	if _nav_stuck_t < retry_after:
 		return
+	_recover_stalled_path(waypoint, chasing)
+
+func _recover_stalled_path(waypoint: Vector2, chasing: bool) -> void:
 	var admitted := ai_path_allowed()
 	var world := _navigation_world()
 	if side != "ally" and world is Battle and is_instance_valid(world.frame_pacing) and not world.frame_pacing.allow_stuck_retry(get_instance_id(), admitted):
@@ -1800,6 +1919,7 @@ func _tick_path_stuck(delta: float, retaliation := false, chasing := false) -> v
 		return
 	_nav_stuck_t = 0.0
 	_nav_stuck_best = INF
+	_yr_blockage.clear()
 	if chasing: _schedule_chase_retry(true)
 	_blocked_move_goal = Vector2.INF
 	if preload("res://scripts/units/base_escape.gd").try_route(self):return
@@ -1908,6 +2028,7 @@ func _repath_now() -> void:
 		_path_epoch = _terrain_epoch()
 
 func set_agent_path(pts: PackedVector2Array) -> void:
+	_yr_blockage.clear()
 	special.erase("bridge_traffic_route")
 	_blocked_move_goal = Vector2.INF
 	_path_pts = pts
@@ -2027,6 +2148,10 @@ func _target_refresh_interval() -> float:
 ## Default defense acquires mobile enemies only. Explicit orders and the existing
 ## free/return/none stances retain their own policies; a firing building can be answered.
 func _automatic_target_allowed(target) -> bool:
+	if unit_id == "DNOA" and special.has("rexy_guard_origin") and is_instance_valid(target):
+		var post:Vector2 = special.rexy_guard_origin
+		if post.distance_to(target.global_position) > sight: return false
+	if is_instance_valid(target) and target is Unit and target.side == "neutral": return ForceFire.active(self,target)
 	if special.has("expansion_temporary"):
 		var linked=preload("res://scripts/units/expansion_heroes.gd").owner_target(self)
 		if linked!=null:return is_same(target,linked) and not BattleRequest.friendly(side,linked.side)
@@ -2044,15 +2169,19 @@ func _automatic_target_allowed(target) -> bool:
 func _can_pursue_attacker(target, reach: float) -> bool:
 	if _return_timer <= 0.0 or not is_instance_valid(target) or not is_same(target, special.get("retaliation_target")): return false
 	var ai := BattleRequest.is_ai_house(side)
-	if attack_ordered or hold_position or _deployed or patrolling or repairing or is_harvester: return false
-	if (attack_move or has_move_order) and not ai: return false
-	if fire_stance == "none" or embarked_in != null or not order_queue.is_empty() or special.has("finished_attack_route"): return false
+	if attack_ordered or hold_position or _deployed or repairing or is_harvester: return false
+	if (patrolling or attack_move or has_move_order) and not ai: return false
+	if fire_stance == "none" or embarked_in != null or special.has("finished_attack_route"): return false
+	if not order_queue.is_empty():
+		if not ai: return false
+		for waypoint in order_queue:
+			if not waypoint is Vector2 and not (waypoint is Dictionary and waypoint.has("position")): return false
 	if special.has("action") or special.has("ai_deploy_mission"): return false
 	if logistics.ammo_max > 0 or unit_id in ["V3", "CARRIER"] or AlliedAbilities.infantry_teleporter(self): return false
 	var native := preload("res://scripts/core/yr_death_rules.gd").type_data(unit_id)
 	var limit := maxf(reach + 2.0 * Ra2Damage.PX_PER_CELL, float(native.get("guardrange", 0.0)) * Ra2Damage.PX_PER_CELL)
 	if ai:
-		limit = maxf(limit,sight)
+		limit = maxf(maxf(limit,sight),float(special.get("retaliation_contact_range",0.0)))
 		if not preload("res://scripts/units/ai_engagement.gd").visible_enemy(self,target): return false
 	if not special.has("retaliation_origin"): special.retaliation_origin = global_position
 	var origin: Vector2 = special.retaliation_origin
@@ -2078,7 +2207,7 @@ func _refresh_target() -> void:
 	# 玩家显式指定的目标：只要仍然有效就保持锁定（允许跨距离追击）
 	if attack_ordered:
 		var ot = attack_target
-		if AlliedAbilities.alive(ot) and (ot.side != side or ForceFire.active(self, ot)) and attack_domain_valid(ot):
+		if AlliedAbilities.alive(ot) and ((ot.side != side and not (ot is Unit and ot.side == "neutral")) or ForceFire.active(self, ot)) and attack_domain_valid(ot):
 			return
 		attack_ordered = false
 		if not attack_move:
@@ -2086,7 +2215,8 @@ func _refresh_target() -> void:
 			# old destination and silently turning the order into attack-move.
 			_finish_target_order()
 			return
-	if special.has("finished_attack_route"):
+	var route_complete := special.has("finished_attack_route")
+	if route_complete and (_return_timer <= 0.0 or not is_instance_valid(special.get("retaliation_target"))):
 		attack_target = null
 		return
 	if fire_stance == "return" and not attack_ordered and not attack_move and _return_timer <= 0.0:
@@ -2100,6 +2230,11 @@ func _refresh_target() -> void:
 		var attacker = special.get("retaliation_target")
 		if _can_pursue_attacker(attacker,attack_range) and _automatic_target_allowed(attacker):
 			attack_target=attacker
+			return
+	if side == "ally" and _return_timer > 0.0 and fire_stance in ["defend", "return"]:
+		var attacker = special.get("retaliation_target")
+		if AlliedAbilities.alive(attacker) and not BattleRequest.friendly(side, attacker.side) and _weapon_target_valid(attacker):
+			attack_target = attacker
 			return
 	# A wounded bystander inside the neutron sphere must not steal an active Flux focus.
 	if unit_id==Ra3Expansion.FUTURE and special.has("phase_target") and is_same(attack_target,special.phase_target):
@@ -2116,9 +2251,13 @@ func _refresh_target() -> void:
 	# For a fixed-range weapon all candidate units share the same search distance.
 	# Preserve per-target ranges for passengers, dedicated AA and naval weapons.
 	var cargo_range := not logistics.passengers.is_empty() and AlliedAbilities.flag(self, "OpenTopped")
-	var fixed_range := unit_id not in ["DRED", "DEST"] and not data.has("anti_air_weapon") and not cargo_range and not special.has("peregrine")
+	var fixed_range := unit_id not in ["BSUB", "DRED", "DEST","YTNK"] and not data.has("anti_air_weapon") and not cargo_range and not special.has("peregrine")
 	var outer_range := INF
-	if cargo_range and unit_id=="BFRT":
+	if unit_id == "BSUB":
+		outer_range = float(data.shore_weapon.range)
+	elif unit_id=="YTNK":
+		outer_range = maxf(HollywoodInfantry.gun_at_stage(self,false).range,HollywoodInfantry.gun_at_stage(self,true).range)
+	elif cargo_range and unit_id=="BFRT":
 		outer_range = OpenTopped.search_bound(self)
 	elif fixed_range or (unit_id=="DRED" and not cargo_range and not data.has("anti_air_weapon")):
 		outer_range = attack_range
@@ -2142,7 +2281,10 @@ func _refresh_target() -> void:
 	var cargo_weapons := {"enabled":true} if cargo_range else {}
 	var local_search:bool=cover_world is Battle and cover_world.units.size()>=96 and outer_limit<cover_world.map_size and unit_id not in ["DLPH","DRED"]
 	var contacts:Array
-	if local_search:
+	if route_complete:
+		# Stay at the final waypoint and answer only the actual shooter.
+		contacts = [retaliator]
+	elif local_search:
 		var grid = cover_world.neighborhood
 		var unit_padding: float = grid.max_unit_radius if unit_id == "DTRUCK" else 0.0
 		if is_instance_valid(retaliator):
@@ -2152,16 +2294,17 @@ func _refresh_target() -> void:
 			contacts = grid.target_contacts(origin, outer_limit + unit_padding, outer_limit + grid.max_footprint)
 	else:
 		contacts=get_tree().get_nodes_in_group(group)
-	if unit_id=="DLPH":
+	if unit_id=="DLPH" and not route_complete:
 		for host in get_tree().get_nodes_in_group("allies" if side=="ally" else "enemies"):
 			if host is Unit and AlliedAbilities.alive(host.special.get("squid")):contacts.append(host.special.squid)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(2,contacts.size())
 	# Resolve once only for weapons whose selection is independent of candidates.
 	# This cache lives for this synchronous query, never across updates.
-	var share_weapon := fixed_range and (embarked_in == null or OpenTopped.query_weapon_reusable(self)) and unit_id not in ["BORIS","SQD"] and not NATIVE_WEAPON_RESOLVERS.has(unit_id) and not special.has("academy_hero")
+	var share_weapon := fixed_range and (embarked_in == null or OpenTopped.query_weapon_reusable(self)) and unit_id not in ["BORIS","SQD","STLN","DNOA"] and not NATIVE_WEAPON_RESOLVERS.has(unit_id) and not special.has("academy_hero")
 	var shared_weapon: Dictionary = {}
+	var reject_air := false
 	for e in contacts:
-		if not is_instance_valid(e) or (local_search and not e.is_in_group(group)): continue
+		if not is_instance_valid(e) or ((local_search or route_complete) and not e.is_in_group(group)): continue
 		if is_finite(outer_limit) and not is_same(e,retaliator):
 			var distance_sq := origin.distance_squared_to(e.global_position)
 			if distance_sq > outer_squared:
@@ -2180,6 +2323,8 @@ func _refresh_target() -> void:
 			continue
 		if not _automatic_target_allowed(e): continue
 		if fire_stance == "return" and not attack_move and e != special.get("retaliation_target"): continue
+		# The resolved weapon is target-independent here. Read flight state live.
+		if reject_air and e is Unit and e.is_air_target(): continue
 		var d := CommandoCombat.distance_to(self, e)
 		var candidate_weapon: Dictionary = {} if fixed_range else _weapon_for_target(e)
 		var reach := attack_range if fixed_range else OpenTopped.command_range(self, e, candidate_weapon, cargo_domain, null, cargo_weapons)
@@ -2192,13 +2337,15 @@ func _refresh_target() -> void:
 				preload("res://scripts/world/battle_call_counters.gd").iterations(69,1)
 			else:
 				candidate_weapon = _weapon_for_target(e)
-				if share_weapon: shared_weapon = candidate_weapon
+				if share_weapon:
+					shared_weapon = candidate_weapon
+					reject_air = _scan_rejects_air(shared_weapon)
 		var eligible: bool = cargo_domain[0] if cargo_range else _weapon_domain_valid(e, false, candidate_weapon)
 		if not eligible:
 			continue
-		if check_cover and not CommandoCombat.building_c4(self, e) and WallArt.shot_blocked(cover_world, self, e, candidate_weapon): continue
-		var score := TacticalTargeting.score(self, e, candidate_weapon, attack_target)
-		if CommandoCombat.building_c4(self, e): score = 4.0 - d / maxf(1.0, sight)
+		var building_c4 := CommandoCombat.building_c4(self, e)
+		if check_cover and not building_c4 and WallArt.shot_blocked(cover_world, self, e, candidate_weapon): continue
+		var score := 4.0 - d / maxf(1.0, sight) if building_c4 else TacticalTargeting.score(self, e, candidate_weapon, attack_target)
 		if score > best_score or (local_search and score==best_score and is_instance_valid(best) and best.is_greater_than(e)):
 			best_score = score
 			best = e
@@ -2230,10 +2377,15 @@ func _ordinary_weapon_visibility() -> bool:
 		return false
 	return not is_inside_tree() or not get_tree().has_group(Ra3Mirage.SOURCE_GROUP)
 
+# Only called after the existing scan has proved it can share the resolved weapon.
+func _scan_rejects_air(resolved_weapon: Dictionary) -> bool:
+	return not resolved_weapon.is_empty() and _weapon_target_rule == WeaponTargetRule.STANDARD \
+		and embarked_in == null and logistics.passengers.is_empty() and not CombatMath.can_hit_air(resolved_weapon)
+
 func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Dictionary = {}) -> bool:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(47)
 	if not is_instance_valid(target): return false
-	if target is Building and float(target.special.get("force_shield_left", 0.0)) > 0.0: return false
+	if target is Building and (target.is_protected_mission_plant() or float(target.special.get("force_shield_left", 0.0)) > 0.0): return false
 	if not BattleRequest.house_teams.is_empty() and target.side != side and BattleRequest.friendly(side,target.side) and not ForceFire.active(self,target): return false
 	if _weapon_target_rule != WeaponTargetRule.STANDARD:
 		match _weapon_target_rule:
@@ -2249,6 +2401,7 @@ func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Diction
 	# Callers that already resolved the live weapon can share it within this
 	# decision. Never retain it across ticks, target changes or passenger changes.
 	var active := resolved_weapon if not resolved_weapon.is_empty() else _weapon_for_target(target)
+	if unit_id in ["STLN","DNOA"] and GameData.ra2_verse(str(active.get("ra2_warhead","")),Ra2Damage.armor_of(target))==0: return false
 	var c4 := _weapon_target_rule == WeaponTargetRule.COMMANDO and CommandoCombat.building_c4(self, target)
 	if not c4:
 		var air: bool
@@ -2260,12 +2413,8 @@ func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Diction
 		if air:
 			if not CombatMath.can_hit_air(active): return false
 		else:
-			var projectile: Dictionary = GameData.ra2_projectile(str(active.get("ra2_projectile", "")))
-			var projectile_flags: Dictionary = projectile.get("extra", EMPTY_WEAPON_QUERY)
-			if projectile_flags.has("AG") and str(projectile_flags.AG).to_lower() in ["no", "false", "0"]:
-				return false
-			var raw: Dictionary = GameData.ra2_source_units.get(unit_id, EMPTY_WEAPON_QUERY).get("extra", EMPTY_WEAPON_QUERY)
-			if int(raw.get("LandTargeting", 0)) == 1 and target.get("is_naval") != true and not (target is Building and target.data.get("water_bound", false)):
+			if GameData.projectile_blocks_ground(str(active.get("ra2_projectile", ""))): return false
+			if GameData.unit_blocks_land_targeting(unit_id) and target.get("is_naval") != true and not (target is Building and target.data.get("water_bound", false)):
 				return false
 	var ordinary_visibility: bool = not c4 and target is Unit and target._ordinary_weapon_visibility()
 	if not c4 and not AlliedAbilities.valid_weapon_target(self, target, active, ordinary_visibility): return false
@@ -2301,11 +2450,12 @@ func _weapon_target_valid(target, resolved_weapon: Dictionary = {}) -> bool:
 	if target is Unit and target.embarked_in!=null and not (unit_id=="DLPH" and NavalContact.grip_host(target)!=null):
 		return false
 	var distance := CommandoCombat.distance_to(self, target)
-	var target_dependent := data.has("anti_air_weapon") or data.has("special_weapon") or special.has("peregrine")
+	var target_dependent := unit_id in ["YTNK","BSUB"] or data.has("anti_air_weapon") or data.has("special_weapon") or special.has("peregrine")
 	if target_dependent and resolved_weapon.is_empty(): resolved_weapon = _weapon_for_target(target)
 	var reach := float(resolved_weapon.get("range",0.0)) if target_dependent else attack_range
 	if unit_id == "DRED": reach = OpenTopped.command_range(self,target)
-	if distance > reach or distance < min_range: return false
+	if special.has("studio"):reach+=StudioTalents.range_bonus(self,target)
+	if distance > reach or distance < float(resolved_weapon.get("min_range",min_range)): return false
 	if (target.get("side") == side and not ForceFire.active(self, target)) or not _automatic_target_allowed(target) or not _weapon_domain_valid(target, true, resolved_weapon):
 		return false
 	return not CommandoCombat.building_c4(self, target) # Contact action, never fire the primary at it.
@@ -2347,11 +2497,20 @@ func _sprite_facing(art: Dictionary, heading: float) -> int:
 		return posmod(roundi((screen_dir.angle() + PI / 2.0) / TAU * 8.0), 8)
 	return posmod(RA2Art.facing_index(heading, count) + int(art.get("facing_offset", 0)), count)
 
+func bridge_contact_offset() -> Vector2:
+	if not special.has("hollywood_on_deck"): return Vector2.ZERO
+	return preload("res://scripts/world/hollywood_overpass.gd").RISE * float(special.get("hollywood_deck_fraction", 1.0))
+
 func _visual_lift() -> float:
 	if special.has("psi_air_pull"): return float(special.psi_air_pull.height)
 	if special.has("para_height"): return float(special.para_height)
-	if unit_id in ["V3ROCKET", "DMISL"]: return logistics.air_lift
+	if unit_id in ["V3ROCKET", "DMISL", "CMISL"]: return logistics.air_lift
+	if special.has("hollywood_on_deck"):
+		return -Iso.dir(bridge_contact_offset()).y + hover_motion.lift
 	return flight.visual_lift() if is_air else hover_motion.lift
+
+func _disc_center() -> Vector2:
+	return art_center() if _art_frame >= 0 else Effects.hit_position(self)
 
 func _weapon_muzzle(barrel_index := -1) -> Vector2:
 	if _ra3_model != null: return _ra3_model.muzzle()
@@ -2371,6 +2530,7 @@ func _weapon_muzzle(barrel_index := -1) -> Vector2:
 		var offset := (forward*float(mount[0])+forward.orthogonal()*float(mount[1])) * (Ra2Damage.PX_PER_CELL/256.0)
 		return global_position + offset + RA2Art.art_dir(Vector2.UP*(_visual_lift()+float(mount[2])*flight.HEIGHT_PIXEL))
 	if hero_art!=null and embarked_in==null:return hero_art.muzzle(self)
+	if data.has("hollywood_fx") and _weapon_art.get("muzzles",[]).is_empty() and embarked_in==null: return HollywoodFx.muzzle(self)
 	if unit_id == "DLPH" and not _ra2.is_empty() and _seq.has("FireUp"):
 		return _dolphin_muzzle()
 	var fallback := global_position + aim_dir * (radius + 4.0) + RA2Art.art_dir(Vector2(0.0, -_visual_lift()))
@@ -2382,11 +2542,14 @@ func _weapon_muzzle(barrel_index := -1) -> Vector2:
 	var art := _ra2 if _ra2_tur.is_empty() else _ra2_tur
 	var heading := hull_angle if _ra2_tur.is_empty() else turret_angle
 	var frame := _sprite_facing(art, heading)
+	if unit_id in ["LTNK","YTNK"]: frame=HollywoodTurrets.frame(self)
 	if frame >= points.size():
 		return fallback
 	var lift := _visual_lift() + preload("res://scripts/units/dog_pounce.gd").lift(self)
 	var base := RA2Art.draw_rect(_ra2, radius, range(int(_ra2.get("facings", 8))), lift, RA2_SPRITE_SCALE).position
 	var point: Array = points[frame]
+	if embarked_in is Building and embarked_in.building_id=="NATBNK":
+		return embarked_in.global_position+RA2Art.art_dir(HollywoodTurrets.bunker_rect(embarked_in,self).position+Vector2(point[0],point[1])*RA2_SPRITE_SCALE)
 	var offset := base + Vector2(float(point[0]), float(point[1])) * RA2_SPRITE_SCALE
 	# Single-barrel vehicles rock with their sprites too; barrel_index only
 	# chooses a weapon socket and must not decide whether body pose applies.
@@ -2539,6 +2702,7 @@ func _try_fire_ready() -> bool:
 	if unit_id in ["DOG", "SOV_DOG"]: reload /= Training.timing_scale(self)
 	if special.has(Furnace.GUARD): reload /= float(special[Furnace.GUARD].rate)
 	reload=preload("res://scripts/units/progression_expansion.gd").modify_reload(self,reload)
+	if special.has("studio"):reload*=StudioTalents.reload_factor(self,t)
 	if weapon.get("peregrine_aa",false):reload=1.0
 	if buff_value("west_shift") > 0: reload *= 0.5
 	if designating:
@@ -2567,11 +2731,17 @@ func _spawn_muzzle_fx(at: Vector2, wid: String) -> void:
 		var glow := Color("#c4e8f4") if unit_id == "E1" else Color("#ffc281")
 		Effects.spawn_flash(at, 8.0, glow)
 	if TankHeroSkin.enabled(self):Effects.spawn_flash(at,12.0,TankHeroSkin.COLORS[0 if unit_id=="MTNK" else 1])
+	if OpenTopped.active(self):
+		var port_anim := str(GameData.ra2_weapon(wid).get("extra", {}).get("OpenToppedAnim", ""))
+		if not port_anim.is_empty():
+			Ra2Fx.play(Effects._host(), at, port_anim)
+			return
 	if embarked_in is Building and embarked_in.data.has("fire_ports"):
 		var extra: Dictionary = GameData.ra2_weapon(wid).get("extra", {})
 		var window_anim := str(extra.get("OccupantAnim", ""))
 		if not window_anim.is_empty():
-			Ra2Fx.play(embarked_in.battle.effects_root, at, window_anim)
+			var flash = Ra2Fx.play(embarked_in.battle.effects_root, at, window_anim)
+			if flash != null and flash.anim.translucent: flash.tint.a = 0.5
 			return
 	var names: Array = GameData.ra2_muzzle_anims(wid)
 	if names.is_empty():
@@ -2591,7 +2761,16 @@ func _spawn_impact_anim(at: Vector2, dmg: float = 0.0, ground_hit := true) -> vo
 		Effects.spawn_impact(at, Color(1.0, 0.85, 0.5), 8.0 + minf(dmg, 200.0) * 0.06)
 	if ground_hit: Ra2Fx.spawn_scorch(Effects._host(), wid, dmg, at)
 
+func _disc_trace(stage: String, target, weapon_id := "") -> void:
+	var trace := get_tree().get_first_node_in_group("battle_crash_trace")
+	if trace == null: return
+	var target_id := "point"
+	if target is Unit: target_id = target.unit_id
+	elif target is Building: target_id = target.building_id
+	trace.mark("disc." + stage, {"shooter": get_instance_id(), "side": side, "target": target_id, "weapon": weapon_id})
+
 func _fire_shot(target,first_in_volley:=false) -> void:
+	if unit_id == "DISK": _disc_trace("fire.begin", target)
 	if special.has("peregrine") and preload("res://scripts/units/peregrine_defense.gd").silent(self):return
 	if special.has("commando_hero_v2") and special.commando_hero_v2.has("corridor_call"):return
 	if (special.has("tanya_flash_left") or special.get("academy_hero")=="TANY") and preload("res://scripts/units/tanya_talents.gd").silenced(self):return
@@ -2619,6 +2798,7 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	if world != null:
 		world.reveal_attack(embarked_in if OpenTopped.active(self) or embarked_in is Building else self, target)
 	var weapon := _active_weapon()   # 精英武器优先（RA2 ElitePrimary）
+	if unit_id == "DISK": _disc_trace("weapon", target, str(weapon.get("name", "")))
 	var reference_weapon:=weapon.duplicate(true) if CombatMath.FinalDamage.active() else {}
 	if unit_id == "SHK":
 		# Consume on actual firing, including a dodge or force-fire; never mutate shared weapons.
@@ -2641,6 +2821,9 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	if first_in_volley:preload("res://scripts/units/expansion_2_overload.gd").fired(self)
 	var hit_chance: float = clampf(1.0 + buff_value("accuracy") - _target_evade(target), 0.05, 1.0)
 	if hit_chance < 0.999 and randf() > hit_chance:
+		if special.has("studio"):
+			special.studio.erase("duel")
+			special.studio.erase("fort")
 		if special.erase("echo_cloaked"):
 			special.erase("echo_bonus")
 			special.erase("echo_bonus_left")
@@ -2651,12 +2834,21 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	if unit_id == "YURIKO":
 		preload("res://scripts/units/yuriko.gd").crush(self,target)
 		return
+	if unit_id == "BSUB" and weapon.name == "CruiseLauncher":
+		NavalContact.surface(self)
+		var missile = world.spawn_unit("CMISL", side, position)
+		if missile != null:
+			missile.special.flight = {"origin":position, "aim":target.position, "source":self, "elapsed":0.0,
+				"windup":1.33, "altitude":165, "duration":maxf(0.1,position.distance_to(target.position)/330),
+				"damage":250 if veteran_level >= 2 else 200, "warhead":"YR_CMISLWH", "bonus":bonuses.duplicate(true)}
+		return
 	if SovietSpecials.shoot(self, target, weapon): return
 	if unit_id in MISSILE_CARRIERS:
 		SovietWeapons.launch(self, target)
 		return
 	var t_ra2 = target.get("ra2_armor")
 	var shot_bonus := bonuses.duplicate(true)
+	if special.has("studio"):StudioTalents.shot(self,target,shot_bonus)
 	if special.has("convoy"):Convoy.fired(self,target,shot_bonus,first_in_volley)
 	logistics.apply_carrier_attack(shot_bonus)
 	preload("res://scripts/units/progression_expansion.gd").shot(self,target,shot_bonus)
@@ -2680,7 +2872,12 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 		CommandoFx.spawn(Effects._host(),commando_look,CommandoSkin.shot_origin(self,muzzle),Effects.hit_position(target))
 	elif not Ra3Mirage.handles(self): _spawn_muzzle_fx(muzzle, str(weapon.get("ra2_weapon_id", "")))
 	# RA2 开火音效：weapon Report= → sound.ini → wav（与炮口火光同步）
-	if not Ra3Mirage.handles(self): Ra2Sfx.play_weapon(weapon, muzzle)
+	if unit_id == "YTNK" and str(weapon.get("report", "")).begins_with("GattlingGunAttackLoop"):
+		preload("res://scripts/core/gatling_audio.gd").shot(self,weapon,_cd_timer)
+	elif not Ra3Mirage.handles(self):
+		if unit_id == "DISK": _disc_trace("audio.begin", target)
+		Ra2Sfx.play_weapon(weapon, muzzle)
+		if unit_id == "DISK": _disc_trace("audio.end", target)
 	if Ra3Mirage.handles(self):
 		Ra3Mirage.shoot(self, target, weapon, dmg, shot_bonus)
 		return
@@ -2689,7 +2886,13 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	# → 程序化光束，见 GameData.ra2_beam_spec（数据驱动，覆盖全部 27 把）
 	var beam := GameData.ra2_beam_spec(str(weapon.get("ra2_weapon_id", "")))
 	var beam_drawn := false
-	if not beam.is_empty():
+	if unit_id == "DISK" and weapon.get("name", "") in ["DiskLaser", "DiskLaserE"]:
+		_disc_trace("laser.begin", target)
+		var endpoint: Vector2 = target.art_center() if target.has_method("art_center") else Effects.hit_position(target)
+		Effects.spawn_beam(_disc_center(), endpoint, Color("ff454c"), "laser", 2.5, 0.24, "", null, false, false, true, global_position, target.global_position)
+		_disc_trace("laser.created", target)
+		beam_drawn = true
+	elif not beam.is_empty():
 		var bcol: Color = beam.get("color", Color(1, 1, 1))
 		if (beam.get("house", false) == true):
 			bcol = HouseColor.color_for_side(side, "")
@@ -2707,19 +2910,25 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 		elif not beam_drawn and commando_look.is_empty():
 			Effects.spawn_impact(Effects.hit_position(target), Color(0.9, 0.85, 0.7), 8.0)
 		# 瞬发武器（电弧/近战/光束）同样按弹头 AnimList= 播放真实命中动画（第 8 批：按伤害选档）
+		if unit_id == "DISK": _disc_trace("impact.begin", target)
 		if commando_look.is_empty(): _spawn_impact_anim(Effects.hit_position(target), dmg, Effects.hit_position(target).is_equal_approx(target.global_position))
 		else: Effects.Looks.impact(Effects._host(), Effects.hit_position(target), commando_look)
 		if target.has_method("receive_hit"):
+			if unit_id == "DISK": _disc_trace("impact.end", target)
 			preload("res://scripts/world/bridge_damage.gd").instant_target(self,target,CombatMath.with_offense(float(weapon.get("damage",0.0)),shot_bonus),str(weapon.get("ra2_warhead","")))
+			if unit_id == "DISK": _disc_trace("damage.begin", target)
 			target.receive_hit(dmg, at, shot_bonus, self, str(weapon.get("ra2_warhead", "")))
+			if unit_id == "DISK": _disc_trace("damage.end", null)
 			if shot_bonus.get("leizhu_primary",false):
 				preload("res://scripts/units/leizhu_station.gd").finish(self,shot_bonus)
 				preload("res://scripts/units/leizhu_cards.gd").finish(self)
 			if unit_id == "SHK": preload("res://scripts/units/electric_cards.gd").chain_hit(self,target)
 	else:
+		if unit_id == "DISK": _disc_trace("projectile.begin", target)
 		var p := Projectile.new()
 		p.setup(muzzle, target, weapon, dmg, shot_bonus, side, self)
 		_pick_projectile_parent().add_child(p)
+		if unit_id == "DISK": _disc_trace("projectile.created", target)
 
 ## 目标闪避值（供命中判定调用）
 func _target_evade(t) -> float:
@@ -3457,10 +3666,10 @@ func _pick_home_base():
 
 func ignores_warhead(warhead_id: String) -> bool:
 	if data.get("immune_to_psionics", false) != true and data.get("immune_to_radiation", false) != true: return false
-	var flags: Dictionary = GameData.ra2_warheads.get(warhead_id.to_lower(), {}).get("extra", {})
+	var flags: Dictionary = GameData.warhead_combat_rule(warhead_id)
 	# PsychicDamage is distinct from mind control in the original rules.
-	return (data.get("immune_to_psionics", false) == true and GameData._ra2_flag(flags.get("MindControl", false))) \
-		or (data.get("immune_to_radiation", false) == true and GameData._ra2_flag(flags.get("Radiation", false)))
+	return (data.get("immune_to_psionics", false) == true and flags.get("mind_control", false)) \
+		or (data.get("immune_to_radiation", false) == true and flags.get("radiation", false))
 
 func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: Dictionary = {}, source = null, warhead_id: String = "", blast_center := Vector2.INF, blast_damage := -1.0) -> void:
 	if damage > 0 and is_instance_valid(_combat_world) and _combat_world.allied_state.has("yuriko_field") and preload("res://scripts/units/yuriko.gd").protected(_combat_world,self,source,attack_type): return
@@ -3508,8 +3717,10 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 	if special.has(DomainCards.STATE):damage=DomainCards.defend(self,damage)
 	damage=Training.defend(self,damage,source)
 	if special.has("commando_hero_v2"):damage=preload("res://scripts/units/expansion_2_commandos.gd").defend(self,damage,attack_type,attacker_bonus,source)
-	damage=preload("res://scripts/units/expansion_2_ground.gd").defend(self,damage,attack_type,attacker_bonus,source)
-	damage=preload("res://scripts/units/expansion_2_armor.gd").defend(self,damage,attacker_bonus,source)
+	if damage > 0 and unit_id == "MGTK" and special.get("progression_v2", {}).has("mirage_guard"):
+		damage=preload("res://scripts/units/expansion_2_ground.gd").defend(self,damage,attack_type,attacker_bonus,source)
+	if damage > 0 and unit_id == "APOC":
+		damage=preload("res://scripts/units/expansion_2_armor.gd").defend(self,damage,attacker_bonus,source)
 	var water_packet:Dictionary={}
 	damage=preload("res://scripts/units/expansion_2_naval.gd").defend(self,damage,attack_type,attacker_bonus,source,water_packet)
 	damage=preload("res://scripts/expedition/rules.gd").defend(self,damage)
@@ -3541,10 +3752,18 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 		if is_instance_valid(attacker) and (attacker is Unit or attacker is Building) and not BattleRequest.friendly(attacker.side,side) and AlliedAbilities.alive(attacker):
 			if final_dmg > 0: preload("res://scripts/world/air_relief.gd").alert(self,attacker)
 			var native := preload("res://scripts/core/yr_death_rules.gd").type_data(unit_id)
-			if GameData._ra2_flag(native.get("canretaliate", true)):
+			if final_dmg > 0 and GameData._ra2_flag(native.get("canretaliate", true)):
 				if _return_timer <= 0.0 or not special.has("retaliation_origin"):
 					special.retaliation_origin = global_position
-				if _return_timer <= 0.0 and side != "ally": _think_timer = 0.0
+				if side == "ally" and (_return_timer <= 0.0 or not is_same(attacker, special.get("retaliation_target"))):
+					_think_timer = 0.0
+				if BattleRequest.is_ai_house(side) and (_return_timer <= 0.0 or not is_same(attacker,special.get("retaliation_target"))):
+					# The shot identifies this contact beyond passive scan range. Repeated
+					# hits from the same shooter do not drag the pursuit boundary forward.
+					var origin:Vector2 = special.retaliation_origin
+					var point:Vector2 = attacker.closest_footprint_point(origin) if attacker is Building and not is_air and not is_naval else attacker.global_position
+					special.retaliation_contact_range = origin.distance_to(point)
+					_think_timer = 0.0
 				_return_timer = maxf(_return_timer, 6.0)
 				special.retaliation_target = attacker
 	if final_dmg > 0:
@@ -3604,7 +3823,10 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 	if special.has("convoy_rescue_shield") and buff_value("convoy_rescue")>0:
 		var used:=minf(final_dmg,special.convoy_rescue_shield)
 		special.convoy_rescue_shield-=used;final_dmg-=used
+	if unit_id=="ARND" and special.has("studio"):final_dmg=StudioTalents.absorb(self,final_dmg)
 	hp -= final_dmg
+	if final_dmg>0 and attacker_bonus.has("studio_target"):StudioTalents.impact(source,self,attacker_bonus)
+	if unit_id=="INIT" and final_dmg>0 and hp>0 and embarked_in==null: HollywoodInfantry.suppress(self)
 	if unit_id=="YURIKO":preload("res://scripts/units/yuriko_audio.gd").hurt(self,final_dmg,attack_type)
 	if final_dmg>0 and leizhu_health_before>max_hp*.2 and hp>0 and hp<=max_hp*.2 and is_instance_valid(source):Convoy.Talents.rescue(self,leizhu_health_before)
 	if special.has("leizhu"):preload("res://scripts/units/leizhu_defense.gd").injured(self,source,attack_type,attacker_bonus,leizhu_absorbed,maxf(0,leizhu_health_before-maxf(0,hp)))
@@ -3631,7 +3853,7 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 		hp = 0.0
 		var warhead: Dictionary = GameData.ra2_warheads.get(warhead_id.to_lower(), {})
 		special.death_kind = int(GameData._num(warhead.get("inf_death"), 1.0))
-		special.yr_causes_death_weapon = Ra2Damage._extra(warhead_id, "CausesDeathWeapon").to_lower() in ["yes", "true", "1"]
+		special.yr_causes_death_weapon = GameData.warhead_combat_rule(warhead_id).get("causes_death_weapon", false)
 		preload("res://scripts/rules/commando_contracts.gd").prepare_death(self,source,attacker_bonus)
 		if special.get("academy_hero")=="BORIS":preload("res://scripts/units/boris_radio.gd").health_hit(self,source,final_dmg)
 		_die(source)
@@ -3698,6 +3920,7 @@ func _tick_gm_target(delta: float) -> void:
 	queue_redraw()
 
 func _die(killer = null, temporal_erasure := false) -> void:
+	if unit_id=="SMIN" and not _dead: preload("res://scripts/world/slave_mining.gd").release(self,killer)
 	if _dead:
 		return
 	if preload("res://scripts/units/progression_expansion.gd").before_death(self,killer):return
@@ -3718,9 +3941,14 @@ func _die(killer = null, temporal_erasure := false) -> void:
 	var world := _battle_world()
 	if world != null and world.fog != null: world.fog.hold_unit_sight(self)
 	var fall_from := _visual_lift() if not temporal_erasure and flight.crash_speed > 0.0 and embarked_in == null else 0.0
-	var kirov_crash := unit_id == "ZEP" and not temporal_erasure and embarked_in == null
-	if kirov_crash: preload("res://scripts/units/kirov_crash.gd").begin(self)
+	var hull_crash := false
+	if unit_id in ["ZEP", "DISK"] and not temporal_erasure and embarked_in == null:
+		hull_crash = preload("res://scripts/units/kirov_crash.gd").begin(self)
 	_dead = true
+	if shield_sprite != null: shield_sprite.hide()
+	if special.has("combo_slot") and world!=null: preload("res://scripts/world/head_games_combine.gd").casualty(world,special.combo_slot)
+	if special.has("virus_shooter"):
+		preload("res://scripts/units/head_games_weapons.gd").virus_death(self,killer)
 	if unit_id=="YURIKO" and not temporal_erasure and is_instance_valid(world):preload("res://scripts/units/yuriko_power_fx.gd").show_fx(world,position,"FX_JapanYurikoDeath")
 	if special.has("peregrine"):special.peregrine.erase("rearm_shield")
 	if unit_id in ["V3ROCKET","DMISL"]: SovietWeapons.vacate_rack(self)
@@ -3754,7 +3982,7 @@ func _die(killer = null, temporal_erasure := false) -> void:
 		vkind=special.get("psi_death_voice",vkind)
 	if not temporal_erasure and Ra2Sfx.has_voice(data, vkind):
 		Ra2Sfx.play_voice(data, vkind, global_position, 260)
-	if not temporal_erasure and not kirov_crash:
+	if not temporal_erasure and not hull_crash:
 		preload("res://scripts/core/yr_death_combat.gd").destroyed(self)
 		if unit_id == Ra3Expansion.HARBINGER and _visual_lift() > 0.01: preload("res://scripts/units/ra3_gunship_crash.gd").begin(self)
 		else: Ra3Wreck.spawn(self)
@@ -3811,6 +4039,9 @@ func _die(killer = null, temporal_erasure := false) -> void:
 # ------------------------------------------------------------------ 指令
 
 func order_move(p: Vector2, p_attack_move: bool = false, p_field = null, p_path: PackedVector2Array = PackedVector2Array(), report_deployment := true) -> void:
+	_yr_blockage.clear()
+	if unit_id == "DNOA": special.erase("rexy_guard_origin")
+	if special.has("psi_elapsed"): HollywoodInfantry.start_folding(self)
 	if special.has("leizhu") and preload("res://scripts/units/leizhu_safety.gd").stopped(self):return
 	if special.has("peregrine"):
 		if special.has("hero_wreck"):return
@@ -3989,6 +4220,8 @@ func clear_queue() -> void:
 	order_queue.clear()
 
 func order_stop(reset_fire_stance := true) -> void:
+	_yr_blockage.clear()
+	if unit_id == "DNOA": special.erase("rexy_guard_origin")
 	if special.has("psi_order"): special.erase("psi_order")
 	if special.has(FoundationTransit.ANCHOR):FoundationTransit.settle(self)
 	preload("res://scripts/units/expansion_2_drone.gd").cancel_leap(self)
@@ -4012,6 +4245,7 @@ func order_stop(reset_fire_stance := true) -> void:
 	if reset_fire_stance and side == "ally": fire_stance = "defend"
 	special.erase("retaliation_target")
 	special.erase("retaliation_origin")
+	special.erase("retaliation_contact_range")
 	_chase_goal = Vector2.INF
 	_return_timer = 0.0
 	AlliedAbilities.cancel(self)
@@ -4037,6 +4271,7 @@ func order_stop(reset_fire_stance := true) -> void:
 
 ## 警戒：原地固守，只打射程内的目标
 func order_guard() -> void:
+	if unit_id == "DNOA": special.erase("rexy_guard_origin")
 	if special.has(FoundationTransit.ANCHOR):FoundationTransit.settle(self)
 	special.erase(preload("res://scripts/units/ai_engagement.gd").RESUME)
 	special.erase(ReverseAttack.ID)
@@ -4120,6 +4355,7 @@ func order_harvest(node) -> void:
 
 # --- 开火姿态 ---
 func set_fire_stance(s: String) -> void:
+	if unit_id == "DNOA": special.erase("rexy_guard_origin")
 	special.erase("finished_attack_route")
 	fire_stance = s
 	if s == "none":
@@ -4275,13 +4511,7 @@ func _draw_pose() -> void:
 	if tank_finish!=null:tank_finish.draw_on(self,false)
 	if yr_finish!=null:yr_finish.draw_on(self)
 	AlliedAbilities.draw_status(self)
-	if special.has(TankHero.Shield.KEY) or special.has(Furnace.STANCE): TankHero.Shield.draw(self)
 	preload("res://scripts/units/expansion_visual.gd").draw(self)
-	if special.has("commando_hero_v2"):preload("res://scripts/units/expansion_2_commandos.gd").draw(self)
-	if special.has("rescue_shield"):
-		draw_circle(Vector2.ZERO, radius + 8, Color(0.3,0.85,1.0,0.23))
-		draw_arc(Vector2.ZERO, radius + 8, 0, TAU, 48, Color.SKY_BLUE, 3, true)
-	if special.has("boris_radio_shield"):preload("res://scripts/units/boris_radio.gd").draw_shield(self)
 	if special.has("peregrine"):preload("res://scripts/units/peregrine_cards.gd").draw(self)
 	if special.has("leizhu"):preload("res://scripts/units/leizhu.gd").draw(self)
 	elif special.has("leizhu_control"):preload("res://scripts/units/leizhu_command.gd").draw(self)
@@ -4308,6 +4538,9 @@ func _draw_pose() -> void:
 		draw_rect(Rect2(-bw * 0.5, by, bw, 5.0), Color(0, 0, 0, 0.5))
 		draw_rect(Rect2(-bw * 0.5 + 1.0, by + 1.0, (bw - 2.0) * fcov, 3.0), Color(1.0, 0.6, 0.22))
 
+	var contact := bridge_contact_offset()
+	if contact != Vector2.ZERO:
+		draw_set_transform(contact, Iso.eff_angle(), Iso.up())
 	_draw_selection(r)
 	if excluded_from_army_selection and side == "ally" and not _dead and embarked_in == null:
 		var foot := _ground_center(r) + Vector2(0, r * 0.7 + 7.0)
@@ -4316,6 +4549,7 @@ func _draw_pose() -> void:
 		draw_line(foot - Vector2(2.8, 0), foot + Vector2(2.8, 0), Color("ffcc67"), 2.0)
 
 	_draw_reverse_tag(r)
+	if contact != Vector2.ZERO: Iso.begin(self)
 
 ## Shared local drawing rectangle for the world bar and its attached indicators.
 func hp_bar_rect() -> Rect2:
@@ -4348,6 +4582,7 @@ func shield_readout_amount() -> float:
 
 func draw_hp_bar(ci: CanvasItem, origin: Vector2, show_values := false) -> void:
 	var shield := shield_readout_amount()
+	preload("res://scripts/units/unit_shield_visual.gd").sync(self, shield)
 	if not (show_values or hp < max_hp or selected or _hp_flash > 0.0 or shield>0):
 		return
 	var rect := hp_bar_rect()
@@ -4382,7 +4617,7 @@ var rock_events: int = 0
 
 ## 第 8 批：RA2 的 Prone 状态 = 本工程的「部署据守」（弹头 ProneDamage= 据此生效）
 func is_prone() -> bool:
-	return special.has(Furnace.STANCE) or (_deployed and data.get("deployed_prone", true) == true)
+	return special.has("prone_left") or special.has(Furnace.STANCE) or (_deployed and data.get("deployed_prone", true) == true)
 
 
 func uses_missile_pitch() -> bool:
@@ -4468,6 +4703,7 @@ func _anchor_frames(start: int, count: int, extra_start: int = 0, extra_count: i
 	return _anchor_span_frames
 
 const VoxelRenderer = preload("res://scripts/units/voxel_renderer.gd")
+const HollywoodTurrets = preload("res://scripts/units/hollywood_turret_pose.gd")
 
 func draw_prepared_voxel(prepared, rect: Rect2, frame: int, grade: Color) -> void:
 	VoxelRenderer.submit(self,prepared,rect,frame,grade)
@@ -4530,6 +4766,8 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 		if _dying > 0.0:
 			nm = str(special.get("death_sequence", "Die1"))
 			fps = flight.TICKS if flight.crash_lift >= 0.0 else 13.0
+		elif special.has("psi_elapsed") or special.has("prone_left") or special.has("cheer_elapsed") or (unit_id=="SLAV" and (special.get("shoveling",false) or cargo>0) and (_moving() or special.get("shoveling",false))):
+			nm = HollywoodInfantry.pose(self)
 		elif special.has(Furnace.STANCE) and _seq.has("Crawl"):
 			nm = "FireProne" if _fire_anim_time >= 0 and _seq.has("FireProne") else "Crawl"
 		elif special.has("para_height"):
@@ -4564,6 +4802,7 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 				else:
 					t = int(_walk_phase * float(wper))
 			if special.has(Furnace.STANCE) and nm=="Crawl": t=int(_walk_phase * int(_seq.Crawl.per)) if _moving() else 0
+			if _dying<=0 and (special.has("psi_elapsed") or special.has("prone_left") or nm in ["Cheer","Carry","Shovel"]): t = HollywoodInfantry.frame(self,nm)
 			var f2 := RA2Art.seq_frame(_seq, nm, fidx, t)
 			if f2 >= 0 and f2 < rects.size():
 				frame = f2
@@ -4602,8 +4841,10 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 	if bool(_ra2.get("split_shadow", false)) and not _ra2_tur.is_empty():
 		var turret_shadow := RA2Art.art(str(_ra2_tur.get("key", "")) + "_shd")
 		if not turret_shadow.is_empty():
-			joint_shadow = RA2Art.unit_shadow_texture(_ra2_shd, turret_shadow, frame, _sprite_facing(turret_shadow, turret_angle))
+			var shadow_frame:=HollywoodTurrets.frame(self) if unit_id=="YTNK" else _sprite_facing(turret_shadow, turret_angle)
+			joint_shadow = RA2Art.unit_shadow_texture(_ra2_shd, turret_shadow, frame, shadow_frame)
 	if _rock_t > 0.0: Iso.begin(self)
+	var ground_offset := Iso.dir(bridge_contact_offset())
 	_shadow_draw_texture = joint_shadow
 	_shadow_draw_rect = Rect2()
 	var dolphin_waterline:=INF
@@ -4615,18 +4856,18 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 	elif dive >= 1.0 or unit_id == "SQD" or uses_missile_pitch():
 		pass # Submerged hulls and NoShadow missiles omit the surface shadow.
 	elif unit_id=="SCHP" and _ra2.get("key")=="SCHPDEPL":
-		_shadow_draw_rect=Rect2(base+Vector2.DOWN*lift,sz*sc)
+		_shadow_draw_rect=Rect2(base+Vector2.DOWN*lift+ground_offset,sz*sc)
 		draw_texture_rect_region(_ra2.tex,_shadow_draw_rect,RA2Art.src_rect(_ra2,frame+aframes.size()),Color(0,0,0,0.5*cloak_alpha))
 	elif shd_tex != null:
 		var ssz: Vector2 = RA2Art.frame_size(_ra2_shd)
 		if ssz.x > 0.0:
-			_shadow_draw_rect = Rect2(base + Vector2(0.0, lift), ssz * sc)
+			_shadow_draw_rect = Rect2(base + Vector2(0.0, lift) + ground_offset, ssz * sc)
 			if joint_shadow != null:
 				draw_texture_rect(joint_shadow, _shadow_draw_rect, false, Color(0.0, 0.0, 0.0, 0.5 * cloak_alpha * (1.0 - dive)))
 			else:
 				draw_texture_rect_region(shd_tex, _shadow_draw_rect, RA2Art.src_rect(_ra2_shd, frame), Color(0.0, 0.0, 0.0, 0.5 * cloak_alpha * (1.0 - dive)))
 	else:
-		Iso.shadow(self, Vector2(r * 0.34, r * 0.4), r * 0.85, 0.34 * cloak_alpha * (1.0 - dive))
+		Iso.shadow(self, ground_offset + Vector2(r * 0.34, r * 0.4), r * 0.85, 0.34 * cloak_alpha * (1.0 - dive))
 	if _rock_t > 0.0: draw_set_transform_matrix(body_draw_transform())
 	if uses_missile_pitch():
 		draw_set_transform_matrix(Transform2D(Iso.eff_angle(), Iso.up(), 0.0, Vector2.ZERO) * SovietWeapons.DreadFlight.pose(self,lift))
@@ -4674,6 +4915,7 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 			var tsz: Vector2 = RA2Art.frame_size(_ra2_tur)
 			if tsz.x > 0.0 and tsz.y > 0.0:
 				var tfi := _sprite_facing(_ra2_tur, turret_angle)
+				if unit_id=="YTNK": tfi=HollywoodTurrets.frame(self)
 				var draw_offset: Array = _ra2_tur.get("draw_offset", [0, 0])
 				_turret_draw_rect = Rect2(base + Vector2(draw_offset[0], draw_offset[1]) * sc, tsz * sc)
 				_turret_draw_source = RA2Art.src_rect(_ra2_tur, tfi)
@@ -5380,7 +5622,8 @@ func _draw_selection(r: float) -> void:
 ## 每帧推进技能冷却与限时增益（buff 也在这里结算，无主动技能的单位同样需要）
 func _tick_skills(delta: float) -> void:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(4)
-	_tick_buffs(delta)
+	# Timers only update their remaining durations. Publish all stat changes once below.
+	_tick_buffs(delta, false)
 	if _has_active_skills:
 		for ab in skills:
 			ab.tick(delta)
@@ -5492,7 +5735,7 @@ func clear_buff(kind: String) -> void:
 	queue_redraw()
 
 ## 倒计时推进 + 回血结算；过期移除
-func _tick_buffs(delta: float) -> void:
+func _tick_buffs(delta: float, refresh_bonuses := true) -> void:
 	if buffs.is_empty():
 		return
 	var changed := false
@@ -5505,7 +5748,7 @@ func _tick_buffs(delta: float) -> void:
 		if float(b["left"]) <= 0.0:
 			buffs.remove_at(i)
 			changed = changed or kind!="tesla_emp"
-	if changed:
+	if changed and refresh_bonuses:
 		_recompute_bonuses()
 	if changed or preload("res://scripts/units/grizzly_visual_refresh.gd").refresh(self):queue_redraw()
 
@@ -5759,7 +6002,7 @@ func _toggle_deploy() -> void:
 ##   · 或技能栏里有 deploy 效果的主技能（ap_deploy）
 func deploy_building_id() -> String:
 	var raw: Dictionary = GameData.ra2_source_units.get(unit_id, {}).get("extra", {})
-	var bid := str(raw.get("DeploysInto", ""))
+	var bid := str(data.get("deploys_into",raw.get("DeploysInto", "")))
 	return bid if not bid.is_empty() and not GameData.get_building(bid).is_empty() else ""
 
 func can_deploy() -> bool:
@@ -5781,7 +6024,7 @@ func _deploy_skill_index() -> int:
 	return -1
 
 func is_deployed() -> bool:
-	return _deployed
+	return _deployed or special.has("psi_elapsed")
 
 ## 「单点释放主技能」：一次点击/一个热键切到卧倒（再点一次起身）。
 ## 命令栏「部署 (J)」、技能栏主技能、快捷键 J 全部汇到这里，
@@ -5789,6 +6032,7 @@ func is_deployed() -> bool:
 func deploy() -> bool:
 	if _dead or hp <= 0.0 or is_queued_for_deletion() or embarked_in != null:
 		return false
+	if unit_id=="YURI": return HollywoodInfantry.begin_pulse(self)
 	if special.has("peregrine"):return preload("res://scripts/units/peregrine_service.gd").toggle(self)
 	if not deploy_building_id().is_empty():
 		var world := _battle_world()
@@ -5963,17 +6207,36 @@ func _move_water_safe() -> void:
 # Player and allied AI units share space; the existing friendly infantry rule also applies. Boats can pass
 # beneath a bridge deck. Exceptions apply only during this move, so ownership
 # changes take effect immediately and other commands keep their own exceptions.
+func can_roll_fences() -> bool:
+	return not is_air and not is_naval and unit_id != "R3APOC" and _mv("crusher", false) == true
+
 func _slide_across_bridge_layers(dt: float) -> void:
 	var temporary := _traffic_collision_exceptions(velocity * dt, true)
+	var before := position
 	move_and_slide()
+	if get_slide_collision_count() > 0 and can_roll_fences():
+		for i in get_slide_collision_count():
+			var hit := get_slide_collision(i)
+			var fence := hit.get_collider()
+			if is_instance_valid(fence) and WallArt.crushable_fence(fence) and not fence.is_dead():
+				fence.receive_hit(999999.0, "crush", {}, self)
+	_record_overpass_move(before)
 	for other in temporary: remove_collision_exception_with(other)
 	if special.has(FoundationTransit.ANCHOR) and FoundationTransit.parkable(self,_navigation_world(),position,0):special.erase(FoundationTransit.ANCHOR)
 
 func move_with_traffic_exceptions(motion: Vector2, test_only := false) -> KinematicCollision2D:
 	var temporary := _traffic_collision_exceptions(motion)
+	var before := position
 	var collision := move_and_collide(motion, test_only)
+	if not test_only: _record_overpass_move(before)
 	for other in temporary: remove_collision_exception_with(other)
 	return collision
+
+func _record_overpass_move(before: Vector2) -> void:
+	if is_air or is_naval: return
+	var world := _navigation_world()
+	if world != null and world.ground is Ground and world.ground.overpass != null:
+		world.ground.overpass.record_move(self, before)
 
 func _traffic_collision_exceptions(motion: Vector2, sliding := false) -> Array:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(53)
@@ -6018,7 +6281,8 @@ func _traffic_collision_exceptions(motion: Vector2, sliding := false) -> Array:
 		var pass_friendly: bool = _local_traffic.friendly_unit_pair(self,other)
 		var upper = other if is_naval else self
 		var pass_bridge: bool = other.is_naval != is_naval and world.path_service.near_deck(upper.global_position, upper.radius)
-		if pass_friendly or pass_bridge:
+		var separate_decks := special.has("hollywood_on_deck") != other.special.has("hollywood_on_deck")
+		if pass_friendly or pass_bridge or separate_decks:
 			if not existing_loaded:
 				existing = get_collision_exceptions()
 				existing_loaded = true
@@ -6028,11 +6292,16 @@ func _traffic_collision_exceptions(motion: Vector2, sliding := false) -> Array:
 	return temporary
 
 func _domain_ok(p: Vector2) -> bool:
-	if is_air or is_amphibious:
+	if is_air:
 		return true
 	var par := _navigation_world()
-	if par == null or not par.has_method("in_water_world") or par.path_service == null:
+	if par == null or par.path_service == null:
 		return true
+	if par.path_service.native_map_id == "yr_sov01":
+		var terrain := par.path_service.native_flags(p)
+		if is_amphibious: return (terrain & 3) != 0
+		return (terrain & (2 if is_naval else 1)) != 0
+	if is_amphibious: return true
 	return par.path_service.in_naval_water(p) if is_naval else not par.in_water_world(p)
 
 ## Low-flying targets may be vulnerable to ground fire before a physical grapple can reach them.
@@ -6061,12 +6330,11 @@ func set_stowed(carrier) -> void:
 		special.erase("ai_carrier")
 	embarked_in = carrier
 	reset_physics_interpolation()
-	BattleRequest.sync_house_groups(self,carrier == null)
+	BattleRequest.sync_unit_target_groups(self,carrier == null)
 	_refresh_weapon_derived()
 	visible = carrier == null
 	velocity = Vector2.ZERO
-	var groups := ["combatants", "allies" if side == "ally" else "enemies",
-		"enemy_targets" if side == "ally" else "ally_targets", "air_units" if is_air else "ground_units"]
+	var groups := ["combatants", "air_units" if is_air else "ground_units"]
 	if carrier != null:
 		collision_layer = 0
 		collision_mask = 0

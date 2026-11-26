@@ -1,0 +1,2338 @@
+{
+ "sites": [
+  [
+   "YACNST",
+   116.5,
+   55.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "CATRAN03",
+   134.5,
+   54.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NAPSYB",
+   159.5,
+   84.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NACNST",
+   149.5,
+   94.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAPSYB",
+   101.5,
+   16.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "GACNST",
+   81.5,
+   33.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   78.5,
+   30.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   80.5,
+   30.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   80.5,
+   28.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   88.5,
+   31.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   89.5,
+   33.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   87.5,
+   33.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILE",
+   75.5,
+   40.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAWEAP",
+   86.5,
+   40.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAREFN",
+   91.5,
+   21.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAREFN",
+   70.5,
+   36.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   65.5,
+   38.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   70.5,
+   45.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   78.5,
+   51.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   90.5,
+   53.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   98.5,
+   19.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPILL",
+   102.5,
+   15.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "ATESLA",
+   99.5,
+   15.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "ATESLA",
+   102.5,
+   18.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   65.5,
+   36.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   72.5,
+   44.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   81.5,
+   49.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   91.5,
+   51.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   93.5,
+   39.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   83.5,
+   31.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   77.5,
+   23.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   96.5,
+   21.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   75.5,
+   36.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   78.5,
+   39.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   101.5,
+   14.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NASAM",
+   103.5,
+   16.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   87.5,
+   18.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   89.5,
+   18.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   89.5,
+   16.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   87.5,
+   16.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   105.5,
+   27.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   105.5,
+   29.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   107.5,
+   26.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GATECH",
+   93.5,
+   13.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAOREP",
+   76.5,
+   25.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAAIRC",
+   90.5,
+   36.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GASPYSAT",
+   92.5,
+   28.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GADEPT",
+   98.5,
+   41.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   86.5,
+   31.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   82.5,
+   28.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   85.5,
+   16.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   85.5,
+   14.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "GAPOWR",
+   87.5,
+   14.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "ATESLA",
+   96.5,
+   47.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "ATESLA",
+   92.5,
+   43.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "CATRAN02",
+   51.5,
+   71.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "CAEUR04",
+   26.5,
+   81.5,
+   102,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   14.5,
+   85.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAHSE01",
+   26.5,
+   91.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAHSE01",
+   21.5,
+   78.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   28.5,
+   87.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   24.5,
+   98.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAHSE01",
+   9.5,
+   99.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAEUR1",
+   15.5,
+   99.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "YAGRND",
+   21.5,
+   91.5,
+   256,
+   "German1 House"
+  ],
+  [
+   "CAEURO05",
+   20.5,
+   96.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAFRMA",
+   11.5,
+   89.5,
+   1,
+   "Civilian House"
+  ],
+  [
+   "CABARN02",
+   7.5,
+   91.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   19.5,
+   84.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAFRMA",
+   20.5,
+   103.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CASLAB",
+   103.5,
+   160.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "CATRAN01",
+   108.5,
+   151.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "YAPOWR",
+   120.5,
+   52.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   111.5,
+   53.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   116.5,
+   61.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YABRCK",
+   135.5,
+   67.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAWEAP",
+   144.5,
+   63.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NAPSIS",
+   126.5,
+   62.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   135.5,
+   72.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   130.5,
+   68.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   131.5,
+   72.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   124.5,
+   72.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   114.5,
+   65.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   118.5,
+   39.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   147.5,
+   69.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YATECH",
+   128.5,
+   45.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   111.5,
+   57.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   120.5,
+   50.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   119.5,
+   59.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NACLON",
+   124.5,
+   41.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   105.5,
+   49.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   107.5,
+   63.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   122.5,
+   66.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   129.5,
+   75.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   140.5,
+   71.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   120.5,
+   54.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   118.5,
+   61.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   111.5,
+   55.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   130.5,
+   66.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   135.5,
+   74.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPOWR",
+   129.5,
+   72.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   118.5,
+   54.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   136.5,
+   68.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   130.5,
+   53.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAGGUN",
+   135.5,
+   58.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "YAPSYT",
+   123.5,
+   65.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NATBNK",
+   115.5,
+   69.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NATBNK",
+   121.5,
+   74.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "CAEUR04",
+   115.5,
+   124.5,
+   20,
+   "Civilian House"
+  ],
+  [
+   "CAEUR1",
+   103.5,
+   125.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   101.5,
+   143.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAEUR2",
+   95.5,
+   134.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAEUR1",
+   113.5,
+   131.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CABARN02",
+   98.5,
+   139.5,
+   33,
+   "Civilian House"
+  ],
+  [
+   "CAFRMA",
+   118.5,
+   132.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "CAHSE01",
+   108.5,
+   126.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAHSE01",
+   113.5,
+   138.5,
+   56,
+   "Civilian House"
+  ],
+  [
+   "CAWASH18",
+   100.5,
+   132.5,
+   64,
+   "Civilian House"
+  ],
+  [
+   "YAGRND",
+   109.5,
+   130.5,
+   256,
+   "German2 House"
+  ],
+  [
+   "CAMSC06",
+   90.5,
+   179.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "CAFRMA",
+   97.5,
+   126.5,
+   128,
+   "Civilian House"
+  ],
+  [
+   "CAFARM01",
+   -0.5,
+   101.5,
+   120,
+   "Civilian House"
+  ],
+  [
+   "CAARMY04",
+   92.5,
+   178.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "CAARMY03",
+   93.5,
+   183.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "CAARMY04",
+   88.5,
+   179.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "NAPOWR",
+   147.5,
+   89.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAPOWR",
+   150.5,
+   89.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAREFN",
+   141.5,
+   93.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAHAND",
+   143.5,
+   100.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAFLAK",
+   140.5,
+   103.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAWEAP",
+   154.5,
+   100.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAREFN",
+   160.5,
+   93.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NARADR",
+   155.5,
+   90.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAPOWR",
+   147.5,
+   86.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAPOWR",
+   150.5,
+   86.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAPOWR",
+   145.5,
+   88.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NATECH",
+   165.5,
+   78.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAFLAK",
+   156.5,
+   82.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NAFLAK",
+   161.5,
+   87.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   156.5,
+   87.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   161.5,
+   82.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   170.5,
+   92.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   170.5,
+   100.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   129.5,
+   86.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   127.5,
+   95.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   148.5,
+   93.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NALASR",
+   150.5,
+   95.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NATBNK",
+   131.5,
+   90.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   131.5,
+   94.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   131.5,
+   88.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   164.5,
+   96.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NANRCT",
+   159.5,
+   73.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NADEPT",
+   148.5,
+   106.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NATBNK",
+   168.5,
+   93.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NATBNK",
+   168.5,
+   97.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   169.5,
+   102.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   171.5,
+   90.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   145.5,
+   98.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   157.5,
+   86.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "TESLA",
+   160.5,
+   83.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "CAPARS04",
+   106.5,
+   132.5,
+   0,
+   "Civilian House"
+  ],
+  [
+   "CAPARS06",
+   21.5,
+   88.5,
+   0,
+   "Civilian House"
+  ],
+  [
+   "NABNKR",
+   121.5,
+   80.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NABNKR",
+   110.5,
+   71.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NABNKR",
+   125.5,
+   87.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NABNKR",
+   123.5,
+   94.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NABNKR",
+   171.5,
+   107.5,
+   256,
+   "BadGuy2 House"
+  ],
+  [
+   "NABNKR",
+   57.5,
+   43.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NABNKR",
+   70.5,
+   53.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NABNKR",
+   86.5,
+   53.5,
+   256,
+   "BadGuy3 House"
+  ],
+  [
+   "NATBNK",
+   150.5,
+   70.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "NATBNK",
+   116.5,
+   43.5,
+   256,
+   "BadGuy1 House"
+  ],
+  [
+   "CABHUT",
+   25.5,
+   115.5,
+   256,
+   "Civilian House"
+  ],
+  [
+   "CABHUT",
+   29.5,
+   122.5,
+   256,
+   "Civilian House"
+  ]
+ ],
+ "lights": [
+  [
+   "INORANLAMP",
+   50.5,
+   70.5,
+   3000,
+   0.005,
+   1,
+   0.15,
+   0.02
+  ],
+  [
+   "INORANLAMP",
+   109.5,
+   151.5,
+   3000,
+   0.005,
+   1,
+   0.15,
+   0.02
+  ],
+  [
+   "NEGLAMP",
+   95.5,
+   178.5,
+   5000,
+   -0.1,
+   0.03,
+   0.04,
+   0.04
+  ],
+  [
+   "NEGLAMP",
+   88.5,
+   158.5,
+   5000,
+   -0.1,
+   0.03,
+   0.04,
+   0.04
+  ],
+  [
+   "NEGLAMP",
+   131.5,
+   145.5,
+   5000,
+   -0.1,
+   0.03,
+   0.04,
+   0.04
+  ],
+  [
+   "INYELWLAMP",
+   58.5,
+   125.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   77.5,
+   137.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   91.5,
+   59.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   62.5,
+   54.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   96.5,
+   98.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   139.5,
+   130.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   161.5,
+   109.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   109.5,
+   44.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   119.5,
+   33.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "INYELWLAMP",
+   139.5,
+   85.5,
+   2500,
+   0.01,
+   0.4392,
+   0.4471,
+   0.1138
+  ],
+  [
+   "NEGLAMP",
+   69.5,
+   106.5,
+   5000,
+   -0.1,
+   0.03,
+   0.04,
+   0.04
+  ]
+ ],
+ "plan": [
+  [
+   "GAWALL",
+   77.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   78.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   79.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   80.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   81.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   37.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   36.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   35.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   34.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   33.5
+  ],
+  [
+   "GAWALL",
+   82.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   81.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   80.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   79.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   78.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   32.5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   33.5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   34.5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   35.5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   36.5
+  ]
+ ],
+ "powers": {
+  "YAPPET": {
+   "id": "YAPPET",
+   "name": "心灵控制器",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "concrete",
+   "sight": 275,
+   "cost": 5000,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "3x3",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false
+  },
+  "YAGNTC": {
+   "id": "YAGNTC",
+   "name": "基因突变器",
+   "ra2": true,
+   "faction": "yuri",
+   "hp": 1000,
+   "ra2_armor": "concrete",
+   "sight": 275,
+   "cost": 2500,
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "armor": "structure",
+   "foundation": "3x3",
+   "radius": 35,
+   "builds": [],
+   "capturable": false,
+   "power": -200,
+   "powered": false
+  },
+  "CAFNCB": {
+   "id": "CAFNCB",
+   "name": "黑色木栅栏",
+   "hp": 100,
+   "ra2": true,
+   "faction": "civilian",
+   "ra2_armor": "wood",
+   "role": "structure",
+   "role_name": "围栏",
+   "tags": [
+    "civilian",
+    "wall"
+   ],
+   "armor": "structure",
+   "foundation": "1x1",
+   "radius": 20,
+   "builds": [],
+   "power": 0,
+   "sight": 0,
+   "cost": 0
+  },
+  "CAFNCW": {
+   "id": "CAFNCW",
+   "name": "白色木栅栏",
+   "hp": 100,
+   "ra2": true,
+   "faction": "civilian",
+   "ra2_armor": "wood",
+   "role": "structure",
+   "role_name": "围栏",
+   "tags": [
+    "civilian",
+    "wall"
+   ],
+   "armor": "structure",
+   "foundation": "1x1",
+   "radius": 20,
+   "builds": [],
+   "power": 0,
+   "sight": 0,
+   "cost": 0
+  }
+ },
+ "overlaySites": [
+  [
+   "CAFNCB",
+   113.5,
+   145.5,
+   6
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   146.5,
+   8
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   148.5,
+   2
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   149.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   150.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   151.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   152.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   153.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   154.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   155.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   156.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   113.5,
+   157.5,
+   12
+  ],
+  [
+   "CAFNCB",
+   112.5,
+   145.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   112.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   111.5,
+   145.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   111.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   110.5,
+   145.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   110.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   109.5,
+   145.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   109.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   108.5,
+   145.5,
+   3
+  ],
+  [
+   "CAFNCB",
+   108.5,
+   146.5,
+   12
+  ],
+  [
+   "CAFNCB",
+   108.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   107.5,
+   134.5,
+   2
+  ],
+  [
+   "CAFNCW",
+   107.5,
+   135.5,
+   12
+  ],
+  [
+   "CAFNCB",
+   107.5,
+   146.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   107.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   106.5,
+   135.5,
+   1
+  ],
+  [
+   "CAFNCB",
+   106.5,
+   146.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   106.5,
+   157.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   105.5,
+   131.5,
+   4
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   146.5,
+   3
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   147.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   148.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   149.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   150.5,
+   8
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   153.5,
+   2
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   154.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   155.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   156.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   105.5,
+   157.5,
+   9
+  ],
+  [
+   "CAFNCW",
+   104.5,
+   131.5,
+   1
+  ],
+  [
+   "CAFNCW",
+   104.5,
+   135.5,
+   4
+  ],
+  [
+   "CAFNCW",
+   103.5,
+   135.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   102.5,
+   131.5,
+   2
+  ],
+  [
+   "CAFNCW",
+   102.5,
+   132.5,
+   12
+  ],
+  [
+   "CAFNCW",
+   102.5,
+   134.5,
+   6
+  ],
+  [
+   "CAFNCW",
+   102.5,
+   135.5,
+   9
+  ],
+  [
+   "CAFNCW",
+   101.5,
+   132.5,
+   1
+  ],
+  [
+   "CAFNCW",
+   101.5,
+   134.5,
+   1
+  ],
+  [
+   "GAWALL",
+   82.5,
+   32.5,
+   6
+  ],
+  [
+   "GAWALL",
+   82.5,
+   33.5,
+   10
+  ],
+  [
+   "GAWALL",
+   82.5,
+   34.5,
+   10
+  ],
+  [
+   "GAWALL",
+   82.5,
+   35.5,
+   10
+  ],
+  [
+   "GAWALL",
+   82.5,
+   36.5,
+   10
+  ],
+  [
+   "GAWALL",
+   82.5,
+   37.5,
+   12
+  ],
+  [
+   "GAWALL",
+   81.5,
+   32.5,
+   5
+  ],
+  [
+   "GAWALL",
+   81.5,
+   37.5,
+   5
+  ],
+  [
+   "GAWALL",
+   80.5,
+   32.5,
+   5
+  ],
+  [
+   "GAWALL",
+   80.5,
+   37.5,
+   5
+  ],
+  [
+   "GAWALL",
+   79.5,
+   32.5,
+   5
+  ],
+  [
+   "GAWALL",
+   79.5,
+   37.5,
+   5
+  ],
+  [
+   "GAWALL",
+   78.5,
+   32.5,
+   5
+  ],
+  [
+   "GAWALL",
+   78.5,
+   37.5,
+   5
+  ],
+  [
+   "GAWALL",
+   77.5,
+   32.5,
+   3
+  ],
+  [
+   "GAWALL",
+   77.5,
+   33.5,
+   10
+  ],
+  [
+   "GAWALL",
+   77.5,
+   34.5,
+   10
+  ],
+  [
+   "GAWALL",
+   77.5,
+   35.5,
+   10
+  ],
+  [
+   "GAWALL",
+   77.5,
+   36.5,
+   10
+  ],
+  [
+   "GAWALL",
+   77.5,
+   37.5,
+   9
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   67.5,
+   6
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   68.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   69.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   70.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   71.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   72.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   57.5,
+   73.5,
+   12
+  ],
+  [
+   "CAFNCB",
+   56.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   56.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   55.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   55.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   54.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   54.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   53.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   53.5,
+   73.5,
+   1
+  ],
+  [
+   "CAFNCB",
+   52.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   51.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   50.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   49.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   48.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   48.5,
+   73.5,
+   4
+  ],
+  [
+   "CAFNCB",
+   47.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   47.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   46.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   46.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   45.5,
+   67.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   45.5,
+   73.5,
+   5
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   67.5,
+   3
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   68.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   69.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   70.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   71.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   72.5,
+   10
+  ],
+  [
+   "CAFNCB",
+   44.5,
+   73.5,
+   9
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   87.5,
+   6
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   88.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   89.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   90.5,
+   26
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   91.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   92.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   93.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   22.5,
+   94.5,
+   12
+  ],
+  [
+   "CAFNCW",
+   21.5,
+   87.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   21.5,
+   94.5,
+   1
+  ],
+  [
+   "CAFNCW",
+   20.5,
+   87.5,
+   5
+  ],
+  [
+   "CAFNCW",
+   19.5,
+   87.5,
+   1
+  ],
+  [
+   "CAFNCW",
+   19.5,
+   94.5,
+   20
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   89.5,
+   2
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   90.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   91.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   92.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   93.5,
+   26
+  ],
+  [
+   "CAFNCW",
+   18.5,
+   94.5,
+   25
+  ],
+  [
+   "CAFNCW",
+   1.5,
+   98.5,
+   6
+  ],
+  [
+   "CAFNCW",
+   1.5,
+   99.5,
+   10
+  ],
+  [
+   "CAFNCW",
+   1.5,
+   100.5,
+   8
+  ],
+  [
+   "CAFNCW",
+   0.5,
+   98.5,
+   5
+  ]
+ ]
+}

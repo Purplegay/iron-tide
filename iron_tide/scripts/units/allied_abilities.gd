@@ -5,10 +5,10 @@ extends RefCounted
 const EMPTY_LOOKUP: Dictionary = {}
 const STOLEN_LABS := {"GATECH": "RequiresStolenAlliedTech", "NATECH": "RequiresStolenSovietTech", "YATECH": "RequiresStolenThirdTech"}
 # Both factories in a production category grant the same training benefit.
-const TRAINING_SITES := {"GAPILE":"GAPILE", "NAHAND":"GAPILE", "GAWEAP":"GAWEAP", "NAWEAP":"GAWEAP"}
+const TRAINING_SITES := {"GAPILE":"GAPILE", "NAHAND":"GAPILE", "GAWEAP":"GAWEAP", "NAWEAP":"GAWEAP", "YAWEAP":"GAWEAP", "YABRCK":"GAPILE"}
 const STATUS_TIMERS := ["blackout", "reveal", "chrono_left"]
 const SPY_REFINERIES := ["GAREFN", "NAREFN"]
-const SPY_POWER := ["GAPOWR", "NAPOWR", "NANRCT"]
+const SPY_POWER := ["GAPOWR", "NAPOWR", "NANRCT", "YAPOWR"]
 const ChronoFx = preload("res://scripts/world/chrono_miner_fx.gd")
 const TemporalVisual = preload("res://scripts/units/temporal_visual.gd")
 
@@ -22,6 +22,7 @@ static func source(actor) -> Dictionary:
 	return GameData.ra2_source_units.get(actor.unit_id, EMPTY_LOOKUP).get("extra", {})
 
 static func flag(unit, key: String) -> bool:
+	if key=="ImmuneToPsionics" and unit.data.get("immune_to_psionics",false): return true
 	return GameData._ra2_flag(source(unit).get(key, false))
 
 static func alive(actor) -> bool:
@@ -103,7 +104,7 @@ static func install(unit) -> void:
 	if unit.unit_id == Ra3Expansion.HARBINGER: definitions.append(["ra3_gunship", "切换武器", "切换对撞炮与前部机炮。", false])
 	match unit.unit_id:
 		"E1": definitions = [["deploy", "卧倒据守", "部署机枪，固定射击；再次点击起身。", false]]
-		"ENGINEER", "SENGINEER": definitions = [["engineer", "工程作业", "选择敌方可占领建筑、己方受损建筑，或断桥的维修小屋。到达后占领或完全修复，消耗工程师。可拆除己方目标上的 C4。"+("右键己方游隼迫降机体，连续维修 5 秒提前救起，此项不消耗工程师。" if BattleRequest.extensions_enabled() else ""), true]]
+		"ENGINEER", "SENGINEER", "YENGINEER": definitions = [["engineer", "工程作业", "选择敌方可占领建筑、己方受损建筑，或断桥的维修小屋。到达后占领或完全修复，消耗工程师。可拆除己方目标上的 C4。"+("右键己方游隼迫降机体，连续维修 5 秒提前救起，此项不消耗工程师。" if BattleRequest.extensions_enabled() else ""), true]]
 		"SPY": definitions = [["disguise", "伪装", "选择敌方步兵复制外观；警犬和识破伪装单位能发现间谍。", true], ["infiltrate", "渗透", "进入敌方矿场窃款、电厂断电、兵营或战车工厂获得训练；渗透作战实验室窃取对应阵营科技，空指部清除敌方地图探索，超武建筑重置充能。", true]]
 		"FV": definitions = [["unload", "卸下乘员", "卸下乘员并恢复导弹。步兵右键登车，按乘员类型切换武器；工程师变为维修车。", false]]
 	if infantry_teleporter(unit):
@@ -191,45 +192,53 @@ static func use(unit, id: String, target = null, point := Vector2.INF) -> bool:
 	return true
 
 static func can_order(unit, target, id: String) -> bool:
-	return _valid_order_pair(unit, target) and _action_allowed(unit, target, id)
+	return _valid_order_pair(unit, target, id) and _action_allowed(unit, target, id)
 
-static func _valid_order_pair(unit, target) -> bool:
+static func _valid_order_pair(unit, target, action := "") -> bool:
 	if not alive(unit) or not alive(target) or unit == target: return false
 	var world = unit._battle_world()
-	return world != null and world.actor_visible_to(unit.side, target)
+	if world == null: return false
+	if action == "allied_engineer" and unit.unit_id == "YENGINEER" and unit.side == "enemy" and world.mission.get("id") == "yr_time_shift" and unit.special.get("shift_plant") == target:
+		return true
+	return world.actor_visible_to(unit.side, target)
 
 static func _action_allowed(unit, target, id: String) -> bool:
+	if id=="allied_c4" and target is Building and target.is_protected_mission_plant(): return false
 	if target.special.get("expedition_protected",false) and id in ["allied_engineer","allied_c4","allied_infiltrate"]:return false
 	match id:
 		"ivan_bridge":
 			return unit.unit_id in ["IVAN", "CIVAN"] and target is Building and target.special.get("bridge_repaired", false) and preload("res://scripts/units/soviet_specials.gd").accepts_bomb(unit, target)
 		"tesla_charge": return preload("res://scripts/units/tesla_support.gd").accepts(unit,target)
+		"yuri_recycle": return target is Building and target.building_id == "YAGRND" and target.side == unit.side and target.battle.skirmish and target.is_operational() and unit.embarked_in == null and not unit.is_air and not unit.is_naval and unit.logistics.passengers.is_empty()
 		"allied_garrison": return preload("res://scripts/units/civilian_orders.gd").can_enter(unit, target)
 		"allied_bridge": return preload("res://scripts/units/civilian_orders.gd").can_repair(unit, target)
 		"allied_disguise":
 			return unit.unit_id == "SPY" and unit.embarked_in == null and unit._stun_timer <= 0.0 and not frozen(unit) \
 				and infantry(target) and not BattleRequest.friendly(target.side,unit.side) and target.embarked_in == null
 		"allied_engineer":
-			if unit.unit_id not in ["ENGINEER", "SENGINEER"]: return false
+			if unit.unit_id not in ["ENGINEER", "SENGINEER", "YENGINEER"]: return false
 			if preload("res://scripts/units/peregrine_service.gd").engineer_allowed(unit,target):return true
 			if preload("res://scripts/units/civilian_orders.gd").can_repair(unit,target): return true
 			if BattleRequest.friendly(target.side,unit.side) and (target.special.has("c4_left") or target.special.has("ivan_bomb")): return true
 			if not target is Building or target.under_construction: return false
-			if target.building_id == "CAHSE01" and target.side in [unit.side, "neutral"]: return target.hp < target.max_hp
+			if preload("res://scripts/units/civilian_orders.gd").civilian_garrison(target) and target.side in [unit.side, "neutral"]: return target.hp < target.max_hp
 			if BattleRequest.friendly(target.side,unit.side): return target.hp < target.max_hp
 			var row: Dictionary = GameData.ra2_source_buildings.get(target.building_id, {})
-			return row.get("capturable", false) == true
+			if target.data.get("hollywood_art", false) and not target.data.has("capturable") and not row.has("capturable"):
+				var native := preload("res://scripts/core/yr_death_rules.gd")
+				return native.flag(native.type_data(target.building_id), "capturable")
+			return target.data.get("capturable", row.get("capturable", false)) == true
 		"allied_c4":
 			return CommandoCombat.building_c4(unit, target) and (unit.fire_stance != "none" or unit.attack_ordered or unit.special.get("c4_explicit",false))
 		"allied_infiltrate":
-			return unit.unit_id == "SPY" and target is Building and not BattleRequest.friendly(target.side,unit.side) and not target.under_construction and (target.building_id in SPY_POWER or target.building_id in SPY_REFINERIES or TRAINING_SITES.has(target.building_id) or STOLEN_LABS.has(target.building_id) or preload("res://scripts/units/spy_operations.gd").supported(target))
+			return unit.unit_id == "SPY" and target is Building and not BattleRequest.friendly(target.side,unit.side) and not target.under_construction and (target.special.has("hollywood_plant") or target.building_id in SPY_POWER or target.building_id in SPY_REFINERIES or TRAINING_SITES.has(target.building_id) or STOLEN_LABS.has(target.building_id) or preload("res://scripts/units/spy_operations.gd").supported(target))
 		"allied_repair":
 			return is_repair_ifv(unit) and target is Unit and not infantry(target) and not target.is_air and BattleRequest.friendly(target.side,unit.side) and target.hp < target.max_hp and target.embarked_in == null
 	return false
 
 static func default_order(unit, target) -> String:
 	if not _valid_order_pair(unit, target): return ""
-	for action in ["ivan_bridge", "tesla_charge", "allied_garrison", "allied_bridge", "allied_engineer", "allied_infiltrate", "allied_repair"]:
+	for action in ["yuri_recycle", "ivan_bridge", "tesla_charge", "allied_garrison", "allied_bridge", "allied_engineer", "allied_infiltrate", "allied_repair"]:
 		if _action_allowed(unit, target, action): return action
 	return ""
 
@@ -266,13 +275,18 @@ static func consume(unit) -> void:
 	unit.hide()
 	unit.queue_free()
 
-static func change_side(actor, owner: String) -> void:
+static func change_side(actor, owner: String, refresh_world := true) -> void:
 	if actor.side == owner: return
+	actor.special.erase("dominator_source")
 	var world = actor._battle_world() if actor is Unit else actor.battle
 	if actor is Building:
 		if actor.data.has("garrison_slots") and not actor.special.get("occupants", []).is_empty():
 			preload("res://scripts/units/civilian_orders.gd").evacuate(actor,true)
+		if actor.side=="enemy" and world.mission.get("id")=="yr_head_games" and actor.building_id in ["NACNST","GACNST","YACNST"]:
+			world.allied_state["s07_no_yard_%d"%int(actor.special.get("head_games_wing",-1))]=true
 		actor.special.has_been_captured = true
+		if owner != "enemy" and world.mission.get("id") == "yr_time_shift" and actor.building_id in world.TimeShift.POWER_PLANTS:
+			actor.special.erase("yuri_power")
 		while not actor.production.is_empty(): actor.cancel_at(0)
 		actor.set_repairing(false)
 	else:
@@ -285,6 +299,7 @@ static func change_side(actor, owner: String) -> void:
 	actor.side = owner
 	preload("res://scripts/expedition/elite_tactics.gd").ownership_changed(actor)
 	if actor is Building:
+		world.invalidate_building_membership()
 		preload("res://scripts/rules/joint_ra2_production.gd").sync_catalog(actor)
 		preload("res://scripts/expedition/rules.gd").sync_training_permits(actor)
 	if world is Battle: world.invalidate_ai_population()
@@ -316,6 +331,10 @@ static func change_side(actor, owner: String) -> void:
 	actor.set_selected(false)
 	world.selected_units.erase(actor)
 	if world.selected_building == actor: world.selected_building = null
+	if refresh_world:
+		refresh_after_side_changes(world)
+
+static func refresh_after_side_changes(world) -> void:
 	world._update_power()
 	world._emit_selection()
 	Events.production_queue_changed.emit()
@@ -350,6 +369,12 @@ static func tick_action(unit, delta: float) -> bool:
 		return true
 	unit.velocity = Vector2.ZERO
 	unit.has_move_order = false
+	if action == "yuri_recycle":
+		var salvage: int = int(preload("res://scripts/core/yr_death_rules.gd").type_data(unit.unit_id).get("soylent",unit.data.get("cost",0)/2))
+		target.battle.credit_side(unit.side,salvage)
+		target.play_special()
+		consume(unit)
+		return true
 	if action == "allied_garrison":
 		preload("res://scripts/units/civilian_orders.gd").enter(unit, target)
 		return true
@@ -380,8 +405,12 @@ static func tick_action(unit, delta: float) -> bool:
 			cancel(unit)
 			Effects.spawn_text(target.global_position, "已拆除 C4", Color(0.5, 1, 0.8))
 			return true
-		if BattleRequest.friendly(target.side,unit.side) or target.building_id == "CAHSE01": target.hp = target.max_hp; target.queue_redraw()
-		else: change_side(target, unit.side)
+		if BattleRequest.friendly(target.side,unit.side) or preload("res://scripts/units/civilian_orders.gd").civilian_garrison(target): target.hp = target.max_hp; target.queue_redraw()
+		else:
+			# Credit the mission's power contest only when the engineer finishes entering.
+			if unit.unit_id == "YENGINEER" and unit.side == "enemy" and unit.special.get("shift_plant") == target:
+				target.special.yuri_power = true
+			change_side(target, unit.side)
 	elif action == "allied_infiltrate":
 		resolve_infiltration(unit, target)
 		return true
@@ -397,6 +426,7 @@ static func resolve_infiltration(unit, target) -> void:
 	# Finish the order before synchronous HUD/economy listeners can run it twice.
 	cancel(unit)
 	consume(unit)
+	if target.special.has("hollywood_plant") and thief == "ally": target.special.hollywood_infiltrated = true
 	if id in SPY_REFINERIES:
 		var percent := clampf(float(GameData.allied_capabilities.get("general", {}).get("SpyMoneyStealPercent", 0.5)), 0.0, 1.0)
 		world.transfer_spy_funds(victim, thief, percent, at)
@@ -440,7 +470,7 @@ static func tick_actor(actor, delta: float) -> void:
 		if unit.unit_id in [Ra3Expansion.FUTURE, Ra3Expansion.HARBINGER]: Ra3Expansion.tick(unit, delta)
 	if not alive(actor): return
 	var state: Dictionary=actor.special
-	if state.has("c4_left") or ((state.has("chrono_left") or state.has("temporal_by")) and frozen(actor)) or (state.has("controlled") and alive(state.controlled)): actor.queue_redraw()
+	if state.has("c4_left") or ((state.has("chrono_left") or state.has("temporal_by")) and frozen(actor)): actor.queue_redraw()
 	for key in STATUS_TIMERS:
 		if state.has(key):
 			var before: float = state[key]
@@ -462,10 +492,7 @@ static func tick_actor(actor, delta: float) -> void:
 			actor._die(owner)
 			return
 	if state.has("controller") and not alive(state.controller):
-		var original: String = state.get("original_side", actor.side)
-		state.erase("controller")
-		state.erase("original_side")
-		change_side(actor, original)
+		_clear_mind_control(actor)
 		state=actor.special
 	if state.has("temporal_by"):
 		var owner = state.temporal_by
@@ -509,35 +536,40 @@ static func teleport(unit, point: Vector2) -> bool:
 static func valid_weapon_target(unit: Unit, target, w: Dictionary, ordinary_visibility := false) -> bool:
 	if Ra3Mirage.field_active(unit): return false
 	if not alive(target) or float(w.get("damage", 0)) < 0.0 or frozen(unit): return false
-	if unit.unit_id in ["SPY", "ENGINEER", "SENGINEER"]: return false
+	if unit.unit_id in ["SPY", "ENGINEER", "SENGINEER", "YENGINEER"]: return false
 	if alive(target.special.get("temporal_by")) and target.special.temporal_by != unit and Unit.TankHero.rank(target,true)<4: return false
 	if unit.unit_id in ["DOG", "SOV_DOG", "SNIPE"] and not infantry(target): return false
-	var flags: Dictionary = GameData.ra2_warheads.get(str(w.get("ra2_warhead", "")).to_lower(), {}).get("extra", {})
-	var mind_control := flags.has("MindControl") and GameData._ra2_flag(flags.MindControl)
-	var temporal := flags.has("Temporal") and GameData._ra2_flag(flags.Temporal)
+	var flags: Dictionary = GameData.warhead_combat_rule(str(w.get("ra2_warhead", "")))
+	var mind_control: bool = flags.get("mind_control", false)
+	var temporal: bool = flags.get("temporal", false)
 	if (mind_control or temporal) and target.special.get("expedition_protected",false):return false
 	if target is ForceFirePoint and (mind_control or temporal): return false
+	if unit.unit_id in ["VIRUS","TELE","CAOS"] and not preload("res://scripts/units/head_games_weapons.gd").eligible(unit,target): return false
 	if mind_control:
 		if BattleRequest.friendly(target.side,unit.side): return false
-		if not target is Unit or target.is_air or flag(target, "ImmuneToPsionics") or target.special.has("controller"): return false
-		if alive(unit.special.get("controlled")): return false
+		if not (target is Unit or unit.unit_id=="YURIPR" and target is Building): return false
+		if target is Unit and target.is_air or flag(target,"ImmuneToPsionics") or target.special.has("controller"): return false
+		if unit.unit_id!="MIND" and alive(unit.special.get("controlled")): return false
 	if temporal:
-		if target is Unit and (target.is_air or str(source(target).get("Warpable", "yes")).to_lower() in ["no", "false", "0"]): return false
+		if target is Unit and (target.is_air or GameData.unit_blocks_warp(target.unit_id)): return false
 	if not ordinary_visibility and target is Unit and concealed(target, unit.side) and not (unit.attack_ordered and unit.attack_target == target): return false
 	return true
 
 static func special_shot(unit, target, w: Dictionary) -> bool:
+	if unit.unit_id in ["TELE","CAOS","DISK","VIRUS"] and preload("res://scripts/units/head_games_weapons.gd").shot(unit,target,w): return true
 	if preload("res://scripts/units/dog_pounce.gd").start(unit, target, w): return true
-	var flags: Dictionary = GameData.ra2_warheads.get(str(w.get("ra2_warhead", "")).to_lower(), {}).get("extra", {})
-	if GameData._ra2_flag(flags.get("MindControl")):
+	var flags: Dictionary = GameData.warhead_combat_rule(str(w.get("ra2_warhead", "")))
+	if flags.get("mind_control", false):
 		if not valid_weapon_target(unit, target, w): return true
+		if unit.unit_id=="MIND": unit.special.get_or_add("mind_links",[]).append(target)
 		unit.special.controlled = target
-		target.special.original_side = target.side
-		target.special.controller = unit
-		change_side(target, unit.side)
-		Effects.spawn_beam(unit.global_position, target.global_position, Color(0.85, 0.35, 1), "laser", 2.0, 0.8)
+		apply_mind_control(unit, target)
+		if unit.unit_id == "YURI":
+			Ra2Fx.play_impact(Effects._host(), w.ra2_warhead, w.damage, Effects.hit_position(target))
+		else:
+			Effects.spawn_beam(unit.global_position, target.global_position, Color(0.85, 0.35, 1), "laser", 2.0, 0.8)
 		return true
-	if GameData._ra2_flag(flags.get("Temporal")):
+	if flags.get("temporal", false):
 		if not valid_weapon_target(unit, target, w): return true
 		release_temporal(unit)
 		unit.special.temporal_target = target
@@ -550,13 +582,32 @@ static func special_shot(unit, target, w: Dictionary) -> bool:
 		return true
 	return false
 
+# Retail rules define these sounds separately from weapon Reports; both are Type=global.
+static func apply_mind_control(controller, target) -> void:
+	target.special.original_side = target.side
+	target.special.controller = controller
+	change_side(target, controller.side)
+	Ra2Sfx.play("YuriMindControl")
+
+static func _clear_mind_control(target) -> void:
+	var original: String = target.special.get("original_side", target.side)
+	target.special.erase("controller")
+	target.special.erase("original_side")
+	if target.side == original: return
+	change_side(target, original)
+	Ra2Sfx.play("MindCleared")
+
 static func release_control(unit) -> void:
+	if unit.special.has("mind_links"):
+		for link in unit.special.mind_links:
+			if alive(link) and link.special.get("controller")==unit:
+				_clear_mind_control(link)
+		unit.special.erase("mind_links")
 	var target = unit.special.get("controlled")
 	unit.special.erase("controlled")
+	unit.special.erase("control_line_left")
 	if alive(target) and target.special.get("controller") == unit:
-		var original: String = target.special.get("original_side", target.side)
-		target.special.erase("controller"); target.special.erase("original_side")
-		change_side(target, original)
+		_clear_mind_control(target)
 
 static func release_temporal(unit) -> void:
 	var target = unit.special.get("temporal_target")
@@ -604,6 +655,7 @@ static func concealed(unit: Unit, observer: String) -> bool:
 	var world = unit._battle_world()
 	if world == null: return false
 	if preload("res://scripts/units/tanya_operations.gd").detects(world,observer,unit):return false
+	if unit.get_tree().has_group(&"psychic_sensors") and preload("res://scripts/world/yuri_support.gd").reveals(world,observer,unit.position): return false
 	for other in unit.get_tree().get_nodes_in_group("disguise_detectors"):
 		if other.side != observer or other.embarked_in != null or not alive(other) or not world.is_ancestor_of(other): continue
 		if other.sight > 0.0 and other.global_position.distance_squared_to(unit.global_position) <= other.sight * other.sight: return false
@@ -655,12 +707,16 @@ static func disguise_visual(unit) -> Dictionary:
 
 static func draw_status(unit) -> void:
 	preload("res://scripts/units/soviet_specials.gd").draw_status(unit)
-	var controlled = unit.special.get("controlled")
-	if alive(controlled) and unit is Unit and unit._battle_world().actor_visible_to("ally", controlled):
-		unit.draw_line(Vector2(0, -unit.radius), Iso.dir(controlled.global_position - unit.global_position) + Vector2(0, -controlled.radius), Color(0.8, 0.3, 1, 0.55), 1.5, true)
 	var label := ""
 	var color := Color(0.55, 0.85, 1)
 	if float(unit.special.get("chrono_left", 0.0)) > 0.0: label = "恢复 %.1fs" % unit.special.chrono_left
 	if alive(unit.special.get("temporal_by")): label = "超时空抹除"; color = Color(0.7, 0.9, 1)
-	if alive(unit.special.get("controller")): label = "心灵控制"; color = Color(0.9, 0.5, 1)
+	var controller = unit.special.get("controller")
+	if alive(controller):
+		label = "心灵控制"
+		color = Color(0.9, 0.5, 1)
+		var art := RA2Art.fx("MINDANIM")
+		if unit is Unit and not art.is_empty():
+			var rect := RA2Art.fx_rect(art,int(unit._anim*float(art.fps))%int(art.count))
+			unit.draw_texture_rect_region(art.tex,Rect2(Vector2(-rect.size.x*0.5,-unit.radius*2-rect.size.y),rect.size),rect)
 	if unit is Building and not label.is_empty(): unit.draw_string(ThemeDB.fallback_font, Vector2(-25, -unit.radius * 2.8 - 35), label, HORIZONTAL_ALIGNMENT_LEFT, -1, 12, color)

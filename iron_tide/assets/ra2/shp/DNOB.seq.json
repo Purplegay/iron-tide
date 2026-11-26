@@ -1,0 +1,1 @@
+{"seq":{"Walk":{"start":48,"per":6,"stride":6,"facings":8},"Ready":{"start":0,"per":6,"stride":6,"facings":8},"Guard":{"start":0,"per":6,"stride":6,"facings":8},"Idle1":{"start":96,"per":40,"stride":0,"facings":1},"Idle2":{"start":136,"per":40,"stride":0,"facings":1},"FireUp":{"start":116,"per":6,"stride":6,"facings":8},"Die1":{"start":176,"per":40,"stride":0,"facings":1}}}

@@ -131,6 +131,5 @@ static func draw(unit) -> void:
 	if state.has("pierce_flash"):
 		for point:Vector2 in state.pierce_flash.points:unit.draw_line(Iso.dir(state.pierce_flash.origin-unit.position),Iso.dir(point-unit.position),Color(.4,.9,1,clampf(state.pierce_flash.left/.3,0,1)),2,true)
 	if state.get("power_active",false):unit.draw_arc(Vector2.ZERO,unit.radius+15,0,TAU,32,Color(1,.8,.2,.7),1.5,true)
-	if unit.special.get(KEY,{}).has("stolen"):unit.draw_arc(Vector2.ZERO,unit.radius+11,0,TAU,32,Color(.9,.7,.25,.8),2,true)
 	if controlled(unit):
 		unit.draw_line(Vector2(-unit.radius,5),Vector2(unit.radius,5),Color.CYAN,3)

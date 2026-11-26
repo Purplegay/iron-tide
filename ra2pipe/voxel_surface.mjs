@@ -9,12 +9,28 @@ export function parseVpl(bytes) {
 const faces=[[[1,0,0],[1,3,7,5]],[[-1,0,0],[0,4,6,2]],[[0,1,0],[2,6,7,3]],[[0,-1,0],[0,1,5,4]],[[0,0,1],[4,5,7,6]],[[0,0,-1],[0,2,3,1]]];
 const apply=(m,p)=>[0,4,8].map(i=>m[i]*p[0]+m[i+1]*p[1]+m[i+2]*p[2]+m[i+3]);
 const edge=(a,b,x,y)=>(b[0]-a[0])*(y-a[1])-(b[1]-a[1])*(x-a[0]);
+const dot=(a,b)=>a.reduce((v,n,i)=>v+n*b[i],0);
+// gamemd 0x7586f0, called with parameter 3 at 0x706f23. Align the upper-left
+// key with the atlas camera and combine it with the upright direction.
+export function yrPaletteLookup(vpl,c,s) {
+ const light=[.70710678*s+.5*c,-.70710678*c+.5*s,.5];
+ const half=[light[0],light[1],light[2]+1];
+ const length=Math.hypot(...half);
+ const halfDirection=half.map(v=>v/length);
+ return (normal,color)=>{
+  const diffuse=Math.max(0,dot(normal,light));
+  const facingHalf=Math.max(0,Math.min(1,dot(normal,halfDirection)));
+  const highlight=facingHalf/(3-2*facingHalf);
+  const row=Math.min(vpl.count-1,Math.floor(16*(diffuse+highlight)));
+  return vpl.tables[row*256+color];
+ };
+}
 export function renderSurface(model,opts={}) {
  const scale=2,pal=opts.pal,vpl=opts.vpl,shadow=!!opts.shadow;
  if(!pal||pal.length!==1024) throw Error('RGBA palette required');
  const az=Math.PI/4-(opts.facing||0)*Math.PI*2/(opts.facings||32),c=Math.cos(az),s=Math.sin(az),ce=Math.sqrt(3)/2;
  const right=[-s,c,0],up=[-c*.5,-s*.5,ce],toward=[c*ce,s*ce,.5];
- const dot=(a,b)=>a.reduce((v,n,i)=>v+n*b[i],0);
+ const lookup=opts.yrVoxelLight && vpl ? yrPaletteLookup(vpl,c,s) : null;
  const project=p=>{
   let x=dot(p,right),y=-dot(p,up);
   if(shadow){const h=p[2]-(opts.shadowGround||0);x+=Math.max(0,h)*1.10;y+=h*ce;}
@@ -29,10 +45,11 @@ export function renderSurface(model,opts={}) {
    const xyz=[voxel.x,voxel.y,voxel.z],normal=limb.normals[voxel.normalIndex]||[0,0,1],m=limb.matrix;
    const n=[0,4,8].map(i=>m[i]*normal[0]+m[i+1]*normal[1]+m[i+2]*normal[2]);
    const length=Math.hypot(...n)||1;n.forEach((v,i)=>n[i]=v/length);
-   const illumination=Math.max(0,Math.min(1,(-.45*dot(n,right)+.80*dot(n,up))/Math.hypot(.45,.80)));
-   // Table 8 is the local VPL's neutral ramp; tables 0..7 supply its dark ramps.
-   // Do not invent overbright colors or multiply a second RGB shade over VPL output.
-   const index=vpl?vpl.tables[Math.round(illumination*8)*256+voxel.colorIndex]:voxel.colorIndex;
+   const incidence=(-.45*dot(n,right)+.80*dot(n,up))/Math.hypot(.45,.80);
+   const illumination=Math.max(0,Math.min(1,incidence));
+   let index=voxel.colorIndex;
+   if(lookup) index=lookup(n,index);
+   else if(vpl) index=vpl.tables[Math.round(illumination*8)*256+index];
    const rgb=shadow?[0,0,0]:[0,1,2].map(i=>pal[index*4+i]*(vpl?1:(.42+.58*illumination)));
    const vertices=Array.from({length:8},(_,bits)=>project(apply(m,xyz.map((v,i)=>limb.minBounds[i]+(v+((bits>>i)&1))*steps[i]))));
    for(const [delta,indices] of faces){

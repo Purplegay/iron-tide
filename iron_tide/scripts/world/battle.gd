@@ -167,6 +167,30 @@ var _selection_additive: bool = false
 
 # 寻路 / 编队
 var path_service: PathService = null
+var _fence_routes: PathService
+var _fence_epoch := -1
+var _has_crushable_fences := false
+
+func movement_service(u) -> PathService:
+	if not _has_crushable_fences or not u is Unit or not u.can_roll_fences(): return path_service
+	if _fence_routes == null:
+		_fence_routes = PathService.new()
+		add_child(_fence_routes)
+	if _fence_epoch != path_service.epoch:
+		_fence_routes.native_map_id = path_service.native_map_id
+		_fence_routes.map_size = path_service.map_size
+		_fence_routes.cell = path_service.cell
+		_fence_routes.cols = path_service.cols
+		_fence_routes.rows = path_service.rows
+		_fence_routes.time_shift_area = path_service.time_shift_area
+		_fence_routes.water_rects = path_service.water_rects
+		_fence_routes.bridge_decks = path_service.bridge_decks
+		_fence_routes.set_bridge_damage(path_service.bridge_flags, path_service.broken_bridge_decks)
+		var solid := _path_blockers().filter(func(b): return not WallArt.crushable_fence(b))
+		_fence_routes.rebuild_terrain(solid, allied_state.get("convoy_roads", []))
+		_fence_epoch = path_service.epoch
+	return _fence_routes
+
 const ReaperSplit = preload("res://scripts/units/ra3_reaper_split.gd")
 var split_gunner
 var formation_gesture := preload("res://scripts/world/formation_gesture.gd").new()
@@ -274,7 +298,7 @@ func _notification(what: int) -> void:
 		cancel_pointer_gestures()
 
 func world_input_enabled() -> bool:
-	return _window_focused and not paused and not ended and not get_tree().paused and preload("res://scripts/ui/battle_hotkeys.gd").modal_count==0
+	return not allied_state.get("hollywood",{}).get("briefing",false) and _window_focused and not paused and not ended and not get_tree().paused and preload("res://scripts/ui/battle_hotkeys.gd").modal_count==0
 
 func cancel_pointer_gestures() -> void:
 	pointer_gestures_cancelled.emit()
@@ -350,7 +374,9 @@ func setup(p_mission_id: String, p_hud) -> void:
 	if BattleRequest.skirmish:
 		mission = GameData.make_skirmish_mission(BattleRequest.skirmish_config)
 	if mission.is_empty() and GameData.missions.size() > 0:
-		mission = GameData.missions[0]
+		mission = GameData.get_mission("m01")
+	var map_theater := str(NativeMaps.data(map_layout()).get("theater", mission.get("theater", "TEMPERATE")))
+	RA2Art.set_building_theater(map_theater)
 	map_size = float(mission.get("map_size", 2400))
 	enemy_faction = str(mission.get("enemy_faction", "swarm"))
 	skirmish = (mission.get("skirmish", false) == true)
@@ -372,11 +398,11 @@ func setup(p_mission_id: String, p_hud) -> void:
 
 	_build_world()
 	preload("res://scripts/world/civilian_sites.gd").populate(self)
-	if skirmish and mission.get("fog_of_war", false) == true:
+	if mission.get("fog_of_war", false) == true:
 		fog = preload("res://scripts/world/fog_of_war.gd").new()
 		add_child(fog)
 		fog.setup(self)
-		Events.emit_message("战争迷雾：金色雷达标记为已知矿区；敌军需要侦察。", Color(0.9, 0.8, 0.5))
+		if skirmish: Events.emit_message("战争迷雾：金色雷达标记为已知矿区；敌军需要侦察。", Color(0.9, 0.8, 0.5))
 	gm_unit_lab=BattleRequest.skirmish and BattleRequest.skirmish_config.get("gm_unit_lab",false)==true
 	if skirmish and not gm_unit_lab:
 		if BattleSaves.pending.is_empty(): MetaProgress.Academy.started(MetaProgress, self)
@@ -391,10 +417,22 @@ func setup(p_mission_id: String, p_hud) -> void:
 	Events.funds_changed.emit(funds)
 	Events.emit_message("★ %s — %s" % [mission.get("name", ""), mission.get("subtitle", "")], Color(0.7, 0.85, 1.0))
 	Events.emit_message(str(mission.get("brief", "")), Color(0.8, 0.85, 0.9))
+	if mission.get("id")==TimeShift.ID:
+		TimeShift.setup(self)
+		return
+	if mission.get("id") == Hollywood.ID:
+		if BattleSaves.pending.is_empty(): Hollywood.setup(self)
+		return
 	Events.emit_message("准备时间 %d 秒，抓紧建造防线。" % int(ceil(BattleClock.real_seconds(prepare_time))), Color(1.0, 0.85, 0.5))
 	if mcv_opening():
 		Events.emit_message("基地车开局：按 J 展开建造场 → 电厂 → 矿场 → 选中矿场制造矿车。", Color(0.6, 0.95, 0.7))
 	wave_timer = prepare_time
+	if mission.get("id")==HeadGames.ID and BattleSaves.pending.is_empty(): HeadGames.start_film(self)
+
+const TimeShift = preload("res://scripts/world/time_shift.gd")
+const HeadGames = preload("res://scripts/world/head_games.gd")
+const Hollywood = preload("res://scripts/world/hollywood_mission.gd")
+const CampaignMarks = preload("res://scripts/ui/campaign_objective_marks.gd")
 
 func mcv_opening() -> bool:
 	return skirmish and not BattleRequest.extensions_enabled() and mission.get("opening", "") == "mcv"
@@ -435,7 +473,9 @@ func _build_world() -> void:
 		if ab!=null and ab.id==Unit.Convoy.Cards.PRESS:
 			var miner=selected_skill_unit()
 			var aim:Vector2=get_global_mouse_position() if cast_slot>=0 else miner.position+Vector2.from_angle(miner.hull_angle)*Unit.Convoy.Cards.PRESS_RANGE
-			Unit.Convoy.Cards.draw_press_preview(move_order_overlay,miner,aim,cast_slot>=0))
+			Unit.Convoy.Cards.draw_press_preview(move_order_overlay,miner,aim,cast_slot>=0)
+		if mission.get("id") in [HeadGames.ID, TimeShift.ID, Hollywood.ID] or mission.get("objectives", {}).has("destroy_hives"):
+			CampaignMarks.paint(move_order_overlay, self))
 
 	enemy_root = Node2D.new()
 	add_child(enemy_root)
@@ -462,12 +502,14 @@ func _build_world() -> void:
 			var width := 0.14 if map_layout() == "crossings" else 0.32
 			water_rects = [Rect2(map_size * (1.0 - width) * 0.5, 0, map_size * width, map_size)]
 	if skirmish and Maps.custom(map_layout()):water_rects=Maps.water(map_layout(),map_size)
-	if skirmish and NativeMaps.has(map_layout()):water_rects=NativeMaps.water(map_layout())
+	if NativeMaps.has(map_layout()):water_rects=NativeMaps.water(map_layout())
 	# Step C 阶段2：开局建筑对齐红警2 盟军（建造厂 + 发电厂 + 兵营 + 矿场）
 	# 矿场必须开局就有：否则采矿车满仓后无坞可进，表现为“回不动”（T7）。
 	var hq_pos := player_start()
 	var starting_refinery = null
-	if mcv_opening():
+	if mission.get("id") in [Hollywood.ID,HeadGames.ID,TimeShift.ID]:
+		pass # The airport convoy arrives during the briefing.
+	elif mcv_opening():
 		hq_pos = snap_build_pos(Vector2(minf(map_size * 0.56, coast_x - 140.0), map_size * 0.84) if map_layout() == "coast" and not BattleRequest.skirmish_config.get("houses",[]).any(func(row):return row.has("spawn")) else hq_pos)
 		var mcv = spawn_unit(roster_id("AMCV", "ally"), "ally", hq_pos)
 		select_unit(mcv, false)
@@ -523,7 +565,9 @@ func _build_world() -> void:
 		spawn_points = [Vector2(map_size * 0.5, map_size * 0.12)]
 	if skirmish:
 		_build_skirmish_enemy_base()
-	else:
+	elif mission.get("id") == HeadGames.ID:
+		HeadGames.setup(self)
+	elif mission.get("id") not in [Hollywood.ID,TimeShift.ID]:
 		for p in spawn_points:
 			_place_building("swarm_hive", "enemy", p, true)
 		# RA3 式水域：地图两侧的湖泊（地面单位不可通行，但允许水上建造）
@@ -575,16 +619,18 @@ func _build_world() -> void:
 			rn.queue_free()
 	add_child(path_service)
 	_refresh_pathing()
+	if mission.get("id")==HeadGames.ID: HeadGames.arrive(self)
 	# Initial miners use the same collision-checked exit as manufactured miners.
 	# Fixed offsets next to the HQ can place their bodies inside its footprint.
 	for i in range(2):
-		if starting_refinery == null:
+		if starting_refinery == null or starting_refinery.building_id == "YAREFN":
 			break
 		var exit_pos: Vector2 = starting_refinery._spawn_point(roster_id("CMIN"))
 		if exit_pos != Vector2.INF:
 			spawn_unit(roster_id("CMIN", "ally"), "ally", exit_pos, starting_refinery)
 
 ## 水域列表（世界坐标矩形）——地面单位不可通行，允许水上建造。
+var _slave_clock := 0.0
 var water_rects: Array = []
 
 ## 遭遇战：在顶部中心搭建敌方基地（盟军镜像或虫群巢穴）+ 敌方矿区。
@@ -757,7 +803,7 @@ func _spawn_skirmish_ai() -> void:
 			house_controllers[owner] = ai
 			add_child(ai)
 			for b in buildings:
-				if b.side != owner or not b.is_refinery(): continue
+				if b.side != owner or not b.is_refinery() or b.building_id == "YAREFN": continue
 				var miner_id := roster_id("CMIN",owner)
 				var exit: Vector2 = b._spawn_point(miner_id)
 				if exit.is_finite(): spawn_unit(miner_id,owner,exit,b)
@@ -770,7 +816,7 @@ func _spawn_skirmish_ai() -> void:
 	skirmish_ai = ai
 	if skirmish_difficulty == 6 and BattleSaves.pending.is_empty(): ai.Brutal.opening(ai)
 	for b in buildings:
-		if is_instance_valid(b) and b.side == "enemy" and b.is_refinery():
+		if is_instance_valid(b) and b.side == "enemy" and b.is_refinery() and b.building_id != "YAREFN":
 			var exit: Vector2 = b._spawn_point(roster_id("CMIN", "enemy"))
 			if exit != Vector2.INF:
 				spawn_unit(roster_id("CMIN", "enemy"), "enemy", exit, b)
@@ -798,13 +844,18 @@ func on_water(p: Vector2) -> bool:
 func _refresh_pathing() -> void:
 	if path_service == null:
 		return
+	var blockers := _path_blockers()
+	_has_crushable_fences = blockers.any(WallArt.crushable_fence)
+	path_service.rebuild_terrain(blockers,allied_state.get("convoy_roads",[]))
+
+func _path_blockers() -> Array:
 	var blockers: Array = []
 	for o in get_tree().get_nodes_in_group("obstacles") + get_tree().get_nodes_in_group("native_ore_drills"):
 		blockers.append(o)
 	for b in buildings:
 		if is_instance_valid(b) and not b.is_dead() and not b.is_queued_for_deletion():
 			blockers.append(b)
-	path_service.rebuild_terrain(blockers,allied_state.get("convoy_roads",[]))
+	return blockers
 
 func _place_building(bid: String, side: String, pos: Vector2, instant: bool = false, placement_sound: bool = false):
 	if house_defeated(side): return null
@@ -817,6 +868,7 @@ func _place_building(bid: String, side: String, pos: Vector2, instant: bool = fa
 	b.setup(bd, side, pos, self, instant)
 	preload("res://scripts/world/american_paradrop.gd").configure(b)
 	parent.add_child(b)
+	if skirmish and bid == "NAPSIS": b.add_to_group(&"psychic_sensors")
 	if placement_sound:
 		b.notify_construction_placed()
 	b.z_index = DepthLayers.entity_z(b.depth_anchor(), map_size)
@@ -826,6 +878,7 @@ func _place_building(bid: String, side: String, pos: Vector2, instant: bool = fa
 	clear_ai_decision_cache()
 	SupportSystems.join_charge(b)
 	if path_service != null:
+		if WallArt.crushable_fence(b): _has_crushable_fences = true
 		path_service.add_blocker(b)
 		record_route_change(Placement.aabb(footprint_of(b), b.global_position))
 	# RA2 判定：落成后把压在新占地里的单位顶出去
@@ -842,6 +895,7 @@ func _place_building(bid: String, side: String, pos: Vector2, instant: bool = fa
 	return b
 
 func strategic_site_completed(site: Building, announce: bool) -> void:
+	if announce and mission.get("id")==HeadGames.ID: HeadGames.superweapon_built(self,site)
 	if not site.broadcasts_superweapon(): return
 	if fog != null: fog.rebuild()
 	if announce and site.is_allied_ai_storm():
@@ -858,7 +912,7 @@ var allied_state: Dictionary = {}
 
 const AI_UNIT_LIMIT := 64
 # These are weapon or support flights, not independently commanded units.
-const SUPPORT_FLIGHTS := ["V3ROCKET","DMISL","BPLN","SPYP","PDPLANE","ASW","HORNET"]
+const SUPPORT_FLIGHTS := ["V3ROCKET","DMISL","CMISL","BPLN","SPYP","PDPLANE","ASW","HORNET"]
 var _population_frame := -1
 var _living_by_house := {}
 var _queued_by_house := {}
@@ -914,6 +968,7 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 	if house_defeated(side): return null
 	if uid not in SUPPORT_FLIGHTS and ai_production_full(side,uid,producer,not from_queue): return null
 	var ud := GameData.get_unit(uid)
+	if uid in MetaProgress.Academy.Stars.IDS and producer==null and mission.get("id")=="yr_hollywood": ud=GameData.hollywood_cast.units[uid]
 	if ud.is_empty():
 		push_warning("Battle: 未知单位 " + uid)
 		return null
@@ -942,11 +997,15 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 		u.hull_angle = departure.angle()
 		u.turret_angle = u.hull_angle
 		u.aim_dir = departure
-	if uid in ["V3ROCKET", "DMISL", "BPLN", "SPYP", "PDPLANE"]:
+	if uid in ["V3ROCKET", "DMISL", "CMISL", "BPLN", "SPYP", "PDPLANE"]:
 		# MissileSpawn belongs to the air target group but cannot receive army orders.
 		if u.is_in_group("combatants"): u.remove_from_group("combatants")
 		return u
 	u.logistics.assign_producer(producer)
+	if mission.get("id") == HeadGames.ID and producer is Building and producer.special.has("head_games_wing"):
+		HeadGames.assign_wing(u,int(producer.special.head_games_wing))
+	if uid in MetaProgress.Academy.Stars.IDS and producer is Building and producer.building_id=="NEUTRALSTUDIO":
+		MetaProgress.Academy.Stars.promote(u)
 	if uid==Ra3Expansion.FUTURE and is_instance_valid(producer) and producer is Building:
 		u.special.ra3_just_built=2.5 # AlliedFutureTank.JustBuiltTime, not generic spawn/restore.
 	if is_instance_valid(producer) and producer is Building:
@@ -962,7 +1021,8 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 			skirmish_ai.unit_produced(u)
 		elif not u.is_harvester:
 			var goal := _player_target()
-			if skirmish: u.ai_order("move",goal,true)
+			if is_instance_valid(producer) and producer.special.has("hollywood_wave"): preload("res://scripts/world/hollywood_bases.gd").dispatch(self,u,producer)
+			elif skirmish: u.ai_order("move",goal,true)
 			else: u.order_move(goal,true)
 	elif house_controllers.has(side) and is_instance_valid(producer) and producer.side == side and buildings.has(producer):
 		house_controllers[side].unit_produced(u)
@@ -979,11 +1039,14 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 		elif ProductionExit.supported(producer) and u.logistics.air_state != "parked":
 			var assembly := ProductionExit.assembly(producer, u)
 			if assembly != Vector2.INF: u.order_move(assembly, false)
+	if producer is Building and producer.special.has("s07_building_unit"):
+		HeadGames.Orders.produced(self,u,producer)
 	Events.unit_spawned.emit(u)
 	return u
 
 ## Sort at the ground contact. Only a unit actually using a facility belongs above its deck.
 func _update_depth_order() -> void:
+	var overpass = ground.overpass if ground is Ground else null
 	var factories:Array[Building]=[]
 	for b in buildings:
 		if is_instance_valid(b):
@@ -991,12 +1054,17 @@ func _update_depth_order() -> void:
 			if b.building_id=="GAWEAP":factories.append(b)
 	for u in units:
 		if not is_instance_valid(u): continue
+		u.occluded_by_bridge = false
 		if u.is_air_target():
 			u.z_index = DepthLayers.AIR
 			continue
 		u.z_index = DepthLayers.entity_z(u.global_position, map_size)
+		if overpass != null and not u.is_air:
+			u.occluded_by_bridge = overpass.sort_unit(u)
 		if u.is_naval and path_service.near_deck(u.global_position, u.radius + 48.0):
 			u.z_index = DepthLayers.WATER + 1 + int(u.z_index / 24)
+			if not u.is_amphibious and path_service.in_naval_water(u.position):
+				u.occluded_by_bridge = path_service.near_deck(u.position)
 		var deck = null
 		if u.is_air and u.logistics.air_state in ["parked", "rearming"]:
 			deck = u.logistics.home
@@ -1021,9 +1089,12 @@ func _player_target() -> Vector2:
 	return player_start()
 
 func map_layout() -> String:
-	return str(mission.get("map_layout", "coast")) if skirmish else "coast"
+	return str(mission.get("map_layout", "coast"))
 
 func player_start() -> Vector2:
+	if mission.get("id")==TimeShift.ID:return TimeShift.wp(18)
+	if mission.get("id") == HeadGames.ID: return Vector2(HeadGames.FIELD.data.start[0],HeadGames.FIELD.data.start[1])*NativeMaps.CELL
+	if mission.get("id") == Hollywood.ID: return NativeMaps.start(map_layout())
 	if skirmish:return BattleRequest.Houses.starts(map_layout(),map_size)[BattleRequest.house_spawn(0)]
 	return Vector2(0.5 if map_layout() == "coast" else 0.22, 0.80) * map_size
 
@@ -1034,6 +1105,10 @@ func add_funds(amount: float, silent: bool = false) -> void:
 	if not silent:
 		Events.funds_changed.emit(funds)
 
+func _deduct_player_funds(amount: float) -> void:
+	funds -= amount
+	Events.funds_changed.emit(funds)
+
 func spend_funds(cost: float) -> bool:
 	if GM.infinite_funds:
 		return true
@@ -1041,8 +1116,7 @@ func spend_funds(cost: float) -> bool:
 		Events.emit_message("资金不足（需要 %d）" % int(cost), Color(1.0, 0.6, 0.5))
 		Ra2Sfx.play_player_eva(self, "EVA_InsufficientFunds", 1500)
 		return false
-	funds -= cost
-	Events.funds_changed.emit(funds)
+	_deduct_player_funds(cost)
 	return true
 
 func current_funds() -> float:
@@ -1156,8 +1230,7 @@ func try_spend(amount: float) -> bool:
 		return true
 	if funds < amount:
 		return false
-	funds -= amount
-	Events.funds_changed.emit(funds)
+	_deduct_player_funds(amount)
 	return true
 
 # ================================================================== 电力（RA2）
@@ -1180,9 +1253,11 @@ func _update_power() -> void:
 		grids[owner] = {"produced": 0.0, "drain": 0.0, "low": false}
 	var prod := 0.0
 	var drain := 0.0
-	for b: Building in buildings:
-		if not is_instance_valid(b) or b.under_construction: continue
-		var p := b.power
+	for entry in buildings:
+		if not is_instance_valid(entry): continue
+		var b:Building=entry
+		if b.under_construction: continue
+		var p := b.installed_power()
 		var produced := ceilf(p * clampf(b.hp / maxf(1.0, b.max_hp), 0.0, 1.0)) if p > 0.0 else 0.0
 		var consumed: float = -p if p < 0.0 else 0.0
 		if b.side == "ally":
@@ -1221,7 +1296,7 @@ func _side_power(owner_side: String) -> Dictionary:
 		if not is_instance_valid(b) or b.side != owner_side or b.hp <= 0.0 or b.under_construction:
 			continue
 		if b.power > 0.0:
-			produced += ceilf(b.power * clampf(b.hp / maxf(1.0, b.max_hp), 0.0, 1.0))
+			produced += ceilf(b.installed_power() * clampf(b.hp / maxf(1.0, b.max_hp), 0.0, 1.0))
 		else:
 			drain -= b.power
 	produced+=preload("res://scripts/units/leizhu_station.gd").amount(self,owner_side,produced,drain)
@@ -1326,8 +1401,22 @@ func _process(delta: float) -> void:
 		var key: String = "blackout_" + side
 		if allied_state.has(key): allied_state[key] = maxf(0.0, float(allied_state[key]) - delta)
 	_update_power()
-	_update_waves(delta)
-	_check_end()
+	if skirmish and not paused and ("YuriCountry" in _countries.values()):
+		_slave_clock += delta
+		if _slave_clock >= 0.5:
+			preload("res://scripts/world/slave_mining.gd").tick(self,_slave_clock)
+			_slave_clock = 0
+	if mission.get("id")==TimeShift.ID:
+		TimeShift.tick(self,delta)
+	elif allied_state.has("hollywood"):
+		if not paused: Hollywood.tick(self,delta)
+	else:
+		if mission.get("id") == HeadGames.ID and not paused:
+			if allied_state.has("head_brief_stage"): HeadGames.briefing(self,delta)
+			HeadGames.attackers(self,delta)
+			HeadGames.field_events(self,delta)
+		if mission.get("id")!=HeadGames.ID: _update_waves(delta)
+		_check_end()
 
 ## 窗口内的边缘带；越过原生窗口后的滚动由 edge_pointer_direction 单独处理。
 func edge_pan_dir(mouse: Vector2, vp: Vector2) -> Vector2:
@@ -1737,20 +1826,20 @@ func _apply_selection(a: Vector2, additive: bool, sbox: Rect2) -> void:
 			_last_click_unit = null
 	else:
 		_last_click_unit = null
-		# Prefer non-miners inside this gesture; an all-miner box remains selectable.
+		# Lao Cheng counts as a combat selection; boxes containing only ordinary miners still work.
 		# Filter before select_unit so rejected/dead/passenger units cannot suppress miners.
 		var candidates: Array = []
-		var has_non_miner := false
+		var has_non_ordinary_miner := false
 		var projection := get_viewport().get_canvas_transform()
 		for u in units:
-			if not actor_alive(u) or u.side != "ally" or u.unit_id in ["V3ROCKET", "DMISL", "BPLN", "SPYP", "PDPLANE"]:
+			if not actor_alive(u) or u.side != "ally" or u.unit_id in ["V3ROCKET", "DMISL", "CMISL", "BPLN", "SPYP", "PDPLANE"]:
 				continue
 			var anchor = inspection_host(u) if u.embarked_in != null else u
 			if anchor != null and sbox.has_point(projection * anchor.art_center()):
 				candidates.append(u)
-				has_non_miner = has_non_miner or not u.is_harvester
-		if has_non_miner:
-			candidates = candidates.filter(func(unit): return not unit.is_harvester)
+				has_non_ordinary_miner = has_non_ordinary_miner or not u.is_ordinary_harvester()
+		if has_non_ordinary_miner:
+			candidates = candidates.filter(func(unit): return not unit.is_ordinary_harvester())
 		if reconcile_box:
 			if candidates == selected_units:
 				return
@@ -1917,7 +2006,7 @@ func clear_selection() -> void:
 
 func select_unit(u, additive: bool) -> void:
 	if is_instance_valid(u) and (u.special.get("expedition_mission_unit",false) or u.special.has("psi_original_side")): return
-	if not actor_alive(u) or (u.embarked_in != null and inspection_host(u) == null) or u.unit_id in ["V3ROCKET", "DMISL", "BPLN", "SPYP", "PDPLANE"]:
+	if not actor_alive(u) or (u.embarked_in != null and inspection_host(u) == null) or u.unit_id in ["V3ROCKET", "DMISL", "CMISL", "BPLN", "SPYP", "PDPLANE"]:
 		return
 	if not additive:
 		clear_selection()
@@ -1951,10 +2040,12 @@ func unit_in_visible_play_area(unit) -> bool:
 		return false
 	return not is_instance_valid(hud) or not hud.covers_world_pixel(pixel)
 
-func select_all_of_type(proto, visible_only: bool = false) -> void:
+func select_all_of_type(proto, visible_only: bool = false, skip_box_carrier: bool = false) -> void:
 	clear_selection()
 	for u in units:
 		if is_instance_valid(u) and u.side == "ally" and u.unit_id == proto.unit_id:
+			if skip_box_carrier and u.special.has("field_box"):
+				continue
 			if visible_only and not unit_in_visible_play_area(u):
 				continue
 			select_unit(u, true)
@@ -2185,6 +2276,13 @@ func peregrine_air_order(target) -> bool:
 			return true
 	return false
 
+func hero_miner_attack_order(target) -> bool:
+	if target == null: return false
+	for unit in selected_units:
+		if actor_alive(unit) and unit.special.get("academy_hero") == "HARV" and unit.embarked_in == null and unit.attack_domain_valid(target):
+			return true
+	return false
+
 func _issue_order(p: Vector2, p_queue: bool = false, p_attack_move: bool = false) -> void:
 	if p_attack_move:
 		_command_move(p, p_queue, true)
@@ -2237,6 +2335,9 @@ func _issue_order(p: Vector2, p_queue: bool = false, p_attack_move: bool = false
 		elif not str(boarding.reason).is_empty():
 			Events.emit_message(boarding.reason, Color(1.0, 0.8, 0.5))
 		return
+	if hero_miner_attack_order(target):
+		force_attack(target, p_queue)
+		return
 	# 采集车：右键矿点指派采集
 	if _try_harvest_at(p):
 		return
@@ -2250,6 +2351,18 @@ func _issue_order(p: Vector2, p_queue: bool = false, p_attack_move: bool = false
 
 ## 移动：RA2 式编队槽位 + 每单位独立 A* 路径（不再全队共用一张流场）。
 ## 共享流场会让所有单位挤在同一条梯度线上，到终点再各自散开，观感就是“一坨”。
+## Radar orders target terrain, not sprite hitboxes (which may overlap a different tile).
+func radar_ground_order(p: Vector2, queued: bool, attack_move: bool) -> bool:
+	if not right_click_move or cast_slot >= 0 or not armed_build.is_empty() or not command_mode.is_empty():
+		return false
+	if selected_units.any(func(u): return actor_alive(u) and u.side == "ally"):
+		_command_move(p, queued, attack_move)
+		return true
+	if actor_alive(selected_building) and selected_building.side == "ally" and not selected_building.buildable.is_empty():
+		_set_rally(selected_building, p)
+		return true
+	return false
+
 func _command_move(p: Vector2, p_queue: bool = false, p_attack_move: bool = false) -> void:
 	if selected_units.is_empty():
 		return
@@ -2273,20 +2386,38 @@ func _issue_move_slots(units: Array, assigned: Dictionary, p: Vector2, p_queue: 
 		# A deployed GI rejects an immediate move in order_move; keep its feedback
 		# and queue semantics without computing or retrying an unusable path.
 		var stationary: bool = not p_queue and u._deployed and u.unit_id in ["GGI", "E1"]
+		var deck_goal := Vector2.INF
+		if ground is Ground and ground.overpass != null and not u.is_air and not u.is_naval:
+			var center_hit: Vector2 = ground.overpass.pick_deck(p)
+			if center_hit.is_finite():
+				deck_goal = ground.overpass.pick_deck(slot)
+				if not deck_goal.is_finite(): deck_goal = center_hit
+				slot = deck_goal
+			if p_queue and (u.has_move_order or u.attack_ordered or not u.order_queue.is_empty()):
+				u.order_queue.append({"position":slot,"attack_move":p_attack_move,"deck":deck_goal.is_finite()})
+				continue
+			u.special.erase("hollywood_street_goal")
+			u.special.erase("hollywood_deck_goal")
+			if deck_goal.is_finite(): u.special.hollywood_deck_goal = slot
+			elif u.special.has("hollywood_on_deck"): u.special.hollywood_street_goal = slot
 		var pts := PackedVector2Array() if stationary else path_for_unit(u, slot, deployed)
+		if not stationary and pts.size()<2 and (deck_goal.is_finite() or u.special.has("hollywood_on_deck")):
+			u.order_stop(false)
+			continue
 		if pts.size() >= 2:
 			# 终点可能被吸附到岸边/障碍旁，以路径末点为准
 			slot = pts[pts.size() - 1]
 		elif path_service != null and not stationary:
 			# 完全不可达：原地待命，避免顶着墙无限推
 			var wm: bool = u.get("is_naval") == true
-			var snapped := path_service.nearest_reachable(slot, u.global_position, wm, 20, u.is_amphibious, u.unit_id=="R3APOC")
+			var routes := movement_service(u)
+			var snapped := routes.nearest_reachable(slot, u.global_position, wm, 20, u.is_amphibious, u.unit_id=="R3APOC")
 			if snapped.distance_to(u.global_position) > 8.0:
-				pts = path_service.find_path(u.global_position, snapped, wm, 6000, u.is_amphibious, [], u.unit_id=="R3APOC")
+				pts = routes.find_path(u.global_position, snapped, wm, 6000, u.is_amphibious, [], u.unit_id=="R3APOC")
 				slot = snapped
 			else:
 				slot = u.global_position
-		if p_queue:
+		if p_queue and not deck_goal.is_finite() and not u.special.has("hollywood_on_deck"):
 			u.queue_waypoint(slot, null, p_attack_move)
 		else:
 			u.cancel_stance()
@@ -2359,6 +2490,7 @@ func path_for_unit(u, p: Vector2, candidates = null, traffic_blockers: Array = [
 		return PackedVector2Array([u.global_position, target])
 	if path_service == null:
 		return PackedVector2Array()
+	var routes := movement_service(u)
 	var wm: bool = u.get("is_naval") == true
 	var stationary: Array = traffic_blockers.duplicate() if not traffic_blockers.is_empty() else []
 	if not wm:
@@ -2367,15 +2499,19 @@ func path_for_unit(u, p: Vector2, candidates = null, traffic_blockers: Array = [
 				continue
 			if u._local_traffic.friendly_unit_pair(u,other): continue
 			stationary.append({"position": other.global_position, "radius": u.radius + other.radius + 8.0})
+	if not wm and ground is Ground and ground.overpass != null:
+		var elevated: bool = u.special.get("hollywood_deck_goal",Vector2.INF) == p
+		if elevated or u.special.has("hollywood_on_deck"):
+			return ground.overpass.layered_route(u,p,elevated,routes,stationary)
 	var transit=preload("res://scripts/expedition/foundation_transit.gd")
 	# Foundation collision exceptions exist only for explicit movement orders.
 	# Automatic mining/docking must keep routing around solid allied buildings.
 	if transit.enabled(u) and u.has_move_order and not u._deployed and transit.crosses(u,self,p,stationary):return PackedVector2Array([u.position,p])
 	if uses_ground_passages(u):
-		var passage: PackedVector2Array = u.ground_passage(path_service, p, stationary) if u is Unit else path_service.passages.route(path_service, u.global_position, p, u.radius + 1.0, stationary)
+		var passage: PackedVector2Array = u.ground_passage(routes, p, stationary) if u is Unit else routes.passages.route(routes, u.global_position, p, u.radius + 1.0, stationary)
 		if not passage.is_empty(): return passage
 	var army_route := units.size()>=96 and BattleRequest.is_ai_house(u.side)
-	return path_service.find_path(u.global_position, p, wm, 6000, u.is_amphibious, stationary, u.unit_id=="R3APOC",army_route)
+	return routes.find_path(u.global_position, p, wm, 6000, u.is_amphibious, stationary, u.unit_id=="R3APOC",army_route)
 
 func uses_ground_passages(u) -> bool:
 	return not u.is_air and not u.is_naval and (u.is_harvester or u.data.get("role", "") in ["vehicle", "infantry"] or u.data.get("tags", []).has("infantry"))
@@ -2415,7 +2551,8 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 	for u in order:
 		var wm: bool = u.get("is_naval") == true
 		var air: bool = u.get("is_air") == true
-		var domain:=int(wm) | (int(u.is_amphibious)<<1) | (int(u.unit_id=="R3APOC")<<2)
+		var routes := movement_service(u)
+		var domain:= (8 if routes != path_service else 0) | int(wm) | (int(u.is_amphibious)<<1) | (int(u.unit_id=="R3APOC")<<2)
 		var blocked:Dictionary=blocked_by_domain.get_or_add(domain,{})
 		var position:Vector2=u.global_position
 		var best := -1
@@ -2424,7 +2561,7 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 		for i in range(pool.size()):
 			var s: Vector2 = pool[i]
 			if not air and path_service != null:
-				if not blocked.has(s):blocked[s]=path_service.is_blocked(s,wm,u.is_amphibious,u.unit_id=="R3APOC")
+				if not blocked.has(s):blocked[s]=routes.is_blocked(s,wm,u.is_amphibious,u.unit_id=="R3APOC")
 				if blocked[s]:continue
 			var d: float = position.distance_squared_to(s)
 			var depth := (s - center).dot(forward)
@@ -2449,13 +2586,14 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 	return res
 
 func resolve_move_slot(u, slot: Vector2, used: Array[Vector2], spacing: float) -> Vector2:
+	var routes := movement_service(u)
 	var wm: bool = u.is_naval
 	var transit=preload("res://scripts/expedition/foundation_transit.gd")
 	if transit.enabled(u):
 		slot=transit.destination(u,self,slot)
 		if _move_slot_clear(slot,used,spacing) and transit.crosses(u,self,slot,[]):return slot
-	var reachable := path_service.nearest_reachable(slot, u.global_position, wm, 6, u.is_amphibious, u.unit_id=="R3APOC")
-	if reachable != slot and (not uses_ground_passages(u) or path_service.passages.route(path_service, u.global_position, slot, u.radius+1.0, []).is_empty()):
+	var reachable := routes.nearest_reachable(slot, u.global_position, wm, 6, u.is_amphibious, u.unit_id=="R3APOC")
+	if reachable != slot and (not uses_ground_passages(u) or routes.passages.route(routes, u.global_position, slot, u.radius+1.0, []).is_empty()):
 		slot = reachable
 	# Snapping around an obstacle must retain body/arrival spacing, not
 	# merely place centers in different 16px cells.
@@ -2465,8 +2603,8 @@ func resolve_move_slot(u, slot: Vector2, used: Array[Vector2], spacing: float) -
 			break
 		var ang := float(nudge + 1) * 2.399963
 		var cand := snapped + Vector2(cos(ang), sin(ang)) * spacing * float(1 + nudge / 8)
-		cand = path_service.nearest_reachable(cand, u.global_position, wm, 6, u.is_amphibious, u.unit_id=="R3APOC")
-		if not path_service.is_blocked(cand, wm, u.is_amphibious) and _move_slot_clear(cand, used, spacing):
+		cand = routes.nearest_reachable(cand, u.global_position, wm, 6, u.is_amphibious, u.unit_id=="R3APOC")
+		if not routes.is_blocked(cand, wm, u.is_amphibious) and _move_slot_clear(cand, used, spacing):
 			slot = cand
 	return slot
 
@@ -2605,7 +2743,7 @@ func focus_unit(u) -> void:
 func select_same_type_now() -> void:
 	for u in selected_units:
 		if is_instance_valid(u):
-			select_all_of_type(u)
+			select_all_of_type(u, false, true)
 			return
 
 ## 上下循环选中己方单位（红警2：M 上一个 / N 下一个）
@@ -2767,7 +2905,7 @@ func deploy_construction_vehicle(unit) -> bool:
 		_emit_selection()
 	_update_power()
 	if building.side == "ally":
-		Events.emit_message("基地车已展开为建造厂，可以恢复建筑生产。", Color(0.6, 0.95, 0.7))
+		Events.emit_message("矿场已展开，矿工开始采矿。" if building.building_id=="YAREFN" else "基地车已展开为建造厂，可以恢复建筑生产。", Color(0.6, 0.95, 0.7))
 	return true
 
 ## 维修选中建筑（红警2：K 切换维修）
@@ -2804,7 +2942,7 @@ func building_action_reason(action: String, b) -> String:
 	else:
 		if b.is_hq and not GameData._ra2_flag(extra.get("ConstructionYard",false)):
 			return "该基地不可出售"
-		if str(extra.get("Unsellable", "false")).to_lower() in ["true", "yes", "1"]:
+		if b.data.get("unsellable",false) or str(extra.get("Unsellable", "false")).to_lower() in ["true", "yes", "1"]:
 			return "该建筑不能出售"
 	return ""
 
@@ -2816,12 +2954,16 @@ var _repair_poll := 0.0
 func _tick_area_repair() -> void:
 	var automatic: bool = allied_state.get("area_repair", 0) == 2
 	var pending := false
+	var started := false
 	for b in buildings:
 		if not actor_alive(b) or b.side != "ally": continue
 		if automatic and not b.repairing and b.hp < b.max_hp and building_action_reason("repair", b).is_empty():
 			b.set_repairing(true)
 			b.special.area_repair = true
+			started = true
 		if b.repairing and b.special.has("area_repair"): pending = true
+	if started:
+		Ra2Sfx.play_player_eva(self, "EVA_Repairing", 3000)
 	if not automatic and not pending: allied_state.erase("area_repair")
 
 func repair_all_buildings() -> void:
@@ -3020,7 +3162,7 @@ func select_excluded_units() -> void:
 func select_all_combat() -> void:
 	clear_selection()
 	for u in units:
-		if not actor_alive(u) or u.side != "ally" or u.excluded_from_army_selection or not u.is_in_group("combatants") or u.is_ordinary_harvester():
+		if not actor_alive(u) or u.side != "ally" or u.excluded_from_army_selection or u.special.has("field_box") or not u.is_in_group("combatants") or u.is_ordinary_harvester():
 			continue
 		if u.embarked_in != null and NavalContact.grip_host(u) == null:
 			continue
@@ -3166,7 +3308,7 @@ func arm_superweapon(b) -> void:
 	cast_slot = -1
 	var instruction := "先选区域再选落点：敌我均受影响，普通步兵及危险落点会致死（Esc 取消）" if b.sw_type().to_lower() == "chronosphere" else "选择 %s 的目标位置（左键确认 / Esc 取消）" % b.sw_label()
 	if b.sw_type() == "SpyPlane": instruction = "点击一处侦察区域，可指定未探索地带；飞机将自动飞越拍照（Esc 取消）。"
-	if b.sw_type() == "AmerParaDrop": instruction = "点击陆地投放 8 名美国大兵（Esc 取消）。"
+	if b.sw_type() in ["AmerParaDrop","ParaDrop"]: instruction = "点击陆地投放 %d 名美国大兵（Esc 取消）。" % int(b.superweapon.count)
 	if b.sw_type() == "LightningStorm": instruction = "移动鼠标选择落雷区域，左键确认施放；区域内随机落雷，敌我均受影响（Esc 取消）。"
 	Events.emit_message(instruction, Color(0.75, 0.9, 1.0))
 	Events.command_mode_changed.emit(command_mode)
@@ -3461,7 +3603,7 @@ func _draw_order_marks() -> void:
 			Iso.outline(self, Iso.ell(pos, rr * 0.55, rr * 0.55), col, 2.0)
 
 func _draw_command_cursor() -> void:
-	if command_mode == "superweapon" and is_instance_valid(_armed_superweapon) and _armed_superweapon.sw_type() in ["IronCurtain","MultiMissile","SpyPlane","AmerParaDrop","LightningStorm","ChronoSphere"]: return
+	if command_mode == "superweapon" and is_instance_valid(_armed_superweapon) and _armed_superweapon.sw_type() in ["IronCurtain","MultiMissile","SpyPlane","AmerParaDrop","ParaDrop","LightningStorm","ChronoSphere"]: return
 	if command_mode in ["repair", "sell"]:
 		return # Original wrench/sell cursor is rendered by battle_cursor.
 	var pos := get_global_mouse_position()
@@ -3509,18 +3651,24 @@ func set_build_mode(bid: String) -> void:
 # ================================================================ 建筑生产队列（RA3/RA2 侧栏流程）
 
 ## 已拥有建筑 id 集合（用于前置条件判定）。
+const YURI_EQUIVALENT := {"GACNST":"YACNST", "GAPOWR":"YAPOWR", "GAREFN":"YAREFN", "GAPILE":"YABRCK", "GAWEAP":"YAWEAP", "GAAIRC":"NAPSIS", "GATECH":"YATECH", "GAYARD":"YAYARD", "GAPILL":"YAGGUN", "GADEPT":"YAGRND", "AMCV":"PCV", "CMIN":"SMIN", "MTNK":"LTNK", "E1":"INIT"}
 const SOVIET_EQUIVALENT := {
 	"GACNST":"NACNST", "GAPOWR":"NAPOWR", "GAREFN":"NAREFN", "GAPILE":"NAHAND",
 	"GAWEAP":"NAWEAP", "GAYARD":"NAYARD", "GADEPT":"NADEPT", "GAPILL":"NALASR", "AMCV":"SMCV", "CMIN":"HARV"
 }
 
 func roster_faction(owner_side: String = "ally") -> String:
+	if owner_side == "ally" and mission.get("id") in [HeadGames.ID,TimeShift.ID]: return "soviet"
+	if skirmish and _countries.get(owner_side) == "YuriCountry": return "yuri"
 	return "soviet" if skirmish and _countries.get(owner_side) in ["Russians", "Confederation", "Arabs", "Africans"] else "allied"
 
 func roster_id(allied_id: String, owner_side: String = "ally") -> String:
+	if roster_faction(owner_side) == "yuri":
+		return str(YURI_EQUIVALENT.get(allied_id,allied_id))
 	return str(SOVIET_EQUIVALENT.get(allied_id, allied_id)) if roster_faction(owner_side) == "soviet" else allied_id
 
 func country_block_reason(id: String, owner_side: String = "ally") -> String:
+	if GameData.hollywood_production_unit(id): return ""
 	const ExpeditionRules = preload("res://scripts/expedition/rules.gd")
 	if owner_side == "ally" and GameData.unit_index.has(id) and ExpeditionRules.active():
 		if id in ExpeditionRules.context().get("licenses", []):
@@ -3528,20 +3676,22 @@ func country_block_reason(id: String, owner_side: String = "ally") -> String:
 	var product: Dictionary = GameData.unit_index.get(id, GameData.building_index.get(id, {}))
 	var foreign_producer := false
 	var faction: String = product.get("faction", "")
-	if faction in ["allied", "soviet"] and faction != roster_faction(owner_side) and GameData.is_ra2(id):
+	if faction in ["allied", "soviet", "yuri"] and faction != roster_faction(owner_side) and GameData.is_ra2(id):
 		var factory: String = product.get("built_at", "")
-		if GameData.is_building(id): factory = "NACNST" if faction == "soviet" else "GACNST"
+		if GameData.is_building(id): factory = {"soviet":"NACNST", "yuri":"YACNST", "allied":"GACNST"}[faction]
 		foreign_producer = factory in owned_building_ids(owner_side)
 	return GameData.ra2_country_block_reason(id, str(_countries.get(owner_side, "Americans")), foreign_producer)
 
 func owns_production_yard(bid: String, owner_side: String) -> bool:
+	if bid=="NEUTRALSTUDIO":
+		var yards:=owned_building_ids(owner_side)
+		return "GACNST" in yards or "NACNST" in yards or "YACNST" in yards
 	var faction: String = GameData.building_index.get(bid, {}).get("faction", roster_faction(owner_side))
-	return ("NACNST" if faction == "soviet" else "GACNST") in owned_building_ids(owner_side)
+	return {"soviet":"NACNST","yuri":"YACNST","allied":"GACNST"}.get(faction) in owned_building_ids(owner_side)
 
 func has_construction_roster(faction: String, owner_side: String = "ally") -> bool:
 	if faction == roster_faction(owner_side): return true
-	if faction not in ["allied", "soviet"]: return false
-	return ("NACNST" if faction == "soviet" else "GACNST") in owned_building_ids(owner_side)
+	return {"allied":"GACNST", "soviet":"NACNST", "yuri":"YACNST"}.get(faction) in owned_building_ids(owner_side)
 
 func owned_building_ids(owner_side: String = "ally") -> Array:
 	if ai_prerequisite_scan and ai_scan_buildings.has(owner_side):
@@ -3605,10 +3755,10 @@ func structure_ready_count(category: String, owner_side: String = "ally") -> int
 	return count
 
 func hero_limit_reason(id: String, owner_side: String, include_training := true) -> String:
-	if id not in ["TANY", "BORIS"]: return ""
+	if id not in ["TANY", "BORIS", "YURIPR"] and id not in MetaProgress.Academy.Stars.IDS: return ""
 	for unit in units:
 		if actor_alive(unit) and unit.side == owner_side and unit.unit_id == id:
-			if owner_side == "ally" and unit.special.get(preload("res://scripts/expedition/reinforcement_plan.gd").MEMBER, false) and preload("res://scripts/expedition/rules.gd").active():
+			if id not in MetaProgress.Academy.Stars.IDS and owner_side == "ally" and unit.special.get(preload("res://scripts/expedition/reinforcement_plan.gd").MEMBER, false) and preload("res://scripts/expedition/rules.gd").active():
 				continue
 			return "%s已在战场上" % GameData.get_unit(id).name
 	if include_training:
@@ -3665,13 +3815,13 @@ func structure_queue_block_reason(bid: String, owner_side: String = "ally") -> S
 ## 已就绪进入选址；预约必须经过同一科技/容量门禁。
 func request_structure(bid: String, owner_side: String = "ally") -> void:
 	if house_defeated(owner_side): return
+	if not GameData.building_production_block_reason(bid).is_empty(): return
 	if owner_side == "ally" and int(struct_ready.get(bid, 0)) == 0 and resume_structure(bid): return
 	var bd := GameData.get_building(bid)
 	if bd.is_empty():
 		return
-	if not GameData.building_production_block_reason(bid).is_empty():
-		return
-	if skirmish and bd.get("ra2", false) and not has_construction_roster(bd.faction, owner_side): return
+	if bid=="NEUTRALSTUDIO" and not owns_production_yard(bid,owner_side):return
+	if bid!="NEUTRALSTUDIO" and skirmish and bd.get("ra2", false) and not has_construction_roster(bd.faction, owner_side): return
 	var country_reason := country_block_reason(bid, owner_side)
 	if not country_reason.is_empty():
 		if owner_side == "ally":
@@ -3780,6 +3930,8 @@ func structure_work_rate(owner_side: String = "ally", building_id: String = "") 
 	return BattleClock.production_scale(GameData.get_building(building_id)) * power_build_factor(owner_side) * factory_speed_factor(owner_side) * ai_build_factor(owner_side) * preload("res://scripts/expedition/red_alert.gd").production(self,owner_side)
 
 func structure_production_block_reason(bid: String, owner_side: String = "ally") -> String:
+	var mission_reason := GameData.building_production_block_reason(bid)
+	if not mission_reason.is_empty(): return mission_reason
 	if not owns_production_yard(bid, owner_side):
 		return "缺少生产建筑：建造厂"
 	var country_reason := country_block_reason(bid, owner_side)
@@ -3842,6 +3994,7 @@ func current_structure_job(category: String = "") -> Dictionary:
 # A yard delivers a structure when its checked footprint is placed. Extra wall
 # segments, map fixtures and an MCV unfolding do not represent new deliveries.
 func deliver_ready_structure(id: String, side: String, point: Vector2):
+	if not GameData.mission_tech_block_reason(id).is_empty(): return null
 	var ready: Dictionary = struct_ready if side == "ally" else enemy_struct_ready
 	if int(ready.get(id, 0)) <= 0 or GameData.get_building(id).is_empty(): return null
 	if not limit_reason(id,side,true).is_empty(): return null
@@ -3858,6 +4011,9 @@ func deliver_ready_structure(id: String, side: String, point: Vector2):
 	return placed
 
 func _try_place_building(pos: Vector2) -> void:
+	if not GameData.mission_tech_block_reason(armed_build).is_empty():
+		armed_build = ""
+		return
 	var bd: Dictionary = GameData.get_building(armed_build)
 	if bd.is_empty():
 		armed_build = ""
@@ -3898,7 +4054,7 @@ func _update_waves(delta: float) -> void:
 		return
 	if not prepared:
 		prepared = true
-		Events.emit_message("⚠ 虫潮来袭！", Color(1.0, 0.5, 0.4))
+		Events.emit_message("尤里军团开始进攻！" if mission.get("id") == HeadGames.ID else "⚠ 虫潮来袭！", Color(1.0, 0.5, 0.4))
 		_spawn_wave(0)
 		wave_index = 1
 		_schedule_next()
@@ -3920,7 +4076,7 @@ func _schedule_next() -> void:
 		else:
 			waves_exhausted = true
 			wave_timer = 99999.0
-			Events.emit_message("全部波次已投放，清除残余敌人即可获胜。", Color(0.7, 0.9, 1.0))
+			Events.emit_message("敌军增援已到齐。摧毁两座信标和城堡。" if mission.get("id") == HeadGames.ID else "全部波次已投放，清除残余敌人即可获胜。", Color(0.7, 0.9, 1.0))
 		return
 	wave_timer = float(waves[wave_index].get("delay", 25))
 
@@ -3986,6 +4142,11 @@ func _check_end() -> void:
 		elif not enemy_alive:
 			end_battle(true)
 		return
+	if mission.get("id")==HeadGames.ID:
+		if not has_surviving_assets("ally"):end_battle(false)
+		else:HeadGames.objectives(self)
+		return
+	if mission.get("id")==TimeShift.ID:return
 	if _player_hq() == null:
 		end_battle(false)
 		return
@@ -4059,7 +4220,7 @@ func has_surviving_assets(owner_side: String) -> bool:
 	if mission.get("victory_condition", "short") != "annihilation":
 		return has_base_assets(owner_side)
 	for actor in units + buildings:
-		if actor_alive(actor) and actor.side == owner_side and not (actor is Unit and actor.unit_id in ["V3ROCKET","DMISL","BPLN","SPYP","PDPLANE"]):
+		if actor_alive(actor) and actor.side == owner_side and not (actor is Unit and actor.unit_id in ["V3ROCKET","DMISL","CMISL","BPLN","SPYP","PDPLANE"]):
 			return true
 	return false
 
@@ -4103,6 +4264,7 @@ func end_battle(win: bool, draw: bool = false, gm_forced := false) -> void:
 	}
 	var eligible_win:=win and not draw and skirmish and not gm_forced
 	result["rules_mode"] = BattleRequest.rules_mode
+	result["gm_forced"] = gm_forced
 	if BattleRequest.extensions_enabled() and not draw:
 		if skirmish and win:
 			var config := BattleRequest.skirmish_config
@@ -4273,14 +4435,21 @@ func _draw_hp_overlay() -> void:
 	_health_batch.begin()
 	HpBar.world_batch = _health_batch
 	Iso.begin(hp_overlay)
+	if get_tree().has_group(&"psychic_sensors"):
+		preload("res://scripts/world/yuri_support.gd").draw_orders(self,hp_overlay)
+	if allied_state.has("hollywood"): Hollywood.draw_supplies(self)
 	_draw_superweapon_footprint()
 	preload("res://scripts/units/soviet_specials.gd").draw_missiles(hp_overlay, self)
+	const Psychic = preload("res://scripts/world/yuri_support.gd")
+	var beacons := Psychic.active_beacons(self)
 	var screen := get_viewport_rect().grow(64) # Includes rank, healing and multi-weapon rings.
 	var projection := get_viewport().get_canvas_transform()
 	var zoom := camera.zoom.x if is_instance_valid(camera) else 1.0
 	for candidate in units:
 		if not actor_alive(candidate): continue
 		var u: Unit = candidate
+		if u.special.has("controller") or u.special.has("dominator_source") or (not beacons.is_empty() and u.special.has("head_games_wing")):
+			Psychic.draw_control(self, hp_overlay, u, beacons)
 		# Bookmarks are drawn on the target even when their owner is offscreen.
 		if u.special.has(Unit.YRTalents.BOOK) and actor_visible_to("ally", u):
 			Unit.YRTalents.paint_bookmark(hp_overlay,self,u)
@@ -4290,6 +4459,12 @@ func _draw_hp_overlay() -> void:
 			if not screen.intersects(bounds): continue
 		if not actor_visible_to("ally", u): continue
 		var display_origin := Iso.dir(u.presentation_position())
+		if u.occluded_by_bridge and u.is_visible_in_tree() and not u.is_air_target():
+			# Retail BEHIND uses frames 1..17 of the 18-frame SHP.
+			var frame := 1 + floori(Engine.get_physics_frames() * (15.0 * 200.0 / 256.0) / Engine.physics_ticks_per_second) % 17
+			var size := Vector2(55,43)
+			var source := Rect2(Vector2(frame%6,frame/6)*size,size)
+			hp_overlay.draw_texture_rect_region(preload("res://assets/maps/yr/behind.png"),Rect2(display_origin-size*0.5,size),source)
 		u.draw_hp_bar(hp_overlay, display_origin, show_all_health or is_same(health_inspection_target,u) or (u.selected and selected_units.size()==1))
 		preload("res://scripts/ui/unit_status.gd").draw_world(u,hp_overlay,display_origin)
 		AttackCooldownIndicator.paint(u, hp_overlay)
@@ -4301,6 +4476,8 @@ func _draw_hp_overlay() -> void:
 	for candidate in buildings:
 		if not actor_alive(candidate): continue
 		var b: Building = candidate
+		if b.special.has("controller") or b.special.has("dominator_source") or (not beacons.is_empty() and b.special.has("head_games_wing")):
+			Psychic.draw_control(self, hp_overlay, b, beacons)
 		var bar: Rect2 = b.hp_bar_rect()
 		var bounds := Rect2(projection * b.global_position + bar.position * zoom, bar.size * zoom)
 		var on_screen := screen.intersects(bounds)

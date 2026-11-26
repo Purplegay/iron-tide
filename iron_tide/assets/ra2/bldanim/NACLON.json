@@ -1,1 +1,24 @@
-{"id":"NACLON","image":"NACLON","layers":[{"kind":"activeanim","image":"NACLON_A","loopStart":0,"loopEnd":10,"rate":200,"frames":44,"shadow":false,"reverse":false,"loopCount":-1,"oneShot":false,"translucent":false,"translucency":0.25,"x":0,"y":0,"dmg":{"image":"NACLON_A","loopStart":11,"loopEnd":21,"rate":200,"frames":44,"shadow":false,"reverse":false,"loopCount":-1}}]}
+{
+ "id": "NACLON",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "NACLON_A",
+   "loopStart": 0,
+   "loopEnd": 10,
+   "frames": 44,
+   "rate": 200,
+   "shadow": false,
+   "loopCount": -1,
+   "dmg": {
+    "image": "NACLON_A",
+    "loopStart": 11,
+    "loopEnd": 21,
+    "frames": 44,
+    "rate": 200,
+    "shadow": false,
+    "loopCount": -1
+   }
+  }
+ ]
+}

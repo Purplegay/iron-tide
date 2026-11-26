@@ -187,7 +187,6 @@ static func entries(unit) -> Array:
 
 static func draw(unit) -> void:
 	var s:Dictionary=unit.special.get(KEY,{})
-	if s.has("bulkhead_shield"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+7,0,TAU,28,Color.SKY_BLUE,2,true)
 	if int(s.get("armor_credit",0))>0:
 		for i in P.count("mechanic/armor_v2","credits"):unit.draw_circle(Vector2(-7+i*7,-unit.radius-8-unit._visual_lift()),2,Color.GOLD if i<int(s.armor_credit) else Color.DIM_GRAY)
 	if s.get("armor_ready",false):

@@ -1,0 +1,2846 @@
+{
+ "NEWURBAN": {
+  "sheets": {
+   "YAGRND": "theaters/newurban/YAGRND",
+   "YAGGUN": "theaters/newurban/YAGGUN",
+   "YABRCK": "theaters/newurban/YABRCK",
+   "YAPOWR": "theaters/newurban/YAPOWR",
+   "YAWEAP": "theaters/newurban/YAWEAP",
+   "YACNST": "theaters/newurban/YACNST",
+   "NATBNK": "theaters/newurban/NATBNK",
+   "NAPSIS": "theaters/newurban/NAPSIS",
+   "YAGRNDMK": "theaters/newurban/YAGRNDMK",
+   "YAGRND_A": "theaters/newurban/YAGRND_A",
+   "YAGRND_C": "theaters/newurban/YAGRND_C",
+   "YAGRND_B": "theaters/newurban/YAGRND_B",
+   "YAGGUNMK": "theaters/newurban/YAGGUNMK",
+   "YABRCKMK": "theaters/newurban/YABRCKMK",
+   "YABRCK_A": "theaters/newurban/YABRCK_A",
+   "YAPOWRMK": "theaters/newurban/YAPOWRMK",
+   "YAPOWR_C": "theaters/newurban/YAPOWR_C",
+   "YAPOWR_A": "theaters/newurban/YAPOWR_A",
+   "YAPOWR_B": "theaters/newurban/YAPOWR_B",
+   "YAWEAPMK": "theaters/newurban/YAWEAPMK",
+   "YAWEAP_1": "theaters/newurban/YAWEAP_1",
+   "YAWEAP_4": "theaters/newurban/YAWEAP_4",
+   "YAWEAP_A": "theaters/newurban/YAWEAP_A",
+   "YAWEAP_AD": "theaters/newurban/YAWEAP_AD",
+   "YAWEAP_2": "theaters/newurban/YAWEAP_2",
+   "YAWEAP_3": "theaters/newurban/YAWEAP_3",
+   "YACNSTMK": "theaters/newurban/YACNSTMK",
+   "YACNST_C": "theaters/newurban/YACNST_C",
+   "YACNST_A": "theaters/newurban/YACNST_A",
+   "YACNST_B": "theaters/newurban/YACNST_B",
+   "NATBNKMK": "theaters/newurban/NATBNKMK",
+   "NATBNKBB": "theaters/newurban/NATBNKBB",
+   "NATBNK_A": "theaters/newurban/NATBNK_A",
+   "NATBNK_B": "theaters/newurban/NATBNK_B",
+   "NAPSISMK": "theaters/newurban/NAPSISMK",
+   "NAPSIS_A": "theaters/newurban/NAPSIS_A",
+   "YAREFN": "theaters/newurban/YAREFN",
+   "YAREFNMK": "theaters/newurban/YAREFNMK",
+   "YAREFN_A": "theaters/newurban/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 8,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 4,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 2,
+      "frames": 4,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ },
+ "SNOW": {
+  "sheets": {
+   "YAGRND": "theaters/snow/YAGRND",
+   "YAGGUN": "theaters/snow/YAGGUN",
+   "YABRCK": "theaters/snow/YABRCK",
+   "YAPOWR": "theaters/snow/YAPOWR",
+   "YAWEAP": "theaters/snow/YAWEAP",
+   "YACNST": "theaters/snow/YACNST",
+   "NATBNK": "theaters/snow/NATBNK",
+   "NAPSIS": "theaters/snow/NAPSIS",
+   "YAGRNDMK": "theaters/snow/YAGRNDMK",
+   "YAGRND_A": "theaters/snow/YAGRND_A",
+   "YAGRND_C": "theaters/snow/YAGRND_C",
+   "YAGRND_B": "theaters/snow/YAGRND_B",
+   "YAGGUNMK": "theaters/snow/YAGGUNMK",
+   "YABRCKMK": "theaters/snow/YABRCKMK",
+   "YABRCK_A": "theaters/snow/YABRCK_A",
+   "YAPOWRMK": "theaters/snow/YAPOWRMK",
+   "YAPOWR_C": "theaters/snow/YAPOWR_C",
+   "YAPOWR_A": "theaters/snow/YAPOWR_A",
+   "YAPOWR_B": "theaters/snow/YAPOWR_B",
+   "YAWEAPMK": "theaters/snow/YAWEAPMK",
+   "YAWEAP_1": "theaters/snow/YAWEAP_1",
+   "YAWEAP_4": "theaters/snow/YAWEAP_4",
+   "YAWEAP_A": "theaters/snow/YAWEAP_A",
+   "YAWEAP_AD": "theaters/snow/YAWEAP_AD",
+   "YAWEAP_2": "theaters/snow/YAWEAP_2",
+   "YAWEAP_3": "theaters/snow/YAWEAP_3",
+   "YACNSTMK": "theaters/snow/YACNSTMK",
+   "YACNST_C": "theaters/snow/YACNST_C",
+   "YACNST_A": "theaters/snow/YACNST_A",
+   "YACNST_B": "theaters/snow/YACNST_B",
+   "NATBNKMK": "theaters/snow/NATBNKMK",
+   "NATBNKBB": "theaters/snow/NATBNKBB",
+   "NATBNK_A": "theaters/snow/NATBNK_A",
+   "NATBNK_B": "theaters/snow/NATBNK_B",
+   "NAPSISMK": "theaters/snow/NAPSISMK",
+   "NAPSIS_A": "theaters/snow/NAPSIS_A",
+   "YAREFN": "theaters/snow/YAREFN",
+   "YAREFNMK": "theaters/snow/YAREFNMK",
+   "YAREFN_A": "theaters/snow/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ },
+ "TEMPERATE": {
+  "sheets": {
+   "YAGRND": "theaters/newurban/YAGRND",
+   "YAGGUN": "theaters/newurban/YAGGUN",
+   "YABRCK": "theaters/newurban/YABRCK",
+   "YAPOWR": "theaters/newurban/YAPOWR",
+   "YAWEAP": "theaters/newurban/YAWEAP",
+   "YACNST": "theaters/newurban/YACNST",
+   "NATBNK": "theaters/newurban/NATBNK",
+   "NAPSIS": "theaters/newurban/NAPSIS",
+   "YAGRNDMK": "theaters/newurban/YAGRNDMK",
+   "YAGRND_A": "theaters/newurban/YAGRND_A",
+   "YAGRND_C": "theaters/newurban/YAGRND_C",
+   "YAGRND_B": "theaters/newurban/YAGRND_B",
+   "YAGGUNMK": "theaters/newurban/YAGGUNMK",
+   "YABRCKMK": "theaters/newurban/YABRCKMK",
+   "YABRCK_A": "theaters/newurban/YABRCK_A",
+   "YAPOWRMK": "theaters/newurban/YAPOWRMK",
+   "YAPOWR_C": "theaters/newurban/YAPOWR_C",
+   "YAPOWR_A": "theaters/newurban/YAPOWR_A",
+   "YAPOWR_B": "theaters/newurban/YAPOWR_B",
+   "YAWEAPMK": "theaters/newurban/YAWEAPMK",
+   "YAWEAP_1": "theaters/newurban/YAWEAP_1",
+   "YAWEAP_4": "theaters/newurban/YAWEAP_4",
+   "YAWEAP_A": "theaters/newurban/YAWEAP_A",
+   "YAWEAP_AD": "theaters/newurban/YAWEAP_AD",
+   "YAWEAP_2": "theaters/newurban/YAWEAP_2",
+   "YAWEAP_3": "theaters/newurban/YAWEAP_3",
+   "YACNSTMK": "theaters/newurban/YACNSTMK",
+   "YACNST_C": "theaters/newurban/YACNST_C",
+   "YACNST_A": "theaters/newurban/YACNST_A",
+   "YACNST_B": "theaters/newurban/YACNST_B",
+   "NATBNKMK": "theaters/temperate/NATBNKMK",
+   "NATBNKBB": "theaters/newurban/NATBNKBB",
+   "NATBNK_A": "theaters/newurban/NATBNK_A",
+   "NATBNK_B": "theaters/newurban/NATBNK_B",
+   "NAPSISMK": "theaters/temperate/NAPSISMK",
+   "NAPSIS_A": "theaters/newurban/NAPSIS_A",
+   "YAREFN": "theaters/newurban/YAREFN",
+   "YAREFNMK": "theaters/newurban/YAREFNMK",
+   "YAREFN_A": "theaters/newurban/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 8,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 4,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 2,
+      "frames": 4,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ },
+ "URBAN": {
+  "sheets": {
+   "YAGRND": "theaters/newurban/YAGRND",
+   "YAGGUN": "theaters/newurban/YAGGUN",
+   "YABRCK": "theaters/newurban/YABRCK",
+   "YAPOWR": "theaters/newurban/YAPOWR",
+   "YAWEAP": "theaters/newurban/YAWEAP",
+   "YACNST": "theaters/newurban/YACNST",
+   "NATBNK": "theaters/newurban/NATBNK",
+   "NAPSIS": "theaters/newurban/NAPSIS",
+   "YAGRNDMK": "theaters/newurban/YAGRNDMK",
+   "YAGRND_A": "theaters/newurban/YAGRND_A",
+   "YAGRND_C": "theaters/newurban/YAGRND_C",
+   "YAGRND_B": "theaters/newurban/YAGRND_B",
+   "YAGGUNMK": "theaters/newurban/YAGGUNMK",
+   "YABRCKMK": "theaters/newurban/YABRCKMK",
+   "YABRCK_A": "theaters/newurban/YABRCK_A",
+   "YAPOWRMK": "theaters/newurban/YAPOWRMK",
+   "YAPOWR_C": "theaters/newurban/YAPOWR_C",
+   "YAPOWR_A": "theaters/newurban/YAPOWR_A",
+   "YAPOWR_B": "theaters/newurban/YAPOWR_B",
+   "YAWEAPMK": "theaters/newurban/YAWEAPMK",
+   "YAWEAP_1": "theaters/newurban/YAWEAP_1",
+   "YAWEAP_4": "theaters/newurban/YAWEAP_4",
+   "YAWEAP_A": "theaters/newurban/YAWEAP_A",
+   "YAWEAP_AD": "theaters/newurban/YAWEAP_AD",
+   "YAWEAP_2": "theaters/newurban/YAWEAP_2",
+   "YAWEAP_3": "theaters/newurban/YAWEAP_3",
+   "YACNSTMK": "theaters/newurban/YACNSTMK",
+   "YACNST_C": "theaters/newurban/YACNST_C",
+   "YACNST_A": "theaters/newurban/YACNST_A",
+   "YACNST_B": "theaters/newurban/YACNST_B",
+   "NATBNKMK": "theaters/temperate/NATBNKMK",
+   "NATBNKBB": "theaters/newurban/NATBNKBB",
+   "NATBNK_A": "theaters/newurban/NATBNK_A",
+   "NATBNK_B": "theaters/newurban/NATBNK_B",
+   "NAPSISMK": "theaters/newurban/NAPSISMK",
+   "NAPSIS_A": "theaters/newurban/NAPSIS_A",
+   "YAREFN": "theaters/newurban/YAREFN",
+   "YAREFNMK": "theaters/newurban/YAREFNMK",
+   "YAREFN_A": "theaters/newurban/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 8,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 4,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 2,
+      "frames": 4,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ },
+ "DESERT": {
+  "sheets": {
+   "YAGRND": "theaters/newurban/YAGRND",
+   "YAGGUN": "theaters/newurban/YAGGUN",
+   "YABRCK": "theaters/newurban/YABRCK",
+   "YAPOWR": "theaters/newurban/YAPOWR",
+   "YAWEAP": "theaters/newurban/YAWEAP",
+   "YACNST": "theaters/newurban/YACNST",
+   "NATBNK": "theaters/newurban/NATBNK",
+   "NAPSIS": "theaters/newurban/NAPSIS",
+   "YAGRNDMK": "theaters/newurban/YAGRNDMK",
+   "YAGRND_A": "theaters/newurban/YAGRND_A",
+   "YAGRND_C": "theaters/newurban/YAGRND_C",
+   "YAGRND_B": "theaters/newurban/YAGRND_B",
+   "YAGGUNMK": "theaters/newurban/YAGGUNMK",
+   "YABRCKMK": "theaters/newurban/YABRCKMK",
+   "YABRCK_A": "theaters/newurban/YABRCK_A",
+   "YAPOWRMK": "theaters/newurban/YAPOWRMK",
+   "YAPOWR_C": "theaters/newurban/YAPOWR_C",
+   "YAPOWR_A": "theaters/newurban/YAPOWR_A",
+   "YAPOWR_B": "theaters/newurban/YAPOWR_B",
+   "YAWEAPMK": "theaters/newurban/YAWEAPMK",
+   "YAWEAP_1": "theaters/newurban/YAWEAP_1",
+   "YAWEAP_4": "theaters/newurban/YAWEAP_4",
+   "YAWEAP_A": "theaters/newurban/YAWEAP_A",
+   "YAWEAP_AD": "theaters/newurban/YAWEAP_AD",
+   "YAWEAP_2": "theaters/newurban/YAWEAP_2",
+   "YAWEAP_3": "theaters/newurban/YAWEAP_3",
+   "YACNSTMK": "theaters/newurban/YACNSTMK",
+   "YACNST_C": "theaters/newurban/YACNST_C",
+   "YACNST_A": "theaters/newurban/YACNST_A",
+   "YACNST_B": "theaters/newurban/YACNST_B",
+   "NATBNKMK": "theaters/newurban/NATBNKMK",
+   "NATBNKBB": "theaters/newurban/NATBNKBB",
+   "NATBNK_A": "theaters/newurban/NATBNK_A",
+   "NATBNK_B": "theaters/newurban/NATBNK_B",
+   "NAPSISMK": "theaters/newurban/NAPSISMK",
+   "NAPSIS_A": "theaters/newurban/NAPSIS_A",
+   "YAREFN": "theaters/newurban/YAREFN",
+   "YAREFNMK": "theaters/newurban/YAREFNMK",
+   "YAREFN_A": "theaters/newurban/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 8,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 4,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 2,
+      "frames": 4,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ },
+ "LUNAR": {
+  "sheets": {
+   "YAGRND": "theaters/newurban/YAGRND",
+   "YAGGUN": "theaters/newurban/YAGGUN",
+   "YABRCK": "theaters/newurban/YABRCK",
+   "YAPOWR": "theaters/newurban/YAPOWR",
+   "YAWEAP": "theaters/newurban/YAWEAP",
+   "YACNST": "theaters/newurban/YACNST",
+   "NATBNK": "theaters/newurban/NATBNK",
+   "NAPSIS": "theaters/newurban/NAPSIS",
+   "YAGRNDMK": "theaters/newurban/YAGRNDMK",
+   "YAGRND_A": "theaters/newurban/YAGRND_A",
+   "YAGRND_C": "theaters/newurban/YAGRND_C",
+   "YAGRND_B": "theaters/newurban/YAGRND_B",
+   "YAGGUNMK": "theaters/newurban/YAGGUNMK",
+   "YABRCKMK": "theaters/newurban/YABRCKMK",
+   "YABRCK_A": "theaters/newurban/YABRCK_A",
+   "YAPOWRMK": "theaters/newurban/YAPOWRMK",
+   "YAPOWR_C": "theaters/newurban/YAPOWR_C",
+   "YAPOWR_A": "theaters/newurban/YAPOWR_A",
+   "YAPOWR_B": "theaters/newurban/YAPOWR_B",
+   "YAWEAPMK": "theaters/newurban/YAWEAPMK",
+   "YAWEAP_1": "theaters/newurban/YAWEAP_1",
+   "YAWEAP_4": "theaters/newurban/YAWEAP_4",
+   "YAWEAP_A": "theaters/newurban/YAWEAP_A",
+   "YAWEAP_AD": "theaters/newurban/YAWEAP_AD",
+   "YAWEAP_2": "theaters/newurban/YAWEAP_2",
+   "YAWEAP_3": "theaters/newurban/YAWEAP_3",
+   "YACNSTMK": "theaters/newurban/YACNSTMK",
+   "YACNST_C": "theaters/newurban/YACNST_C",
+   "YACNST_A": "theaters/newurban/YACNST_A",
+   "YACNST_B": "theaters/newurban/YACNST_B",
+   "NATBNKMK": "theaters/newurban/NATBNKMK",
+   "NATBNKBB": "theaters/newurban/NATBNKBB",
+   "NATBNK_A": "theaters/newurban/NATBNK_A",
+   "NATBNK_B": "theaters/newurban/NATBNK_B",
+   "NAPSISMK": "theaters/newurban/NAPSISMK",
+   "NAPSIS_A": "theaters/newurban/NAPSIS_A",
+   "YAREFN": "theaters/newurban/YAREFN",
+   "YAREFNMK": "theaters/newurban/YAREFNMK",
+   "YAREFN_A": "theaters/newurban/YAREFN_A"
+  },
+  "layers": {
+   "YAGRND": [
+    {
+     "kind": "idleanim",
+     "image": "YAGRND_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 10,
+     "frames": 11,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_A",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 10,
+      "frames": 11,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanimtwo",
+     "image": "YAGRND_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 20,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 20,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 49,
+      "loopEnd": 50,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanim",
+     "image": "YAGRND_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 47,
+     "frames": 96,
+     "rate": 400,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YAGRND_B",
+      "shadow": true,
+      "loopStart": 48,
+      "loopEnd": 95,
+      "frames": 96,
+      "rate": 400,
+      "loopCount": 1
+     }
+    }
+   ],
+   "YABRCK": [
+    {
+     "kind": "activeanim",
+     "image": "YABRCK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 150,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YABRCK_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 150,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAPOWR": [
+    {
+     "kind": "activeanim",
+     "image": "YAPOWR_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_A",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanimtwo",
+     "image": "YAPOWR_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 16,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_B",
+      "shadow": true,
+      "loopStart": 8,
+      "loopEnd": 15,
+      "frames": 16,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "idleanim",
+     "image": "YAPOWR_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 4,
+     "frames": 10,
+     "rate": 175,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAPOWR_C",
+      "shadow": true,
+      "loopStart": 5,
+      "loopEnd": 9,
+      "frames": 10,
+      "rate": 175,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAWEAP": [
+    {
+     "kind": "underdooranim",
+     "image": "YAWEAP_1",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underdooranim",
+      "image": "YAWEAP_1",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "underroofdooranim",
+     "image": "YAWEAP_4",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "underroofdooranim",
+      "image": "YAWEAP_4",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YAWEAP_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 7,
+     "frames": 8,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YAWEAP_AD",
+      "shadow": true,
+      "loopStart": 0,
+      "loopEnd": 7,
+      "frames": 8,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "deployinganim",
+     "image": "YAWEAP_2",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "deployinganim",
+      "image": "YAWEAP_2",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "roofdeployinganim",
+     "image": "YAWEAP_3",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 2,
+     "rate": 400,
+     "loopCount": -1,
+     "dmg": {
+      "kind": "roofdeployinganim",
+      "image": "YAWEAP_3",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 1,
+      "frames": 2,
+      "rate": 400,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YACNST": [
+    {
+     "kind": "idleanim",
+     "image": "YACNST_C",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 0,
+     "frames": 4,
+     "rate": 300,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_C",
+      "shadow": true,
+      "loopStart": 1,
+      "loopEnd": 2,
+      "frames": 4,
+      "rate": 300,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "activeanim",
+     "image": "YACNST_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 2,
+     "frames": 6,
+     "rate": 200,
+     "loopCount": -1,
+     "dmg": {
+      "image": "YACNST_A",
+      "shadow": true,
+      "loopStart": 3,
+      "loopEnd": 5,
+      "frames": 6,
+      "rate": 200,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "productionanim",
+     "image": "YACNST_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 17,
+     "frames": 36,
+     "rate": 200,
+     "loopCount": 1,
+     "dmg": {
+      "image": "YACNST_B",
+      "shadow": true,
+      "loopStart": 18,
+      "loopEnd": 35,
+      "frames": 36,
+      "rate": 200,
+      "loopCount": 1
+     }
+    }
+   ],
+   "NATBNK": [
+    {
+     "kind": "specialanim",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimtwo",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 220,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 220,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimthree",
+     "image": "NATBNK_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_A",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    },
+    {
+     "kind": "specialanimfour",
+     "image": "NATBNK_B",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 9,
+     "frames": 20,
+     "rate": 440,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NATBNK_B",
+      "shadow": true,
+      "loopStart": 10,
+      "loopEnd": 19,
+      "frames": 20,
+      "rate": 440,
+      "loopCount": -1
+     }
+    }
+   ],
+   "NAPSIS": [
+    {
+     "kind": "activeanim",
+     "image": "NAPSIS_A",
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 39,
+     "frames": 80,
+     "rate": 350,
+     "loopCount": -1,
+     "dmg": {
+      "image": "NAPSIS_A",
+      "shadow": true,
+      "loopStart": 40,
+      "loopEnd": 79,
+      "frames": 80,
+      "rate": 200,
+      "loopCount": -1
+     }
+    }
+   ],
+   "YAREFN": [
+    {
+     "kind": "idleanim",
+     "image": "YAREFN_A",
+     "frames": 2,
+     "shadow": true,
+     "loopStart": 0,
+     "loopEnd": 1,
+     "rate": 900,
+     "loopCount": -1
+    }
+   ]
+  }
+ }
+}

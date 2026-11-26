@@ -822,8 +822,6 @@ func check_yr_talents() -> void:
 	tank.hp=tank.max_hp/2
 	var old_hp:float=tank.hp
 	check(UnitSkillLayout.info(tank,2).id==Talents.REVERSE,"grizzly E granted")
-	check(Talents.start_reverse(tank,origin+Vector2(90,0)),"accepts forward position for automatic pivot")
-	Talents.end_reverse(tank)
 	world.select_unit(tank,false)
 	scene.hud._cast_ability(2)
 	check(world.command_mode==Talents.REVERSE,"E opens reverse aim")
@@ -845,8 +843,7 @@ func check_yr_talents() -> void:
 		runner.order_stop()
 		runner._physics_process(0.5)
 		check(is_equal_approx(runner.hp,runner.max_hp*0.515),"stationary physics tick continues healing")
-		check(Talents.start_reverse(runner,runner.position-Vector2(5,0)),"can reverse again while heal active")
-		Talents.reverse_tick(runner,0.2)
+		check(not Talents.start_reverse(runner,runner.position-Vector2(5,0)),"cooldown rejects repeat order while healing")
 		check(is_equal_approx(runner.special.reverse_heal_left,1.5+tier),"new order cannot refresh heal")
 		Talents.tick_reverse_heal(runner,10.0)
 		check(not runner.special.has("reverse_heal_left") and is_equal_approx(runner.hp,runner.max_hp*(0.5+0.01*(3+tier))),"rank caps total healing including last partial tick")

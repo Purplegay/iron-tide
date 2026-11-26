@@ -77,7 +77,10 @@ func load_tracks() -> void:
 	var value = JSON.parse_string(FileAccess.get_file_as_string("res://data/music.json"))
 	if not value is Dictionary: return
 	for item in value.get("tracks", []):
-		if not item is Dictionary or item.get("faction", "allied") not in [faction, "shared"]: continue
+		if not item is Dictionary: continue
+		var track_faction: String = item.get("faction", "allied")
+		var yuri_win: bool = faction == "yuri" and track_faction == "japan" and item.get("stage") == "match_win"
+		if track_faction not in [faction, "shared"] and not yuri_win: continue
 		if _expected_title.is_empty(): _expected_title = str(item.get("title", ""))
 		if ResourceLoader.exists(str(item.get("file", ""))): tracks.append(item)
 
@@ -184,6 +187,9 @@ func _apply_stage(next: String) -> void:
 
 func _desired_index() -> int:
 	var wanted := stage
+	if _results and wanted == "victory":
+		for index in tracks.size():
+			if tracks[index].stage == "match_win": return index
 	if wanted == "victory" and not combat_id.is_empty():
 		for index in tracks.size():
 			if tracks[index].get("combat_id") == combat_id and tracks[index].stage == wanted:

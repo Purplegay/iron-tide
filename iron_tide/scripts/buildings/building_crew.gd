@@ -10,14 +10,23 @@ class ExitProbe extends RefCounted:
 		return not world.in_water_world(point)
 
 static func faction(building) -> String:
-	var country := str(building.battle._countries.get(building.side, "Americans"))
-	if country == "YuriCountry": return "third"
-	if country in ["Russians", "Confederation", "Africans", "Arabs"]: return "soviet"
-	return "allied"
+	var captured := bool(building.special.get("has_been_captured", false))
+	var country := str(building.battle._countries.get(building.side, ""))
+	# Campaign houses share the enemy side, but each site keeps its original house.
+	if not captured and building.special.has("hollywood_house"):
+		country = str(building.special.hollywood_house)
+	if country in ["YuriCountry", "Yuri2", "Yuri3", "Yuri4"]:
+		return "third"
+	for entry in GameData.ra2_countries:
+		if entry.id == country and entry.side in ["allied", "soviet"]:
+			return str(entry.side)
+	if not captured:
+		return str({"yuri":"third", "allied":"allied", "soviet":"soviet"}.get(building.data.get("faction", ""), ""))
+	return ""
 
 static func count(building) -> int:
 	var row := Rules.type_data(building.building_id)
-	if building.under_construction or building.side not in ["ally", "enemy"] or not Rules.flag(row, "crewed") or building.special.get("no_crew", false): return 0
+	if building.under_construction or not BattleRequest.is_house(building.side) or not Rules.flag(row, "crewed") or building.special.get("no_crew", false): return 0
 	var divisor := int(Rules.data().general.get(faction(building) + "survivordivisor", 0))
 	if building.special.get("has_been_captured", false): divisor *= 2
 	if divisor <= 0: return 0

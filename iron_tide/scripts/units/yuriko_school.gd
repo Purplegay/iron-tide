@@ -66,6 +66,11 @@ static func pages_open() -> int:
 static func met() -> bool:
 	return pages_open()>0 or MetaProgress.yuriko_school.get("gm_open",false)
 
+const RETURN_HINT := "找到日常日记或破碎残章，百合子就会加入本轮远征，当场可以召唤。"
+
+static func recruited_before() -> bool:
+	return MetaProgress.yuriko_school.get("recruited_before",false) or pages_open() >= 5
+
 static func recruit_ready() -> bool:
 	return MetaProgress.yuriko_school.get("read",{}).has("again") or contact_ready()
 
@@ -100,13 +105,54 @@ static func balance() -> int:
 		if talent.id in state.get("learned",[]):earned-=int(talent.cost)
 	return earned
 
+const WEDDING_CG_PRICE:=100000
+
+static func owns_wedding_cg() -> bool:
+	return MetaProgress.yuriko_school.get("cg_album",{}).get("same_stop",false)
+
+static func buy_wedding_cg() -> String:
+	if owns_wedding_cg():return ""
+	if not met():return "请先与百合子相遇。"
+	if not journal_head_unlocked():return WEDDING_HEAD_REQUIREMENT
+	var funds:=MetaProgress.balance("diamonds")
+	if funds<WEDDING_CG_PRICE:return "钻石不足。"
+	var next:=MetaProgress.yuriko_school.duplicate(true)
+	next.get_or_add("cg_album",{})["same_stop"]=true
+	MetaProgress.currency.diamonds=funds-WEDDING_CG_PRICE
+	if not commit(next):
+		MetaProgress.currency.diamonds=funds
+		return "收藏未能保存，请重试。"
+	Events.meta_changed.emit()
+	return ""
+
+const WEDDING_OUTFIT:=3
+const WEDDING_HEAD_REQUIREMENT:="请先解锁手记头型：好感达到 20 级，并读完第五章《靠窗第三排》。"
 const OUTFIT_CHAPTERS:=["","desk","letter"]
 
+const JOURNAL_HEAD_AFFINITY := 20
+const JOURNAL_HEAD_CHAPTER := "desk"
+
+static func journal_head_unlocked() -> bool:
+	return affinity_level() >= JOURNAL_HEAD_AFFINITY and MetaProgress.yuriko_school.get("read",{}).has(JOURNAL_HEAD_CHAPTER)
+
+static func journal_head_equipped() -> bool:
+	return MetaProgress.yuriko_school.get("journal_head",false) and journal_head_unlocked()
+
+static func wear_journal_head(equip:bool) -> bool:
+	if equip and not journal_head_unlocked():return false
+	var next:=MetaProgress.yuriko_school.duplicate(true)
+	next.journal_head=equip
+	return commit(next)
+
 static func outfit_unlocked(index:int) -> bool:
+	if index==WEDDING_OUTFIT:return owns_wedding_cg() and journal_head_unlocked()
 	if index<0 or index>=OUTFIT_CHAPTERS.size():return false
 	return index==0 or MetaProgress.yuriko_school.get("gm_open",false) or MetaProgress.yuriko_school.get("read",{}).has(OUTFIT_CHAPTERS[index])
 
 static func outfit_label(index:int) -> String:
+	if index==WEDDING_OUTFIT:
+		if not journal_head_unlocked():return "需先解锁手记头型"
+		return "已收藏 · 手记头型专用" if owns_wedding_cg() else "收藏 CG《同一站下车》解锁"
 	if outfit_unlocked(index):return "免费"
 	return ["","读完第五章《靠窗第三排》解锁","读完第八章《放学以后也能找到我》解锁"][index]
 

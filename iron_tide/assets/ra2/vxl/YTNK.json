@@ -1,0 +1,18 @@
+{
+ "id": "YTNK",
+ "image": "YTNK",
+ "source": "ra2md.mix > localmd.mix > 0xc774a88c",
+ "frameW": 84,
+ "frameH": 54,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 1,
+ "detail_scale": 2,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "shadow_projection": "ground-plane-v2",
+ "palette_lit": true,
+ "vxl": "YTNK.VXL",
+ "turret": "YTNK_turret",
+ "split_shadow": true
+}

@@ -11,17 +11,27 @@ var _content_hash := ""
 var _field_types: Dictionary = {}
 var _pre_auto_harvest_hash := ""
 
+# Preserve the predecessor byte order and every unrelated catalog definition.
+func pre_studio_catalog(current:Dictionary) -> Dictionary:
+	var previous:=current.duplicate()
+	for id in MetaProgress.Academy.Stars.IDS:previous.erase(id)
+	previous.erase(MetaProgress.Academy.Stars.STUDIO)
+	return previous
+
+func pre_studio_hash(fields:Dictionary) -> String:
+	return digest(var_to_bytes([fields,pre_studio_catalog(GameData.unit_index),pre_studio_catalog(GameData.building_index),GameData.ra2_general,GameData.allied_capabilities]))
+
 # Exclude only the additive native Soviet pack from historical fingerprints.
 func pre_soviet_catalog(current: Dictionary) -> Dictionary:
-	var previous := current.duplicate()
+	var previous := pre_studio_catalog(current)
 	for entry in GameData.raw_docs.get("yr_soviet.json", {}).get("units" if current.has("CMIN") else "buildings", []):
 		previous.erase(entry.id)
 	return previous
 
 # v0.7's original factories only listed the first Soviet production batch.
 func soviet_opening_hash(reinforcements := false, base_defenses := false, advanced := false, air := false, navy := false) -> String:
-	var units := GameData.unit_index.duplicate()
-	var buildings := GameData.building_index.duplicate()
+	var units := pre_studio_catalog(GameData.unit_index)
+	var buildings := pre_studio_catalog(GameData.building_index)
 	for bid in ["NAHAND","NAWEAP","NAYARD"]:
 		buildings[bid] = buildings[bid].duplicate(true)
 	for id in ["IVAN","CIVAN","TERROR","DESO","BORIS","DTRUCK","TTNK","SAPC","SQD","DRED","BPLN","DMISL","SPYP"]:
@@ -90,11 +100,12 @@ func content_hash() -> String:
 		_content_hash = digest(var_to_bytes([Schema.FIELDS, GameData.unit_index, GameData.building_index, GameData.ra2_general, GameData.allied_capabilities]))
 	return _content_hash
 
-func pre_airport_repair_hash() -> String:
+func pre_airport_repair_hash(before_studio:=false) -> String:
 	# Only the additive repair timer may differ; retain every roster/rule check.
 	var fields := Schema.FIELDS.duplicate(true)
 	fields.logistics.erase("airport_repair_elapsed")
-	return digest(var_to_bytes([fields, GameData.unit_index, GameData.building_index, GameData.ra2_general, GameData.allied_capabilities]))
+	if before_studio:return pre_studio_hash(fields)
+	return digest(var_to_bytes([fields,GameData.unit_index,GameData.building_index,GameData.ra2_general,GameData.allied_capabilities]))
 
 func pre_whole_load_hash() -> String:
 	# Exact predecessor: only CMIN's authored unload timer changed from 4 to 1.
@@ -220,8 +231,10 @@ func read_path(path: String) -> Dictionary:
 	if envelope.get("version") != VERSION: return fail("存档版本或规则数据不兼容")
 	var legacy := false
 	var pre_allied := false
-	var pre_airport: bool = envelope.get("content") == pre_airport_repair_hash()
-	if envelope.get("content") != content_hash() and not pre_airport:
+	var fingerprint= envelope.get("content")
+	var current_schema:bool=fingerprint==content_hash() or fingerprint==pre_studio_hash(Schema.FIELDS)
+	var pre_airport:bool=not current_schema and (fingerprint==pre_airport_repair_hash() or fingerprint==pre_airport_repair_hash(true))
+	if not current_schema and not pre_airport:
 		var before_fortress := pre_fortress_hashes()
 		legacy = envelope.get("content") in [pre_auto_harvest_hash(), before_fortress.harvest]
 		pre_allied = envelope.get("content") in [pre_allied_hash(), before_fortress.allied] or legacy
@@ -264,6 +277,9 @@ func validate(snapshot) -> String:
 	if context.mode not in [MatchRules.RA2, MatchRules.EXTENDED] or not context.config is Dictionary or not context.combat_context is Dictionary: return "对局模式无效"
 	var native=preload("res://scripts/world/native_maps.gd")
 	var native_id:=str(context.config.get("map_layout",""))
+	if not context.skirmish and context.mission_id == "yr_hollywood": native_id="yr_all02umd"
+	if not context.skirmish and context.mission_id == "yr_head_games": native_id="yr_sov07"
+	if not context.skirmish and context.mission_id=="yr_time_shift":native_id="yr_sov01"
 	var native_sites:Dictionary=native.data(native_id).get("site_types",{}) if native.has(native_id) else {}
 	if context.has("native_map_sha") and (not native.has(native_id) or context.native_map_sha!=FileAccess.get_sha256("res://data/maps/%s.json"%native_id)):
 		return "原版地图导入数据已变化，无法按旧地形恢复"
@@ -311,16 +327,20 @@ func validate(snapshot) -> String:
 			if not record.get("position") is Vector2 or not record.position.is_finite() or not record.get("groups") is Array or not record.get("visible") is bool: return "实体位置无效"
 		if kind in ["unit", "building"]:
 			var id = record.fields.get("unit_id" if kind == "unit" else "building_id")
-			var civilian: bool = kind == "building" and (id in ["CAHSE01", "CABHUT", "CAOILD"] or (context.skirmish and native_sites.has(id)))
+			var civilian: bool = kind == "building" and (id in ["CAHSE01", "CABHUT", "CAOILD"] or ((context.skirmish or context.mission_id in ["yr_hollywood","yr_head_games","yr_time_shift"]) and native_sites.has(id)))
 			# Expedition rescue/escort NPCs are neutral units and must survive checkpoints.
 			var neutral_actor: bool = record.fields.side == "neutral"
 			if record.fields.side not in house_ids and not neutral_actor and not (civilian and record.fields.side == "neutral"): return "单位或阵营不兼容"
-			if not civilian and ((kind == "unit" and GameData.get_unit(str(id)).is_empty()) or (kind == "building" and not GameData.building_index.has(id))): return "单位或阵营不兼容"
+			if not civilian and ((kind == "unit" and GameData.get_unit(str(id)).is_empty() and not (context.mission_id=="yr_time_shift" and preload("res://data/time_shift_assets.json").data.units.has(id))) or (kind == "building" and not GameData.building_index.has(id) and not (context.mission_id=="yr_time_shift" and (preload("res://data/time_shift_assets.json").data.defs.has(id) or GameData.hollywood_yuri.buildings.has(id))) and not ((context.mission_id == "yr_hollywood" and GameData.hollywood_yuri.buildings.has(id) or context.mission_id == "yr_head_games" and GameData.hollywood_yuri.buildings.has(id))))): return "单位或阵营不兼容"
 			if not record.fields.data is Dictionary or not record.fields.data.has("@dict"): return "缺少实体定义"
 		if kind in ["unit", "building", "obstacle"]:
 			if not record.get("collision") is Array or record.collision.size() != 2: return "缺少碰撞状态"
 	var skirmish: bool = context.skirmish == true
-	if ai_count != (1 if skirmish and house_ids.size() == 2 else 0) or fog_count != (1 if skirmish and context.config.get("fog_of_war", false) else 0): return "地图状态不匹配"
+	var hollywood: bool = not skirmish and context.mission_id == "yr_hollywood"
+	var expects_fog: bool = hollywood or context.mission_id in ["yr_head_games","yr_time_shift"] or (skirmish and context.config.get("fog_of_war", false))
+	# Earlier Hollywood snapshots contain neither the fog record nor its sight timers.
+	var legacy_clear_map: bool = fog_count == 0 and (hollywood and not context.has("death_sight") or context.mission_id=="yr_head_games")
+	if ai_count != (1 if skirmish and house_ids.size() == 2 else 0) or (not legacy_clear_map and fog_count != int(expects_fog)): return "地图状态不匹配"
 	for pair in context.rally:
 		if not pair is Array or pair.size() != 2 or not pair[0] is int or pair[0] < 1 or pair[0] >= records.size() or records[pair[0]].kind != "building" or not pair[1] is Vector2: return "集结点引用无效"
 	for pair in context.firing:

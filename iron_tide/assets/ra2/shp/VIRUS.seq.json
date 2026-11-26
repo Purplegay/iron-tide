@@ -1,0 +1,82 @@
+{
+ "seq": {
+  "Ready": {
+   "start": 0,
+   "per": 1,
+   "stride": 1,
+   "facings": 8
+  },
+  "Guard": {
+   "start": 0,
+   "per": 1,
+   "stride": 1,
+   "facings": 8
+  },
+  "Walk": {
+   "start": 8,
+   "per": 6,
+   "stride": 6,
+   "facings": 8
+  },
+  "Idle1": {
+   "start": 56,
+   "per": 15,
+   "stride": 0,
+   "facings": 1
+  },
+  "Idle2": {
+   "start": 71,
+   "per": 15,
+   "stride": 0,
+   "facings": 1
+  },
+  "Die1": {
+   "start": 134,
+   "per": 15,
+   "stride": 0,
+   "facings": 1
+  },
+  "Die2": {
+   "start": 149,
+   "per": 15,
+   "stride": 0,
+   "facings": 1
+  },
+  "Cheer": {
+   "start": 196,
+   "per": 8,
+   "stride": 0,
+   "facings": 1
+  },
+  "FireUp": {
+   "start": 204,
+   "per": 6,
+   "stride": 6,
+   "facings": 8
+  },
+  "Die3": {
+   "start": 0,
+   "per": 1,
+   "stride": 1,
+   "facings": 8
+  },
+  "Die4": {
+   "start": 0,
+   "per": 1,
+   "stride": 1,
+   "facings": 8
+  },
+  "Die5": {
+   "start": 0,
+   "per": 1,
+   "stride": 1,
+   "facings": 8
+  },
+  "Panic": {
+   "start": 8,
+   "per": 6,
+   "stride": 6,
+   "facings": 8
+  }
+ }
+}

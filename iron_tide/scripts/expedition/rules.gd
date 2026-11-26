@@ -154,6 +154,38 @@ static func tick_unit(unit,delta:float,medical:bool) -> void:
 			unit.special.expedition_shield_cooldown=clock(unit)+20.0
 	if specialization=="a" and unit.unit_id=="DESO" and deployed and idle>=3:unit.heal(unit.max_hp*0.005*delta)
 
+static func late_impact(gun,target,tags:Array,now:float) -> float:
+	var buffs:Dictionary=context().buffs
+	var pursuit:=Milestones.stacks("pursuit") if "pursuit" in tags else 0
+	var siege:=Milestones.stacks("siege_team") if "siege_team" in tags else 0
+	var has_late_buff:bool=buffs.has("sight_memory") or buffs.has("pivot_sight") or buffs.has("shield_lens") or buffs.has("rescue_patch") or buffs.has("escort_plate")
+	if pursuit+siege==0 and not has_late_buff:return 0.0
+	var previous:int=gun.special.get("expedition_last_direct_target",0)
+	var current:int=target.get_instance_id()
+	var same:=previous==current
+	var switched:=previous!=0 and not same
+	gun.special.expedition_last_direct_target=current
+	var bonus:=Progress.value("pursuit","hit",pursuit)+Progress.value("siege_team","hit",siege)
+	if float(gun.special.get("expedition_shield",0))>0:bonus+=0.06*rank("shield_lens")
+	if gun.hp<gun.max_hp*0.5 and rank("rescue_patch")>0 and Milestones.ready(gun,"rescue_patch",now,8):gun.heal(gun.max_hp*0.03*rank("rescue_patch"))
+	if switched:
+		bonus+=0.10*rank("pivot_sight")+(0.15 if pursuit>=3 else 0.0)
+		if pursuit>=6:Milestones.shield(gun,"pursuit",now,0.08,6)
+		if pursuit>=9:gun.special.expedition_pursuit_until=now+4
+		if rank("escort_plate")>0:Milestones.shield(gun,"escort_plate",now,0.04*rank("escort_plate"),8)
+	elif same:
+		bonus+=0.05*rank("sight_memory")+(0.10 if siege>=3 else 0.0)
+		if now<float(gun.special.get("expedition_pursuit_until",-1)):
+			bonus+=0.35
+			gun.special.erase("expedition_pursuit_until")
+	if siege>=6:
+		var hits:=1+int(gun.special.get("expedition_siege_hits",0)) if same else 1
+		gun.special.expedition_siege_hits=hits%3
+		if hits==3:
+			gun.heal(gun.max_hp*0.06)
+			if siege>=9 and target is Unit:target.special.expedition_suppressed_until=maxf(now+4,float(target.special.get("expedition_suppressed_until",0)))
+	return bonus
+
 static func impact(target,source,damage:float,attack_type:String) -> float:
 	if not active() or damage<=0:return damage
 	if target.special.get("expedition_protected",false):return 0.0
@@ -166,6 +198,7 @@ static func impact(target,source,damage:float,attack_type:String) -> float:
 	var tags:=Army.tags(gun.unit_id,context())
 	var now:=clock(gun)
 	var bonus:=Milestones.impact(gun,target,tags,now)
+	bonus+=late_impact(gun,target,tags,now)
 	bonus+=RelicEffects.impact(gun,target,tags,now)
 	if "fortify" in tags and float(gun.special.get("expedition_still",0))>=2:bonus+=trait_value("fortify","hit")
 	if ("mobile" in tags and synergy("mobile")>=2) or rank("mobile_magazine")>0:

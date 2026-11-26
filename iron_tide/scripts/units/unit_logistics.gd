@@ -58,7 +58,7 @@ func register_home() -> void:
 func setup(actor) -> void:
 	unit = actor
 	source = GameData.ra2_source_units.get(unit.unit_id, {}).get("extra", {})
-	if unit.unit_id in ["LCRF", "SAPC", "SHAD", "FV", "BFRT", "HTK"]:
+	if unit.unit_id in ["LCRF", "SAPC", "YHVR", "SHAD", "FV", "BFRT", "HTK"]:
 		capacity = int(source.get("Passengers", 0))
 		size_limit = int(source.get("SizeLimit", 0))
 	if unit.unit_id in ["ORCA", "BEAG", "HORNET", "ASW"]:
@@ -262,9 +262,14 @@ func unload_one() -> void:
 		return
 	var passenger = passengers[0]
 	var world = unit._battle_world()
-	for ring in [1.0, 1.6, 2.2]:
+	var ferry: bool = unit.unit_id in ["LCRF", "SAPC"]
+	# Start at the bow and fan out to either side if the shore is obstructed.
+	for ring in ([1.0] if ferry else [1.0, 1.6, 2.2]):
 		for i in 16:
-			var p: Vector2 = unit.position + Vector2.RIGHT.rotated(TAU * i / 16.0) * (unit.radius + passenger.radius + 12.0) * ring
+			var step := ceili(i * 0.5) * (1 if i % 2 else -1)
+			var angle: float = unit.hull_angle + TAU * step / 16.0 if ferry else TAU * i / 16.0
+			var direction := Vector2.from_angle(angle)
+			var p: Vector2 = unit.position + direction * (unit.radius + passenger.radius + (4.0 if ferry else 12.0)) * ring
 			if not landing_clear(world, p, passenger.radius):
 				continue
 			passengers.pop_front()
@@ -272,6 +277,12 @@ func unload_one() -> void:
 			passenger.set_stowed(null)
 			if unit.special.has("convoy"):preload("res://scripts/units/convoy_heroes.gd").unloaded(unit,passenger)
 			passenger.order_stop()
+			if ferry:
+				passenger.reset_physics_interpolation()
+				var clearance: float = passenger.radius * 2.0 + 16.0
+				var goal := p + direction * clearance
+				if not AlliedAbilities.infantry_teleporter(passenger) and landing_clear(world, p.lerp(goal, 0.5), passenger.radius, passenger) and landing_clear(world, goal, passenger.radius, passenger):
+					passenger.order_move(goal)
 			unit._refresh_weapon_derived()
 			AlliedAbilities.refresh_ifv_art(unit)
 			unit._cancel_burst()
@@ -282,7 +293,7 @@ func unload_one() -> void:
 			return
 	# A blocked coast keeps the passenger aboard; never place inside water or a building.
 
-func landing_clear(world, p: Vector2, radius: float) -> bool:
+func landing_clear(world, p: Vector2, radius: float, departing = null) -> bool:
 	if world == null or world.path_service == null:
 		return false
 	for i in 9:
@@ -295,7 +306,7 @@ func landing_clear(world, p: Vector2, radius: float) -> bool:
 	if world is Battle and world.units.size() >= 96:
 		candidates = world.neighborhood.nearby(p, radius + world.neighborhood.max_unit_radius + 3.0)
 	for other in candidates:
-		if is_instance_valid(other) and other is Unit and other.hp > 0.0 and other.embarked_in == null and not other.is_air:
+		if other != departing and is_instance_valid(other) and other is Unit and other.hp > 0.0 and other.embarked_in == null and not other.is_air:
 			if p.distance_squared_to(other.position) < (radius + other.radius + 3.0) ** 2:
 				return false
 	return true

@@ -30,6 +30,9 @@ func exercise_mode(mode: String) -> void:
 	get_window().focus_entered.emit()
 	var cursor = battle.command_cursor
 	var prefix := mode + ": "
+	for atlas_state in ["guard", "no_move", "attack_range", "attack_no_range", "no_deploy", "no_sell", "repair_move", "side_repair", "no_repair", "power", "chrono", "no_action", "beacon"]:
+		check(cursor.textures.has(atlas_state) and not cursor.textures[atlas_state].is_empty(), prefix + "original atlas cursor loaded: " + atlas_state)
+	check(cursor.textures.has("patrol") and cursor.textures.has("reverse_attack") and cursor.textures.has("reverse_cover") and cursor.textures.has("reaper_split"), prefix + "special command cursor aliases loaded")
 	var tank = battle.spawn_unit("MTNK", "ally", Vector2(1600, 1600))
 	var enemy = battle.spawn_unit("MTNK", "enemy", Vector2(1650, 1650))
 	var plane = battle.spawn_unit("ORCA", "enemy", Vector2(1700, 1700))
@@ -159,6 +162,25 @@ func exercise_mode(mode: String) -> void:
 	check(not cursor._owns_pointer, prefix + "offscreen validation does not hide user's desktop cursor")
 	if DisplayServer.get_name()!="headless":
 		await check_superweapon_preview()
+	battle.arm_command("")
+	battle.camera.zoom = Iso.cam_zoom(1.0)
+	var boris = battle.spawn_unit("BORIS", "ally", Vector2(1500, 1550))
+	var lab = battle._place_building("GAPOWR", "enemy", Vector2(1650, 1520), true)
+	lab._buildup_play = -1.0
+	battle.select_unit(boris, false)
+	battle.camera.position = lab.position
+	battle.camera.reset_smoothing()
+	battle.camera.force_update_scroll()
+	battle.fog._reveal("ally", lab.position, 500)
+	battle.fog._sync_mask()
+	await get_tree().process_frame
+	if DisplayServer.get_name() != "headless": await RenderingServer.frame_post_draw
+	await point(stage.get_canvas_transform() * lab.art_center())
+	check(cursor.state == "boris_airstrike", prefix + "Boris designates enemy building with MiG cursor", cursor.state)
+	cursor.refresh(4.0 / 15.0)
+	check(cursor.frame == 1 and cursor.sprite.texture.atlas.resource_path.ends_with("boris_airstrike.png"), prefix + "original airstrike animation advances")
+	await photo(mode + "-boris-airstrike")
+	check(cursor.attack_cursor(enemy) == "attack", prefix + "Boris rifle uses normal attack cursor")
 	screen.free()
 	await get_tree().process_frame
 

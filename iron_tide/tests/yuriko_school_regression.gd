@@ -24,6 +24,13 @@ func click(root:Node,prefix:String) -> bool:
 			return true
 	return false
 
+func navigation_rects(view) -> Dictionary:
+	var rects := {}
+	for item:Button in view.stage.find_children("*","Button",true,false):
+		if item.text in view.VIEW_NAMES or item.text=="CG 集":
+			rects[item.text]=item.get_global_rect()
+	return rects
+
 var observed_speakers:Dictionary={}
 const EXPECTED_CAST:={
 	"小满":["小满","xiaoman"], "陈姨":["陈姨","chen"],
@@ -90,6 +97,24 @@ func check_turns(view) -> void:
 	check(click(view.stage,"向右转") and camera.unproject_position(body.to_global(front)).x>start,"right button follows right drag")
 	check(click(view.stage,"向左转") and is_equal_approx(camera.unproject_position(body.to_global(front)).x,left),"left button reverses right turn")
 
+func check_motion_frame(view) -> void:
+	var selector:OptionButton=view.stage.find_children("*","OptionButton",true,false)[0]
+	var camera:Camera3D=view.model.get_camera_3d()
+	var rig:Skeleton3D=view.model.rig
+	view.adjust_zoom(1.0)
+	for motion in [1,2]:
+		selector.select(motion)
+		selector.item_selected.emit(motion)
+		var inside:=true
+		for step in 120:
+			view.rotate_model(TAU/120)
+			view._process(1.0/30.0)
+			for bone in rig.get_bone_count():
+				var point:=camera.unproject_position(rig.to_global(rig.get_bone_global_pose(bone).origin))
+				inside=inside and Rect2(16,16,992,992).has_point(point)
+		check(inside,"animated joints stay inside frame at closest zoom: %d/%d"%[view.model.outfit,motion])
+	view.adjust_zoom(-0.6)
+
 func check_gift_shop(view) -> void:
 	var bonds=preload("res://scripts/units/yuriko_bonds.gd")
 	var day:=Time.get_date_string_from_system()
@@ -97,8 +122,18 @@ func check_gift_shop(view) -> void:
 	MetaProgress.currency.cores=price-1
 	view.hub(0)
 	var journal_rect:Rect2=view.stage.get_node("HubPortrait").get_global_rect()
-	check(click(view.stage,"私信与礼物"),"open correspondence from journal")
+	var journal_texture:Texture2D=view.stage.get_node("HubPortrait").texture_normal
+	for section:String in ["手记", "私信与礼物"]:
+		check(click(view.stage,section) and click(view.stage,"好感手记"),"open affinity archive via "+section)
+		var archive_portrait:TextureButton=view.stage.get_node_or_null("HubPortrait")
+		check(archive_portrait!=null and archive_portrait.is_visible_in_tree() and journal_texture!=null and archive_portrait.texture_normal==journal_texture and archive_portrait.get_global_rect().is_equal_approx(journal_rect),"affinity archive shows selected portrait via "+section)
+	check(click(view.stage,"私信与礼物"),"open correspondence after archive")
 	check(view.stage.get_node("GiftPortrait").get_global_rect().is_equal_approx(journal_rect),"gift portrait matches journal portrait bounds")
+	var gift_texture:Texture2D=view.stage.get_node("GiftPortrait").texture
+	check(click(view.stage,"回看赠礼回应"),"open gift replies")
+	var reply_portrait:TextureRect=view.stage.get_node_or_null("GiftPortrait")
+	check(reply_portrait!=null and reply_portrait.is_visible_in_tree() and gift_texture!=null and reply_portrait.texture==gift_texture and reply_portrait.get_global_rect().is_equal_approx(journal_rect),"reply page keeps visible equipped gift portrait and bounds")
+	check(click(view.stage,"返回私信与礼物"),"return from gift replies")
 	check(view.buy_buttons.uniform.disabled and not bonds.buy_gift("uniform",day).is_empty(),"insufficient funds block button and purchase")
 	MetaProgress.currency.cores=price+0.5
 	view.refresh_gift_shop()
@@ -150,6 +185,18 @@ func check_gift_shop(view) -> void:
 	for ticket in 100:prices.append(bonds.price_from_roll(ticket))
 	check(prices.filter(func(p):return p<500).size()==5 and prices.filter(func(p):return p>500).size()==95,"daily draw assigns exactly 95 premium outcomes and 5 discount outcomes")
 	check(prices.min()==350 and prices.max()==750 and prices.reduce(func(a,b):return a+b,0)==50000,"daily draw endpoints and exact mean of 500")
+	view.refresh_gift_shop()
+	check(click(view.stage,"免费刷新礼物价格") and MetaProgress.balance("cores")==0,"free reroll at zero balance")
+	check(view.reroll_button.disabled and not bonds.reroll_gifts(day,1).is_empty(),"insufficient funds block paid reroll")
+	MetaProgress.currency.cores=2000.5
+	view.refresh_gift_shop()
+	var expected_balance:=2000.5
+	for fee:int in [10,10,20,20,20,30,30,30,50,50,50,50,50,50,100,100]:
+		expected_balance-=fee
+		check(view.reroll_button.icon!=null and click(view.stage,"刷新礼物价格　%d 战略核心"%fee) and MetaProgress.balance("cores")==expected_balance,"display and charge reroll fee "+str(fee))
+	MetaProgress.load_save()
+	check(bonds.refresh_count(day)==17 and bonds.refresh_count("1999-01-01")==0 and MetaProgress.balance("cores")==expected_balance,"daily reroll count and balance persist")
+	check(not bonds.buy_gift("cola",day,0).is_empty(),"reject old quote after reroll")
 	view.hub(0)
 
 func check_player_name() -> void:
@@ -193,6 +240,137 @@ func check_player_name() -> void:
 	await get_tree().scene_changed
 	check(not get_tree().current_scene.find_child("SettingsButton",true,false).has_node("UpgradeDot"),"saved name clears settings dot")
 
+func check_wedding_cg(view) -> void:
+	var original:=MetaProgress.yuriko_school.duplicate(true)
+	var wallet:=MetaProgress.currency.duplicate(true)
+	var gallery=preload("res://scripts/screens/yuriko_cg.gd")
+	MetaProgress.currency.diamonds=100000
+	for candidate in [{"affinity":19,"read":{"desk":0}},{"affinity":20,"read":{}}]:
+		MetaProgress.yuriko_school.affinity=candidate.affinity
+		MetaProgress.yuriko_school.read=candidate.read
+		view.hub(8)
+		check(not click(view.stage,"收藏整组") and Book.buy_wedding_cg()==Book.WEDDING_HEAD_REQUIREMENT and MetaProgress.balance("diamonds")==100000 and not Book.owns_wedding_cg(),"both head milestones required before gallery purchase")
+	MetaProgress.yuriko_school.read={"desk":0}
+	MetaProgress.yuriko_school.journal_head=false
+	check(Book.journal_head_unlocked() and not Book.wear(Book.WEDDING_OUTFIT),"head alone does not grant wedding outfit")
+	MetaProgress.currency.diamonds=99999
+	view.hub(0)
+	check(click(view.stage,"CG 集"),"gallery opens from journal")
+	var cover:TextureRect=view.stage.get_node_or_null("CGArt")
+	check(cover!=null and cover.texture!=null and cover.texture.get_size()==Vector2(1536,1024),"full-body cover available before purchase")
+	var buy:Button
+	for b:Button in view.stage.find_children("*","Button",true,false):
+		if b.text.begins_with("收藏整组"):buy=b
+	check(buy!=null and buy.disabled and buy.icon!=null and buy.text.contains("100000"),"gallery quotes diamond cost and disables when one short")
+	gallery.show_page(view,1,0,true)
+	check(view.tab==8 and not click(view.stage,"返回剧情") and not Book.buy_wedding_cg().is_empty() and MetaProgress.balance("diamonds")==99999,"full-screen access and purchase guarded")
+	MetaProgress.currency.diamonds=100000
+	var tmp:=ProjectSettings.globalize_path(MetaProgress.SAVE_PATH+".tmp")
+	if DirAccess.make_dir_absolute(tmp)==OK:
+		check(not Book.buy_wedding_cg().is_empty() and not Book.owns_wedding_cg() and MetaProgress.balance("diamonds")==100000,"save failure rolls back both album and wallet")
+		DirAccess.remove_absolute(tmp)
+	else:check(false,"prepare isolated CG save failure")
+	view.hub(8)
+	check(click(view.stage,"收藏整组") and Book.owns_wedding_cg() and MetaProgress.balance("diamonds")==0,"one purchase grants set at exact price")
+	MetaProgress.yuriko_school={}
+	MetaProgress.load_save()
+	check(Book.owns_wedding_cg() and MetaProgress.balance("diamonds")==0 and Book.buy_wedding_cg().is_empty(),"both grants and debit survive reload without repeat payment")
+	check(Book.wear(Book.WEDDING_OUTFIT),"album grants wearable outfit after reload")
+	view.hub(3)
+	check(click(view.stage,"头部外观"),"open head catalog")
+	check(view.model.journal_head and view.model.body.find_child("YurikoUnitHead",true,false)!=null and not click(view.stage,"原版头型"),"wedding forces AI head without altering ordinary outfit preference")
+	var garment:MeshInstance3D=view.model.body.find_child("YurikoBody",true,false)
+	check(garment.mesh.get_surface_count()==3 and garment.get_node(garment.skeleton)==view.model.rig and view.model.rig.get_bone_count()==36,"bridal mesh bound to the moving unit rig")
+	check(Book.wear(0) and not Book.journal_head_equipped(),"returning to ordinary outfit restores preferred head")
+	view.hub(8)
+	click(view.stage,"重温 · 等你看够")
+	var next_rect:=Rect2()
+	for scene:Dictionary in gallery.story.scenes:
+		for i in scene.pages.size():
+			var image:TextureRect=view.stage.get_node_or_null("CGArt")
+			check(image!=null and image.texture!=null and image.texture.resource_path.ends_with(scene.art+".webp") and image.stretch_mode==TextureRect.STRETCH_KEEP_ASPECT_CENTERED,"real illustrated page "+str(scene.art))
+			await get_tree().process_frame
+			await get_tree().process_frame
+			for key:Button in view.stage.find_children("*","Button",true,false):
+				if key.text in ["下一页","下一幕"]:
+					if next_rect.size==Vector2.ZERO:next_rect=key.get_global_rect()
+					check(next_rect.is_equal_approx(key.get_global_rect()),"fixed forward button on every page")
+			var words:bool=false
+			for item:Label in view.stage.find_children("*","Label",true,false):
+				if item.text==scene.pages[i][1]:words=true
+			check(words,"authored POV story is visible")
+			if i==0:
+				check(click(view.stage,"全屏赏图") and view.stage.get_node("CGArt").anchor_right==1 and click(view.stage,"返回剧情"),"full art and return to same page")
+			if i+1<scene.pages.size():check(click(view.stage,"下一页"),"turn CG page")
+			elif scene==gallery.story.scenes.front():check(click(view.stage,"下一幕"),"continue to second CG")
+	check(click(view.stage,"返回 CG 集") and click(view.stage,"重温 · 留一只手") and click(view.stage,"返回 CG 集"),"replay unlocked second scene from collection")
+	MetaProgress.currency=wallet
+	check(view.stage.get_node("CGArt").texture.resource_path.ends_with("tram.webp"),"gallery remembers second illustration")
+	MetaProgress.yuriko_school={}
+	MetaProgress.load_save()
+	view.hub(8)
+	check(view.stage.get_node("CGArt").texture.resource_path.ends_with("tram.webp"),"last illustration survives reload")
+	check(click(view.stage,"重温 · 等你看够") and click(view.stage,"返回 CG 集") and view.stage.get_node("CGArt").texture.resource_path.ends_with("platform.webp"),"revisiting first illustration updates gallery")
+	MetaProgress.currency=wallet
+	check(Book.commit(original),"restore isolated CG fixture")
+	view.hub(3)
+
+func check_head_wardrobe(view) -> void:
+	var previous:=MetaProgress.yuriko_school.duplicate(true)
+	var progress:=previous.duplicate(true)
+	progress.affinity=20
+	progress.pages=8
+	progress.gm_open=true
+	progress.journal_head=true
+	check(Book.commit(progress),"load high-affinity profile without completed chapter")
+	view.hub(3)
+	check(click(view.stage,"头部外观"),"open head catalog")
+	check(not click(view.stage,"手记头型") and not Book.wear_journal_head(true) and not view.model.journal_head,"available pages, GM story access and stale preference cannot unlock head")
+	progress=progress.duplicate(true)
+	progress.erase("gm_open")
+	progress.erase("journal_head")
+	progress.read={"desk":0}
+	progress.affinity=19
+	progress.gifts={"cola":1}
+	progress.given={"cola":1}
+	check(Book.commit(progress),"load completed chapter below threshold")
+	view.hub(3)
+	check(click(view.stage,"头部外观"),"open head catalog")
+	check(not click(view.stage,"手记头型") and view.model.body.scene_file_path.contains("/classic/"),"chapter alone uses retail body")
+	view.present("cola")
+	check(Book.affinity_level()==20 and view.message.text.contains("已解锁手记头型"),"repeat gift unlocks at level 20 after reading chapter five")
+	view.hub(3)
+	check(click(view.stage,"头部外观"),"open head catalog")
+	check(not view.model.journal_head and click(view.stage,"手记头型") and view.model.journal_head,"optional head equips from wardrobe")
+	check(click(view.stage,"衣装　"),"open outfit catalog" )
+	for skin_index in [0,1]:
+		check(click(view.stage,Psi.SKINS[skin_index]) and view.model.body.find_child("YurikoUnitHead",true,false)!=null,"journal head follows outfit")
+	MetaProgress.yuriko_school={}
+	MetaProgress.load_save()
+	check(Book.journal_head_equipped(),"equipped head survives profile reload")
+	view.show_demo()
+	var preview=view.get_child(-1)
+	check(preview.model.body.find_child("YurikoUnitHead",true,false)!=null,"skill demo uses equipped head")
+	preview.hide()
+	view.hub(3)
+	check(click(view.stage,"头部外观"),"open head catalog")
+	check(click(view.stage,"原版头型") and view.model.body.find_child("YurikoUnitHead",true,false)==null and Book.journal_head_unlocked(),"switch to original and keep entitlement")
+	progress=previous.duplicate(true)
+	progress.affinity=20
+	progress.pages=5
+	progress.read={"gate":0,"rice":0,"map":0,"again":0}
+	check(Book.commit(progress),"prepare level 20 before chapter five")
+	var desk:Dictionary=Book.episodes[4]
+	view.hub(0)
+	view.read_episode(desk)
+	check(not Book.journal_head_unlocked(),"opening the chapter leaves the head locked")
+	for step in 80:
+		if Book.journal_head_unlocked():break
+		view.advance(0 if Book.choosing(desk) else -1)
+	check(Book.journal_head_unlocked() and view.message.text.contains("已解锁手记头型") and not Book.journal_head_equipped(),"finishing chapter five unlocks without auto-equipping")
+	check(Book.commit(previous),"restore profile after head boundary checks")
+	view.hub(3)
+
 func run() -> void:
 	# Keep the test driver alive while pressing the same scene-change button as a player.
 	get_tree().current_scene=null
@@ -209,7 +387,17 @@ func run() -> void:
 	await get_tree().scene_changed
 	var view=get_tree().current_scene
 	check(click(view.stage,"日常活动") and view.tab == 1, "open daily activities from journal")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	var tab_rects:=navigation_rects(view)
+	check(tab_rects.size()==7,"all journal navigation buttons present")
+	var exit_before:Rect2=view.stage.get_node("ExitButton").get_global_rect()
 	check(click(view.stage,"场景"),"open scene gallery")
+	await get_tree().process_frame
+	await get_tree().process_frame
+	for key:Button in view.stage.find_children("*","Button",true,false):
+		if tab_rects.has(key.text):check(key.get_global_rect().is_equal_approx(tab_rects[key.text]),"stable gallery tab "+key.text)
+	check(view.photo.get_global_rect().position.x>view.size.x*.5 and view.photo.texture==view.model.get_texture() and view.model.outfit==Book.snapshot().skin,"right-side equipped model preview")
 	var gallery:GridContainer=view.stage.find_child("SceneCards",true,false)
 	check(gallery.get_child_count()==11,"all scene cards visible")
 	var harbor:Button=gallery.get_node("SceneCard1")
@@ -231,8 +419,39 @@ func run() -> void:
 			event.position = center
 			event.pressed = pressed
 			view.get_viewport().push_input(event, true)
-	view.hub(3)
+	check(click(view.stage,"试衣间"),"open wardrobe from daily activities")
+	for section in ["衣装","头部外观","衣装"]:
+		check(click(view.wardrobe_catalog,section),"switch wardrobe section "+section)
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var wardrobe_rects:=navigation_rects(view)
+		for title:String in tab_rects:
+			check(wardrobe_rects.has(title) and wardrobe_rects[title].is_equal_approx(tab_rects[title]),"stable wardrobe tab "+title+" on "+section)
+		var exit_button:Button=view.stage.find_child("ExitButton",true,false)
+		check(exit_button.get_global_rect().is_equal_approx(exit_before),"stable wardrobe exit")
+		var catalog_rect:Rect2=view.wardrobe_catalog.get_global_rect()
+		var viewer_rect:Rect2=view.photo.get_parent().get_global_rect()
+		check(catalog_rect.end.x<=viewer_rect.position.x and not exit_before.intersects(viewer_rect) and view.stage.get_global_rect().encloses(viewer_rect),"wardrobe preview and controls fit beside catalog")
 	check(not click(view.stage,Psi.SKINS[1]) and not Book.wear(2) and view.model.outfit==0,"only starting clothes can be equipped before reading")
+	await check_wedding_cg(view)
+	var motions:OptionButton=view.stage.find_children("*","OptionButton",true,false)[0]
+	motions.item_selected.emit(2)
+	view._process(0.0)
+	var length:float=view.model.duration(view.model.action)
+	view._process(length+.125)
+	check(is_equal_approx(view.model.elapsed,.125),"wardrobe repeats a full cast")
+	check(click(view.stage,"暂停"),"pause current motion")
+	view._process(.25)
+	check(is_equal_approx(view.model.elapsed,.125),"paused pose stays still")
+	check(click(view.stage,"播放"),"resume current motion")
+	view._process(.25)
+	check(is_equal_approx(view.model.elapsed,.375),"resume from paused position")
+	var middle:=InputEventMouseButton.new()
+	middle.button_index=MOUSE_BUTTON_MIDDLE
+	middle.pressed=true
+	view.photo.gui_input.emit(middle)
+	check(is_equal_approx(view.zoom,1.15),"middle click zooms in once")
+	check_head_wardrobe(view)
 	check_gift_shop(view)
 	var first:Dictionary=Book.episodes[0]
 	check(not Book.available(Book.episodes[8]) and not Book.learn("Shield_Rank1"),"school activities and unpaid study locked")
@@ -339,6 +558,7 @@ func run() -> void:
 		check(click(view.stage,preload("res://scripts/units/yuriko.gd").SKINS[i]),"change outfit")
 		check(view.model.rig.get_bone_count()==(52 if i==0 else 36) and view.model.outfit==i,"live 3D rig")
 		check_turns(view)
+		check_motion_frame(view)
 	check(click(view.stage,"拉近") and view.zoom>1,"zoom control")
 	MetaProgress.yuriko_school={}
 	MetaProgress.load_save()
@@ -355,6 +575,8 @@ func run() -> void:
 	check(reached_rescue,"replay rescue clothes with chapter III combat outfit equipped")
 	check(Book.snapshot().skin==2,"story portrait leaves equipped wardrobe intact")
 	click(view.stage,"收起手记")
+	var exit_rect:Rect2=view.stage.get_node("ExitButton").get_rect()
+	check(is_equal_approx(exit_rect.position.y,16) and is_equal_approx(view.stage.size.x-exit_rect.end.x,16),"exit button at top right of stage")
 	check(click(view.stage,"返回主菜单"),"return to main")
 	await get_tree().scene_changed
 	BattleRequest.configure_skirmish(MatchRules.EXTENDED,{"country":"美国","map_size":2400,"starting_funds":8000})
@@ -362,9 +584,19 @@ func run() -> void:
 	add_child(field)
 	var w=field.battle
 	w._place_building("GAPILE","ally",w.player_start()+Vector2(175,95),true)
+	var qualified:=MetaProgress.yuriko_school.duplicate(true)
+	qualified.affinity=maxi(int(qualified.get("affinity",0)),20)
+	check(Book.commit(qualified) and Book.wear_journal_head(true),"equip qualified head before skirmish")
 	check(Psi.summon(w),"profile to skirmish summon")
 	var u=Psi.hero(w)
 	check(u!=null and u.yuriko_model.outfit==2 and Psi.rank(w,"Lure")==3 and Psi.shield(u) and is_equal_approx(u.special.psi_shield,9.0),"equipped skin, trained W and nine-second shield in live battle")
+	check(u.yuriko_model.body.find_child("YurikoUnitHead",true,false)!=null,"real summoned unit uses equipped head on outfit III")
+	qualified=MetaProgress.yuriko_school.duplicate(true)
+	qualified.cg_album={"same_stop":true}
+	qualified.journal_head=false
+	check(Book.commit(qualified),"seed owned wedding outfit for field change")
+	Psi.dress(w,Book.WEDDING_OUTFIT)
+	check(u.yuriko_model.outfit==Book.WEDDING_OUTFIT and u.yuriko_model.journal_head,"real summoned unit wears bridal rig and forced AI head")
 	var profile:=MetaProgress.yuriko_school.duplicate(true)
 	profile.read={}
 	check(Book.commit(profile) and Book.snapshot().skin==0,"stale equipped outfit is resolved to the starting clothes")

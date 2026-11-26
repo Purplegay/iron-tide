@@ -73,7 +73,7 @@ func _ready() -> void:
 	check(battle.selected_units.size()==1 and battle.selected_units[0]==soldier,"right click removes hero and retains ordinary unit")
 	var tasks:=preload("res://scripts/expedition/objectives.gd").new()
 	battle.add_child(tasks);tasks.world=battle
-	tasks.state={"waves":0,"stage":4,"points":[Vector2(1000,1000),Vector2(1600,1600)],"kind":"defend"}
+	tasks.state={"waves":0,"stage":4,"points":[Vector2(1000,1000),Vector2(1600,1600)],"kind":"capture"}
 	BattleRequest.combat_context.expedition.elite=true
 	BattleRequest.combat_context.expedition.elite_tactic="armor_column"
 	var before_wave:int=battle.units.size()

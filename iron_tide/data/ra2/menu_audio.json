@@ -1,5 +1,10 @@
 {
   "specs": {
+    "CreditDown": {"sounds": ["ucreddn"], "volume": 30},
+    "AlliedCampaignSelect": {"sounds": ["itanatc"], "volume": 90},
+    "SovietCampaignSelect": {"sounds": ["vgrsatc"], "volume": 90},
+    "BootCampSelect": {"sounds": ["igisea"], "volume": 90},
+    "CampaignFactionHover": {"sounds": ["umenucl1"], "volume": 45},
     "MenuSlideIn": {"sounds": ["uslide1"], "volume": 65},
     "ShopRefreshCoin": {"sounds": ["ucredup"], "volume": 32},
     "ShopPurchaseCoin": {"sounds": ["ubonus_shop_1s"], "volume": 40},
@@ -9,6 +14,9 @@
     "HealCrate": {"sounds": ["gcraheal"], "volume": 80}
   },
   "entries": {
+    "ucreddn": {"file": "ucreddn.wav"},
+    "vgrsatc": {"file": "vgrsatc.wav"},
+    "umenucl1": {"file": "umenucl1.wav"},
     "uslide1": {"file": "uslide1.wav"},
     "ucredup": {"file": "ucredup.wav"},
     "ubonus_shop_1s": {"file": "ubonus_shop_1s.wav"},

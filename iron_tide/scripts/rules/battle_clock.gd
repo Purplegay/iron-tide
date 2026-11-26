@@ -46,6 +46,7 @@ static func production_scale(data: Dictionary) -> float:
 	var id := str(data.get("id", ""))
 	# Both YR war factories share one construction pace. Keep each building's own cost and rule duration.
 	if id == "NAWEAP": id = "GAWEAP"
+	if id == "NAREFN": id = "GAREFN"
 	# DOG is a legacy Allied ID; do not assign that mapping to a future Soviet dog.
 	if not RA3_PRODUCTION_SECONDS.has(id) or (id == "DOG" and str(data.get("faction", "")) != "allied"):
 		return PRODUCTION_SCALE

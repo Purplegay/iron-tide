@@ -61,7 +61,7 @@ func _build() -> void:
 	var top := HBoxContainer.new()
 	top.add_theme_constant_override("separation", 12)
 	vb.add_child(top)
-	top.add_child(kit.make_label("战 役 选 择", 26, kit.COL_ACCENT_2))
+	top.add_child(kit.make_label("遭 遇 战", 26, kit.COL_ACCENT_2))
 	var sp := Control.new()
 	sp.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	top.add_child(sp)
@@ -82,7 +82,7 @@ func _build() -> void:
 	_opening_opt = _opt(mode_row, "开局方式", ["预建基地", "基地车开局"], 1 if BattleRequest.skirmish_config.get("opening", "") == "mcv" else 0)
 	_opening_opt.tooltip_text = "基地车开局：双方仅一辆基地车，无预建建筑和矿车。\n选中基地车按 J 展开；先建电厂、矿场，再由矿场制造矿车。\n因矿车单独付费，初始资金至少 8000。仅 RA2 模式支持。"
 	_opening_opt.item_selected.connect(_on_opening_selected)
-	mode_row.add_child(kit.make_label("经典规则下，可率领盟军或苏联基础部队作战。局外养成和自定义技能只在扩展模式生效。\n想挑战一波波来袭的敌军，可选择下方的扩展战役。", 13, kit.COL_DIM))
+	mode_row.add_child(kit.make_label("经典规则下，可率领盟军或苏联基础部队作战。局外养成和自定义技能只在扩展模式生效。", 13, kit.COL_DIM))
 	var rule_row := HBoxContainer.new()
 	rule_row.add_theme_constant_override("separation", 18)
 	vb.add_child(rule_row)
@@ -126,63 +126,6 @@ func _build() -> void:
 	_mode_opt.item_selected.connect(_on_mode_selected)
 	_on_mode_selected(_mode_opt.selected)
 	vb.add_child(kit.divider())
-
-	var sc := kit.make_scroll()
-	sc.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	vb.add_child(sc)
-	var list := VBoxContainer.new()
-	list.add_theme_constant_override("separation", 10)
-	list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	sc.add_child(list)
-
-	for m in GameData.missions:
-		list.add_child(_mission_card(m))
-
-func _mission_card(m: Dictionary) -> PanelContainer:
-	var p := kit.make_panel(kit.COL_PANEL, Color(0.28, 0.45, 0.65))
-	var hb := HBoxContainer.new()
-	hb.add_theme_constant_override("separation", 16)
-	p.add_child(hb)
-
-	var left := VBoxContainer.new()
-	left.add_theme_constant_override("separation", 4)
-	left.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	hb.add_child(left)
-	left.add_child(kit.make_label("%s" % m.get("name", ""), 20, kit.COL_ACCENT_2))
-	left.add_child(kit.make_label(str(m.get("subtitle", "")), 13, kit.COL_GOLD))
-	var brief := kit.make_label(str(m.get("brief", "")), 13, kit.COL_TEXT)
-	brief.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	brief.custom_minimum_size = Vector2(560, 0)
-	left.add_child(brief)
-
-	var tags := kit.make_label("初始资金 %d · 准备 %.0fs · 波次 %d%s" % [
-		int(m.get("starting_funds", 0)), float(m.get("prepare_time", 0)),
-		(m.get("waves", []) as Array).size(),
-		"（无尽）" if (m.get("endless", false) == true) else ""
-	], 12, kit.COL_DIM)
-	left.add_child(tags)
-
-	var right := VBoxContainer.new()
-	right.add_theme_constant_override("separation", 6)
-	right.custom_minimum_size = Vector2(160, 0)
-	hb.add_child(right)
-	var start := kit.make_button("扩展战役 · 出击", 17)
-	start.custom_minimum_size = Vector2(160, 52)
-	var mid := str(m.get("id", ""))
-	start.pressed.connect(func(): _start(mid))
-	right.add_child(start)
-	right.add_child(kit.make_label("敌方：%s" % GameData.get_faction(str(m.get("enemy_faction", ""))).get("name", ""), 12, kit.COL_DIM))
-	return p
-
-func _start(mission_id: String) -> void:
-	BattleRequest.configure_mission(mission_id, {
-		"opponents": 1,
-		"difficulty": _diff_opt.selected,
-		"enemy_faction": Preferences.OPTIONS.enemy_base.find(Preferences.enemy_base_for(_enemy_opt.get_item_text(_enemy_opt.selected))),
-		"country": "美国" if _country_opt == null else _country_opt.get_item_text(_country_opt.selected),
-		"rich": _funds_opt.selected == 1,
-	})
-	get_tree().change_scene_to_file("res://scenes/battle.tscn")
 
 ## ---- 遭遇战 ----
 func _skirmish_panel() -> PanelContainer:

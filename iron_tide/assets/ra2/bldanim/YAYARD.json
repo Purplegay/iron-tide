@@ -1,0 +1,21 @@
+{
+ "id": "YAYARD",
+ "layers": [
+  {
+   "kind": "activeanimthree",
+   "image": "YAYARD_C",
+   "frames": 64,
+   "loopStart": 0,
+   "loopEnd": 16,
+   "rate": 200
+  },
+  {
+   "kind": "idleanim",
+   "image": "YAYARD_A",
+   "frames": 64,
+   "loopStart": 0,
+   "loopEnd": 16,
+   "rate": 200
+  }
+ ]
+}

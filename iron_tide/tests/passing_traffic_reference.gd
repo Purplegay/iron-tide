@@ -1,4 +1,11 @@
 extends "res://scripts/units/local_traffic.gd"
+# Frozen seconds-based reference owns its retired field independently.
+var query_left := 0.0
+
+func reset() -> void:
+	super.reset()
+	query_left = 0.0
+
 func original_apply(unit:Unit, delta: float) -> void:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(26)
 	# Ground infantry passes every friendly ground body; enemies and other

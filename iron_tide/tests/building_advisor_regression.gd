@@ -5,6 +5,44 @@ func expect_sample(stem: String, label: String) -> void:
 	var path := "res://assets/ra2/eva/" + stem + ".wav"
 	check(player.playing and player.stream != null and player.stream.resource_path == path, label + " " + stem)
 
+func exercise_garrison(world, prefix: String, infantry: String) -> void:
+	const Civil = preload("res://scripts/units/civilian_orders.gd")
+	var house = preload("res://scripts/world/civilian_sites.gd").create(world, "CAHSE01", world.player_start())
+	var first = world.spawn_unit(infantry, "ally", house.position)
+	var last = world.spawn_unit(infantry, "ally", house.position)
+	Civil.enter(first, house)
+	Civil.enter(last, house)
+	Ra2Sfx.stop_all()
+	Civil.withdraw(house, first)
+	check(first.embarked_in == null and last.embarked_in == house and house.side == "ally" and not Ra2Sfx._eva_player.playing, prefix + " partial withdrawal stays silent")
+	# Put every exit outside the map for one failed withdrawal.
+	var original_position: Vector2 = house.position
+	house.position = Vector2(-1000, -1000)
+	Civil.withdraw(house, last)
+	check(last.embarked_in == house and house.side == "ally" and not Ra2Sfx._eva_player.playing, prefix + " blocked last occupant stays silent")
+	house.position = original_position
+	Civil.withdraw(house, last)
+	check(last.embarked_in == null and house.side == "neutral", prefix + " last occupant releases the house")
+	expect_sample(prefix + "108", prefix + " last occupant announces abandonment")
+	Civil.enter(first, house)
+	Civil.enter(last, house)
+	world.select_building(house)
+	await reset()
+	var before := Ra2Sfx.a_eva_plays
+	world.deploy_selected()
+	check(first.embarked_in == null and last.embarked_in == null and house.side == "neutral", prefix + " deploy command clears both occupants")
+	expect_sample(prefix + "108", prefix + " group evacuation announces abandonment")
+	check(Ra2Sfx.a_eva_plays == before + 1 and Ra2Sfx._eva_queue.is_empty(), prefix + " one announcement for the whole group")
+	check(await peak() > 0.001, prefix + " evacuation recording reaches the mixer")
+	Ra2Sfx.stop_all()
+	Civil.evacuate(house)
+	check(not Ra2Sfx._eva_player.playing, prefix + " empty house stays silent")
+	var enemy = world.spawn_unit(infantry, "enemy", house.position)
+	Civil.enter(enemy, house)
+	check(enemy.embarked_in == house, prefix + " enemy occupies the house")
+	Civil.evacuate(house)
+	check(enemy.embarked_in == null and house.side == "neutral" and not Ra2Sfx._eva_player.playing, prefix + " enemy evacuation stays silent")
+
 func exercise_advisor(country: String, prefix: String, opponent: String) -> void:
 	BattleRequest.configure_skirmish(MatchRules.RA2, {"country":country, "enemy_base":opponent, "starting_funds":12000})
 	var screen = load("res://scenes/battle.tscn").instantiate()
@@ -67,6 +105,7 @@ func exercise_advisor(country: String, prefix: String, opponent: String) -> void
 	Ra2Sfx.stop_all()
 	world.apply_building_action("repair",foreign_plant)
 	expect_sample(prefix+"057",country+" captured building retains player advisor")
+	await exercise_garrison(world, prefix, infantry)
 	screen.free()
 	await get_tree().process_frame
 

@@ -18,7 +18,8 @@ static func available(run:Dictionary) -> Array:
 	var faction:=GameData.ra2_country_side(str(run.country))
 	for id:String in MetaProgress.Academy.HEROES:
 		if (id in MetaProgress.Academy.Commandos.IDS or id in ["ORCA","TTNK","FV","HARV"]) and int(run.get("stage",1))<5:continue
-		if GameData.get_unit(id).get("faction","")==faction and id not in owned(run):result.append(id)
+		var eligible:bool=id in run.get("frozen",{}).get("hollywood_roster",[]) if id in MetaProgress.Academy.Stars.IDS else GameData.get_unit(id).get("faction","")==faction
+		if eligible and id not in owned(run):result.append(id)
 	return result
 
 static func recruit(run:Dictionary,id:String) -> bool:
@@ -46,7 +47,9 @@ static func valid(run:Dictionary) -> bool:
 	var seen:Array=[]
 	for id in owned(run):
 		if not id is String or not MetaProgress.Academy.HEROES.has(id) or id in seen:return false
-		if GameData.get_unit(id).get("faction","")!=GameData.ra2_country_side(str(run.country)):return false
+		if id in MetaProgress.Academy.Stars.IDS:
+			if id not in run.get("frozen",{}).get("hollywood_roster",[]):return false
+		elif GameData.get_unit(id).get("faction","")!=GameData.ra2_country_side(str(run.country)):return false
 		seen.append(id)
 	var injuries:Array=[]
 	for id in wounded(run):

@@ -1,5 +1,8 @@
 extends RefCounted
 const PROFILE := "res://assets/ra2/american_paradrop.json"
+# Keep the release visible long enough to read the drop and landing.
+# At the 1500-lepton release height, the local 15-tick clock gives about 8.3 s.
+const DESCENT_SPEED_MULTIPLIER := 4.0
 static var rules: Dictionary = {}
 
 static func profile() -> Dictionary:
@@ -7,6 +10,13 @@ static func profile() -> Dictionary:
 	return rules
 
 static func configure(field) -> void:
+	if field.building_id in ["GAAIRC", "AMRADR"] and field.battle.mission.get("id") == "yr_hollywood":
+		field.special.american_airfield = false
+		if field.sw_type() == "AmerParaDrop":
+			field.superweapon = {}
+			field._sw_charge = 0.0
+			field._sw_was_ready = false
+		return
 	if field.building_id != "GAAIRC" or field.special.has("american_airfield"): return
 	# The shared airport model stands for AMRADR only when built by Americans.
 	field.special.american_airfield = field.battle._countries.get(field.side, "") == "Americans" and not field.special.get("has_been_captured", false)
@@ -15,19 +25,31 @@ static func configure(field) -> void:
 static func valid_zone(world, point: Vector2) -> bool:
 	return point.is_finite() and Rect2(Vector2.ZERO,Vector2.ONE*world.map_size).has_point(point) and not world.in_water_world(point) and not world.path_service.is_blocked(point)
 
-static func launch(field, point: Vector2) -> bool:
-	var world = field.battle
-	if not valid_zone(world, point): return false
+static func _start_drop(world, side: String, point: Vector2, infantry: String, count: int) -> bool:
+	if not valid_zone(world, point) or count <= 0: return false
 	var dir := 1 if point.x > world.map_size * 0.5 else -1
-	var start := Vector2(0 if dir == 1 else world.map_size,point.y)
-	var plane = world.spawn_unit(str(profile().plane),field.side,start)
+	var start := Vector2(0 if dir == 1 else world.map_size, point.y)
+	var plane = world.spawn_unit(str(profile().plane), side, start)
 	if plane == null: return false
 	plane.special.para_target = point
-	plane.special.para_left = int(rules.count)
+	plane.special.para_count = count
+	plane.special.para_infantry = infantry
+	plane.special.para_left = count
 	plane.special.para_dir = dir
 	plane.hull_angle = 0.0 if dir == 1 else PI
 	plane.logistics.air_lift = 1.0
 	return true
+
+static func launch(field, point: Vector2) -> bool:
+	var world = field.battle
+	var infantry := str(field.superweapon.infantry)
+	if field.sw_type() == "ParaDrop" and field.side == "enemy" and world.enemy_faction == "yuri": infantry = "INIT"
+	return _start_drop(world, field.side, point, infantry, int(field.superweapon.count))
+
+# Mission scripts use the same aircraft, chute and landing rules as a real
+# paradrop, but do not require a constructed superweapon building.
+static func launch_story(world, point: Vector2, infantry: String, count: int) -> bool:
+	return _start_drop(world, "ally", point, infantry, count)
 
 static func open_ground(world, at: Vector2, except = null) -> Vector2:
 	for ring in 4:
@@ -46,7 +68,7 @@ static func fly(plane, delta: float) -> void:
 	var goal: Vector2 = plane.special.para_target
 	var radius := float(spec.radius_leptons) * 55.0 / 256.0
 	var span := minf(radius, 120.0)
-	var count := int(spec.count)
+	var count := int(plane.special.get("para_count", spec.count))
 	var start_x := clampf(goal.x - span, 16, world.map_size - 2 * span - 16)
 	var end_x := float(world.map_size) if dir == 1 else 0.0
 	plane.position.x = move_toward(plane.position.x,end_x,plane.move_speed*delta)
@@ -62,7 +84,7 @@ static func fly(plane, delta: float) -> void:
 		var point := open_ground(world,Vector2(x,goal.y))
 		if not point.is_finite(): point = open_ground(world,goal)
 		if not point.is_finite(): continue
-		var soldier = world.spawn_unit(str(spec.infantry),plane.side,point)
+		var soldier = world.spawn_unit(str(plane.special.get("para_infantry",spec.infantry)),plane.side,point)
 		if soldier == null: continue
 		soldier.special.para_height = plane._visual_lift()
 		soldier.special.para_age = 0.0
@@ -78,7 +100,8 @@ static func descend(unit, delta: float) -> void:
 	var world = unit._battle_world()
 	if world.paused or world.ended or world.get_tree().paused: return
 	unit.special.para_age += delta
-	unit.special.para_height = maxf(0, float(unit.special.para_height) - delta * float(profile().fall_leptons) * unit.flight.TICKS * unit.flight.HEIGHT_PIXEL)
+	var fall_pixels_per_second: float = float(profile().fall_leptons) * BattleClock.RULE_TICKS_PER_SECOND * unit.flight.HEIGHT_PIXEL * DESCENT_SPEED_MULTIPLIER
+	unit.special.para_height = move_toward(float(unit.special.para_height), 0.0, fall_pixels_per_second * delta)
 	if unit.special.para_height <= 0:
 		var landing := open_ground(world,unit.position,unit)
 		unit.collision_layer = int(unit.special.para_collision[0])

@@ -1,12 +1,14 @@
 extends SubViewport
 ## Both native Uprising rigs use their own ScriptedModelDraw clips in battle and the skill viewer.
-const MODEL = preload("res://assets/ra3/yuriko/JapanYurikoTech1.glb")
-const SCHOOL = preload("res://assets/ra3/yuriko/JUCommandoTech1.glb")
+const Book = preload("res://scripts/units/yuriko_school.gd")
+const MODEL_FILE := "JapanYurikoTech1.glb"
+const SCHOOL_FILE := "JUCommandoTech1.glb"
 const Psi = preload("res://scripts/units/yuriko.gd")
 static var hospital_states: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Psi.ART+"model_states.json"))
 static var school_states: Dictionary = JSON.parse_string(FileAccess.get_file_as_string(Psi.ART+"school_states.json"))
 var states: Dictionary
 var outfit := -1
+var journal_head := false
 var studio: Node3D
 var hover_fx
 var active_clip := ""
@@ -42,18 +44,23 @@ func _ready() -> void:
 	set_skin(0)
 
 func set_skin(index:int) -> void:
-	if index==outfit and body!=null: return
+	var use_journal:=index==Book.WEDDING_OUTFIT or Book.journal_head_equipped()
+	if index==outfit and journal_head==use_journal and body!=null: return
 	var previous_turn:=body.rotation.y if is_instance_valid(body) else 0.0
 	if body!=null: body.free()
-	outfit=clampi(index,0,2)
+	outfit=clampi(index,0,Psi.SKINS.size()-1)
 	states=hospital_states if outfit==0 else school_states.duplicate()
 	if outfit==1:states.erase("USER_7")
-	if outfit==2:
+	if outfit in [2,Book.WEDDING_OUTFIT]:
 		for chapter_two_state in ["TRANS_boredToSlam","REACT_5","TRANS_slamToBored"]:states.erase(chapter_two_state)
-	body=(MODEL if outfit==0 else SCHOOL).instantiate()
+	journal_head=use_journal
+	var directory:String=Psi.ART if journal_head else Psi.ART+"classic/"
+	var scene:PackedScene=load(directory+(MODEL_FILE if outfit==0 else SCHOOL_FILE))
+	body=scene.instantiate()
 	body.rotation.y=previous_turn
 	studio.add_child(body)
 	rig = body.find_children("*","Skeleton3D",true,false)[0]
+	if outfit==Book.WEDDING_OUTFIT:bind_wedding_outfit()
 	head_bone=rig.find_bone("pivot_560dc963")
 	animator = body.find_children("*","AnimationPlayer",true,false)[0]
 	animator.callback_mode_process = AnimationMixer.ANIMATION_CALLBACK_MODE_PROCESS_MANUAL
@@ -66,6 +73,14 @@ func set_skin(index:int) -> void:
 	requested=""
 	action=""
 	pose("STATE_bored",0,false)
+
+func bind_wedding_outfit() -> void:
+	var garment=preload("res://assets/ra3/yuriko/wedding/BridalOutfit.glb").instantiate()
+	var original:MeshInstance3D=body.find_child("YurikoBody",true,false)
+	var dress:MeshInstance3D=garment.find_child("BridalOutfit",true,false)
+	original.mesh=dress.mesh
+	original.skin=dress.skin
+	garment.free()
 
 func entrance() -> String:
 	return "COMING_OUT_OF_FACTORY" if outfit==1 else "USER_7"
@@ -103,7 +118,7 @@ func transition(previous: String, next: String) -> String:
 	if previous=="SELECTED" and next=="STATE_bored": return "TRANS_attentionToBored"
 	return next
 
-func pose(state: String, dt: float, transitions := true) -> void:
+func pose(state: String, dt: float, transitions := true, force_loop := false) -> void:
 	if shield.visible:shield.material_override.set_shader_parameter("age",hover_fx.time)
 	state=resolve(state)
 	if not states.has(state):state="STATE_bored"
@@ -116,7 +131,7 @@ func pose(state: String, dt: float, transitions := true) -> void:
 	animator.advance(dt)
 	if elapsed >= length:
 		if action != requested: begin(requested)
-		elif states[action].mode == "LOOP" or states[action].restart:
+		elif force_loop or states[action].mode == "LOOP" or states[action].restart:
 			var remainder := fmod(elapsed,length)
 			begin(action)
 			animator.advance(remainder)

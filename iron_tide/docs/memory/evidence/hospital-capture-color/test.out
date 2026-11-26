@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 610.88 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 5060 Ti
+
+IronTide CPU placement: {"elapsed_ms":0,"platform":"Windows","policy":"","scope":"this game process only","status":"unchanged"}
+HOSPITAL true 隐秘山谷载入两座科技医院
+HOSPITAL true 中立医院实际使用通用贴图
+HOSPITAL true 中立医院使用专用房色模式
+HOSPITAL true 中立灰：1327 房色像素，0 超差
+HOSPITAL true 中立灰：202 原有红色细节，0 超差
+HOSPITAL true 苏军工程师接受正式占领命令
+HOSPITAL true 进门后医院换边并消耗工程师
+HOSPITAL true 占领同一步应用苏军阵营色
+HOSPITAL true 苏军红：1327 房色像素，0 超差
+HOSPITAL true 苏军红：202 原有红色细节，0 超差

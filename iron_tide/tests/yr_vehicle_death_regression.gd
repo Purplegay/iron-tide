@@ -174,9 +174,11 @@ func exercise_mode(mode: String) -> void:
 	check(target.hp == 982, "spent fragment cannot damage twice")
 	var extra: Dictionary = GameData.ra2_warheads.tankogas.extra
 	extra.AffectsAllies = "no"
+	GameData.rebuild_static_combat_rules()
 	Death.queue_blast(battle, target.position, "ally", 20.0, "TankOGas")
 	check(target.hp == 964 and friendly.hp == 982, "warhead AffectsAllies=no suppresses friendly damage")
 	extra.erase("AffectsAllies")
+	GameData.rebuild_static_combat_rules()
 	target.hp = 982
 	var prone = actor("E1", "enemy", target.position)
 	prone.set_deployed(true, false)

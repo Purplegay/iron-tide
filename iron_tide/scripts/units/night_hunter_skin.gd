@@ -4,6 +4,8 @@ const SKINS := {"SCHP":"obsidian_night_owl", "DRON":"rift_hunter"}
 static var resources:Dictionary = {}
 static var metadata:Dictionary = {}
 static var bounds_cache:Dictionary = {}
+static var atlas_regions_by_skin: Dictionary = {}
+var atlas_regions: Array[Rect2] = []
 static var drone_scale:=0.0
 static var helicopter_scale:=0.0
 const MOTION_TILE:=Vector2(128,128)
@@ -18,6 +20,8 @@ var rotor:=0.0
 var fold:=0.0
 var original_filter:int
 var surface:ShaderMaterial
+var uploaded_clock := -1.0
+var uploaded_power := -1
 var body_rect:=Rect2()
 var body_source:=Rect2()
 var body_key:=""
@@ -118,13 +122,10 @@ func tick(actor,dt:float) -> void:
 	previous_rotor=rotor
 	previous_clock=clock
 	clock=fposmod(clock+maxf(dt,0),960.0)
-	surface.set_shader_parameter("breath",intensity())
-	surface.set_shader_parameter("lamps_online",not actor.powered_unit.offline)
 	if id=="SCHP":
 		fold=float(actor.special.get("siege_progress",float(actor.is_deployed())))
 		rotor=fposmod(rotor+dt*24.0*(1.0-fold),TAU)
-		surface.set_shader_parameter("exhaust_phase",clock)
-	if before!=floori(clock*30.0) and actor.is_visible_in_tree():actor.queue_redraw()
+	if before!=floori(clock*30.0) and actor.is_visible_in_tree() and (actor._body_visibility==null or actor._body_visibility.is_on_screen()):actor.queue_redraw()
 
 func hover_lift(actor,preview:=false) -> float:
 	if id!="SCHP" or actor._dead or actor.embarked_in!=null or actor.powered_unit.offline:return 0.0
@@ -155,8 +156,17 @@ func visual_scale(actor) -> float:
 	return helicopter_scale if id=="SCHP" else drone_scale
 
 func motion_source(frame:int,pose:int) -> Rect2:
-	var tile:=Vector2.ONE*float(model().get("texture_tile",128))
-	return Rect2(Vector2(frame%8,pose*4+frame/8)*tile,tile)
+	if atlas_regions.is_empty():
+		if atlas_regions_by_skin.has(id):
+			atlas_regions = atlas_regions_by_skin[id]
+		else:
+			var data := model()
+			var tile := Vector2.ONE * float(data.get("texture_tile", 128))
+			atlas_regions.resize(data.poses.size() * 32)
+			for i in atlas_regions.size():
+				atlas_regions[i] = Rect2(Vector2(i % 8, i / 8) * tile, tile)
+			atlas_regions_by_skin[id] = atlas_regions
+	return atlas_regions[pose * 32 + frame]
 
 func view_bounds(actor) -> Rect2:
 	var factor:=visual_scale(actor)
@@ -172,6 +182,14 @@ func pose_index(deployment:float,walk:float) -> int:
 
 func draw_on(actor) -> void:
 	if actor._dead or actor.embarked_in!=null:return
+	if uploaded_clock != clock:
+		uploaded_clock = clock
+		surface.set_shader_parameter("breath", intensity())
+		if id == "SCHP": surface.set_shader_parameter("exhaust_phase", clock)
+	var online := int(not actor.powered_unit.offline)
+	if uploaded_power != online:
+		uploaded_power = online
+		surface.set_shader_parameter("lamps_online", bool(online))
 	var lift:float=actor._visual_lift()
 	if id=="DRON":lift+=preload("res://scripts/units/dog_pounce.gd").lift(actor)
 	var factor:=visual_scale(actor)
@@ -185,8 +203,9 @@ func draw_on(actor) -> void:
 		var jump:Dictionary=actor.special.pounce
 		var progress:=float(jump.elapsed)/maxf(.001,float(jump.duration))
 		pose=10 if progress>=.25 and progress<=.75 else 9
-	body_regions=[motion_source(frame,pose)]
-	body_source=body_regions[0]
+	body_source=motion_source(frame,pose)
+	if body_regions.is_empty(): body_regions.resize(1)
+	body_regions[0]=body_source
 	var anchor:Array=model().pose_anchors[pose*32+frame] if model().has("pose_anchors") else model().anchors[frame]
 	body_rect=Rect2(-Vector2(anchor[0],anchor[1])*factor,MOTION_TILE*factor)
 	body_rect.position.y-=lift

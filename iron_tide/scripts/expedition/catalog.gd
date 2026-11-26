@@ -3,6 +3,11 @@ const Heroes=preload("res://scripts/expedition/heroes.gd")
 
 const TOTAL := preload("res://scripts/expedition/campaign.gd").TOTAL
 const BUFFS := {
+	"sight_memory":{"name":"射击记录仪","desc":"连续直击同一目标时，每级额外造成 5% 伤害。第 26 关起可获得。","min_stage":26,"group":"all","value":0.0},
+	"pivot_sight":{"name":"快调瞄具","desc":"换目标后的第一次直击每级额外造成 10% 伤害。首次开火不触发。第 27 关起可获得。","min_stage":27,"group":"all","value":0.0},
+	"shield_lens":{"name":"护盾聚焦镜","desc":"自身带有远征护盾时，直击每级额外造成 6% 伤害。第 28 关起可获得。","min_stage":28,"group":"all","value":0.0},
+	"rescue_patch":{"name":"应急止血贴","desc":"生命低于一半时，直击命中恢复每级 3% 最大生命，每 8 秒一次。第 29 关起可获得。","min_stage":29,"group":"all","value":0.0},
+	"escort_plate":{"name":"接敌护板","desc":"换目标后首次直击获得相当于每级 4% 最大生命的护盾，每 8 秒一次。第 30 关起可获得。","min_stage":30,"group":"all","value":0.0},
 	"firepower":{"name":"标准化弹药","desc":"全军攻击 +10%／级","group":"all","stat":"attack","value":0.10},
 	"armor":{"name":"复合装甲","desc":"全军防御系数 +10%／级","group":"all","stat":"defense","value":0.10},
 	"health":{"name":"加固结构","desc":"全军生命 +15%／级","group":"all","stat":"hp","value":0.15},
@@ -75,14 +80,13 @@ static func offer(run:Dictionary,kind:String,salt:String) -> Array:
 	var pool:Array=[]
 	if kind=="buff":
 		for id:String in BUFFS:
-			if int(run.buffs.get(id,0))>=3:continue
+			if int(run.buffs.get(id,0))>=3 or int(run.stage)<int(BUFFS[id].get("min_stage",1)):continue
 			var category:String=BUFFS[id].group
 			if category!="all" and not has_group(run,category):continue
 			var strong:bool=salt=="victory_buff" and (int(run.stage)-1)%3==0
 			pool.append({"kind":"buff","id":id,"levels":mini(2 if strong else 1,3-int(run.buffs.get(id,0)))})
 	else:
 		for id:String in run.catalog:
-			if preload("res://scripts/expedition/army.gd").room(run,id)<=0:continue
 			if group(id)=="naval" and int(run.stage)<6:continue
 			if int(run.stage)<16 and id in run.licenses:continue
 			pool.append({"kind":"unit","id":id})
@@ -123,9 +127,9 @@ static func description(item:Dictionary) -> String:
 	if not detail.is_empty():return detail
 	if item.kind=="hero":return "本轮获得 1 位英雄，无需局外解锁；可与已有英雄一同出战，同名不重复。阵亡后可花 60 补给救治，不解锁局外英雄。"
 	if item.kind=="buff":return str(BUFFS[item.id].desc)+"；最高 3 级，本轮持续生效"
-	if item.kind=="unit":return "最多加入 %d 个单位；受兵种、限造和本章人数限制，多余数量按遣散价折为补给。未持有时解锁本轮生产许可；继承攻防等级，重复招募不自动强化。"%squad_size(item.id)
+	if item.kind=="unit":return "招募 %d 个单位。出战名额已满时，新兵留在预备队。未持有时解锁本轮生产许可；继承攻防等级，重复招募不自动强化。"%squad_size(item.id)
 	if item.kind=="repair_kit":return "战斗中主动使用，全军恢复 35% 最大生命；每包一次"
 	if item.kind=="supplies":return ("原奖励已满员、满级或已拥有，改领补给。" if item.get("converted",false) else "")+"获得 %d 远征补给，可用于下一关商店、强化与整备；跨关保留。"%int(item.get("amount",100))
 	if item.kind=="refresh_token":return "下一营地首件货架商品免费，可先刷新再买。免单不含服务，离营失效。另送 1 次免费刷新，可与商店首次免费刷新叠加，未用可保留。"
-	if item.kind=="reinforce":return "为%s补充最多 %d 个普通单位，只补兵种及本章人数上限内的空缺，不提升攻防强化等级。"%[str(GameData.get_unit(item.id).get("name",item.id)),squad_size(item.id)]
+	if item.kind=="reinforce":return "为%s补充最多 %d 个普通单位，只补该兵种的缺额，不提升攻防强化等级。"%[str(GameData.get_unit(item.id).get("name",item.id)),squad_size(item.id)]
 	return "获得 100 远征补给"

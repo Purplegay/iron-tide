@@ -1,0 +1,29 @@
+{
+ "id": "CAPARK04",
+ "image": "CAPARK04",
+ "source": "ra2md.mix > isosnomd.mix > 0x271be482",
+ "cell": [
+  40,
+  46
+ ],
+ "cols": 12,
+ "count": 2,
+ "rects": [
+  {
+   "i": 0,
+   "x": 0,
+   "y": 0,
+   "w": 40,
+   "h": 46
+  },
+  {
+   "i": 1,
+   "x": 40,
+   "y": 0,
+   "w": 40,
+   "h": 46
+  }
+ ],
+ "dmg": 1,
+ "shadow": true
+}

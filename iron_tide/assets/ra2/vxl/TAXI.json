@@ -1,16 +1,6 @@
 {
-  "id": "TAXI",
-  "image": "TAXI",
-  "vxl": "TAXI.VXL",
-  "source": "LOCAL.MIX",
-  "facings": 32,
-  "frameW": 55,
-  "frameH": 34,
-  "facing_offset": 16,
-  "poses": 1,
-  "fps": 0,
-  "pose_source": "local VXL + HVA",
-  "shadow_projection": "ground-plane-v2",
-  "surface_render": "surface-vpl-2x",
-  "detail_scale": 2
+ "frameW": 46,
+ "frameH": 31,
+ "facings": 32,
+ "turret": ""
 }

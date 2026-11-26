@@ -107,8 +107,9 @@ for (const name of sequence.keyOrder) {
   const [start, per, stride] = sequence.keys.get(name.toLowerCase()).split(',').map(Number);
   if (!Number.isFinite(start) || !Number.isFinite(per) || per <= 0) continue;
   const facings = stride ? 8 : 1;
-  if (start + per * facings > metadata.count / 2) throw new Error(`Invalid sequence: ${name}`);
+  if (start + (facings - 1) * stride + per > metadata.count / 2) throw new Error(`Invalid sequence: ${name}`);
   seq[name] = { start, per, facings };
+  if (stride && stride !== per) seq[name].stride = stride;
 }
 for (const name of ['Guard', 'Walk', 'FireUp', 'Deployed', 'DeployedFire', 'Die1']) if (!seq[name]) throw new Error(`Missing ${name}`);
 write('assets/ra2/shp/GGI.seq.json', JSON.stringify({ image: 'GGI', source: gfx.keys.get('sequence'), seq }));

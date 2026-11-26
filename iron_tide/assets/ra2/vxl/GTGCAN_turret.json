@@ -1,1 +1,1 @@
-{"id":"GTGCAN_turret","facings":32,"frameW":157,"frameH":91,"source":"LOCAL.MIX/GTGCANTUR.VXL+LOCAL.MIX/GTGCANBARL.VXL","detail_scale":2,"surface_render":"surface-vpl-2x"}
+{"id":"GTGCAN_turret","facings":32,"frameW":157,"frameH":91,"source":"LOCAL.MIX/GTGCANTUR.VXL+LOCAL.MIX/GTGCANBARL.VXL","detail_scale":2,"surface_render":"surface-vpl-2x","palette_lit":true}

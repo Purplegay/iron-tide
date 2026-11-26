@@ -40,5 +40,7 @@ func _draw() -> void:
 	var tint:=Color("#8cdfff").lerp(Color.WHITE,0.5+0.5*cos(TAU*pulse/1.2))
 	tint.a=0.68+0.32*cos(TAU*pulse/1.2)
 	draw_rect(frame,tint,false,2)
-	var title:String=("%s · 携带黑匣子"%holder.display_name) if holder!=null else "黑匣子"
+	var title:String=("%s · 携带黑匣子"%holder.display_name) if holder!=null else "黑匣子 · 拾取"
+	var width:=ThemeDB.fallback_font.get_string_size(title,HORIZONTAL_ALIGNMENT_LEFT,-1,14).x
+	draw_rect(Rect2(Vector2(anchor.x-width/2-5,rect.position.y-23),Vector2(width+10,20)),Color("182728ed"))
 	draw_string(ThemeDB.fallback_font,Vector2(anchor.x-125,rect.position.y-8),title,HORIZONTAL_ALIGNMENT_CENTER,250,14,UiKit.COL_SIDE_MISSION)

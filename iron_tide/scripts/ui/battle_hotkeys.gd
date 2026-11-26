@@ -8,7 +8,7 @@ const ACTIONS := {
 	"repair":["维修",KEY_K],"sell":["出售",KEY_L],"deploy":["部署／收起",KEY_J],"reverse_attack":["倒退攻击",KEY_D],"pause":["暂停",KEY_SPACE],"speed":["切换倍速",KEY_TAB],
 	"save":["快速存档",KEY_F5],"load":["打开存档",KEY_F9],"view_down":["投影比例减小",KEY_MINUS],"view_up":["投影比例增大",KEY_EQUAL],
 	"mirror":["镜像视角",KEY_BACKSLASH],"yaw":["切换视角朝向",KEY_APOSTROPHE],
-	"snapshot":["保存性能快照",KEY_F8],
+	"snapshot":["保存性能快照",KEY_F8],"radar_event":["跳到最近的雷达事件",KEY_PERIOD],
 	"excluded":["找回已排除单位",KEY_F3],"exclude":["切换选中单位的全选排除标记",KEY_F4],
 	"aggressive":["主动进攻开关（再按恢复防卫）",KEY_V],
 }
@@ -38,7 +38,7 @@ static func read_bindings(cfg:ConfigFile) -> Dictionary:
 	var legacy:=not cfg.has_section_key("keys","reverse_attack")
 	for id in ACTIONS:
 		# Migrate the former default deployment D without discarding custom keys.
-		if (id in ["snapshot","aggressive","reverse_attack","excluded","exclude"] and not cfg.has_section_key("keys",id)) or (id=="deploy" and legacy and cfg.get_value("keys",id,KEY_D)==KEY_D):
+		if (id in ["snapshot","aggressive","reverse_attack","excluded","exclude","radar_event"] and not cfg.has_section_key("keys",id)) or (id=="deploy" and legacy and cfg.get_value("keys",id,KEY_D)==KEY_D):
 			missing.append(id)
 			continue
 		var key=cfg.get_value("keys",id,candidate[id])

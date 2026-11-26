@@ -11,5 +11,6 @@
   "shadow_projection": "ground-plane-v2",
   "split_shadow": true,
   "surface_render": "surface-vpl-2x",
-  "detail_scale": 2
+  "detail_scale": 2,
+  "palette_lit": true
 }

@@ -3,10 +3,12 @@ extends RefCounted
 const KEY := "battle_music_director"
 const LOSS_WINDOW := 20.0
 const PUSH_WINDOW := 120.0
-const YURIKO_KILLS := 10
+const YURIKO_QUIET_KILLS := 10
+const YURIKO_COMBAT_KILLS := 20
 const QUIET_WINDOW := 20.0
 
 static func yuriko_quiet(score: Dictionary) -> bool:
+	if int(score.get("yuriko_kills", 0)) >= YURIKO_COMBAT_KILLS: return true
 	return score.has("yuriko_last_contact") and float(score.time) - float(score.yuriko_last_contact) >= QUIET_WINDOW
 
 static func state(world) -> Dictionary:
@@ -52,7 +54,7 @@ static func engage(score: Dictionary) -> void:
 	Music.engage()
 	if score.has("yuriko_last_contact"):
 		score.yuriko_last_contact = score.time
-		Music.set_yuriko_quiet(false)
+		Music.set_yuriko_quiet(yuriko_quiet(score))
 
 static func trigger_uprising(world) -> void:
 	if world.ended: return
@@ -84,6 +86,15 @@ static func death(world, victim, killer) -> void:
 	if attacker_side != "ally" and victim.side != "ally": return
 	if victim.special.get("house_eliminated", false) or victim.special.has("expansion_temporary"): return
 	var score := state(world)
+	if attacker_side == "ally" and (victim is Building or victim is Unit):
+		var source = killer.shooter() if killer is Projectile else killer
+		if source is Unit and source.unit_id == "YURIKO" and world.actor_alive(source):
+			var total := int(score.get("yuriko_kills", 0)) + 1
+			score.yuriko_kills = total
+			if total == YURIKO_QUIET_KILLS:
+				score.yuriko_last_contact = score.time if score.get("engaged", false) else float(score.time) - QUIET_WINDOW
+			if total == YURIKO_QUIET_KILLS or total == YURIKO_COMBAT_KILLS:
+				Music.set_yuriko_quiet(yuriko_quiet(score))
 	if victim is Building:
 		var tags: Array = victim.data.get("tags", [])
 		if "defense" in tags or "wall" in tags or "civilian" in tags: return
@@ -92,13 +103,6 @@ static func death(world, victim, killer) -> void:
 	elif victim is Unit and victim.unit_id not in world.SUPPORT_FLIGHTS and not AlliedAbilities.flag(victim, "DontScore"):
 		var events: Array = score.get_or_add("losses" if victim.side == "ally" else "kills", [])
 		events.append(score.time)
-		if attacker_side == "ally" and not score.has("yuriko_last_contact"):
-			var source = killer.shooter() if killer is Projectile else killer
-			if is_instance_valid(source) and source is Unit and source.unit_id == "YURIKO" and world.actor_alive(source):
-				score.yuriko_kills = int(score.get("yuriko_kills", 0)) + 1
-				if score.yuriko_kills == YURIKO_KILLS:
-					score.yuriko_last_contact = score.time if score.get("engaged", false) else float(score.time) - QUIET_WINDOW
-					Music.set_yuriko_quiet(yuriko_quiet(score))
 
 static func trim_window(events: Array, cutoff: float) -> void:
 	while not events.is_empty() and float(events[0]) < cutoff:

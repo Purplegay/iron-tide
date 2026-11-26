@@ -50,6 +50,5 @@ static func draw(unit) -> void:
 	var protection:=shield(unit)
 	if protection.is_empty():return
 	var center:=Vector2(0,-unit._visual_lift())
-	unit.draw_arc(center,unit.radius+7,0,TAU,24,Color(.3,.85,1,.75),1.5,true)
 	unit.draw_line(center+Vector2(-12,-unit.radius-10),center+Vector2(12,-unit.radius-10),Color(.1,.2,.3),3)
 	unit.draw_line(center+Vector2(-12,-unit.radius-10),center+Vector2(-12+24*protection.hp/protection.maximum,-unit.radius-10),Color.CYAN,3)

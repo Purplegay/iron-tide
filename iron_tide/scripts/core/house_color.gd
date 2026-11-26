@@ -157,7 +157,28 @@ static func enemy_color_for(faction_hex: String) -> Color:
 	return best
 
 
+static func hollywood_enemy(side: String) -> bool:
+	return side == "enemy" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood"
+
+
+static func head_games() -> bool:
+	return not BattleRequest.skirmish and BattleRequest.mission_id == "yr_head_games"
+
+# Retail [Colors] is 8-bit HSV. The two controlled houses have their own purple ramps.
+static func mission_color(side: String, wing := -1) -> Color:
+	if side=="ally": return Color.from_hsv(0,230.0/255,1)
+	if side=="neutral": return Color.from_hsv(0,0,131.0/255)
+	var hue := 211 if wing==0 else 191 if wing==1 else 201
+	return Color.from_hsv(hue/255.0,201.0/255,189.0/255)
+
 static func color_for_side(side: String, faction_hex: String) -> Color:
+	if BattleRequest.mission_id=="yr_time_shift" and not BattleRequest.skirmish:
+		if side=="enemy":return Color.from_hsv(153.0/255,214.0/255,212.0/255)
+		return mission_color(side)
+	if head_games(): return mission_color(side)
+	if hollywood_enemy(side):
+		# rulesmd.ini [Colors] Purple uses 8-bit HSV.
+		return Color.from_hsv(201.0 / 255, 201.0 / 255, 189.0 / 255)
 	if side == "ally":
 		return player_color()
 	if BattleRequest.skirmish:
@@ -191,13 +212,13 @@ static func shader_res() -> Shader:
 
 
 ## 按目标色返回共享 ShaderMaterial；目标色 == 素材基准色时返回 null（不必上 shader）。
-enum PaintMode { NONE, SQUID_BODY, SQUID_GRIP, SUB_HULL, NEUTRAL_OIL, NATIVE_MODEL }
+enum PaintMode { NONE, SQUID_BODY, SQUID_GRIP, SUB_HULL, NEUTRAL_OIL, NATIVE_MODEL, CITY_RED_RAMP, HOSPITAL_FACADE, SHOP_FACADE, HOSPITAL_BLUE_NEUTRAL, HOSPITAL_BLUE_FACADE }
 
-static func material_for(target: Color, paint_mode := PaintMode.NONE, skin := 0) -> ShaderMaterial:
+static func material_for(target: Color, paint_mode := PaintMode.NONE, skin := 0, hollywood_paint := false) -> ShaderMaterial:
 	var hex := "#" + target.to_html(false)
-	if hex == BASE_HEX and paint_mode == PaintMode.NONE and skin == 0:
+	if hex == BASE_HEX and paint_mode == PaintMode.NONE and skin == 0 and not hollywood_paint:
 		return null
-	var key := "%s:%d:%d" % [hex,paint_mode,skin]
+	var key := "%s:%d:%d:%d" % [hex,paint_mode,skin,int(hollywood_paint)]
 	if _mat_cache.has(key):
 		return _mat_cache[key]
 	var m := ShaderMaterial.new()
@@ -208,6 +229,7 @@ static func material_for(target: Color, paint_mode := PaintMode.NONE, skin := 0)
 	m.set_shader_parameter("min_len", 0.10)
 	m.set_shader_parameter("strength", 1.0)
 	m.set_shader_parameter("paint_mode", paint_mode)
+	m.set_shader_parameter("hollywood_paint", hollywood_paint)
 	m.set_shader_parameter("unit_skin",skin)
 	_mat_cache[key] = m
 	return m
@@ -217,10 +239,25 @@ static func material_for(target: Color, paint_mode := PaintMode.NONE, skin := 0)
 ## `faction_hex` 为该对象所属阵营的本色（用于敌方避让判定）。
 static func apply_to(node: CanvasItem, side: String, faction_hex: String) -> Color:
 	var col := color_for_side(side, faction_hex)
+	if head_games() and (node is Unit or node is Building):
+		col = mission_color(side,int(node.special.get("head_games_wing",-1)))
+	if BattleRequest.mission_id=="yr_time_shift" and side=="enemy" and (node is Unit or node is Building) and (node.faction=="yuri" or node.special.get("yuri_power",false)):col=mission_color("enemy")
 	var mode := PaintMode.NONE
 	if node is Building and node.building_id == "CAOILD" and side == "neutral":
 		col = Color.GRAY
 		mode = PaintMode.NEUTRAL_OIL
+	if node is Building and node.building_id == "CATHOSP":
+		var art: Texture2D = node._ra2.get("tex")
+		var city := art != null and art.resource_path.begins_with("res://assets/ra2/hollywood/city/")
+		if side == "neutral":
+			col = Color.GRAY
+			mode = PaintMode.CITY_RED_RAMP if city else PaintMode.HOSPITAL_BLUE_NEUTRAL
+		else:
+			mode = PaintMode.HOSPITAL_FACADE if city else PaintMode.HOSPITAL_BLUE_FACADE
+	if node is Building and node.building_id == "CAMACH" and side != "neutral":
+		mode = PaintMode.SHOP_FACADE
+	if node is Building and node.building_id == "CALA05" and side != "neutral":
+		mode = PaintMode.CITY_RED_RAMP
 	if node is Unit:
 		match node.unit_id:
 			"R3FUTURE": mode = PaintMode.NATIVE_MODEL
@@ -235,7 +272,7 @@ static func apply_to(node: CanvasItem, side: String, faction_hex: String) -> Col
 		skin=MetaProgress.Cosmetics.SKIN_MATERIALS.get(style.get("skin","stock"),0)
 	if node is Unit and node.special.get("hero_skin",false) and node.unit_id in ["MTNK","HTNK"]:
 		skin=10 if node.unit_id=="MTNK" else 11
-	node.material = material_for(col, mode, skin)
+	node.material = material_for(col, mode, skin, hollywood_enemy(side))
 	if node is Unit:
 		if casemate:
 			if node.casemate_thruster==null:node.casemate_thruster=preload("res://scripts/units/tnkd_exoframe.gd").new()

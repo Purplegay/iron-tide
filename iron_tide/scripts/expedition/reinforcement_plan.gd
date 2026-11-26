@@ -40,10 +40,9 @@ static func radio_copies(pending:Array,initial:Array,clock:float) -> Array:
 static func build(run:Dictionary) -> Array:
 	var result:Array=[]
 	var heroes:Array=[]
-	for source:Dictionary in Army.inventory(run):
+	for source:Dictionary in Army.deployment(run).field:
 		var row:Dictionary=source.duplicate(true)
 		var hero:=str(row.get("hero",""))
-		if row.id not in run.get("active_roster",[]) and hero.is_empty():continue
 		if not hero.is_empty():heroes.append(hero)
 		row.due=delay_for(str(row.id),hero,run,str(row.get("variant","")))
 		row.cost=unit_cost(str(row.id))

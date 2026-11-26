@@ -28,6 +28,32 @@ static func air_pursuit(unit: Unit, target) -> bool:
 	if not AlliedAbilities.alive(target) or unit.position.distance_to(target.position)>maxf(unit.sight,unit.attack_range): return false
 	return unit._automatic_target_allowed(target) and visible_enemy(unit,target)
 
+## Campaign Area Guard is distinct from sitting on Guard or following a team script.
+## Use the local sight radius as a leash; weapon reach still gates actual firing.
+static func area_guard(unit: Unit, target, reach: float, delta: float) -> bool:
+	if unit.side != "enemy" or unit.hold_position or unit.fire_stance != "free": return false
+	if unit.has_move_order or unit.attack_ordered or unit.attack_move or unit.patrolling or not unit.order_queue.is_empty(): return false
+	if unit._deployed or unit.repairing or unit.embarked_in != null or unit.is_harvester or unit.is_air or unit.weapon.is_empty(): return false
+	if unit.special.has("action") or unit.special.has("finished_attack_route"): return false
+	var post: Vector2 = unit.special.campaign_area_guard
+	if AlliedAbilities.alive(target):
+		var distance := CommandoCombat.distance_to(unit, target)
+		if distance <= reach: return false # Normal facing and firing, including minimum range.
+		var limit := maxf(unit.sight, reach)
+		if visible_enemy(unit, target) and post.distance_squared_to(target.global_position) <= limit * limit and post.distance_squared_to(unit.global_position) <= limit * limit:
+			if unit._chase_goal == post: unit._chase_goal = Vector2.INF
+			unit._chase_target(unit._attack_approach(target), delta, true)
+			unit._face_if_moving()
+			unit._move_water_safe()
+			return true
+	if unit.global_position.distance_squared_to(post) > Unit.ARRIVE_EPS * Unit.ARRIVE_EPS:
+		if unit._chase_goal != post: unit._chase_goal = Vector2.INF
+		unit._chase_target(post, delta, true)
+		unit._face_if_moving()
+		unit._move_water_safe()
+		return true
+	return false
+
 static func busy(unit: Unit) -> bool:
 	var target = unit.attack_target
 	if not AlliedAbilities.alive(target): return false

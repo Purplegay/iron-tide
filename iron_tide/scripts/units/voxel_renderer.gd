@@ -74,7 +74,7 @@ static func draw(unit: Unit, radius: float) -> bool:
 	var scale := Unit.RA2_SPRITE_SCALE
 	var base := Vector2(-hull.anchor.x*scale,radius*0.35-hull.anchor.y*scale-lift)
 	var body_rect := Rect2(base,hull.scaled_size)
-	var shadow_rect := Rect2(base+Vector2(0.0,lift),shadow.scaled_size)
+	var shadow_rect := Rect2(base+Vector2(0.0,lift)+Iso.dir(unit.bridge_contact_offset()),shadow.scaled_size)
 	var alpha := Ra3Mirage.CloakVisual.opacity(unit)
 	var joint: Texture2D
 	var turret_frame := turret.facing(unit.turret_angle) if turret!=null else -1

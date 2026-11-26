@@ -339,6 +339,8 @@ func exercise_completion(mode: String) -> void:
 	boris.order_move(boris.position+Vector2.RIGHT*70)
 	check(not lab.special.has("airstrike_mark") and actor("BPLN","ally")==null,prefix+"move before firing the flare spawns no jets")
 	check(aim(boris,lab),prefix+"Boris designates structure")
+	var indicator = preload("res://scripts/ui/attack_cooldown_indicator.gd")
+	check(indicator.state(boris).is_empty(), prefix+"active designation has no frozen reload ring")
 	var lab_hp: float = lab.hp
 	Special.tick_actor(lab, 2.0)
 	check(lab.modulate.r > lab.modulate.g and lab.special.airstrike_mark.jets.size()==2 and lab.hp == lab_hp, prefix+"flare starts red designation and dispatches without damaging building")
@@ -368,7 +370,10 @@ func exercise_completion(mode: String) -> void:
 	check(not boris._try_fire_ready(),prefix+"AKM still has its own rate of fire")
 	Special.advance_sortie_reload(boris,0.01)
 	check(not boris.special.has("airstrike_wing") and is_equal_approx(boris.special.airstrike_cd,100.0/15),prefix+"ordinary airstrike begins 100-tick recharge on last departure")
-	Special.advance_sortie_reload(boris,100.01/15)
+	Special.advance_sortie_reload(boris, 50.0/15)
+	var rings: Array = indicator.state(boris).get("mounts", [])
+	check(rings.size() == 2 and rings[0].key == "hull" and rings[1].key == "airstrike" and is_equal_approx(rings[1].fraction, 0.5), prefix+"rifle and half-recharged airstrike have separate rings")
+	Special.advance_sortie_reload(boris,50.01/15)
 	boris._cd_timer = 0.0
 	check(aim(boris,lab),prefix+"Boris can designate again")
 	var alternate=ready_building("GAPOWR",Vector2(1530,1880))
@@ -445,8 +450,16 @@ func exercise_completion(mode: String) -> void:
 	boris._cd_timer=0
 	Special.advance_sortie_reload(boris,15.0)
 	check(not aim(boris,doomed) and boris.special.has("airstrike_wing"),prefix+"outbound surviving MiGs prevent duplicate sortie")
-	for jet in elite_jets:
-		if battle.actor_alive(jet): jet._physics_process(60.0)
+	for index in elite_jets.size():
+		var jet = elite_jets[index]
+		# Each aircraft is one unit from a different edge, away from its entry point.
+		var size:float = battle.map_size
+		jet.position = [Vector2(1,300), Vector2(size-1,300), Vector2(300,1), Vector2(300,size-1)][index]
+		jet._physics_process(0.1)
+		check(not battle.actor_alive(jet),prefix+"returning MiG exits at nearby edge "+str(index))
+		if index < elite_jets.size()-1:
+			Special.advance_sortie_reload(boris,1.0)
+			check(boris.special.has("airstrike_wing"),prefix+"wing still returning after exit "+str(index))
 	Special.advance_sortie_reload(boris,0.01)
 	check(is_equal_approx(boris.special.airstrike_cd,50.0/15),prefix+"elite 50-tick recharge starts after last plane returns")
 	Special.advance_sortie_reload(boris,50.01/15)

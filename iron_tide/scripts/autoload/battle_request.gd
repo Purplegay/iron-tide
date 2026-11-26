@@ -31,6 +31,15 @@ func sync_house_groups(actor, active := true) -> void:
 		if wanted and not actor.is_in_group(key): actor.add_to_group(key)
 		elif not wanted and actor.is_in_group(key): actor.remove_from_group(key)
 
+func sync_unit_target_groups(unit, active := true) -> void:
+	sync_house_groups(unit, active)
+	var allied:bool = active and unit.side == "ally"
+	var enemy:bool = active and unit.side != "ally" and is_house(unit.side)
+	for group in ["allies", "enemy_targets", "enemies", "ally_targets"]:
+		var wanted := allied if group in ["allies", "enemy_targets"] else enemy
+		if wanted and not unit.is_in_group(group): unit.add_to_group(group)
+		elif not wanted and unit.is_in_group(group): unit.remove_from_group(group)
+
 var skirmish: bool = false
 var skirmish_config: Dictionary = {}
 var rules_mode: String = MatchRules.EXTENDED
@@ -44,6 +53,7 @@ func combat_bonuses() -> Dictionary:
 	return MetaProgress.stat_bonuses() if extensions_enabled() else MatchRules.neutral_bonuses()
 
 func unit_bonus(id: String) -> Dictionary:
+	if not skirmish and skirmish_config.has("campaign_growth") and not extensions_enabled(): return MatchRules.neutral_bonuses()
 	return combat_context.get("unit_bonus", {}).get(id, MetaProgress.unit_stat_bonus(id))
 
 func card_scale(id: String) -> float:
@@ -59,6 +69,7 @@ func card_scale(id: String) -> float:
 	return 1.0 + 0.05 * (clampi(level, 1, 10) - 1)
 
 func unit_loadout(id: String) -> Dictionary:
+	if not skirmish and skirmish_config.has("campaign_growth") and not extensions_enabled(): return UnitSkillLayout.normalize(id,{})
 	var loadouts:Dictionary=combat_context.get("loadouts",{})
 	if loadouts.has(id): return UnitSkillLayout.normalize(id,loadouts[id] if combat_context.get("native_q_cards_removed",false) else UnitSkillLayout.without_legacy_primary(id,loadouts[id]))
 	if GameData.building_index.has(id) and combat_context.has("loadouts"): return UnitSkillLayout.normalize(id,{})
@@ -141,6 +152,10 @@ func freeze_combat_context() -> void:
 	combat_context.furnace_contract = extensions_enabled() and MetaProgress.academy.get("furnace_contract",false) and not MetaProgress.academy.get("furnace_complete",false)
 	combat_context.hero_training_scale = MetaProgress.Academy.HERO_TRAINING_SCALE
 	combat_context.auto_w_preferences=preload("res://scripts/units/auto_w.gd").preferences()
+	combat_context.hollywood_roster=[]
+	if extensions_enabled():
+		for star in MetaProgress.Academy.Stars.IDS:
+			if MetaProgress.Academy.hero_build_count(MetaProgress,star)>0: combat_context.hollywood_roster.append(star)
 	combat_context.native_q_cards_removed=true
 	combat_context.growth_attack_cap=0.0 # Legacy v0.25.81 contexts retain their original scheme.
 	var difficulty := int(skirmish_config.get("difficulty", 1))
@@ -156,8 +171,9 @@ func freeze_combat_context() -> void:
 		combat_context.commando_hero_unlocked[id]=extensions_enabled() and MetaProgress.Academy.hero_build_count(MetaProgress,id)>=MetaProgress.Academy.hero_requirement(id)
 	for id in MetaProgress.Academy.HEROES:
 		combat_context.hero_loadouts[id]=preload("res://scripts/rules/hero_loadouts.gd").effective(MetaProgress,id)
-	var layout := str(skirmish_config.get("map_layout", ""))
-	if skirmish and preload("res://scripts/world/native_maps.gd").has(layout):
+	var map_source: Dictionary = skirmish_config if skirmish else GameData.get_mission(mission_id)
+	var layout := str(map_source.get("map_layout", ""))
+	if preload("res://scripts/world/native_maps.gd").has(layout):
 		combat_context.native_ore_map = layout
 	combat_context.field_commission_version=2
 	combat_context.bunker_talent_version=2
@@ -173,6 +189,11 @@ func freeze_combat_context() -> void:
 			if level>=5:combat_context.mixed_damage_caps=true
 			combat_context.house_training[Houses.id(i)]={"difficulty":level,"logistics":GameData.skirmish_logistics(level),"unit":GameData.skirmish_unit_upgrades(level)}
 	var overrides:Dictionary={}
+	if not skirmish and skirmish_config.has("campaign_growth") and not extensions_enabled():
+		for key in ["hero_training","hero_survival_ranks","hero_escort_ranks","card_ranks","hero_loadouts"]:
+			combat_context[key] = {}
+		combat_context.card_strength_overrides = {}
+		return
 	for id in combat_context.card_ranks:
 		var card:=GameData.get_skill(id)
 		if card.has("strength_by_rank"):
@@ -201,7 +222,7 @@ func configure_skirmish(mode: String, config: Dictionary) -> void:
 	# their former default country without overwriting a chosen Soviet nation.
 	var enemy_country := str(config.get("enemy_country", ""))
 	if enemy_country.is_empty():
-		enemy_country = "苏俄" if config.get("enemy_base") == "soviet" else "虫群巢穴" if config.get("enemy_base") == "swarm" else "美国"
+		enemy_country = "苏俄" if config.get("enemy_base") == "soviet" else "尤里" if config.get("enemy_base") == "yuri" else "虫群巢穴" if config.get("enemy_base") == "swarm" else "美国"
 	if enemy_country == "虫群巢穴" and not extensions_enabled(): enemy_country = "美国"
 	skirmish_config["enemy_country"] = enemy_country
 	skirmish_config["enemy_base"] = "swarm" if enemy_country == "虫群巢穴" else GameData.ra2_country_side(enemy_country)
@@ -218,6 +239,8 @@ func configure_skirmish(mode: String, config: Dictionary) -> void:
 func configure_mission(id: String, config: Dictionary) -> void:
 	reset()
 	mission_id = id
+	if config.has("campaign_growth"):
+		rules_mode = MatchRules.EXTENDED if config.campaign_growth else MatchRules.RA2
 	skirmish_config = config.duplicate(true)
 
 func reset() -> void:

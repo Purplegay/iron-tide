@@ -208,7 +208,9 @@ func check_reunion_upgrades() -> void:
 			check(Gifts.use_cooldown(600,id,{})==600-60*(level-1),"earned cooldown for "+id)
 			var guide := Gifts.guide_for_run(id,run)
 			check(not guide.contains("{") and not guide.contains("}"), "resolved area values in " + id)
-			if id in ["greta","nadya","su"]:
+			if id == "yusuf":
+				check(guide.contains("获得 %d 战场资金" % (4500+500*level)) and guide.contains("提供 %d 资金" % (900+100*level)), "ranked freight rates")
+			if id in ["greta","nadya","su","yusuf"]:
 				check(not guide.contains("基础范围"), "global order has no range upgrade " + id)
 		var pump_radius: int = [286,312,338,364][level-2]
 		check(Gifts.guide_for_run("sami",run).contains("半径 %d 内" % pump_radius),"pump guide matches earned rank %d" % level)
@@ -238,7 +240,7 @@ func check_reunion_upgrades() -> void:
 	var runtime = screen.expedition_runtime
 	var expected_areas := {
 		"sami":{"radius":364}, "volkov":{"radius":364}, "seojin":{"radius":420},
-		"edith":{"radius":448,"reveal":784}, "vera":{"radius":420}, "yusuf":{"radius":252},
+		"edith":{"radius":448,"reveal":784}, "vera":{"radius":420}, "yusuf":{},
 		"lin":{"radius":364,"blast":224}, "mara":{"radius":203},
 		"ines":{"radius":420,"reveal":525,"chain":294}, "qiao":{"half_width":112,"wide_half_width":168}
 	}
@@ -575,27 +577,22 @@ func check_order(kind:String) -> void:
 			order.advance(2)
 			check(first_hp<before and dummy.hp<first_hp and not order.state.has("events"),"four timed bombing passes conclude")
 		"yusuf":
-			var point := Vector2.ONE * float(battle.map_size) * 0.5
-			var sounds := Ra2Sfx.a_plays
-			troops.HARV.position=point+Vector2(181,0)
-			var funds:float=battle.funds_for("ally")
-			troops.DTRUCK.special.expedition_mission_unit=true
+			var miners: Array = battle.units.filter(func(u): return order.available(u) and u.is_harvester)
+			for unit in miners: unit.special.expedition_mission_unit = true
+			var funds: float = battle.funds_for("ally")
 			order.button.pressed.emit()
-			check(order.aiming and order.is_processing() and order.area.radius==180 and order.instruction.visible and Ra2Sfx.a_plays==sounds+1,"freight button arms a 180-radius preview with selection sound")
-			order_click(point)
-			check(order.aiming and battle.funds_for("ally")==funds and not order.state.has("cooldown") and Ra2Sfx.a_plays==sounds+1,"out-of-range freight click keeps aiming without payout or collection sound")
-			troops.HARV.position=point+Vector2(180,0)
-			order_click(point)
-			check(not order.aiming and is_equal_approx(battle.funds_for("ally")-funds,5000.0) and order.state.cooldown==(300 if timer_max else 600) and Ra2Sfx.a_plays==sounds+2,"boundary freight click credits 5000 and plays collection sound once")
-			check(order.button.text==("签收运费\n5:00" if timer_max else "签收运费\n10:00") and order.get_child(-1).get_child(0).text=="+5000","ordinary receipt on battlefield and timer on button")
-			troops.DTRUCK.special.erase("expedition_mission_unit")
+			check(not order.aiming and battle.funds_for("ally")-funds==5000 and order.state.cooldown==(300 if timer_max else 600), "zero miners: one press credits base freight")
+			order.button.pressed.emit()
+			check(battle.funds_for("ally")-funds==5000,"cooldown prevents duplicate freight")
 			order.advance(order.state.cooldown)
-			check(order.button.text=="签收运费","ready button returns to the freight action")
+			for unit in miners: unit.special.erase("expedition_mission_unit")
+			var fee := 2*(5000+1000*miners.size())
 			funds=battle.funds_for("ally")
-			check(order.fire_at(point) and is_equal_approx(battle.funds_for("ally")-funds,10000.0) and order.state.cooldown==(120 if timer_max else 240) and Ra2Sfx.a_plays==sounds+3,"joint freight credits 10000, plays collection sound and reduces cooldown")
+			order.button.pressed.emit()
+			check(battle.funds_for("ally")-funds==fee and order.state.cooldown==(120 if timer_max else 240),"joint freight doubles base and all miner bonuses")
 			order.advance(60 if timer_max else 120)
-			check(order.button.text==("签收运费\n1:00" if timer_max else "签收运费\n2:00") and order.get_child(-1).get_child(0).text=="+10000","joint receipt on battlefield and timer on button")
-			check(order.charge_mask.visible and order.charge_mask.value==0.5,"joint freight mask uses 240-second denominator")
+			check(order.button.text==("签收运费\n1:00" if timer_max else "签收运费\n2:00") and order.get_child(-1).get_child(0).text=="+%d" % fee,"freight receipt and countdown")
+			check(order.charge_mask.visible and order.charge_mask.value==0.5,"joint freight mask")
 		"edith":
 			battle.fog=stage_fog
 			var point:=Vector2.ONE*float(battle.map_size)*0.5

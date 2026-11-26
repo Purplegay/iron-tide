@@ -156,7 +156,7 @@ func open_page() -> void:
 	var state := MetaProgress.academy
 	var builds: Dictionary = state.get("hero_builds",{})
 	var recent: Array = state.get("hero_recency",[])
-	var ids := Academy.HEROES.keys()
+	var ids := Academy.HEROES.keys().filter(func(id):return id not in Academy.Stars.IDS or int(builds.get(id,0))>0)
 	ids.sort_custom(func(a,b):
 		var count_a := int(builds.get(a,0))
 		var count_b := int(builds.get(b,0))
@@ -178,6 +178,8 @@ func open_page() -> void:
 		picker.set_item_metadata(picker.item_count-1,id)
 		var button:=UiKit.make_button("")
 		button.icon=Portraits.texture(id)
+		if id in Academy.Stars.IDS:
+			button.draw.connect(Portraits.draw_button_name.bind(button,id))
 		button.add_theme_constant_override("icon_max_width",60)
 		button.name="HeroSelect_"+id;button.toggle_mode=true
 		button.size_flags_horizontal=Control.SIZE_EXPAND_FILL
@@ -211,6 +213,7 @@ func _refresh_hero_buttons() -> void:
 		var count:=Academy.hero_build_count(MetaProgress,id)
 		var status:="已解锁" if count>=requirement else "未解锁 · %d / %d"%[count,requirement]
 		var unit_name:String=GameData.get_unit(id).name
+		if id in Academy.Stars.IDS:status+=" · 中立"
 		if id=="ORCA":status+=" · 多机型合计"
 		elif unit_name!=Academy.HEROES[id]:status+=" · "+unit_name
 		hero_buttons[id].text=Academy.HEROES[id]+"\n"+status
@@ -313,6 +316,10 @@ func refresh() -> void:
 	_training_button(health,"health","生命",unlocked)
 	outfit.text = ("当前英雄皮肤：%s　·　换回英雄原版" % skin_name) if equipped else ("当前英雄皮肤：原版　·　装备%s" % skin_name)
 	outfit.disabled = not unlocked
+	if selected in Academy.Stars.IDS:
+		trial.hide();outfit.hide();skin_description.hide()
+		_refresh_commando(unlocked)
+		return
 	if selected=="ORCA":
 		_refresh_peregrine()
 		return
@@ -358,26 +365,28 @@ static func _talent_status(active:bool) -> String:
 
 func _refresh_commando(unlocked:bool) -> void:
 	var convoy:=selected in ["FV","HARV"]
-	var titles:Array=Unit.Convoy.Talents.TITLES[selected] if convoy else Academy.Commandos.TITLES[selected]
+	var star:=selected in Academy.Stars.IDS
+	var titles:Array=Academy.Stars.TITLES[selected] if star else Unit.Convoy.Talents.TITLES[selected] if convoy else Academy.Commandos.TITLES[selected]
 	escort_title.text="英雄专属天赋 · "+str(titles[0])
 	survival_title.text="英雄专属天赋 · "+str(titles[1])
 	for i in 2:
 		var detail=escort_detail if i==0 else survival_detail
 		var button=escort if i==0 else survival
-		if convoy or selected in ["TANY","BORIS"]:
+		if star or convoy or selected in ["TANY","BORIS"]:
 			var action:="escort" if i==0 else "survival"
 			var key:="hero_escort_ranks" if i==0 else "hero_survival_ranks"
 			var rank:=clampi(int(MetaProgress.academy.get(key,{}).get(selected,0)),0,5)
 			var traits:Array=preload("res://scripts/units/tanya_talents.gd").COMMAND if i==0 else preload("res://scripts/units/tanya_talents.gd").DEFENSE
 			if selected=="BORIS":traits=preload("res://scripts/units/boris_command.gd").COMMAND if i==0 else preload("res://scripts/units/boris_radio.gd").DEFENSE
 			if convoy:traits=Unit.Convoy.Talents.TRAITS[selected][i]
+			if star:traits=Academy.Stars.TRAITS[selected][i]
 			detail.text=""
-			for level in 6:detail.text+="Lv.%d　%s　%s\n"%[level,_talent_status(unlocked and level<=rank),traits[level]]
+			for level in traits.size():detail.text+="Lv.%d　%s　%s\n"%[level,_talent_status(unlocked and level<=rank),traits[level]]
 			var cost:=Academy.hero_talent_cost(action,rank,selected)
 			button.icon=Icon.texture("attack" if i==0 else "guard")
-			button.text="解锁英雄后开启" if not unlocked else ("已满级" if rank>=5 else "升级%s · %d 战略核心"%[titles[i],cost])
+			button.text="解锁英雄后开启" if not unlocked else ("已满级" if rank>=traits.size()-1 else "升级%s · %d 战略核心"%[titles[i],cost])
 			if button.text.contains("战略核心"):button.icon=preload("res://scripts/ui/resource_cost_icon.gd").texture("cores")
-			button.disabled=not unlocked or rank>=5 or cost<=0 or MetaProgress.balance("cores")<cost
+			button.disabled=not unlocked or rank>=traits.size()-1 or cost<=0 or MetaProgress.balance("cores")<cost
 			continue
 		detail.text="Lv.0　%s　%s\nLv.1～5 将在后续批次开放；专属双卡见上方英雄契约。"%[_talent_status(unlocked),Academy.Commandos.BASE_TEXT[selected][i]]
 		button.icon=Icon.texture("attack" if i==0 else "guard")

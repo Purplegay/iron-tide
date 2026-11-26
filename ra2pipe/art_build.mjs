@@ -50,6 +50,7 @@ function loadSequences() {
       const start = parseInt(parts[0], 10), per = parseInt(parts[1], 10), third = parseInt(parts[2] || '0', 10);
       if (isNaN(start) || isNaN(per)) continue;
       seq[name] = { start, per, facings: third ? 8 : 1 };
+      if (third && third !== per) seq[name].stride = third;
     }
     cache[m[1].toLowerCase()] = { image: m[1], source: 'art.ini/[' + key + ']', seq };
   }

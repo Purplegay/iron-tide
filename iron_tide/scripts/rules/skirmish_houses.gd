@@ -6,6 +6,7 @@ const Preferences = preload("res://scripts/ui/lobby_preferences.gd")
 const COMMANDERS := {
 	"allied":["里德","莫罗","韩星","瓦格纳","柯林斯","黎安","海斯","沈舟"],
 	"soviet":["罗曼诺娃","格里申","奥尔洛夫","扎赫拉","科瓦奇","伊萨克","罗哈斯","米拉"],
+	"yuri":["尤里指挥官"],
 	"swarm":["灰刺","蚀月","赤颚","幽鸣","黑棘","白翅","织雾","空壳"]}
 
 static func commander_name(row:Dictionary,index:int) -> String:

@@ -5,9 +5,9 @@ const DeathRules = preload("res://scripts/core/yr_death_rules.gd")
 static var yellow := str(Rules.data().lighting.conditionyellow).trim_suffix("%").to_float() / 100.0
 static var red := str(Rules.data().lighting.conditionred).trim_suffix("%").to_float() / 100.0
 
-# YR uses the same pair of particle systems on the Kirov and surface warships.
+# These hulls share the SparkSys and SmallGreySSys pair.
 static func configured(unit) -> bool:
-	if unit.unit_id != "ZEP" and not unit.is_naval: return false
+	if unit.unit_id not in ["ZEP","LTNK","YTNK","SMIN"] and not unit.is_naval: return false
 	var systems := DeathRules.names(DeathRules.type_data(unit.unit_id), "damageparticlesystems")
 	return "SPARKSYS" in systems and "SMALLGREYSSYS" in systems
 
@@ -26,6 +26,8 @@ static func draw(unit) -> void:
 	for vent in severity:
 		var offset := forward * (-0.23 if vent == 0 else 0.16) * bounds.size
 		var origin := bounds.get_center() + offset - Vector2(0.0, bounds.size.y * 0.16)
+		if unit.data.get("hollywood_fx", {}).has("damage_smoke"):
+			origin = Iso.dir(unit.HollywoodFx.offset(unit.data.hollywood_fx.damage_smoke,unit.hull_angle))
 		var count := 7 if severity == 2 else 4
 		for i in count:
 			var progress := fposmod(time * 0.45 + float(i) / count + vent * 0.23, 1.0)

@@ -2,8 +2,8 @@ extends RefCounted
 ## Shows the grid centers allowed by adjacency, not a promise of clear terrain.
 ## Placement checks water, obstructions and payment.
 
-## Custom extension-mode yard reach; this is not a native YR Adjacent value.
-const EXTENDED_YARD_CELLS := 12.0
+## Shared construction yard reach; this is not a native YR Adjacent value.
+const YARD_REACH_CELLS := 12.0
 
 var _signature: Array = []
 var cells: Dictionary = {}
@@ -15,7 +15,7 @@ var _expansion_signature: Array = []
 static func provides_range(data: Dictionary) -> bool:
 	if data.get("tags", []).has("civilian"):
 		# Ownership is checked by placement_zones; this also covers older saved derricks.
-		return data.get("id", "") == "CAOILD"
+		return data.get("id", "") == "CAOILD" or (data.get("id","") == "CALA05" and data.get("base_normal", false))
 	var rule: Dictionary = GameData.yr_baseline.get("entities", {}).get(str(data.get("id", "")), {})
 	return bool(rule.get("base_normal", data.get("base_normal", not WallArt.is_wall(data))))
 
@@ -43,8 +43,8 @@ static func adjacency_distance(_world, data: Dictionary) -> float:
 ## Use the same per-source envelope for placement and the blue/green overlays.
 static func source_distance(world, target_data: Dictionary, source_data: Dictionary) -> float:
 	var distance := adjacency_distance(world, target_data)
-	if BattleRequest.extensions_enabled() and "hq" in source_data.get("tags", []):
-		distance = maxf(distance, Ra2Damage.PX_PER_CELL * EXTENDED_YARD_CELLS)
+	if "hq" in source_data.get("tags", []):
+		distance = maxf(distance, Ra2Damage.PX_PER_CELL * YARD_REACH_CELLS)
 	return distance
 
 static func placement_zones(world, data: Dictionary, side: String = "ally") -> Array:

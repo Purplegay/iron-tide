@@ -42,14 +42,14 @@ static func weapon_color(weapon:Dictionary) -> Color:
 	var kind:=str(weapon.get("attack_type","bullet"))
 	var native_id:=str(weapon.get("ra2_weapon_id",""))
 	var id:=str(weapon.get("name","")) if native_id.is_empty() else native_id.to_lower().trim_prefix("yr_cap_")
-	var flags:Dictionary=GameData.ra2_weapon(native_id).get("extra",{})
+	var flags:Dictionary=GameData.weapon_combat_rule(native_id)
 	var warhead:=str(weapon.get("ra2_warhead","")).to_lower()
 	if float(weapon.get("damage",0))<0:kind="repair"
 	elif "chrono" in warhead:kind="temporal"
-	elif GameData._ra2_flag(flags.get("IsElectricBolt")):kind="tesla"
-	elif GameData._ra2_flag(flags.get("IsLaser")) or "prism" in id:kind="prism"
-	elif GameData._ra2_flag(flags.get("IsSonic")):kind="sonic"
-	elif GameData._ra2_flag(flags.get("IsRadBeam")):kind="radiation"
+	elif flags.get("electric_bolt",false):kind="tesla"
+	elif flags.get("laser",false) or "prism" in id:kind="prism"
+	elif flags.get("sonic",false):kind="sonic"
+	elif flags.get("rad_beam",false):kind="radiation"
 	elif "missile" in id:kind="rocket"
 	elif kind=="cannon":kind="shell"
 	var color:Color=PALETTE.get(kind,PALETTE.bullet)
@@ -87,8 +87,16 @@ static func state(unit) -> Dictionary:
 	if not AlliedAbilities.alive(unit) or unit.side!="ally" or not unit.is_visible_in_tree():return {}
 	if unit is Building:return building_state(unit)
 	if unit.embarked_in!=null:return {}
-	if unit.unit_id == "BORIS" and is_instance_valid(unit.attack_target) and unit.attack_target is Building:
-		return visible_slots([slot("airstrike",unit.special.get("airstrike_cd",0.0),unit.special.get("airstrike_duration",0.0),PALETTE.aircraft)],unit.selected)
+	if unit.unit_id == "BORIS":
+		var designating := is_instance_valid(unit.attack_target) and unit.attack_target is Building
+		var clocks: Array = []
+		if not designating and (unit.selected or unit._cd_timer > 0.0):
+			clocks.append(ordinary_slot(unit, unit._weapon_for_target(null), "hull"))
+		var reload_left: float = unit.special.get("airstrike_cd", 0.0)
+		# The marked building and jets show the sortie. Draw its clock only after departure.
+		if not unit.special.has("airstrike_wing") and (reload_left > 0.0 or designating):
+			clocks.append(slot("airstrike", reload_left, unit.special.get("airstrike_duration", 0.0), PALETTE.aircraft))
+		return visible_slots(clocks, unit.selected)
 	if unit.unit_id=="R3REAPER":return reaper_state(unit,unit.veteran_level,true)
 	if unit.unit_id=="R3HARBINGER":return visible_slots(gunship_slots(unit),unit.selected)
 	if unit.unit_id in ["R3TESLA","R3APOC"]:

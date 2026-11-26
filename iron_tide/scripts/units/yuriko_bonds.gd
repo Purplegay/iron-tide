@@ -71,6 +71,9 @@ static func deliver(run:Dictionary) -> bool:
 	var state:=MetaProgress.yuriko_school
 	var deliveries:Dictionary=run.get("school_deliveries",{})
 	var next:Dictionary
+	if run.get("yuriko_recruited",false) and not state.get("recruited_before",false):
+		next=state.duplicate(true)
+		next.recruited_before=true
 	for key:String in deliveries:
 		if state.get("claimed_school",{}).has(key):continue
 		if next.is_empty():next=state.duplicate(true)
@@ -101,15 +104,45 @@ static func price_from_roll(ticket:int) -> int:
 	assert(false,"Gift price weights must cover the daily draw")
 	return BASE_GIFT_PRICE
 
+const REFRESH_COSTS:=[0,10,10,20,20,20,30,30,30,50,50,50,50,50,50]
+
+static func refresh_count(day:String) -> int:
+	var state:=MetaProgress.yuriko_school
+	if state.get("gift_refresh_day","")!=day:return 0
+	return maxi(0,int(state.get("gift_refresh_count",0)))
+
+static func refresh_cost(count:int) -> int:
+	return REFRESH_COSTS[count] if count<REFRESH_COSTS.size() else 100
+
+static func reroll_gifts(day:String,quoted_count:int) -> String:
+	if not Book.met():return "礼物商店尚未开放。"
+	if day!=Time.get_date_string_from_system() or quoted_count!=refresh_count(day):
+		return "礼物报价已更新，请查看当前价格。"
+	var cost:=refresh_cost(quoted_count)
+	var funds:=MetaProgress.balance("cores")
+	if funds<cost:return "战略核心不足。"
+	var next:=MetaProgress.yuriko_school.duplicate(true)
+	next.gift_refresh_day=day
+	next.gift_refresh_count=quoted_count+1
+	MetaProgress.currency.cores=funds-cost
+	if not Book.commit(next):
+		MetaProgress.currency.cores=funds
+		return "刷新未保存，请重试。"
+	Events.meta_changed.emit()
+	return ""
+
 static func gift_price(id:String,day:String) -> int:
 	var roll:=RandomNumberGenerator.new()
-	roll.seed=("yuriko/gift/"+day+"/"+id).hash()
+	var count:=refresh_count(day)
+	var key:="yuriko/gift/"+day+"/"+id
+	if count>0:key+="/"+str(count)
+	roll.seed=key.hash()
 	return price_from_roll(roll.randi_range(0,99))
 
-static func buy_gift(id:String,quoted_day:String) -> String:
+static func buy_gift(id:String,quoted_day:String,quoted_count:int=0) -> String:
 	if not GIFTS.has(id) or not Book.met():return "礼物商店尚未开放。"
 	var today:=Time.get_date_string_from_system()
-	if quoted_day!=today:return "今日价格已更新，请按新价购买。"
+	if quoted_day!=today or quoted_count!=refresh_count(today):return "今日价格已更新，请按新价购买。"
 	var price:=gift_price(id,today)
 	var funds:=MetaProgress.balance("cores")
 	if funds<price:return "战略核心不足。"

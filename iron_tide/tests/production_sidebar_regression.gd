@@ -39,12 +39,15 @@ func exercise_mode(mode: String) -> void:
 		check(inspector.title.text == "坦克杀手", prefix + "real hover on disabled card updates dock", inspector.title.text)
 		check("空指部" in inspector.description.text, prefix + "missing prerequisite retained")
 		check(card.get_tooltip().is_empty() and not card.tooltip_text.is_empty(), prefix + "native floating tooltip suppressed without losing source details")
+		check(card._make_custom_tooltip("") == null, prefix + "empty tooltip never creates a blank panel")
 		check(card.detail_highlight, prefix + "hover inspection highlighted")
 		check(inspector.fold_button.text == "收起" and inspector.description.visible, prefix + "details start expanded with fold control")
 		var expanded_details_height: float = inspector.size.y
 		inspector.fold_button.pressed.emit()
 		await settle()
 		check(not inspector.description.visible and inspector.fold_button.text == "展开", prefix + "fold hides description and offers expand")
+		var introduction := EntityDescription.text(GameData.get_unit("TNKD"))
+		check(card.get_tooltip() == "坦克杀手\n" + introduction, prefix + "folded dock falls back to the disabled card's introduction")
 		check(inspector.size.y < expanded_details_height, prefix + "fold releases sidebar space")
 		var preferences := ConfigFile.new()
 		check(preferences.load(hud.PANEL_PREFERENCES_PATH) == OK and preferences.get_value("panels", "production_details_collapsed", false) == true, prefix + "fold choice is saved to disk")
@@ -69,6 +72,7 @@ func exercise_mode(mode: String) -> void:
 		check(config.load(DisplayPreferences.SETTINGS_PATH) == OK and config.get_value("hud", "show_production_details", true) == false, prefix + "closed preference saved to disk")
 		DisplayPreferences.reload()
 		check(not inspector.visible and inspector.title.text == "生产情报", prefix + "hover and reload keep closed dock inactive")
+		check(card.get_tooltip().contains(introduction), prefix + "closed dock falls back to floating introduction")
 		var toggle: CheckBox = hud.settings_panel.find_child("ShowProductionDetails", true, false)
 		hud.settings_panel.show()
 		check(not toggle.button_pressed and toggle.is_visible_in_tree(), prefix + "battle settings reflect the closed dock")
@@ -79,6 +83,7 @@ func exercise_mode(mode: String) -> void:
 		inspector.fold_button.pressed.emit()
 		await settle()
 		check(inspector.description.visible and inspector.fold_button.text == "收起", prefix + "expand restores description")
+		check(card.get_tooltip().is_empty(), prefix + "expanded dock does not duplicate the introduction")
 		card.mouse_entered.emit()
 		check(factory.production.is_empty() and battle.funds == 7600, prefix + "hover does not purchase")
 		var rect: Rect2 = inspector.get_global_rect()
@@ -151,6 +156,16 @@ func exercise_mode(mode: String) -> void:
 	await get_tree().process_frame
 	await soviet_descriptions(mode)
 
+func has_visible_tooltip(node: Node, text: String, in_popup := false) -> bool:
+	if node is Window and node != get_window():
+		if not node.visible: return false
+		in_popup = true
+	if in_popup and node is Label and node.is_visible_in_tree() and node.text == text:
+		return true
+	for child in node.get_children(true):
+		if has_visible_tooltip(child, text, in_popup): return true
+	return false
+
 func soviet_descriptions(mode: String) -> void:
 	BattleRequest.configure_skirmish(mode, {"map_size":3200,"country":"苏俄","enemy_base":"allied"})
 	screen = load("res://scenes/battle.tscn").instantiate()
@@ -176,6 +191,32 @@ func soviet_descriptions(mode: String) -> void:
 				await RenderingServer.frame_post_draw
 				var bounds := Rect2i(hud._production_inspector.get_global_rect())
 				stage.get_texture().get_image().get_region(bounds).save_png(output_dir.path_join(mode+"-soviet-overview.png"))
+	hud.select_prod_tab("building")
+	battle.request_structure("NAREFN")
+	hud._update_production_live()
+	await settle()
+	var refinery: Button = hud._prod_buttons.NAREFN
+	check(str(refinery.get_meta("inspector_status").text).contains("建造中"), mode + " refinery is under construction")
+	hud._prod_scroll.ensure_control_visible(refinery)
+	await settle()
+	stage.notify_mouse_entered()
+	await move_pointer(Vector2(600, 200))
+	await move_pointer(refinery.get_global_rect().get_center())
+	await get_tree().create_timer(1.0, true, false, true).timeout
+	check(not refinery.get_children(true).any(func(child): return child is PopupPanel and child.visible), mode + " expanded dock never opens an empty popup")
+	hud._production_inspector._set_folded(true)
+	await settle()
+	await move_pointer(Vector2(600, 200))
+	await move_pointer(refinery.get_global_rect().get_center())
+	var refinery_summary := EntityDescription.text(GameData.get_building("NAREFN"))
+	var floating_text := refinery.get_tooltip()
+	check(floating_text.contains(refinery_summary) and refinery.is_hovered(), mode + " actual hover on building in progress provides the introduction")
+	await get_tree().create_timer(1.0, true, false, true).timeout
+	check(not floating_text.is_empty() and has_visible_tooltip(refinery, floating_text), mode + " hovering opens a real popup with the refinery introduction")
+	await move_pointer(Vector2(600, 200))
+	check(not has_visible_tooltip(refinery, floating_text), mode + " floating introduction closes when the pointer leaves")
+	stage.notify_mouse_exited()
+	hud._production_inspector._set_folded(false)
 	hud.select_prod_tab("infantry")
 	await settle()
 	var boris: Button = hud._prod_buttons.BORIS

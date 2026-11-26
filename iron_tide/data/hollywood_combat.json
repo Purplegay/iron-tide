@@ -1,0 +1,3275 @@
+{
+ "weapons": {
+  "YR_HOL_PsychicJab": {
+   "id": "YR_HOL_PsychicJab",
+   "damage": 25,
+   "rof": 15,
+   "range": 4.5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_SAFlame",
+   "report": "InitiateAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "UCINIT",
+    "OpenToppedAnim": "GUNFIRE"
+   }
+  },
+  "YR_HOL_UCPsychicJab": {
+   "id": "YR_HOL_UCPsychicJab",
+   "damage": 63,
+   "rof": 15,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleHigh",
+   "warhead": "YR_HOL_SSABFlame",
+   "report": "InitiateAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "UCINIT",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_UCElitePsychicJab": {
+   "id": "YR_HOL_UCElitePsychicJab",
+   "damage": 73,
+   "rof": 15,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleHigh",
+   "warhead": "YR_HOL_SSABFlame",
+   "report": "InitiateAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "UCINIT",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_PsychicJabE": {
+   "id": "YR_HOL_PsychicJabE",
+   "damage": 30,
+   "rof": 15,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_SAFlame",
+   "report": "InitiateAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "UCINIT",
+    "OpenToppedAnim": "GUNFIRE"
+   }
+  },
+  "YR_HOL_ATGUN": {
+   "id": "YR_HOL_ATGUN",
+   "damage": 65,
+   "rof": 60,
+   "range": 5,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": true,
+   "projectile": "Cannon",
+   "warhead": "YR_HOL_AP",
+   "report": "LasherTankAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_ATGUNE": {
+   "id": "YR_HOL_ATGUNE",
+   "damage": 65,
+   "rof": 50,
+   "range": 5,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": true,
+   "projectile": "Cannon",
+   "warhead": "YR_HOL_RHINAPE",
+   "report": "TankDestroyerAttack",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattling": {
+   "id": "YR_HOL_AGGattling",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "MGUN-N",
+    "MGUN-NE",
+    "MGUN-E",
+    "MGUN-SE",
+    "MGUN-S",
+    "MGUN-SW",
+    "MGUN-W",
+    "MGUN-NW"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop1",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattlingE": {
+   "id": "YR_HOL_AGGattlingE",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "MGUN-N",
+    "MGUN-NE",
+    "MGUN-E",
+    "MGUN-SE",
+    "MGUN-S",
+    "MGUN-SW",
+    "MGUN-W",
+    "MGUN-NW"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop1",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattCann": {
+   "id": "YR_HOL_AAGattCann",
+   "damage": 30,
+   "rof": 16,
+   "range": 12,
+   "anim": [
+    "MGUN-N",
+    "MGUN-NE",
+    "MGUN-E",
+    "MGUN-SE",
+    "MGUN-S",
+    "MGUN-SW",
+    "MGUN-W",
+    "MGUN-NW"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop1",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattlingE": {
+   "id": "YR_HOL_AAGattlingE",
+   "damage": 25,
+   "rof": 16,
+   "range": 8,
+   "anim": [
+    "MGUN-N",
+    "MGUN-NE",
+    "MGUN-E",
+    "MGUN-SE",
+    "MGUN-S",
+    "MGUN-SW",
+    "MGUN-W",
+    "MGUN-NW"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop1",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattling2": {
+   "id": "YR_HOL_AGGattling2",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_SA",
+   "report": "GattlingGunAttackLoop2",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattling2E": {
+   "id": "YR_HOL_AGGattling2E",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_SA",
+   "report": "GattlingGunAttackLoop2",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattCann2": {
+   "id": "YR_HOL_AAGattCann2",
+   "damage": 30,
+   "rof": 8,
+   "range": 12,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop2",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattling2E": {
+   "id": "YR_HOL_AAGattling2E",
+   "damage": 25,
+   "rof": 8,
+   "range": 8,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop2",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattling3": {
+   "id": "YR_HOL_AGGattling3",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_SSA",
+   "report": "GattlingGunAttackLoop3",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AGGattling3E": {
+   "id": "YR_HOL_AGGattling3E",
+   "damage": 25,
+   "rof": 16,
+   "range": 6,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": false,
+   "projectile": "Invisiblelow",
+   "warhead": "YR_HOL_SSA",
+   "report": "GattlingGunAttackLoop3",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattCann3": {
+   "id": "YR_HOL_AAGattCann3",
+   "damage": 30,
+   "rof": 4,
+   "range": 12,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop3",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattling3E": {
+   "id": "YR_HOL_AAGattling3E",
+   "damage": 25,
+   "rof": 4,
+   "range": 8,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop3",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_MindControl": {
+   "id": "YR_HOL_MindControl",
+   "damage": 1,
+   "rof": 200,
+   "range": 7,
+   "anim": [
+    "YURICNTL"
+   ],
+   "bright": false,
+   "projectile": "PsychicControl",
+   "warhead": "YR_HOL_Controller",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_PsiWave": {
+   "id": "YR_HOL_PsiWave",
+   "damage": 250,
+   "rof": 50,
+   "range": 1,
+   "anim": [
+    "RING1"
+   ],
+   "bright": false,
+   "projectile": "Psychic",
+   "warhead": "YR_HOL_PsiPulse",
+   "report": "YuriDeploy",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattling": {
+   "id": "YR_HOL_AAGattling",
+   "damage": 25,
+   "rof": 16,
+   "range": 8,
+   "anim": [
+    "MGUN-N",
+    "MGUN-NE",
+    "MGUN-E",
+    "MGUN-SE",
+    "MGUN-S",
+    "MGUN-SW",
+    "MGUN-W",
+    "MGUN-NW"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop1",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattling2": {
+   "id": "YR_HOL_AAGattling2",
+   "damage": 30,
+   "rof": 8,
+   "range": 8,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop2",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_AAGattling3": {
+   "id": "YR_HOL_AAGattling3",
+   "damage": 40,
+   "rof": 4,
+   "range": 8,
+   "anim": [
+    "VTMUZZLE"
+   ],
+   "bright": false,
+   "projectile": "Invisible4",
+   "warhead": "YR_HOL_GattWH",
+   "report": "GattlingGunAttackLoop3",
+   "burst": 2,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_20mmRapid": {
+   "id": "YR_HOL_20mmRapid",
+   "damage": 30,
+   "rof": 20,
+   "range": 5.5,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_HARVWH",
+   "report": "WarMinerAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_20mmRapidE": {
+   "id": "YR_HOL_20mmRapidE",
+   "damage": 50,
+   "rof": 50,
+   "range": 5.75,
+   "anim": [
+    "GUNFIRE"
+   ],
+   "bright": true,
+   "projectile": "Cannon",
+   "warhead": "YR_HOL_HowitzerWH",
+   "report": "RhinoTankAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_SHOVEL": {
+   "id": "YR_HOL_SHOVEL",
+   "damage": 30,
+   "rof": 30,
+   "range": 1.5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_SA",
+   "report": "",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_TERMIGUN": {
+   "id": "YR_HOL_TERMIGUN",
+   "damage": 75,
+   "rof": 5,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_SA",
+   "report": "ArnoldAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_STALGUN": {
+   "id": "YR_HOL_STALGUN",
+   "damage": 125,
+   "rof": 10,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_HollowPoint4",
+   "report": "SlyAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_STALGREN": {
+   "id": "YR_HOL_STALGREN",
+   "damage": 10000,
+   "rof": 10,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "Cannon",
+   "warhead": "YR_HOL_NukeB",
+   "report": "SlyGrenadeLauncher",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_CLINTGUN": {
+   "id": "YR_HOL_CLINTGUN",
+   "damage": 125,
+   "rof": 10,
+   "range": 6,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_HollowPoint",
+   "report": "ClintAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_TRexInfBite": {
+   "id": "YR_HOL_TRexInfBite",
+   "damage": 200,
+   "rof": 30,
+   "range": 1.5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_TRexInfWH",
+   "report": "TrexAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_TRexBite": {
+   "id": "YR_HOL_TRexBite",
+   "damage": 200,
+   "rof": 30,
+   "range": 1.5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleLow",
+   "warhead": "YR_HOL_TRexWH",
+   "report": "TrexAttack",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_DefuseKit": {
+   "id": "YR_HOL_DefuseKit",
+   "damage": 1,
+   "rof": 20,
+   "range": 1.5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleAll",
+   "warhead": "YR_HOL_BombDisarm",
+   "report": "DefuseKit",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  },
+  "YR_HOL_VirtualScanner": {
+   "id": "YR_HOL_VirtualScanner",
+   "damage": 1,
+   "rof": null,
+   "range": 5,
+   "anim": [],
+   "bright": false,
+   "projectile": "InvisibleAll",
+   "warhead": "YR_HOL_SA",
+   "burst": 1,
+   "extra": {
+    "OccupantAnim": "",
+    "OpenToppedAnim": ""
+   }
+  }
+ },
+ "warheads": {
+  "YR_HOL_SAFlame": {
+   "id": "YR_HOL_SAFlame",
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.8,
+    "light": 0.5,
+    "medium": 0.25,
+    "heavy": 0.25,
+    "wood": 0.75,
+    "steel": 0.5,
+    "concrete": 0.25,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "INITFIRE"
+   ],
+   "inf_death": 4,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.7,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_SSABFlame": {
+   "id": "YR_HOL_SSABFlame",
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.8,
+    "light": 0.5,
+    "medium": 0.25,
+    "heavy": 0.25,
+    "wood": 0.75,
+    "steel": 0.3,
+    "concrete": 0.2,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "INITFIRE"
+   ],
+   "inf_death": 4,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_AP": {
+   "id": "YR_HOL_AP",
+   "verses": {
+    "none": 0.25,
+    "flak": 0.25,
+    "plate": 0.15,
+    "light": 0.75,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 0.65,
+    "steel": 0.45,
+    "concrete": 0.6,
+    "special_1": 0.6,
+    "special_2": 1
+   },
+   "anim_list": [
+    "S_CLSN16",
+    "S_CLSN22"
+   ],
+   "inf_death": 3,
+   "cell_spread": 0.3,
+   "percent_at_max": 0.5,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_RHINAPE": {
+   "id": "YR_HOL_RHINAPE",
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 1,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 0.65,
+    "steel": 0.45,
+    "concrete": 0.6,
+    "special_1": 0.6,
+    "special_2": 1
+   },
+   "anim_list": [
+    "VTEXPLOD"
+   ],
+   "inf_death": 3,
+   "cell_spread": 0.3,
+   "percent_at_max": 0.5,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_GattWH": {
+   "id": "YR_HOL_GattWH",
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.7,
+    "light": 0.5,
+    "medium": 0.3,
+    "heavy": 0.1,
+    "wood": 0.1,
+    "steel": 0.05,
+    "concrete": 0.03,
+    "special_1": 2,
+    "special_2": 0.5
+   },
+   "anim_list": [
+    "PIFFPIFF",
+    "PIFFPIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.7,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_SA": {
+   "id": "YR_HOL_SA",
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.8,
+    "light": 0.5,
+    "medium": 0.25,
+    "heavy": 0.25,
+    "wood": 0.75,
+    "steel": 0.5,
+    "concrete": 0.25,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "PIFFPIFF",
+    "PIFFPIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.7,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_SSA": {
+   "id": "YR_HOL_SSA",
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.6,
+    "medium": 0.4,
+    "heavy": 0.4,
+    "wood": 0.75,
+    "steel": 0.5,
+    "concrete": 0.25,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "PIFFPIFF",
+    "PIFFPIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.8,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_Controller": {
+   "id": "YR_HOL_Controller",
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 1,
+    "medium": 1,
+    "heavy": 1,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "YURICNTL"
+   ],
+   "inf_death": 0,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "yes",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_PsiPulse": {
+   "id": "YR_HOL_PsiPulse",
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "anim_list": [],
+   "inf_death": 6,
+   "cell_spread": 3,
+   "percent_at_max": 0.85,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "yes",
+    "AffectsAllies": "no"
+   }
+  },
+  "YR_HOL_HARVWH": {
+   "id": "YR_HOL_HARVWH",
+   "verses": {
+    "none": 1,
+    "flak": 0.8,
+    "plate": 0.7,
+    "light": 0.5,
+    "medium": 0.2,
+    "heavy": 0.2,
+    "wood": 0.2,
+    "steel": 0.15,
+    "concrete": 0.1,
+    "special_1": 4,
+    "special_2": 1
+   },
+   "anim_list": [
+    "PIFFPIFF",
+    "PIFFPIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_HowitzerWH": {
+   "id": "YR_HOL_HowitzerWH",
+   "verses": {
+    "none": 1,
+    "flak": 0.9,
+    "plate": 0.8,
+    "light": 0.6,
+    "medium": 0.4,
+    "heavy": 0.4,
+    "wood": 0.5,
+    "steel": 0.4,
+    "concrete": 0.25,
+    "special_1": 0.8,
+    "special_2": 1
+   },
+   "anim_list": [
+    "S_CLSN16",
+    "S_CLSN22",
+    "S_CLSN30",
+    "S_CLSN42",
+    "S_CLSN58"
+   ],
+   "inf_death": 3,
+   "cell_spread": 0.5,
+   "percent_at_max": 0.5,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_HollowPoint4": {
+   "id": "YR_HOL_HollowPoint4",
+   "verses": {
+    "none": 1,
+    "flak": 1,
+    "plate": 1,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 1,
+    "special_2": 1
+   },
+   "anim_list": [
+    "PIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_NukeB": {
+   "id": "YR_HOL_NukeB",
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 1,
+    "steel": 1,
+    "concrete": 1,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "anim_list": [
+    "MININUKE"
+   ],
+   "inf_death": 0,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_HollowPoint": {
+   "id": "YR_HOL_HollowPoint",
+   "verses": {
+    "none": 2,
+    "flak": 1,
+    "plate": 1,
+    "light": 0.01,
+    "medium": 0.01,
+    "heavy": 0.01,
+    "wood": 0.01,
+    "steel": 0.01,
+    "concrete": 0.01,
+    "special_1": 0.01,
+    "special_2": 1
+   },
+   "anim_list": [
+    "PIFF"
+   ],
+   "inf_death": 1,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_TRexInfWH": {
+   "id": "YR_HOL_TRexInfWH",
+   "verses": {
+    "none": 1,
+    "flak": 0.9,
+    "plate": 0.8,
+    "light": 0,
+    "medium": 0,
+    "heavy": 0,
+    "wood": 0,
+    "steel": 0,
+    "concrete": 0,
+    "special_1": 0,
+    "special_2": 0
+   },
+   "anim_list": [],
+   "inf_death": 10,
+   "cell_spread": 0.5,
+   "percent_at_max": 0.5,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_TRexWH": {
+   "id": "YR_HOL_TRexWH",
+   "verses": {
+    "none": 0,
+    "flak": 0,
+    "plate": 0,
+    "light": 0.6,
+    "medium": 0.4,
+    "heavy": 0.4,
+    "wood": 0.5,
+    "steel": 0.4,
+    "concrete": 0.25,
+    "special_1": 0.8,
+    "special_2": 1
+   },
+   "anim_list": [],
+   "inf_death": 10,
+   "cell_spread": 0.5,
+   "percent_at_max": 0.5,
+   "prone_damage": 0.5,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "yes",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  },
+  "YR_HOL_BombDisarm": {
+   "id": "YR_HOL_BombDisarm",
+   "verses": {},
+   "anim_list": [],
+   "inf_death": 0,
+   "cell_spread": 0,
+   "percent_at_max": 1,
+   "prone_damage": 1,
+   "extra": {
+    "Sparky": "no",
+    "Rocker": "no",
+    "MindControl": "no",
+    "PsychicDamage": "no",
+    "AffectsAllies": "yes"
+   }
+  }
+ },
+ "art": {
+  "LTNK": {
+   "cameo": "res://assets/ra2/cameo/LTNKICON.png"
+  },
+  "YTNK": {
+   "cameo": "res://assets/ra2/cameo/YTNKICON.png"
+  },
+  "INIT": {
+   "cameo": "res://assets/ra2/cameo/INITICON.png"
+  },
+  "YURI": {
+   "cameo": "res://assets/ra2/cameo/YCLNICON.png"
+  },
+  "YENGINEER": {
+   "cameo": "res://assets/ra2/cameo/ENGNICON.png"
+  },
+  "SLAV": {
+   "cameo": "res://assets/ra2/cameo/E2ICON.png"
+  },
+  "SMIN": {
+   "cameo": "res://assets/ra2/cameo/SMINICON.png"
+  },
+  "YAREFN": {
+   "cameo": "res://assets/ra2/cameo/SMINICON.png"
+  }
+ },
+ "daylight": {
+  "ambient": 0.85,
+  "ground": 0.05,
+  "red": 1,
+  "green": 1,
+  "blue": 0.8
+ },
+ "unit_fx": {
+  "YURI": {
+   "primary": [
+    15,
+    0,
+    140
+   ],
+   "secondary": [
+    15,
+    0,
+    140
+   ],
+   "control_line_ticks": 20
+  },
+  "INIT": {
+   "primary": [
+    60,
+    0,
+    100
+   ]
+  },
+  "LTNK": {
+   "primary": [
+    225,
+    0,
+    100
+   ],
+   "damage_smoke": [
+    100,
+    100,
+    275
+   ]
+  },
+  "YTNK": {
+   "primary": [
+    160,
+    30,
+    150
+   ],
+   "secondary": [
+    160,
+    30,
+    150
+   ],
+   "damage_smoke": [
+    100,
+    100,
+    275
+   ]
+  },
+  "SMIN": {
+   "primary": [
+    120,
+    0,
+    185
+   ]
+  },
+  "YAREFN": {
+   "primary": [
+    120,
+    0,
+    185
+   ],
+   "damage_smoke": [
+    410,
+    100,
+    165
+   ],
+   "vents": [
+    [
+     -85,
+     -85,
+     220
+    ],
+    [
+     -85,
+     90,
+     220
+    ],
+    [
+     95,
+     -85,
+     220
+    ],
+    [
+     95,
+     90,
+     220
+    ]
+   ],
+   "smoke_image": "SGRYSMK1",
+   "smoke_ticks": 30,
+   "spawn_ticks": 10,
+   "smoke_opacity": 0.5,
+   "particle_ticks": 80,
+   "particle_cap": 7,
+   "frame_ticks": 4,
+   "end_frame": 20,
+   "velocity": 9,
+   "deceleration": 0.05
+  }
+ },
+ "fire_ports": {
+  "CALA04": [
+   [
+    82,
+    -7
+   ],
+   [
+    -3,
+    41
+   ],
+   [
+    -27,
+    -34
+   ],
+   [
+    66,
+    51
+   ],
+   [
+    29,
+    8
+   ],
+   [
+    43,
+    68
+   ],
+   [
+    99,
+    21
+   ],
+   [
+    -41,
+    6
+   ],
+   [
+    15,
+    54
+   ],
+   [
+    5,
+    -19
+   ]
+  ],
+  "CANEWY17": [
+   [
+    -44,
+    -8
+   ],
+   [
+    30,
+    -2
+   ],
+   [
+    14,
+    34
+   ],
+   [
+    -32,
+    -14
+   ],
+   [
+    28,
+    -2
+   ],
+   [
+    -20,
+    34
+   ],
+   [
+    26,
+    30
+   ],
+   [
+    32,
+    -2
+   ],
+   [
+    44,
+    8
+   ],
+   [
+    -18,
+    34
+   ]
+  ],
+  "CANEWY16": [
+   [
+    -30,
+    -94
+   ],
+   [
+    -32,
+    -60
+   ],
+   [
+    14,
+    -42
+   ],
+   [
+    38,
+    -18
+   ],
+   [
+    40,
+    -124
+   ],
+   [
+    40,
+    -66
+   ],
+   [
+    -44,
+    -42
+   ],
+   [
+    -30,
+    0
+   ],
+   [
+    14,
+    -112
+   ],
+   [
+    38,
+    -66
+   ]
+  ],
+  "CANWY23": [
+   [
+    -38,
+    -17
+   ],
+   [
+    10,
+    -18
+   ],
+   [
+    4,
+    70
+   ],
+   [
+    -25,
+    -150
+   ],
+   [
+    27,
+    -99
+   ],
+   [
+    60,
+    -44
+   ],
+   [
+    10,
+    18
+   ],
+   [
+    71,
+    17
+   ],
+   [
+    -5,
+    -53
+   ],
+   [
+    51,
+    -110
+   ]
+  ],
+  "CAMSC10": [
+   [
+    14,
+    61
+   ],
+   [
+    26,
+    70
+   ],
+   [
+    -74,
+    46
+   ],
+   [
+    -6,
+    72
+   ],
+   [
+    -50,
+    59
+   ],
+   [
+    7,
+    68
+   ],
+   [
+    -68,
+    55
+   ],
+   [
+    -20,
+    77
+   ]
+  ],
+  "CAPARS06": [
+   [
+    -16,
+    2
+   ],
+   [
+    -30,
+    24
+   ],
+   [
+    64,
+    -16
+   ],
+   [
+    30,
+    0
+   ],
+   [
+    -8,
+    66
+   ],
+   [
+    18,
+    30
+   ]
+  ],
+  "CANEWY18": [
+   [
+    -30,
+    -14
+   ],
+   [
+    28,
+    -4
+   ],
+   [
+    42,
+    -44
+   ],
+   [
+    -42,
+    -8
+   ],
+   [
+    30,
+    -2
+   ],
+   [
+    -42,
+    -10
+   ],
+   [
+    30,
+    -4
+   ],
+   [
+    -28,
+    -38
+   ],
+   [
+    -42,
+    -22
+   ],
+   [
+    42,
+    -8
+   ]
+  ],
+  "CANEWY08": [
+   [
+    33,
+    -23
+   ],
+   [
+    6,
+    43
+   ],
+   [
+    -59,
+    12
+   ],
+   [
+    55,
+    14
+   ],
+   [
+    -21,
+    -36
+   ],
+   [
+    25,
+    42
+   ],
+   [
+    -24,
+    -8
+   ],
+   [
+    31,
+    43
+   ],
+   [
+    0,
+    28
+   ],
+   [
+    24,
+    -2
+   ]
+  ],
+  "CAMIAM03": [
+   [
+    -16,
+    -36
+   ],
+   [
+    20,
+    -28
+   ],
+   [
+    -78,
+    -6
+   ],
+   [
+    -60,
+    -62
+   ],
+   [
+    32,
+    -10
+   ],
+   [
+    44,
+    -52
+   ],
+   [
+    44,
+    -16
+   ],
+   [
+    -60,
+    -24
+   ],
+   [
+    -78,
+    18
+   ],
+   [
+    20,
+    -92
+   ]
+  ],
+  "CANEWY07": [
+   [
+    -43,
+    33
+   ],
+   [
+    74,
+    21
+   ],
+   [
+    -2,
+    -26
+   ],
+   [
+    -1,
+    43
+   ],
+   [
+    54,
+    -31
+   ],
+   [
+    -55,
+    -19
+   ],
+   [
+    -69,
+    4
+   ],
+   [
+    34,
+    -8
+   ],
+   [
+    39,
+    21
+   ],
+   [
+    -29,
+    -24
+   ]
+  ],
+  "CAWASH07": [
+   [
+    -64,
+    -18
+   ],
+   [
+    -50,
+    18
+   ],
+   [
+    -64,
+    24
+   ],
+   [
+    62,
+    10
+   ],
+   [
+    10,
+    8
+   ],
+   [
+    -38,
+    38
+   ],
+   [
+    -24,
+    2
+   ],
+   [
+    62,
+    -18
+   ],
+   [
+    22,
+    44
+   ],
+   [
+    -12,
+    22
+   ]
+  ],
+  "CASWST01": [
+   [
+    6,
+    1
+   ],
+   [
+    -57,
+    -5
+   ],
+   [
+    26,
+    -60
+   ],
+   [
+    -23,
+    -44
+   ],
+   [
+    -23,
+    13
+   ],
+   [
+    -48,
+    -43
+   ],
+   [
+    29,
+    -2
+   ],
+   [
+    3,
+    -56
+   ],
+   [
+    1,
+    -99
+   ],
+   [
+    -44,
+    89
+   ]
+  ],
+  "CANEWY20": [
+   [
+    -47,
+    59
+   ],
+   [
+    -100,
+    45
+   ],
+   [
+    9,
+    31
+   ],
+   [
+    -23,
+    47
+   ],
+   [
+    -66,
+    62
+   ],
+   [
+    -34,
+    53
+   ],
+   [
+    -90,
+    50
+   ],
+   [
+    29,
+    20
+   ],
+   [
+    -13,
+    42
+   ],
+   [
+    -75,
+    56
+   ]
+  ],
+  "CANEWY21": [
+   [
+    -19,
+    27
+   ],
+   [
+    13,
+    43
+   ],
+   [
+    91,
+    51
+   ],
+   [
+    46,
+    60
+   ],
+   [
+    -7,
+    33
+   ],
+   [
+    78,
+    58
+   ],
+   [
+    36,
+    54
+   ],
+   [
+    101,
+    47
+   ],
+   [
+    2,
+    38
+   ],
+   [
+    25,
+    50
+   ]
+  ],
+  "CATEXS06": [
+   [
+    11,
+    58
+   ],
+   [
+    -35,
+    46
+   ],
+   [
+    40,
+    13
+   ],
+   [
+    -69,
+    20
+   ],
+   [
+    10,
+    18
+   ],
+   [
+    -12,
+    67
+   ],
+   [
+    40,
+    53
+   ],
+   [
+    -64,
+    41
+   ],
+   [
+    49,
+    19
+   ],
+   [
+    -42,
+    53
+   ]
+  ],
+  "CATEXS08": [
+   [
+    21,
+    13
+   ],
+   [
+    -48,
+    37
+   ],
+   [
+    -5,
+    20
+   ],
+   [
+    -61,
+    39
+   ],
+   [
+    0,
+    39
+   ],
+   [
+    -68,
+    19
+   ],
+   [
+    -13,
+    37
+   ],
+   [
+    -54,
+    10
+   ],
+   [
+    27,
+    22
+   ],
+   [
+    -68,
+    2
+   ]
+  ],
+  "CATEXS07": [
+   [
+    45,
+    26
+   ],
+   [
+    -45,
+    35
+   ],
+   [
+    8,
+    -3
+   ],
+   [
+    5,
+    41
+   ],
+   [
+    64,
+    34
+   ],
+   [
+    -32,
+    -29
+   ],
+   [
+    -23,
+    44
+   ],
+   [
+    -65,
+    34
+   ],
+   [
+    23,
+    -27
+   ],
+   [
+    -25,
+    -17
+   ]
+  ],
+  "CAWASH17": [
+   [
+    -4,
+    50
+   ],
+   [
+    -58,
+    30
+   ],
+   [
+    -38,
+    62
+   ],
+   [
+    40,
+    78
+   ],
+   [
+    54,
+    108
+   ],
+   [
+    96,
+    102
+   ],
+   [
+    76,
+    102
+   ],
+   [
+    118,
+    114
+   ],
+   [
+    144,
+    100
+   ],
+   [
+    40,
+    78
+   ]
+  ],
+  "CAGAS01": [
+   [
+    53,
+    31
+   ],
+   [
+    -42,
+    32
+   ],
+   [
+    -7,
+    23
+   ],
+   [
+    27,
+    33
+   ],
+   [
+    12,
+    61
+   ],
+   [
+    6,
+    22
+   ],
+   [
+    -53,
+    38
+   ],
+   [
+    61,
+    30
+   ],
+   [
+    -24,
+    18
+   ],
+   [
+    41,
+    44
+   ]
+  ],
+  "CANEWY12": [
+   [
+    -66,
+    -48
+   ],
+   [
+    -48,
+    6
+   ],
+   [
+    -14,
+    -28
+   ],
+   [
+    22,
+    -32
+   ],
+   [
+    -14,
+    22
+   ],
+   [
+    -46,
+    18
+   ],
+   [
+    30,
+    -68
+   ],
+   [
+    -48,
+    18
+   ],
+   [
+    -20,
+    -44
+   ],
+   [
+    -14,
+    -26
+   ]
+  ],
+  "CANEWY15": [
+   [
+    -60,
+    -32
+   ],
+   [
+    -14,
+    -34
+   ],
+   [
+    56,
+    -30
+   ],
+   [
+    40,
+    16
+   ],
+   [
+    -18,
+    28
+   ],
+   [
+    -58,
+    -4
+   ],
+   [
+    10,
+    30
+   ],
+   [
+    32,
+    -6
+   ],
+   [
+    54,
+    22
+   ],
+   [
+    -16,
+    -18
+   ]
+  ],
+  "CAPARS04": [
+   [
+    -64,
+    28
+   ],
+   [
+    -48,
+    18
+   ],
+   [
+    -8,
+    14
+   ],
+   [
+    -68,
+    -16
+   ],
+   [
+    -42,
+    -4
+   ],
+   [
+    24,
+    24
+   ]
+  ],
+  "CASTL01": [
+   [
+    -24,
+    19
+   ],
+   [
+    44,
+    20
+   ],
+   [
+    34,
+    52
+   ],
+   [
+    -34,
+    42
+   ],
+   [
+    -44,
+    8
+   ],
+   [
+    55,
+    28
+   ],
+   [
+    -12,
+    38
+   ],
+   [
+    -24,
+    6
+   ],
+   [
+    36,
+    38
+   ],
+   [
+    -12,
+    25
+   ]
+  ],
+  "CASTL03": [
+   [
+    23,
+    34
+   ],
+   [
+    -42,
+    38
+   ],
+   [
+    44,
+    8
+   ],
+   [
+    35,
+    40
+   ],
+   [
+    -56,
+    45
+   ],
+   [
+    10,
+    25
+   ],
+   [
+    -57,
+    30
+   ],
+   [
+    55,
+    17
+   ],
+   [
+    -39,
+    53
+   ],
+   [
+    12,
+    50
+   ]
+  ],
+  "CANWY24": [
+   [
+    -57,
+    -26
+   ],
+   [
+    -15,
+    37
+   ],
+   [
+    28,
+    36
+   ],
+   [
+    -10,
+    -62
+   ],
+   [
+    -34,
+    -73
+   ],
+   [
+    -11,
+    -51
+   ],
+   [
+    32,
+    -51
+   ],
+   [
+    38,
+    -14
+   ],
+   [
+    12,
+    -111
+   ],
+   [
+    41,
+    -103
+   ]
+  ],
+  "CANEWY11": [
+   [
+    -32,
+    -70
+   ],
+   [
+    10,
+    -26
+   ],
+   [
+    -32,
+    -36
+   ],
+   [
+    18,
+    -44
+   ],
+   [
+    44,
+    -40
+   ],
+   [
+    64,
+    -16
+   ],
+   [
+    44,
+    -6
+   ],
+   [
+    -18,
+    20
+   ],
+   [
+    64,
+    -50
+   ],
+   [
+    64,
+    34
+   ]
+  ],
+  "CAWASH08": [
+   [
+    -44,
+    -40
+   ],
+   [
+    -48,
+    46
+   ],
+   [
+    -12,
+    78
+   ],
+   [
+    32,
+    16
+   ],
+   [
+    -96,
+    54
+   ],
+   [
+    -108,
+    16
+   ],
+   [
+    20,
+    40
+   ],
+   [
+    32,
+    18
+   ],
+   [
+    46,
+    -22
+   ],
+   [
+    -28,
+    -4
+   ]
+  ],
+  "CAMIAM01": [
+   [
+    -44,
+    -64
+   ],
+   [
+    -14,
+    -64
+   ],
+   [
+    24,
+    6
+   ],
+   [
+    74,
+    -84
+   ],
+   [
+    36,
+    -12
+   ],
+   [
+    38,
+    -54
+   ],
+   [
+    10,
+    12
+   ],
+   [
+    -30,
+    -8
+   ],
+   [
+    36,
+    -12
+   ],
+   [
+    24,
+    18
+   ]
+  ],
+  "CAWASH10": [
+   [
+    -14,
+    -23
+   ],
+   [
+    10,
+    -18
+   ],
+   [
+    -55,
+    69
+   ],
+   [
+    -32,
+    79
+   ],
+   [
+    45,
+    74
+   ],
+   [
+    0,
+    -15
+   ],
+   [
+    -9,
+    -16
+   ],
+   [
+    66,
+    64
+   ],
+   [
+    16,
+    -22
+   ],
+   [
+    -65,
+    63
+   ]
+  ],
+  "CAPARS05": [
+   [
+    -64,
+    28
+   ],
+   [
+    -48,
+    18
+   ],
+   [
+    -8,
+    14
+   ],
+   [
+    -68,
+    -16
+   ],
+   [
+    -42,
+    -4
+   ],
+   [
+    24,
+    24
+   ]
+  ],
+  "CAMIAM02": [
+   [
+    -6,
+    -58
+   ],
+   [
+    20,
+    -8
+   ],
+   [
+    -46,
+    -16
+   ],
+   [
+    52,
+    -48
+   ],
+   [
+    70,
+    8
+   ],
+   [
+    86,
+    -78
+   ],
+   [
+    68,
+    20
+   ],
+   [
+    86,
+    -28
+   ],
+   [
+    -48,
+    -54
+   ],
+   [
+    -34,
+    4
+   ]
+  ],
+  "CAPARS13": [
+   [
+    -78,
+    -10
+   ],
+   [
+    6,
+    40
+   ],
+   [
+    -81,
+    57
+   ],
+   [
+    43,
+    -6
+   ],
+   [
+    -39,
+    67
+   ],
+   [
+    -1,
+    -21
+   ],
+   [
+    -45,
+    17
+   ],
+   [
+    -96,
+    3
+   ],
+   [
+    -8,
+    32
+   ],
+   [
+    31,
+    -36
+   ]
+  ],
+  "CAMIAM06": [
+   [
+    -1,
+    42
+   ],
+   [
+    14,
+    53
+   ],
+   [
+    62,
+    12
+   ],
+   [
+    -96,
+    24
+   ],
+   [
+    11,
+    72
+   ],
+   [
+    -64,
+    29
+   ],
+   [
+    3,
+    5
+   ],
+   [
+    18,
+    87
+   ],
+   [
+    65,
+    64
+   ],
+   [
+    82,
+    54
+   ]
+  ],
+  "CAMIAM07": [
+   [
+    -85,
+    29
+   ],
+   [
+    -63,
+    23
+   ],
+   [
+    -85,
+    29
+   ],
+   [
+    -63,
+    23
+   ],
+   [
+    -58,
+    58
+   ],
+   [
+    -75,
+    2
+   ],
+   [
+    36,
+    8
+   ],
+   [
+    -16,
+    23
+   ],
+   [
+    -35,
+    29
+   ],
+   [
+    26,
+    58
+   ]
+  ],
+  "CAMIAM05": [
+   [
+    -38,
+    26
+   ],
+   [
+    -52,
+    0
+   ],
+   [
+    49,
+    24
+   ],
+   [
+    -56,
+    69
+   ],
+   [
+    -59,
+    15
+   ],
+   [
+    -33,
+    42
+   ],
+   [
+    -8,
+    30
+   ],
+   [
+    33,
+    8
+   ],
+   [
+    17,
+    52
+   ],
+   [
+    50,
+    14
+   ]
+  ],
+  "CAMIAM04": [
+   [
+    3,
+    -3
+   ],
+   [
+    6,
+    -4
+   ],
+   [
+    -6,
+    -1
+   ]
+  ],
+  "CANWY26": [
+   [
+    41,
+    -50
+   ],
+   [
+    46,
+    45
+   ],
+   [
+    67,
+    13
+   ],
+   [
+    102,
+    -42
+   ],
+   [
+    41,
+    66
+   ],
+   [
+    -6,
+    10
+   ],
+   [
+    -42,
+    -85
+   ],
+   [
+    -34,
+    2
+   ],
+   [
+    -31,
+    55
+   ],
+   [
+    20,
+    0
+   ]
+  ],
+  "CAWASH05": [
+   [
+    -32,
+    -24
+   ],
+   [
+    54,
+    42
+   ],
+   [
+    10,
+    34
+   ],
+   [
+    92,
+    12
+   ],
+   [
+    52,
+    56
+   ],
+   [
+    12,
+    36
+   ],
+   [
+    94,
+    50
+   ],
+   [
+    -10,
+    24
+   ],
+   [
+    52,
+    18
+   ],
+   [
+    94,
+    38
+   ]
+  ],
+  "CAHSE03": [
+   [
+    -20,
+    -20
+   ],
+   [
+    10,
+    10
+   ],
+   [
+    0,
+    5
+   ],
+   [
+    20,
+    -10
+   ],
+   [
+    -10,
+    5
+   ]
+  ],
+  "CAARMY04": [
+   [
+    7,
+    13
+   ],
+   [
+    -5,
+    18
+   ],
+   [
+    18,
+    6
+   ],
+   [
+    -16,
+    14
+   ]
+  ],
+  "CAIND01": [
+   [
+    -109,
+    42
+   ],
+   [
+    50,
+    68
+   ],
+   [
+    18,
+    -17
+   ],
+   [
+    -16,
+    86
+   ],
+   [
+    -16,
+    25
+   ],
+   [
+    33,
+    11
+   ],
+   [
+    45,
+    -42
+   ],
+   [
+    -62,
+    64
+   ],
+   [
+    22,
+    84
+   ],
+   [
+    4,
+    38
+   ]
+  ],
+  "CAFRMA": [
+   [
+    -40,
+    0
+   ],
+   [
+    42,
+    26
+   ],
+   [
+    -33,
+    24
+   ],
+   [
+    -16,
+    31
+   ],
+   [
+    -11,
+    2
+   ],
+   [
+    -47,
+    15
+   ],
+   [
+    12,
+    27
+   ],
+   [
+    -19,
+    6
+   ],
+   [
+    -1,
+    34
+   ],
+   [
+    -8,
+    0
+   ]
+  ],
+  "CAWASH06": [
+   [
+    -20,
+    -20
+   ],
+   [
+    10,
+    10
+   ],
+   [
+    0,
+    5
+   ],
+   [
+    20,
+    -10
+   ],
+   [
+    -10,
+    5
+   ],
+   [
+    0,
+    20
+   ],
+   [
+    10,
+    15
+   ],
+   [
+    -20,
+    30
+   ],
+   [
+    5,
+    35
+   ],
+   [
+    35,
+    -5
+   ]
+  ],
+  "CASANF18": [
+   [
+    6,
+    29
+   ],
+   [
+    -62,
+    59
+   ],
+   [
+    -116,
+    59
+   ],
+   [
+    41,
+    6
+   ],
+   [
+    -28,
+    41
+   ],
+   [
+    -130,
+    64
+   ],
+   [
+    40,
+    23
+   ],
+   [
+    -86,
+    70
+   ],
+   [
+    -62,
+    73
+   ],
+   [
+    17,
+    26
+   ]
+  ],
+  "CALA07": [
+   [
+    -11,
+    68
+   ],
+   [
+    11,
+    67
+   ],
+   [
+    24,
+    61
+   ],
+   [
+    -26,
+    21
+   ],
+   [
+    -59,
+    5
+   ],
+   [
+    7,
+    -27
+   ],
+   [
+    0,
+    -57
+   ],
+   [
+    55,
+    4
+   ],
+   [
+    -49,
+    46
+   ],
+   [
+    5,
+    64
+   ]
+  ],
+  "CALA06": [
+   [
+    -19,
+    -13
+   ],
+   [
+    10,
+    -5
+   ],
+   [
+    -24,
+    7
+   ],
+   [
+    5,
+    -70
+   ],
+   [
+    -23,
+    30
+   ],
+   [
+    6,
+    39
+   ],
+   [
+    14,
+    25
+   ],
+   [
+    -6,
+    -10
+   ],
+   [
+    2,
+    -83
+   ],
+   [
+    22,
+    -110
+   ]
+  ],
+  "CALA09": [
+   [
+    0,
+    56
+   ],
+   [
+    -53,
+    28
+   ],
+   [
+    -20,
+    51
+   ],
+   [
+    -21,
+    -6
+   ],
+   [
+    -39,
+    46
+   ],
+   [
+    61,
+    32
+   ],
+   [
+    31,
+    46
+   ],
+   [
+    13,
+    59
+   ],
+   [
+    -49,
+    40
+   ],
+   [
+    -51,
+    9
+   ]
+  ],
+  "CAPARS14": [
+   [
+    82,
+    -7
+   ],
+   [
+    -3,
+    41
+   ],
+   [
+    -27,
+    -34
+   ],
+   [
+    66,
+    51
+   ],
+   [
+    29,
+    8
+   ],
+   [
+    43,
+    68
+   ],
+   [
+    99,
+    21
+   ],
+   [
+    -41,
+    6
+   ],
+   [
+    15,
+    54
+   ],
+   [
+    5,
+    -19
+   ]
+  ],
+  "CALA15": [
+   [
+    -9,
+    69
+   ],
+   [
+    26,
+    58
+   ],
+   [
+    72,
+    35
+   ],
+   [
+    36,
+    52
+   ],
+   [
+    12,
+    65
+   ],
+   [
+    26,
+    58
+   ],
+   [
+    -9,
+    69
+   ],
+   [
+    72,
+    35
+   ],
+   [
+    12,
+    65
+   ],
+   [
+    36,
+    52
+   ]
+  ],
+  "CALA14": [
+   [
+    11,
+    68
+   ],
+   [
+    -26,
+    57
+   ],
+   [
+    -71,
+    35
+   ],
+   [
+    -56,
+    42
+   ],
+   [
+    -35,
+    53
+   ],
+   [
+    -71,
+    35
+   ],
+   [
+    11,
+    68
+   ],
+   [
+    56,
+    42
+   ],
+   [
+    -26,
+    57
+   ],
+   [
+    35,
+    53
+   ]
+  ],
+  "CALA08": [
+   [
+    82,
+    -7
+   ],
+   [
+    -3,
+    41
+   ],
+   [
+    -27,
+    -34
+   ],
+   [
+    66,
+    51
+   ],
+   [
+    29,
+    8
+   ],
+   [
+    43,
+    68
+   ],
+   [
+    99,
+    21
+   ],
+   [
+    -41,
+    6
+   ],
+   [
+    15,
+    54
+   ],
+   [
+    5,
+    -19
+   ]
+  ]
+ }
+}

@@ -1,5 +1,6 @@
 // ra2pipe/vxl_lib.mjs — VXL/HVA parsing + software isometric voxel renderer.
 import { readFileSync } from 'node:fs';
+import { yrPaletteLookup } from './voxel_surface.mjs';
 
 // ---------------------------------------------------------------- normals
 let _normals = null;
@@ -19,6 +20,9 @@ export function loadNormals(path = 'refs/ts-ra2/src/data/vxl/normals.ts') {
       const parts = v[1].split(',').map((s) => Number(s.trim()));
       arr.push(parts);
     }
+    // One RA2 normal in the reference text has a reversed X component.
+    // Steam gamemd.exe's mode-4 table at file offset 0x446f78 points left.
+    if (name === 'normals4' && arr[241]?.[0] === 0.328188) arr[241][0] = -0.328188;
     sets[name] = arr;
   }
   _normals = sets;
@@ -180,6 +184,7 @@ export function renderVxl(model, opts = {}) {
   const se = 0.5, ce = Math.sqrt(3) / 2;
   const az = Math.PI / 4 - (facing / facings) * Math.PI * 2;
   const c = Math.cos(az), s = Math.sin(az);
+  const lookup = opts.yrVoxelLight ? yrPaletteLookup(opts.vpl, c, s) : null;
   const rx0 = -s, ry0 = c;               // screen right in world (x,y)
   const ux = -c * se, uy = -s * se, uz = ce; // screen up
   const wx = c * ce, wy = s * ce, wz = se;   // toward camera
@@ -205,7 +210,7 @@ export function renderVxl(model, opts = {}) {
       const nx = n[0] * rx0 + n[1] * ry0;
       const ny = n[0] * ux + n[1] * uy + n[2] * uz;
       const shade = 0.42 + 0.58 * Math.max(0, nx * L0 + ny * L1);
-      pts.push({ sx: scrX, sy: scrY, d: depth, c: v.colorIndex, s: shade , zz: wz0 });
+      pts.push({ sx: scrX, sy: scrY, d: depth, c: lookup ? lookup(n, v.colorIndex) : v.colorIndex, s: lookup ? 1 : shade, zz: wz0 });
     }
   }
   if (!pts.length) return { width: 1, height: 1, rgba: new Uint8Array(4) };

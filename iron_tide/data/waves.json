@@ -2,8 +2,16 @@
   "version": 1,
   "_comment": "战斗关卡配置。prepare_time 为开局准备时间；每波 wave 有独立组成，最后一批可无限递增。",
   "missions": [
+    {"id":"yr_time_shift","production_tech":{"level":3,"overrides":{"SUB":-1}},"campaign_group":"soviet","campaign_number":"01","name":"时空转移","subtitle":"美国 · 旧金山","map_layout":"yr_sov01","map_size":10175,"fog_of_war":true,"victory_condition":"annihilation","enemy_faction":"allied","enemy_name":"盟军岸防部队","starting_funds":25000,"first_win_reward":{"war_points":200,"credits":1200,"diamonds":30},"brief":"消灭舰队与岸防巨炮，掩护登陆部队夺取时光机。占领电厂供电，穿越时空摧毁恶魔岛的心灵控制器。","waves":[]},
+    {"id":"yr_head_games","victory_condition":"annihilation","fog_of_war":true,"campaign_group":"soviet","first_win_reward":{"war_points":200,"credits":1200,"diamonds":30},"name":"首脑游戏","subtitle":"罗马尼亚 · 特兰西瓦尼亚","map_size":10560,"prepare_time":65,"enemy_faction":"yuri","enemy_name":"尤里军团","starting_funds":11000,"brief":"摧毁两座心灵信标，接管获救的苏军和盟军基地。摧毁尤里的城堡。只要还有部队或建筑，就能继续作战。","waves":[{"name":"病毒狙击小队","delay":125,"spawns":[{"unit":"INIT","count":4},{"unit":"YURI","count":1},{"unit":"VIRUS","count":1}]},{"name":"神经突击车","delay":125,"spawns":[{"unit":"CAOS","count":3}]},{"name":"磁电坦克与精神控制车","delay":125,"spawns":[{"unit":"MIND","count":2},{"unit":"YTNK","count":2},{"unit":"LTNK","count":2},{"unit":"TELE","count":1}]},{"name":"镭射幽浮","delay":125,"spawns":[{"unit":"DISK","count":2}]},{"name":"尤里改与护卫","delay":125,"spawns":[{"unit":"YURIPR","count":1},{"unit":"YURI","count":2},{"unit":"VIRUS","count":2},{"unit":"BRUTE","count":3}]}],"map_layout":"yr_sov07"},
+    {"id":"yr_hollywood","campaign_group":"allied","first_win_reward":{"war_points":200,"credits":1200,"diamonds":30},"name":"好莱坞梦一场","subtitle":"尤里的复仇 · 盟军第二关","fog_of_war":true,"map_layout":"yr_all02umd","map_size":10725,"enemy_faction":"yuri","enemy_name":"尤里军团","starting_funds":6000,
+      "production_tech": {
+        "level": 10,
+        "overrides": {"PCV":12, "GAROBO":12, "GAYARD":12, "YAYARD":12, "TANY":12, "GAWEAT":12, "GTGCAN":7, "YURI":4, "CIVA":-1, "YAPOWR":1}
+      },
+      "brief":"尤里正把洛杉矶的居民送进回收厂，为心灵控制器筹集资金。摧毁四座回收厂，再清除其余敌方建筑。在洛杉矶机场接管基地车。建造空指部可在雷达上定位回收厂，击毁后派地面部队拾取资金箱。","waves":[]},
     {
-      "id": "m01",
+      "id": "m01","first_win_reward":{"war_points":100,"credits":600,"diamonds":10},
       "name": "断轨平原",
       "subtitle": "教学关：认识克制关系",
       "map_size": 3200,
@@ -20,7 +28,7 @@
       ]
     },
     {
-      "id": "m02",
+      "id": "m02","first_win_reward":{"war_points":160,"credits":1000,"diamonds":20},
       "name": "结晶裂谷",
       "subtitle": "压制两路虫巢",
       "map_size": 3600,

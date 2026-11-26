@@ -1,0 +1,1532 @@
+{
+ "units": {
+  "BRUTE": {
+   "select": "BruteSelect",
+   "move": "BruteMove",
+   "attack": "BruteAttackCommand",
+   "feedback": "BruteFear",
+   "die": "BruteDie",
+   "special": "BruteMove"
+  },
+  "VIRUS": {
+   "select": "VirusSelect",
+   "move": "VirusMove",
+   "attack": "VirusAttackCommand",
+   "feedback": "VirusFear",
+   "die": "VirusDie",
+   "special": "VirusMove"
+  },
+  "YURIPR": {
+   "select": "YuriPrimeSelect",
+   "move": "YuriPrimeMove",
+   "attack": "YuriPrimeAttackCommand",
+   "feedback": "YuriPrimeFear",
+   "die": "YuriPrimeDie",
+   "special": "YuriPrimeMove"
+  },
+  "MIND": {
+   "select": "MasterMindSelect",
+   "move": "MasterMindMove",
+   "attack": "MasterMindAttackCommand",
+   "die": "GenVehicleDie"
+  },
+  "TELE": {
+   "select": "MagnetronSelect",
+   "move": "MagnetronMove",
+   "attack": "MagnetronAttackCommand",
+   "die": "GenVehicleDie"
+  },
+  "CAOS": {
+   "select": "ChaosDroneSelect",
+   "move": "ChaosDroneMove",
+   "attack": "ChaosDroneAttackCommand",
+   "die": "ChaosDroneDie"
+  },
+  "DISK": {
+   "select": "FloatingDiscSelect",
+   "move": "FloatingDiscMove",
+   "attack": "FloatingDiscAttackCommand"
+  }
+ },
+ "specs": {
+  "BruteSelect": {
+   "sounds": [
+    "head_games_ibrusea",
+    "head_games_ibruseb",
+    "head_games_ibrusec",
+    "head_games_ibrused",
+    "head_games_ibrusee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "BruteMove": {
+   "sounds": [
+    "head_games_ibrumoa",
+    "head_games_ibrumob",
+    "head_games_ibrumoc",
+    "head_games_ibrumod",
+    "head_games_ibrumoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "BruteAttackCommand": {
+   "sounds": [
+    "head_games_ibruata",
+    "head_games_ibruatb",
+    "head_games_ibruatc",
+    "head_games_ibruatd",
+    "head_games_ibruate"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "BruteFear": {
+   "sounds": [
+    "head_games_ibrufea",
+    "head_games_ibrufeb",
+    "head_games_ibrufec",
+    "head_games_ibrufed",
+    "head_games_ibrufee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "BruteDie": {
+   "sounds": [
+    "head_games_ibrudia",
+    "head_games_ibrudib",
+    "head_games_ibrudic",
+    "head_games_ibrudid",
+    "head_games_ibrudie"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "BruteSmashAttack": {
+   "sounds": [
+    "head_games_ibruatta",
+    "head_games_ibruattb",
+    "head_games_ibruattc",
+    "head_games_ibruattd",
+    "head_games_ibruatte",
+    "head_games_ibruattf"
+   ],
+   "volume": 80,
+   "range": 10
+  },
+  "VirusSelect": {
+   "sounds": [
+    "head_games_ivirsea",
+    "head_games_ivirseb",
+    "head_games_ivirsec",
+    "head_games_ivirsed",
+    "head_games_ivirsee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "VirusMove": {
+   "sounds": [
+    "head_games_ivirmoa",
+    "head_games_ivirmob",
+    "head_games_ivirmoc",
+    "head_games_ivirmod",
+    "head_games_ivirmoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "VirusAttackCommand": {
+   "sounds": [
+    "head_games_ivirata",
+    "head_games_iviratb",
+    "head_games_iviratc",
+    "head_games_iviratd",
+    "head_games_iviratf",
+    "head_games_iviratg"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "VirusFear": {
+   "sounds": [
+    "head_games_ivirfea",
+    "head_games_ivirfeb",
+    "head_games_ivirfec",
+    "head_games_ivirfed",
+    "head_games_ivirfee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "VirusDie": {
+   "sounds": [
+    "head_games_ivirdia",
+    "head_games_ivirdib",
+    "head_games_ivirdic",
+    "head_games_ivirdid",
+    "head_games_ivirdie"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "VirusAttack": {
+   "sounds": [
+    "head_games_iviratta"
+   ],
+   "volume": 90,
+   "range": 30
+  },
+  "YuriPrimeSelect": {
+   "sounds": [
+    "head_games_iyupsea",
+    "head_games_iyupseb",
+    "head_games_iyupsec",
+    "head_games_iyupsed",
+    "head_games_iyupsee",
+    "head_games_iyupsef"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "YuriPrimeMove": {
+   "sounds": [
+    "head_games_iyupmoa",
+    "head_games_iyupmob",
+    "head_games_iyupmoc",
+    "head_games_iyupmod",
+    "head_games_iyupmoe",
+    "head_games_iyupmof",
+    "head_games_iyupmog"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "YuriPrimeAttackCommand": {
+   "sounds": [
+    "head_games_iyupata",
+    "head_games_iyupatb",
+    "head_games_iyupatc",
+    "head_games_iyupatd",
+    "head_games_iyupate",
+    "head_games_iyupatf",
+    "head_games_iyupatg"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "YuriPrimeFear": {
+   "sounds": [
+    "head_games_iyupfea",
+    "head_games_iyupfeb",
+    "head_games_iyupfec"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "YuriPrimeDie": {
+   "sounds": [
+    "head_games_iyupdia",
+    "head_games_iyupdib",
+    "head_games_iyupdic",
+    "head_games_iyupdid"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "YuriDeploy": {
+   "sounds": [
+    "head_games_iyurat2a"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "MasterMindSelect": {
+   "sounds": [
+    "head_games_vmassea",
+    "head_games_vmasseb",
+    "head_games_vmassec",
+    "head_games_vmassed",
+    "head_games_vmassee",
+    "head_games_vmassef"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MasterMindMove": {
+   "sounds": [
+    "head_games_vmasmoa",
+    "head_games_vmasmob",
+    "head_games_vmasmoc",
+    "head_games_vmasmod",
+    "head_games_vmasmoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MasterMindAttackCommand": {
+   "sounds": [
+    "head_games_vmasata",
+    "head_games_vmasatb",
+    "head_games_vmasatc",
+    "head_games_vmasatd",
+    "head_games_vmasate",
+    "head_games_vmasatf"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "GenVehicleDie": {
+   "sounds": [
+    "head_games_vgendiea",
+    "head_games_vgendieb",
+    "head_games_vgendiec",
+    "head_games_vgendied",
+    "head_games_vgendiee",
+    "head_games_vgendief"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MagnetronSelect": {
+   "sounds": [
+    "head_games_vmagsea",
+    "head_games_vmagseb",
+    "head_games_vmagsec",
+    "head_games_vmagsed",
+    "head_games_vmagsee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MagnetronMove": {
+   "sounds": [
+    "head_games_vmagmoa",
+    "head_games_vmagmob",
+    "head_games_vmagmoc",
+    "head_games_vmagmod",
+    "head_games_vmagmoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MagnetronAttackCommand": {
+   "sounds": [
+    "head_games_vmagata",
+    "head_games_vmagatb",
+    "head_games_vmagatc",
+    "head_games_vmagatd",
+    "head_games_vmagate",
+    "head_games_vmagatf"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "MagnetronAttack": {
+   "sounds": [
+    "head_games_vmagatta"
+   ],
+   "volume": 70,
+   "range": 20
+  },
+  "MagnetronMagneShake": {
+   "sounds": [
+    "head_games_vmagat2a"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "ChaosDroneSelect": {
+   "sounds": [
+    "head_games_vchasela",
+    "head_games_vchaselb"
+   ],
+   "volume": 60,
+   "range": 10
+  },
+  "ChaosDroneMove": {
+   "sounds": [
+    "head_games_vchamova",
+    "head_games_vchamovb",
+    "head_games_vchamovc",
+    "head_games_vchamovd"
+   ],
+   "volume": 60,
+   "range": 10
+  },
+  "ChaosDroneAttackCommand": {
+   "sounds": [
+    "head_games_vchaatca"
+   ],
+   "volume": 60,
+   "range": 10
+  },
+  "ChaosDroneDie": {
+   "sounds": [
+    "head_games_vchadiea"
+   ],
+   "volume": 80,
+   "range": 10
+  },
+  "ChaosDroneAttack": {
+   "sounds": [
+    "head_games_vchaatta"
+   ],
+   "volume": 55,
+   "range": 10
+  },
+  "FloatingDiscSelect": {
+   "sounds": [
+    "head_games_vflosea",
+    "head_games_vfloseb",
+    "head_games_vflosec",
+    "head_games_vflosed"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "FloatingDiscMove": {
+   "sounds": [
+    "head_games_vflomob",
+    "head_games_vflomoc",
+    "head_games_vflomod"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "FloatingDiscAttackCommand": {
+   "sounds": [
+    "head_games_vfloata",
+    "head_games_vfloatb",
+    "head_games_vfloatc",
+    "head_games_vfloatd",
+    "head_games_vfloate"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "FloatingDiscAttack": {
+   "sounds": [
+    "head_games_vfloatta"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "FloatingDiscDie": {
+   "sounds": [
+    "head_games_vflodiea"
+   ],
+   "volume": 85
+  },
+  "KirovAttack": {
+   "sounds": [
+    "head_games_vkiratta"
+   ],
+   "volume": 40,
+   "range": 10
+  },
+  "Terrorist-Sov07": {
+   "sounds": [
+    "head_games_itermoc"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "DemoTruck-Sov07": {
+   "sounds": [
+    "head_games_vdematb"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "NukeSiren": {
+   "sounds": [
+    "head_games_snuksire"
+   ],
+   "volume": 1,
+   "range": 10
+  }
+ },
+ "entries": {
+  "head_games_ibrusea": {
+   "file": "head_games/ibrusea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 12925,
+   "durMs": 586
+  },
+  "head_games_ibruseb": {
+   "file": "head_games/ibruseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48520,
+   "durMs": 2200
+  },
+  "head_games_ibrusec": {
+   "file": "head_games/ibrusec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36124,
+   "durMs": 1638
+  },
+  "head_games_ibrused": {
+   "file": "head_games/ibrused.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46094,
+   "durMs": 2090
+  },
+  "head_games_ibrusee": {
+   "file": "head_games/ibrusee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35531,
+   "durMs": 1611
+  },
+  "head_games_ibrumoa": {
+   "file": "head_games/ibrumoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23872,
+   "durMs": 1083
+  },
+  "head_games_ibrumob": {
+   "file": "head_games/ibrumob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 44700,
+   "durMs": 2027
+  },
+  "head_games_ibrumoc": {
+   "file": "head_games/ibrumoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27780,
+   "durMs": 1260
+  },
+  "head_games_ibrumod": {
+   "file": "head_games/ibrumod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23632,
+   "durMs": 1072
+  },
+  "head_games_ibrumoe": {
+   "file": "head_games/ibrumoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 21061,
+   "durMs": 955
+  },
+  "head_games_ibruata": {
+   "file": "head_games/ibruata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 38406,
+   "durMs": 1742
+  },
+  "head_games_ibruatb": {
+   "file": "head_games/ibruatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 47319,
+   "durMs": 2146
+  },
+  "head_games_ibruatc": {
+   "file": "head_games/ibruatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48216,
+   "durMs": 2187
+  },
+  "head_games_ibruatd": {
+   "file": "head_games/ibruatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 44172,
+   "durMs": 2003
+  },
+  "head_games_ibruate": {
+   "file": "head_games/ibruate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 47623,
+   "durMs": 2160
+  },
+  "head_games_ibrufea": {
+   "file": "head_games/ibrufea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 38438,
+   "durMs": 1743
+  },
+  "head_games_ibrufeb": {
+   "file": "head_games/ibrufeb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34074,
+   "durMs": 1545
+  },
+  "head_games_ibrufec": {
+   "file": "head_games/ibrufec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46174,
+   "durMs": 2094
+  },
+  "head_games_ibrufed": {
+   "file": "head_games/ibrufed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41289,
+   "durMs": 1873
+  },
+  "head_games_ibrufee": {
+   "file": "head_games/ibrufee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 43467,
+   "durMs": 1971
+  },
+  "head_games_ibrudia": {
+   "file": "head_games/ibrudia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32192,
+   "durMs": 1460
+  },
+  "head_games_ibrudib": {
+   "file": "head_games/ibrudib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15352,
+   "durMs": 696
+  },
+  "head_games_ibrudic": {
+   "file": "head_games/ibrudic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 25634,
+   "durMs": 1163
+  },
+  "head_games_ibrudid": {
+   "file": "head_games/ibrudid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27275,
+   "durMs": 1237
+  },
+  "head_games_ibrudie": {
+   "file": "head_games/ibrudie.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39591,
+   "durMs": 1796
+  },
+  "head_games_ibruatta": {
+   "file": "head_games/ibruatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23279,
+   "durMs": 1056
+  },
+  "head_games_ibruattb": {
+   "file": "head_games/ibruattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18403,
+   "durMs": 835
+  },
+  "head_games_ibruattc": {
+   "file": "head_games/ibruattc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 22358,
+   "durMs": 1014
+  },
+  "head_games_ibruattd": {
+   "file": "head_games/ibruattd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 19291,
+   "durMs": 875
+  },
+  "head_games_ibruatte": {
+   "file": "head_games/ibruatte.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15880,
+   "durMs": 720
+  },
+  "head_games_ibruattf": {
+   "file": "head_games/ibruattf.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17289,
+   "durMs": 784
+  },
+  "head_games_ivirsea": {
+   "file": "head_games/ivirsea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30783,
+   "durMs": 1396
+  },
+  "head_games_ivirseb": {
+   "file": "head_games/ivirseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31760,
+   "durMs": 1440
+  },
+  "head_games_ivirsec": {
+   "file": "head_games/ivirsec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34138,
+   "durMs": 1548
+  },
+  "head_games_ivirsed": {
+   "file": "head_games/ivirsed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 45245,
+   "durMs": 2052
+  },
+  "head_games_ivirsee": {
+   "file": "head_games/ivirsee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 25898,
+   "durMs": 1175
+  },
+  "head_games_ivirmoa": {
+   "file": "head_games/ivirmoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29421,
+   "durMs": 1334
+  },
+  "head_games_ivirmob": {
+   "file": "head_games/ivirmob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35587,
+   "durMs": 1614
+  },
+  "head_games_ivirmoc": {
+   "file": "head_games/ivirmoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32016,
+   "durMs": 1452
+  },
+  "head_games_ivirmod": {
+   "file": "head_games/ivirmod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26082,
+   "durMs": 1183
+  },
+  "head_games_ivirmoe": {
+   "file": "head_games/ivirmoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29894,
+   "durMs": 1356
+  },
+  "head_games_ivirata": {
+   "file": "head_games/ivirata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24264,
+   "durMs": 1100
+  },
+  "head_games_iviratb": {
+   "file": "head_games/iviratb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27355,
+   "durMs": 1241
+  },
+  "head_games_iviratc": {
+   "file": "head_games/iviratc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33401,
+   "durMs": 1515
+  },
+  "head_games_iviratd": {
+   "file": "head_games/iviratd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28885,
+   "durMs": 1310
+  },
+  "head_games_iviratf": {
+   "file": "head_games/iviratf.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24384,
+   "durMs": 1106
+  },
+  "head_games_iviratg": {
+   "file": "head_games/iviratg.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33602,
+   "durMs": 1524
+  },
+  "head_games_ivirfea": {
+   "file": "head_games/ivirfea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26106,
+   "durMs": 1184
+  },
+  "head_games_ivirfeb": {
+   "file": "head_games/ivirfeb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24328,
+   "durMs": 1103
+  },
+  "head_games_ivirfec": {
+   "file": "head_games/ivirfec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23287,
+   "durMs": 1056
+  },
+  "head_games_ivirfed": {
+   "file": "head_games/ivirfed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 25674,
+   "durMs": 1164
+  },
+  "head_games_ivirfee": {
+   "file": "head_games/ivirfee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16056,
+   "durMs": 728
+  },
+  "head_games_ivirdia": {
+   "file": "head_games/ivirdia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 10515,
+   "durMs": 477
+  },
+  "head_games_ivirdib": {
+   "file": "head_games/ivirdib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 10451,
+   "durMs": 474
+  },
+  "head_games_ivirdic": {
+   "file": "head_games/ivirdic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15376,
+   "durMs": 697
+  },
+  "head_games_ivirdid": {
+   "file": "head_games/ivirdid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 10883,
+   "durMs": 494
+  },
+  "head_games_ivirdie": {
+   "file": "head_games/ivirdie.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13149,
+   "durMs": 596
+  },
+  "head_games_iviratta": {
+   "file": "head_games/iviratta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 6175,
+   "durMs": 280
+  },
+  "head_games_iyupsea": {
+   "file": "head_games/iyupsea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 12565,
+   "durMs": 570
+  },
+  "head_games_iyupseb": {
+   "file": "head_games/iyupseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27347,
+   "durMs": 1240
+  },
+  "head_games_iyupsec": {
+   "file": "head_games/iyupsec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37229,
+   "durMs": 1688
+  },
+  "head_games_iyupsed": {
+   "file": "head_games/iyupsed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30575,
+   "durMs": 1387
+  },
+  "head_games_iyupsee": {
+   "file": "head_games/iyupsee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48464,
+   "durMs": 2198
+  },
+  "head_games_iyupsef": {
+   "file": "head_games/iyupsef.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 59707,
+   "durMs": 2708
+  },
+  "head_games_iyupmoa": {
+   "file": "head_games/iyupmoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36236,
+   "durMs": 1643
+  },
+  "head_games_iyupmob": {
+   "file": "head_games/iyupmob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35563,
+   "durMs": 1613
+  },
+  "head_games_iyupmoc": {
+   "file": "head_games/iyupmoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32921,
+   "durMs": 1493
+  },
+  "head_games_iyupmod": {
+   "file": "head_games/iyupmod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26947,
+   "durMs": 1222
+  },
+  "head_games_iyupmoe": {
+   "file": "head_games/iyupmoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33153,
+   "durMs": 1504
+  },
+  "head_games_iyupmof": {
+   "file": "head_games/iyupmof.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31840,
+   "durMs": 1444
+  },
+  "head_games_iyupmog": {
+   "file": "head_games/iyupmog.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29349,
+   "durMs": 1331
+  },
+  "head_games_iyupata": {
+   "file": "head_games/iyupata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29822,
+   "durMs": 1352
+  },
+  "head_games_iyupatb": {
+   "file": "head_games/iyupatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34795,
+   "durMs": 1578
+  },
+  "head_games_iyupatc": {
+   "file": "head_games/iyupatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32456,
+   "durMs": 1472
+  },
+  "head_games_iyupatd": {
+   "file": "head_games/iyupatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24320,
+   "durMs": 1103
+  },
+  "head_games_iyupate": {
+   "file": "head_games/iyupate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35652,
+   "durMs": 1617
+  },
+  "head_games_iyupatf": {
+   "file": "head_games/iyupatf.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 47319,
+   "durMs": 2146
+  },
+  "head_games_iyupatg": {
+   "file": "head_games/iyupatg.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26306,
+   "durMs": 1193
+  },
+  "head_games_iyupfea": {
+   "file": "head_games/iyupfea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24913,
+   "durMs": 1130
+  },
+  "head_games_iyupfeb": {
+   "file": "head_games/iyupfeb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32144,
+   "durMs": 1458
+  },
+  "head_games_iyupfec": {
+   "file": "head_games/iyupfec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33393,
+   "durMs": 1514
+  },
+  "head_games_iyupdia": {
+   "file": "head_games/iyupdia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14847,
+   "durMs": 673
+  },
+  "head_games_iyupdib": {
+   "file": "head_games/iyupdib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13926,
+   "durMs": 632
+  },
+  "head_games_iyupdic": {
+   "file": "head_games/iyupdic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 9025,
+   "durMs": 409
+  },
+  "head_games_iyupdid": {
+   "file": "head_games/iyupdid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14391,
+   "durMs": 653
+  },
+  "head_games_iyurat2a": {
+   "file": "head_games/iyurat2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41561,
+   "durMs": 1885
+  },
+  "head_games_vmassea": {
+   "file": "head_games/vmassea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 38382,
+   "durMs": 1741
+  },
+  "head_games_vmasseb": {
+   "file": "head_games/vmasseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31223,
+   "durMs": 1416
+  },
+  "head_games_vmassec": {
+   "file": "head_games/vmassec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33850,
+   "durMs": 1535
+  },
+  "head_games_vmassed": {
+   "file": "head_games/vmassed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48024,
+   "durMs": 2178
+  },
+  "head_games_vmassee": {
+   "file": "head_games/vmassee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36821,
+   "durMs": 1670
+  },
+  "head_games_vmassef": {
+   "file": "head_games/vmassef.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 43731,
+   "durMs": 1983
+  },
+  "head_games_vmasmoa": {
+   "file": "head_games/vmasmoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40224,
+   "durMs": 1824
+  },
+  "head_games_vmasmob": {
+   "file": "head_games/vmasmob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37726,
+   "durMs": 1711
+  },
+  "head_games_vmasmoc": {
+   "file": "head_games/vmasmoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42755,
+   "durMs": 1939
+  },
+  "head_games_vmasmod": {
+   "file": "head_games/vmasmod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40769,
+   "durMs": 1849
+  },
+  "head_games_vmasmoe": {
+   "file": "head_games/vmasmoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 51563,
+   "durMs": 2338
+  },
+  "head_games_vmasata": {
+   "file": "head_games/vmasata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40873,
+   "durMs": 1854
+  },
+  "head_games_vmasatb": {
+   "file": "head_games/vmasatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37830,
+   "durMs": 1716
+  },
+  "head_games_vmasatc": {
+   "file": "head_games/vmasatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36172,
+   "durMs": 1640
+  },
+  "head_games_vmasatd": {
+   "file": "head_games/vmasatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33794,
+   "durMs": 1533
+  },
+  "head_games_vmasate": {
+   "file": "head_games/vmasate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40424,
+   "durMs": 1833
+  },
+  "head_games_vmasatf": {
+   "file": "head_games/vmasatf.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36324,
+   "durMs": 1647
+  },
+  "head_games_vgendiea": {
+   "file": "head_games/vgendiea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 19484,
+   "durMs": 884
+  },
+  "head_games_vgendieb": {
+   "file": "head_games/vgendieb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 25786,
+   "durMs": 1169
+  },
+  "head_games_vgendiec": {
+   "file": "head_games/vgendiec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20821,
+   "durMs": 944
+  },
+  "head_games_vgendied": {
+   "file": "head_games/vgendied.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31343,
+   "durMs": 1421
+  },
+  "head_games_vgendiee": {
+   "file": "head_games/vgendiee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26915,
+   "durMs": 1221
+  },
+  "head_games_vgendief": {
+   "file": "head_games/vgendief.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26034,
+   "durMs": 1181
+  },
+  "head_games_vmagsea": {
+   "file": "head_games/vmagsea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36444,
+   "durMs": 1653
+  },
+  "head_games_vmagseb": {
+   "file": "head_games/vmagseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34194,
+   "durMs": 1551
+  },
+  "head_games_vmagsec": {
+   "file": "head_games/vmagsec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 38366,
+   "durMs": 1740
+  },
+  "head_games_vmagsed": {
+   "file": "head_games/vmagsed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33698,
+   "durMs": 1528
+  },
+  "head_games_vmagsee": {
+   "file": "head_games/vmagsee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35780,
+   "durMs": 1623
+  },
+  "head_games_vmagmoa": {
+   "file": "head_games/vmagmoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28509,
+   "durMs": 1293
+  },
+  "head_games_vmagmob": {
+   "file": "head_games/vmagmob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28452,
+   "durMs": 1290
+  },
+  "head_games_vmagmoc": {
+   "file": "head_games/vmagmoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39623,
+   "durMs": 1797
+  },
+  "head_games_vmagmod": {
+   "file": "head_games/vmagmod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 49946,
+   "durMs": 2265
+  },
+  "head_games_vmagmoe": {
+   "file": "head_games/vmagmoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32408,
+   "durMs": 1470
+  },
+  "head_games_vmagata": {
+   "file": "head_games/vmagata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31511,
+   "durMs": 1429
+  },
+  "head_games_vmagatb": {
+   "file": "head_games/vmagatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41481,
+   "durMs": 1881
+  },
+  "head_games_vmagatc": {
+   "file": "head_games/vmagatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34899,
+   "durMs": 1583
+  },
+  "head_games_vmagatd": {
+   "file": "head_games/vmagatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46606,
+   "durMs": 2114
+  },
+  "head_games_vmagate": {
+   "file": "head_games/vmagate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39183,
+   "durMs": 1777
+  },
+  "head_games_vmagatf": {
+   "file": "head_games/vmagatf.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24256,
+   "durMs": 1100
+  },
+  "head_games_vmagatta": {
+   "file": "head_games/vmagatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 73737,
+   "durMs": 3344
+  },
+  "head_games_vmagat2a": {
+   "file": "head_games/vmagat2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 76564,
+   "durMs": 3472
+  },
+  "head_games_vchasela": {
+   "file": "head_games/vchasela.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 11155,
+   "durMs": 506
+  },
+  "head_games_vchaselb": {
+   "file": "head_games/vchaselb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18891,
+   "durMs": 857
+  },
+  "head_games_vchamova": {
+   "file": "head_games/vchamova.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16361,
+   "durMs": 742
+  },
+  "head_games_vchamovb": {
+   "file": "head_games/vchamovb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15328,
+   "durMs": 695
+  },
+  "head_games_vchamovc": {
+   "file": "head_games/vchamovc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 11051,
+   "durMs": 501
+  },
+  "head_games_vchamovd": {
+   "file": "head_games/vchamovd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13270,
+   "durMs": 602
+  },
+  "head_games_vchaatca": {
+   "file": "head_games/vchaatca.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 19267,
+   "durMs": 874
+  },
+  "head_games_vchadiea": {
+   "file": "head_games/vchadiea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20340,
+   "durMs": 922
+  },
+  "head_games_vchaatta": {
+   "file": "head_games/vchaatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 43691,
+   "durMs": 1981
+  },
+  "head_games_vflosea": {
+   "file": "head_games/vflosea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 38446,
+   "durMs": 1744
+  },
+  "head_games_vfloseb": {
+   "file": "head_games/vfloseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40544,
+   "durMs": 1839
+  },
+  "head_games_vflosec": {
+   "file": "head_games/vflosec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31343,
+   "durMs": 1421
+  },
+  "head_games_vflosed": {
+   "file": "head_games/vflosed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40024,
+   "durMs": 1815
+  },
+  "head_games_vflomob": {
+   "file": "head_games/vflomob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 47840,
+   "durMs": 2170
+  },
+  "head_games_vflomoc": {
+   "file": "head_games/vflomoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33850,
+   "durMs": 1535
+  },
+  "head_games_vflomod": {
+   "file": "head_games/vflomod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23856,
+   "durMs": 1082
+  },
+  "head_games_vfloata": {
+   "file": "head_games/vfloata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31920,
+   "durMs": 1448
+  },
+  "head_games_vfloatb": {
+   "file": "head_games/vfloatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31640,
+   "durMs": 1435
+  },
+  "head_games_vfloatc": {
+   "file": "head_games/vfloatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30166,
+   "durMs": 1368
+  },
+  "head_games_vfloatd": {
+   "file": "head_games/vfloatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30438,
+   "durMs": 1380
+  },
+  "head_games_vfloate": {
+   "file": "head_games/vfloate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42963,
+   "durMs": 1948
+  },
+  "head_games_vfloatta": {
+   "file": "head_games/vfloatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 25730,
+   "durMs": 1167
+  },
+  "head_games_vkiratta": {
+   "file": "head_games/vkiratta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42458,
+   "durMs": 1926
+  },
+  "head_games_itermoc": {
+   "file": "head_games/itermoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18875,
+   "durMs": 856
+  },
+  "head_games_vdematb": {
+   "file": "head_games/vdematb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27155,
+   "durMs": 1232
+  },
+  "head_games_vflodiea": {
+   "file": "head_games/vflodiea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36901,
+   "durMs": 1674
+  },
+  "head_games_snuksire": {
+   "file": "head_games/snuksire.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 246018,
+   "durMs": 11157
+  }
+ }
+}

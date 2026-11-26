@@ -63,7 +63,7 @@ static func apply_blast(world, blast: Dictionary) -> void:
 	for target in world.units.duplicate() + world.buildings.duplicate():
 		if not is_instance_valid(target) or target.is_queued_for_deletion() or target._dead or target.hp <= 0.0: continue
 		if target is Unit and (is_instance_valid(target.embarked_in) or target.is_air_target()): continue
-		if BattleRequest.friendly(target.side,blast.side) and Ra2Damage._extra(warhead, "AffectsAllies").to_lower() in ["no", "false", "0"]: continue
+		if BattleRequest.friendly(target.side,blast.side) and GameData.warhead_blocks_friendly_damage(warhead): continue
 		var distance: float = target.global_position.distance_to(point)
 		if target is Building:
 			distance = maxf(0.0, distance - target.footprint_clearance(target.global_position.direction_to(point)))

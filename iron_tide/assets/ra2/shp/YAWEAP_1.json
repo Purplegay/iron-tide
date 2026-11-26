@@ -1,0 +1,45 @@
+{
+ "id": "YAWEAP_1",
+ "image": "YAWEAP_1",
+ "source": "ra2md.mix > genermd.mix > YGWEAP_1.shp",
+ "cell": [
+  272,
+  242
+ ],
+ "cols": 4,
+ "count": 4,
+ "rects": [
+  {
+   "i": 0,
+   "x": 0,
+   "y": 0,
+   "w": 272,
+   "h": 242
+  },
+  {
+   "i": 1,
+   "x": 272,
+   "y": 0,
+   "w": 272,
+   "h": 242
+  },
+  {
+   "i": 2,
+   "x": 544,
+   "y": 0,
+   "w": 272,
+   "h": 242
+  },
+  {
+   "i": 3,
+   "x": 816,
+   "y": 0,
+   "w": 272,
+   "h": 242
+  }
+ ],
+ "dmg": 1,
+ "shadow": true,
+ "buildup": false,
+ "raw_count": 4
+}

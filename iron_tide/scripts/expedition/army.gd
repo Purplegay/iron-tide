@@ -5,6 +5,8 @@ const Growth=preload("res://scripts/expedition/growth.gd")
 const Talents=preload("res://scripts/expedition/talents.gd")
 const Progress=preload("res://scripts/expedition/trait_progression.gd")
 const TRAITS := {
+	"siege_team":{"name":"围攻小队","min_stage":28,"steps":[1,2,3,6,9],"icon":"sight","desc":["直击 +2%","直击 +4%","连续直击同一目标时额外造成 10% 伤害。","连续命中同一目标三次，恢复 6% 最大生命，命中次数重新累计。","第三次命中还会压制目标单位 4 秒，使其对我方的直击伤害降低 20%。"]},
+	"pursuit":{"name":"接力突袭","min_stage":26,"steps":[1,2,3,6,9],"icon":"focus","desc":["直击 +2%","直击 +4%","换目标直击额外造成 15% 伤害。","换目标时另获得 8% 最大生命护盾，每 6 秒一次。","换目标后，4 秒内再次命中同一目标追加 35% 伤害一次。"]},
 	"infantry":{"name":"步兵军团","steps":[1,2,3,6,9],"icon":"escort","desc":["生命 +10%","生命 +20%；战地接力恢复","生命 +30%；战后额外恢复 15%","战地医疗：步兵每 5 秒恢复 2% 生命","不屈军团：保留低于 40% 生命受击得 15% 护盾（20 秒冷却）；本羁绊医疗的溢出治疗累积为护盾，最高 20% 生命"]},
 	"vehicle":{"name":"钢铁装甲","steps":[1,2,3,6,9],"icon":"guard","desc":["生命 +10%","生命 +20%；行驶减伤 10%","生命 +30%；行驶减伤 15%，首次交战护盾","驻车整备：装甲停稳 4 秒获得 10% 生命护盾，冷却 20 秒","装甲突击：持续行驶 2 秒后命中 +20%（6 秒冷却）；驻车整备另装填 3 发突击弹，行驶时每发直击再 +15%，每 0.25 秒最多消耗一发"]},
 	"air":{"name":"航空联队","steps":[1,2,3,6,9],"icon":"air","desc":["生命 +10%","生命 +20%；非交战飞行移速 +10%","生命 +25%；补弹后首击 +20%","返航维护：航空单位正常补满弹药时恢复 15% 生命","连续出击：正常补满弹药获得 20% 护盾和 3 发直击 +20% 的强化弹；每 0.25 秒最多消耗一发，重补弹只刷新不累计"]},
@@ -22,6 +24,8 @@ const ROLES := {
 	"support":["FV","HTK","AEGIS","LCRF","SAPC","SHAD","ENGINEER","SENGINEER","FLAKT"]
 }
 const SCHOOLS := {
+	"siege_team":["E1","E2","GGI","HTNK","MTNK","SHK","SREF","V3","DRED","BEAG"],
+	"pursuit":["E1","E2","MTNK","HTNK","FV","HTK","DEST","ORCA"],
 	"energy":["SHK","TTNK","SREF","R3MIRAGE","R3TESLA","R3FUTURE"],
 	"artillery":["V3","DRED","SCHP","HTNK","APOC","R3APOC","CARRIER","DEST"],
 	"special":["GHOST","TANY","BORIS","CLEG","IVAN","CIVAN","DESO"]
@@ -130,7 +134,11 @@ static func license_unit(run:Dictionary,id:String) -> void:
 static func add_unit(run:Dictionary,id:String,count:int) -> void:
 	license_unit(run,id)
 	run.reinforcements.append({"id":id,"count":count})
-	if id not in run.active_roster and run.active_roster.size()<Campaign.slots(run):run.active_roster.append(id)
+	auto_field(run,id)
+
+static func auto_field(run:Dictionary,id:String) -> void:
+	if id in run.active_roster or run.active_roster.size()>=Campaign.slots(run):return
+	if int(deployment(run).remaining)>0:run.active_roster.append(id)
 
 static func promote_native(run:Dictionary,id:String,rank:int) -> void:
 	Talents.grant(run,{"id":id,"rank":rank})
@@ -156,12 +164,6 @@ static func roster_error(run:Dictionary) -> String:
 	if run.active_roster.is_empty():return "至少选择一种出战编制"
 	if run.active_roster.size()>Campaign.slots(run):return "出战编制超过本章上限"
 	var present:=available(run)
-	var total:=0
-	for id:String in present:
-		var count:=quantity(run,id)
-		if count>limit(id):return training_name(id)+"超过跨关人数上限，请先遣散多余人员"
-		total+=count
-	if total>Campaign.population(int(run.stage)):return "跨关部队超过本章人口上限，请先选择保留部队"
 	var seen:Array=[]
 	for id in run.active_roster:
 		if id in seen or id not in present:return "出战编制缺少部队，请先补员"
@@ -190,14 +192,32 @@ static func quantity(run:Dictionary,id:String) -> int:
 		if row.id==id and str(row.get("hero","")).is_empty():count+=1
 	return count
 
+# Free places for the camp's refill service. Recruitment always adds its full batch.
 static func room(run:Dictionary,id:String) -> int:
-	var total:=0
-	var own:=0
-	for row:Dictionary in inventory(run):
-		if not str(row.get("hero","")).is_empty():continue
-		total+=1
-		if row.id==id:own+=1
-	return maxi(0,mini(limit(id)-own,Campaign.population(int(run.stage))-total))
+	return maxi(0,limit(id)-quantity(run,id))
+
+static func deployment(run:Dictionary) -> Dictionary:
+	var rows:=inventory(run)
+	var owned:Dictionary={}
+	for row:Dictionary in rows:
+		if str(row.get("hero","")).is_empty():owned[row.id]=int(owned.get(row.id,0))+1
+	var selected:Dictionary={}
+	var remaining:=Campaign.population(int(run.stage))
+	for id:String in run.get("active_roster",[]):
+		var maximum:=mini(int(owned.get(id,0)),limit(id))
+		var count:=clampi(int(run.get("deployment_counts",{}).get(id,maximum)),0,mini(maximum,remaining))
+		selected[id]=count
+		remaining-=count
+	var pending:=selected.duplicate()
+	var field:Array=[]
+	var reserve:Array=[]
+	for row:Dictionary in rows:
+		if not str(row.get("hero","")).is_empty():field.append(row)
+		elif int(pending.get(row.id,0))>0:
+			field.append(row)
+			pending[row.id]-=1
+		else:reserve.append(row)
+	return {"field":field,"reserve":reserve,"counts":selected,"owned":owned,"remaining":remaining}
 
 static func synchronize(run:Dictionary) -> void:
 	for squad:Dictionary in run.special_squads:

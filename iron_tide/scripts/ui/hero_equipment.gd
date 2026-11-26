@@ -23,6 +23,7 @@ func refresh(id:String) -> void:
 	var benefits:=MetaProgress.skill_training_benefits(id)
 	if not benefits.is_empty():lines.append(preload("res://scripts/rules/skill_training.gd").description(benefits,false))
 	inheritance.text="\n".join(lines)
+	if id in MetaProgress.Academy.Stars.IDS:return
 	add_child(UiKit.make_label("英雄独立装配 · W 主动 + 被动",18,UiKit.COL_ACCENT_2))
 	var help:=UiKit.make_label("与普通兵种分别保存；共享已获得卡牌及培养等级。新开扩展对局生效，Q／E 与英雄天赋保持原规则。",13,UiKit.COL_DIM)
 	help.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART

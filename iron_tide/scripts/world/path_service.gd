@@ -15,6 +15,7 @@ var _route_refresh_frame := -1
 var _route_refresh_count := 0
 var passages := preload("res://scripts/world/vehicle_passages.gd").new()
 
+var time_shift_area := Rect2i()
 var native_map_id: String = ""
 var _native_query_id := ""
 var _native_query_row: Dictionary = {}
@@ -110,6 +111,7 @@ func set_bridge_damage(flags: Dictionary, broken: Array) -> void:
 
 func native_flags(point: Vector2) -> int:
 	var native_cell := Vector2i((point / preload("res://scripts/world/native_maps.gd").CELL).floor())
+	if time_shift_area.has_area() and not preload("res://scripts/world/time_shift.gd").region(native_cell,time_shift_area):return 0
 	if bridge_flags.has(native_cell): return int(bridge_flags[native_cell])
 	# Keep the immutable map's shared row, not a cached walkability answer.
 	# Damage/repair overrides above and the row's mask are read on every query.
@@ -201,8 +203,35 @@ func _fill_cost() -> void:
 ## 将水域标记为不可通行（-1）并记录水域掩码；水域不算“建筑遮挡”。
 ## 与建筑同源：旧版只测「格心在矩形内」，岸边同样漏一条 ~1 格的可通行带，
 ## 地面单位能踏进水里。统一走 _stamp_rect（外扩半格 → 与水域相交的格全封）。
+func _stamp_native_aligned() -> bool:
+	if _native_query_id != native_map_id or _native_query_row.is_empty():
+		_native_query_row = preload("res://scripts/world/native_maps.gd").data(native_map_id)
+		_native_query_id = native_map_id
+	var side := int(_native_query_row.side)
+	if cols > side or rows > side: return false
+	var flags_grid: PackedByteArray = _native_query_row.mask
+	if not bridge_flags.is_empty():
+		flags_grid = flags_grid.duplicate()
+		for point: Vector2i in bridge_flags:
+			if point.x >= 0 and point.y >= 0 and point.x < cols and point.y < rows:
+				flags_grid[point.y * side + point.x] = int(bridge_flags[point])
+	for y in rows:
+		var base := y * side
+		var offset := y * cols
+		for x in cols:
+			var index := offset + x
+			var flags := flags_grid[base + x]
+			var ground := 1.0 if (flags & 1) != 0 else -1.0
+			cost[index] = ground
+			crusher_cost[index] = ground
+			_water_mask[index] = 1 if (flags & 2) != 0 else 0
+			_blocked[index] = 1 if flags == 0 or flags == 4 else 0
+	return true
+
 func _stamp_water() -> void:
 	if not native_map_id.is_empty():
+		if cell == preload("res://scripts/world/native_maps.gd").CELL and not time_shift_area.has_area() and _stamp_native_aligned():
+			return
 		for y in rows:
 			for x in cols:
 				var index:=y*cols+x
@@ -543,10 +572,10 @@ func zone_at(world: Vector2, water_mode: bool = false) -> int:
 	var zones := _movement_zones(water_mode, false, false)
 	return zones[g.y * cols + g.x]
 
-func ground_near_base(base: Vector2) -> Vector2:
+func ground_near_base(base: Vector2, max_radius: int = 20) -> Vector2:
 	if not enabled or cols <= 1:
 		return base
-	var hit := _nearest_walkable(_cell_of(base), cost, _movement_zones(false, false, false), -1, 20)
+	var hit := _nearest_walkable(_cell_of(base), cost, _movement_zones(false, false, false), -1, max_radius)
 	if hit.x < 0:
 		return Vector2.INF
 	return (Vector2(hit) + Vector2(0.5, 0.5)) * cell

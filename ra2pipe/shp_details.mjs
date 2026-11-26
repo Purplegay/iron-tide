@@ -6,7 +6,14 @@ if(!process.argv[2]||out===root||out.startsWith(root+path.sep)||fs.existsSync(ou
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');const audit={inputs:{},files:[],frames:0,pages:0,skipped:[]};
 function write(name,bytes){const p=path.join(out,name);fs.mkdirSync(path.dirname(p),{recursive:true});fs.writeFileSync(p,bytes);audit.files.push({name,sha256:hash(bytes)});}
 const selected = new Set(process.argv.slice(3));
-for(const name of fs.readdirSync(path.join(project,'assets/ra2/shp')).filter(n=>n.endsWith('.png') && (!selected.size || selected.has(n.slice(0,-4)))).sort()){
+const nativeRoot=path.join(project,'assets/ra2/shp');
+const names=fs.readdirSync(nativeRoot).filter(n=>n.endsWith('.png') && (!selected.size || selected.has(n.slice(0,-4))));
+for(const id of selected){
+ if(!id.includes('/'))continue;
+ if(!/^theaters\/[a-z]+\/[A-Z0-9_]+$/.test(id))throw Error('Invalid theater sheet '+id);
+ names.push(id+'.png');
+}
+for(const name of names.sort()){
  const id=name.slice(0,-4),prefix='assets/ra2/shp/',raw=fs.readFileSync(path.join(project,prefix+name)),json=fs.readFileSync(path.join(project,prefix+id+'.json'));
  const meta=JSON.parse(json),image=decodePng(raw);if(!Array.isArray(meta.rects))throw Error(id+': no frame map');
  audit.inputs[prefix+name]=hash(raw);audit.inputs[prefix+id+'.json']=hash(json);

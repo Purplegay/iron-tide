@@ -4,7 +4,26 @@ extends Node
 
 const DATA_DIR := "res://data/"
 
+const REQUIRED_RA2_DOCUMENTS := ["ra2_allied.json", "ra2/warheads.json", "ra2/general.json", "ra2/economy.json", "ra2/units.json", "ra2/buildings.json", "ra2/factions.json", "ra2/weapons.json", "ra2/projectiles.json", "ra2/animations.json", "ra2/sound_specs.json", "ra2/sfx_index.json", "ra2/eva_specs.json", "ra2/eva_index.json"]
+
+func missing_battle_resources() -> PackedStringArray:
+	var missing := PackedStringArray()
+	for document in REQUIRED_RA2_DOCUMENTS:
+		if raw_docs.get(document, {}).is_empty():
+			missing.append(DATA_DIR + document)
+	var textures := ["ui/top-0", "ui/soviet/top-0"]
+	for kind in ["ore", "gems"]:
+		for variant in range(1, 4):
+			textures.append("resources/%s-%d" % [kind, variant])
+	for texture in textures:
+		var path := "res://assets/ra2/%s.png" % texture
+		if not ResourceLoader.exists(path):
+			missing.append(path)
+	return missing
+
 var yr_production_rules: Dictionary = {}
+var hollywood_cast: Dictionary = {}
+var hollywood_yuri: Dictionary = {}
 var yr_baseline: Dictionary = {}
 
 var units: Array[Dictionary] = []
@@ -46,6 +65,12 @@ func reload() -> void:
 	skills.clear(); skill_index.clear()
 	unit_index.clear(); building_index.clear(); faction_index.clear(); mission_index.clear()
 
+	hollywood_yuri = _load_json("hollywood_yuri.json")
+	hollywood_cast = _load_json("hollywood_cast.json")
+	hollywood_yuri.units.merge(hollywood_cast.units)
+	hollywood_yuri.buildings.merge(hollywood_cast.buildings)
+	hollywood_yuri.buildings.YAWEAP.builds = ["YTNK", "LTNK"]
+	hollywood_yuri.buildings.YABRCK.builds = ["INIT", "YURI", "YENGINEER"]
 	var unit_doc := _load_json("units.json")
 	units = _as_dict_array(unit_doc.get("units", []))
 	buildings = _as_dict_array(unit_doc.get("buildings", []))
@@ -89,6 +114,18 @@ func reload() -> void:
 	_load_ra2_rules()
 	_load_yr_allied()
 	_load_yr_pack("yr_strategic_fx.json")
+	_load_yr_pack("hollywood_combat.json")
+	var head_games := _load_json("head_games.json")
+	hollywood_yuri.units.merge(head_games.units)
+	hollywood_yuri.units["COW"]=preload("res://data/head_games_orders.json").data.cow
+	hollywood_yuri.buildings.merge(head_games.buildings)
+	hollywood_yuri.buildings.merge(preload("res://data/head_games_sites.json").data.powers)
+	for id in head_games.warheads: ra2_warheads[str(id).to_lower()] = head_games.warheads[id]
+	ra2_art.merge(raw_docs["hollywood_combat.json"].art)
+	ra2_art.merge(_load_json("head_games_icons.json"))
+	_load_yr_pack("yr_yuri.json")
+	for id in ["YAGNTC","YAPPET"]:
+		hollywood_yuri.buildings[id].superweapon=building_index[id].superweapon.duplicate(true)
 	_apply_yr_baseline()
 	# Fill missing death-only warheads without replacing existing combat catalogs.
 	for id in _load_json("ra2/death.json").get("warheads", {}):
@@ -112,10 +149,12 @@ func reload() -> void:
 
 	preload("res://scripts/rules/expansion_catalog.gd").install(self)
 	progression_tuning.install(self)
+	preload("res://scripts/rules/hollywood_heroes.gd").install_catalog(self)
 	var yuriko := _load_json("yuriko.json")
 	yuriko.unit.voice=raw_docs["ra3_yuriko_sounds.json"].voice
 	unit_index["YURIKO"] = yuriko.unit
 	ra2_art["YURIKO"] = {"cameo":"res://assets/ra3/yuriko/Portrait_Japan_Yuriko_01.png"}
+	rebuild_static_combat_rules()
 
 ## Scoped YR additions. Prefixed combat/audio IDs preserve original RA2 definitions.
 func _load_yr_allied() -> void:
@@ -184,7 +223,7 @@ func catalog_sorted(ids: Array, category: String) -> Array:
 	var order: Array = {
 		"building": ["GAPOWR", "GAPILE", "GAREFN", "GAWEAP", "GAAIRC", "GAYARD", "GADEPT", "GATECH", "GAROBO", "GAOREP", "NAPOWR", "NAHAND", "NAREFN", "NAWEAP", "NARADR", "NAYARD", "NADEPT", "NATECH", "NANRCT", "NAINDP"],
 		"defense": ["NAWALL", "NALASR", "NABNKR", "NAFLAK", "TESLA", "NAIRON", "NAMISL", "GAWALL", "GAPILL", "NASAM", "ATESLA", "GTGCAN", "GAGAP", "GASPYSAT", "GACSPH", "GAWEAT"],
-		"unit": ["E1", "GGI", "ADOG", "ENGINEER", "JUMPJET", "GHOST", "SPY", "CLEG", "TANY", "SNIPE", "CCOMAND", "PTROOP", "CMIN", "MTNK", "FV", "ROBO", "SHAD", "TNKD", "SREF", "MGTK", "BFRT", "AMCV", "ORCA", "BEAG", "LCRF", "DEST", "DLPH", "AEGIS", "CARRIER", "E2", "SOV_DOG", "SENGINEER", "FLAKT", "SHK", "IVAN", "TERROR", "DESO", "BORIS", "CIVAN", "HARV", "HTNK", "HTK", "DRON", "V3", "APOC", "TTNK", "DTRUCK", "ZEP", "SCHP", "SMCV", "SAPC", "SUB", "HYD", "SQD", "DRED"]
+		"unit": ["E1", "INIT", "GGI", "ADOG", "ENGINEER", "YENGINEER", "JUMPJET", "GHOST", "SPY", "YURI", "CLEG", "TANY", "SNIPE", "CCOMAND", "PTROOP", "CMIN", "MTNK", "LTNK", "FV", "YTNK", "ROBO", "SHAD", "TNKD", "SREF", "MGTK", "BFRT", "AMCV", "ORCA", "BEAG", "LCRF", "DEST", "DLPH", "AEGIS", "CARRIER", "E2", "SOV_DOG", "SENGINEER", "FLAKT", "SHK", "IVAN", "TERROR", "DESO", "BORIS", "CIVAN", "HARV", "HTNK", "HTK", "DRON", "V3", "APOC", "TTNK", "DTRUCK", "ZEP", "SCHP", "SMCV", "SAPC", "SUB", "HYD", "SQD", "DRED"]
 	}.get(category, [])
 	var result := ids.duplicate()
 	result.sort_custom(func(a, b):
@@ -197,10 +236,23 @@ func catalog_sorted(ids: Array, category: String) -> Array:
 
 # ------------------------------------------------------------------ 查询接口
 
+# Sockets belong to the installed art, including when the actor definition came from a save.
+func apply_hollywood_fx(definition: Dictionary) -> void:
+	var pack: Dictionary = raw_docs["hollywood_combat.json"]
+	var id: String = definition.get("id", "")
+	if pack.unit_fx.has(id): definition.hollywood_fx = pack.unit_fx[id]
+	if definition.get("hollywood_art", false) and definition.has("garrison_slots") and pack.fire_ports.has(id):
+		definition.fire_ports = pack.fire_ports[id]
+
 func get_unit(id: String) -> Dictionary:
+	if not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift" and not unit_index.has(id) and not hollywood_yuri.units.has(id):
+		var units01:Dictionary=preload("res://data/time_shift_assets.json").data.units
+		if units01.has(id):return units01[id].duplicate(true)
 	# Escape-only fallbacks neither change the production roster/hash nor mask
 	# a future fully implemented Soviet/Yuri definition with the same original ID.
+	if not BattleRequest.skirmish and hollywood_yuri.units.has(id): return hollywood_yuri.units[id].duplicate(true)
 	if not unit_index.has(id):
+		if hollywood_yuri.units.has(id): return hollywood_yuri.units[id].duplicate(true)
 		if naval_support_units.has(id): return naval_support_units[id].duplicate(true)
 		return preload("res://scripts/core/yr_death_rules.gd").data().get("crew_units", {}).get(id, {}).duplicate(true)
 	var result := MatchRules.entity_data(BattleRequest.rules_mode, unit_index.get(id, {}), ra2_source_units.get(id, {}))
@@ -218,7 +270,15 @@ func spawned_weapon(id: String) -> Dictionary:
 		"ra2_projectile": str(raw.get("projectile", "")), "ra2_aa": false}
 
 func get_building(id: String) -> Dictionary:
+	if BattleRequest.mission_id=="yr_time_shift" and not BattleRequest.skirmish:
+		var defs:Dictionary=preload("res://data/time_shift_assets.json").data.defs
+		if defs.has(id) and (id.begins_with("CATIME") or id=="YAPPPT" or not building_index.has(id) and not hollywood_yuri.buildings.has(id)):return defs[id].duplicate(true)
+	if (not BattleRequest.skirmish or not building_index.has(id)) and hollywood_yuri.buildings.has(id): return hollywood_yuri.buildings[id].duplicate(true)
 	var result := MatchRules.entity_data(BattleRequest.rules_mode, building_index.get(id, {}), ra2_source_buildings.get(id, {}))
+	if id == "NAFLAK" and BattleRequest.mission_id == "yr_hollywood" and not BattleRequest.skirmish:
+		result = result.duplicate(true)
+		result.cost = 20000
+		result.power = 0
 	if id == "GATECH" and not result.is_empty():
 		# The two labs reference the same ForceShieldSpecial rules entry in rulesmd.
 		var shield: Dictionary = building_index.get("NATECH", {}).get("superweapon", {})
@@ -229,7 +289,7 @@ func get_building(id: String) -> Dictionary:
 	return result
 
 func get_entity(id: String) -> Dictionary:
-	if unit_index.has(id):
+	if unit_index.has(id) or hollywood_production_unit(id):
 		return get_unit(id)
 	if building_index.has(id):
 		return get_building(id)
@@ -313,6 +373,16 @@ const STOLEN_INFANTRY := ["CCOMAND", "CIVAN", "PTROOP"]
 const FieldCommission = preload("res://scripts/rules/field_commission.gd")
 
 func units_from_building(faction: String, building_id: String) -> Array[Dictionary]:
+	if building_id == "NEUTRALSTUDIO":
+		var stars:Array[Dictionary]=[]
+		for id in BattleRequest.combat_context.get("hollywood_roster",[]): stars.append(get_unit(id))
+		return stars
+	if building_id in ["YAWEAP","YABRCK"] and not BattleRequest.skirmish and BattleRequest.mission_id in ["yr_hollywood","yr_head_games"]:
+		var native:Array[Dictionary]=[]
+		var products: Array = hollywood_yuri.buildings[building_id].builds.duplicate()
+		if BattleRequest.mission_id=="yr_head_games": products.append_array(HEAD_PRODUCTS[building_id])
+		for id in products: native.append(get_unit(id))
+		return native
 	var out: Array[Dictionary] = []
 	for u in units:
 		var current := get_unit(str(u.get("id", "")))
@@ -352,8 +422,42 @@ func unit_in_production_catalog(id: String, include_extensions := BattleRequest.
 	var rule: Dictionary = yr_production_rules.get(id, ra2_source_units.get(id, {}))
 	return int(rule.get("tech_level", 0)) >= 0 and str(rule.get("extra", {}).get("Spawned", "no")).to_lower() != "yes"
 
-## Shared by HUD, player/AI enqueue and already saved production queues.
+func mission_production_tech() -> Dictionary:
+	if BattleRequest.skirmish: return {}
+	return get_mission(BattleRequest.mission_id).get("production_tech", {})
+
+func mission_tech_block_reason(id: String) -> String:
+	if BattleRequest.skirmish: return ""
+	var rules := mission_production_tech()
+	if rules.is_empty(): return ""
+	var level: int = rules.overrides.get(id, yr_baseline.entities.get(id, {}).get("tech_level", 0))
+	if level < 0 and rules.overrides.has(id): return "本关不能生产此项目"
+	if level > int(rules.level): return "本关科技为 %d 级，该项目需要 %d 级" % [rules.level, level]
+	return ""
+
+## Only an unavailable prerequisite blocks the route. A captured facility still supplies it.
+func mission_product_block_reason(id: String, owned: Array) -> String:
+	if mission_production_tech().is_empty(): return ""
+	var reason := mission_tech_block_reason(id)
+	if not reason.is_empty(): return reason
+	for token in ra2_missing_prereqs(id, owned):
+		if not mission_tech_block_reason(str(token)).is_empty():
+			return "本关禁止建造前置建筑：" + prereq_name(str(token))
+	return ""
+
+const HEAD_PRODUCTS := {"YABRCK":["BRUTE","VIRUS","YURIPR"],"YAWEAP":["MIND","TELE","CAOS","DISK"]}
+
+func hollywood_production_unit(id: String) -> bool:
+	if not BattleRequest.skirmish and BattleRequest.mission_id == "yr_head_games":
+		return id in HEAD_PRODUCTS.YABRCK or id in HEAD_PRODUCTS.YAWEAP or id in ["INIT","YURI","YENGINEER","LTNK","YTNK"]
+	return not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood" and id in ["INIT", "YURI", "YENGINEER", "LTNK", "YTNK"]
+
 func unit_production_block_reason(id: String, battle_state: Dictionary = {}, owner_side: String = "ally") -> String:
+	var mission_reason := mission_tech_block_reason(id)
+	if not mission_reason.is_empty(): return mission_reason
+	if id in preload("res://scripts/rules/hollywood_heroes.gd").IDS:
+		return "" if id in BattleRequest.combat_context.get("hollywood_roster",[]) else "英雄尚未入册"
+	if hollywood_production_unit(id): return ""
 	var expedition_reason:=preload("res://scripts/expedition/rules.gd").block_reason(id,owner_side)
 	if not expedition_reason.is_empty():return expedition_reason
 	if preload("res://scripts/expedition/rules.gd").licensed_production(id, owner_side): return ""
@@ -409,10 +513,14 @@ func building_production_category(id: String) -> String:
 	return "defense" if get_building(id).get("tags", []).has("defense") else "building"
 
 func building_production_block_reason(id: String) -> String:
+	var mission_reason := mission_tech_block_reason(id)
+	if not mission_reason.is_empty(): return mission_reason
+	if id=="NEUTRALSTUDIO" and BattleRequest.combat_context.get("hollywood_roster",[]).is_empty(): return "尚未招募中立英雄"
 	return "沙袋已移除建造目录" if id == "GASAND" else ""
 
 func buildings_for_faction(faction: String) -> Array[Dictionary]:
 	var out: Array[Dictionary] = []
+	if not BattleRequest.combat_context.get("hollywood_roster",[]).is_empty(): out.append(get_building("NEUTRALSTUDIO"))
 	for b in buildings:
 		if str(b.get("faction", "")) == faction:
 			out.append(get_building(str(b.get("id", ""))))
@@ -506,6 +614,7 @@ const RA2_TOKEN_TAGS := {
 	"PROC": "refinery", "RADAR": "radar", "GACNST": "hq",
 }
 const RA2_TOKEN_IDS := {
+	"STUDIO_POWER":["GAPOWR","NAPOWR","NANRCT","YAPOWR"],
 	"BARRACKS": ["GAPILE"],
 	"EXPEDITION_FACTORY": ["GAWEAP", "NAWEAP"],
 	"TECH": ["GATECH", "NATECH", "YATECH"],
@@ -520,6 +629,8 @@ func ra2_prereq_ok(id: String, owned: Array, battle_state: Dictionary = {}, owne
 	return ra2_missing_prereqs(id, owned, battle_state, owner_side).is_empty()
 
 func production_prerequisites(id: String, battle_state: Dictionary = {}, owner_side: String = "ally") -> Array:
+	if id == "GTGCAN" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood":
+		return ["RADAR", "GACNST"]
 	var result: Array = ra2_prereq.get(id, []).duplicate()
 	if preload("res://scripts/expedition/rules.gd").has_training_permit(id, owner_side):
 		for index in result.size():
@@ -557,7 +668,7 @@ func prereq_name(id: String) -> String:
 	return str(definition.get("name", id))
 
 func ra2_missing_prereq_names(id: String, owned: Array, battle_state: Dictionary = {}, owner_side: String = "ally") -> String:
-	var names := {"EXPEDITION_FACTORY": "战车工厂", "BARRACKS": "兵营", "TECH": "作战实验室", "POWER": "发电厂",
+	var names := {"STUDIO_POWER":"供电建筑","EXPEDITION_FACTORY": "战车工厂", "BARRACKS": "兵营", "TECH": "作战实验室", "POWER": "发电厂",
 		"PROC": "矿石精炼厂", "RADAR": "空指部", "GACNST": "建造厂"}
 	if get_entity(id).get("faction") == "soviet":
 		names.RADAR = "雷达设施"
@@ -570,7 +681,7 @@ func ra2_missing_prereq_names(id: String, owned: Array, battle_state: Dictionary
 
 func ra2_country_id(value: String) -> String:
 	for country in ra2_countries:
-		if country.get("side") in ["allied","soviet"] and (str(country.id).to_lower() == value.strip_edges().to_lower()
+		if country.get("side") in ["allied","soviet","yuri"] and (str(country.id).to_lower() == value.strip_edges().to_lower()
 				or str(country.get("display", "")) == value.strip_edges()):
 			return str(country.id)
 	# Fall back to the default Allied opening for unknown legacy labels.
@@ -596,6 +707,8 @@ func _country_names(ids: Array) -> String:
 ## Country eligibility comes from raw Owner / RequiredHouses / ForbiddenHouses.
 ## Country exclusives apply to both modes; progression does not change nationality.
 func ra2_country_block_reason(id: String, country: String, foreign_producer := false) -> String:
+	if id == "GTGCAN" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood":
+		return "" if country == "Americans" else "本关只有美国可以建造巨炮"
 	var source_id := id
 	# The allied runtime catalog retains DOG as its legacy dog identifier.
 	# Country eligibility must use the allied ADOG, not the Soviet DOG variant.
@@ -674,7 +787,8 @@ func _load_ra2_rules() -> void:
 	for kind in ["infantry", "vehicles", "aircraft"]:
 		ra2_source_units.merge(unit_doc.get(kind, {}), true)
 	ra2_source_buildings = _load_json("ra2/buildings.json").get("buildings", {})
-	ra2_countries = _load_json("ra2/factions.json").get("countries", [])
+	ra2_countries = _load_json("ra2/factions.json").get("countries", []).duplicate()
+	ra2_countries.append({"id":"YuriCountry","display":"尤里","side":"yuri"})
 	_load_ra2_fx()
 	# Spawned aircraft is addressable by the carrier but absent from production catalogs.
 	var hornet: Dictionary = ra2_source_units.get("HORNET", {})
@@ -800,7 +914,7 @@ func _load_ra2_sfx() -> void:
 	for k in fd.keys():
 		ra2_sfx_files[str(k).to_lower()] = fd[k]
 	# Original YR mappings take precedence per event; older/local voices remain fallbacks.
-	for pack_file in ["ra2/yr_voice_pack.json", "ra2/yr_unit_voices.json", "ra2/building_audio.json", "ra2/spy_plane_audio.json", "ra2/yr_weapon_audio.json", "ra2/menu_audio.json"]:
+	for pack_file in ["ra2/yr_voice_pack.json", "ra2/yr_unit_voices.json", "ra2/building_audio.json", "ra2/spy_plane_audio.json", "ra2/yr_weapon_audio.json", "ra2/menu_audio.json", "ra2/hollywood_audio.json", "ra2/head_games_audio.json", "ra2/time_shift_audio.json"]:
 		if not FileAccess.file_exists("res://data/" + pack_file):
 			continue
 		var pack: Dictionary = _load_json(pack_file)
@@ -866,7 +980,7 @@ func make_skirmish_mission(cfg: Dictionary = {}) -> Dictionary:
 	var diff := clampi(int(c.get("difficulty", 1)), 0, DIFFICULTY_NAMES.size() - 1)
 	var diff_name: String = DIFFICULTY_NAMES[diff]
 	var eb := str(c.get("enemy_base", "allied"))
-	var eb_name := str({"allied":"盟军", "soviet":"苏联"}.get(eb, "虫群巢穴"))
+	var eb_name := str({"allied":"盟军", "soviet":"苏联", "yuri":"尤里"}.get(eb, "虫群巢穴"))
 	var layouts := {"coast":"经典海岸", "crossings":"双桥争夺", "strait":"隔海登陆"}
 	layouts.merge({"exp_plain":"钢铁平原","exp_fortress":"中央要塞"})
 	for i in preload("res://scripts/world/skirmish_maps.gd").IDS.size():
@@ -988,13 +1102,12 @@ func ra2_muzzle_bright(weapon_id: String) -> bool:
 ## 返回 {kind, color, house, thickness, duration}，kind ∈ {"laser","rad","tesla"}；无标志返回 {}。
 ##   color = 光束基色；house = true 时调用方改用该单位/建筑阵营色（IsHouseColor=yes）。
 func ra2_beam_spec(weapon_id: String) -> Dictionary:
-	var w: Dictionary = ra2_weapon(weapon_id)
-	if w.is_empty():
-		return {}
-	var e: Dictionary = w.get("extra", {})
-	var is_laser := _ra2_flag(e.get("IsLaser"))
-	var is_rad := _ra2_flag(e.get("IsRadBeam"))
-	var is_tesla := _ra2_flag(e.get("IsElectricBolt"))
+	return weapon_combat_rule(weapon_id).get("beam", _EMPTY_STATIC_RULE)
+
+static func _compile_ra2_beam_spec(w: Dictionary, e: Dictionary, flags: Dictionary) -> Dictionary:
+	var is_laser: bool = flags.laser
+	var is_rad: bool = flags.rad_beam
+	var is_tesla: bool = flags.electric_bolt
 	var is_rail := _ra2_flag(e.get("IsRailgun"))
 	if not (is_laser or is_rad or is_tesla or is_rail):
 		return {}
@@ -1035,6 +1148,7 @@ func ra2_beam_spec(weapon_id: String) -> Dictionary:
 			spec["color"] = Color(1.0, 0.35, 0.30)
 		else:
 			spec["color"] = Color(0.92, 0.96, 1.0)                 # 房色激光占位，调用方替换
+	spec.make_read_only()
 	return spec
 
 ## rules.ini 布尔标志：yes / true / 1 视为真
@@ -1101,9 +1215,114 @@ func _muzzle_fallback(weapon_id: String) -> Array:
 	return f if f != null else []
 
 ## 弹头 AnimList= → 命中动画名列表
+# Derived from the final merged rules, never from an actor or a resolved weapon.
+# GameData.reload() rebuilds these; fixture/tool edits to raw tables must do likewise.
+const _EMPTY_STATIC_RULE: Dictionary = {}
+var _projectile_combat_rules: Dictionary = {}
+var _projectiles_blocking_ground: Dictionary = {}
+var _warhead_combat_rules: Dictionary = {}
+var _weapon_combat_rules: Dictionary = {}
+var _unit_land_blocked: Dictionary = {}
+var _unit_naval_targeting: Dictionary = {}
+var _unit_warp_blocked: Dictionary = {}
+var _unit_sonic_type_immune: Dictionary = {}
+
+func rebuild_static_combat_rules() -> void:
+	_projectile_combat_rules.clear()
+	_projectiles_blocking_ground.clear()
+	for id in ra2_projectiles:
+		var row: Dictionary = ra2_projectiles[id]
+		var e: Dictionary = row.get("extra", {})
+		if str(e.get("AG", "yes")).to_lower() in ["no", "false", "0"]: _projectiles_blocking_ground[id] = true
+		_projectile_combat_rules[id] = {
+			"subject_to_walls": _ra2_flag(e.get("SubjectToWalls")),
+			"shrapnel_weapon": str(e.get("ShrapnelWeapon", "")),
+			"shrapnel_count": int(e.get("ShrapnelCount", 0)),
+			"drop_accel": maxf(1.0, float(e.get("Acceleration", 1))),
+		}
+	_warhead_combat_rules.clear()
+	for id in ra2_warheads:
+		var row: Dictionary = ra2_warheads[id]
+		if row.is_empty(): continue
+		var e = row.get("extra")
+		if not e is Dictionary: e = _EMPTY_STATIC_RULE
+		var deform := float(str(e.get("Deform", "")).replace("%", "").strip_edges())
+		_warhead_combat_rules[id] = {
+			"mind_control": _ra2_flag(e.get("MindControl")), "temporal": _ra2_flag(e.get("Temporal")),
+			"radiation": _ra2_flag(e.get("Radiation")),
+			"blocks_friendly_damage": str(e.get("AffectsAllies", "")).to_lower() in ["no", "false", "0"],
+			"causes_death_weapon": str(e.get("CausesDeathWeapon", "")).to_lower() in ["yes", "true", "1"],
+			"rocker": str(e.get("Rocker", "")).to_lower() == "yes",
+			"sparky": str(e.get("Sparky", "")).to_lower() == "yes",
+			"bright": str(e.get("Bright", "")).to_lower() == "yes",
+			"em_effect": str(e.get("EMEffect", "")).to_lower() == "yes",
+			"wall": _ra2_flag(row.get("wall", e.get("Wall", false))),
+			"wood": _ra2_flag(row.get("wood", e.get("Wood", false))),
+			"wall_absolute_destroyer": _ra2_flag(e.get("WallAbsoluteDestroyer")),
+			"deform_ratio": deform / 100.0 if deform > 1.0 else deform,
+			"deform_threshold": float(str(e.get("DeformThreshhold", "")).strip_edges()),
+			"impact_anims": _parse_impact_anims(row.get("anim_list")),
+			"cell_spread": _combat_number(row.get("cell_spread"), 0.0),
+			"percent_at_max": _combat_number(row.get("percent_at_max"), 1.0),
+			"prone_damage": _combat_number(row.get("prone_damage"), 1.0),
+		}
+	_weapon_combat_rules.clear()
+	for id in ra2_weapons:
+		var row: Dictionary = ra2_weapons[id]
+		var e: Dictionary = row.get("extra", {})
+		var rule := {"sonic": _ra2_flag(e.get("IsSonic")), "rad_beam": _ra2_flag(e.get("IsRadBeam")),
+			"laser": _ra2_flag(e.get("IsLaser")), "electric_bolt": _ra2_flag(e.get("IsElectricBolt"))}
+		rule["beam"] = _compile_ra2_beam_spec(row, e, rule)
+		_weapon_combat_rules[id] = rule
+	_unit_land_blocked.clear()
+	_unit_naval_targeting.clear()
+	_unit_warp_blocked.clear()
+	_unit_sonic_type_immune.clear()
+	var overrides: Dictionary = allied_capabilities.get("units", {})
+	for id in ra2_source_units:
+		var e: Dictionary = ra2_source_units[id].get("extra", {})
+		_unit_land_blocked[id] = int(e.get("LandTargeting", 0)) == 1
+		_unit_naval_targeting[id] = int(e.get("NavalTargeting", 0))
+		_unit_sonic_type_immune[id] = _ra2_flag(e.get("TypeImmune"))
+		_unit_warp_blocked[id] = str(e.get("Warpable", "yes")).to_lower() in ["no", "false", "0"]
+	for id in overrides:
+		# AlliedAbilities.source replaces (not merges) the source row.
+		_unit_warp_blocked[id] = str(overrides[id].get("Warpable", "yes")).to_lower() in ["no", "false", "0"]
+
+func projectile_combat_rule(id: String) -> Dictionary:
+	return _projectile_combat_rules.get(id.to_lower(), _EMPTY_STATIC_RULE)
+
+func projectile_blocks_ground(id: String) -> bool:
+	return _projectiles_blocking_ground.has(id.to_lower())
+
+func warhead_combat_rule(id: String) -> Dictionary:
+	return _warhead_combat_rules.get(id.to_lower(), _EMPTY_STATIC_RULE)
+
+func warhead_blocks_friendly_damage(id: String) -> bool:
+	return warhead_combat_rule(id).get("blocks_friendly_damage", false)
+
+func weapon_combat_rule(id: String) -> Dictionary:
+	return _weapon_combat_rules.get(id.to_lower(), _EMPTY_STATIC_RULE)
+
+func weapon_is_sonic(id: String) -> bool:
+	return weapon_combat_rule(id).get("sonic", false)
+
+func unit_blocks_land_targeting(id: String) -> bool:
+	return _unit_land_blocked.get(id, false)
+
+func unit_naval_targeting(id: String) -> int:
+	return _unit_naval_targeting.get(id, 0)
+
+func unit_blocks_warp(id: String) -> bool:
+	return _unit_warp_blocked.get(id, false)
+
+func unit_sonic_type_immune(id: String) -> bool:
+	return _unit_sonic_type_immune.get(id, false)
+
 func ra2_impact_anims(warhead_id: String) -> Array:
-	var w: Dictionary = ra2_warheads.get(warhead_id.to_lower(), {})
-	var l = w.get("anim_list", null)
+	return warhead_combat_rule(warhead_id).get("impact_anims", [])
+
+static func _parse_impact_anims(l) -> Array:
 	if l == null:
 		return []
 	if typeof(l) == TYPE_ARRAY:
@@ -1115,10 +1334,12 @@ func ra2_impact_anims(warhead_id: String) -> Array:
 			out.append(t)
 	return out
 
-## 弹头 CellSpread（RA2 溅射半径，单位＝格）→ 像素半径
+static func _combat_number(v, fallback: float) -> float:
+	return fallback if v == null or str(v) == "" else float(v)
+
+## 弹头 CellSpread（RA2 溅射半径，单位＝格）
 func ra2_cell_spread(warhead_id: String) -> float:
-	var w: Dictionary = ra2_warheads.get(warhead_id.to_lower(), {})
-	return _num(w.get("cell_spread", null))
+	return warhead_combat_rule(warhead_id).get("cell_spread", 0.0)
 
 ## JSON 里可能为 null 的数值字段安全转 float（float(null) 在 Godot 会报错）
 static func _num(v, def: float = 0.0) -> float:

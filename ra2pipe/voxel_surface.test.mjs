@@ -17,6 +17,22 @@ test('VPL dimensions reject truncation; output uses lookup colors instead of arb
  const r=renderSurface({limbs:[limb]},{pal,vpl});
  for(let i=0;i<r.detailRgba.length;i+=4)if(r.detailRgba[i+3])assert.deepEqual(Array.from(r.detailRgba.slice(i,i+3)),[210,45,60]);
 });
+test('YR voxel light reaches high VPL rows only on lit normals and follows the facing',()=>{
+ const tables=Buffer.alloc(32*256);
+ for(let row=0;row<32;row++) tables.fill(100+row,row*256,(row+1)*256);
+ const vpl={count:32,tables};
+ function color(normal,metal,facing=0) {
+  const {detailRgba}=renderSurface({limbs:[{...limb,normals:[normal]}]},{pal,vpl,yrVoxelLight:metal,facing});
+  const alpha=detailRgba.findIndex((value,i)=>i%4===3 && value>0);
+  return detailRgba[alpha-3];
+ }
+ const back=[0,0,-1],side=[1,1,0],top=[0,0,1];
+ assert.equal(color(back,false),color(side,false));
+ assert.equal(color(back,true),100);
+ assert.ok(color(top,true)>116 && color(top,false)<=108);
+ assert.ok(color([0.70,-0.12,0.71],true)>124);
+ assert.notEqual(color([1,0,0],true,0),color([1,0,0],true,16));
+});
 test('depth test hides rear surfaces independent of model order',()=>{
  const rear={...limb,matrix:[...identity],voxels:[{...limb.voxels[0],colorIndex:20}]};rear.matrix[11]=-2;
  const a=renderSurface({limbs:[limb,rear]},{pal}),b=renderSurface({limbs:[rear,limb]},{pal});

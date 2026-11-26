@@ -94,11 +94,57 @@ func exercise_mode(mode: String) -> void:
 	tank.order_move(goal)
 	battle.clear_selection()
 	check(Preview.routes(battle).is_empty(), mode + " deselection clears line")
+	await exercise_attack_preview(mode, tank, enemy)
 	battle.select_unit(tank, false)
 	battle.ended = true
 	check(Preview.routes(battle).is_empty(), mode + " battle end clears line")
 	screen.free()
 	await get_tree().process_frame
+
+func exercise_attack_preview(mode: String, tank, enemy) -> void:
+	var fog = battle.fog
+	battle.fog = null
+	fog.hide()
+	enemy.show() # The frozen fixture previously hid this actor while it was outside vision.
+	await get_tree().process_frame
+	place_art_at(tank, Vector2(620, 425))
+	place_art_at(enemy, Vector2(755, 425))
+	tank.order_stop()
+	tank.fire_stance = "aggressive"
+	tank._refresh_target()
+	check(tank.attack_target == enemy and not tank.attack_ordered, mode + " real targeting acquires an enemy without a manual order")
+	check(Preview.routes(battle).is_empty(), mode + " unselected attacker has no line")
+	await get_tree().process_frame
+	await mouse_button(Vector2(620, 425), true)
+	await mouse_button(Vector2(620, 425), false)
+	var routes := Preview.routes(battle)
+	check(battle.selected_units.has(tank) and routes.size() == 1 and routes[0].attack and routes[0].points[1] == enemy.art_center(), mode + " clicking an auto-firing tank shows its current target")
+	await capture(mode + "-attack-current", true)
+	tank.has_move_order = true
+	tank.attack_move = true
+	routes = Preview.routes(battle)
+	check(routes.size() == 2 and routes[0].attack and not routes[1].attack and routes[1].attack_move, mode + " combat contact does not replace the attack-move route")
+	tank.order_target(enemy, false, false)
+	routes = Preview.routes(battle)
+	check(tank.order_queue.is_empty() and routes.size() == 1 and routes[0].attack and routes[0].points.size() == 2, mode + " direct attack without queued orders shows target")
+	enemy.special.echo_cloaked = true
+	check(Preview.routes(battle).is_empty(), mode + " concealed target has no line")
+	enemy.special.erase("echo_cloaked")
+	battle.fog = fog
+	var target_cell: int = fog._index(enemy.global_position)
+	var prior_visibility: int = fog.visible_cells.ally[target_cell]
+	fog.visible_cells.ally[target_cell] = 1
+	check(Preview.routes(battle).size() == 1, mode + " revealed target has a line")
+	fog.visible_cells.ally[target_cell] = 0
+	check(Preview.routes(battle).is_empty(), mode + " target in fog has no line")
+	fog.visible_cells.ally[target_cell] = prior_visibility
+	battle.fog = null
+	enemy.hp = 0.0
+	check(Preview.routes(battle).is_empty(), mode + " dead target has no line")
+	enemy.hp = enemy.max_hp
+	tank.order_stop()
+	check(Preview.routes(battle).is_empty(), mode + " stopping fire clears the target line")
+	battle.fog = fog
 
 func click_move(world: Vector2, shift := false) -> void:
 	var point: Vector2 = stage.get_canvas_transform() * world
@@ -110,7 +156,7 @@ func click_move(world: Vector2, shift := false) -> void:
 	await mouse_button(point, true, shift, MOUSE_BUTTON_RIGHT)
 	await mouse_button(point, false, shift, MOUSE_BUTTON_RIGHT)
 
-func capture(label: String) -> void:
+func capture(label: String, attack := false) -> void:
 	if DisplayServer.get_name() == "headless": return
 	battle.move_order_overlay.visible = false
 	await get_tree().process_frame
@@ -126,6 +172,7 @@ func capture(label: String) -> void:
 	for y in range(250, 620):
 		for x in range(300, 1150):
 			var a := after.get_pixel(x, y)
-			if a.g > 0.4 and a.r > 0.3 and a.b < 0.4 and a != before.get_pixel(x, y): changed += 1
-	check(changed > 25, label + " real render contains visible green command strokes", changed)
+			var is_ink := (a.r > 0.4 and a.r > a.g * 1.5 and a.r > a.b * 1.5) if attack else (a.g > 0.4 and a.r > 0.3 and a.b < 0.4)
+			if is_ink and a != before.get_pixel(x, y): changed += 1
+	check(changed > 25, label + " real render contains visible command strokes", changed)
 	after.save_png(output_dir.path_join(label + ".png"))

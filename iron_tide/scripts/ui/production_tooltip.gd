@@ -1,7 +1,9 @@
 extends Button
-## Sidebar cards use fixed details; other callers retain the bounded tooltip.
+## Production cards fall back to a short tooltip when the dock cannot show their introduction.
 
 var docked_details := false
+var dock_shows_introduction: Callable
+var introduction_tooltip := ""
 var detail_highlight := false:
 	set(value):
 		if detail_highlight != value:
@@ -9,7 +11,9 @@ var detail_highlight := false:
 			queue_redraw()
 
 func _get_tooltip(_at_position: Vector2) -> String:
-	return "" if docked_details else tooltip_text
+	if not docked_details: return tooltip_text
+	if not dock_shows_introduction.is_valid() or dock_shows_introduction.call(): return ""
+	return introduction_tooltip
 
 var guide_highlight := false:
 	set(value):
@@ -25,6 +29,8 @@ func _draw() -> void:
 		draw_rect(Rect2(Vector2.ONE, size - Vector2(2, 2)), Color(0.35, 0.9, 1.0), false, 2.0)
 
 func _make_custom_tooltip(for_text: String) -> Object:
+	# Godot can call this even when _get_tooltip returned an empty string.
+	if for_text.strip_edges().is_empty(): return null
 	var panel := PanelContainer.new()
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.04, 0.07, 0.10, 0.98)

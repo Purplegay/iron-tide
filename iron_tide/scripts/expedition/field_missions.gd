@@ -325,15 +325,20 @@ func divert(o:Dictionary,data:Dictionary) -> void:
 
 func actions(o:Dictionary) -> Array:
 	if not NAMES.has(o.kind) or o.done or o.get("failed",false):return []
-	if o.kind=="box" and o.phase=="carry":return ["放下黑匣子"]
+	if o.kind=="box" and o.phase=="carry":return ["送回交付点","放下黑匣子"]
 	if o.kind=="fuel" and o.phase=="choice":return ["拆车换维修包"] if o.get("site_lost",false) else ["派车进站","拆车换维修包"]
 	return []
 
 func act(o:Dictionary,data:Dictionary,action:String) -> void:
 	if action not in actions(o):return
 	if o.kind=="box":
-		var carrier=tagged("field_box",o.id)
+		var carrier=box_holder(o.id)
 		if carrier!=null:
+			if action=="送回交付点":
+				if operable(carrier):
+					carrier.hold_position=false
+					carrier.order_move(o.depot)
+				return
 			drop_box(o,carrier);carrier.special.field_box_dropped=true
 			Events.emit_message("黑匣子已放下。可由其他部队接手，原携带者离开标记后也可返回拾取。",UiKit.COL_SIDE_MISSION)
 	elif o.kind=="fuel":

@@ -1,6 +1,7 @@
 extends RefCounted
 ## Expedition threat and timed all-out attack.
 const KEY := "expedition_red_alert"
+const PROMOTED := "expedition_alert_promoted"
 const DURATION := 30.0
 const THRESHOLD := 49000.0
 const CAP := 50000.0
@@ -12,13 +13,21 @@ static func setup(world,run:Dictionary,restored:bool) -> void:
 	# Resume preserves this battle's snapshot. A new stage carries charges only.
 	if restored:
 		var saved:=state(world)
+
+		if int(saved.charge)==0 and float(saved.threat)>=threshold(saved):
+			saved.charge=1
+			saved.threat=0.0
 		saved.left=clampf(float(saved.left),0.0,DURATION)
 		return
 	world.allied_state[KEY]={"charge":0,"threat":0.0,"left":0.0}
 	var s:=state(world)
 	s.alert_level=preload("res://scripts/expedition/relics.gd").level(run,"alert_array")
 	s.charge=clampi(int(run.get("red_alert_charge",0)),0,1)
-	if preload("res://scripts/expedition/relics.gd").owned(run,"red_alert_warrant"):s.charge=1
+	if s.charge==0 and preload("res://scripts/expedition/relics.gd").owned(run,"red_alert_warrant"):
+		s.threat=threshold(s)*0.5
+
+static func threshold(s:Dictionary) -> float:
+	return THRESHOLD * (1.0 - 0.05 * clampi(int(s.get("alert_level",0)),0,3))
 
 static func active(world) -> bool:
 	return is_instance_valid(world) and float(world.allied_state.get(KEY,{}).get("left",0.0))>0.0
@@ -45,7 +54,11 @@ static func apply_units(world) -> void:
 		# RED ALERT restores the original emergency promotion: all allied
 		# combatants are promoted immediately. _grant_veteran clamps to the
 		# native cap, so RA2 units stop at Elite while RA3 heroes reach Heroic.
-		if unit is Unit: unit._grant_veteran(3,false)
+		if unit is Unit:
+			var previous_rank:int = unit.veteran_level
+			unit._grant_veteran(3,false)
+			if unit.veteran_level > previous_rank:
+				unit.special[PROMOTED] = true
 		unit.add_buff("red_alert_attack",left,0.30,"RED ALERT · 威力 +30%")
 		unit.add_buff("red_alert_haste",left,0.50,"RED ALERT · 攻速 +50%")
 
@@ -61,7 +74,7 @@ static func tick(world,delta:float) -> void:
 			Music.set_red_alert(false)
 			Events.emit_message("RED ALERT 总攻结束",Color("#e8c273"))
 	elif int(s.charge)==0:
-		var decay:=150.0 if float(s.threat)>=20000.0 and float(s.threat)<THRESHOLD else 50.0
+		var decay:=150.0 if float(s.threat)>=20000.0 and float(s.threat)<threshold(s) else 50.0
 		s.threat=maxf(0.0,float(s.threat)-decay*delta)
 
 static func defeated(world,victim) -> void:
@@ -71,7 +84,7 @@ static func defeated(world,victim) -> void:
 	var s:=state(world)
 	if int(s.charge)>0 or float(s.left)>0:return
 	var multiplier:=3.0 if victim.side=="ally" else 0.75 if not BattleRequest.friendly("ally",victim.side) else 0.0
-	s.threat=minf(CAP,float(s.threat)+maxf(0.0,float(victim.data.get("cost",0)))*multiplier*(1.0+0.2*int(s.get("alert_level",0))))
-	if float(s.threat)>=THRESHOLD:
+	s.threat=minf(CAP,float(s.threat)+maxf(0.0,float(victim.data.get("cost",0)))*multiplier)
+	if float(s.threat)>=threshold(s):
 		s.charge=1;s.threat=0.0
 		Events.emit_message("威胁值达标 · RED ALERT 补充 1 次（1/1）",Color("#ff5148"))

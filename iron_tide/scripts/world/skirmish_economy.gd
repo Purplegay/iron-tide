@@ -7,8 +7,9 @@ static func refineries(ai) -> Array:
 
 static func miners(ai, queued := true) -> int:
 	var n := 0
+	if ai.enemy_base == "yuri": n = refineries(ai).size()
 	for u in ai.battle.units:
-		if is_instance_valid(u) and u.is_harvester and u.side == ai.house_id and ai.battle.actor_alive(u): n += 1
+		if is_instance_valid(u) and (u.is_harvester or u.unit_id == "SMIN") and u.side == ai.house_id and ai.battle.actor_alive(u): n += 1
 	if queued:
 		var miner_id: String = ai.battle.roster_id("CMIN", ai.house_id)
 		for b in ai.battle.buildings:

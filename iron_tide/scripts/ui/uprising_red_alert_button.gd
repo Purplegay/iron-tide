@@ -32,7 +32,7 @@ func setup(battle) -> void:
 	focus_mode = Control.FOCUS_NONE
 	action_mode = BaseButton.ACTION_MODE_BUTTON_RELEASE
 	size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
-	tooltip_text = "RED ALERT · 起义时刻按钮\n持续 %d 秒：全军立即升满军衔；生产耗时 -50%%、单位攻速 +50%%、威力 +30%%。\n威胁值满格补充 1 次，最多持有 1 次。"%int(Alert.DURATION)
+	tooltip_text = "RED ALERT · 起义时刻按钮\n持续 %d 秒：全军立即升满军衔；生产耗时 -50%%、单位攻速 +50%%、威力 +30%%。\n警戒值满格可储存一次总攻。靠总攻升满星的单位下关从一星开始。原本满星或没吃到总攻的单位保留军衔和经验。"%int(Alert.DURATION)
 	glow = TextureRect.new()
 	glow.texture = region(Rect2(297, 359, 133, 86) if soviet else Rect2(143, 263, 152, 98))
 	glow.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -83,7 +83,8 @@ func _process(delta: float) -> void:
 	disabled=world.ended or world.paused or get_tree().paused or running or not ready
 	if threat_bar!=null:
 		threat_bar.time_fraction=clampf(float(s.left)/Alert.DURATION,0.0,1.0) if running else -1.0
-		threat_bar.value=Alert.THRESHOLD if running or ready else threat
+		threat_bar.maximum=Alert.threshold(s)
+		threat_bar.value=threat_bar.maximum if running or ready else threat
 		threat_bar.tooltip_text="总攻剩余时间：左侧圆环亮灯逐格熄灭" if running else "警戒值积累，满格可发动总攻"
 		threat_bar.queue_redraw()
 	clock+=delta

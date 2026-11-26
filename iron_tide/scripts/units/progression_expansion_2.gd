@@ -215,7 +215,16 @@ static func speed(unit) -> float:
 	if not unit.special.has(KEY):return 1.0
 	if not R.active(unit):return 1.0
 	var s:Dictionary=unit.special.get(KEY,EMPTY)
-	return (1.0+float(s.get("breather_speed",0)) if float(s.get("breather_left",0))>0 else 1.0)*Drone.speed(unit)*Infantry.speed(unit)*Naval.speed(unit)*Infiltration.speed(unit)
+	var factor := 1.0 + float(s.get("breather_speed", 0)) if float(s.get("breather_left", 0)) > 0 else 1.0
+	if unit.unit_id == "DRON" and s.has("pounce_left"):
+		factor *= Drone.speed(unit)
+	if unit.unit_id == "SNIPE" and s.has("relocate_left"):
+		factor *= Infantry.speed(unit)
+	if s.has("ballast_left"):
+		factor *= Naval.speed(unit)
+	if s.has("shore_speed") or s.has("escort_buffs"):
+		factor *= Infiltration.speed(unit)
+	return factor
 
 static func sight(unit) -> float:
 	if not unit.special.has(KEY):return 0.0
@@ -261,14 +270,11 @@ static func draw(unit) -> void:
 	Armor.draw(unit)
 	Naval.draw(unit)
 	NavalFire.draw(unit)
-	Submarine.draw(unit)
 	Convoy.draw(unit)
 	Infiltration.draw(unit)
 	Air.draw(unit)
 	Dread.draw(unit)
 	var s:Dictionary=unit.special.get(KEY,EMPTY)
-	if s.has("module_shield"):
-		unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+8,0,TAU,32,Color(.25,.85,1,.8),1.5,true)
 	if int(s.get("rotation_charges",0))>0:
 		for i in P.count("mechanic/core_v2","rotation_count"):
 			unit.draw_circle(Vector2(-7+i*7,-unit.radius-8-unit._visual_lift()),2.0,Color.GOLD if i<int(s.rotation_charges) else Color.DIM_GRAY)

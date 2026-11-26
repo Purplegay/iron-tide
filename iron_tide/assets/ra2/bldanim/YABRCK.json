@@ -1,0 +1,24 @@
+{
+ "id": "YABRCK",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "YABRCK_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 7,
+   "frames": 16,
+   "rate": 150,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YABRCK_A",
+    "shadow": true,
+    "loopStart": 8,
+    "loopEnd": 15,
+    "frames": 16,
+    "rate": 150,
+    "loopCount": -1
+   }
+  }
+ ]
+}

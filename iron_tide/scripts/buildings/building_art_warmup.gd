@@ -15,20 +15,16 @@ func prepare_infantry(units: Array) -> void:
 	for unit in units:
 		if not is_instance_valid(unit) or prepared.has(unit.unit_id): continue
 		var art: Dictionary = unit._ra2
-		if art.get("kind") != "shp" or not unit._seq.has("Guard"): continue
+		if art.get("kind") != "shp": continue
 		prepared[unit.unit_id] = true
 		RA2Art.sprite_grade(art)
-		_queue_page(art, RA2Art.seq_frame(unit._seq, "Guard", 0, 0))
-	# Stream additional pages only for SHP artwork present in this battle.
-	var queued_art := {}
-	for unit in units:
-		if not is_instance_valid(unit) or queued_art.has(unit.unit_id): continue
-		queued_art[unit.unit_id] = true
-		var art: Dictionary = unit._ra2
-		for page in art.get("detail", {}).get("pages", []):
-			var path := Detail.ROOT + str(page.file)
-			if not Detail._textures.has(path): jobs[path] = {"page": page}
+		_queue_page(art, RA2Art.seq_frame(unit._seq, "Guard", 0, 0) if unit._seq.has("Guard") else 0)
 	set_process(not jobs.is_empty() or not loading.is_empty())
+
+func prepare_existing_buildings(buildings: Array) -> void:
+	for building in buildings:
+		if is_instance_valid(building) and not building._dead and not building._ra2.is_empty():
+			prepare(building)
 
 func prepare(building) -> void:
 	if building._ra2.get("kind") != "shp": return
@@ -44,7 +40,7 @@ func prepare(building) -> void:
 		var state: Dictionary = building._anim_layer(layer)
 		var id := str(state.image)
 		if id.is_empty(): continue
-		var path := RA2Art.SHP_DIR + id + ".png"
+		var path := RA2Art.SHP_DIR + RA2Art.theater_sheet_id(id) + ".png"
 		var spans: Array = jobs.get(path, {}).get("spans", [])
 		var normal := Vector2i(int(state.loopStart), int(state.loopEnd))
 		if not spans.has(normal): spans.append(normal)
@@ -63,7 +59,7 @@ func _queue_page(art: Dictionary, frame: int) -> void:
 	if index < 0: return
 	var page: Dictionary = detail.pages[index]
 	var path := Detail.ROOT + str(page.file)
-	if not Detail._textures.has(path): jobs[path] = {"page": page}
+	if path != loading and not Detail._textures.has(path) and not jobs.has(path): jobs[path] = {"page": page}
 
 func _process(_delta: float) -> void:
 	if loading.is_empty():

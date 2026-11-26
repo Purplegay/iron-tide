@@ -50,8 +50,14 @@ func _ready() -> void:
 	copy.copy_mode = BackBufferCopy.COPY_MODE_VIEWPORT
 	add_child(copy)
 	grade = ShaderMaterial.new()
-	var sh: Shader = load("res://shaders/post_grade.gdshader")
-	if sh != null:
-		grade.shader = sh
+	var world = get_parent()
+	if world is Battle and world.map_layout() == "yr_sov07":
+		grade.shader = preload("res://shaders/hollywood_daylight.gdshader")
+		# Soften the retail night tint for legible units and world-space labels.
+		grade.set_shader_parameter("map_light", Vector3(0.56, 0.58, 0.72))
+	elif world is Battle and world.mission.get("id") == "yr_hollywood":
+		grade.shader = preload("res://shaders/hollywood_daylight.gdshader")
+	else:
+		grade.shader = preload("res://shaders/post_grade.gdshader")
 	cr.material = grade
 	add_child(cr)

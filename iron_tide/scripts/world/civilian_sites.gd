@@ -5,6 +5,22 @@ const Rules = preload("res://scripts/world/special_rules.gd")
 # artmd.ini [CAHSE01] MuzzleFlash0..4 are offsets from the SHP canvas centre.
 const HOUSE_PORTS := [[-30,26], [40,34], [24,-4], [-4,30], [10,45]]
 
+static func repair_vehicles(site, delta: float) -> void:
+	if site.side == "neutral" or not site.is_operational() or site.battle.paused or site.battle.ended or site.get_tree().paused: return
+	var rules := preload("res://scripts/core/yr_death_rules.gd")
+	var general: Dictionary = rules.data().general
+	var period := float(general.selfhealunitframes) / BattleClock.RULE_TICKS_PER_SECOND
+	var elapsed := float(site.special.get("machine_shop_elapsed", 0.0)) + delta
+	var pulses := floori(elapsed / period)
+	site.special.machine_shop_elapsed = elapsed - pulses * period
+	if pulses == 0: return
+	for unit in site.battle.units:
+		if not site.battle.actor_alive(unit) or unit.side != site.side or unit.hp >= unit.max_hp: continue
+		var row: Dictionary = rules.type_data(unit.unit_id)
+		var vehicle: bool = row.get("native_category") == "VehicleTypes" if row.has("native_category") else unit.data.get("role") in ["vehicle", "naval"]
+		if vehicle and not rules.flag(row, "organic"):
+			unit.heal(float(general.selfhealunitamount) * pulses)
+
 static func configure_house(definition: Dictionary) -> void:
 	definition.garrison_slots = int(Rules.building("CAHSE01").maxnumberoccupants)
 	definition.fire_ports = HOUSE_PORTS

@@ -134,7 +134,13 @@ func exercise_defense(mode: String) -> void:
 	battle.force_attack(structure)
 	check(unit.attack_ordered and unit._weapon_target_valid(structure), prefix + "explicit building attack remains legal")
 	unit.order_stop()
+	target.position = origin + Vector2(60, 0)
+	unit._refresh_target()
+	unit._think_timer = 0.3
 	unit.receive_hit(1.0, "shell", {}, structure)
+	unit._physics_process(1.0 / 60.0)
+	check(unit.attack_target == structure, prefix + "first physics step after hit prefers the shooter over a nearby bystander")
+	target.position = origin + Vector2(unit.attack_range + 100, 0)
 	unit._refresh_target()
 	check(unit.attack_target == structure and unit._weapon_target_valid(structure), prefix + "building which attacked us may be answered")
 	unit._return_timer = 0.0

@@ -16,7 +16,7 @@ static func spawn_impact(pos: Vector2, color: Color, radius: float = 14.0) -> vo
 ## 程序化光束。kind: "laser"（层叠实心激光）/ "rad"（辐射束，点串）/ "tesla"（锯齿电弧）。
 ## thickness = 内芯线宽（像素）；duration = 存活秒数。旧调用（不传 kind）等价于 laser。
 static func spawn_beam(from: Vector2, to: Vector2, color: Color, kind: String = "laser",
-		thickness: float = 2.5, duration: float = 0.12, look := "", host: Node = null, branch := false, signature := false) -> void:
+		thickness: float = 2.5, duration: float = 0.12, look := "", host: Node = null, branch := false, signature := false, hold_first_frame := false, sight_from := Vector2.INF, sight_to := Vector2.INF) -> void:
 	if host == null:host = _host()
 	if host == null:
 		return
@@ -24,6 +24,9 @@ static func spawn_beam(from: Vector2, to: Vector2, color: Color, kind: String = 
 	b.look = look
 	b.branch = branch
 	b.signature = signature
+	b.hold_first_frame = hold_first_frame
+	b.sight_from = sight_from if sight_from.is_finite() else from
+	b.sight_to = sight_to if sight_to.is_finite() else to
 	b.from = from
 	b.to = to
 	b.color = color
@@ -155,6 +158,8 @@ class Flash extends Node2D:
 
 
 class Beam extends Node2D:
+	var sight_from := Vector2.INF
+	var sight_to := Vector2.INF
 	var from: Vector2 = Vector2.ZERO
 	var to: Vector2 = Vector2.ZERO
 	var color: Color = Color.WHITE
@@ -165,6 +170,7 @@ class Beam extends Node2D:
 	var kind: String = "laser"   # laser / rad / tesla
 	var thickness: float = 2.5
 	var t: float = 0.0
+	var hold_first_frame := false
 	var duration: float = 0.12
 	var _jag: PackedVector2Array = PackedVector2Array()
 	func _ready() -> void:
@@ -183,6 +189,9 @@ class Beam extends Node2D:
 			_jag.append(from + d * f + nrm * randf_range(-amp, amp))
 		_jag.append(to)
 	func _process(delta: float) -> void:
+		if hold_first_frame:
+			hold_first_frame = false
+			return
 		t += delta
 		if t >= duration+(Duplex.AFTERGLOW if look in ["prism_blue","prism_red"] else 0.0):
 			queue_free()

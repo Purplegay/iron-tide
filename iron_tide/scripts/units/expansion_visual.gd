@@ -67,7 +67,6 @@ static func draw(unit: Unit) -> void:
 	if not has_visual_state(unit, s): return
 	var center:=Vector2(0,-unit.radius-16-unit._visual_lift())
 	if s.has("mirror_shield"):
-		unit.draw_arc(Vector2.ZERO,unit.radius+9,0,TAU,32,Color(.4,.85,1,.8),2)
 		unit.draw_rect(Rect2(center+Vector2(-24,8),Vector2(48,4)),Color("#122b42"))
 		unit.draw_rect(Rect2(center+Vector2(-24,8),Vector2(48*clampf(float(s.mirror_shield.hp)/maxf(1,float(s.mirror_shield.maximum)),0,1),4)),Color.CYAN)
 	if R.temporary(unit):

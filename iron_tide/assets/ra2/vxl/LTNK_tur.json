@@ -1,21 +1,17 @@
 {
-  "id": "LTNK_tur",
-  "image": "LTNK",
-  "vxl": "LTNKtur+LTNKbarl.VXL",
-  "source": "LOCAL.MIX",
-  "facings": 32,
-  "frameW": 100,
-  "frameH": 62,
-  "of": "LTNK",
-  "facing_offset": 16,
-  "poses": 1,
-  "fps": 0,
-  "pose_source": "local VXL + HVA",
-  "shadow_projection": "ground-plane-v2",
-  "draw_offset": [
-    0,
-    0
-  ],
-  "surface_render": "surface-vpl-2x",
-  "detail_scale": 2
+ "id": "LTNK_tur",
+ "image": "LTNK",
+ "source": "ra2md.mix > localmd.mix > 0x8c554501",
+ "frameW": 100,
+ "frameH": 62,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 1,
+ "detail_scale": 2,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "shadow_projection": "ground-plane-v2",
+ "palette_lit": true,
+ "vxl": "LTNKtur+LTNKbarl.VXL",
+ "of": "LTNK"
 }

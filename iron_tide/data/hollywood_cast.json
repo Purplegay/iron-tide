@@ -1,0 +1,3552 @@
+{
+ "units": {
+  "SLAV": {
+   "id": "SLAV",
+   "name": "奴隶矿工",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 125,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 275,
+   "speed": 45,
+   "move": {
+    "speed_units": 3,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "SlaveFreedSelect",
+    "move": "SlaveFreedMove",
+    "attack": "SlaveFreedAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "SHOVEL",
+    "ra2_weapon_id": "YR_HOL_SHOVEL",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_SA",
+    "damage": 30,
+    "range": 82.5,
+    "cooldown": 2,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "SHOVEL",
+    "ra2_weapon_id": "YR_HOL_SHOVEL",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_SA",
+    "damage": 30,
+    "range": 82.5,
+    "cooldown": 2,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "",
+    "ra2_aa": false
+   },
+   "storage": 4,
+   "harvest_ticks": 150,
+   "sequence_sounds": {
+    "FireUp": {
+     "frame": 2,
+     "sound": "SlaveAttack"
+    }
+   }
+  },
+  "AMBU": {
+   "id": "AMBU",
+   "name": "救护车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "ARND": {
+   "id": "ARND",
+   "name": "阿诺",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 500,
+   "ra2_armor": "plate",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 330,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "GISelect",
+    "move": "GIMove",
+    "attack": "GIAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "TERMIGUN",
+    "ra2_weapon_id": "YR_HOL_TERMIGUN",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_SA",
+    "damage": 75,
+    "range": 330,
+    "cooldown": 0.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "ArnoldAttack",
+    "ra2_aa": false
+   }
+  },
+  "CAR": {
+   "id": "CAR",
+   "name": "轿车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "CIV1": {
+   "id": "CIV1",
+   "name": "市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllFemSelect",
+    "move": "CivAllFemMove",
+    "attack": "CivAllFemAttackCommand"
+   }
+  },
+  "CIV2": {
+   "id": "CIV2",
+   "name": "市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllSelect",
+    "move": "CivAllMove",
+    "attack": "CivAllAttackCommand"
+   }
+  },
+  "CIV3": {
+   "id": "CIV3",
+   "name": "市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllSelect",
+    "move": "CivAllMove",
+    "attack": "CivAllAttackCommand"
+   }
+  },
+  "CIVBF": {
+   "id": "CIVBF",
+   "name": "海滨游客",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllFemSelect",
+    "move": "CivAllFemMove",
+    "attack": "CivAllFemAttackCommand"
+   }
+  },
+  "CIVBFM": {
+   "id": "CIVBFM",
+   "name": "海滨游客",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllSelect",
+    "move": "CivAllMove",
+    "attack": "CivAllAttackCommand"
+   }
+  },
+  "CIVBTM": {
+   "id": "CIVBTM",
+   "name": "海滨游客",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivAllSelect",
+    "move": "CivAllMove",
+    "attack": "CivAllAttackCommand"
+   }
+  },
+  "CIVP": {
+   "id": "CIVP",
+   "name": "民用飞机",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "air",
+   "role_name": "飞机",
+   "tags": [
+    "air"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "",
+    "move": "MCVMoveStart",
+    "attack": ""
+   },
+   "immune_to_psionics": true
+  },
+  "CIVSF": {
+   "id": "CIVSF",
+   "name": "冬装市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivSovFemSelect",
+    "move": "CivSovFemMove",
+    "attack": "CivSovFemAttackCommand"
+   }
+  },
+  "CIVSFM": {
+   "id": "CIVSFM",
+   "name": "冬装市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivSovSelect",
+    "move": "CivSovMove",
+    "attack": "CivSovAttackCommand"
+   }
+  },
+  "CIVSTM": {
+   "id": "CIVSTM",
+   "name": "冬装市民",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 50,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 110,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "CivSovSelect",
+    "move": "CivSovMove",
+    "attack": "CivSovAttackCommand"
+   }
+  },
+  "CLNT": {
+   "id": "CLNT",
+   "name": "克林特",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 300,
+   "ra2_armor": "plate",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 330,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "GISelect",
+    "move": "GIMove",
+    "attack": "GIAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "CLINTGUN",
+    "ra2_weapon_id": "YR_HOL_CLINTGUN",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HollowPoint",
+    "damage": 125,
+    "range": 330,
+    "cooldown": 0.6666666666666666,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "ClintAttack",
+    "ra2_aa": false
+   }
+  },
+  "CONA": {
+   "id": "CONA",
+   "name": "挖掘机",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "",
+    "attack": ""
+   }
+  },
+  "DNOA": {
+   "id": "DNOA",
+   "name": "霸王龙",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 2700,
+   "hp": 300,
+   "ra2_armor": "Plate",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 275,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Infantry",
+    "crushable": false,
+    "rot_units": 40
+   },
+   "voice": {
+    "select": "TRexSelect",
+    "move": "TrexMove",
+    "attack": "TrexMove"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "TRexInfBite",
+    "ra2_weapon_id": "YR_HOL_TRexInfBite",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_TRexInfWH",
+    "damage": 200,
+    "range": 82.5,
+    "cooldown": 2,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "TrexAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "TRexBite",
+    "ra2_weapon_id": "YR_HOL_TRexBite",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_TRexWH",
+    "damage": 200,
+    "range": 82.5,
+    "cooldown": 2,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "TrexAttack",
+    "ra2_aa": false
+   },
+   "sequence_sounds": {
+    "Walk": {
+     "frame": 2,
+     "sound": "TrexFoot"
+    },
+    "Idle2": {
+     "frame": 6,
+     "sound": "TrexRoar"
+    },
+    "Crawl": {
+     "frame": 2,
+     "sound": "TrexFoot"
+    },
+    "Die1": {
+     "frame": 9,
+     "sound": "TrexDie"
+    },
+    "Die2": {
+     "frame": 9,
+     "sound": "TrexDie"
+    }
+   }
+  },
+  "DOLY": {
+   "id": "DOLY",
+   "name": "摄影车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "CivAllSelect",
+    "move": "CivAllMove",
+    "attack": ""
+   }
+  },
+  "EUROC": {
+   "id": "EUROC",
+   "name": "欧洲轿车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "FTRK": {
+   "id": "FTRK",
+   "name": "消防车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "JEEP": {
+   "id": "JEEP",
+   "name": "吉普车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "LIMO": {
+   "id": "LIMO",
+   "name": "豪华轿车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "PICK": {
+   "id": "PICK",
+   "name": "小货车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "PTRUCK": {
+   "id": "PTRUCK",
+   "name": "皮卡",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "SMIN": {
+   "id": "SMIN",
+   "name": "奴隶矿场",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 1750,
+   "hp": 2000,
+   "ra2_armor": "medium",
+   "armor": "medium",
+   "radius": 15,
+   "sight": 220,
+   "speed": 45,
+   "move": {
+    "speed_units": 3,
+    "movement_zone": "Crusher",
+    "crushable": false,
+    "turret": true,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "SlaveMinerSelect",
+    "move": "SlaveMinerMove",
+    "attack": "SlaveMinerAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "20mmRapid",
+    "ra2_weapon_id": "YR_HOL_20mmRapid",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HARVWH",
+    "damage": 30,
+    "range": 302.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "WarMinerAttack",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "20mmRapidE",
+    "ra2_weapon_id": "YR_HOL_20mmRapidE",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_HowitzerWH",
+    "damage": 50,
+    "range": 316.25,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 880,
+    "report": "RhinoTankAttack",
+    "ra2_aa": false
+   },
+   "deploys_into": "YAREFN",
+   "worker": "SLAV",
+   "workers": 5,
+   "regen_ticks": 500,
+   "reload_ticks": 25,
+   "build_time_multiplier": 0.8
+  },
+  "STANG": {
+   "id": "STANG",
+   "name": "跑车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "STLN": {
+   "id": "STLN",
+   "name": "史泰龙",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 10,
+   "hp": 300,
+   "ra2_armor": "plate",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 330,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "GISelect",
+    "move": "GIMove",
+    "attack": "GIAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "self_healing": true,
+   "weapon": {
+    "name": "STALGUN",
+    "ra2_weapon_id": "YR_HOL_STALGUN",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HollowPoint4",
+    "damage": 125,
+    "range": 330,
+    "cooldown": 0.6666666666666666,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "SlyAttack",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "STALGREN",
+    "ra2_weapon_id": "YR_HOL_STALGREN",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_NukeB",
+    "damage": 10000,
+    "range": 330,
+    "cooldown": 0.6666666666666666,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 2200,
+    "report": "SlyGrenadeLauncher",
+    "ra2_aa": false
+   }
+  },
+  "SUVB": {
+   "id": "SUVB",
+   "name": "黑色越野车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "SUVW": {
+   "id": "SUVW",
+   "name": "白色越野车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "TAXI": {
+   "id": "TAXI",
+   "name": "出租车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "WINI": {
+   "id": "WINI",
+   "name": "房车",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 0,
+   "hp": 100,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 440,
+   "speed": 120,
+   "move": {
+    "speed_units": 8,
+    "movement_zone": "Normal",
+    "crushable": false,
+    "rot_units": 5
+   },
+   "voice": {
+    "select": "GenCarSelect",
+    "move": "MCVMoveStart",
+    "attack": ""
+   }
+  },
+  "YENGINEER": {
+   "id": "YENGINEER",
+   "name": "尤里工程师",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 500,
+   "hp": 75,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 220,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "EngYuriSelect",
+    "move": "EngYuriMove",
+    "attack": "EngYuriCapture"
+   },
+   "weapon": {
+    "name": "DefuseKit",
+    "ra2_weapon_id": "YR_HOL_DefuseKit",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_warhead": "YR_HOL_BombDisarm",
+    "damage": 1,
+    "range": 82.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "DefuseKit",
+    "ra2_aa": true
+   },
+   "secondary_weapon": {
+    "name": "VirtualScanner",
+    "ra2_weapon_id": "YR_HOL_VirtualScanner",
+    "ra2_projectile": "InvisibleAll",
+    "ra2_warhead": "YR_HOL_SA",
+    "damage": 1,
+    "range": 275,
+    "cooldown": 1,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_aa": true
+   }
+  },
+  "YTNK": {
+   "id": "YTNK",
+   "name": "盖特坦克",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "vehicle",
+   "role_name": "载具",
+   "tags": [
+    "vehicle"
+   ],
+   "cost": 600,
+   "hp": 210,
+   "ra2_armor": "light",
+   "armor": "light",
+   "radius": 15,
+   "sight": 550,
+   "speed": 90,
+   "move": {
+    "speed_units": 6,
+    "movement_zone": "Destroyer",
+    "crushable": false,
+    "turret": true,
+    "rot_units": 10
+   },
+   "voice": {
+    "select": "GattlingTankSelect",
+    "move": "GattlingTankMove",
+    "attack": "GattlingTankAttackCommand"
+   },
+   "weapon": {
+    "name": "AGGattling",
+    "ra2_weapon_id": "YR_HOL_AGGattling",
+    "ra2_projectile": "Invisiblelow",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 330,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "AGGattlingE",
+    "ra2_weapon_id": "YR_HOL_AGGattlingE",
+    "ra2_projectile": "Invisiblelow",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 330,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "AAGattling",
+    "ra2_weapon_id": "YR_HOL_AAGattling",
+    "ra2_projectile": "Invisible4",
+    "ra2_warhead": "YR_HOL_GattWH",
+    "damage": 25,
+    "range": 440,
+    "cooldown": 1.0666666666666667,
+    "burst": 2,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "GattlingGunAttackLoop1",
+    "ra2_aa": true
+   },
+   "guns": [
+    {
+     "name": "AGGattling",
+     "ra2_weapon_id": "YR_HOL_AGGattling",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling",
+     "ra2_weapon_id": "YR_HOL_AAGattling",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling2",
+     "ra2_weapon_id": "YR_HOL_AGGattling2",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling2",
+     "ra2_weapon_id": "YR_HOL_AAGattling2",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 30,
+     "range": 440,
+     "cooldown": 0.5333333333333333,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling3",
+     "ra2_weapon_id": "YR_HOL_AGGattling3",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SSA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling3",
+     "ra2_weapon_id": "YR_HOL_AAGattling3",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 40,
+     "range": 440,
+     "cooldown": 0.26666666666666666,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": true
+    }
+   ],
+   "elite_guns": [
+    {
+     "name": "AGGattlingE",
+     "ra2_weapon_id": "YR_HOL_AGGattlingE",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattlingE",
+     "ra2_weapon_id": "YR_HOL_AAGattlingE",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop1",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling2E",
+     "ra2_weapon_id": "YR_HOL_AGGattling2E",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling2E",
+     "ra2_weapon_id": "YR_HOL_AAGattling2E",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 0.5333333333333333,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop2",
+     "ra2_aa": true
+    },
+    {
+     "name": "AGGattling3E",
+     "ra2_weapon_id": "YR_HOL_AGGattling3E",
+     "ra2_projectile": "Invisiblelow",
+     "ra2_warhead": "YR_HOL_SSA",
+     "damage": 25,
+     "range": 330,
+     "cooldown": 1.0666666666666667,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": false
+    },
+    {
+     "name": "AAGattling3E",
+     "ra2_weapon_id": "YR_HOL_AAGattling3E",
+     "ra2_projectile": "Invisible4",
+     "ra2_warhead": "YR_HOL_GattWH",
+     "damage": 25,
+     "range": 440,
+     "cooldown": 0.26666666666666666,
+     "burst": 2,
+     "attack_type": "bullet",
+     "projectile_speed": 0,
+     "report": "GattlingGunAttackLoop3",
+     "ra2_aa": true
+    }
+   ],
+   "stages": [
+    200,
+    400,
+    600
+   ],
+   "elite_stages": [
+    100,
+    200,
+    300
+   ],
+   "rate_up": 1,
+   "rate_down": 50
+  },
+  "YURI": {
+   "id": "YURI",
+   "name": "尤里复制人",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "infantry",
+   "role_name": "步兵",
+   "tags": [
+    "infantry"
+   ],
+   "cost": 800,
+   "hp": 100,
+   "ra2_armor": "none",
+   "armor": "unarmored",
+   "radius": 7,
+   "sight": 660,
+   "speed": 60,
+   "move": {
+    "speed_units": 4,
+    "movement_zone": "Infantry",
+    "crushable": false
+   },
+   "voice": {
+    "select": "YuriCloneSelect",
+    "move": "YuriCloneMove",
+    "attack": "YuriCloneAttackCommand"
+   },
+   "immune_to_psionics": true,
+   "deployer": true,
+   "undeploy_ticks": 150,
+   "fire_up_ticks": 6,
+   "weapon": {
+    "name": "MindControl",
+    "ra2_weapon_id": "YR_HOL_MindControl",
+    "ra2_projectile": "PsychicControl",
+    "ra2_warhead": "YR_HOL_Controller",
+    "damage": 1,
+    "range": 385,
+    "cooldown": 13.333333333333334,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "ra2_aa": false
+   },
+   "secondary_weapon": {
+    "name": "PsiWave",
+    "ra2_weapon_id": "YR_HOL_PsiWave",
+    "ra2_projectile": "Psychic",
+    "ra2_warhead": "YR_HOL_PsiPulse",
+    "damage": 250,
+    "range": 55,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "YuriDeploy",
+    "ra2_aa": false
+   }
+  }
+ },
+ "buildings": {
+  "CALA06": {
+   "id": "CALA06",
+   "name": "机场控制塔",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "cost": 0,
+   "hp": 1000,
+   "ra2_armor": "wood",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 440,
+   "builds": [],
+   "foundation": "2x3",
+   "power": 0
+  },
+  "CAPARK04": {
+   "id": "CAPARK04",
+   "name": "公园长椅",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "cost": 0,
+   "hp": 1,
+   "ra2_armor": "wood",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 330,
+   "builds": [],
+   "foundation": "1x1",
+   "power": 0
+  },
+  "CAURB01": {
+   "id": "CAURB01",
+   "name": "电话亭",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "cost": 0,
+   "hp": 5,
+   "ra2_armor": "concrete",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 275,
+   "builds": [],
+   "foundation": "1x1",
+   "power": 0
+  },
+  "GAGATE_A": {
+   "id": "GAGATE_A",
+   "name": "边境关卡",
+   "ra2": true,
+   "faction": "civilian",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "cost": 250,
+   "hp": 100,
+   "ra2_armor": "wood",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 275,
+   "builds": [],
+   "foundation": "3x1",
+   "power": 0
+  },
+  "YAREFN": {
+   "id": "YAREFN",
+   "name": "奴隶矿场（展开）",
+   "ra2": true,
+   "faction": "yuri",
+   "role": "structure",
+   "role_name": "建筑",
+   "tags": [
+    "structure"
+   ],
+   "cost": 1750,
+   "hp": 2000,
+   "ra2_armor": "medium",
+   "armor": "structure",
+   "radius": 18,
+   "sight": 330,
+   "builds": [],
+   "foundation": "2x2",
+   "power": 0,
+   "immune_to_psionics": true,
+   "weapon": {
+    "name": "20mmRapid",
+    "ra2_weapon_id": "YR_HOL_20mmRapid",
+    "ra2_projectile": "InvisibleLow",
+    "ra2_warhead": "YR_HOL_HARVWH",
+    "damage": 30,
+    "range": 302.5,
+    "cooldown": 1.3333333333333333,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 0,
+    "report": "WarMinerAttack",
+    "ra2_aa": false
+   },
+   "elite_weapon": {
+    "name": "20mmRapidE",
+    "ra2_weapon_id": "YR_HOL_20mmRapidE",
+    "ra2_projectile": "Cannon",
+    "ra2_warhead": "YR_HOL_HowitzerWH",
+    "damage": 50,
+    "range": 316.25,
+    "cooldown": 3.3333333333333335,
+    "burst": 1,
+    "attack_type": "bullet",
+    "projectile_speed": 880,
+    "report": "RhinoTankAttack",
+    "ra2_aa": false
+   },
+   "undeploys_into": "SMIN",
+   "unsellable": true,
+   "base_normal": false,
+   "capturable": false,
+   "buildup": "YAREFNMK",
+   "worker": "SLAV",
+   "workers": 5,
+   "regen_ticks": 500,
+   "reload_ticks": 25,
+   "build_time_multiplier": 1.15
+  }
+ },
+ "placements": [
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 153,
+   "y": 115
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 154,
+   "y": 117
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 154,
+   "y": 117
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 154,
+   "y": 115
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 152,
+   "y": 117
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 152,
+   "y": 116
+  },
+  {
+   "house": "Nod",
+   "id": "INIT",
+   "hp": 1,
+   "x": 151,
+   "y": 114
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV2",
+   "hp": 1,
+   "x": 108,
+   "y": 123
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSFM",
+   "hp": 1,
+   "x": 109,
+   "y": 124
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 106,
+   "y": 132
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 107,
+   "y": 132
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSTM",
+   "hp": 1,
+   "x": 200,
+   "y": 104
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSF",
+   "hp": 1,
+   "x": 199,
+   "y": 104
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 109,
+   "y": 131
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 109,
+   "y": 132
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 105,
+   "y": 131
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 137,
+   "y": 78
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIV2",
+   "hp": 1,
+   "x": 136,
+   "y": 78
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 112,
+   "y": 139
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 112,
+   "y": 138
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 113,
+   "y": 139
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 113,
+   "y": 138
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 117,
+   "y": 132
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 116,
+   "y": 131
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 117,
+   "y": 130
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 118,
+   "y": 131
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 108,
+   "y": 124
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 110,
+   "y": 123
+  },
+  {
+   "house": "Arabs",
+   "id": "INIT",
+   "hp": 1,
+   "x": 197,
+   "y": 105
+  },
+  {
+   "house": "Arabs",
+   "id": "INIT",
+   "hp": 1,
+   "x": 195,
+   "y": 107
+  },
+  {
+   "house": "Arabs",
+   "id": "INIT",
+   "hp": 1,
+   "x": 197,
+   "y": 109
+  },
+  {
+   "house": "Arabs",
+   "id": "INIT",
+   "hp": 1,
+   "x": 199,
+   "y": 111
+  },
+  {
+   "house": "Arabs",
+   "id": "INIT",
+   "hp": 1,
+   "x": 191,
+   "y": 103
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 135,
+   "y": 140
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 138,
+   "y": 140
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 149,
+   "y": 91
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 146,
+   "y": 91
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSTM",
+   "hp": 1,
+   "x": 146,
+   "y": 90
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSF",
+   "hp": 1,
+   "x": 148,
+   "y": 93
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV2",
+   "hp": 1,
+   "x": 148,
+   "y": 90
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV1",
+   "hp": 1,
+   "x": 149,
+   "y": 92
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSFM",
+   "hp": 1,
+   "x": 147,
+   "y": 92
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 148,
+   "y": 94
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 146,
+   "y": 93
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 145,
+   "y": 92
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 145,
+   "y": 90
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 149,
+   "y": 94
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 150,
+   "y": 92
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 150,
+   "y": 93
+  },
+  {
+   "house": "Germans",
+   "id": "INIT",
+   "hp": 1,
+   "x": 150,
+   "y": 90
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 140,
+   "y": 135
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 114,
+   "y": 189
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBFM",
+   "hp": 1,
+   "x": 109,
+   "y": 187
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 170,
+   "y": 108
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 173,
+   "y": 107
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 85,
+   "y": 74
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 84,
+   "y": 85
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 61,
+   "y": 89
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 138,
+   "y": 60
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 140,
+   "y": 60
+  },
+  {
+   "house": "YuriCountry",
+   "id": "INIT",
+   "hp": 1,
+   "x": 140,
+   "y": 61
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 101,
+   "y": 192
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 100,
+   "y": 185
+  },
+  {
+   "house": "Neutral",
+   "id": "ARND",
+   "hp": 1,
+   "x": 107,
+   "y": 131
+  },
+  {
+   "house": "Neutral",
+   "id": "STLN",
+   "hp": 1,
+   "x": 156,
+   "y": 74
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 199,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 201,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV1",
+   "hp": 1,
+   "x": 200,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV2",
+   "hp": 1,
+   "x": 201,
+   "y": 104
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIVSF",
+   "hp": 1,
+   "x": 137,
+   "y": 80
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIVSTM",
+   "hp": 1,
+   "x": 137,
+   "y": 79
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIVBTM",
+   "hp": 1,
+   "x": 136,
+   "y": 80
+  },
+  {
+   "house": "Yuri2",
+   "id": "YURI",
+   "hp": 1,
+   "x": 34,
+   "y": 126
+  },
+  {
+   "house": "Yuri2",
+   "id": "INIT",
+   "hp": 1,
+   "x": 33,
+   "y": 126
+  },
+  {
+   "house": "Yuri2",
+   "id": "INIT",
+   "hp": 1,
+   "x": 34,
+   "y": 128
+  },
+  {
+   "house": "Yuri2",
+   "id": "INIT",
+   "hp": 1,
+   "x": 35,
+   "y": 127
+  },
+  {
+   "house": "Yuri2",
+   "id": "INIT",
+   "hp": 1,
+   "x": 34,
+   "y": 125
+  },
+  {
+   "house": "Neutral",
+   "id": "DNOA",
+   "hp": 1,
+   "x": 140,
+   "y": 133
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBF",
+   "hp": 1,
+   "x": 142,
+   "y": 134
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV1",
+   "hp": 1,
+   "x": 139,
+   "y": 135
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV1",
+   "hp": 1,
+   "x": 109,
+   "y": 123
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV3",
+   "hp": 1,
+   "x": 111,
+   "y": 124
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV2",
+   "hp": 1,
+   "x": 109,
+   "y": 126
+  },
+  {
+   "house": "YuriCountry",
+   "id": "CIV1",
+   "hp": 1,
+   "x": 136,
+   "y": 79
+  },
+  {
+   "house": "Neutral",
+   "id": "CIV3",
+   "hp": 1,
+   "x": 202,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVBFM",
+   "hp": 1,
+   "x": 202,
+   "y": 104
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVSFM",
+   "hp": 1,
+   "x": 201,
+   "y": 106
+  },
+  {
+   "house": "Neutral",
+   "id": "CLNT",
+   "hp": 1,
+   "x": 157,
+   "y": 123
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 105,
+   "y": 136
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 106,
+   "y": 136
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 112,
+   "y": 132
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 112,
+   "y": 130
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 110,
+   "y": 128
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 133,
+   "y": 85
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 130,
+   "y": 85
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 133,
+   "y": 78
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 200,
+   "y": 108
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YURI",
+   "hp": 1,
+   "x": 202,
+   "y": 108
+  },
+  {
+   "house": "Confederation",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 115,
+   "y": 183
+  },
+  {
+   "house": "Confederation",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 115,
+   "y": 184
+  },
+  {
+   "house": "Confederation",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 113,
+   "y": 183
+  },
+  {
+   "house": "Nod",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 121,
+   "y": 167
+  },
+  {
+   "house": "Nod",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 121,
+   "y": 166
+  },
+  {
+   "house": "Nod",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 123,
+   "y": 167
+  },
+  {
+   "house": "Neutral",
+   "id": "WINI",
+   "hp": 1,
+   "x": 142,
+   "y": 131
+  },
+  {
+   "house": "Neutral",
+   "id": "LIMO",
+   "hp": 1,
+   "x": 134,
+   "y": 135
+  },
+  {
+   "house": "Neutral",
+   "id": "LIMO",
+   "hp": 1,
+   "x": 135,
+   "y": 134
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 82,
+   "y": 87
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 86,
+   "y": 87
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 86,
+   "y": 83
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 86,
+   "y": 85
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 84,
+   "y": 87
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 84,
+   "y": 71
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 86,
+   "y": 73
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 84,
+   "y": 73
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 58,
+   "y": 89
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 60,
+   "y": 89
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 59,
+   "y": 87
+  },
+  {
+   "house": "Arabs",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 192,
+   "y": 96
+  },
+  {
+   "house": "Arabs",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 193,
+   "y": 97
+  },
+  {
+   "house": "Arabs",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 194,
+   "y": 95
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 158,
+   "y": 81
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 161,
+   "y": 79
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 176,
+   "y": 89
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 126,
+   "y": 142
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 126,
+   "y": 141
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 182,
+   "y": 113
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 177,
+   "y": 93
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 176,
+   "y": 92
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 178,
+   "y": 91
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 120,
+   "y": 119
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 120,
+   "y": 120
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 139,
+   "y": 118
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 138,
+   "y": 118
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 138,
+   "y": 86
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 137,
+   "y": 87
+  },
+  {
+   "house": "YuriCountry",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 117,
+   "y": 119
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 115,
+   "y": 123
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 116,
+   "y": 122
+  },
+  {
+   "house": "Neutral",
+   "id": "WINI",
+   "hp": 1,
+   "x": 118,
+   "y": 123
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 115,
+   "y": 126
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 117,
+   "y": 126
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 115,
+   "y": 125
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 185,
+   "y": 120
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 185,
+   "y": 121
+  },
+  {
+   "house": "Neutral",
+   "id": "TAXI",
+   "hp": 1,
+   "x": 184,
+   "y": 122
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 182,
+   "y": 122
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 184,
+   "y": 124
+  },
+  {
+   "house": "Neutral",
+   "id": "CONA",
+   "hp": 1,
+   "x": 151,
+   "y": 102
+  },
+  {
+   "house": "Neutral",
+   "id": "CONA",
+   "hp": 1,
+   "x": 152,
+   "y": 130
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 135,
+   "y": 143
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 136,
+   "y": 143
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 136,
+   "y": 145
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 134,
+   "y": 144
+  },
+  {
+   "house": "Neutral",
+   "id": "LIMO",
+   "hp": 1,
+   "x": 138,
+   "y": 144
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 139,
+   "y": 143
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 187,
+   "y": 124
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 141,
+   "y": 113
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 140,
+   "y": 111
+  },
+  {
+   "house": "Neutral",
+   "id": "CONA",
+   "hp": 1,
+   "x": 123,
+   "y": 170
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 131,
+   "y": 178
+  },
+  {
+   "house": "Neutral",
+   "id": "TAXI",
+   "hp": 1,
+   "x": 133,
+   "y": 178
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 185,
+   "y": 98
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 188,
+   "y": 98
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 186,
+   "y": 97
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 180,
+   "y": 92
+  },
+  {
+   "house": "Neutral",
+   "id": "EUROC",
+   "hp": 1,
+   "x": 144,
+   "y": 72
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 145,
+   "y": 75
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 143,
+   "y": 74
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 145,
+   "y": 72
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 146,
+   "y": 76
+  },
+  {
+   "house": "Neutral",
+   "id": "LIMO",
+   "hp": 1,
+   "x": 165,
+   "y": 81
+  },
+  {
+   "house": "Neutral",
+   "id": "WINI",
+   "hp": 1,
+   "x": 164,
+   "y": 82
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 138,
+   "y": 47
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 137,
+   "y": 49
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 135,
+   "y": 49
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 132,
+   "y": 46
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 132,
+   "y": 47
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 124,
+   "y": 150
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 126,
+   "y": 150
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 138,
+   "y": 62
+  },
+  {
+   "house": "YuriCountry",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 91,
+   "y": 52
+  },
+  {
+   "house": "YuriCountry",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 86,
+   "y": 66
+  },
+  {
+   "house": "YuriCountry",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 64,
+   "y": 86
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 161,
+   "y": 68
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 64,
+   "y": 135
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 67,
+   "y": 135
+  },
+  {
+   "house": "YuriCountry",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 45,
+   "y": 93
+  },
+  {
+   "house": "Yuri2",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 43,
+   "y": 132
+  },
+  {
+   "house": "Yuri2",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 36,
+   "y": 130
+  },
+  {
+   "house": "Yuri2",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 37,
+   "y": 130
+  },
+  {
+   "house": "Yuri2",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 32,
+   "y": 130
+  },
+  {
+   "house": "Yuri2",
+   "id": "YTNK",
+   "hp": 1,
+   "x": 32,
+   "y": 128
+  },
+  {
+   "house": "Yuri2",
+   "id": "SMIN",
+   "hp": 1,
+   "x": 33,
+   "y": 106
+  },
+  {
+   "house": "Neutral",
+   "id": "CONA",
+   "hp": 1,
+   "x": 123,
+   "y": 156
+  },
+  {
+   "house": "Neutral",
+   "id": "DOLY",
+   "hp": 1,
+   "x": 138,
+   "y": 134
+  },
+  {
+   "house": "Neutral",
+   "id": "AMBU",
+   "hp": 1,
+   "x": 105,
+   "y": 178
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 155,
+   "y": 112
+  },
+  {
+   "house": "Neutral",
+   "id": "DOLY",
+   "hp": 1,
+   "x": 142,
+   "y": 132
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 164,
+   "y": 100
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 162,
+   "y": 104
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 161,
+   "y": 102
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVP",
+   "hp": 1,
+   "x": 112,
+   "y": 172
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVP",
+   "hp": 1,
+   "x": 108,
+   "y": 179
+  },
+  {
+   "house": "Neutral",
+   "id": "CIVP",
+   "hp": 1,
+   "x": 108,
+   "y": 176
+  },
+  {
+   "house": "Neutral",
+   "id": "FTRK",
+   "hp": 1,
+   "x": 106,
+   "y": 176
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 162,
+   "y": 99
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 165,
+   "y": 98
+  },
+  {
+   "house": "Neutral",
+   "id": "PICK",
+   "hp": 1,
+   "x": 162,
+   "y": 92
+  },
+  {
+   "house": "Neutral",
+   "id": "PICK",
+   "hp": 1,
+   "x": 164,
+   "y": 92
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 122,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 122,
+   "y": 103
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 122,
+   "y": 104
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 123,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 123,
+   "y": 104
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 123,
+   "y": 103
+  },
+  {
+   "house": "Neutral",
+   "id": "EUROC",
+   "hp": 1,
+   "x": 122,
+   "y": 102
+  },
+  {
+   "house": "Neutral",
+   "id": "CONA",
+   "hp": 1,
+   "x": 139,
+   "y": 58
+  },
+  {
+   "house": "Neutral",
+   "id": "CAR",
+   "hp": 1,
+   "x": 141,
+   "y": 57
+  },
+  {
+   "house": "Neutral",
+   "id": "JEEP",
+   "hp": 1,
+   "x": 141,
+   "y": 55
+  },
+  {
+   "house": "Neutral",
+   "id": "PTRUCK",
+   "hp": 1,
+   "x": 142,
+   "y": 57
+  },
+  {
+   "house": "Neutral",
+   "id": "WINI",
+   "hp": 1,
+   "x": 143,
+   "y": 57
+  },
+  {
+   "house": "Neutral",
+   "id": "LIMO",
+   "hp": 1,
+   "x": 143,
+   "y": 55
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVB",
+   "hp": 1,
+   "x": 144,
+   "y": 57
+  },
+  {
+   "house": "Neutral",
+   "id": "STANG",
+   "hp": 1,
+   "x": 145,
+   "y": 55
+  },
+  {
+   "house": "Neutral",
+   "id": "SUVW",
+   "hp": 1,
+   "x": 146,
+   "y": 55
+  },
+  {
+   "house": "Neutral",
+   "id": "TAXI",
+   "hp": 1,
+   "x": 145,
+   "y": 57
+  },
+  {
+   "house": "YuriCountry",
+   "id": "LTNK",
+   "hp": 1,
+   "x": 181,
+   "y": 114
+  },
+  {
+   "house": "Neutral",
+   "id": "GAGATE_A",
+   "hp": 1,
+   "x": 135,
+   "y": 139
+  },
+  {
+   "house": "Neutral",
+   "id": "CALA06",
+   "hp": 1,
+   "x": 122,
+   "y": 174
+  },
+  {
+   "house": "Neutral",
+   "id": "CAPARK04",
+   "hp": 1,
+   "x": 156,
+   "y": 129
+  },
+  {
+   "house": "Neutral",
+   "id": "CAPARK04",
+   "hp": 1,
+   "x": 155,
+   "y": 129
+  },
+  {
+   "house": "Neutral",
+   "id": "CAURB01",
+   "hp": 1,
+   "x": 145,
+   "y": 109
+  },
+  {
+   "house": "Neutral",
+   "id": "CAURB01",
+   "hp": 1,
+   "x": 161,
+   "y": 105
+  },
+  {
+   "house": "Neutral",
+   "id": "CAURB01",
+   "hp": 1,
+   "x": 133,
+   "y": 181
+  }
+ ],
+ "teams": [
+  {
+   "name": "Yuri_Base_Assault_1",
+   "units": [
+    "YTNK",
+    "YTNK"
+   ],
+   "route": [
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58
+   ]
+  },
+  {
+   "name": "Yuri_Base_Assault_2",
+   "units": [
+    "LTNK",
+    "LTNK",
+    "YTNK"
+   ],
+   "route": [
+    41,
+    49
+   ]
+  },
+  {
+   "name": "Yuri_Base_Assault_3",
+   "units": [
+    "INIT",
+    "INIT",
+    "INIT",
+    "INIT",
+    "INIT",
+    "INIT",
+    "YTNK"
+   ],
+   "route": []
+  },
+  {
+   "name": "Yuri_Base_Assault_4",
+   "units": [
+    "YTNK",
+    "YTNK",
+    "YTNK",
+    "YURI"
+   ],
+   "route": []
+  }
+ ],
+ "waypoints": {
+  "8": "128167",
+  "9": "78157",
+  "10": "74159",
+  "11": "180116",
+  "12": "140182",
+  "26": "111089",
+  "27": "126090",
+  "28": "138102",
+  "29": "138125",
+  "30": "142126",
+  "31": "141146",
+  "32": "134157",
+  "33": "87116",
+  "34": "89134",
+  "35": "86137",
+  "36": "116167",
+  "37": "100132",
+  "38": "110142",
+  "39": "127160",
+  "40": "104053",
+  "41": "126057",
+  "42": "127072",
+  "43": "136073",
+  "44": "136081",
+  "45": "145081",
+  "46": "145089",
+  "47": "155089",
+  "48": "155102",
+  "49": "155125",
+  "50": "67088",
+  "51": "57101",
+  "52": "61118",
+  "53": "62140",
+  "54": "79140",
+  "55": "78153",
+  "56": "100175",
+  "57": "114182",
+  "58": "122174",
+  "59": "128114",
+  "60": "131117",
+  "61": "134114",
+  "62": "134140",
+  "63": "91119",
+  "64": "85117",
+  "65": "89114",
+  "66": "91059",
+  "67": "66083",
+  "68": "87080",
+  "69": "77085",
+  "70": "84059",
+  "71": "87067",
+  "72": "80071",
+  "73": "90076",
+  "74": "74070",
+  "75": "68075",
+  "76": "68079",
+  "77": "62080",
+  "78": "92177",
+  "79": "109160",
+  "80": "119118",
+  "81": "120139",
+  "82": "110139",
+  "83": "106143",
+  "84": "102143",
+  "85": "115118",
+  "86": "111122",
+  "87": "109127",
+  "88": "91147",
+  "89": "103194",
+  "90": "71153",
+  "91": "79129",
+  "92": "128105",
+  "93": "80132",
+  "94": "152162",
+  "95": "132170",
+  "96": "108139",
+  "97": "113132",
+  "98": "108135",
+  "99": "116135",
+  "100": "96184",
+  "101": "93183",
+  "102": "91166",
+  "103": "95165",
+  "104": "79158",
+  "105": "151125",
+  "106": "102023",
+  "107": "22103",
+  "108": "69064",
+  "109": "95145",
+  "110": "120126",
+  "111": "133097",
+  "112": "172100",
+  "113": "180125",
+  "114": "177113",
+  "115": "177118",
+  "116": "177109",
+  "117": "175115",
+  "118": "128150",
+  "119": "113164",
+  "120": "101143",
+  "121": "115138",
+  "122": "92156",
+  "123": "98174",
+  "124": "103189",
+  "125": "78151",
+  "126": "88139",
+  "127": "110125",
+  "128": "157143",
+  "129": "151123",
+  "130": "125033",
+  "131": "129032",
+  "132": "131037",
+  "133": "146110",
+  "134": "151095",
+  "135": "137119",
+  "136": "120129",
+  "137": "80171",
+  "138": "58150",
+  "139": "59137",
+  "140": "55120",
+  "141": "102134",
+  "142": "167113",
+  "143": "149089",
+  "144": "135070",
+  "145": "119048",
+  "146": "118090",
+  "147": "139051",
+  "148": "143068",
+  "149": "151081",
+  "150": "166090",
+  "151": "182099",
+  "152": "188107",
+  "153": "191117",
+  "154": "174097",
+  "155": "192103",
+  "156": "157102",
+  "157": "148102",
+  "158": "63123",
+  "159": "52124",
+  "160": "194111",
+  "161": "197100",
+  "162": "183093",
+  "163": "171081",
+  "164": "157081",
+  "165": "150070",
+  "166": "144051",
+  "167": "155059",
+  "168": "160073",
+  "169": "181083",
+  "170": "119071",
+  "171": "99118",
+  "172": "81125",
+  "173": "103182",
+  "174": "90124",
+  "175": "94108",
+  "176": "76111",
+  "177": "71121",
+  "178": "31123",
+  "179": "42118",
+  "180": "101101",
+  "181": "108094",
+  "182": "133107",
+  "183": "109078",
+  "184": "110065",
+  "185": "117035",
+  "186": "106044",
+  "187": "104057",
+  "188": "102072",
+  "189": "97087",
+  "190": "85105",
+  "191": "65115",
+  "192": "46103",
+  "193": "49090",
+  "194": "68098",
+  "195": "83095",
+  "196": "96062",
+  "197": "83064",
+  "198": "82080",
+  "199": "65077",
+  "200": "69087",
+  "201": "130067",
+  "202": "92172",
+  "203": "79133",
+  "208": "123157",
+  "234": "124109",
+  "235": "79136",
+  "237": "105201",
+  "238": "123123",
+  "239": "117116",
+  "240": "119111",
+  "241": "136091",
+  "242": "113117",
+  "243": "133123",
+  "244": "97145",
+  "245": "74134",
+  "246": "70136",
+  "247": "85147",
+  "248": "97138",
+  "249": "103138",
+  "260": "111191",
+  "261": "112190",
+  "262": "116190",
+  "263": "111179",
+  "264": "115173",
+  "265": "106169",
+  "266": "103172",
+  "267": "98180",
+  "268": "115170",
+  "286": "143178",
+  "287": "141178",
+  "288": "142179",
+  "289": "143180",
+  "290": "142180",
+  "291": "133167",
+  "292": "132166",
+  "293": "134166",
+  "294": "134168",
+  "295": "132168",
+  "296": "125166",
+  "297": "124166",
+  "298": "125167",
+  "299": "126168",
+  "300": "124168",
+  "301": "137183",
+  "302": "134176",
+  "416": "184114",
+  "417": "166122",
+  "441": "138113",
+  "468": "131107",
+  "469": "81131",
+  "470": "73156",
+  "471": "105197",
+  "494": "116153",
+  "598": "184124",
+  "599": "182124",
+  "600": "172134",
+  "601": "166134",
+  "602": "166126",
+  "603": "166114",
+  "604": "166109",
+  "605": "168109",
+  "606": "174103",
+  "607": "177101",
+  "608": "184108",
+  "609": "96193",
+  "610": "102187",
+  "611": "112197",
+  "624": "197086",
+  "625": "155094",
+  "626": "150094",
+  "627": "30141",
+  "628": "63119",
+  "629": "50119",
+  "650": "86085",
+  "651": "72085",
+  "652": "88059",
+  "699": "113111",
+  "700": "113111"
+ }
+}

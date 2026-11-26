@@ -6,11 +6,12 @@ const PINK:=Color("#ff9bc9")
 const ARCHIVE:="百合子支线 · 秘密档案"
 
 const SHELTER := "百合子初遇 · 雨棚"
-const COAST := "yr_oceansid"
+
 
 const Research = preload("res://scripts/expedition/research.gd")
 const FINDS := {"diary":"日常日记", "fragment":"破碎残章"}
 
+static var find_lines:Dictionary=JSON.parse_string(FileAccess.get_file_as_string("res://data/yuriko_find_lines.json"))
 const FIND_ICONS := {"diary":"school_diary", "fragment":"school_fragment"}
 const Icons = preload("res://scripts/ui/progression_icon.gd")
 
@@ -18,8 +19,11 @@ static func find_stage(run:Dictionary) -> bool:
 	var stage := int(run.get("stage",0))
 	return stage > 0 and (stage - 1) % 4 == 0
 
-static func encounter(run:Dictionary, map:String) -> bool:
-	return not Book.met() and (map==COAST or run.get("yuriko_recruited",false) or maxi(Research.rank(run,"intel"),Research.current_level("intel"))>0)
+static func shelter_intel(run:Dictionary) -> bool:
+	return maxi(Research.rank(run,"intel"),Research.current_level("intel")) >= 2
+
+static func shelter_visible(data:Dictionary) -> bool:
+	return data.has("shelter_at") and (data.get("shelter_intel",false) or data.get("shelter_found",false))
 
 static func next_fragment() -> int:
 	var owned:Dictionary=MetaProgress.yuriko_school.get("fragments",{})
@@ -70,7 +74,8 @@ static func prepare_finds(field,run:Dictionary) -> void:
 static func setup(field,run:Dictionary,restored:=false) -> void:
 	var data:Dictionary=field.data
 	if not restored and find_stage(run):Bonds.attach(data.objectives,next_fragment() if find_kind(run)=="fragment" else 0)
-	var hidden:bool=not data.has("shelter_at") and encounter(run,run.route.map)
+	data.shelter_intel=shelter_intel(run)
+	var hidden:bool=not data.has("shelter_at") and not Book.met()
 	var pages:=Book.pages_open()
 	var archive:bool=not restored and pages>=4 and pages<Book.chapter_total() and Book.chapter_count()>=pages and run.get("yuriko_recruited",false)
 	if not restored and pages in [1,2,3] and Book.chapter_count()>=pages:data.school_page=pages+1
@@ -85,6 +90,21 @@ static func setup(field,run:Dictionary,restored:=false) -> void:
 		data.archive_at=site
 		data.archive_page=pages+1
 
+static func speak_find(field,kind:String) -> void:
+	var run:Dictionary=Expedition.state
+	if not (Book.met() or run.get("yuriko_recruited",false) or field.data.get("shelter_heard",false)):return
+	if Book.recruited_before() and not run.get("yuriko_recruited",false):
+		run.yuriko_recruited=true
+		preload("res://scripts/expedition/rules.gd").context().yuriko_recruited=true
+		Events.emit_message("百合子已加入本轮远征，可以从战场菜单召唤。",PINK)
+	var pool:Array=find_lines[kind]
+	var index:=posmod(hash([run.id,run.stage,kind]),pool.size())
+	field.transmission.emit("百合子",pool[index],"")
+
+static func speak_objective_loot(field,objective:Dictionary) -> void:
+	if Bonds.GIFTS.has(objective.get("school_gift","")):speak_find(field,"diary")
+	if int(objective.get("school_fragment",0))>0:speak_find(field,"fragment")
+
 static func tick(field) -> void:
 	var data:Dictionary=field.data
 	for kind:String in data.get("school_finds",{}):
@@ -92,6 +112,7 @@ static func tick(field) -> void:
 		if not item.taken and field.missions.visitor(item.position)!=null:
 			item.taken=true
 			Events.emit_message("百合子支线 · 已找到%s，获胜后带回。"%FINDS[kind],PINK)
+			speak_find(field,kind)
 	if data.has("shelter_at") and not data.get("shelter_heard",false):
 		if not data.get("shelter_found",false) and field.missions.visitor(data.shelter_at)!=null:data.shelter_found=true
 		if data.get("shelter_found",false) and Music.cue not in Music.SUPERWEAPON_CUES:
@@ -120,7 +141,7 @@ static func draw(field) -> void:
 		field.draw_texture_rect(Icons.texture(FIND_ICONS[kind]),Rect2(pos-Vector2(16,16),Vector2(32,32)),false)
 		field.draw_string(ThemeDB.fallback_font,pos-Vector2(90,25),FINDS[kind],HORIZONTAL_ALIGNMENT_CENTER,180,15,PINK)
 		field.draw_set_transform_matrix(Transform2D.IDENTITY)
-	if data.has("shelter_at") and not data.get("shelter_heard",false):
+	if shelter_visible(data) and not data.get("shelter_heard",false):
 		var pin:Vector2=canvas*Vector2(data.shelter_at)
 		field.draw_set_transform_matrix(canvas.affine_inverse())
 		field.draw_arc(pin,20,0,TAU,32,PINK,3)

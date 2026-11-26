@@ -148,6 +148,7 @@
   "unit": {
     "id": "YURIKO",
     "name": "百合子",
+    "immune_to_psionics": true,
     "role": "infantry",
     "tags": [
       "infantry",

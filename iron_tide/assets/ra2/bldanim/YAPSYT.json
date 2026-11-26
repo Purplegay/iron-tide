@@ -1,0 +1,24 @@
+{
+ "id": "YAPSYT",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "YAPSYT_A",
+   "loopStart": 0,
+   "loopEnd": 25,
+   "frames": 52,
+   "rate": 400,
+   "shadow": true,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAPSYT_A",
+    "loopStart": 26,
+    "loopEnd": 51,
+    "frames": 52,
+    "rate": 400,
+    "shadow": true,
+    "loopCount": -1
+   }
+  }
+ ]
+}

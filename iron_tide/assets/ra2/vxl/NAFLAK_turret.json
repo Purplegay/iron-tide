@@ -1,1 +1,1 @@
-{"id":"NAFLAK_turret","facings":32,"frameW":60,"frameH":59,"source":"LOCAL.MIX/FLAKTUR.VXL"}
+{"id":"NAFLAK_turret","facings":32,"frameW":60,"frameH":59,"source":"LOCAL.MIX/FLAKTUR.VXL","detail_scale":2,"surface_render":"surface-vpl-2x","palette_lit":true}

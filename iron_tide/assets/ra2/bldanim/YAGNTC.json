@@ -1,0 +1,13 @@
+{
+ "id": "YAGNTC",
+ "layers": [
+  {
+   "kind": "idleanim",
+   "image": "YAGNTC_E",
+   "frames": 4,
+   "loopStart": 0,
+   "loopEnd": 1,
+   "rate": 200
+  }
+ ]
+}

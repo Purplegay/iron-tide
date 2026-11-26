@@ -38,7 +38,7 @@ func _ready() -> void:
 	AudioServer.add_bus_effect(0, master_capture)
 	check(not Music.player.playing, "autoload stays quiet until a real screen enters context")
 	var manifest = JSON.parse_string(FileAccess.get_file_as_string("res://data/music.json"))
-	check(manifest.tracks.size() == 27, "manifest includes faction combat, superweapon and Yuriko recordings")
+	check(manifest.tracks.size() == 30, "manifest includes faction combat, superweapon and Yuriko recordings")
 	for track in manifest.tracks:
 		var audio := load(str(track.file)) as AudioStreamMP3
 		check(audio != null and audio.get_length()>1,"original recording decodes: "+str(track.title))
@@ -219,6 +219,16 @@ func exercise_yuriko_tension() -> void:
 	director.tick(world, 21.0)
 	check(Music.stage == "yuriko_tension", "expired disadvantage releases the track")
 	hero = preload("res://scripts/units/yuriko.gd").hero(world)
+	world.reveal_attack(scout, opponent)
+	for i in 9:
+		world.spawn_unit("E2", "enemy", opponent.position)._die(hero)
+	check(director.state(world).yuriko_kills == 19 and Music.stage == "battle", "nineteen personal kills during combat keep faction music")
+	var tower = world._place_building("NALASR", "enemy", Vector2(1500,1500), true)
+	tower._die(hero)
+	check(director.state(world).yuriko_kills == 20 and Music.stage == "yuriko_tension", "enemy defense as twentieth kill switches music immediately")
+	director.tick(world, 1.0)
+	world.reveal_attack(opponent, scout)
+	check(Music.stage == "yuriko_tension", "incoming fire after twenty keeps Yuriko music")
 	hero._die()
 	check(Music.stage == "battle" and Music.player.stream != stream and Music.combat_id == combat_track, "Yuriko death without a killer immediately restores the combat recording")
 	director.tick(world, 21.0)
@@ -290,12 +300,12 @@ func exercise_segments() -> void:
 			if id == "soviet_combat_1":
 				Music.player.seek(12.)
 				Music.finish_battle(true)
-				check(Music.player.stream == SOVIET_TRIUMPH and absf(Music.player.get_playback_position()-12.) < 1., "winning during the Soviet triumph continues its playback")
+				check(Music.player.stream.resource_path.ends_with("/ep1-match-win-soviet.mp3") and Music.player.get_playback_position() < 1., "winning switches from battlefield advantage to the Uprising victory recording")
 				Music.set_context("menu")
 				Music.set_context("battle", side, false, "", id)
 				Music.uprising_triggered = true
 				Music.finish_battle(true)
-				check(Music.player.playing and Music.player.stream == SOVIET_TRIUMPH and Music.player.get_playback_position() < 1., "direct victory from Red Rock uses Combat 1 after an earlier Uprising cue")
+				check(Music.player.playing and Music.player.stream.resource_path.ends_with("/ep1-match-win-soviet.mp3") and Music.player.get_playback_position() < 1., "direct victory uses the Soviet Uprising victory recording")
 	Music.set_context("menu")
 
 func finish_recording() -> void:

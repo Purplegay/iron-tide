@@ -1,0 +1,21 @@
+{
+ "id": "YAPPET",
+ "layers": [
+  {
+   "kind": "activeanim",
+   "image": "YAPPET_A",
+   "frames": 20,
+   "loopStart": 0,
+   "loopEnd": 5,
+   "rate": 170
+  },
+  {
+   "kind": "idleanim",
+   "image": "YAPPET_E",
+   "frames": 4,
+   "loopStart": 0,
+   "loopEnd": 1,
+   "rate": 200
+  }
+ ]
+}

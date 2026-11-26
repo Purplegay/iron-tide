@@ -1,0 +1,104 @@
+{
+ "id": "YAWEAP",
+ "layers": [
+  {
+   "kind": "underdooranim",
+   "image": "YAWEAP_1",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 400,
+   "loopCount": -1,
+   "dmg": {
+    "kind": "underdooranim",
+    "image": "YAWEAP_1",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 400,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "underroofdooranim",
+   "image": "YAWEAP_4",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 400,
+   "loopCount": -1,
+   "dmg": {
+    "kind": "underroofdooranim",
+    "image": "YAWEAP_4",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 400,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "activeanim",
+   "image": "YAWEAP_A",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 7,
+   "frames": 8,
+   "rate": 200,
+   "loopCount": -1,
+   "dmg": {
+    "image": "YAWEAP_AD",
+    "shadow": true,
+    "loopStart": 0,
+    "loopEnd": 7,
+    "frames": 8,
+    "rate": 200,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "deployinganim",
+   "image": "YAWEAP_2",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 400,
+   "loopCount": -1,
+   "dmg": {
+    "kind": "deployinganim",
+    "image": "YAWEAP_2",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 400,
+    "loopCount": -1
+   }
+  },
+  {
+   "kind": "roofdeployinganim",
+   "image": "YAWEAP_3",
+   "shadow": true,
+   "loopStart": 0,
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 400,
+   "loopCount": -1,
+   "dmg": {
+    "kind": "roofdeployinganim",
+    "image": "YAWEAP_3",
+    "shadow": true,
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 400,
+    "loopCount": -1
+   }
+  }
+ ]
+}

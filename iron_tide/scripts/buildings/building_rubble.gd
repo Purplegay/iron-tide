@@ -30,7 +30,8 @@ static func restore(world) -> void:
 		if row.id == "CAOILD":
 			var map := preload("res://scripts/world/native_maps.gd").data(world.map_layout())
 			var theater := str(map.get("theater", "urban")).left(3).to_lower()
-			node.rubble_texture = load("res://assets/ra2/shp/CAOILD_RUBBLE_%s.png" % theater)
+			var rubble_path := "res://assets/ra2/shp/CAOILD_RUBBLE_%s.png" % theater
+			node.rubble_texture = load(rubble_path if ResourceLoader.exists(rubble_path) else "res://assets/ra2/shp/CAOILD_RUBBLE_urb.png")
 		node.knowledge = row
 		node.frame = int(source.get("count", 2)) / 2 - 1
 		node.position = row.point

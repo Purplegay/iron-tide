@@ -115,5 +115,4 @@ static func entries(unit) -> Array:
 static func draw(unit) -> void:
 	var s:Dictionary=unit.special.get(KEY,{})
 	if s.has("water_guards"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+8,0,TAU,24,Color(.2,.8,1,.75),2,true)
-	if Relay.amount(unit)>0:unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+11,0,TAU,24,Color(.3,1,.9,.85),2.5,true)
 	if s.has("ballast_left"):unit.draw_arc(Vector2(0,-unit._visual_lift()),unit.radius+4,PI*.15,PI*.85,16,Color.GOLD,2,true)

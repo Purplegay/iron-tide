@@ -112,6 +112,5 @@ static func draw(unit) -> void:
 	if unit.selected:
 		var target=protected(unit)
 		if target!=null:unit.draw_line(Vector2.ZERO,Iso.dir(target.position-unit.position),Color(.35,.9,.65,.65),2,true)
-	if s.has("emergency_shield"):unit.draw_arc(Vector2.ZERO,unit.radius+22,0,TAU,32,Color(.4,1,.7,.8),2,true)
 	if stopped(unit):unit.draw_arc(Vector2.ZERO,unit.radius+26,-PI*.5,-PI*.5+TAU*float(s.shutdown_left)/3,32,Color.ORANGE,3,true)
 	if s.has("transfer_flash"):unit.draw_arc(Vector2.ZERO,unit.radius+20,0,TAU,24,Color(.35,.9,.65,float(s.transfer_flash)*4),3,true)

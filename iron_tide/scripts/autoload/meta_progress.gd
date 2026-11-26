@@ -23,6 +23,7 @@ signal hero_portrait_changed
 var driver_portraits: Dictionary = {}
 var hero_story_archive: Dictionary = {}
 var yuriko_school: Dictionary = {}
+var campaign_cg: Dictionary = {} # 已触发的战役影片 ID。
 var commander_alias: String = ""
 var unit_levels: Dictionary = {}             # unit_id -> { track_id: level }
 const MAX_TALENT_SLOTS := 2
@@ -829,6 +830,20 @@ func set_commander_alias(value:String) -> bool:
 	commander_alias=previous
 	return false
 
+func collect_campaign_cg(id: String) -> bool:
+	const Catalog = preload("res://scripts/ui/campaign_cg_catalog.gd")
+	if campaign_cg.get(id) == true or Catalog.media(id).is_empty(): return false
+	var previous_currency := currency.duplicate()
+	campaign_cg[id] = true
+	for key in Catalog.FIRST_UNLOCK_REWARD:
+		currency[key] = balance(key) + Catalog.FIRST_UNLOCK_REWARD[key]
+	if not save():
+		campaign_cg.erase(id)
+		currency = previous_currency
+		return false
+	Events.meta_changed.emit()
+	return true
+
 func to_dict() -> Dictionary:
 	return {
 		"currency": currency,
@@ -855,6 +870,7 @@ func to_dict() -> Dictionary:
 		"driver_portraits": driver_portraits,
 		"hero_story_archive": hero_story_archive,
 		"yuriko_school": yuriko_school,
+		"campaign_cg": campaign_cg,
 		"commander_alias": commander_alias,
 		"house_color": house_color,
 		"unit_cosmetics": unit_cosmetics,
@@ -1147,12 +1163,14 @@ func load_save() -> void:
 	driver_portraits = parsed.get("driver_portraits", {})
 	hero_story_archive = parsed.get("hero_story_archive", {})
 	yuriko_school = parsed.get("yuriko_school", {})
+	campaign_cg = parsed.get("campaign_cg") if parsed.get("campaign_cg") is Dictionary else {}
 	var alias_value:Variant=parsed.get("commander_alias","")
 	commander_alias=alias_value.strip_edges() if alias_value is String else ""
 	if int(parsed.get("academy_version", 0)) == 0:
 		var totals := {}
 		for faction in stats.get("player_production", {}).get("factions", {}).values():
 			for id in Academy.HEROES:
+				if id in Academy.Stars.IDS:continue
 				totals[id] = int(totals.get(id,0)) + int(faction.get("unit",{}).get(id,{}).get("built",0))
 		academy.hero_builds = totals
 	for id in ["MTNK","HTNK"]:
@@ -1263,6 +1281,7 @@ func reset_save() -> void:
 	driver_portraits.clear()
 	hero_story_archive.clear()
 	yuriko_school.clear()
+	campaign_cg.clear()
 	commander_alias=""
 	academy = {"bunker_optics_four_ranks":true,"native_q_cards_removed":true}
 	settled_matches.clear()

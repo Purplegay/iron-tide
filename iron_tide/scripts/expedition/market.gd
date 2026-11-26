@@ -32,7 +32,6 @@ static func unit_pool(run:Dictionary) -> Array:
 	var result:Array=[]
 	for id:String in run.catalog:
 		if id.begins_with("R3"):continue
-		if Army.room(run,id)<=0:continue
 		var row:=GameData.get_unit(id)
 		if id in ["AMCV","SMCV","CMIN","HARV"]:continue
 		if float(row.get("cost",0))>[1200,1800,2500,100000,100000,100000][Campaign.chapter(int(run.stage))]:continue
@@ -44,8 +43,9 @@ static func offer_available(run:Dictionary,item:Dictionary) -> bool:
 	if str(item.get("id","")).begins_with("R3"):return false
 	match str(item.kind):
 		"blueprint":return false
-		"unit","reinforce":return Army.room(run,item.id)>0
-		"special_unit":return special_useful(run,item.id,int(item.tier)) and Army.room(run,item.id)>0
+		"unit":return true
+		"reinforce":return Army.room(run,item.id)>0
+		"special_unit":return special_useful(run,item.id,int(item.tier))
 		"buff":return int(run.buffs.get(item.id,0))<3
 		"trait_buff":return int(run.get("trait_buffs",{}).get(item.id,0))<9
 		"training":return Growth.can_upgrade(run,item.id)
@@ -60,8 +60,14 @@ static func offer_available(run:Dictionary,item:Dictionary) -> bool:
 static func reward_item(run:Dictionary,item:Dictionary) -> Dictionary:
 	return item if offer_available(run,item) else {"kind":"supplies","id":"bonus","amount":100,"converted":true}
 
+static func recruit_fits(run:Dictionary,item:Dictionary) -> bool:
+	match item.kind:
+		"unit":return Army.room(run,item.id)>=preload("res://scripts/expedition/catalog.gd").squad_size(item.id)
+		"special_unit":return Army.room(run,item.id)>=int(item.get("count",1))
+	return true
+
 static func lock_available(run:Dictionary,item:Dictionary) -> bool:
-	if item.get("sold",false) or item.kind=="supplies":return false
+	if item.get("sold",false) or item.kind=="supplies" or not recruit_fits(run,item):return false
 	match item.kind:
 		"unit","reinforce":return true
 		"special_unit":return special_useful(run,item.id,int(item.tier))
@@ -74,7 +80,7 @@ static func buff_pool(run:Dictionary) -> Array:
 	var result:Array=[]
 	var catalog=load("res://scripts/expedition/catalog.gd")
 	for id:String in catalog.BUFFS:
-		if int(run.buffs.get(id,0))>=3:continue
+		if int(run.buffs.get(id,0))>=3 or int(run.get("stage",1))<int(catalog.BUFFS[id].get("min_stage",1)):continue
 		var category:String=catalog.BUFFS[id].group
 		if category!="all" and not catalog.has_group(run,category):continue
 		result.append({"kind":"buff","id":id,"levels":1,"price":180 if catalog.BUFFS[id].get("core",false) else 120})
@@ -94,6 +100,7 @@ static func trait_pool(run:Dictionary) -> Array:
 		for tag:String in Army.tags(id,run):
 			if tag not in available:available.append(tag)
 	for key:String in available:
+		if int(run.get("stage",1)) < int(Army.TRAITS[key].get("min_stage",1)):continue
 		if int(run.get("trait_buffs",{}).get(key,0))<9:
 			result.append({"kind":"trait_buff","id":key,"levels":1,"price":80})
 	return result
@@ -224,7 +231,8 @@ static func draw_index(pool:Array,random:RandomNumberGenerator) -> int:
 
 static func shop(run:Dictionary,refresh:int) -> Array:
 	var random:=rng(run,"market_"+str(refresh))
-	var units:=unit_pool(run)
+	var catalog_units:=unit_pool(run)
+	var units:=catalog_units.filter(func(item):return recruit_fits(run,item))
 	var buffs:=buff_pool(run)+trait_pool(run)+relic_pool(run)
 	var native:=native_pool(run)
 	var result:Array=[]
@@ -235,18 +243,23 @@ static func shop(run:Dictionary,refresh:int) -> Array:
 			reserved_items[shop_key(old)]=true
 			if old.kind=="relic":reserved.append(old.id)
 	for index in SHOP_SIZE+int(preload("res://scripts/expedition/research.gd").rank(run,"supply")>=3):
-		var pool:Array=units if index in [0,1] else native if index==2 else buffs if index==3 else units+buffs+native
+		var rarity:=quality(run,random)
+		var slot_units:=units
+		if index in [1,5] and rarity>=2:
+			slot_units=[]
+			for unit:Dictionary in catalog_units:
+				var recruit:=special_item(run,unit.id,rarity)
+				if recruit_fits(run,recruit):slot_units.append(recruit)
+		var pool:Array=slot_units if index in [0,1] else native if index==2 else buffs if index==3 else slot_units+buffs+native
 		# A dedicated relic slot makes build-defining finds frequent enough to pursue.
 		if index==5 and not without_relics(relic_pool(run),reserved).is_empty():pool=relic_pool(run)
 		pool=without_relics(pool,reserved)
 		pool=unique_shop_pool(pool,reserved_items)
 		if index==5 and refresh==0 and not ultimate_pool(pool).is_empty():pool=ultimate_pool(pool)
-		if pool.is_empty():pool=unique_shop_pool(units+buffs+native+growth_pool(run),reserved_items)
+		if pool.is_empty():pool=unique_shop_pool(slot_units+buffs+native+growth_pool(run),reserved_items)
 		var item:=choose_from(pool,random)
 		if item.kind=="relic":reserved.append(item.id)
 		if item.kind!="supplies":reserved_items[shop_key(item)]=true
-		var rarity:=quality(run,random)
-		if index in [1,5] and item.kind=="unit" and rarity>=2:item=special_item(run,item.id,rarity)
 		item.quality=rarity
 		item.sold=false
 		item.locked=false
@@ -348,7 +361,7 @@ static func normalize_shop(run:Dictionary,upgrade_saved_prices:=false) -> void:
 	var stock:Array=[]
 	for item:Dictionary in run.get("shop",[]):
 		if not item.get("sold",false):
-			if item.kind in ["supplies","blueprint"] or str(item.id).begins_with("R3"):continue
+			if item.kind in ["supplies","blueprint"] or str(item.id).begins_with("R3") or not recruit_fits(run,item):continue
 			if item.kind=="relic" and not Relics.ITEMS.has(item.id):continue
 			if item.kind=="hero" and not MetaProgress.Academy.HEROES.has(item.id):continue
 			if not lock_available(run,item):

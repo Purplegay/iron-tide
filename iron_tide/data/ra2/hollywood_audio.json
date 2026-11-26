@@ -1,0 +1,1090 @@
+{
+ "units": {
+  "CLNT": {
+   "select": "ClintSelect",
+   "move": "ClintMove",
+   "attack": "ClintAttackCommand",
+   "special": "ClintAttackCommand",
+   "feedback": "ClintFear",
+   "die": "ClintDie"
+  },
+  "ARND": {
+   "select": "ArnoldSelect",
+   "move": "ArnoldMove",
+   "attack": "ArnoldAttackCommand",
+   "special": "ArnoldAttackCommand",
+   "feedback": "ArnoldFear",
+   "die": "ArnoldDie"
+  },
+  "STLN": {
+   "select": "SlySelect",
+   "move": "SlyMove",
+   "attack": "SlyAttackCommand",
+   "special": "SlyAttackCommand",
+   "feedback": "SlyFear",
+   "die": "SlyDie"
+  }
+ },
+ "specs": {
+  "ClintSelect": {
+   "sounds": [
+    "hol_icliseb",
+    "hol_iclisec",
+    "hol_iclised",
+    "hol_iclisee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ClintMove": {
+   "sounds": [
+    "hol_iclimoa",
+    "hol_iclimob",
+    "hol_iclimoc",
+    "hol_iclimod",
+    "hol_iclimoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ClintAttackCommand": {
+   "sounds": [
+    "hol_icliata",
+    "hol_icliatc",
+    "hol_icliatd",
+    "hol_icliate"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ClintFear": {
+   "sounds": [
+    "hol_iclifea",
+    "hol_iclifec",
+    "hol_iclifed"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ClintDie": {
+   "sounds": [
+    "hol_iclidia",
+    "hol_iclidib",
+    "hol_iclidic",
+    "hol_iclidid",
+    "hol_iclidie"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ArnoldSelect": {
+   "sounds": [
+    "hol_iarnsea",
+    "hol_iarnseb",
+    "hol_iarnsec",
+    "hol_iarnsed"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ArnoldMove": {
+   "sounds": [
+    "hol_iarnmod",
+    "hol_iarnmoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ArnoldAttackCommand": {
+   "sounds": [
+    "hol_iarnata",
+    "hol_iarnatb",
+    "hol_iarnatc",
+    "hol_iarnatd",
+    "hol_iarnate"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ArnoldFear": {
+   "sounds": [
+    "hol_iarnfea",
+    "hol_iarnfeb",
+    "hol_iarnfec",
+    "hol_iarnfed",
+    "hol_iarnfee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "ArnoldDie": {
+   "sounds": [
+    "hol_iarndia",
+    "hol_iarndib",
+    "hol_iarndic",
+    "hol_iarndid",
+    "hol_iarndie"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "SlySelect": {
+   "sounds": [
+    "hol_islysea",
+    "hol_islyseb",
+    "hol_islysec"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "SlyMove": {
+   "sounds": [
+    "hol_islymoa",
+    "hol_islymob",
+    "hol_islymoc",
+    "hol_islymod",
+    "hol_islymoe"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "SlyAttackCommand": {
+   "sounds": [
+    "hol_islyata",
+    "hol_islyatb",
+    "hol_islyatc",
+    "hol_islyatd",
+    "hol_islyate"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "SlyFear": {
+   "sounds": [
+    "hol_islyfec",
+    "hol_islyfed",
+    "hol_islyfee"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "SlyDie": {
+   "sounds": [
+    "hol_islydia",
+    "hol_islydib",
+    "hol_islydic",
+    "hol_islydid",
+    "hol_islydie"
+   ],
+   "volume": 85,
+   "range": 10
+  },
+  "TrexFoot": {
+   "sounds": [
+    "hol_grexfooa",
+    "hol_grexfoob",
+    "hol_grexfooc"
+   ],
+   "volume": 55,
+   "range": 10
+  },
+  "TrexRoar": {
+   "sounds": [
+    "hol_grexroa1",
+    "hol_grexroa2"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "TrexDie": {
+   "sounds": [
+    "hol_grexdiea"
+   ],
+   "volume": 80,
+   "range": 10
+  },
+  "SlaveAttack": {
+   "sounds": [
+    "hol_isl1atta"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "SlaveWorkerLiberated": {
+   "sounds": [
+    "hol_isl1lia"
+   ],
+   "volume": 95,
+   "range": 30
+  },
+  "SlaveMinerDeploy": {
+   "sounds": [
+    "hol_vsladepa"
+   ],
+   "volume": 70,
+   "range": 10
+  },
+  "SlaveMinerUndeploy": {
+   "sounds": [
+    "hol_vslade2a"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "YuriMindControl": {
+   "sounds": [
+    "hol_iyurat1a"
+   ],
+   "volume": 80,
+   "range": 10
+  },
+  "MindCleared": {
+   "sounds": [
+    "hol_gmindcle"
+   ],
+   "volume": 80,
+   "range": 10
+  },
+  "ClintAttack": {
+   "sounds": [
+    "hol_icliatta",
+    "hol_icliattb",
+    "hol_icliattc"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "ArnoldAttack": {
+   "sounds": [
+    "hol_iarnatta",
+    "hol_iarnattb"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "SlyAttack": {
+   "sounds": [
+    "hol_islyat1a",
+    "hol_islyat1b"
+   ],
+   "volume": 70,
+   "range": 10
+  },
+  "SlyGrenadeLauncher": {
+   "sounds": [
+    "hol_islyat2a"
+   ],
+   "volume": 90,
+   "range": 10
+  },
+  "TrexAttack": {
+   "sounds": [
+    "hol_grexatta",
+    "hol_grexattb",
+    "hol_grexattc"
+   ],
+   "volume": 60,
+   "range": 10
+  },
+  "WarMinerAttack": {
+   "sounds": [
+    "hol_vwaratta",
+    "hol_vwarattb"
+   ],
+   "volume": 70,
+   "range": 10
+  },
+  "RhinoTankAttack": {
+   "sounds": [
+    "hol_vrhiatta",
+    "hol_vrhiattb",
+    "hol_vrhiattc",
+    "hol_vrhiattd"
+   ],
+   "volume": 75,
+   "range": 10
+  },
+  "GattlingGunAttackLoop1": {
+   "sounds": [
+    "hol_vgatlo1a",
+    "hol_vgatlo2a",
+    "hol_vgatlo2b",
+    "hol_vgatlo2c",
+    "hol_vgatlo3a"
+   ],
+   "volume": 60,
+   "range": 10
+  },
+  "GattlingGunAttackLoop2": {
+   "sounds": [
+    "hol_vgatlo4a",
+    "hol_vgatlo5a",
+    "hol_vgatlo5b",
+    "hol_vgatlo6a"
+   ],
+   "volume": 65,
+   "range": 10
+  },
+  "GattlingGunAttackLoop3": {
+   "sounds": [
+    "hol_vgatlo7a",
+    "hol_vgatlo8a",
+    "hol_vgatlo8b",
+    "hol_vgatlo9a"
+   ],
+   "volume": 75,
+   "range": 10
+  },
+  "YuriDeploy": {
+   "sounds": [
+    "hol_iyurat2a"
+   ],
+   "volume": 1,
+   "range": 10
+  }
+ },
+ "entries": {
+  "hol_icliseb": {
+   "file": "hollywood/icliseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29686,
+   "durMs": 1346
+  },
+  "hol_iclisec": {
+   "file": "hollywood/iclisec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30815,
+   "durMs": 1398
+  },
+  "hol_iclised": {
+   "file": "hollywood/iclised.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40088,
+   "durMs": 1818
+  },
+  "hol_iclisee": {
+   "file": "hollywood/iclisee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41890,
+   "durMs": 1900
+  },
+  "hol_iclimoa": {
+   "file": "hollywood/iclimoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17394,
+   "durMs": 789
+  },
+  "hol_iclimob": {
+   "file": "hollywood/iclimob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29397,
+   "durMs": 1333
+  },
+  "hol_iclimoc": {
+   "file": "hollywood/iclimoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36436,
+   "durMs": 1652
+  },
+  "hol_iclimod": {
+   "file": "hollywood/iclimod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 32384,
+   "durMs": 1469
+  },
+  "hol_iclimoe": {
+   "file": "hollywood/iclimoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34522,
+   "durMs": 1566
+  },
+  "hol_icliata": {
+   "file": "hollywood/icliata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34899,
+   "durMs": 1583
+  },
+  "hol_icliatc": {
+   "file": "hollywood/icliatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35171,
+   "durMs": 1595
+  },
+  "hol_icliatd": {
+   "file": "hollywood/icliatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37181,
+   "durMs": 1686
+  },
+  "hol_icliate": {
+   "file": "hollywood/icliate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33305,
+   "durMs": 1510
+  },
+  "hol_iclifea": {
+   "file": "hollywood/iclifea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29822,
+   "durMs": 1352
+  },
+  "hol_iclifec": {
+   "file": "hollywood/iclifec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37341,
+   "durMs": 1693
+  },
+  "hol_iclifed": {
+   "file": "hollywood/iclifed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27972,
+   "durMs": 1269
+  },
+  "hol_iclidia": {
+   "file": "hollywood/iclidia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16649,
+   "durMs": 755
+  },
+  "hol_iclidib": {
+   "file": "hollywood/iclidib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15047,
+   "durMs": 682
+  },
+  "hol_iclidic": {
+   "file": "hollywood/iclidic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15320,
+   "durMs": 695
+  },
+  "hol_iclidid": {
+   "file": "hollywood/iclidid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 21357,
+   "durMs": 969
+  },
+  "hol_iclidie": {
+   "file": "hollywood/iclidie.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23375,
+   "durMs": 1060
+  },
+  "hol_iarnsea": {
+   "file": "hollywood/iarnsea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 44684,
+   "durMs": 2026
+  },
+  "hol_iarnseb": {
+   "file": "hollywood/iarnseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34338,
+   "durMs": 1557
+  },
+  "hol_iarnsec": {
+   "file": "hollywood/iarnsec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46390,
+   "durMs": 2104
+  },
+  "hol_iarnsed": {
+   "file": "hollywood/iarnsed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42298,
+   "durMs": 1918
+  },
+  "hol_iarnmod": {
+   "file": "hollywood/iarnmod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42915,
+   "durMs": 1946
+  },
+  "hol_iarnmoe": {
+   "file": "hollywood/iarnmoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18427,
+   "durMs": 836
+  },
+  "hol_iarnata": {
+   "file": "hollywood/iarnata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34074,
+   "durMs": 1545
+  },
+  "hol_iarnatb": {
+   "file": "hollywood/iarnatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36821,
+   "durMs": 1670
+  },
+  "hol_iarnatc": {
+   "file": "hollywood/iarnatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42899,
+   "durMs": 1946
+  },
+  "hol_iarnatd": {
+   "file": "hollywood/iarnatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29678,
+   "durMs": 1346
+  },
+  "hol_iarnate": {
+   "file": "hollywood/iarnate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37445,
+   "durMs": 1698
+  },
+  "hol_iarnfea": {
+   "file": "hollywood/iarnfea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28789,
+   "durMs": 1306
+  },
+  "hol_iarnfeb": {
+   "file": "hollywood/iarnfeb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39960,
+   "durMs": 1812
+  },
+  "hol_iarnfec": {
+   "file": "hollywood/iarnfec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36805,
+   "durMs": 1669
+  },
+  "hol_iarnfed": {
+   "file": "hollywood/iarnfed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30310,
+   "durMs": 1375
+  },
+  "hol_iarnfee": {
+   "file": "hollywood/iarnfee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15448,
+   "durMs": 701
+  },
+  "hol_iarndia": {
+   "file": "hollywood/iarndia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 19091,
+   "durMs": 866
+  },
+  "hol_iarndib": {
+   "file": "hollywood/iarndib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 12204,
+   "durMs": 553
+  },
+  "hol_iarndic": {
+   "file": "hollywood/iarndic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 11332,
+   "durMs": 514
+  },
+  "hol_iarndid": {
+   "file": "hollywood/iarndid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15039,
+   "durMs": 682
+  },
+  "hol_iarndie": {
+   "file": "hollywood/iarndie.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20709,
+   "durMs": 939
+  },
+  "hol_islysea": {
+   "file": "hollywood/islysea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24473,
+   "durMs": 1110
+  },
+  "hol_islyseb": {
+   "file": "hollywood/islyseb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40536,
+   "durMs": 1838
+  },
+  "hol_islysec": {
+   "file": "hollywood/islysec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27532,
+   "durMs": 1249
+  },
+  "hol_islymoa": {
+   "file": "hollywood/islymoa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34138,
+   "durMs": 1548
+  },
+  "hol_islymob": {
+   "file": "hollywood/islymob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23488,
+   "durMs": 1065
+  },
+  "hol_islymoc": {
+   "file": "hollywood/islymoc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33305,
+   "durMs": 1510
+  },
+  "hol_islymod": {
+   "file": "hollywood/islymod.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20853,
+   "durMs": 946
+  },
+  "hol_islymoe": {
+   "file": "hollywood/islymoe.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39191,
+   "durMs": 1777
+  },
+  "hol_islyata": {
+   "file": "hollywood/islyata.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31928,
+   "durMs": 1448
+  },
+  "hol_islyatb": {
+   "file": "hollywood/islyatb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46334,
+   "durMs": 2101
+  },
+  "hol_islyatc": {
+   "file": "hollywood/islyatc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36244,
+   "durMs": 1644
+  },
+  "hol_islyatd": {
+   "file": "hollywood/islyatd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29798,
+   "durMs": 1351
+  },
+  "hol_islyate": {
+   "file": "hollywood/islyate.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 60180,
+   "durMs": 2729
+  },
+  "hol_islyfec": {
+   "file": "hollywood/islyfec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35916,
+   "durMs": 1629
+  },
+  "hol_islyfed": {
+   "file": "hollywood/islyfed.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 40224,
+   "durMs": 1824
+  },
+  "hol_islyfee": {
+   "file": "hollywood/islyfee.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42787,
+   "durMs": 1940
+  },
+  "hol_islydia": {
+   "file": "hollywood/islydia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18010,
+   "durMs": 817
+  },
+  "hol_islydib": {
+   "file": "hollywood/islydib.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26723,
+   "durMs": 1212
+  },
+  "hol_islydic": {
+   "file": "hollywood/islydic.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 22246,
+   "durMs": 1009
+  },
+  "hol_islydid": {
+   "file": "hollywood/islydid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16673,
+   "durMs": 756
+  },
+  "hol_islydie": {
+   "file": "hollywood/islydie.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 22551,
+   "durMs": 1023
+  },
+  "hol_grexfooa": {
+   "file": "hollywood/grexfooa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17289,
+   "durMs": 784
+  },
+  "hol_grexfoob": {
+   "file": "hollywood/grexfoob.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18979,
+   "durMs": 861
+  },
+  "hol_grexfooc": {
+   "file": "hollywood/grexfooc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24777,
+   "durMs": 1124
+  },
+  "hol_grexroa1": {
+   "file": "hollywood/grexroa1.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36765,
+   "durMs": 1667
+  },
+  "hol_grexroa2": {
+   "file": "hollywood/grexroa2.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37357,
+   "durMs": 1694
+  },
+  "hol_grexdiea": {
+   "file": "hollywood/grexdiea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29013,
+   "durMs": 1316
+  },
+  "hol_isl1atta": {
+   "file": "hollywood/isl1atta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 11372,
+   "durMs": 516
+  },
+  "hol_isl1lia": {
+   "file": "hollywood/isl1lia.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48768,
+   "durMs": 2212
+  },
+  "hol_vsladepa": {
+   "file": "hollywood/vsladepa.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33441,
+   "durMs": 1517
+  },
+  "hol_vslade2a": {
+   "file": "hollywood/vslade2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 33153,
+   "durMs": 1504
+  },
+  "hol_iyurat1a": {
+   "file": "hollywood/iyurat1a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 29662,
+   "durMs": 1345
+  },
+  "hol_gmindcle": {
+   "file": "hollywood/gmindcle.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28853,
+   "durMs": 1309
+  },
+  "hol_icliatta": {
+   "file": "hollywood/icliatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20116,
+   "durMs": 912
+  },
+  "hol_icliattb": {
+   "file": "hollywood/icliattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 20357,
+   "durMs": 923
+  },
+  "hol_icliattc": {
+   "file": "hollywood/icliattc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18683,
+   "durMs": 847
+  },
+  "hol_iarnatta": {
+   "file": "hollywood/iarnatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18523,
+   "durMs": 840
+  },
+  "hol_iarnattb": {
+   "file": "hollywood/iarnattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14295,
+   "durMs": 648
+  },
+  "hol_islyat1a": {
+   "file": "hollywood/islyat1a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17834,
+   "durMs": 809
+  },
+  "hol_islyat1b": {
+   "file": "hollywood/islyat1b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16657,
+   "durMs": 755
+  },
+  "hol_islyat2a": {
+   "file": "hollywood/islyat2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17137,
+   "durMs": 777
+  },
+  "hol_grexatta": {
+   "file": "hollywood/grexatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28156,
+   "durMs": 1277
+  },
+  "hol_grexattb": {
+   "file": "hollywood/grexattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 28300,
+   "durMs": 1283
+  },
+  "hol_grexattc": {
+   "file": "hollywood/grexattc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 30406,
+   "durMs": 1379
+  },
+  "hol_vwaratta": {
+   "file": "hollywood/vwaratta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14943,
+   "durMs": 678
+  },
+  "hol_vwarattb": {
+   "file": "hollywood/vwarattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18058,
+   "durMs": 819
+  },
+  "hol_vrhiatta": {
+   "file": "hollywood/vrhiatta.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13654,
+   "durMs": 619
+  },
+  "hol_vrhiattb": {
+   "file": "hollywood/vrhiattb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14783,
+   "durMs": 670
+  },
+  "hol_vrhiattc": {
+   "file": "hollywood/vrhiattc.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14263,
+   "durMs": 647
+  },
+  "hol_vrhiattd": {
+   "file": "hollywood/vrhiattd.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18955,
+   "durMs": 860
+  },
+  "hol_vgatlo1a": {
+   "file": "hollywood/vgatlo1a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15196,
+   "durMs": 689
+  },
+  "hol_vgatlo2a": {
+   "file": "hollywood/vgatlo2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 7094,
+   "durMs": 322
+  },
+  "hol_vgatlo2b": {
+   "file": "hollywood/vgatlo2b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 4721,
+   "durMs": 214
+  },
+  "hol_vgatlo2c": {
+   "file": "hollywood/vgatlo2c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 9350,
+   "durMs": 424
+  },
+  "hol_vgatlo3a": {
+   "file": "hollywood/vgatlo3a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18438,
+   "durMs": 836
+  },
+  "hol_vgatlo4a": {
+   "file": "hollywood/vgatlo4a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 18129,
+   "durMs": 822
+  },
+  "hol_vgatlo5a": {
+   "file": "hollywood/vgatlo5a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 7182,
+   "durMs": 326
+  },
+  "hol_vgatlo5b": {
+   "file": "hollywood/vgatlo5b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 10684,
+   "durMs": 485
+  },
+  "hol_vgatlo6a": {
+   "file": "hollywood/vgatlo6a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 16777,
+   "durMs": 761
+  },
+  "hol_vgatlo7a": {
+   "file": "hollywood/vgatlo7a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 11543,
+   "durMs": 523
+  },
+  "hol_vgatlo8a": {
+   "file": "hollywood/vgatlo8a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 5743,
+   "durMs": 260
+  },
+  "hol_vgatlo8b": {
+   "file": "hollywood/vgatlo8b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 8784,
+   "durMs": 398
+  },
+  "hol_vgatlo9a": {
+   "file": "hollywood/vgatlo9a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17801,
+   "durMs": 807
+  },
+  "hol_iyurat2a": {
+   "file": "hollywood/iyurat2a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41561,
+   "durMs": 1885
+  }
+ }
+}

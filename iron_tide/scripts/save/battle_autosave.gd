@@ -5,8 +5,11 @@ const INTERVAL := 60.0
 var world
 var elapsed := 0.0
 
-func setup(battle) -> void:
+var trace
+
+func setup(battle, battle_trace = null) -> void:
 	world = battle
+	trace = battle_trace
 
 func _process(delta: float) -> void:
 	if not is_instance_valid(world) or world.ended or world.paused or get_tree().paused: return
@@ -15,6 +18,10 @@ func _process(delta: float) -> void:
 	elapsed += BattleClock.control_delta(delta)
 	if elapsed < INTERVAL: return
 	elapsed = 0.0
+	if trace != null:
+		trace.mark("autosave.begin")
 	var result: Dictionary = BattleSaves.save_slot(world, "auto")
+	if trace != null:
+		trace.mark("autosave.end", {"ok": result.ok})
 	if not result.ok:
 		Events.emit_message("自动保存失败：" + result.message, Color.ORANGE)

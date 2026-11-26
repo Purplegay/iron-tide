@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tests/spend_repair_audio.gd" id="1"]
+
+[node name="SpendRepairAudioTest" type="Node"]
+script = ExtResource("1")
+

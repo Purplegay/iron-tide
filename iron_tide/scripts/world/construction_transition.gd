@@ -18,6 +18,9 @@ static func arrive(vehicle) -> bool:
 	return false
 
 static func deploying(building, vehicle, origin: Vector2) -> void:
+	if vehicle.unit_id=="SMIN":
+		preload("res://scripts/world/slave_mining.gd").transfer(vehicle,building)
+		Ra2Sfx.play("SlaveMinerDeploy",building.position)
 	transfer_objective(vehicle,building)
 	if building._buildup_art.is_empty(): return
 	var art: Dictionary = building._buildup_art
@@ -35,6 +38,9 @@ static func deployment_shift(building) -> Vector2:
 	return Vector2(building.special.get("mcv_make_shift", Vector2.ZERO)) * (1.0 - smoothstep(0.0, 1.0, progress))
 
 static func repacking(vehicle, building) -> void:
+	if vehicle.unit_id=="SMIN":
+		preload("res://scripts/world/slave_mining.gd").transfer(building,vehicle)
+		Ra2Sfx.play("SlaveMinerUndeploy",building.position)
 	transfer_objective(building,vehicle)
 	if building._buildup_art.is_empty(): return
 	vehicle.special.mcv_repack_image = str(building.data.get("buildup", ""))

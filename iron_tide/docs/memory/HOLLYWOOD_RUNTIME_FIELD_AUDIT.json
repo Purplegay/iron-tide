@@ -1,0 +1,1068 @@
+{
+ "AMBU": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "AMCV": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "ARND": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "TERMIGUN",
+  "runtime_weapon": "TERMIGUN"
+ },
+ "BFRT": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 0,
+  "original_primary": "20mmRapid",
+  "runtime_weapon": "20mmRapid"
+ },
+ "CAARMY04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CABARR01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CABARR02": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CABHUT": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 11,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAEURO05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAFRMA": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAGAS01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAHSE03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAIND01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA05": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "0",
+    null
+   ]
+  },
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA06": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "10",
+    null
+   ]
+  },
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA07": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA08": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA09": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA10": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA11": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA12": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA13": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA14": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CALA15": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMACH": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM02": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMIAM07": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMISC03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 10,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMISC04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMISC05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC02": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC10": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAMSC11": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "none",
+  "runtime_weapon": ""
+ },
+ "CANEWY07": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY08": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY11": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY12": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY15": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY16": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY17": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY18": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY20": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANEWY21": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANWY23": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANWY24": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CANWY26": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAOILD": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARK01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARK02": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARK03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARK04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARK06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARS04": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARS05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARS06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARS13": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAPARS14": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAR": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CARUS02A": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CARUS02B": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CARUS08": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "0",
+    null
+   ]
+  },
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CARUS10": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "0",
+    null
+   ]
+  },
+  "instances_at_start": 11,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CARUS11": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "0",
+    null
+   ]
+  },
+  "instances_at_start": 9,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASANF18": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASIN03E": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASIN03S": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL03": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05A": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05B": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05C": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05D": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05E": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05F": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTL05G": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASTRT05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CASWST01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CATEXS06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CATEXS07": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CATEXS08": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CATHOSP": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAURB01": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAURB02": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH05": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH06": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH07": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH08": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH10": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH17": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWASH18": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 8,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CAWT01": {
+  "definition": true,
+  "field_differences": {
+   "maxnumberoccupants": [
+    "0",
+    null
+   ]
+  },
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIV1": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIV2": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIV3": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVBF": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 9,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVBFM": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVBTM": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVP": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVSF": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVSFM": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CIVSTM": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "CLNT": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "CLINTGUN",
+  "runtime_weapon": "CLINTGUN"
+ },
+ "CONA": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "DNOA": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "TRexInfBite",
+  "runtime_weapon": "TRexInfBite"
+ },
+ "DOLY": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "E1": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "M60",
+  "runtime_weapon": "M60"
+ },
+ "ENGINEER": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 0,
+  "original_primary": "DefuseKit",
+  "runtime_weapon": ""
+ },
+ "EUROC": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "FTRK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "GAGATE_A": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "GGI": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 0,
+  "original_primary": "M60",
+  "runtime_weapon": "M60"
+ },
+ "INIT": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 14,
+  "original_primary": "PsychicJab",
+  "runtime_weapon": "PsychicJab"
+ },
+ "JEEP": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "LIMO": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 5,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "LTNK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 11,
+  "original_primary": "ATGUN",
+  "runtime_weapon": "ATGUN"
+ },
+ "NAFLAK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 0,
+  "original_primary": "FlakWeapon",
+  "runtime_weapon": "FlakWeapon"
+ },
+ "NAPSIS": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "NATBNK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 9,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "PICK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "PTRUCK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 8,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "SMIN": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 6,
+  "original_primary": "20mmRapid",
+  "runtime_weapon": "20mmRapid"
+ },
+ "STANG": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 16,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "STLN": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "STALGUN",
+  "runtime_weapon": "STALGUN"
+ },
+ "SUVB": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 12,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "SUVW": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 7,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "TAXI": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "WINI": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YABRCK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 3,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YACNST": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 1,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YAGGUN": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 32,
+  "original_primary": "AGGattling",
+  "runtime_weapon": "AGGattling"
+ },
+ "YAGRND": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 4,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YAPOWR": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 20,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YAWEAP": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 2,
+  "original_primary": "",
+  "runtime_weapon": ""
+ },
+ "YENGINEER": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 0,
+  "original_primary": "DefuseKit",
+  "runtime_weapon": "DefuseKit"
+ },
+ "YTNK": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 14,
+  "original_primary": "AGGattling",
+  "runtime_weapon": "AGGattling"
+ },
+ "YURI": {
+  "definition": true,
+  "field_differences": {},
+  "instances_at_start": 14,
+  "original_primary": "MindControl",
+  "runtime_weapon": "MindControl"
+ }
+}

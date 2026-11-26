@@ -13,10 +13,13 @@ var overlay_layer: CanvasLayer
 var call_log := preload("res://scripts/world/battle_call_log.gd").new()
 var frame_pacing := preload("res://scripts/world/battle_frame_pacing.gd").new()
 var expedition_runtime
+var crash_trace := preload("res://scripts/world/battle_crash_trace.gd").new()
 
 func _ready() -> void:
 	Music.set_context("preparing")
 	battle = BattleScript.new()
+	add_child(crash_trace)
+	crash_trace.start(battle)
 	battle.frame_pacing = frame_pacing
 	add_child(battle)
 
@@ -29,9 +32,13 @@ func _ready() -> void:
 
 	# 先让 HUD 接上事件总线，再初始化战场，避免丢失开局提示消息
 	hud.setup(battle)
+	crash_trace.mark("setup.begin")
 	battle.setup(BattleRequest.mission_id, hud)
+	crash_trace.mark("setup.end", {"map": battle.map_layout()})
 	var restored_expedition:=not BattleSaves.pending.is_empty()
+	crash_trace.mark("restore.begin", {"pending": restored_expedition})
 	BattleSaves.restore_pending(battle)
+	crash_trace.mark("restore.end")
 	preload("res://scripts/world/battle_music_director.gd").begin(battle, restored_expedition)
 	var expedition_active := preload("res://scripts/expedition/rules.gd").active()
 	if expedition_active:
@@ -54,11 +61,12 @@ func _ready() -> void:
 			expedition_runtime.install_hud(overlay_layer)
 			if not restored_expedition and not Expedition.checkpoint(battle):expedition_runtime.show_error(Expedition.error)
 	var autosave := preload("res://scripts/save/battle_autosave.gd").new()
-	autosave.setup(battle)
+	autosave.setup(battle, crash_trace)
 	add_child(autosave)
 	add_child(call_log)
 	call_log.setup(battle)
 	if battle.building_art_warmup != null:
+		battle.building_art_warmup.prepare_existing_buildings(battle.buildings)
 		battle.building_art_warmup.prepare_infantry(battle.units)
 	hud.show_skirmish_difficulty()
 	preload("res://scripts/world/combat_media_warmup.gd").install(battle)
@@ -66,6 +74,7 @@ func _ready() -> void:
 	hud.refresh_repair_all()
 	Events.battle_ended.connect(_on_battle_ended)
 	Events.wave_started.connect(_on_wave_started)
+	crash_trace.mark("battle.ready")
 
 func _on_wave_started(_index: int, _wave_name: String) -> void:
 	# PathMusic director owns battle score transitions; waves do not reset it.
@@ -92,6 +101,8 @@ func _on_battle_ended(result: Dictionary) -> void:
 		_show_result(result)
 
 func _show_victory_card(result: Dictionary) -> void:
+	var faction: String = battle.roster_faction("ally")
+	Ra2Sfx.play_victory_eva(faction)
 	var root := ColorRect.new()
 	root.name = "VictoryAnnouncement"
 	root.color = Color(0.025,0.035,0.05,0.82)
@@ -109,7 +120,11 @@ func _show_victory_card(result: Dictionary) -> void:
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	column.add_child(title)
 	var poster := TextureRect.new()
-	poster.texture = load("res://assets/ra3/ui/victory/%s.png" % battle.roster_faction("ally"))
+	var poster_path := "res://assets/ra3/ui/victory/%s.png" % faction
+	if ResourceLoader.exists(poster_path):
+		poster.texture = load(poster_path)
+	else:
+		poster.hide()
 	poster.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	poster.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	poster.custom_minimum_size = Vector2(210, minf(304,get_viewport_rect().size.y*0.48))
@@ -170,7 +185,14 @@ func _show_result(result: Dictionary) -> void:
 	vb.add_child(kit.divider())
 	if draw:
 		vb.add_child(kit.make_label("双方同时覆灭，本局不计入养成奖励。", 14, kit.COL_DIM))
-	elif ra2:
+	elif result.get("campaign_settlement",false):
+		var heading := "本局已结算" if rewards.get("already_settled",false) else ("首胜奖励" if rewards.get("first_win",false) else "重打奖励")
+		if rewards.is_empty(): heading = "本次未获得通关奖励"
+		vb.add_child(kit.make_label(heading,18,kit.COL_ACCENT_2))
+		for recruit in rewards.get("recruits",[]):
+			vb.add_child(kit.make_label("中立英雄入册 · "+MetaProgress.Academy.HEROES[recruit],18,kit.COL_GOLD))
+		if rewards.has("first_win"): preload("res://scripts/rules/campaign_payout.gd").reward_row(vb,"",rewards,18,kit.COL_GOLD)
+	elif ra2 and not result.get("endless",false):
 		vb.add_child(kit.make_label("经典规则对局不增加扩展模式的养成进度。", 14, kit.COL_DIM))
 	else:
 		vb.add_child(kit.make_label("本次结算奖励", 15, kit.COL_ACCENT_2))
@@ -191,7 +213,7 @@ func _show_result(result: Dictionary) -> void:
 		get_tree().reload_current_scene())
 	row.add_child(again)
 	var to_lobby := kit.make_button("选择关卡", 15)
-	to_lobby.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/lobby.tscn"))
+	to_lobby.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/lobby.tscn" if BattleRequest.skirmish else "res://scenes/campaign_command.tscn"))
 	row.add_child(to_lobby)
 	var to_meta := kit.make_button("前往驻防", 15)
 	to_meta.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/meta.tscn"))
@@ -199,6 +221,9 @@ func _show_result(result: Dictionary) -> void:
 	var to_menu := kit.make_button("返回主菜单", 15)
 	to_menu.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/main.tscn"))
 	row.add_child(to_menu)
+	if win and result.get("mission")=="yr_head_games" and not battle.allied_state.has("head_postscore"):
+		battle.allied_state.head_postscore=true
+		preload("res://scripts/ui/hollywood_film.gd").show_clip(battle,"S08_F00E")
 
 func _show_expedition_result(result:Dictionary) -> void:
 	if is_instance_valid(result_overlay):result_overlay.queue_free()

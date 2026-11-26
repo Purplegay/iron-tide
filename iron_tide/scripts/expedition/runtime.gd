@@ -84,7 +84,7 @@ func prepare() -> bool:
 	world.allied_state.expedition_losses=0
 	var stage:int=Rules.context().stage
 	world.mission.name="铁潮远征 %d / %d · %s"%[stage,Catalog.TOTAL,Rules.context().title]
-	world.funds+=CampaignBonus.EXTRA_FUNDS+Rules.value("deployment")+(3000 if Rules.context().condition=="funds" else 0)
+	world.funds+=CampaignBonus.EXTRA_FUNDS+Rules.value("deployment")+1000*preload("res://scripts/expedition/relics.gd").level(Expedition.state,"reserve_credit")+(3000 if Rules.context().condition=="funds" else 0)
 	var fog=world.fog
 	world.fog=null
 	for building in world.buildings:
@@ -246,6 +246,7 @@ func structure_site_open(point: Vector2, definition: Dictionary, footprint: Rect
 	return preload("res://scripts/world/ai_base_routes.gd").placement_ok(world.path_service, footprint.grow(2.0))
 
 func deploy(id:String,hero_id:=""):
+	if hero_id in MetaProgress.Academy.Stars.IDS and not world.hero_limit_reason(hero_id,"ally").is_empty():return null
 	if hero_id=="ORCA":
 		for airport in world.buildings:
 			if airport.side=="ally" and airport.is_operational() and airport.building_id in ["GAAIRC","AMRADR"]:
@@ -409,7 +410,7 @@ func _process_reinforcements() -> void:
 		if not str(row.get("hero","")).is_empty():
 			MetaProgress.Academy.promote(BattleRequest.combat_context.expedition_hero_profile,world,row.id,unit)
 			if not world.allied_state.has("expedition_first_hero_arrival"):world.allied_state.expedition_first_hero_arrival=reinforcement_clock
-		unit._grant_veteran(maxi(unit.veteran_level,int(row.get("rank",0))),false)
+		unit._grant_veteran(1 if row.get("alert_start_one",false) else maxi(unit.veteran_level,int(row.get("rank",0))),false)
 		unit.excluded_from_army_selection=bool(row.get("excluded",false))
 		var research_level := preload("res://scripts/expedition/research.gd").rank(Expedition.state,"army")
 		if research_level>=2 and str(row.get("hero",""))=="":
@@ -588,6 +589,7 @@ func install_hud(layer:CanvasLayer) -> void:
 	if field_ops.data.has("shelter_at"):
 		var shelter_pin:=side_button("定位 · 百合子初遇 · 雨棚")
 		shelter_pin.name="YurikoShelter"
+		shelter_pin.visible=field_ops.SchoolField.shelter_visible(field_ops.data)
 		shelter_pin.add_theme_color_override("font_color",field_ops.SchoolField.PINK)
 		shelter_pin.pressed.connect(func():world.center_on(field_ops.data.shelter_at))
 		body.add_child(shelter_pin)
@@ -774,6 +776,8 @@ func refresh_status() -> void:
 			if pin!=null:
 				pin.disabled=field_ops.data.school_finds[kind].taken
 				pin.text="%s · 百合子 · %s"%["已找到" if pin.disabled else "定位",field_ops.SchoolField.FINDS[kind]]
+		var shelter_pin:=hud_details.get_parent().get_node_or_null("YurikoShelter") as Button
+		if shelter_pin!=null:shelter_pin.visible=field_ops.SchoolField.shelter_visible(field_ops.data)
 		var archive_pin:=hud_details.get_parent().get_node_or_null("YurikoArchive") as Button
 		if archive_pin!=null:
 			archive_pin.disabled=field_ops.data.get("archive_taken",false)

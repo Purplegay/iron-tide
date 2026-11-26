@@ -221,6 +221,23 @@ func exercise_aircraft(mode: String, id: String) -> void:
 		label + "reload completes only at powered airport")
 	check(plane.logistics.resume_target == null and plane.attack_target == null and not plane.attack_ordered and not plane.attack_move,
 		label + "rearm clears legacy target and does not create another attack command")
+	# A wingman destroys the designated target before this aircraft can fire.
+	var lost_target = battle.spawn_unit("MTNK", "enemy", plane.position + Vector2(950, 0))
+	activate(lost_target)
+	battle.select_unit(plane, false)
+	battle.force_attack(lost_target)
+	for tick in ceili(12.0/physics_step):
+		plane._physics_process(physics_step)
+		if plane.position.distance_to(plane.logistics.dock_destination()) > 90.0: break
+	check(plane.attack_ordered and plane.position.distance_to(plane.logistics.dock_destination()) > 90.0 and plane.logistics.ammo > 0, label + "outbound armed before target loss", [plane.logistics.air_lift, plane.logistics.air_state, plane.attack_ordered])
+	lost_target.hp = 0.0
+	lost_target._die()
+	plane._physics_process(physics_step)
+	check(plane.logistics.air_state == "returning", label + "armed aircraft recalls on target death")
+	for tick in ceili(35.0/physics_step):
+		plane._physics_process(physics_step)
+		if plane.logistics.air_state == "parked": break
+	check(plane.logistics.air_state == "parked" and plane.position.distance_to(plane.logistics.dock_destination()) < 1.0, label + "interrupted sortie reaches reserved berth")
 	var docked: Vector2 = plane.position
 	for tick in ceili(10.0/physics_step):
 		plane._physics_process(physics_step)

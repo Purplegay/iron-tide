@@ -43,7 +43,7 @@ static func tick(unit,dt:float) -> void:
 
 static func advancing(unit) -> bool:
 	var s:Dictionary=unit.special.get(KEY,{})
-	return unit.unit_id=="E2" and eligible(unit) and s.get("side",unit.side)==unit.side and float(s.get("advance_left",0))>0
+	return unit.unit_id=="E2" and float(s.get("advance_left",0))>0 and s.get("side",unit.side)==unit.side and eligible(unit)
 
 static func attack(unit) -> float:
 	return 1.0+R.talent(unit,"alternate_advance","attack") if advancing(unit) else 1.0

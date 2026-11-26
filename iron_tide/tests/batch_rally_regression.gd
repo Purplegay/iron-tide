@@ -57,6 +57,9 @@ func exercise_mode(mode: String) -> void:
 	await refresh()
 	var button: Button = hud._prod_buttons["E1"]
 	var at := button.get_global_rect().get_center()
+	var notified_sizes: Array[int] = []
+	var record_queue := func(): notified_sizes.append(factory.production.size())
+	Events.production_queue_changed.connect(record_queue)
 	await move_pointer(at)
 	await mouse_button(at, true)
 	hud._tick_prod_hold(hud.HOLD_TIME + 0.1)
@@ -70,6 +73,8 @@ func exercise_mode(mode: String) -> void:
 	hud._tick_prod_hold(hud.HOLD_TIME + 0.1)
 	await mouse_button(at, false)
 	check(factory.production.size() == mini(11, factory.queue_capacity()), prefix + "batch respects current factory capacity")
+	check(notified_sizes == [5, 6, factory.production.size()], prefix + "each click publishes its final accepted queue once", notified_sizes)
+	Events.production_queue_changed.disconnect(record_queue)
 	drain(factory)
 	factory.enqueue("E1")
 	factory.enqueue("DOG")

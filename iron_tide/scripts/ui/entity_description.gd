@@ -3,6 +3,7 @@ extends RefCounted
 ## Describe implemented behavior, including deliberate project adaptations.
 const REAPER_CD_GUIDE := "血条右侧四个冷却圈：上排从左到右是火箭和前榴弹炮，下排是左、右榴弹炮。"
 const DETAILS := {
+	"CAMACH": "派工程师占领后，全地图的己方机械载具每 5 秒恢复 5 点生命，包括坦克、矿车和机械舰船。维修厂易手后，维修效果随归属转移。",
 	"CAOUTP": "护送油罐车抵达后，前哨站会恢复运转，为附近部队防空，并持续维修绿色范围内的己方地面载具。",
 	"V3ROCKET": "飞向指定地面目标的 V3 火箭。想保护基地，要在它落地爆炸前将它击落。",
 	"DMISL": "无畏级战舰一次先后发射两枚这样的导弹。防空部队可以逐枚拦截。",

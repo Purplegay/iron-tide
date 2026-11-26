@@ -20,6 +20,20 @@ func check(ok:bool,why:String) -> bool:
 	print("PASS " if ok else "FAIL ",why)
 	return ok
 
+var pickup_messages:Array[String]=[]
+
+func record_radio(who:String,line:String,_contact_id:String) -> void:
+	if who=="百合子":pickup_messages.append(line)
+
+func check_pickup_radio(kind:String,screen) -> void:
+	if not check(pickup_messages.size()==1,"exactly one pickup line for "+kind):return
+	var line:=pickup_messages[0]
+	check(line in Field.find_lines[kind],"line belongs to "+kind)
+	var radio=screen.hud.field_radio
+	var displayed:bool=radio.speaker.text=="百合子" and radio.body.text==line
+	var queued:bool=radio.waiting.any(func(entry):return entry.speaker=="百合子" and entry.message==line)
+	check(displayed or queued,"caption displayed or queued behind existing speaker")
+
 func open_battle(map:String,fresh:=true,stage:=1):
 	if fresh and not check(Expedition.start("美国","",121) and Expedition.choose(0),"prepare expedition"):return null
 	var plan:Dictionary=Expedition.state.duplicate(true)
@@ -33,9 +47,11 @@ func open_battle(map:String,fresh:=true,stage:=1):
 	if not check(Expedition.commit(plan) and Expedition.launch(0),"launch "+map):return null
 	var screen=load("res://scenes/battle.tscn").instantiate()
 	add_child(screen)
+	screen.expedition_runtime.field_ops.transmission.connect(record_radio)
 	return screen
 
 func recover(screen) -> void:
+	pickup_messages.clear()
 	var field=screen.expedition_runtime.field_ops
 	if field.data.has("school_finds"):
 		for kind:String in field.data.school_finds:
@@ -44,6 +60,9 @@ func recover(screen) -> void:
 			screen.battle.spawn_unit("E1","ally",item.position)
 			field.tick(.1)
 			check(item.taken,"ground team recovers "+kind)
+			check(bool(preload("res://scripts/expedition/rules.gd").context().get("yuriko_recruited",false))==Book.recruited_before(),"pickup immediately applies repeat recruitment: "+kind)
+			field.tick(0.0)
+			check_pickup_radio(kind,screen)
 		for job in field.data.objectives:
 			if job.get("hero_lead","")=="YURIKO":
 				screen.battle.spawn_unit("E1","ally",job.position)
@@ -54,6 +73,10 @@ func recover(screen) -> void:
 		screen.battle.spawn_unit("E1","ally",job.position)
 		field.tick(21.0)
 		check(job.done and not job.failed,"ordinary soldier secures "+str(job.school_gift))
+		field.tick(0.0)
+		if Book.met() or field.data.get("shelter_heard",false):
+			check_pickup_radio("fragment" if int(job.school_fragment)>0 else "diary",screen)
+		else:check(pickup_messages.is_empty(),"anonymous loot before first meeting stays silent")
 		return
 	check(false,"recoverable field objective")
 
@@ -80,7 +103,13 @@ func conclude() -> void:
 func run() -> void:
 	get_tree().current_scene=null
 	check(Book.commit({}),"begin isolated profile")
-	check(Field.encounter({"research":{"intel":1}},"exp_plain") and Field.encounter({"yuriko_recruited":true},"exp_plain"),"intel and recruited expeditions reveal first meeting inland")
+	var authored:Dictionary={}
+	for kind:String in ["diary","fragment"]:
+		check(Field.find_lines[kind].size()==20,"twenty authored captions for "+kind)
+		for line:String in Field.find_lines[kind]:
+			check(not line.strip_edges().is_empty() and not authored.has(line),"distinct line: "+line)
+			authored[line]=true
+	check(not Field.shelter_intel({"research":{"intel":1}}) and Field.shelter_intel({"research":{"intel":2}}),"level two reveals the shelter")
 	for kind:String in ["diary","fragment"]:
 		var payload:Dictionary={"diary":{"taken":kind=="diary","gift":"cola"},"fragment":{"taken":kind=="fragment","fragment":1}}
 		var receipt_run:Dictionary={"id":"single_find","stage":1}
@@ -94,7 +123,7 @@ func run() -> void:
 	base.free()
 	var screen=open_battle("exp_plain")
 	if screen==null:conclude();return
-	check(not screen.expedition_runtime.field_ops.data.has("shelter_at"),"other map has no shelter")
+	check(screen.expedition_runtime.field_ops.data.has("shelter_at") and not screen.expedition_runtime.field_ops.summary().contains("雨棚"),"inland shelter without intel")
 	var initial_field=screen.expedition_runtime.field_ops
 	for both_taken in [false,true]:
 		initial_field.data.school_finds={"diary":{"taken":true,"gift":"cola"},"fragment":{"taken":both_taken,"fragment":1}}
@@ -106,7 +135,8 @@ func run() -> void:
 		check(earned.get("daily_diaries",0)==1 and (int(earned.get("fragment",0))>0)==both_taken,"restore pays exactly what was collected")
 	initial_field.data.erase("school_extra_fragment")
 	initial_field.data.erase("school_finds")
-	Field.setup(initial_field,{"route":{"map":"exp_plain"},"research":{"intel":1}},true)
+	initial_field.data.erase("shelter_at")
+	Field.setup(initial_field,{"research":{"intel":2}},true)
 	check(initial_field.data.has("shelter_at"),"restore adds inland encounter for researched intel")
 	initial_field.data.erase("shelter_at")
 	recover(screen)
@@ -118,6 +148,8 @@ func run() -> void:
 		if screen==null:conclude();return
 		var field=screen.expedition_runtime.field_ops
 		if not check(field.data.has("shelter_at"),"reachable shelter generated"):conclude();return
+		Field.setup(field,{"research":{"intel":2}},true)
+		screen.expedition_runtime.refresh_status()
 		check(field.markers().any(func(m):return m.position==field.data.shelter_at and m.color==Field.PINK) and field.summary().contains("雨棚") and screen.find_child("YurikoShelter",true,false).is_visible_in_tree(),"pink shelter pin and visible HUD shortcut before discovery")
 		if outcome!="no visit":
 			screen.battle.spawn_unit("E1","ally",field.data.shelter_at)
@@ -136,6 +168,11 @@ func run() -> void:
 			if not check(Expedition.load_run() and Expedition.prepare_battle(),"resume encounter from disk"):conclude();return
 			screen=load("res://scenes/battle.tscn").instantiate()
 			add_child(screen)
+			var restored_field=screen.expedition_runtime.field_ops
+			restored_field.transmission.connect(record_radio)
+			pickup_messages.clear()
+			restored_field.tick(0.0)
+			check(pickup_messages.is_empty(),"restored pickup remains silent")
 			check(screen.expedition_runtime.field_ops.data.get("shelter_heard",false) and not Book.met(),"checkpoint remembers hearing the cue without granting early entry")
 		finish(screen,outcome!="loss")
 		check(Book.met()==(outcome=="win"),"discovery outcome "+outcome)
@@ -147,6 +184,17 @@ func run() -> void:
 	if screen==null:conclude();return
 	check(screen.expedition_runtime.field_ops.data.school_finds.keys()==["fragment"],"stage five has only the fragment")
 	recover(screen)
+	var pickup_field=screen.expedition_runtime.field_ops
+	var carrier=screen.battle.spawn_unit("E1","ally",screen.battle.player_start())
+	var box:={"id":"caption_box","kind":"box","phase":"carry","done":false,"failed":false,"depot":carrier.position,"position":carrier.position,"school_gift":"cola","school_fragment":0}
+	carrier.special.field_box=box.id
+	pickup_field.data.objectives.append(box)
+	pickup_messages.clear()
+	pickup_field.tick(.1)
+	pickup_field.tick(.1)
+	check(box.done,"fallback box delivered")
+	check_pickup_radio("diary",screen)
+	pickup_field.data.objectives.erase(box)
 	finish(screen,true)
 	get_tree().change_scene_to_file("res://scenes/meta.tscn")
 	await get_tree().scene_changed
@@ -222,6 +270,8 @@ func run() -> void:
 	recover(screen)
 	finish(screen,true)
 	check(Expedition.state.get("yuriko_recruited",false),"recover the recruitment letter and win")
+	MetaProgress.load_save()
+	check(Book.recruited_before(),"first recruitment persisted before fifth chapter")
 	screen=open_battle("exp_plain",false)
 	if screen==null:conclude();return
 	var field=screen.expedition_runtime.field_ops
@@ -269,6 +319,12 @@ func run() -> void:
 		recover(screen)
 		finish(screen,true)
 		if not check(Book.available(ep) and Book.affinity_level()==before_read,"victory unlocks only the next story without spending its reading reward "+ep.id):conclude();return
+	screen=open_battle("exp_plain",true,1)
+	if screen==null:conclude();return
+	recover(screen)
+	screen.battle._place_building("GAPILE","ally",screen.battle.player_start()+Vector2(145,100),true)
+	check(Psi.summon(screen.battle),"repeat diary allows same-battle summon before victory")
+	finish(screen,true)
 	var carried:=[{"kind":"cache"}]
 	Bonds.attach(carried)
 	check(carried[0].school_fragment==0,"completed collection still yields gifts without duplicate fragments")

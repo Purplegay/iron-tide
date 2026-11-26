@@ -78,5 +78,4 @@ static func entries(unit) -> Array:
 
 static func draw(unit) -> void:
 	var s:Dictionary=unit.special.get(KEY,{})
-	if s.has("recycled"):unit.draw_arc(Vector2.ZERO,unit.radius+19,0,TAU,36,Color(.3,1,.65,.8),2,true)
 	if s.has("purge_flash"):unit.draw_arc(Vector2.ZERO,unit.radius+35*(1-float(s.purge_flash)/.4),0,TAU,36,Color(.4,.9,1,clampf(s.purge_flash/.4,0,1)),3,true)

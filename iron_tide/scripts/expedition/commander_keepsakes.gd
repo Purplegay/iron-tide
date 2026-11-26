@@ -38,9 +38,8 @@ const ITEMS := {
 		"gift":"《袖口那么长》\n瑞珍把拆下来的风袋卷在我的手腕上，原来收拢后只有袖口那么长。她指着那个颜色最鲜的补丁，说只有这一段没在风里多待过，是师傅最近才补的。\n“旧布也能替新飞行员认路。”她系紧带子，把结留在我另一只手够得着的地方。",
 		"after":"《两本航迹簿》\n黑鹰报完油量，入侵者接着报天气，塔台抄着抄着换错了记录本。瑞珍把两页沿着雨印拼在一起，两条线恰好从同一面风袋底下经过。"},
 	"yusuf":{
-		"area":{"radius":180},
 		"name":"绿门车场的铜钥匙牌","partners":["DTRUCK","HARV"],"order":"签收运费",
-		"guide":"点己方矿车附近的地面（半径 {radius}），领取 5000 战场资金，冷却 600 秒。签收时，若己方利比亚自爆卡车和武装采矿车同时在场，则领取 10000 战场资金，本次冷却缩短至 240 秒。",
+		"guide":"点击签收，立即获得 {base} 战场资金。场上每辆己方矿车额外提供 {bonus} 资金。冷却 600 秒。己方利比亚自爆卡车和武装采矿车同时在场时，本次总收入翻倍，冷却缩短至 240 秒。",
 		"gift":"《留给末车》\n优素福把钥匙摘走，铜牌交给了我。牌上是一扇只漆了一半的门。他说钥匙归司机，牌归等车的人，回来时要让两样东西碰一下才算交班。\n我问他碰响了是不是就能下班。他看看炉子：“还得记得把饭端走。”",
 		"after":"《一张合单》\n两辆车一前一后驶过绿门，账房开了两张收条，司机却只肯领一份热饭。优素福揭开锅盖看看，给一份饭盛了两大勺，在合单上盖了个油乎乎的拇指印。"},
 	"edith":{
@@ -218,10 +217,18 @@ static func area_at_rank(id: String, level: int) -> Dictionary:
 		area[key] = roundi(int(base[key]) * (10 + steps) / 10.0)
 	return area
 
+static func freight_rates(level: int) -> Dictionary:
+	var scale := 9 + clampi(level, 1, MAX_RANK)
+	return {"base":500 * scale, "bonus":100 * scale}
+
 static func guide_for_run(id:String,run:Dictionary) -> String:
 	var guide:String=ITEMS[id].guide
 	var level := maxi(1,rank(id))
 	var progress := "已满档" if level == MAX_RANK else "每个新周目重逢可升一档"
+	if id == "yusuf":
+		guide = guide.format(freight_rates(level))
+		if level < MAX_RANK:
+			progress += " · 每升一档，基础运费加 500，每辆矿车多加 100"
 	var area := area_at_rank(id,level)
 	if not area.is_empty():
 		guide = guide.format(area)

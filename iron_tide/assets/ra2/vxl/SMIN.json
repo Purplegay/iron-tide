@@ -1,0 +1,18 @@
+{
+ "id": "SMIN",
+ "image": "SMIN",
+ "source": "ra2md.mix > localmd.mix > 0x7117d291",
+ "frameW": 114,
+ "frameH": 70,
+ "facings": 32,
+ "facing_offset": 16,
+ "poses": 1,
+ "detail_scale": 2,
+ "surface_render": "surface-vpl-2x",
+ "pose_source": "local VXL + HVA",
+ "shadow_projection": "ground-plane-v2",
+ "palette_lit": true,
+ "vxl": "SMIN.VXL",
+ "turret": "SMIN_turret",
+ "split_shadow": true
+}

@@ -59,6 +59,8 @@ func show_hero(id:String) -> void:
 	var tank:=id in Unit.TankHero.IDS
 	talent.set_item_text(0,"战术中枢" if tank else "随行护卫")
 	talent.set_item_text(1,"重装生存" if tank else "战场生存")
+	if id in Academy.Stars.IDS:
+		for i in 2:talent.set_item_text(i,Academy.Stars.TITLES[id][i])
 	if id in Unit.Convoy.IDs:
 		for i in 2:talent.set_item_text(i,Unit.Convoy.Talents.TITLES[id][i])
 	if id in Academy.Commandos.IDS:
@@ -75,6 +77,7 @@ func _select_talent() -> void:
 	if hero_id in Academy.Commandos.IDS or hero_id in Unit.Convoy.IDs:count=6
 	if hero_id=="ORCA":count=6 if escorts else preload("res://scripts/units/peregrine_defense.gd").OPEN_RANK+1
 	if hero_id=="TTNK":count=(preload("res://scripts/units/leizhu_command.gd").OPEN_RANK if escorts else preload("res://scripts/units/leizhu.gd").OPEN_RANK)+1
+	if hero_id in Academy.Stars.IDS:count=3
 	levels.clear()
 	for i in count: levels.add_item("预览 Lv.%d" % i)
 	var key:="hero_escort_ranks" if escorts else "hero_survival_ranks"
@@ -90,6 +93,9 @@ func restart() -> void:
 
 func refresh_caption() -> void:
 	var rank:=levels.selected
+	if hero_id in Academy.Stars.IDS:
+		caption.text=Academy.Stars.TRAITS[hero_id][talent.selected][rank]
+		refresh_preview();return
 	if hero_id in Unit.Convoy.IDs:
 		caption.text="Lv.%d　%s"%[rank,Unit.Convoy.Talents.TRAITS[hero_id][talent.selected][rank]]
 		refresh_preview();return
@@ -177,6 +183,8 @@ func _draw_demo() -> void:
 	stage.draw_rect(Rect2(Vector2.ZERO,stage.size),Color("#142331"))
 	var width:=minf(540,stage.size.x)
 	stage.draw_set_transform(Vector2((stage.size.x-width)*0.5,0),0,Vector2.ONE)
+	if hero_id in Academy.Stars.IDS:
+		preload("res://scripts/ui/hollywood_talent_demo.gd").draw(self,width);return
 	if hero_id in Unit.Convoy.IDs:
 		preload("res://scripts/ui/convoy_demo.gd").draw(self,width);return
 	if hero_id=="TTNK":

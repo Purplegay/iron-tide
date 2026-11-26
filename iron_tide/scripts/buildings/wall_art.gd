@@ -10,28 +10,32 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 static func is_wall(data: Dictionary) -> bool:
 	return (data.get("tags", []) as Array).has("wall")
 
+static func crushable_fence(actor) -> bool:
+	if not actor is Building or not is_wall(actor.data): return false
+	var rules: Dictionary = GameData.ra2_source_buildings.get(actor.building_id, {}).get("extra", {})
+	return GameData._ra2_flag(rules.get("Crushable", false))
+
 static func cell_at(point: Vector2) -> Vector2i:
 	return Vector2i((point / CELL + Vector2(0.5, 0.5)).floor())
 
 static func destroys_wall(id: String) -> bool:
-	return GameData._ra2_flag(Ra2Damage._extra(id, "WallAbsoluteDestroyer"))
+	return GameData.warhead_combat_rule(id).get("wall_absolute_destroyer", false)
 
 static func can_damage(id: String, armor: String) -> bool:
-	var rules := GameData.ra2_warhead_verses(id)
+	var rules := GameData.warhead_combat_rule(id)
 	# Scripted damage (e.g. crushing) and expansion weapons have separate rules.
 	if rules.is_empty() or id.begins_with("RA3_"): return true
-	var extra: Dictionary = rules.get("extra", {})
-	return GameData._ra2_flag(rules.get("wall", extra.get("Wall", false))) or destroys_wall(id) \
-		or (armor == "wood" and GameData._ra2_flag(rules.get("wood", extra.get("Wood", false))))
+	return rules.get("wall", false) or rules.get("wall_absolute_destroyer", false) \
+		or (armor == "wood" and rules.get("wood", false))
 
 static func shot_blocked(world, source, target, weapon: Dictionary) -> bool:
 	var warhead := str(weapon.get("ra2_warhead", ""))
 	if target is Building and target.ignores_warhead(warhead): return true
 	if not world is Battle or world.wall_cells.is_empty(): return false
-	var projectile := GameData.ra2_projectile(str(weapon.get("ra2_projectile", "")))
-	if not GameData._ra2_flag(projectile.get("extra", {}).get("SubjectToWalls", false)): return false
-	var rules := GameData.ra2_warhead_verses(warhead)
-	if GameData._ra2_flag(rules.get("wall", rules.get("extra", {}).get("Wall", false))) or destroys_wall(warhead): return false
+	var projectile := GameData.projectile_combat_rule(str(weapon.get("ra2_projectile", "")))
+	if not projectile.get("subject_to_walls", false): return false
+	var rules := GameData.warhead_combat_rule(warhead)
+	if rules.get("wall", false) or rules.get("wall_absolute_destroyer", false): return false
 	# Walk crossed placement cells, including both ends. At an exact grid
 	# corner only the diagonal cell is entered.
 	var start: Vector2 = source.global_position / CELL + Vector2(0.5, 0.5)
@@ -60,7 +64,7 @@ static func shot_blocked(world, source, target, weapon: Dictionary) -> bool:
 static func supported(data: Dictionary, art: Dictionary) -> bool:
 	return is_wall(data) and int(art.get("wall_layout", {}).get("variants", 0)) == 16
 
-static func mask_at(position: Vector2, id: String, side: String, buildings: Array) -> int:
+static func mask_at(position: Vector2, id: String, side: String, buildings: Array, pitch := CELL) -> int:
 	var mask := 0
 	for b in buildings:
 		if not is_instance_valid(b) or b.is_queued_for_deletion() or b.is_dead() or b.under_construction:
@@ -69,7 +73,7 @@ static func mask_at(position: Vector2, id: String, side: String, buildings: Arra
 			continue
 		var offset: Vector2 = b.global_position - position
 		for i in 4:
-			if offset.distance_to(DIRECTIONS[i] * CELL) < 0.1:
+			if offset.distance_to(DIRECTIONS[i] * pitch) < 0.1:
 				mask |= 1 << i
 	return mask
 
@@ -127,7 +131,7 @@ static func refresh_neighbors(wall: Node) -> void:
 		return
 	for other in wall.get_tree().get_nodes_in_group("buildings"):
 		if is_instance_valid(other) and other != wall and other.building_id == wall.building_id:
-			if other.global_position.distance_to(wall.global_position) <= CELL + 0.1:
+			if other.global_position.distance_to(wall.global_position) <= float(wall.special.get("native_wall_pitch", CELL)) + 0.1:
 				other.queue_redraw()
 
 ## One plan drives the ready preview and placement. Additional cells are paid

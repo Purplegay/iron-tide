@@ -1,0 +1,601 @@
+{
+ "specs": {
+  "_Amb_UrbanMurmur2": {
+   "sounds": [
+    "time_shift_aurb02a",
+    "time_shift_aurb02b",
+    "time_shift_aurb02c",
+    "time_shift_aurb02d"
+   ],
+   "volume": 30,
+   "range": 25
+  },
+  "_Amb_BirdsBeach": {
+   "sounds": [
+    "time_shift_agul02a",
+    "time_shift_agul02b",
+    "time_shift_agul02c",
+    "time_shift_agul02d",
+    "time_shift_agul02e",
+    "time_shift_agul02f",
+    "time_shift_agul02g",
+    "time_shift_agul02h",
+    "time_shift_agul02i",
+    "time_shift_agul02j"
+   ],
+   "volume": 30,
+   "range": 15
+  },
+  "_Amb_BirdsPark": {
+   "sounds": [
+    "time_shift_abirp01a",
+    "time_shift_abirp01b",
+    "time_shift_abirp01c",
+    "time_shift_abirp01d",
+    "time_shift_abirp01e"
+   ],
+   "volume": 35,
+   "range": 15
+  },
+  "_Amb_WindPlains": {
+   "sounds": [
+    "time_shift_awin02a",
+    "time_shift_awin02b",
+    "time_shift_awin02c",
+    "time_shift_awin02d"
+   ],
+   "volume": 55,
+   "range": 10
+  },
+  "_Amb_OceanLight": {
+   "sounds": [
+    "time_shift_awav02a",
+    "time_shift_awav02b",
+    "time_shift_awav02c",
+    "time_shift_awav02d"
+   ],
+   "volume": 55,
+   "range": 15
+  },
+  "_Amb_OceanHeavy": {
+   "sounds": [
+    "time_shift_awav01a",
+    "time_shift_awav01b",
+    "time_shift_awav01c",
+    "time_shift_awav01d"
+   ],
+   "volume": 45,
+   "range": 15
+  },
+  "_Amb_BirdsJungle2": {
+   "sounds": [
+    "time_shift_abirj02a",
+    "time_shift_abirj02b",
+    "time_shift_abirj02c",
+    "time_shift_abirj02d",
+    "time_shift_abirj02e",
+    "time_shift_abirj02f",
+    "time_shift_abirj02g"
+   ],
+   "volume": 30,
+   "range": 15
+  },
+  "_Amb_BirdsHarbor": {
+   "sounds": [
+    "time_shift_agul01a",
+    "time_shift_agul01b",
+    "time_shift_agul01c",
+    "time_shift_agul01d",
+    "time_shift_agul01e"
+   ],
+   "volume": 35,
+   "range": 15
+  },
+  "_Amb_JurrasicTrexRoar": {
+   "sounds": [
+    "time_shift_grexroa1",
+    "time_shift_grexroa2"
+   ],
+   "volume": 55,
+   "range": 15
+  },
+  "_Amb_JurrasicHowls": {
+   "sounds": [
+    "time_shift_ajur02a",
+    "time_shift_ajur02b",
+    "time_shift_ajur02c",
+    "time_shift_ajur02d"
+   ],
+   "volume": 55,
+   "range": 15
+  },
+  "_Amb_JurrasicBed": {
+   "sounds": [
+    "time_shift_ajur01a",
+    "time_shift_ajur01b",
+    "time_shift_ajur01c",
+    "time_shift_ajur01a",
+    "time_shift_ajur01b",
+    "time_shift_ajur01c",
+    "time_shift_ajur01d",
+    "time_shift_ajur01e"
+   ],
+   "volume": 40,
+   "range": 15
+  },
+  "TrexRoar": {
+   "sounds": [
+    "time_shift_grexroa1",
+    "time_shift_grexroa2"
+   ],
+   "volume": 100,
+   "range": 15
+  },
+  "CivAllFear": {
+   "sounds": [
+    "time_shift_iciafea",
+    "time_shift_iciafeb",
+    "time_shift_iciafec"
+   ],
+   "volume": 90,
+   "range": 15
+  },
+  "Cheer": {
+   "sounds": [
+    "time_shift_ucheer"
+   ],
+   "volume": 80,
+   "range": 15
+  },
+  "AirRaidSiren": {
+   "sounds": [
+    "time_shift_gairraid"
+   ],
+   "volume": 50,
+   "range": 15
+  },
+  "BaseUnderAttackSiren": {
+   "sounds": [
+    "time_shift_ubase"
+   ],
+   "volume": 55,
+   "range": 15
+  },
+  "CameraSwitch": {
+   "sounds": [
+    "time_shift_ucamera"
+   ],
+   "volume": 100,
+   "range": 15
+  }
+ },
+ "entries": {
+  "time_shift_aurb02a": {
+   "file": "time_shift/aurb02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 50850,
+   "durMs": 2306
+  },
+  "time_shift_aurb02b": {
+   "file": "time_shift/aurb02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 56952,
+   "durMs": 2583
+  },
+  "time_shift_aurb02c": {
+   "file": "time_shift/aurb02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 58986,
+   "durMs": 2675
+  },
+  "time_shift_aurb02d": {
+   "file": "time_shift/aurb02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 57969,
+   "durMs": 2629
+  },
+  "time_shift_agul02a": {
+   "file": "time_shift/agul02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 17994,
+   "durMs": 816
+  },
+  "time_shift_agul02b": {
+   "file": "time_shift/agul02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 47775,
+   "durMs": 2167
+  },
+  "time_shift_agul02c": {
+   "file": "time_shift/agul02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14471,
+   "durMs": 656
+  },
+  "time_shift_agul02d": {
+   "file": "time_shift/agul02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 15600,
+   "durMs": 707
+  },
+  "time_shift_agul02e": {
+   "file": "time_shift/agul02e.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14967,
+   "durMs": 679
+  },
+  "time_shift_agul02f": {
+   "file": "time_shift/agul02f.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14359,
+   "durMs": 651
+  },
+  "time_shift_agul02g": {
+   "file": "time_shift/agul02g.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36164,
+   "durMs": 1640
+  },
+  "time_shift_agul02h": {
+   "file": "time_shift/agul02h.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14447,
+   "durMs": 655
+  },
+  "time_shift_agul02i": {
+   "file": "time_shift/agul02i.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 23544,
+   "durMs": 1068
+  },
+  "time_shift_agul02j": {
+   "file": "time_shift/agul02j.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 54182,
+   "durMs": 2457
+  },
+  "time_shift_abirp01a": {
+   "file": "time_shift/abirp01a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31792,
+   "durMs": 1442
+  },
+  "time_shift_abirp01b": {
+   "file": "time_shift/abirp01b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 39431,
+   "durMs": 1788
+  },
+  "time_shift_abirp01c": {
+   "file": "time_shift/abirp01c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 26186,
+   "durMs": 1188
+  },
+  "time_shift_abirp01d": {
+   "file": "time_shift/abirp01d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 24160,
+   "durMs": 1096
+  },
+  "time_shift_abirp01e": {
+   "file": "time_shift/abirp01e.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13910,
+   "durMs": 631
+  },
+  "time_shift_awin02a": {
+   "file": "time_shift/awin02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 64528,
+   "durMs": 2926
+  },
+  "time_shift_awin02b": {
+   "file": "time_shift/awin02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 88271,
+   "durMs": 4003
+  },
+  "time_shift_awin02c": {
+   "file": "time_shift/awin02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 88023,
+   "durMs": 3992
+  },
+  "time_shift_awin02d": {
+   "file": "time_shift/awin02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 85725,
+   "durMs": 3888
+  },
+  "time_shift_awav02a": {
+   "file": "time_shift/awav02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 82329,
+   "durMs": 3734
+  },
+  "time_shift_awav02b": {
+   "file": "time_shift/awav02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 81961,
+   "durMs": 3717
+  },
+  "time_shift_awav02c": {
+   "file": "time_shift/awav02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 57561,
+   "durMs": 2610
+  },
+  "time_shift_awav02d": {
+   "file": "time_shift/awav02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 63487,
+   "durMs": 2879
+  },
+  "time_shift_awav01a": {
+   "file": "time_shift/awav01a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 126733,
+   "durMs": 5748
+  },
+  "time_shift_awav01b": {
+   "file": "time_shift/awav01b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 89104,
+   "durMs": 4041
+  },
+  "time_shift_awav01c": {
+   "file": "time_shift/awav01c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 141331,
+   "durMs": 6410
+  },
+  "time_shift_awav01d": {
+   "file": "time_shift/awav01d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 175373,
+   "durMs": 7953
+  },
+  "time_shift_abirj02a": {
+   "file": "time_shift/abirj02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 22407,
+   "durMs": 1016
+  },
+  "time_shift_abirj02b": {
+   "file": "time_shift/abirj02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37710,
+   "durMs": 1710
+  },
+  "time_shift_abirj02c": {
+   "file": "time_shift/abirj02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36340,
+   "durMs": 1648
+  },
+  "time_shift_abirj02d": {
+   "file": "time_shift/abirj02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 6839,
+   "durMs": 310
+  },
+  "time_shift_abirj02e": {
+   "file": "time_shift/abirj02e.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 10443,
+   "durMs": 474
+  },
+  "time_shift_abirj02f": {
+   "file": "time_shift/abirj02f.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48160,
+   "durMs": 2184
+  },
+  "time_shift_abirj02g": {
+   "file": "time_shift/abirj02g.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 21430,
+   "durMs": 972
+  },
+  "time_shift_agul01a": {
+   "file": "time_shift/agul01a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34578,
+   "durMs": 1568
+  },
+  "time_shift_agul01b": {
+   "file": "time_shift/agul01b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 50850,
+   "durMs": 2306
+  },
+  "time_shift_agul01c": {
+   "file": "time_shift/agul01c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41697,
+   "durMs": 1891
+  },
+  "time_shift_agul01d": {
+   "file": "time_shift/agul01d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 35595,
+   "durMs": 1614
+  },
+  "time_shift_agul01e": {
+   "file": "time_shift/agul01e.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 43731,
+   "durMs": 1983
+  },
+  "time_shift_grexroa1": {
+   "file": "time_shift/grexroa1.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 36765,
+   "durMs": 1667
+  },
+  "time_shift_grexroa2": {
+   "file": "time_shift/grexroa2.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 37357,
+   "durMs": 1694
+  },
+  "time_shift_ajur02a": {
+   "file": "time_shift/ajur02a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 90022,
+   "durMs": 4083
+  },
+  "time_shift_ajur02b": {
+   "file": "time_shift/ajur02b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 90221,
+   "durMs": 4092
+  },
+  "time_shift_ajur02c": {
+   "file": "time_shift/ajur02c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 124812,
+   "durMs": 5660
+  },
+  "time_shift_ajur02d": {
+   "file": "time_shift/ajur02d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 72546,
+   "durMs": 3290
+  },
+  "time_shift_ajur01a": {
+   "file": "time_shift/ajur01a.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 14763,
+   "durMs": 670
+  },
+  "time_shift_ajur01b": {
+   "file": "time_shift/ajur01b.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 21570,
+   "durMs": 978
+  },
+  "time_shift_ajur01c": {
+   "file": "time_shift/ajur01c.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 31751,
+   "durMs": 1440
+  },
+  "time_shift_ajur01d": {
+   "file": "time_shift/ajur01d.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46342,
+   "durMs": 2102
+  },
+  "time_shift_ajur01e": {
+   "file": "time_shift/ajur01e.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 125366,
+   "durMs": 5686
+  },
+  "time_shift_iciafea": {
+   "file": "time_shift/iciafea.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13870,
+   "durMs": 629
+  },
+  "time_shift_iciafeb": {
+   "file": "time_shift/iciafeb.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13141,
+   "durMs": 596
+  },
+  "time_shift_iciafec": {
+   "file": "time_shift/iciafec.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 12261,
+   "durMs": 556
+  },
+  "time_shift_ucheer": {
+   "file": "time_shift/ucheer.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 86798,
+   "durMs": 3936
+  },
+  "time_shift_gairraid": {
+   "file": "time_shift/gairraid.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 128839,
+   "durMs": 5843
+  },
+  "time_shift_ubase": {
+   "file": "time_shift/ubase.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 13802,
+   "durMs": 626
+  },
+  "time_shift_ucamera": {
+   "file": "time_shift/ucamera.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 21854,
+   "durMs": 991
+  }
+ }
+}

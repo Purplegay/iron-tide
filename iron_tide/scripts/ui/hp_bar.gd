@@ -51,7 +51,7 @@ static func readout(side: String, hp: float, maximum: float, shield: float) -> S
 	return text
 
 static func draw_readout(canvas: CanvasItem, rect: Rect2, side: String, hp: float, maximum: float, shield: float) -> void:
-	var text := readout(side, hp, maximum, shield)
+	var text := "中立" if side == "neutral" else readout(side, hp, maximum, shield)
 	if text.is_empty(): return
 	var baseline := Vector2(rect.get_center().x - 90.0, rect.position.y - (8.0 if shield > 0.0 else 3.0))
 	var font := ThemeDB.fallback_font
@@ -70,6 +70,8 @@ static func tier_color(frac: float) -> Color:
 	return TIER_HI
 
 static func faction_color(side: String) -> Color:
+	if side == "neutral": return Color.GRAY
+	if HouseColor.hollywood_enemy(side): return HouseColor.color_for_side(side, "")
 	return ally_fill if side == "ally" else enemy_fill
 
 ## 世界血条填充色：满血用阵营色，掉血后向红警式告警红过渡（低血=危险）。
