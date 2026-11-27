@@ -16,6 +16,8 @@ description: 在 Iron Tide 中快速接入、续作、排查或验收《红色�
 | 本轮任务 | 先看 |
 |---|---|
 | 新开一关、继续补任务或 AI | [执行流程与双表模板](references/workflow.md) 的「接入」；照最新交接找同类导出器和正式适配器 |
+| AI 有启用记录但未出兵，或对象动作找不到目标 | [执行流程与双表模板](references/workflow.md) 的「AI 规则已启用」和「依赖绑定对象的动作」 |
+| 跨场景恢复原对象并执行延迟动作 | [无头取证](references/headless-evidence.md) 的「跨场景对象和延迟动作」 |
 | 迁移地图、桥坡、预置对象或换时代 | [完整检查表](references/full-checklist.md) 的地图、覆层、预置建筑与换场；另读项目 `YR_SLOPE_PORTING.md`、`BRIDGE_PORTING.md`、`TERRAIN_PORT_GATE.md` |
 | 分支卡住、存档、结算或 CG | [执行流程与双表模板](references/workflow.md) 的「验收」；再查[完整检查表](references/full-checklist.md) 对应门槛 |
 | 批跑逐 ID AI，或复测超时项 | [无头取证](references/headless-evidence.md)，先辨路点、择敌和设施，不盲目倍速复跑 |
