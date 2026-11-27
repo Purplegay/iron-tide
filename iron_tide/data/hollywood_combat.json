@@ -1121,6 +1121,32 @@
    }
   }
  },
+ "projectiles": {
+  "YR_HOL_Invisiblelow": {
+   "id": "YR_HOL_Invisiblelow",
+   "image": "none",
+   "inviso": true,
+   "aa": false,
+   "extra": {
+    "AG": "yes",
+    "SubjectToWalls": "yes",
+    "SubjectToCliffs": "yes",
+    "SubjectToElevation": "yes"
+   }
+  },
+  "YR_HOL_Invisible4": {
+   "id": "YR_HOL_Invisible4",
+   "image": "none",
+   "inviso": true,
+   "aa": true,
+   "extra": {
+    "AG": "no",
+    "SubjectToWalls": "no",
+    "SubjectToCliffs": "no",
+    "SubjectToElevation": "no"
+   }
+  }
+ },
  "art": {
   "LTNK": {
    "cameo": "res://assets/ra2/cameo/LTNKICON.png"

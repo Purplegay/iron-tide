@@ -38,7 +38,12 @@ for(const [id,name] of Object.entries(names)){
  b.capturable = r.capturable?.toLowerCase() === 'true' || r.capturable?.toLowerCase() === 'yes';
  if(id==='YAPOWR')Object.assign(b,{garrison_slots:+r.passengers,extra_power:+r.extrapower,size_limit:+r.sizelimit});
  if(id==='NATBNK')b.garrison_slots=1;
- if(id==='YAGGUN'){b.guns=Array.from({length:6},(_,i)=>gun(r['weapon'+(i+1)]));b.weapon={...b.guns[0],ra2_aa:true};}
+ if(id==='YAGGUN'){
+  b.guns=Array.from({length:6},(_,i)=>gun(r['weapon'+(i+1)]));
+  // Use Projectile's native Inviso detonation, not Building's generic instant beam.
+  for(const w of b.guns)w.ra2_projectile='YR_HOL_'+w.ra2_projectile;
+  b.weapon={...b.guns[0],ra2_aa:true};
+ }
 
  sheet(id,id,true);
  const layers=[];

@@ -8,6 +8,49 @@ const Repack = preload("res://scripts/world/construction_repack.gd")
 static func effects_at(w,image:String,point:Vector2) -> Array:
 	return w.effects_root.get_children().filter(func(f): return f is Ra2Fx and f.anim.image==image and f.global_position.is_equal_approx(point))
 
+static func gatling_impacts_at(w,point:Vector2) -> int:
+	const RifleFx = preload("res://scripts/core/rifle_fx_batch.gd")
+	var count:=effects_at(w,"PIFFPIFF",point).size()
+	for batch in w.effects_root.get_children():
+		if batch is not RifleFx: continue
+		for entry in batch.entries:
+			if entry.anim.image=="PIFFPIFF" and batch.to_global(entry.point).is_equal_approx(point):
+				count+=1
+	return count
+
+static func gatling_projectiles(t,w,cannon,ground_target) -> void:
+	var air=w.spawn_unit("ZEP","ally",ground_target.position)
+	air.logistics.air_lift=100.0
+	w.fog.rebuild()
+	var stages:Array=cannon._turret_art.gatling.stages
+	for i in 3:
+		cannon.special.gattling_charge=0.0 if i==0 else stages[i-1]
+		for aerial in [false,true]:
+			var victim=air if aerial else ground_target
+			cannon.attack_target=victim
+			var direction:Vector2=victim.global_position-cannon.global_position
+			cannon._turret_art.angle=direction.angle()
+			var spec:Dictionary=cannon.data.guns[2*i+int(aerial)]
+			var projectile:=GameData.ra2_projectile(spec.ra2_projectile)
+			var muzzle:Vector2=cannon._weapon_muzzle()
+			var flash:=Ra2Fx.pick_directional(GameData.ra2_muzzle_anims(spec.ra2_weapon_id),Iso.dir(direction))
+			var contact:=Effects.hit_position(victim)
+			var flashes:=effects_at(w,flash,muzzle).size()
+			var impacts:=gatling_impacts_at(w,contact)
+			var hp:float=victim.hp
+			var fired:bool=cannon._fire()
+			var tag:String=spec.name
+			t.check(projectile.get("inviso",false) and projectile.get("aa",false)==aerial and victim.is_air_target()==aerial and fired and cannon.weapon.name==tag and victim.hp<hp,tag+" 使用正确弹道并在开火当帧扣血")
+			t.check(effects_at(w,flash,muzzle).size()==flashes+1 and gatling_impacts_at(w,contact)==impacts+1,tag+" 炮口与目标真实高度各生成原版特效")
+			var rounds:Array=w.projectiles_root.get_children().filter(func(shot): return shot is Projectile and shot.attacker_bonus.get("impact_weapon")==spec.ra2_weapon_id and shot.shooter()==cannon)
+			t.check(not rounds.is_empty() and rounds.all(func(shot): return shot.ra2_inviso and shot._detonated and shot.is_queued_for_deletion()),tag+" 不留下任何飞行圆点")
+	# The last shot was AA. Target validation must look at the next gun, not that cached weapon.
+	var wall=w._place_building("GAWALL",cannon.side,cannon.position+Vector2(55,0),true)
+	t.check(wall!=null and not cannon._valid_weapon_target(ground_target),"盖特由对空切回对地时，地面射线仍受围墙阻挡")
+	cannon.weapon=cannon.data.guns[4]
+	t.check(wall!=null and WallArt.shot_blocked(w,cannon,air,cannon.weapon) and cannon._valid_weapon_target(air),"盖特由对地切到对空时，射线不被下方围墙拦截")
+	if wall!=null: wall._die()
+
 static func barrel_pixels(art:Dictionary,points:Array) -> bool:
 	var image:=RA2Art.sprite_image(art)
 	if image==null or points.size()!=int(art.facings)*int(art.poses): return false
@@ -186,12 +229,13 @@ static func run(t,w) -> void:
 	cannon._turret_art.angle=shot_angle
 	cannon._think=2.0
 	cannon._cd=0.0
-	var rounds:int=w.projectiles_root.get_child_count()
+	var victim_hp:float=victim_at_gun.hp
 	cannon._process(0.01)
 	var firing_audio=cannon.get_node_or_null("GatlingReport")
-	t.check(cannon._gatling_followup_target==victim_at_gun and w.projectiles_root.get_child_count()==rounds+1,"固定盖特首发后保留同目标第二发")
+	t.check(cannon._gatling_followup_target==victim_at_gun and victim_at_gun.hp<victim_hp,"固定盖特首发立即扣血，并保留同目标第二发")
+	victim_hp=victim_at_gun.hp
 	cannon._process(0.1)
-	t.check(cannon._gatling_followup_target==null and cannon._cd>0 and w.projectiles_root.get_child_count()==rounds+2,"固定盖特装填期间实际打出第二发")
+	t.check(cannon._gatling_followup_target==null and cannon._cd>0 and victim_at_gun.hp<victim_hp,"固定盖特装填期间第二发立即扣血")
 	t.check(firing_audio!=null and firing_audio.playing and firing_audio==cannon.get_node_or_null("GatlingReport") and g.has_node("GatlingReport"),"车炮各用独立的持续枪声")
 	if firing_audio!=null:
 		t.check(firing_audio.stream.loop_mode==AudioStreamWAV.LOOP_FORWARD and firing_audio.stream.loop_begin>0 and firing_audio.stream.loop_end>firing_audio.stream.loop_begin,"盖特枪声跨过起转段后按采样点持续循环")
@@ -207,6 +251,7 @@ static func run(t,w) -> void:
 	t.check(cannon._fire() and cannon.weapon.name=="AGGattling3","持续射击后的固定盖特炮使用三档地面武器")
 	cannon._tick_gatling(1.0,false)
 	t.check(cannon._turret_art.spin_pose==0 and cannon.special.gattling_charge==0,"固定盖特炮停转归位")
+	gatling_projectiles(t,w,cannon,victim_at_gun)
 	var bunker=w.buildings.filter(func(b):return b.building_id=="NATBNK" and not b.special.get("occupants",[]).is_empty())[0]
 	var guard=bunker.special.occupants[0]
 	var rect:Rect2=guard.HollywoodTurrets.bunker_rect(bunker,guard)
@@ -398,7 +443,15 @@ static func mining(t,w) -> void:
 	var old_house=w.buildings.filter(func(b):return b.data.get("hollywood_art",false) and b.data.has("garrison_slots"))[0]
 	var house_point:Vector2=old_house.position
 	old_house.data.erase("fire_ports")
+	var old_cannon=w.buildings.filter(func(b):return b.building_id=="YAGGUN")[0]
+	var cannon_point:Vector2=old_cannon.position
+	for gun in old_cannon.data.guns+[old_cannon.data.weapon,old_cannon.weapon]:
+		gun.ra2_projectile=str(gun.ra2_projectile).trim_prefix("YR_HOL_")
+	old_cannon._cd=0.65
 	codec.restore(w,codec.capture(w))
+	var cannon=w.buildings.filter(func(b):return b.building_id=="YAGGUN" and b.position==cannon_point)[0]
+	var all_guns:Array=cannon.data.guns+[cannon.data.weapon,cannon.weapon]
+	t.check(all_guns.all(func(gun):return GameData.ra2_projectile(gun.ra2_projectile).get("inviso",false)) and is_equal_approx(cannon._cd,0.65),"旧档盖特换用隐形弹道，保留装填进度")
 	w.paused=false
 	w.get_tree().paused=false
 	site=w.buildings.filter(func(b):return b.building_id=="YAREFN")[0]

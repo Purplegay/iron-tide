@@ -307,7 +307,16 @@ func restore(world, snapshot: Dictionary) -> void:
 				for data in GameData.units_from_building("soviet","NAWEAP"):
 					if data.has("soviet_ra3") and not object.buildable.has(data.id):object.buildable.append(data.id)
 			object._turret_art.setup(object.building_id)
-			if object.building_id=="YAGGUN": object._turret_art.spin_pose=int(object.special.get("barrel_phase",0))
+			if object.building_id=="YAGGUN":
+				object._turret_art.spin_pose=int(object.special.get("barrel_phase",0))
+				# Old saves retain the building's weapon definitions. Refresh only
+				# the projectile IDs so ownership, damage and reload are untouched.
+				var retail: Dictionary = GameData.get_building("YAGGUN")
+				var projectiles := {}
+				for gun in retail.guns: projectiles[gun.ra2_weapon_id] = gun.ra2_projectile
+				for gun in object.data.get("guns", []) + [object.data.weapon, object.weapon]:
+					var id: String = gun.get("ra2_weapon_id", "")
+					if projectiles.has(id): gun.ra2_projectile = projectiles[id]
 			preload("res://scripts/rules/joint_ra2_production.gd").sync_catalog(object)
 			preload("res://scripts/expedition/rules.gd").sync_training_permits(object)
 			object.apply_mission_production_limits()

@@ -1779,7 +1779,13 @@ func _valid_weapon_target(target, force_order: bool = false) -> bool:
 	var air: bool = target.is_air_target() if target.has_method("is_air_target") else target.get("is_air") == true
 	if (air and building_id != "YAGGUN" and not CombatMath.can_hit_air(weapon)) or (not air and not _ground_targeting_allowed):
 		return false
-	return not WallArt.shot_blocked(battle, self, target, weapon)
+	var shot_weapon := _gatling_weapon(air) if building_id == "YAGGUN" else weapon
+	return not WallArt.shot_blocked(battle, self, target, shot_weapon)
+
+func _gatling_weapon(air: bool) -> Dictionary:
+	var charge := float(special.get("gattling_charge", 0.0))
+	var stage := HollywoodTurrets.stage(charge, _turret_art.gatling.stages)
+	return data.guns[stage * 2 + int(air)]
 
 func _fire() -> bool:
 	# RA2：Powered 防御建筑（磁暴线圈/光棱塔）低电时离线、不再开火
@@ -1790,10 +1796,8 @@ func _fire() -> bool:
 	if battle != null:
 		battle.reveal_attack(self, attack_target)
 	if building_id == "YAGGUN":
-		var charge := float(special.get("gattling_charge",0.0))
-		var stage := HollywoodTurrets.stage(charge,_turret_art.gatling.stages)
 		var air := attack_target is Unit and (attack_target as Unit).is_air_target()
-		weapon = data.guns[stage*2 + int(air)]
+		weapon = _gatling_weapon(air)
 		cooldown = float(weapon.cooldown)
 	var t_ra2 = attack_target.get("ra2_armor")
 	var shot_bonus := bonuses.duplicate(true)

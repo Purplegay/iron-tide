@@ -13,7 +13,14 @@ const ids=new Map();function add(id,source){if(!ids.has(id))ids.set(id,new Set()
 for(const kind of ['Infantry','Units','Aircraft','Structures'])for(const row of Object.values(sec(map,kind)))add(row.split(',')[1],kind);
 for(const group of Object.values(sec(map,'TaskForces')))for(const [key,row] of Object.entries(sec(map,group)))if(/^\d+$/.test(key))add(row.split(',')[1],'TaskForce');
 const yuri=JSON.parse(fs.readFileSync('data/hollywood_yuri.json'));const armor=['none','flak','plate','light','medium','heavy','wood','steel','concrete','special_1','special_2'];
-const pack={weapons:{},warheads:{}};
+const pack={weapons:{},warheads:{},projectiles:{}};
+// Scoped to the six fixed Gatling weapons. Do not override shared RA2 projectiles.
+for(let stage=1;stage<=6;stage++){
+ const id=raw(raw('YAGGUN')['weapon'+stage]).projectile,p=raw(id);
+ const yes=key=>p[key]?.toLowerCase()==='yes';
+ if(!yes('inviso'))throw Error('Expected an invisible YAGGUN projectile: '+id);
+ pack.projectiles['YR_HOL_'+id]={id:'YR_HOL_'+id,image:p.image,inviso:true,aa:yes('aa'),extra:{AG:p.ag||'yes',SubjectToWalls:p.subjecttowalls||'no',SubjectToCliffs:p.subjecttocliffs||'no',SubjectToElevation:p.subjecttoelevation||'no'}};
+}
 const cameoPalette = decodePal(src.read('cameo.pal').data);
 pack.art = {};
 const cast = JSON.parse(fs.readFileSync('data/hollywood_cast.json'));
