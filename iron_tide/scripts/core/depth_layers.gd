@@ -39,6 +39,12 @@ const ORDER_PREVIEW := 4091 # 自己已下达的命令高于迷雾（4090），�
 static func entity_z(pos: Vector2, map_size: float) -> int:
 	var axis := Vector2.DOWN.rotated(Iso.eff_angle())
 	var center := Vector2.ONE * map_size * 0.5
-	var extent := maxf(1.0, (absf(axis.x) + absf(axis.y)) * map_size * 0.5)
+	var extent := projection_extent(axis, map_size)
+	return projected_z(pos, axis, center, extent)
+
+static func projection_extent(axis: Vector2, map_size: float) -> float:
+	return maxf(1.0, (absf(axis.x) + absf(axis.y)) * map_size * 0.5)
+
+static func projected_z(pos: Vector2, axis: Vector2, center: Vector2, extent: float) -> int:
 	var depth := (pos - center).dot(axis) / extent
 	return DEPTH_OFFSET + roundi(clampf(depth, -1.0, 1.0) * DEPTH_HALF)

@@ -110,7 +110,7 @@ static func oil_income(site, delta: float) -> void:
 	var period := float(site.data.oil_period)
 	var payments := floori((elapsed + 1e-9) / period)
 	site.special.oil_elapsed = maxf(0.0, elapsed - payments * period)
-	if payments > 0: site.battle.credit_income(site.side, payments * int(site.data.oil_amount), true)
+	if payments > 0: site.battle.credit_income(site.battle.economy_owner(site), payments * int(site.data.oil_amount), true)
 
 static func crossing_span(lake: Rect2, intact: bool) -> Rect2:
 	var width := minf(120.0, lake.size.y * 0.34)

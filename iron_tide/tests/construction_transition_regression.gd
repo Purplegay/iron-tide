@@ -32,6 +32,14 @@ func site_skill(id: String) -> void:
 	var icon: Dictionary = UnitSkillLayout.info(mcv,2)
 	check(icon.name=="选址展开" and not icon.icon.is_empty(),id+" E skill supplies native yard icon")
 	check(battle.request_ability(UnitSkillLayout.index(mcv,2))==1 and battle.command_mode=="mcv_site",id+" E enters site picker")
+	var original_color := HouseColor.player_id
+	HouseColor.set_player_id("purple")
+	battle.queue_redraw()
+	await get_tree().process_frame
+	check(battle._build_ghosts.size() == 1 and battle._build_ghosts[0].data.id == mcv.deploy_building_id()
+		and battle._build_ghost_layer.material == HouseColor.material_for(HouseColor.player_color()),
+		id + " site picker uses the player house material")
+	HouseColor.set_player_id(original_color)
 	battle._issue_command_at(Vector2.ZERO)
 	check(battle.command_mode=="mcv_site" and not mcv.has_move_order,id+" invalid foundation keeps picker active")
 	battle._issue_command_at(goal)

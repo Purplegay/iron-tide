@@ -1,0 +1,5479 @@
+{
+  "hash": "498b989a4b6f579dee0904a77f1fabf982c14786db21a46c41900fc8344ec72b",
+  "stop": "0B752F3C",
+  "disarm": "0BBB5C6C",
+  "fleet": [
+    {
+      "id": "0C0A612C",
+      "tag": "0966B2BC",
+      "detect": "0966B44C",
+      "flag": 10,
+      "slot": 25,
+      "type": "SUB",
+      "ingress": 8
+    },
+    {
+      "id": "0C0A790C",
+      "tag": "0965FE5C",
+      "detect": "0965FF3C",
+      "flag": 11,
+      "slot": 24,
+      "type": "SUB",
+      "ingress": 10
+    },
+    {
+      "id": "0C0A756C",
+      "tag": "0965A28C",
+      "detect": "0965A36C",
+      "flag": 12,
+      "slot": 23,
+      "type": "SUB",
+      "ingress": 12
+    },
+    {
+      "id": "0C0A71CC",
+      "tag": "0966E57C",
+      "detect": "0966E65C",
+      "flag": 13,
+      "slot": 22,
+      "type": "SQD",
+      "ingress": 9
+    },
+    {
+      "id": "0C0A8B7C",
+      "tag": "0965341C",
+      "detect": "096534FC",
+      "flag": 14,
+      "slot": 21,
+      "type": "SQD",
+      "ingress": 11
+    },
+    {
+      "id": "0C0A87DC",
+      "tag": "0966E3AC",
+      "detect": "0966E48C",
+      "flag": 15,
+      "slot": 20,
+      "type": "HYD",
+      "ingress": 8
+    },
+    {
+      "id": "0C0A824C",
+      "tag": "09667F4C",
+      "detect": "09660C6C",
+      "flag": 16,
+      "slot": 19,
+      "type": "HYD",
+      "ingress": 9
+    },
+    {
+      "id": "0C0A9C8C",
+      "tag": "0966163C",
+      "detect": "0966136C",
+      "flag": 17,
+      "slot": 18,
+      "type": "HYD",
+      "ingress": 10
+    },
+    {
+      "id": "0C0A98EC",
+      "tag": "0966145C",
+      "detect": "0966153C",
+      "flag": 18,
+      "slot": 17,
+      "type": "HYD",
+      "ingress": 11
+    },
+    {
+      "id": "0C0A954C",
+      "tag": "09660D5C",
+      "detect": "09660E3C",
+      "flag": 19,
+      "slot": 16,
+      "type": "HYD",
+      "ingress": 12
+    },
+    {
+      "id": "0C04E5FC",
+      "tag": "096617FC",
+      "detect": "0966E2BC",
+      "flag": 20,
+      "slot": 15,
+      "type": "DRED",
+      "ingress": 8
+    },
+    {
+      "id": "0C04FEFC",
+      "tag": "096658CC",
+      "detect": "09665A4C",
+      "flag": null,
+      "slot": 14,
+      "type": "DRED",
+      "ingress": 10
+    },
+    {
+      "id": "0C04FA7C",
+      "tag": "096656FC",
+      "detect": "096657DC",
+      "flag": 22,
+      "slot": 13,
+      "type": "DRED",
+      "ingress": 12
+    }
+  ],
+  "opening": [
+    {
+      "id": "0B8913EC",
+      "delay": 3,
+      "teams": [
+        "0C0A612C",
+        "0C0A790C",
+        "0C0A756C"
+      ]
+    },
+    {
+      "id": "0B890BCC",
+      "delay": 15,
+      "teams": [
+        "0C0A71CC",
+        "0C0A8B7C"
+      ]
+    },
+    {
+      "id": "0B8906FC",
+      "delay": 5,
+      "teams": [
+        "0C0A824C",
+        "0C0A9C8C",
+        "0C0A98EC"
+      ]
+    },
+    {
+      "id": "0B896E6C",
+      "delay": 1,
+      "teams": [
+        "0C04FEFC"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "0968EE5C",
+      "delay": 1,
+      "rearm": 6,
+      "notice": "0968E62C",
+      "notice_delay": 10,
+      "cue": "EVA_ReinforcementsHaveArrived",
+      "flash": [
+        14
+      ],
+      "ships": [
+        {
+          "id": "0C04FEFC",
+          "tag": "096658CC",
+          "detect": "09665A4C",
+          "flag": null,
+          "slot": 14,
+          "type": "DRED",
+          "ingress": 10
+        }
+      ]
+    },
+    {
+      "id": "0966AC6C",
+      "delay": 0,
+      "rearm": 0,
+      "notice": "0966A2BC",
+      "notice_delay": 15,
+      "cue": "EVA_ReinforcementsHaveArrived",
+      "flash": [
+        25,
+        24,
+        23
+      ],
+      "ships": [
+        {
+          "id": "0C0A612C",
+          "tag": "0966B2BC",
+          "detect": "0966B44C",
+          "flag": 10,
+          "slot": 25,
+          "type": "SUB",
+          "ingress": 8
+        },
+        {
+          "id": "0C0A790C",
+          "tag": "0965FE5C",
+          "detect": "0965FF3C",
+          "flag": 11,
+          "slot": 24,
+          "type": "SUB",
+          "ingress": 10
+        },
+        {
+          "id": "0C0A756C",
+          "tag": "0965A28C",
+          "detect": "0965A36C",
+          "flag": 12,
+          "slot": 23,
+          "type": "SUB",
+          "ingress": 12
+        }
+      ]
+    },
+    {
+      "id": "0966170C",
+      "delay": 0,
+      "rearm": 0,
+      "notice": "0968EC8C",
+      "notice_delay": 3,
+      "cue": "EVA_ReinforcementsHaveArrived",
+      "flash": [
+        22,
+        21
+      ],
+      "ships": [
+        {
+          "id": "0C0A71CC",
+          "tag": "0966E57C",
+          "detect": "0966E65C",
+          "flag": 13,
+          "slot": 22,
+          "type": "SQD",
+          "ingress": 9
+        },
+        {
+          "id": "0C0A8B7C",
+          "tag": "0965341C",
+          "detect": "096534FC",
+          "flag": 14,
+          "slot": 21,
+          "type": "SQD",
+          "ingress": 11
+        }
+      ]
+    },
+    {
+      "id": "0968D20C",
+      "delay": 0,
+      "rearm": 0,
+      "notice": "0968EABC",
+      "notice_delay": 3,
+      "cue": "",
+      "flash": [
+        20,
+        19,
+        18,
+        17,
+        16
+      ],
+      "ships": [
+        {
+          "id": "0C0A824C",
+          "tag": "09667F4C",
+          "detect": "09660C6C",
+          "flag": 16,
+          "slot": 19,
+          "type": "HYD",
+          "ingress": 9
+        },
+        {
+          "id": "0C0A9C8C",
+          "tag": "0966163C",
+          "detect": "0966136C",
+          "flag": 17,
+          "slot": 18,
+          "type": "HYD",
+          "ingress": 10
+        },
+        {
+          "id": "0C0A98EC",
+          "tag": "0966145C",
+          "detect": "0966153C",
+          "flag": 18,
+          "slot": 17,
+          "type": "HYD",
+          "ingress": 11
+        }
+      ]
+    }
+  ],
+  "objective": {
+    "id": "08E4940C",
+    "delay": 1,
+    "cue": "EVA_ObjectiveComplete",
+    "text": "MISSION:Obj1Comp"
+  },
+  "reminder": {
+    "id": "094D448C",
+    "delay": 100,
+    "text": "MISSION:Sov1Obj1"
+  },
+  "power": [
+    {
+      "id": "094A4ADC",
+      "delay": 5,
+      "difficulty": [
+        1,
+        1,
+        1
+      ],
+      "group": "",
+      "cue": "Mis_xS1_ZofiaEngineersForPower",
+      "ping": null
+    },
+    {
+      "id": "079DB44C",
+      "delay": 60,
+      "difficulty": [
+        1,
+        1,
+        1
+      ],
+      "group": "",
+      "cue": "Mis_xS1_ZofiaYuriNeedsPower",
+      "ping": null
+    },
+    {
+      "id": "043DF33C",
+      "delay": 3,
+      "difficulty": [
+        1,
+        1,
+        1
+      ],
+      "group": "Reinforce_Atk Group 1",
+      "cue": "",
+      "ping": {
+        "id": "08FC09DC",
+        "delay": 15,
+        "slot": 496
+      }
+    },
+    {
+      "id": "0B454BBC",
+      "delay": 30,
+      "difficulty": [
+        1,
+        1,
+        1
+      ],
+      "group": "Reinforce_Cap Group 1",
+      "cue": "",
+      "ping": null
+    },
+    {
+      "id": "06A6629C",
+      "delay": 60,
+      "difficulty": [
+        0,
+        1,
+        1
+      ],
+      "group": "Reinforce_Atk Group 2",
+      "cue": "",
+      "ping": {
+        "id": "08FC0BAC",
+        "delay": 15,
+        "slot": 496
+      }
+    },
+    {
+      "id": "06A6646C",
+      "delay": 30,
+      "difficulty": [
+        0,
+        1,
+        1
+      ],
+      "group": "Reinforce_Cap Group 2",
+      "cue": "",
+      "ping": null
+    }
+  ],
+  "transportReturns": {
+    "Reinforce_Atk Group 1|132": {
+      "id": "06A674AC",
+      "flag": 31,
+      "event_flag": 31,
+      "reset": "0BE602DC",
+      "clear_flag": 31,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Atk Group 1|131": {
+      "id": "06A6767C",
+      "flag": 32,
+      "event_flag": 32,
+      "reset": "0C12423C",
+      "clear_flag": 32,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Atk Group 1|130": {
+      "id": "06A672DC",
+      "flag": 30,
+      "event_flag": 30,
+      "reset": "0C123B9C",
+      "clear_flag": 30,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 1|132": {
+      "id": "06A6710C",
+      "flag": 37,
+      "event_flag": 37,
+      "reset": "0C123F3C",
+      "clear_flag": 37,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 1|131": {
+      "id": "0B44E12C",
+      "flag": 38,
+      "event_flag": 38,
+      "reset": "0C12440C",
+      "clear_flag": 38,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 1|130": {
+      "id": "06A68F3C",
+      "flag": 36,
+      "event_flag": 36,
+      "reset": "0C123D6C",
+      "clear_flag": 36,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Atk Group 2|129": {
+      "id": "06A66BAC",
+      "flag": 29,
+      "event_flag": 29,
+      "reset": "0C1237FC",
+      "clear_flag": 29,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Atk Group 2|128": {
+      "id": "06A669DC",
+      "flag": 28,
+      "event_flag": 28,
+      "reset": "0C12345C",
+      "clear_flag": 28,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Atk Group 2|127": {
+      "id": "06A6680C",
+      "flag": 27,
+      "event_flag": 27,
+      "reset": "0C122A1C",
+      "clear_flag": 27,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 2|129": {
+      "id": "06A660CC",
+      "flag": 35,
+      "event_flag": 35,
+      "reset": "0C1239CC",
+      "clear_flag": 35,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 2|128": {
+      "id": "06A67E5C",
+      "flag": 34,
+      "event_flag": 34,
+      "reset": "0C12362C",
+      "clear_flag": 34,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    },
+    "Reinforce_Cap Group 2|127": {
+      "id": "06A67A6C",
+      "flag": 33,
+      "event_flag": 36,
+      "reset": "0C122E5C",
+      "clear_flag": 33,
+      "delay": 1,
+      "route": [
+        456,
+        133
+      ]
+    }
+  },
+  "engineer": {
+    "sale": {
+      "id": "096012AC",
+      "delay": 3,
+      "cue": "",
+      "text": "",
+      "flash": [],
+      "count": 0
+    },
+    "initial": {
+      "id": "06AF616C",
+      "delay": 25,
+      "cue": "",
+      "text": "",
+      "flash": [],
+      "count": 10
+    },
+    "arrival": {
+      "id": "077B395C",
+      "delay": 25,
+      "cue": "EVA_ReinforcementsHaveArrived",
+      "text": "MISSION:MoreEngn",
+      "flash": [
+        114
+      ],
+      "count": 0
+    },
+    "hint": {
+      "id": "0970A63C",
+      "delay": 20,
+      "cue": "",
+      "text": "MISSION:HintPowr",
+      "flash": [],
+      "count": 0
+    },
+    "rescue": {
+      "id": "06A25F3C",
+      "delay": 3,
+      "cue": "",
+      "text": "",
+      "flash": [],
+      "count": 6
+    },
+    "rescueArrival": {
+      "id": "09FF490C",
+      "delay": 25,
+      "cue": "EVA_ReinforcementsHaveArrived",
+      "text": "MISSION:MoreEngn",
+      "flash": [
+        114
+      ],
+      "count": 0
+    },
+    "powerHint": {
+      "id": "09577C4C",
+      "delay": 100,
+      "cue": "",
+      "text": "MISSION:Sov1Obj3",
+      "flash": [
+        115,
+        116,
+        117,
+        118,
+        119,
+        120
+      ],
+      "count": 0
+    }
+  },
+  "grid": {
+    "plants": {
+      "GAPOWRA": {
+        "id": "06B369EC",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      "GAPOWRB": {
+        "id": "06B3647C",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      "GAPOWRC": {
+        "id": "06B3664C",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      "GAPOWRD": {
+        "id": "06B3681C",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      "GAPOWRE": {
+        "id": "06B37D6C",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      "GAPOWRF": {
+        "id": "06B37F3C",
+        "enable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      }
+    },
+    "loss": [
+      {
+        "id": "06B8E14C",
+        "op": 36,
+        "flag": 40,
+        "enable": [
+          "06B8FF3C",
+          "06B8FD6C"
+        ],
+        "disable": [
+          "06B8E31C",
+          "06B8E14C"
+        ]
+      },
+      {
+        "id": "06B8E31C",
+        "op": 37,
+        "flag": 40,
+        "enable": [],
+        "disable": [
+          "06B8E14C",
+          "06B8E31C"
+        ]
+      },
+      {
+        "id": "06B8FF3C",
+        "op": 37,
+        "flag": 41,
+        "enable": [],
+        "disable": [
+          "06B8FD6C",
+          "06B8FF3C"
+        ]
+      },
+      {
+        "id": "06B8FD6C",
+        "op": 36,
+        "flag": 41,
+        "enable": [
+          "06B8FB9C"
+        ],
+        "disable": [
+          "06B8FF3C",
+          "06B8FD6C"
+        ]
+      },
+      {
+        "id": "06B8FB9C",
+        "op": 37,
+        "flag": 42,
+        "enable": [
+          "06B8F9CC"
+        ],
+        "disable": [
+          "06B8FB9C"
+        ]
+      },
+      {
+        "id": "06B8F9CC",
+        "op": 36,
+        "flag": 42,
+        "enable": [
+          "06B6156C"
+        ],
+        "disable": [
+          "06B8F9CC"
+        ]
+      }
+    ],
+    "full": {
+      "enough": {
+        "id": "0951864C",
+        "delay": 1,
+        "cue": "Mis_xS1_ZofiaEnoughPower",
+        "text": "",
+        "disable": [
+          "06AF616C",
+          "06A25F3C"
+        ],
+        "slot": null
+      },
+      "complete": {
+        "id": "08E495DC",
+        "delay": 6,
+        "cue": "",
+        "text": "MISSION:Obj3Comp",
+        "disable": [],
+        "slot": null
+      },
+      "camera": {
+        "id": "0BDE0ADC",
+        "delay": 1,
+        "cue": "",
+        "text": "",
+        "disable": [],
+        "slot": 62
+      },
+      "effect": {
+        "id": "0BDE287C",
+        "delay": 7,
+        "cue": "",
+        "text": "",
+        "disable": [
+          "079D7E1C"
+        ],
+        "slot": null
+      },
+      "animation": {
+        "id": "0951A8BC",
+        "delay": 1,
+        "cue": "",
+        "text": "",
+        "disable": [
+          "0951A8BC"
+        ],
+        "slot": null
+      },
+      "detect": {
+        "id": "0BDE024C",
+        "enable": [
+          "0951864C",
+          "08E495DC"
+        ],
+        "disable": [
+          "09577C4C",
+          "0970A63C",
+          "079DB44C"
+        ]
+      }
+    },
+    "warning": {
+      "id": "04429F3C",
+      "delay": 3,
+      "cue": "Mis_xS1_ZofiaYuriAlmostPowered"
+    },
+    "tech": {
+      "GAPOWRA": {
+        "id": "0442A5EC",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      },
+      "GAPOWRB": {
+        "id": "0442A4FC",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      },
+      "GAPOWRC": {
+        "id": "0442A40C",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      },
+      "GAPOWRD": {
+        "id": "0442A31C",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      },
+      "GAPOWRE": {
+        "id": "0442A22C",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      },
+      "GAPOWRF": {
+        "id": "0442A13C",
+        "enable": [
+          "0442C90C",
+          "04429F3C"
+        ]
+      }
+    },
+    "attackWarnings": {
+      "machine": {
+        "id": "06C0F45C",
+        "cue": "Mis_xS1_ZofiaSaveTimeMach",
+        "text": "MISSION:WarnStct"
+      },
+      "plant": {
+        "id": "0951918C",
+        "cue": "Mis_xS1_ZofiaDoNotKillPower",
+        "text": "MISSION:WarnStct"
+      }
+    },
+    "techDisable": {
+      "id": "0442C90C",
+      "delay": 0,
+      "disable": [
+        "0951972C",
+        "0442A5EC",
+        "0442A4FC",
+        "0442A40C",
+        "0442A31C",
+        "0442A22C",
+        "0442A13C"
+      ]
+    }
+  },
+  "media": {
+    "094C722C": {
+      "id": "094C722C",
+      "event": 13,
+      "delay": 1,
+      "cue": "Mis_xS1_ZofiaNavalAttack",
+      "text": "",
+      "enable": [],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0DD8E18C": {
+      "id": "0DD8E18C",
+      "event": 13,
+      "delay": 5,
+      "cue": "Mis_xS1_ZofiaAlcatrazIntro",
+      "text": "",
+      "enable": [],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0D17F50C": {
+      "id": "0D17F50C",
+      "event": 36,
+      "delay": 0,
+      "cue": "Mis_xS1_ZofiaBriefing01",
+      "text": "",
+      "enable": [
+        "0DD8E32C",
+        "05D70C3C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0DD8E32C": {
+      "id": "0DD8E32C",
+      "event": 13,
+      "delay": 10,
+      "cue": "Mis_xS1_ZofiaBriefing02",
+      "text": "",
+      "enable": [
+        "0DE581DC"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0DE581DC": {
+      "id": "0DE581DC",
+      "event": 13,
+      "delay": 15,
+      "cue": "",
+      "text": "",
+      "enable": [
+        "0D17008C"
+      ],
+      "slot": null,
+      "camera": 61,
+      "frames": 0
+    },
+    "091B431C": {
+      "id": "091B431C",
+      "event": 13,
+      "delay": 23,
+      "cue": "Mis_xS1_ZofiaBriefing03",
+      "text": "",
+      "enable": [
+        "0B8A231C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0D17FAAC": {
+      "id": "0D17FAAC",
+      "event": 36,
+      "delay": 0,
+      "cue": "Mis_xS1_BorisReporting",
+      "text": "",
+      "enable": [
+        "0D17876C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0D17876C": {
+      "id": "0D17876C",
+      "event": 13,
+      "delay": 3,
+      "cue": "Unit_Sofia_Boris",
+      "text": "",
+      "enable": [
+        "091B431C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "09577E1C": {
+      "id": "09577E1C",
+      "event": 13,
+      "delay": 100,
+      "cue": "",
+      "text": "MISSION:Sov1Obj2",
+      "enable": [],
+      "slot": 62,
+      "camera": null,
+      "frames": 0
+    },
+    "043E7EDC": {
+      "id": "043E7EDC",
+      "event": 13,
+      "delay": 80,
+      "cue": "",
+      "text": "MISSION:Sov1Obj2a",
+      "enable": [],
+      "slot": 66,
+      "camera": null,
+      "frames": 0
+    },
+    "05BF392C": {
+      "id": "05BF392C",
+      "event": 32,
+      "delay": 0,
+      "cue": "",
+      "text": "",
+      "enable": [
+        "05BF366C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "05BF375C": {
+      "id": "05BF375C",
+      "event": 32,
+      "delay": 0,
+      "cue": "",
+      "text": "",
+      "enable": [
+        "05BF4E3C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "05BF366C": {
+      "id": "05BF366C",
+      "event": 13,
+      "delay": 25,
+      "cue": "Unit_Sofia_TechMachShop",
+      "text": "",
+      "enable": [],
+      "slot": null,
+      "camera": 64,
+      "frames": 200
+    },
+    "05BF4E3C": {
+      "id": "05BF4E3C",
+      "event": 13,
+      "delay": 25,
+      "cue": "Unit_Sofia_TechMachShop",
+      "text": "",
+      "enable": [],
+      "slot": null,
+      "camera": 64,
+      "frames": 200
+    },
+    "07837A2C": {
+      "id": "07837A2C",
+      "event": 4,
+      "delay": 0,
+      "cue": "Unit_Sofia_TechHospital",
+      "text": "",
+      "enable": [],
+      "slot": null,
+      "camera": 98,
+      "frames": 120
+    },
+    "0439CD6C": {
+      "id": "0439CD6C",
+      "event": 13,
+      "delay": 3,
+      "cue": "Mis_xS1_ZofiaBorisInPast",
+      "text": "",
+      "enable": [
+        "0439C90C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0439C90C": {
+      "id": "0439C90C",
+      "event": 13,
+      "delay": 7,
+      "cue": "Mis_xS1_BorisPuzzled",
+      "text": "",
+      "enable": [
+        "0439C73C"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    },
+    "0439C73C": {
+      "id": "0439C73C",
+      "event": 13,
+      "delay": 8,
+      "cue": "Mis_xS1_ZofiaRespondsToBoris",
+      "text": "",
+      "enable": [
+        "0439C2DC"
+      ],
+      "slot": null,
+      "camera": null,
+      "frames": 0
+    }
+  },
+  "ambience": {
+    "0942BC2C": {
+      "id": "0942BC2C",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_UrbanMurmur2",
+          458
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          440
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          443
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          442
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          459
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          130
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          125
+        ]
+      ]
+    },
+    "0942CCDC": {
+      "id": "0942CCDC",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_BirdsBeach",
+          55
+        ],
+        [
+          "_Amb_BirdsBeach",
+          490
+        ],
+        [
+          "_Amb_BirdsBeach",
+          77
+        ],
+        [
+          "_Amb_BirdsBeach",
+          499
+        ],
+        [
+          "_Amb_BirdsPark",
+          67
+        ]
+      ]
+    },
+    "0942E17C": {
+      "id": "0942E17C",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_WindPlains",
+          72
+        ],
+        [
+          "_Amb_WindPlains",
+          105
+        ],
+        [
+          "_Amb_WindPlains",
+          141
+        ],
+        [
+          "_Amb_WindPlains",
+          128
+        ],
+        [
+          "_Amb_WindPlains",
+          453
+        ],
+        [
+          "_Amb_WindPlains",
+          439
+        ],
+        [
+          "_Amb_WindPlains",
+          442
+        ],
+        [
+          "_Amb_WindPlains",
+          114
+        ]
+      ]
+    },
+    "094492EC": {
+      "id": "094492EC",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_OceanLight",
+          468
+        ],
+        [
+          "_Amb_OceanLight",
+          469
+        ],
+        [
+          "_Amb_OceanLight",
+          470
+        ],
+        [
+          "_Amb_OceanLight",
+          471
+        ],
+        [
+          "_Amb_OceanLight",
+          472
+        ],
+        [
+          "_Amb_OceanLight",
+          473
+        ],
+        [
+          "_Amb_OceanLight",
+          475
+        ],
+        [
+          "_Amb_OceanLight",
+          476
+        ],
+        [
+          "_Amb_OceanLight",
+          493
+        ]
+      ]
+    },
+    "043EC6CC": {
+      "id": "043EC6CC",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_OceanHeavy",
+          26
+        ],
+        [
+          "_Amb_OceanHeavy",
+          27
+        ],
+        [
+          "_Amb_OceanHeavy",
+          28
+        ],
+        [
+          "_Amb_OceanHeavy",
+          29
+        ],
+        [
+          "_Amb_OceanHeavy",
+          30
+        ],
+        [
+          "_Amb_OceanHeavy",
+          31
+        ],
+        [
+          "_Amb_OceanHeavy",
+          32
+        ]
+      ]
+    },
+    "043EC4FC": {
+      "id": "043EC4FC",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_BirdsJungle2",
+          68
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          502
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          70
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          503
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          69
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          465
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          41
+        ]
+      ]
+    },
+    "043ED65C": {
+      "id": "043ED65C",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_OceanLight",
+          477
+        ],
+        [
+          "_Amb_OceanLight",
+          481
+        ],
+        [
+          "_Amb_OceanLight",
+          496
+        ],
+        [
+          "_Amb_OceanLight",
+          480
+        ],
+        [
+          "_Amb_OceanLight",
+          492
+        ],
+        [
+          "_Amb_OceanLight",
+          495
+        ],
+        [
+          "_Amb_OceanLight",
+          491
+        ],
+        [
+          "_Amb_OceanLight",
+          78
+        ],
+        [
+          "_Amb_OceanLight",
+          478
+        ],
+        [
+          "_Amb_OceanLight",
+          487
+        ],
+        [
+          "_Amb_OceanLight",
+          494
+        ]
+      ]
+    },
+    "060365BC": {
+      "id": "060365BC",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_BirdsHarbor",
+          479
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          53
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          478
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          473
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          469
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          475
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          499
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          79
+        ]
+      ]
+    },
+    "07DC3A4C": {
+      "id": "07DC3A4C",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_BirdsHarbor",
+          494
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          142
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          500
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          474
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          485
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          486
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          482
+        ],
+        [
+          "_Amb_BirdsHarbor",
+          489
+        ]
+      ]
+    },
+    "0612D2DC": {
+      "id": "0612D2DC",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_UrbanMurmur2",
+          131
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          451
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          453
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          448
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          421
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          446
+        ],
+        [
+          "_Amb_UrbanMurmur2",
+          111
+        ]
+      ]
+    },
+    "0612F98C": {
+      "id": "0612F98C",
+      "jurassic": false,
+      "points": [
+        [
+          "_Amb_WindPlains",
+          132
+        ],
+        [
+          "_Amb_WindPlains",
+          462
+        ],
+        [
+          "_Amb_WindPlains",
+          463
+        ],
+        [
+          "_Amb_WindPlains",
+          458
+        ],
+        [
+          "_Amb_WindPlains",
+          75
+        ],
+        [
+          "_Amb_WindPlains",
+          135
+        ],
+        [
+          "_Amb_WindPlains",
+          432
+        ]
+      ]
+    },
+    "0606FA0C": {
+      "id": "0606FA0C",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_BirdsJungle2",
+          42
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          43
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          44
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          45
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          46
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          47
+        ],
+        [
+          "_Amb_BirdsJungle2",
+          48
+        ]
+      ]
+    },
+    "07E30BFC": {
+      "id": "07E30BFC",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_OceanHeavy",
+          33
+        ],
+        [
+          "_Amb_OceanHeavy",
+          34
+        ],
+        [
+          "_Amb_OceanHeavy",
+          35
+        ],
+        [
+          "_Amb_OceanHeavy",
+          36
+        ],
+        [
+          "_Amb_OceanHeavy",
+          37
+        ],
+        [
+          "_Amb_OceanHeavy",
+          38
+        ],
+        [
+          "_Amb_OceanHeavy",
+          39
+        ],
+        [
+          "_Amb_OceanHeavy",
+          40
+        ]
+      ]
+    },
+    "07907F3C": {
+      "id": "07907F3C",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_JurrasicTrexRoar",
+          41
+        ],
+        [
+          "_Amb_JurrasicTrexRoar",
+          42
+        ],
+        [
+          "_Amb_JurrasicTrexRoar",
+          46
+        ],
+        [
+          "_Amb_JurrasicTrexRoar",
+          47
+        ],
+        [
+          "_Amb_JurrasicTrexRoar",
+          69
+        ],
+        [
+          "_Amb_JurrasicTrexRoar",
+          70
+        ]
+      ]
+    },
+    "05CB7D1C": {
+      "id": "05CB7D1C",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_JurrasicHowls",
+          43
+        ],
+        [
+          "_Amb_JurrasicHowls",
+          45
+        ],
+        [
+          "_Amb_JurrasicHowls",
+          48
+        ],
+        [
+          "_Amb_JurrasicHowls",
+          502
+        ]
+      ]
+    },
+    "05CCF03C": {
+      "id": "05CCF03C",
+      "jurassic": true,
+      "points": [
+        [
+          "_Amb_JurrasicBed",
+          41
+        ],
+        [
+          "_Amb_JurrasicBed",
+          43
+        ],
+        [
+          "_Amb_JurrasicBed",
+          47
+        ],
+        [
+          "_Amb_JurrasicBed",
+          48
+        ],
+        [
+          "_Amb_JurrasicBed",
+          68
+        ]
+      ]
+    }
+  },
+  "late": {
+    "07A5F24C": {
+      "id": "07A5F24C",
+      "delay": 1,
+      "enable": [
+        "0441445C",
+        "0441427C",
+        "0441436C",
+        "0441418C",
+        "0441409C",
+        "04415F3C",
+        "04415E4C",
+        "04415D5C"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0441445C": {
+      "id": "0441445C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        90
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0441427C": {
+      "id": "0441427C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        92
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0441436C": {
+      "id": "0441436C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        91,
+        91,
+        91
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0441418C": {
+      "id": "0441418C",
+      "delay": 0,
+      "enable": [
+        "04412A6C",
+        "04418C8C",
+        "07A190BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": "CASANF11",
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0441409C": {
+      "id": "0441409C",
+      "delay": 0,
+      "enable": [
+        "04412A6C",
+        "04418C8C",
+        "07A190BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": "CASANF04",
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "04415F3C": {
+      "id": "04415F3C",
+      "delay": 0,
+      "enable": [
+        "04412A6C",
+        "04418C8C",
+        "07A190BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": "CASANF12",
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "04415E4C": {
+      "id": "04415E4C",
+      "delay": 0,
+      "enable": [
+        "04412A6C",
+        "04418C8C",
+        "07A190BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": "CASANF13",
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "04415D5C": {
+      "id": "04415D5C",
+      "delay": 0,
+      "enable": [
+        "04412A6C",
+        "04418C8C",
+        "07A190BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": "CASANF14",
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "04412A6C": {
+      "id": "04412A6C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        93,
+        93,
+        93,
+        93,
+        93,
+        93,
+        93,
+        93
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "04418C8C": {
+      "id": "04418C8C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        94,
+        95,
+        95,
+        95,
+        95,
+        95,
+        95,
+        95,
+        95
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "07A190BC": {
+      "id": "07A190BC",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [
+        96,
+        96,
+        96,
+        96,
+        96,
+        96,
+        96,
+        96
+      ],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0B63FB2C": {
+      "id": "0B63FB2C",
+      "delay": 0,
+      "enable": [
+        "0B63F5EC",
+        "0905A37C",
+        "0905A54C",
+        "0905A89C",
+        "0905B51C",
+        "090D21BC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": [
+        [
+          "YAGGUN",
+          74
+        ],
+        [
+          "YAGGUN",
+          75
+        ],
+        [
+          "YAGGUN",
+          76
+        ]
+      ]
+    },
+    "0B63F5EC": {
+      "id": "0B63F5EC",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [
+        [
+          "YAGGUN",
+          42,
+          64
+        ],
+        [
+          "YAGGUN",
+          37,
+          59
+        ],
+        [
+          "YAGGUN",
+          51,
+          63
+        ],
+        [
+          "YAGGUN",
+          47,
+          77
+        ],
+        [
+          "YAGGUN",
+          43,
+          60
+        ],
+        [
+          "YAGGUN",
+          43,
+          79
+        ],
+        [
+          "YAGGUN",
+          35,
+          63
+        ],
+        [
+          "YAGGUN",
+          40,
+          58
+        ],
+        [
+          "YAGGUN",
+          51,
+          60
+        ],
+        [
+          "YAGGUN",
+          53,
+          74
+        ],
+        [
+          "YAGGUN",
+          50,
+          69
+        ],
+        [
+          "YAGGUN",
+          39,
+          79
+        ],
+        [
+          "YAGGUN",
+          50,
+          76
+        ],
+        [
+          "YAGGUN",
+          35,
+          76
+        ],
+        [
+          "YAGGUN",
+          33,
+          70
+        ],
+        [
+          "YAGGUN",
+          45,
+          75
+        ],
+        [
+          "YAGGUN",
+          42,
+          72
+        ],
+        [
+          "YAGGUN",
+          38,
+          68
+        ],
+        [
+          "YAGGUN",
+          42,
+          68
+        ],
+        [
+          "YAGGUN",
+          38,
+          72
+        ],
+        [
+          "YAGGUN",
+          47,
+          69
+        ],
+        [
+          "YAGGUN",
+          47,
+          66
+        ],
+        [
+          "YAGGUN",
+          37,
+          76
+        ],
+        [
+          "NANRCT",
+          20,
+          44
+        ]
+      ],
+      "teams": [],
+      "buildings": [
+        [
+          "CAMSC03",
+          56
+        ],
+        [
+          "CAMSC04",
+          83
+        ],
+        [
+          "CAMSC05",
+          84
+        ],
+        [
+          "CAMSC04",
+          85
+        ],
+        [
+          "CAMSC02",
+          86
+        ],
+        [
+          "CAMSC03",
+          87
+        ],
+        [
+          "CAMSC05",
+          88
+        ],
+        [
+          "CAMSC04",
+          89
+        ]
+      ]
+    },
+    "0905A37C": {
+      "id": "0905A37C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [
+        {
+          "at": 490,
+          "members": [
+            [
+              "1",
+              "CIVBFM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 58,
+          "members": [
+            [
+              "1",
+              "CIVBF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 84,
+          "members": [
+            [
+              "1",
+              "CIVBF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 77,
+          "members": [
+            [
+              "1",
+              "CIVBTM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 438,
+          "members": [
+            [
+              "1",
+              "CIV3"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 132,
+          "members": [
+            [
+              "1",
+              "CIV3"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 424,
+          "members": [
+            [
+              "1",
+              "CIV3"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 141,
+          "members": [
+            [
+              "1",
+              "CIVSFM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 458,
+          "members": [
+            [
+              "1",
+              "CIVSFM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 425,
+          "members": [
+            [
+              "1",
+              "CIVSFM"
+            ]
+          ],
+          "route": []
+        }
+      ],
+      "buildings": []
+    },
+    "0905A54C": {
+      "id": "0905A54C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [
+        {
+          "at": 74,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 128,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 451,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 75,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 457,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 456,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 463,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 431,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 427,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 130,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 450,
+          "members": [
+            [
+              "1",
+              "CIV1"
+            ]
+          ],
+          "route": []
+        }
+      ],
+      "buildings": []
+    },
+    "0905A89C": {
+      "id": "0905A89C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [
+        {
+          "at": 417,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 421,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 459,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 135,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 136,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 125,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 454,
+          "members": [
+            [
+              "1",
+              "CIV2"
+            ]
+          ],
+          "route": []
+        }
+      ],
+      "buildings": []
+    },
+    "0905B51C": {
+      "id": "0905B51C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [
+        {
+          "at": 123,
+          "members": [
+            [
+              "1",
+              "CIVSF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 76,
+          "members": [
+            [
+              "1",
+              "CIVSF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 442,
+          "members": [
+            [
+              "1",
+              "CIVSF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 124,
+          "members": [
+            [
+              "1",
+              "CIVSF"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 452,
+          "members": [
+            [
+              "1",
+              "CIVSTM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 134,
+          "members": [
+            [
+              "1",
+              "CIVSTM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 464,
+          "members": [
+            [
+              "1",
+              "CIVSTM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 455,
+          "members": [
+            [
+              "1",
+              "CIVSTM"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 474,
+          "members": [
+            [
+              "1",
+              "CRUISE"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 486,
+          "members": [
+            [
+              "1",
+              "CRUISE"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 485,
+          "members": [
+            [
+              "1",
+              "TUG"
+            ]
+          ],
+          "route": []
+        }
+      ],
+      "buildings": []
+    },
+    "090D21BC": {
+      "id": "090D21BC",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [
+        {
+          "at": 63,
+          "members": [
+            [
+              "1",
+              "E1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 647,
+          "members": [
+            [
+              "1",
+              "E1"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 648,
+          "members": [
+            [
+              "1",
+              "E1"
+            ]
+          ],
+          "route": []
+        }
+      ],
+      "buildings": []
+    },
+    "0919E26C": {
+      "id": "0919E26C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Unit_Sofia_GuardianGi",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "09198F3C": {
+      "id": "09198F3C",
+      "delay": 0,
+      "enable": [
+        "0919E26C"
+      ],
+      "disable": [
+        "09198B9C",
+        "09198D6C"
+      ],
+      "camera": 437,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "09198B9C": {
+      "id": "09198B9C",
+      "delay": 0,
+      "enable": [
+        "091992BC",
+        "0919E26C"
+      ],
+      "disable": [],
+      "camera": 99,
+      "ping": [],
+      "reveal": [
+        99
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [
+        [
+          "GGI",
+          132,
+          82
+        ],
+        [
+          "GGI",
+          132,
+          83
+        ]
+      ],
+      "teams": [],
+      "buildings": []
+    },
+    "09198D6C": {
+      "id": "09198D6C",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 100,
+      "ping": [],
+      "reveal": [
+        100
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "091992BC": {
+      "id": "091992BC",
+      "delay": 1,
+      "enable": [],
+      "disable": [
+        "09198B9C",
+        "09198D6C",
+        "0919965C",
+        "09199BCC",
+        "0919948C",
+        "0919982C",
+        "091999FC",
+        "09199D9C",
+        "09198F3C"
+      ],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0919965C": {
+      "id": "0919965C",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 416,
+      "ping": [],
+      "reveal": [
+        416
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "09199BCC": {
+      "id": "09199BCC",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 418,
+      "ping": [],
+      "reveal": [
+        418
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0919948C": {
+      "id": "0919948C",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 422,
+      "ping": [],
+      "reveal": [
+        422
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0919982C": {
+      "id": "0919982C",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 424,
+      "ping": [],
+      "reveal": [
+        424
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "091999FC": {
+      "id": "091999FC",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 426,
+      "ping": [],
+      "reveal": [
+        426
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "09199D9C": {
+      "id": "09199D9C",
+      "delay": 0,
+      "enable": [
+        "0919E26C",
+        "091992BC"
+      ],
+      "disable": [],
+      "camera": 428,
+      "ping": [],
+      "reveal": [
+        428
+      ],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "090437CC": {
+      "id": "090437CC",
+      "delay": 6,
+      "enable": [
+        "044163EC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Mis_xS1_ZofiaSovietBase",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "044163EC": {
+      "id": "044163EC",
+      "delay": 10,
+      "enable": [
+        "043E7B3C"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "MISSION:Sov1Obj4",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "043E7B3C": {
+      "id": "043E7B3C",
+      "delay": 80,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "MISSION:Sov1Obj6",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "043E7D0C": {
+      "id": "043E7D0C",
+      "delay": 100,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [
+        144
+      ],
+      "reveal": [],
+      "cue": "",
+      "text": "MISSION:Sov1Obj7",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "07A255BC": {
+      "id": "07A255BC",
+      "delay": 7,
+      "enable": [
+        "043E7D0C",
+        "097DB5BC"
+      ],
+      "disable": [],
+      "camera": 144,
+      "ping": [
+        144
+      ],
+      "reveal": [
+        144,
+        699,
+        145,
+        143,
+        54,
+        475,
+        479
+      ],
+      "cue": "",
+      "text": "MISSION:Sov1Obj7",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "043EC4DC": {
+      "id": "043EC4DC",
+      "delay": 7,
+      "enable": [
+        "043E7D0C",
+        "097DB5BC"
+      ],
+      "disable": [],
+      "camera": 144,
+      "ping": [
+        144
+      ],
+      "reveal": [
+        143,
+        475,
+        144
+      ],
+      "cue": "",
+      "text": "MISSION:Sov1Obj7",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "07A256AC": {
+      "id": "07A256AC",
+      "delay": 7,
+      "enable": [
+        "043E7D0C",
+        "097DB5BC"
+      ],
+      "disable": [],
+      "camera": 144,
+      "ping": [
+        144
+      ],
+      "reveal": [
+        144
+      ],
+      "cue": "",
+      "text": "MISSION:Sov1Obj7",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "097DB5BC": {
+      "id": "097DB5BC",
+      "delay": 10,
+      "enable": [
+        "091696FC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Mis_xS1_BorisWantsBoat",
+      "text": "MISSION:TranHint",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "091696FC": {
+      "id": "091696FC",
+      "delay": 5,
+      "enable": [],
+      "disable": [],
+      "camera": 72,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "07EF7AEC": {
+      "id": "07EF7AEC",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "EVA_ObjectiveComplete",
+      "text": "MISSION:Obj2Comp",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "097DFABC": {
+      "id": "097DFABC",
+      "delay": 0,
+      "enable": [],
+      "disable": [
+        "097DFABC"
+      ],
+      "camera": null,
+      "ping": [],
+      "reveal": [
+        465
+      ],
+      "cue": "",
+      "text": "MISSION:RexyHelp",
+      "hit": [],
+      "target": null,
+      "tagged": [
+        [
+          "DNOAA",
+          127,
+          161
+        ]
+      ],
+      "teams": [],
+      "buildings": []
+    },
+    "0954F76C": {
+      "id": "0954F76C",
+      "delay": 0,
+      "enable": [
+        "097DF8EC"
+      ],
+      "disable": [
+        "0954F76C"
+      ],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "097DF8EC": {
+      "id": "097DF8EC",
+      "delay": 2,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "MISSION:RexyFrnd",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "094A4E1C": {
+      "id": "094A4E1C",
+      "delay": 0,
+      "enable": [
+        "094A4ADC",
+        "096012AC",
+        "0DECD98C",
+        "07EF7AEC",
+        "079D7E1C",
+        "05BF392C",
+        "05BF375C"
+      ],
+      "disable": [
+        "043E7EDC",
+        "095180BC",
+        "094A51CC"
+      ],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [
+        [
+          "GAPILL",
+          146,
+          97
+        ],
+        [
+          "GAPILL",
+          143,
+          99
+        ],
+        [
+          "GAPILL",
+          144,
+          95
+        ],
+        [
+          "GAPILL",
+          141,
+          97
+        ]
+      ],
+      "teams": [],
+      "buildings": []
+    },
+    "0DECD98C": {
+      "id": "0DECD98C",
+      "delay": 1,
+      "enable": [],
+      "disable": [
+        "0DECD98C",
+        "09577E1C"
+      ],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "06B627BC": {
+      "id": "06B627BC",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Mis_xS1_ZofiaBorisDeadMourn",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "095714FC": {
+      "id": "095714FC",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Mis_xS1_ZofiaBorisDeadAgain",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0439E3FC": {
+      "id": "0439E3FC",
+      "delay": 0,
+      "enable": [
+        "0439E05C"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0439E05C": {
+      "id": "0439E05C",
+      "delay": 9,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "Mis_xS1_ZofiaFindBoris",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0439F31C": {
+      "id": "0439F31C",
+      "delay": 0,
+      "enable": [
+        "0439F14C",
+        "0439CF3C",
+        "0443F8AC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0443F8AC": {
+      "id": "0443F8AC",
+      "delay": 32,
+      "enable": [
+        "0443F6DC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0443FBCC": {
+      "id": "0443FBCC",
+      "delay": 0,
+      "enable": [
+        "0443F6DC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    },
+    "0443F6DC": {
+      "id": "0443F6DC",
+      "delay": 9,
+      "enable": [
+        "07A255BC",
+        "043EC4DC",
+        "07A256AC"
+      ],
+      "disable": [],
+      "camera": null,
+      "ping": [],
+      "reveal": [],
+      "cue": "",
+      "text": "",
+      "hit": [],
+      "target": null,
+      "tagged": [],
+      "teams": [],
+      "buildings": []
+    }
+  },
+  "staging": {
+    "094B2A9C": {
+      "id": "094B2A9C",
+      "delay": 5,
+      "enable": [
+        "094BE2BC"
+      ],
+      "disable": [],
+      "camera": 78,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "094BE2BC": {
+      "id": "094BE2BC",
+      "delay": 35,
+      "enable": [
+        "0D0E096C"
+      ],
+      "disable": [],
+      "camera": 79,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0D0E096C": {
+      "id": "0D0E096C",
+      "delay": 10,
+      "enable": [
+        "0D0E024C",
+        "094D448C",
+        "094C722C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "MISSION:Sov1Obj1",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0D0E024C": {
+      "id": "0D0E024C",
+      "delay": 7,
+      "enable": [
+        "06B6F36C",
+        "0D9BA33C",
+        "0D9BA16C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [
+        59,
+        60
+      ],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "06B6F36C": {
+      "id": "06B6F36C",
+      "delay": 3,
+      "enable": [
+        "0D0E418C"
+      ],
+      "disable": [],
+      "camera": 81,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": [
+        {
+          "at": 434,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 432,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 444,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        },
+        {
+          "at": 106,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "0D9BA33C": {
+      "id": "0D9BA33C",
+      "delay": 3,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [
+        59,
+        60
+      ],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0D9BA16C": {
+      "id": "0D9BA16C",
+      "delay": 10,
+      "enable": [],
+      "disable": [
+        "0D9BA33C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0D0E418C": {
+      "id": "0D0E418C",
+      "delay": 7,
+      "enable": [
+        "094C5E4C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "EVA_BattlefieldControlOnline",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "088966DC": {
+      "id": "088966DC",
+      "delay": 6,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "TyphoonSubSelect",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0B76DF3C": {
+      "id": "0B76DF3C",
+      "delay": 0,
+      "enable": [
+        "0DD8E18C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "EVA_EstablishBattlefieldControl",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0B8A231C": {
+      "id": "0B8A231C",
+      "delay": 3,
+      "enable": [
+        "09577E1C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [
+        62
+      ],
+      "cue": "EVA_BattlefieldControlOnline",
+      "sound": "",
+      "text": "MISSION:Sov1Obj2",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "05D70C3C": {
+      "id": "05D70C3C",
+      "delay": 8,
+      "enable": [],
+      "disable": [],
+      "camera": 82,
+      "reveal": [
+        62
+      ],
+      "pings": [
+        62
+      ],
+      "cue": "",
+      "sound": "CameraSwitch",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "094A51CC": {
+      "id": "094A51CC",
+      "delay": 0,
+      "enable": [
+        "094A883C",
+        "094A989C",
+        "043E7EDC"
+      ],
+      "disable": [
+        "09577E1C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [
+        66
+      ],
+      "cue": "Mis_xS1_ZofiaTimeDefenses",
+      "sound": "",
+      "text": "MISSION:Sov1Obj2a",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "094A883C": {
+      "id": "094A883C",
+      "delay": 3,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [
+        63,
+        64,
+        65,
+        66
+      ],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "094A989C": {
+      "id": "094A989C",
+      "delay": 10,
+      "enable": [],
+      "disable": [
+        "094A989C",
+        "094A883C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0BDE287C": {
+      "id": "0BDE287C",
+      "delay": 7,
+      "enable": [
+        "0951A8BC",
+        "0E626A2C",
+        "09601D2C",
+        "0952ED0C",
+        "0999579C"
+      ],
+      "disable": [
+        "079D7E1C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [
+        15
+      ],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0951740C": {
+      "id": "0951740C",
+      "delay": 0,
+      "enable": [
+        "0952C96C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        68,
+        502,
+        503
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [
+        478
+      ],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0951A8BC": {
+      "id": "0951A8BC",
+      "delay": 1,
+      "enable": [],
+      "disable": [
+        "0951A8BC"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0999579C": {
+      "id": "0999579C",
+      "delay": 16,
+      "enable": [],
+      "disable": [],
+      "camera": 68,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0C4A628C": {
+      "id": "0C4A628C",
+      "delay": 5,
+      "enable": [
+        "0961762C",
+        "0441BAAC",
+        "0C57BA6C",
+        "07FA53DC"
+      ],
+      "disable": [
+        "06C0F45C",
+        "0439013C",
+        "094A4ADC",
+        "0DD0203C",
+        "06B369EC",
+        "06B3647C",
+        "06B3664C",
+        "06B3681C",
+        "06B37D6C",
+        "06B37F3C",
+        "0951918C",
+        "0951972C",
+        "06B6156C",
+        "0971599C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0C57BA6C": {
+      "id": "0C57BA6C",
+      "delay": 1,
+      "enable": [
+        "06B5FB2C",
+        "096879AC"
+      ],
+      "disable": [
+        "043DF33C",
+        "06A6629C",
+        "06A6663C",
+        "0B454BBC",
+        "06A6646C",
+        "06A672DC",
+        "06A68F3C",
+        "06A6680C",
+        "06A67A6C",
+        "06A674AC",
+        "06A6710C",
+        "06A66BAC",
+        "06A660CC",
+        "06A669DC",
+        "06A67E5C",
+        "06A6767C",
+        "0B44E12C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "07FA53DC": {
+      "id": "07FA53DC",
+      "delay": 1,
+      "enable": [],
+      "disable": [
+        "0B603E5C",
+        "0B60744C",
+        "06A25F3C",
+        "09FF490C",
+        "082C467C",
+        "082C44AC",
+        "0DD0203C",
+        "082C3CEC",
+        "082C79BC",
+        "082C77EC"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "07EF43CC": {
+      "id": "07EF43CC",
+      "delay": 2,
+      "enable": [],
+      "disable": [
+        "07EF43CC"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "MISSION:ObjCompleteSov04md",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0BDC985C": {
+      "id": "0BDC985C",
+      "delay": 10,
+      "enable": [
+        "0BDCDD0C",
+        "0CAAF7DC"
+      ],
+      "disable": [
+        "0BB91C2C"
+      ],
+      "camera": 68,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "CameraSwitch",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0BDCDD0C": {
+      "id": "0BDCDD0C",
+      "delay": 8,
+      "enable": [
+        "0C46AB3C",
+        "0951A8BC",
+        "0937049C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0937049C": {
+      "id": "0937049C",
+      "delay": 2,
+      "enable": [
+        "0439097C",
+        "0BDCD47C",
+        "044286FC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0BDCD47C": {
+      "id": "0BDCD47C",
+      "delay": 3,
+      "enable": [
+        "095F1B8C",
+        "07F2978C",
+        "0937687C"
+      ],
+      "disable": [],
+      "camera": 71,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [
+        71
+      ],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "044286FC": {
+      "id": "044286FC",
+      "delay": 3,
+      "enable": [
+        "0885994C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "095F1B8C": {
+      "id": "095F1B8C",
+      "delay": 3,
+      "enable": [
+        "090435FC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "36",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0885994C": {
+      "id": "0885994C",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        63,
+        66,
+        71,
+        99,
+        100,
+        114,
+        437,
+        647
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "090435FC": {
+      "id": "090435FC",
+      "delay": 10,
+      "enable": [
+        "09040ADC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "S01_p03",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "09040ADC": {
+      "id": "09040ADC",
+      "delay": 48,
+      "enable": [
+        "090437CC",
+        "0962D87C",
+        "07A5F24C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "EVA_BattlefieldControlOnline",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0962D87C": {
+      "id": "0962D87C",
+      "delay": 0,
+      "enable": [
+        "0439F31C",
+        "0442182C",
+        "07EF43CC",
+        "0443FBCC",
+        "05CAF0BC"
+      ],
+      "disable": [
+        "043E7B3C"
+      ],
+      "camera": null,
+      "reveal": [
+        492
+      ],
+      "pings": [],
+      "cue": "Mis_xS1_ZofiaSovietCommand",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "094D21AC": {
+      "id": "094D21AC",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        468,
+        469,
+        470,
+        471,
+        472,
+        473,
+        474,
+        475,
+        476,
+        53,
+        699,
+        13,
+        152,
+        59
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "09533A5C": {
+      "id": "09533A5C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        477,
+        478,
+        479,
+        480,
+        481,
+        482,
+        483,
+        484,
+        485,
+        486,
+        487,
+        488,
+        489,
+        490,
+        491,
+        492,
+        493
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0C331D8C": {
+      "id": "0C331D8C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        494,
+        495,
+        496,
+        497,
+        498,
+        499,
+        500,
+        501,
+        699,
+        54,
+        53,
+        51
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "088BEB4C": {
+      "id": "088BEB4C",
+      "delay": 0,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [
+        102,
+        103,
+        133,
+        146,
+        147,
+        148,
+        149,
+        150,
+        101,
+        151,
+        152,
+        153
+      ],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0970A22C": {
+      "id": "0970A22C",
+      "delay": 15,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "MISSION:HintDom",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "082C79BC": {
+      "id": "082C79BC",
+      "delay": 0,
+      "enable": [
+        "082C467C",
+        "0959C92C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "082C77EC": {
+      "id": "082C77EC",
+      "delay": 0,
+      "enable": [
+        "082C44AC",
+        "0959CAFC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "095183EC": {
+      "id": "095183EC",
+      "delay": 0,
+      "enable": [
+        "0BDE024C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0951A4BC": {
+      "id": "0951A4BC",
+      "delay": 15,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [
+        68
+      ],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "097DDE6C": {
+      "id": "097DDE6C",
+      "delay": 0,
+      "enable": [],
+      "disable": [
+        "097DDE6C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "BaseUnderAttackSiren",
+      "text": "MISSION:YGotPowr",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "06A6663C": {
+      "id": "06A6663C",
+      "delay": 300,
+      "enable": [
+        "043DF33C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0BBEFE3C": {
+      "id": "0BBEFE3C",
+      "delay": 3,
+      "enable": [
+        "094848DC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": [
+        {
+          "at": 52,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "094848DC": {
+      "id": "094848DC",
+      "delay": 3,
+      "enable": [
+        "0948645C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": [
+        {
+          "at": 12,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "0948645C": {
+      "id": "0948645C",
+      "delay": 2,
+      "enable": [
+        "094822CC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": [
+        {
+          "at": 487,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "094822CC": {
+      "id": "094822CC",
+      "delay": 1,
+      "enable": [],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": [
+        {
+          "at": 492,
+          "members": [
+            [
+              "1",
+              "ORCA"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "0952E0FC": {
+      "id": "0952E0FC",
+      "delay": 24,
+      "enable": [
+        "0952F87C"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "35",
+      "move": [],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0952C96C": {
+      "id": "0952C96C",
+      "delay": 0,
+      "enable": [],
+      "disable": [
+        "0952C96C"
+      ],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [
+        8
+      ],
+      "buildings": [],
+      "fly": []
+    },
+    "0952ED0C": {
+      "id": "0952ED0C",
+      "delay": 3,
+      "enable": [
+        "0952E0FC",
+        "0C4A628C",
+        "097154CC",
+        "05BF138C"
+      ],
+      "disable": [],
+      "camera": 50,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [
+        68
+      ],
+      "transfer": [],
+      "buildings": [],
+      "fly": []
+    },
+    "0439097C": {
+      "id": "0439097C",
+      "delay": 0,
+      "enable": [
+        "06B2A4DC"
+      ],
+      "disable": [],
+      "camera": null,
+      "reveal": [],
+      "pings": [],
+      "cue": "",
+      "sound": "",
+      "text": "",
+      "film": "",
+      "move": [],
+      "transfer": [],
+      "buildings": [
+        [
+          "NAHAND",
+          108
+        ],
+        [
+          "NACNST",
+          104
+        ],
+        [
+          "NAWEAP",
+          105
+        ],
+        [
+          "NAPOWR",
+          106
+        ],
+        [
+          "NALASR",
+          107
+        ],
+        [
+          "NAPOWR",
+          109
+        ],
+        [
+          "NAPOWR",
+          110
+        ],
+        [
+          "NALASR",
+          111
+        ],
+        [
+          "NALASR",
+          112
+        ],
+        [
+          "NALASR",
+          113
+        ],
+        [
+          "NAREFN",
+          141
+        ],
+        [
+          "NAYARD",
+          492
+        ]
+      ],
+      "fly": []
+    }
+  },
+  "landingTriggers": {
+    "082C467C": {
+      "delay": 3
+    },
+    "082C44AC": {
+      "delay": 9
+    }
+  },
+  "batch18": {
+    "0439013C": {
+      "id": "0439013C",
+      "delay": 0,
+      "enable": [],
+      "cue": "Mis_xS1_ZofiaCapTimeMachine",
+      "camera": null,
+      "teams": []
+    },
+    "096012AC": {
+      "id": "096012AC",
+      "delay": 3,
+      "enable": [
+        "06AF616C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "0E626A2C": {
+      "id": "0E626A2C",
+      "delay": 5,
+      "enable": [],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "05BF138C": {
+      "id": "05BF138C",
+      "delay": 1,
+      "enable": [],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "0951972C": {
+      "id": "0951972C",
+      "delay": 0,
+      "enable": [
+        "0442C90C",
+        "04429F3C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "0961762C": {
+      "id": "0961762C",
+      "delay": 1,
+      "enable": [
+        "0C47F71C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "06B5FB2C": {
+      "id": "06B5FB2C",
+      "delay": 1,
+      "enable": [
+        "06B5F54C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "06B5F54C": {
+      "id": "06B5F54C",
+      "delay": 1,
+      "enable": [
+        "0C55D39C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "0C55D39C": {
+      "id": "0C55D39C",
+      "delay": 1,
+      "enable": [],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "0439F14C": {
+      "id": "0439F14C",
+      "delay": 9,
+      "enable": [],
+      "cue": "",
+      "camera": 72,
+      "teams": [
+        {
+          "at": 73,
+          "members": [
+            [
+              "1",
+              "BORIS"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "0439CF3C": {
+      "id": "0439CF3C",
+      "delay": 0,
+      "enable": [
+        "0439CD6C"
+      ],
+      "cue": "Mis_xS1_BorisReporting",
+      "camera": null,
+      "teams": []
+    },
+    "0439C2DC": {
+      "id": "0439C2DC",
+      "delay": 10,
+      "enable": [],
+      "cue": "EVA_BattlefieldControlOnline",
+      "camera": null,
+      "teams": []
+    },
+    "07EF508C": {
+      "id": "07EF508C",
+      "delay": 2,
+      "enable": [],
+      "cue": "EVA_ObjectiveComplete",
+      "camera": null,
+      "teams": []
+    },
+    "04415AFC": {
+      "id": "04415AFC",
+      "delay": 1,
+      "enable": [],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "044149EC": {
+      "id": "044149EC",
+      "delay": 0,
+      "enable": [
+        "04415AFC"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "079F9B1C": {
+      "id": "079F9B1C",
+      "delay": 0,
+      "enable": [
+        "05DB7F3C"
+      ],
+      "cue": "",
+      "camera": null,
+      "teams": []
+    },
+    "05DB7F3C": {
+      "id": "05DB7F3C",
+      "delay": 5,
+      "enable": [],
+      "cue": "",
+      "camera": null,
+      "teams": [
+        {
+          "at": 57,
+          "members": [
+            [
+              "1",
+              "SAPC"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    }
+  },
+  "powerAlarm": {
+    "id": "0971599C",
+    "kind": 58,
+    "house": 6,
+    "sound": "AirRaidSiren",
+    "text": "MISSION:DomArmed",
+    "cue": "EVA_PsychicDominatorDetected"
+  },
+  "encounter": {
+    "094C5E4C": {
+      "id": "094C5E4C",
+      "delay": 3,
+      "house": "Americans",
+      "at": 53,
+      "members": [
+        [
+          "2",
+          "CARRIER"
+        ]
+      ],
+      "route": [],
+      "commands": [
+        [
+          1,
+          54
+        ]
+      ],
+      "veterancy": 1
+    },
+    "0D17008C": {
+      "id": "0D17008C",
+      "delay": 3,
+      "house": "Russians",
+      "at": 61,
+      "members": [
+        [
+          "1",
+          "BORIS"
+        ]
+      ],
+      "route": [],
+      "commands": [
+        [
+          3,
+          61
+        ],
+        [
+          50,
+          200
+        ],
+        [
+          39,
+          23
+        ]
+      ],
+      "veterancy": 3
+    }
+  },
+  "boatLoss": {
+    "id": "05CAF0BC",
+    "transport": "SAPC",
+    "recovery": [
+      "NACNST",
+      "NAYARD"
+    ],
+    "end": "06B602BC",
+    "delay": 15,
+    "enable": true
+  },
+  "phaseLinks": {
+    "096879AC": {
+      "id": "096879AC",
+      "event": 13,
+      "argument": 45,
+      "delay": 45,
+      "actions": [
+        [
+          "121",
+          "0",
+          "6",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "122",
+          "0",
+          "6",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "121",
+          "0",
+          "9",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "122",
+          "0",
+          "9",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "119",
+          "0",
+          "6",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "097651DC": {
+      "id": "097651DC",
+      "event": 37,
+      "argument": 24,
+      "delay": 0,
+      "actions": [
+        [
+          "70",
+          "3",
+          "0439F23C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "70",
+          "3",
+          "0439FF4C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "0CAAF7DC": {
+      "id": "0CAAF7DC",
+      "event": 13,
+      "argument": 1,
+      "delay": 1,
+      "actions": [
+        [
+          "54",
+          "2",
+          "0CAAF7DC",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "14",
+          "0",
+          "15",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [
+        "CATIME02"
+      ],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "07F2978C": {
+      "id": "07F2978C",
+      "event": 13,
+      "argument": 0,
+      "delay": 0,
+      "actions": [
+        [
+          "36",
+          "0",
+          "14",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "0937687C": {
+      "id": "0937687C",
+      "event": 13,
+      "argument": 2,
+      "delay": 2,
+      "actions": [
+        [
+          "40",
+          "0",
+          "0",
+          "4",
+          "11",
+          "53",
+          "78",
+          "A"
+        ],
+        [
+          "101",
+          "0",
+          "474",
+          "0",
+          "0",
+          "0",
+          "0",
+          "RG"
+        ],
+        [
+          "101",
+          "0",
+          "83",
+          "0",
+          "0",
+          "0",
+          "0",
+          "CF"
+        ],
+        [
+          "101",
+          "0",
+          "84",
+          "0",
+          "0",
+          "0",
+          "0",
+          "CG"
+        ],
+        [
+          "101",
+          "0",
+          "85",
+          "0",
+          "0",
+          "0",
+          "0",
+          "CH"
+        ],
+        [
+          "101",
+          "0",
+          "490",
+          "0",
+          "0",
+          "0",
+          "0",
+          "RW"
+        ],
+        [
+          "101",
+          "0",
+          "136",
+          "0",
+          "0",
+          "0",
+          "0",
+          "EG"
+        ],
+        [
+          "101",
+          "0",
+          "58",
+          "0",
+          "0",
+          "0",
+          "0",
+          "BG"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [
+        [
+          88,
+          68
+        ],
+        [
+          85,
+          73
+        ],
+        [
+          83,
+          74
+        ],
+        [
+          80,
+          74
+        ],
+        [
+          81,
+          78
+        ],
+        [
+          91,
+          79
+        ],
+        [
+          80,
+          82
+        ]
+      ],
+      "teams": []
+    },
+    "078C97EC": {
+      "id": "078C97EC",
+      "event": 47,
+      "argument": 0,
+      "delay": 0,
+      "actions": [
+        [
+          "14",
+          "0",
+          "8",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "54",
+          "2",
+          "078C97EC",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "53",
+          "2",
+          "079BB93C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [
+        "079BB93C"
+      ],
+      "pings": [],
+      "teams": []
+    },
+    "079BB93C": {
+      "id": "079BB93C",
+      "event": 13,
+      "argument": 1,
+      "delay": 1,
+      "actions": [
+        [
+          "14",
+          "0",
+          "12",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "54",
+          "2",
+          "079BB93C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "53",
+          "2",
+          "044149EC",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [
+        "CASANF04",
+        "CASANF11",
+        "CASANF12",
+        "CASANF13",
+        "CASANF14"
+      ],
+      "enable": [
+        "044149EC"
+      ],
+      "pings": [],
+      "teams": []
+    },
+    "082B950C": {
+      "id": "082B950C",
+      "event": 36,
+      "argument": 47,
+      "delay": 0,
+      "actions": [
+        [
+          "4",
+          "1",
+          "060884EC",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "57",
+          "0",
+          "47",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": [
+        {
+          "at": 56,
+          "members": [
+            [
+              "12",
+              "E2"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "082B933C": {
+      "id": "082B933C",
+      "event": 36,
+      "argument": 46,
+      "delay": 0,
+      "actions": [
+        [
+          "4",
+          "1",
+          "0882794C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "57",
+          "0",
+          "46",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": [
+        {
+          "at": 55,
+          "members": [
+            [
+              "4",
+              "HTNK"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "087D15EC": {
+      "id": "087D15EC",
+      "event": 36,
+      "argument": 45,
+      "delay": 0,
+      "actions": [
+        [
+          "4",
+          "1",
+          "08E15EFC",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": [
+        {
+          "at": 55,
+          "members": [
+            [
+              "4",
+              "HTNK"
+            ]
+          ],
+          "route": []
+        }
+      ]
+    },
+    "09601D2C": {
+      "id": "09601D2C",
+      "event": 13,
+      "argument": 1,
+      "delay": 1,
+      "actions": [
+        [
+          "54",
+          "2",
+          "09601D2C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "14",
+          "0",
+          "15",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "0441BAAC": {
+      "id": "0441BAAC",
+      "event": 13,
+      "argument": 1,
+      "delay": 1,
+      "actions": [
+        [
+          "14",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [],
+      "enable": [],
+      "pings": [],
+      "teams": []
+    },
+    "0C46AB3C": {
+      "id": "0C46AB3C",
+      "event": 13,
+      "argument": 1,
+      "delay": 1,
+      "actions": [
+        [
+          "54",
+          "2",
+          "0C46AB3C",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ],
+        [
+          "14",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "A"
+        ]
+      ],
+      "targets": [
+        "GAPOWRA",
+        "GAPOWRB",
+        "GAPOWRC",
+        "GAPOWRD",
+        "GAPOWRE",
+        "GAPOWRF"
+      ],
+      "enable": [],
+      "pings": [],
+      "teams": [],
+      "house": "Americans",
+      "sourceTag": "Detect_Power Attacked",
+      "sites": {
+        "GAPOWRA": [
+          79.5,
+          68.5
+        ],
+        "GAPOWRB": [
+          64.5,
+          70.5
+        ],
+        "GAPOWRC": [
+          74.5,
+          81.5
+        ],
+        "GAPOWRD": [
+          77.5,
+          102.5
+        ],
+        "GAPOWRE": [
+          74.5,
+          118.5
+        ],
+        "GAPOWRF": [
+          108.5,
+          109.5
+        ]
+      }
+    }
+  }
+}

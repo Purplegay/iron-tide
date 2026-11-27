@@ -74,7 +74,8 @@ static func entries(unit) -> Array:
 static func draw_fields(canvas,world) -> void:
 	for zone:Dictionary in world.allied_state.get(ZONES,[]):
 		if not world.position_visible_to("ally",zone.point):continue
+		var radius_cells := P.number("mechanic/ps_impact_calibration","radius")
 		var points:=PackedVector2Array()
-		for i in 33:points.append(Iso.dir(zone.point+Vector2.from_angle(TAU*i/32)*P.number("mechanic/ps_impact_calibration","radius")*R.CELL))
+		for i in 33:points.append(Iso.dir(zone.point+Vector2.from_angle(TAU*i/32)*radius_cells*R.CELL))
 		canvas.draw_polyline(points,Color(.3,.85,1,.65),1.5,true)
 		canvas.draw_string(ThemeDB.fallback_font,Iso.dir(zone.point),"校射 +%d%% · %.1fs"%[roundi(float(zone.damage)*100),zone.left],HORIZONTAL_ALIGNMENT_CENTER,-1,12,Color.CYAN)

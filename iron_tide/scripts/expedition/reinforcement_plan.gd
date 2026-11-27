@@ -3,6 +3,7 @@ extends RefCounted
 const Army=preload("res://scripts/expedition/army.gd")
 const SECONDS_PER_COST_UNIT := 30.0
 const MEMBER := "expedition_legion_member"
+const LOCAL_PRODUCTION := "expedition_local_production"
 const DISCOUNTS := "chrono_discounts"
 const ANCHOR := "chrono_anchor"
 
@@ -57,8 +58,8 @@ static func build(run:Dictionary) -> Array:
 		return str(a.id)<str(b.id))
 	return result
 
-# Only deployed legion members and still-pending legion entries count. Local
-# factory production never affects either the roster or the casualty fraction.
+# Calculate from original members and pending entries, before filling vacancies
+# with local production. Replacements do not erase the original casualties.
 static func carry(run:Dictionary,world,survivors:Array) -> Dictionary:
 	var initial:Array=world.allied_state.get("expedition_legion_initial",[])
 	if initial.is_empty():return run.get(DISCOUNTS,{}).duplicate(true)

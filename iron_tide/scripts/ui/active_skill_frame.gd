@@ -8,6 +8,7 @@ func _ready() -> void:
 	set_active(false)
 
 func set_active(enabled:bool,ready:=true) -> void:
+	if visible==enabled and is_processing()==enabled and recast_ready==ready: return
 	visible=enabled
 	recast_ready=ready
 	set_process(enabled)

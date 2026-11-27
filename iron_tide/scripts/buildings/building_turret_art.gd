@@ -109,24 +109,29 @@ func muzzle_point(base: Vector2, body_size: Vector2, scale: float) -> Vector2:
 	var muzzle := Vector2(float(points[f][0]), float(points[f][1]))
 	return base + (body_size * 0.5 + offset - origin + muzzle) * scale
 
-func draw_on(canvas: CanvasItem, base: Vector2, body_size: Vector2, scale: float, tint := Color.WHITE) -> void:
+func draw_on(canvas: CanvasItem, base: Vector2, body_size: Vector2, scale: float, tint := Color.WHITE, memory = null) -> void:
 	var texture: Texture2D = art.get("tex")
 	if texture == null or origins.size() < int(art.get("facings", 0)):
 		return
-	frame = facing() + spin_pose * int(art.facings)
+	var index := facing() + spin_pose * int(art.facings)
 	var pose := recoil_pose()
 	var anchors := _pose_origins()
-	var origin := Vector2(float(anchors[frame][0]), float(anchors[frame][1]))
-	rect = Rect2(base + (body_size * 0.5 + offset - origin) * scale, RA2Art.frame_size(art) * scale)
-	drawn_source = RA2Art.src_rect(art, frame)
-	drawn_image = image
+	var origin := Vector2(float(anchors[index][0]), float(anchors[index][1]))
+	var target := Rect2(base + (body_size * 0.5 + offset - origin) * scale, RA2Art.frame_size(art) * scale)
+	var source := RA2Art.src_rect(art, index)
 	var drawing_art := art
 	if pose > 0:
-		texture = recoil_texture
 		drawing_art = recoil_art
-		drawn_image = recoil_image
-		drawn_source.position.y += (pose - 1) * (drawn_source.size.y + RA2Art.VXL_PAD)
-	RA2Art.draw_sprite(canvas, drawing_art, rect, drawn_source, RA2Art.sprite_grade(art) * tint)
+		source.position.y += (pose - 1) * (source.size.y + RA2Art.VXL_PAD)
+	var grade := RA2Art.sprite_grade(art) * tint
+	if memory != null:
+		RA2Art.remember_sprite(memory, drawing_art, target, source, grade)
+		return
+	frame = index
+	rect = target
+	drawn_source = source
+	drawn_image = recoil_image if pose > 0 else image
+	RA2Art.draw_sprite(canvas, drawing_art, rect, drawn_source, grade)
 	visible = true
 
 func hit_test(local_art_point: Vector2) -> bool:

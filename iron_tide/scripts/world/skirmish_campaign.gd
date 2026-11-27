@@ -5,6 +5,7 @@ const HOME_GUARD := 10
 const ROLE := "ai_campaign_role"
 
 static func eligible(ai, unit) -> bool:
+	if not is_instance_valid(unit) or unit.special.has("yr_skirmish_team") or unit.special.has("field_convoy") or unit.special.has("expedition_objective"): return false
 	if ai.Tactics.fighter(ai.battle,unit,ai.house_id): return true
 	return ai.battle.actor_alive(unit) and unit.side==ai.house_id and unit.embarked_in==null and not unit.is_harvester and unit.unit_id not in ["SHAD","LCRF","SAPC"] and (unit.is_naval or unit.logistics.ammo_max>0) and not unit.weapon.is_empty()
 

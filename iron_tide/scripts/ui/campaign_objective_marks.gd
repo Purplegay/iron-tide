@@ -14,6 +14,8 @@ static func marks(world, radar: bool) -> Array:
 	if world.ended or not eligible(world): return []
 	if world.allied_state.has("time_shift"): return world.TimeShift.radar_marks(world)
 	if world.allied_state.has("hollywood"): return world.Hollywood.markers(world, radar)
+	if world.allied_state.has("allied_first"): return world.AlliedFirst.marks(world, radar)
+	if world.allied_state.has("allied_finale"): return world.AlliedFinale.marks(world, radar)
 	if world.mission.get("id") == world.HeadGames.ID: return head_games(world)
 	var result: Array = []
 	if world.mission.get("objectives", {}).has("destroy_hives"):
@@ -44,8 +46,22 @@ static func screen_point(layer: Node2D, world, mark: Dictionary) -> Vector2:
 	var point: Vector2 = mark.position
 	var actor = mark.get("actor")
 	var target_visible: bool = world.actor_alive(actor) and world.actor_visible_to("ally", actor)
+	var projection: Transform2D = world.get_canvas_transform()
+	if target_visible and actor is Building:
+		var bounds: Rect2 = actor.combat_sight_rect()
+		if bounds.has_area():
+			point = actor.global_position + RA2Art.art_dir(Vector2(bounds.get_center().x,bounds.position.y))
+			var roof := projection * point
+			if mark.get("keep_over_building",false):
+				# Keep a build instruction visible when the roof is cropped at high zoom.
+				var foot: Vector2 = projection * actor.global_position
+				var viewport := layer.get_viewport_rect()
+				if viewport.has_point(foot):
+					return Vector2(clampf(roof.x, viewport.position.x+14, viewport.end.x-14), maxf(roof.y-18,viewport.position.y+78))
+				return roof - Vector2(0,18)
+			return roof - Vector2(0,float(mark.get("roof_gap",48.0)))
 	if target_visible: point = actor.art_center()
-	return layer.get_canvas_transform() * point - Vector2(0, 30 if target_visible else 14)
+	return projection * point - Vector2(0, 30 if target_visible else 14)
 
 static func paint(layer: Node2D, world) -> void:
 	var public_marks := marks(world, false)
@@ -62,7 +78,7 @@ static func paint(layer: Node2D, world) -> void:
 		layer.draw_colored_polygon(diamond.slice(0, 4), Color("141820"))
 		layer.draw_polyline(diamond, color, 2.5, true)
 		layer.draw_circle(p, 2.5, color)
-		if public_marks.size() <= 3 or p.distance_squared_to(mouse) < 32.0 * 32.0:
+		if mark.get("keep_over_building",false) or public_marks.size() <= 3 or p.distance_squared_to(mouse) < 32.0 * 32.0:
 			var text: String = mark.title
 			var width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, 14).x
 			var caption := p + Vector2(-width * 0.5, -17)

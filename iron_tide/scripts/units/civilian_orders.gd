@@ -94,8 +94,9 @@ static func tick_building(building) -> void:
 	elif not building.data.has("extra_power") and building.hp <= building.max_hp * 0.25:
 		evacuate(building)
 		return
-	if building.special.occupants.size() != old_count and building.battle.selected_building == building:
-		building.battle._emit_selection()
+	if building.special.occupants.size() != old_count:
+		if building.special.occupants.is_empty(): building.queue_redraw()
+		if building.battle.selected_building == building: building.battle._emit_selection()
 
 # YR OccupyWeaponRange is a base range. The original rule also credits the
 # shooter's foundation. In continuous world space use half its narrower side.

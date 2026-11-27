@@ -1,11 +1,25 @@
 extends RefCounted
 
+const MindLink = preload("res://scripts/core/yr_mind_control_link.gd")
+
 static func clone_infantry(world, factory, unit) -> void:
-	if not world.skirmish or not is_instance_valid(unit) or not AlliedAbilities.infantry(unit): return
-	for vat in world.buildings:
-		if vat.side != factory.side or vat.building_id != "NACLON" or not vat.is_operational(): continue
+	if not AlliedAbilities.infantry(unit) or unit.unit_id in GameData.UNIQUE_HERO_TYPES: return
+	var owner: String = cloning_house(world, factory)
+	for vat in world._warm_owner_buildings(factory.side):
+		if not is_instance_valid(vat) or vat.building_id != "NACLON" or vat.side != factory.side or not vat.is_operational(): continue
+		# Campaigns can represent multiple distinct houses on the same combat side.
+		if cloning_house(world, vat) != owner: continue
 		var exit: Vector2 = vat._spawn_point(unit.unit_id)
-		if exit.is_finite(): world.spawn_unit(unit.unit_id, factory.side, exit, vat)
+		if exit.is_finite() and world.spawn_unit(unit.unit_id, factory.side, exit, vat, true) != null:
+			Ra2Sfx.play("CloningVatsCreate", vat.position)
+
+static func cloning_house(world, building) -> String:
+	if building.side == "enemy":
+		match world.mission.get("id", ""):
+			"yr_hollywood": return str(building.special.get("hollywood_house", ""))
+			"yr_allied_first": return str(building.special.get("allied_first_room", ""))
+			"yr_allied_finale": return str(building.special.get("allied_finale_room", ""))
+	return world.economy_owner(building)
 
 const SENSOR_RANGE := 15.0 * 55.0
 
@@ -33,12 +47,19 @@ static func control_source(target, beacons: Dictionary):
 	if AlliedAbilities.alive(source) and source.side == target.side: return source
 	return null
 
-static func draw_control(world, overlay, target, beacons: Dictionary) -> void:
+static func visible_control_source(world, target, beacons: Dictionary):
 	var source = control_source(target, beacons)
-	if source == null or (source is Unit and source.embarked_in != null) or (target is Unit and target.embarked_in != null): return
-	if not world.actor_visible_to("ally", source) or not world.actor_visible_to("ally", target): return
-	var origin: Vector2 = source._weapon_muzzle() if source is Unit and source.unit_id == "YURI" else source.art_center()
-	overlay.draw_line(Iso.dir(origin), Iso.dir(target.art_center()), Color(0.85, 0.35, 1.0, 0.85), 2.0, true)
+	if source == null or (source is Unit and source.embarked_in != null) or (target is Unit and target.embarked_in != null): return null
+	# Keep the control relation visible without selection or the retail attack-line timeout.
+	if not world.actor_visible_to("ally", source) or not world.actor_visible_to("ally", target): return null
+	return source
+
+static func draw_control(world, overlay, target, beacons: Dictionary) -> void:
+	var source = visible_control_source(world, target, beacons)
+	if source == null: return
+	# Mission beacons and the permanent dominator use project-specific links, not CaptureManager.
+	var managed: bool = source == target.special.get("controller")
+	MindLink.draw_link(overlay, MindLink.endpoints(source, target, managed), source._col, Time.get_ticks_msec())
 
 static func draw_orders(world, overlay) -> void:
 	for sensor in world.get_tree().get_nodes_in_group(&"psychic_sensors"):

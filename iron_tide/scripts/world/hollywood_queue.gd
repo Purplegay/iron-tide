@@ -32,7 +32,7 @@ static func advance(world,plant,line:Array,elapsed:float) -> void:
 		if u.position.distance_to(goal)>18:
 			if not u.has_move_order or u.move_target.distance_to(goal)>10:
 				u.order_move(goal,false,null,world.path_for_unit(u,goal))
-		elif i==0 and wait<=0:
+		elif i==0 and wait<=0 and (not u.special.has("hollywood_resident_trigger") or u.special.has("hollywood_resident_change")):
 			wait=INTERVAL
 			plant.play_special()
 			world.allied_state.hollywood.lost+=1

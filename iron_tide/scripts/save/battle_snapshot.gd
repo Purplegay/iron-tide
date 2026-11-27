@@ -120,6 +120,7 @@ func capture(world) -> Dictionary:
 				if seconds > 0.0: cells[cell_index] = seconds
 			remaining[side] = cells
 		context["death_sight"] = remaining
+		context["fog_buildings"] = world.fog.building_memory.records.duplicate(true)
 	if preload("res://scripts/world/native_maps.gd").has(world.map_layout()):
 		context["native_map_sha"]=FileAccess.get_sha256("res://data/maps/%s.json"%world.map_layout())
 	if context.mission_id == "yr_hollywood" and world.allied_state.get("hollywood", {}).get("briefing", false):
@@ -224,7 +225,7 @@ func restore(world, snapshot: Dictionary) -> void:
 			object.collision_mask = record.collision[1]
 		if object is Unit or object is Building:
 			GameData.apply_hollywood_fx(object.data)
-			if world.mission.get("id")=="yr_head_games": object.refresh_house_color()
+			if world.mission.get("id") in ["yr_head_games","yr_allied_finale","yr_allied_first"]: object.refresh_house_color()
 		if object is Unit:
 			if world.mission.get("id") == "yr_hollywood" and object.side == "enemy" and object.special.has("hollywood_house") and object.unit_id in preload("res://scripts/world/hollywood_bases.gd").RESIDENTS:
 				object.side = "neutral"
@@ -282,9 +283,31 @@ func restore(world, snapshot: Dictionary) -> void:
 			object._path_epoch = -1
 		if object is Building:
 			preload("res://scripts/buildings/tesla_pulse.gd").configure(object)
-			if object.building_id == "CAOILD": object.refresh_house_color()
+			if object.building_id == "CAOILD" or (world.mission.get("id") == "yr_allied_first" and (object.building_id.begins_with("CAPOWR0") or object.special.has("allied_first_room"))):
+				object.refresh_house_color()
 			preload("res://scripts/world/american_paradrop.gd").configure(object)
 			world.Hollywood.configure_facility(object)
+			if world.mission.get("id") == "yr_head_games" and object.building_id == "NACLON":
+				var vat_data := GameData.get_building("NACLON")
+				object.data.capturable = vat_data.get("capturable", false)
+				object.data.desc = vat_data.get("desc", "")
+			if world.mission.get("id")=="yr_allied_first" and object.building_id in ["GTGCAN","GASPYSAT"]:
+				var retail: Dictionary = GameData.get_building(object.building_id)
+				object.power = int(retail.get("power",object.power))
+				object.data.power = object.power
+				object.ra2_armor = str(retail.get("ra2_armor",object.ra2_armor))
+				object.data.ra2_armor = object.ra2_armor
+				object.data.capturable = bool(retail.get("capturable",false))
+				if object.building_id=="GTGCAN" and retail.has("weapon"):
+					object.special.no_crew = true
+					object.weapon = retail.weapon.duplicate(true)
+					object.data.weapon = object.weapon.duplicate(true)
+					object.attack_range = float(object.weapon.range)
+					object.cooldown = float(object.weapon.cooldown)
+			if object.building_id == "CATHOSP" and world.mission.get("id")=="yr_allied_first":
+				object.data.capturable = true
+				object.data.unsellable = true
+				object.display_name = "科技医院"
 			if object.building_id == "GAYARD" and not object._is_repair:
 				# Older saves carry both the previous tags and the derived capability.
 				object._is_repair = GameData.get_building("GAYARD").tags.has("repair")
@@ -300,6 +323,9 @@ func restore(world, snapshot: Dictionary) -> void:
 				for id in GameData.get_building(object.building_id).builds:
 					if not object.buildable.has(id): object.buildable.append(id)
 					if not object.data.builds.has(id): object.data.builds.append(id)
+			if world.mission.get("id")=="yr_allied_finale" and object.building_id in ["YAWEAP","YABRCK"]:
+				for product in GameData.units_from_building("yuri",object.building_id):
+					if not object.buildable.has(product.id): object.buildable.append(product.id)
 			if world.mission.get("id")=="yr_head_games" and GameData.HEAD_PRODUCTS.has(object.building_id):
 				for product in GameData.units_from_building("yuri",object.building_id):
 					if not object.buildable.has(product.id): object.buildable.append(product.id)
@@ -352,7 +378,9 @@ func restore(world, snapshot: Dictionary) -> void:
 	for pair in context.rally: world.rally_points[objects[pair[0]].get_instance_id()] = pair[1]
 	preload("res://scripts/world/civilian_sites.gd").restore_crossings(world)
 	preload("res://scripts/world/native_maps.gd").recover_low_bridge_ships(world)
-	if world.mission.get("id")=="yr_head_games": world.HeadGames.recover_entry(world)
+	if world.mission.get("id")=="yr_head_games":
+		world.HeadEconomy.initialize(world,true)
+		world.HeadGames.recover_entry(world)
 	if world.mission.get("id")=="yr_head_games":
 		for id in ["CATRAN01","CATRAN02"]:
 			var lamp=world.get_node_or_null("TransylvaniaLights/"+id)
@@ -383,6 +411,7 @@ func restore(world, snapshot: Dictionary) -> void:
 			var pair: Array = context.firing[i]
 			var key: int = objects[pair[0]].get_instance_id() if pair[0] >= 0 else -i - 1
 			world.fog.firing_positions[key] = pair[1]
+		world.fog.building_memory.restore(context.get("fog_buildings", {}))
 		world.fog.mask_image = null
 		world.fog.texture = null
 		world.fog.rebuild()

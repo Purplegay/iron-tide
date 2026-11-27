@@ -1608,7 +1608,7 @@
    "capturable": false,
    "power": -200,
    "powered": false,
-   "desc": "己方兵营每训练一名步兵，复制中心会尝试从自己的出口放出一名副本。",
+   "desc": "己方兵营每训练完一名普通步兵，只要复制中心有空位出兵，就会免费复制一名。",
    "tech_level": 9,
    "ra2_prereq": [
     "YATECH",

@@ -11,6 +11,10 @@ class ExitProbe extends RefCounted:
 
 static func faction(building) -> String:
 	var captured := bool(building.special.get("has_been_captured", false))
+	# In the finale the room identifies the current Yuri owner on the shared enemy side.
+	# A player-captured site can retain its original room tag; use the player's country then.
+	if building.side == "enemy" and building.special.get("allied_finale_room", "") in ["YuriCountry", "Yuri2", "Yuri3"]:
+		return "third"
 	var country := str(building.battle._countries.get(building.side, ""))
 	# Campaign houses share the enemy side, but each site keeps its original house.
 	if not captured and building.special.has("hollywood_house"):
@@ -75,5 +79,8 @@ static func eject(building) -> Array:
 		unit.order_stop()
 		unit.hp = float(rng.randi_range(5, maxi(5, int(unit.max_hp))))
 		unit.special.escaped_crew = true
+		if building.side=="enemy" and building.special.has("allied_finale_room"):
+			unit.special.allied_finale_room = building.special.allied_finale_room
+			unit.refresh_house_color()
 		spawned.append(unit); remaining -= 1
 	return spawned

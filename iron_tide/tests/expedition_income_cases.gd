@@ -48,6 +48,7 @@ static func run(t) -> void:
 	var ui=load("res://scenes/expedition.tscn").instantiate()
 	t.add_child(ui)
 	await t.get_tree().process_frame
+	ui.change_tab(4)
 	t.check(contains_text(ui,"远征额外已到账：军需券 800 · 战略核心 20"),"reward page displays actual paid totals")
 	ui.tab=3;ui.build_history()
 	t.check(contains_text(ui,"军需券 +800 · 战略核心 +20（已到账）"),"history displays persisted receipt")

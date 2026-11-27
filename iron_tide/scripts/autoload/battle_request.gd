@@ -54,7 +54,9 @@ func combat_bonuses() -> Dictionary:
 
 func unit_bonus(id: String) -> Dictionary:
 	if not skirmish and skirmish_config.has("campaign_growth") and not extensions_enabled(): return MatchRules.neutral_bonuses()
-	return combat_context.get("unit_bonus", {}).get(id, MetaProgress.unit_stat_bonus(id))
+	var bonuses: Dictionary = combat_context.get("unit_bonus", {})
+	if bonuses.has(id): return bonuses[id]
+	return MetaProgress.unit_stat_bonus(id)
 
 func card_scale(id: String) -> float:
 	# Redesigned cards keep the saved rank, not their retired value curves.

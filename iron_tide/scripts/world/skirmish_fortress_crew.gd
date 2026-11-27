@@ -31,7 +31,7 @@ static func load_nearby(ai, fortress) -> void:
 		if u.special.get("ai_carrier") == fortress or u.logistics.boarding == fortress:
 			seats -= fortress.logistics.passenger_size(u)
 			continue
-		if u.unit_id != "E1" or u.repairing or u.attack_ordered or is_instance_valid(u.attack_target): continue
+		if u.special.has("yr_skirmish_team") or u.unit_id != "E1" or u.repairing or u.attack_ordered or is_instance_valid(u.attack_target): continue
 		if u.special.has("ai_oil_post") or u.special.has("action") or u.special.get("ai_transport_reserved", false) or is_instance_valid(u.logistics.boarding): continue
 		if u.position.distance_squared_to(fortress.position) <= PICKUP_RANGE * PICKUP_RANGE and world.path_service.same_zone(u.position, fortress.position):
 			candidates.append(u)

@@ -192,7 +192,7 @@ static func quantity(run:Dictionary,id:String) -> int:
 		if row.id==id and str(row.get("hero","")).is_empty():count+=1
 	return count
 
-# Free places for the camp's refill service. Recruitment always adds its full batch.
+# Unfilled places for this type, counting both deployed troops and reserves.
 static func room(run:Dictionary,id:String) -> int:
 	return maxi(0,limit(id)-quantity(run,id))
 

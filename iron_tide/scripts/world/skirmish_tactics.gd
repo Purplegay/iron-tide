@@ -11,7 +11,7 @@ const PROCUREMENT := {"GHOST":0.0875, "IVAN":0.0875, "SREF":1.95, "MGTK":1.5, "J
 static func fighter(world, unit, owner := "enemy") -> bool:
 	if not is_instance_valid(unit) or unit.side != owner or unit.embarked_in != null: return false
 	if not world.actor_alive(unit): return false
-	if unit.special.get("expedition_objective","")=="command":return false
+	if unit.special.has("expedition_objective") or unit.special.has("yr_skirmish_team"): return false
 	if unit.unit_id == "BFRT" and unit._anim < float(unit.special.get("ai_crew_wait", -1.0)):
 		if unit.logistics.used_capacity() < unit.logistics.capacity: return false
 	return not unit.special.has("ai_oil_post") and not unit.special.has("field_convoy") \
@@ -43,18 +43,22 @@ static func mobile_aa_quota(kirovs: int) -> int:
 
 static func emergency_aa_product(world, owner: String, line, kirovs: int, counts: Dictionary, budget: float) -> String:
 	if kirovs == 0: return ""
-	var product: String = {"GAWEAP":"FV", "NAWEAP":"HTK", "NAHAND":"FLAKT", "GAPILE":"JUMPJET"}.get(line.building_id,"")
+	var product: String = {"GAWEAP":"FV", "NAWEAP":"HTK", "NAHAND":"FLAKT", "GAPILE":"JUMPJET", "YAWEAP":"YTNK"}.get(line.building_id,"")
 	if product.is_empty() or int(counts.get(product,0)) >= mobile_aa_quota(kirovs): return ""
 	if not line.can_queue(product) or world.production_price(GameData.get_unit(product),owner) > budget: return ""
 	return product
 
 static func air_defense_order(world, owner:String, difficulty:int, owned:Array) -> String:
-	var id := "NAFLAK" if world.roster_faction(owner)=="soviet" else "NASAM"
+	var id: String = {"soviet":"NAFLAK","allied":"NASAM","yuri":"YAGGUN"}.get(world.roster_faction(owner),"")
+	if id.is_empty(): return ""
 	var count := owned.count(id)
 	if not GameData.ra2_prereq_ok(id, owned, world.allied_state, owner): return ""
 	var kirovs := visible_kirovs(world,owner)
-	if kirovs > 0: return id if count < mini(10, 2+2*kirovs) else ""
-	if count>=2 or (difficulty==0 and count>=1): return ""
+	if kirovs > 0: return id if count < mini(int(preload("res://data/ra2/retail_skirmish.json").data.aa_limit), 2+2*kirovs) else ""
+	var rules: Dictionary = preload("res://data/ra2/retail_skirmish.json").data
+	var quota := clampi(ceili(owned.size()*float(rules.aa_ratio)),1,int(rules.aa_limit))
+	if count >= quota or (difficulty==0 and count>=1): return ""
+	if quota > 2 and owned.has(world.roster_id("GAWEAP",owner)): return id
 	if count==0 and owned.has(world.roster_id("GAWEAP",owner)) and owned.has(world.roster_id("GAREFN",owner)): return id
 	for u in world.units:
 		if world.actor_alive(u) and BattleRequest.is_house(u.side) and not BattleRequest.friendly(owner,u.side) and u.is_air_target() and world.actor_visible_to(owner,u): return id
@@ -81,7 +85,7 @@ static func committed(world, owner := "enemy") -> float:
 # batch against the owner's treasury, net of orders and replacement miner cash.
 static func additional_factory(world, owner: String, difficulty: int, owned: Array, reserve := 0.0) -> String:
 	var soviet: bool = world.roster_faction(owner) == "soviet"
-	if not owned.has("NATECH" if soviet else "GATECH") or world.side_power_low(owner): return ""
+	if not owned.has("NATECH" if soviet else world.roster_id("GATECH",owner)) or world.side_power_low(owner): return ""
 	if not owned.has(world.roster_id("GAREFN",owner)): return ""
 	if not world.units.any(func(u): return world.actor_alive(u) and u.side==owner and u.is_harvester): return ""
 	var available: float = world.funds_for(owner) - committed(world,owner) - reserve
@@ -94,9 +98,11 @@ static func additional_factory(world, owner: String, difficulty: int, owned: Arr
 	var power: Dictionary = world._side_power(owner)
 	for id: String in [factory,barracks]:
 		var count := owned.count(id)
-		if count==0 or count>=smallest or not GameData.ra2_prereq_ok(id, owned, world.allied_state, owner): continue
+		var q:Dictionary=preload("res://data/ra2/retail_skirmish.json").data.quotas["factory" if id==factory else "barracks"]
+		var wanted:=clampi(ceili(owned.size()*float(q.ratio)),1,int(q.limit)) if difficulty<3 else cap
+		if count>=wanted or count==0 or count>=smallest or not GameData.ra2_prereq_ok(id, owned, world.allied_state, owner): continue
 		var data := GameData.get_building(id)
-		var product := ("HTNK" if soviet else "MTNK") if id==factory else ("E2" if soviet else "E1")
+		var product:String=world.roster_id(("HTNK" if soviet else "MTNK") if id==factory else ("E2" if soviet else "E1"),owner)
 		var batch:float = world.production_price(GameData.get_unit(product),owner) * (count+1)
 		var budget := float(data.cost) + batch
 		var needs_power:bool = power.produced-power.drain+float(data.get("power",0))<0

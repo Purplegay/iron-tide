@@ -42,6 +42,7 @@ static func gap_radius(building) -> float:
 	return float(raw.get("gapradiusincells", 0.0)) * 55.0 if GameData._ra2_flag(raw.get("gapgenerator")) else 0.0
 
 static func satellite(building) -> bool:
+	if building.building_id == "GASPYSAT" and is_instance_valid(building.battle) and building.battle.mission.get("id") == "yr_allied_first": return false
 	return GameData._ra2_flag(rules().buildings.get(building.building_id, {}).get("spysat"))
 
 static func apply_intelligence(fog) -> void:

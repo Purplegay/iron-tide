@@ -25,13 +25,17 @@ static func source_level(run:Dictionary,id:String,track:String) -> int:
 	return clampi(roundi((bonus-1.0)/maxf(rate(run,track),0.000001)),0,20)
 
 static func rate(run:Dictionary,track:String) -> float:
-	return float(run.get("frozen",{}).get("expedition_growth_rates",{}).get(track,MetaProgress.get_unit_track(track).effect_per_level))
+	var rates:Dictionary=run.get("frozen",{}).get("expedition_growth_rates",{})
+	if rates.has(track):return float(rates[track])
+	return float(MetaProgress.get_unit_track(track).effect_per_level)
 
 static func starting_level(run:Dictionary,id:String) -> int:
 	return folded(mini(source_level(run,id,"atk"),source_level(run,id,"def")))
 
 static func level(run:Dictionary,id:String,track:String) -> int:
-	return int(run.get("unit_growth",{}).get(id,{}).get(track,starting_level(run,id)))
+	var levels:Dictionary=run.get("unit_growth",{}).get(id,{})
+	if levels.has(track):return int(levels[track])
+	return starting_level(run,id)
 
 static func upgrade_problem(run:Dictionary,id:String) -> String:
 	var owned:bool=id in run.licenses

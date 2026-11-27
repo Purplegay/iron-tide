@@ -83,8 +83,8 @@ func check_command_vehicle() -> void:
   await finish()
 
 func check_data() -> void:
- check(Catalog.TOTAL==30 and Catalog.BUFFS.size()==24,"30 battles and 24 tactical equipment")
- for stage in range(1,31):check(Campaign.difficulty(stage)==1+(stage-1)/5,"chapter difficulty "+str(stage))
+ check(Catalog.TOTAL==30 and Catalog.BUFFS.size()==29,"30 battles and 29 tactical equipment")
+ for stage in range(1,31):check(Campaign.difficulty(stage)==(5 if stage in [26,27] else 1+(stage-1)/5),"chapter difficulty "+str(stage))
  for chapter_index in 6:
   var normal:int=[180,220,260,300,340,380][chapter_index]
   var elite:int=[280,320,360,400,440,480][chapter_index]
@@ -192,6 +192,13 @@ func new_ready(country:String,stage:int=1,map_id:String="exp_plain") -> void:
  next.routes[0].map=map_id;next.routes[0].title=Campaign.map_name(map_id)
  Expedition.commit(next)
 
+func receive_scheduled_army() -> void:
+ var runtime=screen.expedition_runtime
+ if runtime.reinforcement_plan.is_empty():return
+ runtime.reinforcement_clock=float(runtime.reinforcement_plan.back().due)
+ runtime._process_reinforcements()
+ check(runtime.reinforcement_plan.is_empty(),"all scheduled ground reinforcements landed")
+
 func clear_enemies() -> void:
  for unit in battle.units.duplicate():
   if battle.actor_alive(unit) and unit.side=="enemy" and not unit.special.has("expedition_objective"):unit._die()
@@ -205,8 +212,9 @@ func satisfy_objective(tasks) -> void:
   for b in targets:b._die()
   tasks.tick(0.1)
   check(not battle.ended and tasks.state.remaining==1,"last enemy structure blocks victory")
+  check(battle.actor_alive(survivor),"hostile troop remains when last structure falls")
   last._die();tasks.tick(0.1)
-  check(tasks.state.outcome==1 and battle.actor_alive(survivor),"no troops required after all enemy buildings fall")
+  check(tasks.state.outcome==1 and battle.ended and not battle.actor_alive(survivor),"no troops required after all enemy buildings fall")
   return
  clear_enemies()
  if kind in ["supply","radar","assault","boss"]:
@@ -215,7 +223,7 @@ func satisfy_objective(tasks) -> void:
    if target!=null:target._die()
   tasks.tick(1.0)
   if kind=="boss" and tasks.state.stage==30:
-   var mission_marks:Array=screen.hud.minimap.objective_marks()
+   var mission_marks:Array=preload("res://tests/expedition_minimap_cases.gd").main_marks(screen.hud.minimap.objective_marks())
    check(mission_marks.size()==4 and mission_marks.filter(func(mark):return str(mark.key).begins_with("point")).size()==3,"final boss control phase adds three public minimap points")
    for point:Vector2 in tasks.state.points:
     var unit=battle.spawn_unit("E1","ally",point)
@@ -272,7 +280,7 @@ func check_campaign() -> void:
   next.routes[0].elite=stage%2==0
   Expedition.commit(next)
   check(Expedition.launch(0),"launch stage "+str(stage),Expedition.error)
-  check(BattleRequest.house_difficulty("enemy")==1+(stage-1)/5 and bool(BattleRequest.combat_context.get("brutal_three",false))==(stage>=26),"actual enemy difficulty reaches brutal three only in final chapter "+str(stage))
+  check(BattleRequest.house_difficulty("enemy")==(5 if stage in [26,27] else 1+(stage-1)/5) and bool(BattleRequest.combat_context.get("brutal_three",false))==(stage>=28),"actual enemy difficulty reaches brutal three only in final chapter "+str(stage))
   if not instantiate_battle():await finish();break
   for frame in 3:await get_tree().process_frame
   check(screen.hud.covers_world_pixel(screen.hud.expedition_panel.get_global_rect().get_center()),"objective toolbar owns pointer "+str(stage))
@@ -292,6 +300,18 @@ func check_campaign() -> void:
    if not instantiate_battle():await finish();break
    check(is_equal_approx(battle.funds,funds),"resume no duplicate funding")
   var tasks=screen.expedition_runtime.tasks
+  if stage==13:
+   var field=screen.expedition_runtime.field_ops
+   for job:Dictionary in field.data.objectives:
+    if job.kind!="fuel":continue
+    check(Rect2(Vector2.ZERO,Vector2.ONE*battle.map_size).has_point(job.station),"new convoy station is in bounds")
+    job.station=Vector2(-146.55,2011.03)
+    check(Expedition.checkpoint(battle),"save convoy with a legacy off-map station")
+    await finish()
+    check(Expedition.load_run() and Expedition.prepare_battle(),"reload convoy with a legacy off-map station")
+    if not instantiate_battle():return
+    tasks=screen.expedition_runtime.tasks
+    break
   preload("res://tests/expedition_minimap_cases.gd").inspect(self,tasks)
   check(tasks.z_index==DepthLayers.ORDER_PREVIEW,"public objective markers above fog "+str(stage))
   if stage==1:
@@ -311,8 +331,14 @@ func check_campaign() -> void:
   for currency:String in income:
    check(MetaProgress.balance(currency)==float(before_currency.get(currency,0))+income[currency]+regular_income[currency],"real victory pays extra chapter income and preserves ordinary rewards "+str(stage)+currency)
   check(Expedition.state.history.back().income==income,"history freezes awarded amounts "+str(stage))
+  var proceed=screen.result_overlay.find_children("*","Button",true,false).filter(func(b):return b.text=="查看结算")
+  check(proceed.size()==1,"victory card offers settlement "+str(stage))
+  if proceed.size()==1: proceed[0].pressed.emit()
   check(preload("res://tests/expedition_income_cases.gd").contains_text(screen.result_overlay,"远征额外 · 军需券 +%d · 战略核心 +%d（已到账）"%[income.credits,income.cores]),"victory overlay displays chapter award "+str(stage))
   preload("res://tests/expedition_minimap_cases.gd").completed(self,tasks)
+  if tasks.state.kind=="research":
+   check(tasks.state.labs.all(func(progress):return progress>=45.0),"both research station rewards earned "+str(stage))
+   earned+=2*40
   earned+=60 if battle.allied_state.get("expedition_optional",false) else 0
   var sale:Dictionary=Expedition.state.get("last_auto_sale",{})
   var sale_income:int=int(sale.get("supplies",0)) if sale!=prior_sale else 0
@@ -336,6 +362,7 @@ func check_native_and_traits() -> void:
  Expedition.grant(next,{"kind":"special_unit","id":"GGI","tier":3,"native_rank":2,"count":1})
  Expedition.commit(next);Expedition.launch(0)
  if not instantiate_battle():await finish();return
+ receive_scheduled_army()
  var normal=battle.spawn_unit("GGI","ally",battle.player_start()+Vector2(400,0))
  var special=null
  for unit in battle.units:

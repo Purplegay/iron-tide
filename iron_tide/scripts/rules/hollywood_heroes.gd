@@ -16,7 +16,7 @@ const TRAITS := {
 
 static func install_catalog(db) -> void:
 	var studio:Dictionary=db.building_index.GAPILE.duplicate(true)
-	studio.merge({"id":STUDIO,"name":"中立英雄制造所","desc":"招募已入册的中立英雄。","faction":"neutral","builds":IDS.duplicate(),"tags":["structure","production","hero_studio"],"ra2_prereq":["STUDIO_POWER"],"buildup":"STUDIOMK"},true)
+	studio.merge({"id":STUDIO,"name":"中立英雄制造所","desc":"招募已入册的中立英雄。每方最多建造一座。","buildlimit":1,"faction":"neutral","builds":IDS.duplicate(),"tags":["structure","production","hero_studio"],"ra2_prereq":["STUDIO_POWER"],"buildup":"STUDIOMK"},true)
 	db.building_index[STUDIO]=studio
 	db.ra2_prereq[STUDIO]=["STUDIO_POWER"]
 	db.ra2_ids.append(STUDIO)

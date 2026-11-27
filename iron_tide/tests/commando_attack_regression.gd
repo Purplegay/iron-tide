@@ -6,6 +6,16 @@ func actor(id: String, side: String, point: Vector2):
 	return unit
 
 func exercise_mode(mode: String) -> void:
+	if "--sapper-only" in OS.get_cmdline_user_args():
+		setup_logistics_scene(mode, "美国")
+		battle.water_rects = []
+		battle.path_service.set_water([])
+		var tank = actor("MTNK", "enemy", Vector2(2350, 2000))
+		exercise_sapper(mode + ": ", tank)
+		remove_actor(tank)
+		screen.free()
+		await get_tree().process_frame
+		return
 	setup_logistics_scene(mode, "美国")
 	battle.water_rects = []
 	battle.path_service.set_water([])
@@ -32,7 +42,15 @@ func exercise_mode(mode: String) -> void:
 		unit.veteran_level = 2
 		if row[0] == "TANY": check(unit._weapon_for_target(tank).get("ra2_weapon_id") == "YR_CAP_Sapper", tag + "elite Tanya retains Sapper")
 		remove_actor(unit)
+	exercise_sapper(tag, tank)
+	for item in [tank, man, ship, plane]: remove_actor(item)
+	await exercise_orders(mode, tag, building)
+
+func exercise_sapper(tag: String, tank) -> void:
 	var tanya = actor("TANY", "ally", tank.position - Vector2(220, 0))
+	var hp_at_start: float = tank.hp
+	tank.receive_hit(5.0, "bullet", {"impact_weapon": "YR_CAP_Sapper"}, tanya, "YR_CAP_Mechanical")
+	check(tank.hp > 0.0 and tank.hp < hp_at_start and tank._sapper_flash_left == 0.0, tag + "nonlethal Sapper damage does not begin the death effect")
 	tanya.attack_target = tank
 	tanya._refresh_weapon_derived()
 	check(is_equal_approx(tanya.attack_range, 82.5) and is_equal_approx(tanya.cooldown, 100.0 / 15.0), tag + "Sapper range and ROF from YR")
@@ -43,14 +61,29 @@ func exercise_mode(mode: String) -> void:
 	tanya._refresh_target()
 	check(tanya.attack_target == null and not tanya.has_move_order, tag + "default Tanya does not chase outside Sapper range")
 	battle.force_attack(tank)
+	var tank_material: ShaderMaterial = tank.material
+	var original_flash = tank_material.get_shader_parameter("sapper_flash")
+	var explosions_before := get_tree().get_nodes_in_group("yr_death_effects").size()
+	var credit_before: float = tanya._vet_kills
 	var hp_before: float = tank.hp
 	for tick in 600:
 		tanya._physics_process(1.0 / 60.0)
 		if tank.hp < hp_before: break
 	check(tank.hp < hp_before and tanya.position.distance_to(tank.position) <= 84.0, tag + "explicit attack approaches and damages vehicle")
 	check(not tank.special.has("c4_left"), tag + "Sapper is weapon damage, not timed destruction")
+	check(tank._dead and tank.hp == 0.0 and tank.collision_layer == 0 and tanya._vet_kills > credit_before,
+		tag + "Sapper death, collision removal and kill credit still resolve on hit")
+	check(tank.material != tank_material and tank.material.get_shader_parameter("sapper_flash") == 0.5
+		and tank_material.get_shader_parameter("sapper_flash") == original_flash, tag + "Sapper highlights only the killed hull")
+	tank._physics_process(1.0 / 15.0)
+	check(tank._sapper_flash_left > 0.0 and not tank.is_queued_for_deletion()
+		and get_tree().get_nodes_in_group("yr_death_effects").size() == explosions_before, tag + "hull flashes before the explosion")
+	tank._physics_process(1.0 / 15.0)
+	check(tank.is_queued_for_deletion() and get_tree().get_nodes_in_group("yr_death_effects").size() == explosions_before + 1,
+		tag + "Sapper flash gives way to one native vehicle explosion")
 	remove_actor(tanya)
-	for item in [tank, man, ship, plane]: remove_actor(item)
+
+func exercise_orders(mode: String, tag: String, building) -> void:
 	var mover = actor("TANY", "ally", Vector2(1500, 1800))
 	var victim = actor("MTNK", "enemy", Vector2(1730, 1800))
 	var goal := Vector2(1500, 2300)

@@ -17,14 +17,21 @@ def digest(path):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    for name in ['source', 'stage', 'output', 'godot', 'template', 'licenses', 'save']:
+    for name in ['source', 'stage', 'output', 'godot', 'template', 'licenses']:
         parser.add_argument('--' + name, required=True, type=Path)
+    parser.add_argument('--save', type=Path, help='Optional existing test fixture; otherwise create one using this export')
     parser.add_argument('--validation-report', type=Path, help='Include the measured performance report in the portable package')
     parser.add_argument('--release-notes', type=Path, help='Append task-specific release notes to the portable readme')
     args = parser.parse_args()
     if os.name != 'nt':
         parser.error('Windows export runner requires CREATE_NO_WINDOW.')
     source, root = args.source.resolve(), args.stage.resolve()
+    output = args.output.resolve()
+    if output.exists() or output.with_suffix('.zip.partial').exists():
+        parser.error('Output or partial archive already exists; choose a fresh filename.')
+    for file in (args.godot, args.template, args.licenses / 'Godot-LICENSE.txt', args.licenses / 'Godot-THIRD-PARTY.txt', *([args.save] if args.save else [])):
+        if not file.is_file():
+            parser.error(f'Input file not found: {file}')
     root.mkdir(parents=True, exist_ok=False)
     project = root / 'project'
     package = root / 'package/IronTide'
@@ -42,7 +49,7 @@ def main():
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source / relative, target)
         hashes[relative.as_posix()] = digest(target)
-    assert all(digest(source / p) == h for p, h in hashes.items()), 'Source changed during snapshot'
+    assert all((source / p).is_file() and digest(source / p) == h for p, h in hashes.items()), 'Source changed during snapshot; wait for edits to finish, then retry'
     (root / 'source-sha256.json').write_text(json.dumps(hashes, indent=2), 'utf8')
     config = (project / 'project.godot').read_text('utf8')
     version = re.search(r'^config/version="([^"]+)"', config, re.M)[1]
@@ -71,8 +78,9 @@ application/icon="res://icon.ico"
 '''
     (project / 'export_presets.cfg').write_text(preset, 'utf8')
     env = dict(os.environ, APPDATA=str(root / 'profile'), LOCALAPPDATA=str(root / 'profile'),
-               IRON_OUT=str(root), IRON_SAVE=str(args.save.resolve()), IRON_PACKAGE_VERSION=version)
-    env.pop('IRON_TIDE_CALL_LOG', None)
+               IRON_OUT=str(root), IRON_PACKAGE_VERSION=version)
+    for key in ('IRON_TIDE_CALL_LOG', 'IRON_SAVE', 'IRON_PACKAGE_CREATE_FIXTURE'):
+        env.pop(key, None)
 
     def run(executable, arguments, cwd, name, timeout):
         log = root / (name + '.log')
@@ -118,19 +126,40 @@ application/icon="res://icon.ico"
     override = package / 'override.cfg'
     override.write_text('[application]\nrun/main_scene="' + probe.as_posix() + '"\n', 'utf8')
     try:
+        if args.save:
+            checkpoint = args.save.resolve()
+        else:
+            checkpoint = root / 'fixture.itsave'
+            fixture_profile = str(root / 'fixture-profile')
+            env.update(APPDATA=fixture_profile, LOCALAPPDATA=fixture_profile, IRON_PACKAGE_CREATE_FIXTURE=str(checkpoint))
+            run(package / 'IronTide.exe', ['--fixed-fps', '60'], package, 'fixture', 180)
+            assert checkpoint.is_file(), 'Fixture was not created'
+            del env['IRON_PACKAGE_CREATE_FIXTURE']
+            env.update(APPDATA=str(root / 'profile'), LOCALAPPDATA=str(root / 'profile'))
+        env['IRON_SAVE'] = str(checkpoint)
         env['IRON_TIDE_CALL_LOG'] = '1'
         run(package / 'IronTide.exe', ['--fixed-fps', '60'], package, 'battle', 360)
         smoke = json.loads((root / 'smoke.json').read_text('utf8'))
         assert smoke['failed'] == 0
     finally:
         override.unlink(missing_ok=True)
-    assert all(digest(source / p) == h for p, h in hashes.items()), 'Source drift before archive'
+    archive(source, root, output, package, hashes, version, checkpoint, args.save is None, smoke)
+
+
+def archive(source, root, output, package, hashes, version, checkpoint, generated, smoke):
+    # The export and smoke both used the verified, isolated source snapshot.
+    # Later edits in the live worktree are not included, but do not invalidate it.
+    source_drift = [p for p, h in hashes.items() if not (source / p).is_file() or digest(source / p) != h]
+    if source_drift:
+        print('NOTE: Worktree changed after freeze; package contains the tested snapshot.', flush=True)
+        for path in source_drift:
+            print('  Not included (changed after freeze):', path, flush=True)
     manifest = {'version': version, 'platform': 'Windows x64', 'source': str(source),
                 'source_files': len(hashes), 'source_manifest_sha256': digest(root / 'source-sha256.json'),
-                'checkpoint_sha256': digest(args.save), 'includes_uncommitted_worktree': True,
+                'post_freeze_drift': source_drift,
+                'checkpoint_sha256': digest(checkpoint), 'checkpoint_generated_by_build': generated, 'includes_uncommitted_worktree': True,
                 'verification': smoke, 'files': {p.name: digest(p) for p in package.iterdir()}}
     (package / 'build-manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), 'utf8')
-    output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     assert not output.exists()
     partial = output.with_suffix('.zip.partial')

@@ -1,0 +1,87 @@
+ID	房号键	关联触发器	名称	启停和难度字段	事件	动作	标签	触发格
+06b76d8c	Neutral	<none>	Reclaimed Refinery (Player)	0,1,1,1,0	1,1,0,15	9,53,2,0915344C,0,0,0,0,A,108,0,1,0,0,0,0,BL,99,7,Bonus,0,0,0,0,BL,56,0,0,0,0,0,0,A,53,2,08E3167C,0,0,0,0,A,54,2,06B755BC,0,0,0,0,A,54,2,06B70CEC,0,0,0,0,A,54,2,08E3176C,0,0,0,0,A,54,2,06B76D8C,0,0,0,0,A		
+0915344c	Americans	<none>	Refinery_Is_Players	1,1,1,1,0	1,13,0,1	1,14,0,15,0,0,0,0,A	09151cac	
+08e3167c	Americans	08D2B3BC	Kill_Me	1,1,1,1,0	1,13,0,0	2,32,0,0,0,0,0,0,A,54,2,08E3167C,0,0,0,0,A	08d2acac	
+06b755bc	Neutral	06B76D8C	Reclaimed Refinery (BG1)	0,1,1,1,0	1,1,0,16	6,14,0,16,0,0,0,0,A,7,1,06B72DCC,0,0,0,0,A,56,0,0,0,0,0,0,A,56,0,1,0,0,0,0,A,54,2,06B70CEC,0,0,0,0,A,54,2,06B755BC,0,0,0,0,A		
+06b70cec	Neutral	06B755BC	Reclaimed Refinery (BG2)	0,1,1,1,0	1,1,0,17	6,14,0,16,0,0,0,0,A,7,1,06B72DCC,0,0,0,0,A,56,0,0,0,0,0,0,A,56,0,2,0,0,0,0,A,54,2,06B755BC,0,0,0,0,A,54,2,06B70CEC,0,0,0,0,A		
+08e3176c	Americans	06B70CEC	Refinery_Gone	0,1,1,1,0	1,48,0,0	5,53,2,08E3167C,0,0,0,0,A,54,2,06B755BC,0,0,0,0,A,54,2,06B70CEC,0,0,0,0,A,54,2,06B76D8C,0,0,0,0,A,54,2,08E3176C,0,0,0,0,A	06b7570c	
+08d2b3bc	BadGuy1	<none>	BG3 ConYard Killer	0,1,1,1,0	1,57,0,2	2,32,0,0,0,0,0,0,A,54,2,08D2B3BC,0,0,0,0,A		
+0b5ed59c	Neutral	<none>	Refinery Owned	0,1,1,1,0	1,36,0,0	10,116,0,63,0,0,0,0,BL,54,2,0882EBAC,0,0,0,0,A,54,2,0882E27C,0,0,0,0,A,54,2,0882E58C,0,0,0,0,A,5,1,0437EE9C,0,0,0,0,A,54,2,0881FD3C,0,0,0,0,A,54,2,0881F32C,0,0,0,0,A,54,2,0881F6EC,0,0,0,0,A,5,1,0437CD8C,0,0,0,0,A,54,2,0437C61C,0,0,0,0,A	0b5efb5c	
+0882ebac	BadGuy1	<none>	Refinery Grabber BG1 (Easy)	0,1,0,0,0	1,13,0,720	1,4,1,0437EE9C,0,0,0,0,A		
+0882e27c	BadGuy1	0882E58C	Refinery Grabber BG1 (Hrd)	0,0,0,1,0	1,13,0,180	1,4,1,0437EE9C,0,0,0,0,A	0882e67c	
+0882e58c	BadGuy1	0882EBAC	Refinery Grabber BG1 (Med)	0,0,1,0,0	1,13,0,600	1,4,1,0437EE9C,0,0,0,0,A		
+0881fd3c	BadGuy2	<none>	Refinery Grabber BG2 (Easy)	1,1,0,0,0	1,13,0,720	1,4,1,0437CD8C,0,0,0,0,A		
+0881f32c	BadGuy2	0881F6EC	Refinery Grabber BG2 (Hrd)	1,0,0,1,0	1,13,0,180	1,4,1,0437CD8C,0,0,0,0,A	0881f7dc	
+0881f6ec	BadGuy2	0881FD3C	Refinery Grabber BG2 (Med)	1,0,1,0,0	1,13,0,600	1,4,1,0437CD8C,0,0,0,0,A		
+0437c61c	BadGuy2	<none>	BG2 Refinery Grabber On	0,1,1,1,0	1,36,0,3	3,53,2,0881FD3C,0,0,0,0,A,53,2,0881F32C,0,0,0,0,A,53,2,0881F6EC,0,0,0,0,A	0437d90c	
+0b5ee99c	Neutral	<none>	Crate at BM	0,1,1,1,0	1,8,0,0	1,108,0,0,0,0,0,0,BM	043710ac	148054
+0c2af54c	BadGuy2	<none>	BG2 MCV Deployment (Easy)	0,1,0,0,0	1,47,0,300	1,4,1,0A011CBC,0,0,0,0,A		
+0c2a649c	BadGuy2	0C2AF54C	BG2 MCV Deployment (M_H)	0,0,1,1,0	1,47,0,90	1,4,1,0A011CBC,0,0,0,0,A		
+0c2c797c	BadGuy2	0C2A649C	BG2 MCV Deployment (attkd)	0,1,1,1,0	1,6,0,0	1,4,1,0A011CBC,0,0,0,0,A	0c2af46c	
+0aa91b1c	BadGuy2	<none>	BG2 Production Start	0,1,1,1,0	1,32,0,2	3,3,0,17,0,0,0,0,A,74,0,17,0,0,0,0,A,38,0,15,0,0,0,0,A	0aa916ac	
+0aa915bc	BadGuy1	<none>	BG1 Production Start	1,1,1,1,0	1,47,0,120	2,3,0,16,0,0,0,0,A,74,0,16,0,0,0,0,A	0aa9672c	
+0882e07c	BadGuy3	06B0A1BC	BG3 Production Start (BG1)	0,0,1,1,0	1,36,0,1	5,14,0,18,0,0,0,0,A,3,0,18,0,0,0,0,A,54,2,0882E07C,0,0,0,0,A,54,2,0AF468CC,0,0,0,0,A,53,2,06B0A1BC,0,0,0,0,A		
+06b0a1bc	BadGuy3	<none>	BG3 Power Supply (Off)	1,1,1,1,0	1,30,0,16	3,14,0,22,0,0,0,0,A,54,2,06B0A1BC,0,0,0,0,A,53,2,08C5D25C,0,0,0,0,A		
+0af468cc	BadGuy3	0882E07C	BG3 Production Start (BG2)	0,0,1,1,0	1,36,0,2	5,14,0,18,0,0,0,0,A,3,0,18,0,0,0,0,A,54,2,0AF468CC,0,0,0,0,A,54,2,0882E07C,0,0,0,0,A,53,2,06B0A1BC,0,0,0,0,A		
+08c5d25c	BadGuy3	0AF468CC	BG3 Power Supply (On)	1,1,1,1,0	1,58,0,16	3,14,0,18,0,0,0,0,A,54,2,08C5D25C,0,0,0,0,A,53,2,06B0A1BC,0,0,0,0,A	06b0cbfc	
+0d4ed32c	Neutral	<none>	_Briefing 0	0,1,1,1,0	1,8,0,0	7,46,0,0,0,0,0,0,A,17,0,98,0,0,0,0,CU,7,1,0437C33C,0,0,0,0,A,7,1,0AD50DEC,0,0,0,0,A,7,1,0437A6BC,0,0,0,0,A,4,1,07909EFC,0,0,0,0,A,4,1,0BEF16CC,0,0,0,0,A	0d4eaa7c	131118
+06bce16c	Neutral	<none>	_Briefing 1	0,1,1,1,0	1,47,0,10	8,112,0,1,0,0,0,0,B,19,7,CameraSwitch,0,0,0,0,A,55,0,5,0,0,0,0,B,21,6,Mis_xS2_ZofiaBriefing01,0,0,0,0,A,17,0,1,0,0,0,0,B,4,1,07909EFC,0,0,0,0,A,4,1,0BEF16CC,0,0,0,0,A,11,4,MISSION:Sov2Obj1,0,0,0,0,A	088b789c	
+088b897c	Neutral	<none>	_Briefing 2	0,1,1,1,0	1,47,0,15	4,112,0,2,0,0,0,0,C,19,7,CameraSwitch,0,0,0,0,A,55,0,5,0,0,0,0,C,17,0,2,0,0,0,0,C	088b808c	
+088aff3c	Neutral	<none>	_Briefing 3	0,1,1,1,0	1,47,0,20	4,112,0,3,0,0,0,0,D,19,7,CameraSwitch,0,0,0,0,A,55,0,5,0,0,0,0,D,17,0,3,0,0,0,0,D	088b52dc	
+0883e72c	Einstein	<none>	_Briefing 4	0,1,1,1,0	1,13,0,26	8,112,0,5,0,0,0,0,F,19,7,CameraSwitch,0,0,0,0,A,55,0,5,0,0,0,0,F,17,0,19,0,0,0,0,T,21,6,Mis_xS2_ZofiaBriefing03,0,0,0,0,A,131,9,CALAB,0,0,0,0,60,131,9,GACSPH,0,0,0,0,60,11,4,MISSION:Sov2Obj2,0,0,0,0,A	0883e43c	
+0883fbac	Neutral	<none>	_Briefing 6 (Send in Troops Again)	0,1,1,1,0	1,47,0,65	11,112,0,98,0,0,0,0,CU,19,7,CameraSwitch,0,0,0,0,A,7,1,078BB93C,0,0,0,0,A,7,1,078BCEFC,0,0,0,0,A,7,1,078BC7BC,0,0,0,0,A,56,0,4,0,0,0,0,A,21,6,Mis_xS2_ZofiaBriefing02,0,0,0,0,A,19,7,BeaconPlaced,0,0,0,0,A,55,0,0,0,0,0,0,K,55,0,0,0,0,0,0,O,55,0,0,0,0,0,0,CU	0883f7ec	
+0883f17c	Neutral	<none>	_Briefing 5 (Send in Troops)	0,1,1,1,0	1,47,0,50	12,112,0,4,0,0,0,0,E,19,7,CameraSwitch,0,0,0,0,A,55,0,5,0,0,0,0,E,7,1,078BB93C,0,0,0,0,A,7,1,078BCEFC,0,0,0,0,A,7,1,078BC7BC,0,0,0,0,A,17,0,4,0,0,0,0,E,17,0,15,0,0,0,0,P,17,0,16,0,0,0,0,Q,17,0,17,0,0,0,0,R,17,0,18,0,0,0,0,S,21,6,Mis_xS2_ZofiaBriefing04,0,0,0,0,A	0a82b89c	
+0883e27c	Neutral	<none>	_Briefing 7 (Enable Game)	0,1,1,1,0	1,36,0,4	1,53,2,0884076C,0,0,0,0,A	0884085c	
+0884076c	Neutral	<none>	_Briefing 8 (Briefing Over)	1,1,1,1,0	1,13,0,12	9,53,2,0437980C,0,0,0,0,A,53,2,0B6830CC,0,0,0,0,A,53,2,0A4B6D9C,0,0,0,0,A,53,2,0A4B69BC,0,0,0,0,A,53,2,0A4B62AC,0,0,0,0,A,4,1,08D2D7EC,0,0,0,0,A,21,6,EVA_BattlefieldControlOnline,0,0,0,0,A,47,0,0,0,0,0,0,A,53,2,07D4D4AC,0,0,0,0,A	0884046c	
+0437980c	Germany3	<none>	Germany3 Tank Destroyers Go (H)	1,0,0,1,0	1,13,0,30	2,4,1,0437B71C,0,0,0,0,A,38,0,15,0,0,0,0,A		
+0b6830cc	Germany3	0437980C	Germany3 Tank Destroyers Go (M)	1,0,1,0,0	1,13,0,60	2,4,1,0437B71C,0,0,0,0,A,38,0,15,0,0,0,0,A	0437925c	
+0a4b6d9c	Germany1	<none>	Germany1 Production Start	1,0,1,1,0	2,13,0,60,37,0,11	5,38,0,15,0,0,0,0,A,3,0,19,0,0,0,0,A,74,0,19,0,0,0,0,A,4,1,0A4B243C,0,0,0,0,A,7,1,0AE83EFC,0,0,0,0,A	0a4b6aac	
+0a4b69bc	Germany2	<none>	Germany2 Production Start	1,0,1,1,0	2,13,0,60,37,0,12	5,38,0,15,0,0,0,0,A,3,0,20,0,0,0,0,A,74,0,20,0,0,0,0,A,4,1,0A4B5DEC,0,0,0,0,A,7,1,0AE83A4C,0,0,0,0,A	0a4b639c	
+0a4b62ac	Germany3	<none>	Germany3 Production Start	1,0,1,1,0	2,13,0,60,37,0,13	5,38,0,15,0,0,0,0,A,3,0,21,0,0,0,0,A,74,0,21,0,0,0,0,A,4,1,0A4B5CBC,0,0,0,0,A,7,1,0AE8391C,0,0,0,0,A	0a4b5d2c	
+07d4d4ac	Player	<none>	_Lose	1,1,1,1,0	1,11,0,15	1,2,0,15,0,0,0,0,A	07d5428c	
+08d2f8bc	Player	<none>	Player MCV Reinforcment_E	1,1,0,0,0	3,11,0,21,11,0,19,11,0,20	10,7,1,0A0E17BC,0,0,0,0,A,21,6,EVA_ReinforcementsHaveArrived,0,0,0,0,A,55,0,1,0,0,0,0,CU,108,0,0,0,0,0,0,C,108,0,0,0,0,0,0,CH,108,0,0,0,0,0,0,CI,108,0,0,0,0,0,0,CJ,99,7,Bonus,0,0,0,0,C,53,2,07A3EA2C,0,0,0,0,A,53,2,077FF39C,0,0,0,0,A		
+07a3ea2c	Americans	<none>	Objective2_Text	1,1,1,1,0	1,13,0,120	1,11,4,MISSION:Sov2Obj2,0,0,0,0,A	07a3e50c	
+077ff39c	Americans	<none>	Center_On_MCV	1,1,1,1,0	1,13,0,3	2,112,0,98,0,0,0,0,CU,19,7,CameraSwitch,0,0,0,0,A	077f8d4c	
+08d2c96c	BadGuy1	<none>	BG1 Check on Germans	0,1,1,1,0	3,11,0,19,11,0,20,11,0,21	9,53,2,079504DC,0,0,0,0,A,53,2,08D2AC9C,0,0,0,0,A,53,2,0437882C,0,0,0,0,A,7,1,0B518B7C,0,0,0,0,A,7,1,0B51987C,0,0,0,0,A,7,1,0B51848C,0,0,0,0,A,7,1,09479E6C,0,0,0,0,A,7,1,0947BD7C,0,0,0,0,A,53,2,094558EC,0,0,0,0,A	08d2c0ac	
+079504dc	BadGuy1	<none>	BG1 German Check Team	1,0,0,1,0	1,13,0,0	1,7,1,0B517A4C,0,0,0,0,A	09a4f7ec	
+08d2ac9c	BadGuy1	<none>	BG1 Hill Holders Go	1,1,1,1,0	1,13,0,20	1,4,1,0B41AEFC,0,0,0,0,A	08d2aa7c	
+0437882c	BadGuy1	<none>	1st Battle Fort Attk Go	1,1,1,1,0	1,13,0,0	8,4,1,098F40EC,0,0,0,0,A,4,1,0990A93C,0,0,0,0,AO,17,0,40,0,0,0,0,AO,0,0,4,0,0,0,0,AO,55,0,5,0,0,0,0,AO,21,6,Unit_Sofia_BattleFortress,0,0,0,0,A,53,2,0AC7C6EC,0,0,0,0,A,53,2,0AA915BC,0,0,0,0,A	0437cabc	
+094558ec	BadGuy1	<none>	BG1 Early Attks	1,1,1,1,0	1,13,0,10	4,53,2,08CF47CC,0,0,0,0,A,53,2,08CF3B4C,0,0,0,0,A,7,1,0B831B7C,0,0,0,0,A,56,0,10,0,0,0,0,A	09453bcc	
+0ac7c6ec	BadGuy1	<none>	Mirage Warning Audio	1,1,1,1,0	1,13,0,26	2,21,6,Unit_Sofia_MirageTank,0,0,0,0,A,53,2,0B5F81EC,0,0,0,0,A	0ac7c0dc	
+08cf47cc	BadGuy1	<none>	BG1 Early Attks 01	1,1,1,1,0	1,13,0,1	1,7,1,0909945C,0,0,0,0,A	08cf46ec	
+08cf3b4c	BadGuy1	<none>	BG1 Early Attks 02	1,0,0,1,0	1,13,0,1	1,7,1,094579DC,0,0,0,0,A	08cf376c	
+0b5f81ec	BadGuy1	<none>	Mirage Warning Go	1,1,1,1,0	1,13,0,3	2,4,1,08F91C8C,0,0,0,0,A,53,2,095031DC,0,0,0,0,A	0b5fc80c	
+095031dc	Americans	<none>	Delay_Reinforcement	1,1,1,1,0	1,13,0,20	3,53,2,094B91CC,0,0,0,0,A,53,2,08D2F8BC,0,0,0,0,A,53,2,094BA1DC,0,0,0,0,A	0950016c	
+094b91cc	Player	08D2F8BC	Player MCV Reinforcment_M	1,0,1,0,0	3,11,0,21,11,0,20,11,0,19	8,7,1,0A0E17BC,0,0,0,0,A,21,6,EVA_ReinforcementsHaveArrived,0,0,0,0,A,55,0,1,0,0,0,0,CU,108,0,0,0,0,0,0,C,108,0,0,0,0,0,0,CH,99,7,Bonus,0,0,0,0,C,53,2,07A3EA2C,0,0,0,0,A,53,2,077FF39C,0,0,0,0,A		
+094ba1dc	Player	094B91CC	Player MCV Reinforcment_H	1,0,0,1,0	3,11,0,21,11,0,20,11,0,19	5,7,1,0A0E17BC,0,0,0,0,A,21,6,EVA_ReinforcementsHaveArrived,0,0,0,0,A,55,0,1,0,0,0,0,CU,53,2,07A3EA2C,0,0,0,0,A,53,2,077FF39C,0,0,0,0,A	08d2f27c	
+0a0c3e5c	BadGuy2	<none>	Chronosphere Transfer	0,1,1,1,0	1,36,0,6	3,14,0,17,0,0,0,0,A,21,6,Mis_xS2_ZofiaChronosphere,0,0,0,0,A,53,2,0439E1BC,0,0,0,0,A	0a0c3cac	
+0439e1bc	BadGuy2	<none>	_Win (BG2 Chronosphere KIA)	1,1,1,1,0	1,57,0,27	1,56,0,8,0,0,0,0,A		
+0a0c334c	Neutral	<none>	Chronosphere Timer Hack	0,0,1,1,0	1,8,0,0	1,7,1,0B8486FC,0,0,0,0,A	0a0c312c	
+0439777c	Player	<none>	_Win (Einstein Lab KIA)	0,1,1,1,0	1,48,0,0	1,56,0,7,0,0,0,0,A	0439b62c	
+0439c2cc	Player	<none>	_Win (Cheer)	1,1,1,1,0	1,13,0,3	1,113,0,15,0,0,0,0,A		
+0a3c3b8c	Player	<none>	_Win (Mission Over)	1,1,1,1,0	1,13,0,10	1,1,0,15,0,0,0,0,A	0a3c365c	
+08bc0c2c	Einstein	0439E1BC	_Win (Einstein Chronosphere KIA)	0,1,1,1,0	1,57,0,27	1,56,0,8,0,0,0,0,A	0439ecbc	
+08c5eb3c	Neutral	<none>	Chrono Transfer Win Switch	0,1,1,1,0	1,36,0,9	1,54,2,08BC0C2C,0,0,0,0,A	08c5e20c	
+0c26610c	BadGuy2	<none>	BG2 Garrison Barn	0,1,1,1,0	1,19,0,3	1,7,1,0B75521C,0,0,0,0,A	0c26c8dc	
+0944643c	BadGuy1	<none>	BG1 Early Air Assault	1,0,1,1,0	1,13,0,120	1,4,1,0B831B7C,0,0,0,0,A	094567ec	
+094566fc	BadGuy1	<none>	BG1 Early Air Assault Off	1,1,1,1,0	1,13,0,360	1,54,2,0944643C,0,0,0,0,A	094564cc	
+094563dc	BadGuy1	<none>	BG1 Early Air Asslt Go	0,1,1,1,0	1,36,0,10	2,53,2,0944643C,0,0,0,0,A,53,2,094566FC,0,0,0,0,A	09451acc	
+043b06cc	Germany1	<none>	Germany1 Sell KIA_01	0,1,1,1,0	1,17,0,0	1,53,2,043A9BBC,0,0,0,0,A	043a9cac	
+043a9bbc	Germany1	<none>	Germany1 Sell KIA_02	1,1,1,1,0	1,13,0,45	1,9,0,19,0,0,0,0,A	043a999c	
+043a98ac	Germany2	<none>	Germany2 Sell KIA_02	1,1,1,1,0	1,13,0,45	1,9,0,20,0,0,0,0,A	06b6647c	
+0950d82c	Germany2	<none>	Germany2 Sell KIA_01	0,1,1,1,0	1,17,0,0	1,53,2,043A98AC,0,0,0,0,A	0951720c	
+0951711c	Germany3	<none>	Germany3 Sell KIA_02	1,1,1,1,0	1,13,0,45	1,9,0,21,0,0,0,0,A	09517d0c	
+09517c1c	Germany3	<none>	Germany3 Sell KIA_01	0,1,1,1,0	1,17,0,0	1,53,2,0951711C,0,0,0,0,A	0951757c	
+079e4b7c	Player	<none>	Industrial_Plant_Brief	0,1,1,1,0	1,32,0,10	3,114,0,0,0,0,0,0,A,115,9,NAINDP,0,0,0,0,120,21,6,Unit_Sofia_IndustrialPlant,0,0,0,0,A	079e448c	
+07b14c3c	Americans	0439C2CC	_Win (Check)	0,1,1,1,0	2,36,0,8,36,0,7	4,54,2,07D4D4AC,0,0,0,0,A,53,2,0439C2CC,0,0,0,0,A,53,2,0A3C3B8C,0,0,0,0,A,54,2,07B14C3C,0,0,0,0,A	0439b7fc	
+078c61ec	Germany1	<none>	G1_Barracks_Gone	0,1,1,1,0	1,48,0,0	1,56,0,11,0,0,0,0,A	078c6e7c	
+078c6d8c	Germany2	<none>	G2_Barracks_Gone	0,1,1,1,0	1,48,0,0	1,56,0,12,0,0,0,0,A	078c6b4c	
+078c6a5c	Germany3	<none>	G3_Barracks_Gone	0,1,1,1,0	1,48,0,0	1,56,0,13,0,0,0,0,A	078c681c	
+04f5d48c	Americans	<none>	All_Hunt_Player	1,1,1,1,0	1,10,0,15	2,6,0,16,0,0,0,0,A,6,0,17,0,0,0,0,A	04f58e4c	
+04f58d5c	Player	<none>	Player_Deployed_MCV	0,1,1,1,0	1,32,0,25	1,53,2,04F5D48C,0,0,0,0,A	04f58b1c	
+078370fc	Americans	<none>	Battlefortress_Found	0,1,1,1,0	1,4,0,0	1,53,2,0437882C,0,0,0,0,A	07831c2c	
+09025b6c	Americans	<none>	Troops1_Arrived	0,1,1,1,0	1,36,0,15	1,5,1,078BB93C,0,0,0,0,A	090255ec	
+090254fc	Americans	<none>	Troops2_Arrived	0,1,1,1,0	1,36,0,14	1,5,1,078BCEFC,0,0,0,0,A	090252bc	
+090251cc	Americans	<none>	Troops3_Arrived	0,1,1,1,0	1,36,0,16	1,5,1,078BC7BC,0,0,0,0,A	0902179c	
+0790c9cc	BadGuy1	<none>	_BG1_Hates_Player	0,1,1,1,0	1,13,0,5	1,38,0,15,0,0,0,0,A	0790c44c	
+0790c35c	BadGuy2	<none>	_BG2_Hates_Player	0,1,1,1,0	1,13,0,5	1,38,0,15,0,0,0,0,A	0790ff4c	

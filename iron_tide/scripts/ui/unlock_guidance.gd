@@ -34,7 +34,7 @@ func _status(id: String) -> String:
 			return "施工中"
 	if int(battle.struct_ready.get(id, 0)) > 0:
 		return "待放置"
-	var jobs: Array = battle.structure_jobs(battle.structure_category(id))
+	var jobs: Array = battle.structure_jobs(battle.structure_category(id), "ally", battle.structure_lane_faction(id))
 	for i in jobs.size():
 		if str(jobs[i].id) == id:
 			return "建造中" if i == 0 else "排队中"

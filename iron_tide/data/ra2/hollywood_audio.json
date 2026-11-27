@@ -245,6 +245,51 @@
    "volume": 80,
    "range": 10
   },
+  "_Amb_LondonCivilians": {
+   "sounds": [
+    "hol_xs3c101",
+    "hol_xs3c102",
+    "hol_xs3c103",
+    "hol_xs3c201",
+    "hol_xs3c202",
+    "hol_xs3c203",
+    "hol_xs3c301",
+    "hol_xs3c302",
+    "hol_xs3c303",
+    "hol_xs3c401",
+    "hol_xs3c402",
+    "hol_xs3c403"
+   ],
+   "volume": 70,
+   "range": 30
+  },
+  "LCiv2Select": {
+   "sounds": [
+    "hol_xs3c201",
+    "hol_xs3c202",
+    "hol_xs3c203"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "LCiv3Select": {
+   "sounds": [
+    "hol_xs3c301",
+    "hol_xs3c302",
+    "hol_xs3c303"
+   ],
+   "volume": 1,
+   "range": 10
+  },
+  "LCiv4Select": {
+   "sounds": [
+    "hol_xs3c401",
+    "hol_xs3c402",
+    "hol_xs3c403"
+   ],
+   "volume": 1,
+   "range": 10
+  },
   "ClintAttack": {
    "sounds": [
     "hol_icliatta",
@@ -868,6 +913,90 @@
    "channels": 1,
    "frames": 28853,
    "durMs": 1309
+  },
+  "hol_xs3c101": {
+   "file": "hollywood/xs3c101.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 46430,
+   "durMs": 2106
+  },
+  "hol_xs3c102": {
+   "file": "hollywood/xs3c102.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 42458,
+   "durMs": 1926
+  },
+  "hol_xs3c103": {
+   "file": "hollywood/xs3c103.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 49697,
+   "durMs": 2254
+  },
+  "hol_xs3c201": {
+   "file": "hollywood/xs3c201.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 54166,
+   "durMs": 2457
+  },
+  "hol_xs3c202": {
+   "file": "hollywood/xs3c202.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 88744,
+   "durMs": 4025
+  },
+  "hol_xs3c203": {
+   "file": "hollywood/xs3c203.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 41882,
+   "durMs": 1899
+  },
+  "hol_xs3c301": {
+   "file": "hollywood/xs3c301.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 49113,
+   "durMs": 2227
+  },
+  "hol_xs3c302": {
+   "file": "hollywood/xs3c302.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 49401,
+   "durMs": 2240
+  },
+  "hol_xs3c303": {
+   "file": "hollywood/xs3c303.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 34723,
+   "durMs": 1575
+  },
+  "hol_xs3c401": {
+   "file": "hollywood/xs3c401.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 27924,
+   "durMs": 1266
+  },
+  "hol_xs3c402": {
+   "file": "hollywood/xs3c402.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 48032,
+   "durMs": 2178
+  },
+  "hol_xs3c403": {
+   "file": "hollywood/xs3c403.wav",
+   "sampleRate": 22050,
+   "channels": 1,
+   "frames": 43780,
+   "durMs": 1985
   },
   "hol_icliatta": {
    "file": "hollywood/icliatta.wav",

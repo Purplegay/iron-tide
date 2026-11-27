@@ -22,7 +22,8 @@ func refresh(world) -> void:
 			for actor in actors:
 				if not is_instance_valid(actor) or not BattleRequest.friendly("ally",actor.side): continue
 				if not world.actor_alive(actor): continue
-				if world.actor_visible_to("ally",actor):
+				# A live friendly actor passes visibility unless carried by another actor.
+				if not (actor is Unit and actor.embarked_in != null):
 					var friend = visual_actor(actor)
 					if is_instance_valid(friend): friends[friend] = true
 				if actor.side!="ally": continue

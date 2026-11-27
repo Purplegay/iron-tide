@@ -74,10 +74,10 @@ for u,v,_,z,tid,sub,ramp in row['cells']:
 # Ease a four-level discontinuity over the artwork's footprint. A direct
 # average at the two shared vertices would stretch a single source scanline.
 alcatraz = {}
-if row['id'] == 'yr_sov01':
+if row['id'] in ('yr_sov01','yr_all01umd'):
     heights = {(u,v): z for u,v,_,z,*_ in row['cells']}
     for u,v,_,z,tid,_,_ in row['cells']:
-        if 106 <= u <= 140 and 20 <= v <= 46 and 'clif' in theater['tiles'][tid]['name'].lower():
+        if (row['id']=='yr_all01umd' or (106 <= u <= 140 and 20 <= v <= 46)) and 'clif' in theater['tiles'][tid]['name'].lower():
             for i in range(u-2,u+3):
                 for j in range(v-2,v+3):
                     alcatraz[i,j] = True
@@ -117,6 +117,24 @@ for u,v,_,z,tid,sub,ramp in row['cells']:
     covered += 1
 from check_native_terrain import inspect_terrain
 inspect_terrain(row, result)
+if row['id'] == 'yr_all01umd':
+    # The input is the unlit base produced by native_maps.py. Keep the raw terrain height.
+    import configparser
+    import hashlib
+    raw = (source / (row['archive'] + '.map')).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != row['sha256']:
+        raise ValueError('ALL01 lighting source does not match the map')
+    config = configparser.ConfigParser(strict=False, interpolation=None)
+    config.read_string(raw.decode('cp1252'))
+    light = config['Lighting']
+    curves = {}
+    for u, v, _, z, *_ in row['cells']:
+        if z not in curves:
+            brightness = light.getfloat('Ambient') + light.getfloat('Ground') + (z-1)*light.getfloat('Level')
+            curves[z] = [min(255,round(value*brightness*light.getfloat(channel)))
+                         for channel in ('Red','Green','Blue') for value in range(256)]
+        box = (u*pixels,v*pixels,(u+1)*pixels,(v+1)*pixels)
+        result.paste(result.crop(box).point(curves[z]),box)
 result.save(output_png)
 slopes = sum(bool(cell[6]) for cell in row['cells'])
 print(f'Baked {slopes} slope cells and {covered-slopes} adjoining flat cells at {pixels} pixels per cell')

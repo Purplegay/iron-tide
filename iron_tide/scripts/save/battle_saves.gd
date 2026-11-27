@@ -1,10 +1,13 @@
 extends Node
-## Dedicated automatic slot + four manual/quick slots; verified writes + previous backup.
+## Dedicated automatic and quick slots plus ten manual slots; verified writes + previous backup.
 const Snapshot = preload("res://scripts/save/battle_snapshot.gd")
 const Schema = preload("res://scripts/save/snapshot_schema.gd")
 const VERSION := 1
 const DIRECTORY := "user://battles"
-const SLOTS := ["auto", "quick", "slot1", "slot2", "slot3"]
+const SLOTS := [
+	"auto", "quick", "slot1", "slot2", "slot3", "slot4", "slot5",
+	"slot6", "slot7", "slot8", "slot9", "slot10",
+]
 const MAX_BYTES := 64 * 1024 * 1024
 var pending: Dictionary = {}
 var _content_hash := ""
@@ -280,12 +283,15 @@ func validate(snapshot) -> String:
 	if not context.skirmish and context.mission_id == "yr_hollywood": native_id="yr_all02umd"
 	if not context.skirmish and context.mission_id == "yr_head_games": native_id="yr_sov07"
 	if not context.skirmish and context.mission_id=="yr_time_shift":native_id="yr_sov01"
+	if not context.skirmish and context.mission_id=="yr_allied_finale":native_id="yr_all07smd"
+	if not context.skirmish and context.mission_id=="yr_allied_first":native_id="yr_all01umd"
 	var native_sites:Dictionary=native.data(native_id).get("site_types",{}) if native.has(native_id) else {}
 	if context.has("native_map_sha") and (not native.has(native_id) or context.native_map_sha!=FileAccess.get_sha256("res://data/maps/%s.json"%native_id)):
 		return "原版地图导入数据已变化，无法按旧地形恢复"
 	if not context.camera is Vector2 or not context.camera.is_finite() or not context.zoom is float or context.zoom <= 0.0 or context.zoom > 20.0: return "镜头数据无效"
 	if not context.iso is Array or context.iso.size() != 3 or not context.iso[0] is float or context.iso[0] <= 0.0 or context.iso[0] > 2.0: return "视角数据无效"
 	if not context.gm is Dictionary or not context.rally is Array or not context.firing is Array: return "辅助状态无效"
+	if context.has("fog_buildings") and not preload("res://scripts/world/fog_building_memory.gd").valid(context.fog_buildings): return "建筑侦察记录无效"
 	if not context.skirmish is bool or not context.mission_id is String or not context.collapsed is bool or not context.iso[1] is bool or not context.iso[2] is bool: return "设置类型无效"
 	if not context.combat_context.get("bonuses") is Dictionary or not context.combat_context.get("unit_bonus") is Dictionary or not context.combat_context.get("loadouts") is Dictionary: return "缺少对局加成"
 	for key in context.gm:
@@ -327,17 +333,18 @@ func validate(snapshot) -> String:
 			if not record.get("position") is Vector2 or not record.position.is_finite() or not record.get("groups") is Array or not record.get("visible") is bool: return "实体位置无效"
 		if kind in ["unit", "building"]:
 			var id = record.fields.get("unit_id" if kind == "unit" else "building_id")
-			var civilian: bool = kind == "building" and (id in ["CAHSE01", "CABHUT", "CAOILD"] or ((context.skirmish or context.mission_id in ["yr_hollywood","yr_head_games","yr_time_shift"]) and native_sites.has(id)))
+			var civilian: bool = kind == "building" and (id in ["CAHSE01", "CABHUT", "CAOILD"] or ((context.skirmish or context.mission_id in ["yr_hollywood","yr_head_games","yr_time_shift","yr_allied_finale","yr_allied_first"]) and native_sites.has(id)))
+			var hollywood_fence:bool=kind=="building" and not context.skirmish and context.mission_id in ["yr_hollywood","yr_allied_first"] and id in ["CAFNCP","CAFNCB","CAFNCW"] and record.fields.side=="neutral"
 			# Expedition rescue/escort NPCs are neutral units and must survive checkpoints.
 			var neutral_actor: bool = record.fields.side == "neutral"
 			if record.fields.side not in house_ids and not neutral_actor and not (civilian and record.fields.side == "neutral"): return "单位或阵营不兼容"
-			if not civilian and ((kind == "unit" and GameData.get_unit(str(id)).is_empty() and not (context.mission_id=="yr_time_shift" and preload("res://data/time_shift_assets.json").data.units.has(id))) or (kind == "building" and not GameData.building_index.has(id) and not (context.mission_id=="yr_time_shift" and (preload("res://data/time_shift_assets.json").data.defs.has(id) or GameData.hollywood_yuri.buildings.has(id))) and not ((context.mission_id == "yr_hollywood" and GameData.hollywood_yuri.buildings.has(id) or context.mission_id == "yr_head_games" and GameData.hollywood_yuri.buildings.has(id))))): return "单位或阵营不兼容"
+			if not civilian and not hollywood_fence and ((kind == "unit" and GameData.get_unit(str(id)).is_empty() and not ((context.mission_id=="yr_time_shift" or (context.mission_id=="yr_allied_first" and id in GameData.ALL01_SHARED_UNITS)) and preload("res://data/time_shift_assets.json").data.units.has(id))) or (kind == "building" and not GameData.building_index.has(id) and not (context.mission_id=="yr_time_shift" and (preload("res://data/time_shift_assets.json").data.defs.has(id) or GameData.hollywood_yuri.buildings.has(id))) and not (context.mission_id == "yr_allied_first" and id == "YAPPPT") and not ((context.mission_id == "yr_hollywood" and GameData.hollywood_yuri.buildings.has(id) or context.mission_id == "yr_head_games" and GameData.hollywood_yuri.buildings.has(id))))): return "单位或阵营不兼容"
 			if not record.fields.data is Dictionary or not record.fields.data.has("@dict"): return "缺少实体定义"
 		if kind in ["unit", "building", "obstacle"]:
 			if not record.get("collision") is Array or record.collision.size() != 2: return "缺少碰撞状态"
 	var skirmish: bool = context.skirmish == true
 	var hollywood: bool = not skirmish and context.mission_id == "yr_hollywood"
-	var expects_fog: bool = hollywood or context.mission_id in ["yr_head_games","yr_time_shift"] or (skirmish and context.config.get("fog_of_war", false))
+	var expects_fog: bool = hollywood or context.mission_id in ["yr_head_games","yr_time_shift","yr_allied_finale","yr_allied_first"] or (skirmish and context.config.get("fog_of_war", false))
 	# Earlier Hollywood snapshots contain neither the fog record nor its sight timers.
 	var legacy_clear_map: bool = fog_count == 0 and (hollywood and not context.has("death_sight") or context.mission_id=="yr_head_games")
 	if ai_count != (1 if skirmish and house_ids.size() == 2 else 0) or (not legacy_clear_map and fog_count != int(expects_fog)): return "地图状态不匹配"

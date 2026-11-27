@@ -113,7 +113,7 @@ static func unit_decision(ai,unit,visible,elapsed:float,batch:Dictionary = {}) -
 	if unit.is_naval and unit._return_timer > 0.0:
 		preload("res://scripts/world/skirmish_operations.gd").naval_counterfire(ai, unit)
 	if unit.unit_id not in ["E1", "GGI", "DESO", "SCHP"]: return
-	if unit.special.has("ai_oil_post"): return
+	if unit.special.has("ai_oil_post") or unit.special.has("yr_skirmish_team"): return
 	if unit.embarked_in != null or unit.repairing or unit._stun_timer > 0.0 \
 			or unit.special.has("temporal_by") or unit.logistics.boarding != null \
 			or unit.special.get("ai_transport_reserved", false) or unit.fire_stance == "none": return

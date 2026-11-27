@@ -125,12 +125,13 @@ func draw_page() -> void:
 		entry.add_theme_font_override("font",bold)
 		entry.add_theme_font_size_override("font_size",22)
 		for state in ["normal","hover","pressed"]: entry.get_theme_stylebox(state).content_margin_top=24
-		text("盟军任务 02" if allied else "苏军任务 %s"%item.get("campaign_number","07") if faction=="soviet" else "原创任务",64,y+6,173,23,14,MINT)
+		text("盟军任务 %s"%item.get("campaign_number","02") if allied else "苏军任务 %s"%item.get("campaign_number","07") if faction=="soviet" else "原创任务",64,y+6,104,23,14,MINT)
+		if Payout.cleared(item.id): completion_badge(174,y+6)
 		if selected: rect(48,y,4,78,MINT)
 		y+=85
 	button("‹  更换阵营",48,645,145,38,groups,NAV,MUTED,NAV)
 	button("返回主菜单",48,690,145,38,home,NAV,MUTED,NAV)
-	text("洛杉矶作战地图" if allied else "旧金山作战地图" if mission.id=="yr_time_shift" else "特兰西瓦尼亚作战地图" if faction=="soviet" else "来袭部队",285,196,445,46,23,LIGHT,true)
+	text(str(mission.get("map_title", "旧金山作战地图" if mission.id=="yr_time_shift" else "特兰西瓦尼亚作战地图" if faction=="soviet" else "来袭部队")),285,196,445,46,23,LIGHT,true)
 	rect(285,248,454,296,LINE)
 	rect(287,250,450,292,BG)
 	if mission.has("map_layout"):
@@ -146,26 +147,28 @@ func draw_page() -> void:
 		for wave in mission.waves:
 			text("%02d   %s"%[n+1,wave.name],307,260+n*41,410,38,18)
 			n+=1
-	text("美国 · 加利福尼亚州" if allied else mission.subtitle,285,550,450,38,16,MUTED)
+	text(mission.subtitle,285,550,450,38,16,MUTED)
 	rect(285,600,454,1,LINE)
 	text("作战目标",285,615,400,32,17,MINT)
-	if allied:
-		text("01   摧毁城内四座回收厂\n02   摧毁尤里的剩余建筑",285,654,452,72,19)
+	if mission.has("objectives_text"):
+		text(mission.objectives_text,285,646,452,90,17)
 	elif mission.id == "yr_time_shift":
 		text("摧毁港口守军，登陆接管时光机。\n夺取科技发电厂供电，保护时光机完成充能。\n穿越时空后，摧毁恶魔岛的心灵控制器。",285,646,452,90,17)
 	elif mission.id == "yr_head_games":
 		text("摧毁两座心灵信标，接管苏军和盟军基地。\n摧毁尤里的城堡。",285,646,452,90,17)
 	else: text(mission.brief,285,650,452,84,17)
 	rect(761,206,1,518,LINE)
-	text("盟军任务 02" if allied else "苏军任务 %s"%mission.get("campaign_number","07") if faction=="soviet" else "原创任务",786,203,430,30,16,MINT)
+	text("盟军任务 %s"%mission.get("campaign_number","02") if allied else "苏军任务 %s"%mission.get("campaign_number","07") if faction=="soviet" else "原创任务",786,203,340,30,16,MINT)
+	if Payout.cleared(mission.id): completion_badge(1146,207)
 	text(mission.name,785,232,435,56,37,LIGHT,true)
-	text("从机场接管车队，进城解救被控制的居民。" if allied else mission.subtitle,786,293,430,36,17)
+	text(mission.subtitle,786,293,430,36,17)
 	rect(786,337,430,1,LINE)
 	text("通关奖励",785,351,220,42,24,LIGHT,true)
 	if mission.has("first_win_reward"):
 		text("可重复挑战",1119,352,110,40,16,MUTED)
 		rewards_table()
-	else: text("无尽挑战 · 按波数结算",786,418,427,68,20,GOLD)
+	elif mission.get("endless",false): text("无尽挑战 · 按波数结算",786,418,427,68,20,GOLD)
+	else: text("本关没有通关奖励",786,418,427,68,20,MUTED)
 	rect(786,557,430,1,LINE)
 	text("本关养成",786,571,280,40,22,LIGHT,true)
 	for value:bool in [false,true]:
@@ -186,6 +189,11 @@ func draw_page() -> void:
 	var launch_btn:=button("出击",1003,680,212,55,launch,GOLD,BG,GOLD)
 	launch_btn.add_theme_font_size_override("font_size",24)
 	launch_btn.add_theme_font_override("font",bold)
+
+func completion_badge(x:int,y:int) -> void:
+	rect(x,y,70,23,Color("356457"))
+	rect(x+1,y+1,68,21,Color("203d37"))
+	text("已完成",x+14,y,56,23,14,MINT,true)
 
 func faction_emblems() -> void:
 	var board := Sprite2D.new()

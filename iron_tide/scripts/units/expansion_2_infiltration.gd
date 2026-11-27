@@ -39,6 +39,10 @@ static func speed(unit) -> float:
 
 static func tick(unit,dt:float) -> void:
 	var s:Dictionary=unit.special.get(KEY,{})
+	# Any infantry can receive escort buffs. Saved timers also run after a card change.
+	var shore_equipped := equipped(unit, SHORE)
+	if not shore_equipped and not s.has("shore_speed") and not s.has("shore_cloak") and not s.has("escort_cd") and not s.has("escort_buffs"):
+		return
 	var before:=speed(unit)
 	var was_hidden:=hidden(unit)
 	for key in ["shore_speed","shore_cloak","escort_cd"]:R.timer(s,key,dt)
@@ -47,7 +51,7 @@ static func tick(unit,dt:float) -> void:
 		row.left-=dt
 		if row.left<=.000001 or row.side!=unit.side:rows.erase(row)
 	if rows.is_empty():s.erase("escort_buffs")
-	if equipped(unit,SHORE):
+	if shore_equipped:
 		var world=R.world(unit)
 		var water:bool=world!=null and world.in_water_world(unit.position)
 		var previous:Vector2=s.get("shore_position",unit.position)
@@ -68,8 +72,9 @@ static func tick(unit,dt:float) -> void:
 			s.shore_age=0.0
 		else:s.shore_age=0.0
 		s.shore_water=water;s.shore_position=unit.position
-	if not is_equal_approx(before,speed(unit)):unit._recompute_bonuses()
-	if was_hidden or hidden(unit) or before!=1.0 or speed(unit)!=1.0:unit.queue_redraw()
+	var after := speed(unit)
+	if not is_equal_approx(before,after):unit._recompute_bonuses()
+	if was_hidden or hidden(unit) or before!=1.0 or after!=1.0:unit.queue_redraw()
 
 static func recipient(unit,other) -> bool:
 	return other!=unit and other is Unit and R.active(other) and AlliedAbilities.infantry(other) and not other.is_air_target() and other.embarked_in==null and unit.side==other.side and str(other.special.get("academy_hero","")).is_empty() and other.unit_id not in ["TANY","BORIS"]

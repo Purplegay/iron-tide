@@ -39,7 +39,7 @@ static func discount_percent(item:Dictionary) -> int:
 	if not item.get("discounted",false) or original<=0 or price<0 or price>=original:return 0
 	return clampi(roundi(100.0*(original-price)/original),1,100)
 
-static func add_discount(box:VBoxContainer,item:Dictionary) -> void:
+static func add_discount(box:VBoxContainer,item:Dictionary,partial_price:int=-1) -> void:
 	var percent:=discount_percent(item)
 	if percent<=0:return
 	var shell:PanelContainer=box.get_parent()
@@ -50,7 +50,7 @@ static func add_discount(box:VBoxContainer,item:Dictionary) -> void:
 	var badge:=Label.new()
 	badge.name="DiscountBadge"
 	badge.text="-%d%%"%percent
-	badge.tooltip_text="原价 %d 补给 · 现价 %d 补给"%[item.original_price,item.price]
+	badge.tooltip_text="原价 %d 补给 · 现价 %d 补给"%[item.original_price,item.price] if partial_price<0 else "只补剩余名额 · 本次 %d 补给"%partial_price
 	badge.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
 	badge.vertical_alignment=VERTICAL_ALIGNMENT_CENTER
 	badge.add_theme_font_size_override("font_size",18)

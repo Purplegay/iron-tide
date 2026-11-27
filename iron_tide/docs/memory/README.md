@@ -4,10 +4,15 @@
 
 | 想查什么 | 从这里读 |
 | --- | --- |
+| 接手存档 1 的 3× 优化，从哪开始？ | [性能交接、复测命令和下一处索敌热点](SESSION_2026-11-27_PERFORMANCE_HANDOFF.md) |
+| 单位成长和护送更新的实测热点在哪里？ | [成长资格、护送更新与 3× 验收](SESSION_2026-11-27_UNIT_GROWTH_HOTSPOTS.md) |
+| 存档 1 的 3× P95、静止重绘、187 项与额外 40 项失败修到哪里？ | [绘制与计算优化、远征和遭遇战回归](SESSION_2026-11-27_IDLE_RENDER_AND_REGRESSIONS.md) |
+| 遭遇战与远征接入了哪些尤复小队、建造和反击规则？ | [全局 AI、远征与验收](SESSION_2026-11-27_RETAIL_HOUSE_AI.md)，[首批规则与 30 项专项](SESSION_2026-11-27_RETAIL_SKIRMISH_AI.md) |
 | 整场邻居候选缓存是否已合入、节省哪些工作？ | [已合入与函数级验收](SESSION_2026-11-26_BATTLE_LIFETIME_TRAFFIC_CACHE.md)，查询减少56.7%，总CPU收益未证实。 |
 | 邻居候选2逻辑帧缓存实施到哪、怎样恢复验收？ | [隔离候选与待测窗口](SESSION_2026-11-26_TRAFFIC_FRAME_CACHE_PENDING.md)：1999专项通过，性能受并发阻塞，未合入。 |
 | 存档1当前P95、每个热点与子函数两种方案、尤里与网页红警对照？ | [11月26日分层测量与方案](SESSION_2026-11-26_SLOT1_P95_HOTSPOT_ANALYSIS.md)，绑定冻结快照，未实施优化。 |
 | 载具生产排了几十辆后，为什么点击或长按会卡？ | [50 项队列下的点击耗时与批量生产回归](SESSION_2026-11-25_PRODUCTION_CLICK.md) |
+| 美国首关任务驱动接了多少，穿越时驻军和核电站如何处理？ | [驱动名单](ALL01UMD_DRIVER_INVENTORY.md) · [本批防空 AI 与生产触发器](SESSION_2026-11-27_ALLIED01_AIR_DEFENSE.md) · [装甲、AI 与全图核验](SESSION_2026-11-27_ALLIED01_DRIVERS_FIELD.md) · [疏散与换场断点](SESSION_2026-11-27_ALLIED01_TRANSITION.md) |
 | 接入下一关红警战役时，原版资料、触发器、语音字幕和验收要查哪些？ | [战役移植清单与事件表模板](../YR_MISSION_PORT_CHECKLIST.md)，含洛杉矶战斗要塞示例和专项记录入口。 |
 | 单位移植时怎样验原版图标和生产时间？ | [单位移植交付](UNITS.md) · [洛杉矶尤里生产卡、矿场与补员实例](SESSION_2026-11-25_CAPTURED_YURI_FACTORY.md) |
 | 盟军第二关的心控与心灵波、驻军射孔、盖特换枪、矿车排烟和援军怎样验证？ | [好莱坞单位移植与复测](SESSION_2026-11-25_HOLLYWOOD_UNIT_STATES.md) |

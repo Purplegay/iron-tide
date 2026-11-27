@@ -1,6 +1,9 @@
 extends RefCounted
 ## Candidates only. Ownership, visibility and weapon eligibility are live checks.
 const CELL := 256.0
+const TRAFFIC_CELL := 64.0
+var _traffic_buckets: Dictionary = {}
+var _traffic_membership: Dictionary = {}
 var buckets := {}
 var membership := {}
 # Same relocation order, with structures omitted for unit-only movement queries.
@@ -22,6 +25,7 @@ func register(actor: Node2D, extent: float, structure: bool) -> void:
 func relocate(actor: Node2D) -> void:
 	var cell := Vector2i((actor.global_position / CELL).floor())
 	if membership.get(actor) == cell:
+		if actor is Unit: _relocate_traffic(actor)
 		return
 	remove(actor)
 	membership[actor] = cell
@@ -30,6 +34,7 @@ func relocate(actor: Node2D) -> void:
 		unit_membership[actor] = cell
 		unit_buckets.get_or_add(cell, []).append(actor)
 		_touch_unit_cell(cell)
+		_relocate_traffic(actor)
 	else:
 		structure_buckets.get_or_add(cell, []).append(actor)
 
@@ -43,6 +48,7 @@ func remove(actor: Node2D) -> void:
 		buckets.erase(cell)
 	membership.erase(actor)
 	if unit_membership.erase(actor):
+		_remove_traffic(actor)
 		var units: Array = unit_buckets[cell]
 		units.erase(actor)
 		if units.is_empty(): unit_buckets.erase(cell)
@@ -154,4 +160,45 @@ func target_contacts(point: Vector2, unit_reach: float, structure_reach: float) 
 			var bucket = cells.get(Vector2i(x, y))
 			if bucket != null: result.append_array(bucket)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(40, visited)
+	return result
+
+func _relocate_traffic(actor: Unit) -> void:
+	var cell := Vector2i((actor.global_position / TRAFFIC_CELL).floor())
+	if _traffic_membership.get(actor) == cell: return
+	_remove_traffic(actor)
+	_traffic_membership[actor] = cell
+	_traffic_buckets.get_or_add(cell, []).append(actor)
+
+func _remove_traffic(actor: Node2D) -> void:
+	if not _traffic_membership.has(actor): return
+	var cell: Vector2i = _traffic_membership[actor]
+	var items: Array = _traffic_buckets[cell]
+	items.erase(actor)
+	if items.is_empty(): _traffic_buckets.erase(cell)
+	_traffic_membership.erase(actor)
+
+# Borrow bucket arrays only for synchronous read-only geometry selection.
+# Never retain or mutate the returned arrays, or move actors during traversal.
+func traffic_contact_buckets(origin: Vector2, forward: Vector2, look: float, clearance: float) -> Array:
+	# Slack covers float32 projection/quantization at the cell boundary.
+	var pad := clearance + 1.0
+	var margin := Vector2.ONE * pad
+	var finish := origin + forward * look
+	var first := Vector2i(((origin.min(finish) - margin) / TRAFFIC_CELL).floor())
+	var last := Vector2i(((origin.max(finish) + margin) / TRAFFIC_CELL).floor())
+	var result: Array = []
+	var half := TRAFFIC_CELL / 2.0
+	var allowance := half * (absf(forward.x) + absf(forward.y)) + 1.0
+	for y in range(first.y,last.y + 1):
+		for x in range(first.x,last.x + 1):
+			var cell := Vector2i(x,y)
+			var bucket = _traffic_buckets.get(cell)
+			if bucket == null: continue
+			var mid := (Vector2(cell) * TRAFFIC_CELL + Vector2.ONE * half) - origin
+			var nearest := (mid.abs() - Vector2.ONE * half).max(Vector2.ZERO)
+			if nearest.length_squared() > pad * pad:
+				if look <= 0.0: continue
+				var along := mid.dot(forward)
+				if along < -allowance or along > look + allowance or absf(mid.cross(forward)) > pad + allowance: continue
+			result.append(bucket)
 	return result

@@ -37,6 +37,7 @@ func _ready() -> void:
 		for i in R.NODES[branch].size():check(R.buy(branch,i),"research "+branch+str(i))
 		check(not R.buy(branch,R.NODES[branch].size()),"cap")
 	check(MetaProgress.balance("cores")==0,"exact total price")
+	check_logistics()
 	const Income=preload("res://scripts/expedition/income.gd")
 	MetaProgress.settled_matches={"expedition:old:1":{"credits":800,"cores":20},"expedition:old:2":{"credits":800,"cores":20,"strategy_points":1}}
 	var run:={"id":"old","history":[{"stage":3,"income":{"credits":800,"cores":20}}]}
@@ -54,10 +55,31 @@ func _ready() -> void:
 	for resource in Icon.SHAPES:check(Icon.texture(resource)!=null,"cost icon "+resource)
 	check(Icon.texture("tickets","diamonds").get_width()==48,"mixed cost")
 	var rows:=[{"due":100.0},{"due":100.0},{"due":200.0},{"due":300.0},{"due":400.0},{"due":20.0,"hero":"TANY"}]
+	var early_rows := rows.duplicate(true)
+	R.accelerate(early_rows,{"research":{"army":5}})
+	check(early_rows[0].due==90 and early_rows[1].due==90 and early_rows[2].due==180 and early_rows[3].due==270 and early_rows[4].due==400 and early_rows[5].due==20,"10 percent reduction applies to first three non-hero batches")
 	R.accelerate(rows,{"research":{"army":10}})
 	check(rows[0].due==88 and rows[1].due==88 and rows[2].due==176 and rows[3].due==264 and rows[4].due==400 and rows[5].due==20,"first three batches")
 	print("POOL_RESEARCH checks=",checks," failures=",errors)
 	get_tree().quit(int(errors>0))
+
+func check_logistics() -> void:
+	var opening := [0,50,50,50,100,100,100,100,130,130,130]
+	var victory := [0,0,10,10,10,10,20,20,20,20,20]
+	for level in range(11):
+		var run := {"research":{"supply":level},"history":[]}
+		check(R.opening_supplies(run)==opening[level],"opening supply rank %d"%level)
+		check(R.supply_reward(run)==victory[level]+(300 if level>=7 else 0),"first victory supply rank %d"%level)
+		run.history.append({"stage":1})
+		check(R.supply_reward(run)==victory[level],"later victory supply rank %d"%level)
+		check(R.first_camp_supplies(run)==(30 if level>=9 else 0),"first camp supply rank %d"%level)
+	check(Expedition.start("美国","",715) and Expedition.state.supplies==290,"full research departure: 160 base + 130 research")
+	if Expedition.state.is_empty():return
+	var camp:Dictionary=Expedition.state.duplicate(true)
+	Expedition.ready(camp)
+	check(camp.supplies==320 and camp.free_refresh==2,"first camp pays 30 and still grants two refreshes")
+	Expedition.ready(camp)
+	check(camp.supplies==320 and camp.free_refresh==3,"later camp only grants the recurring refresh")
 
 func marked(control: Control) -> bool:
 	var dot := control.get_node_or_null("UpgradeDot") as Control
@@ -95,5 +117,12 @@ func check_research_dots() -> void:
 	MetaProgress.currency.cores = 10000
 	Events.meta_changed.emit()
 	check(not entries.any(marked) and dot_count(dialog)==0,"completed research stays unmarked")
+	var descriptions := ["出征时额外获得50补给","每场胜利额外获得10补给","出征时再多获得50补给","每场胜利再多获得10补给","本轮首胜额外获得300补给","出征时再多获得30补给","进入本轮第一个营地时获得30补给","本轮第一个营地再多一次免费刷新"]
+	for batch in ["第一批","第二批","第三批"]:
+		descriptions.append(batch+"等待时间缩短10%")
+		descriptions.append(batch+"等待缩短12%（原为10%）")
+	for text in descriptions:
+		for tree in [base.expedition_tree,dialog]:
+			check(tree.find_children("*","Button",true,false).any(func(b):return b.text.begins_with(text+"\n")),"research screen shows "+text)
 	for scene in [menu,camp,base]: scene.free()
 	Events.meta_changed.emit()

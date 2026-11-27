@@ -213,7 +213,7 @@ func build() -> void:
 	if run.phase=="ready":
 		var personnel_sale:=Expedition.excess_sale(run)
 		if int(personnel_sale.count)>0:
-			button(body,"一键售出多余人员 · %d 个 · 获得 %d 补给"%[personnel_sale.count,personnel_sale.supplies],sell_excess_personnel).tooltip_text="仅售出超过兵种或本章人数上限的普通部队；优先普通、低军衔单位，保留英雄。"
+			button(body,"一键售出多余人员 · %d 个 · 获得 %d 补给"%[personnel_sale.count,personnel_sale.supplies],sell_excess_personnel).tooltip_text="仅售出超过同兵种持有上限的非英雄单位；优先普通、低军衔单位。未出战不等于多余。"
 		var last_sale:Dictionary=run.get("last_personnel_sale",{})
 		if not last_sale.is_empty():body.add_child(label("最近一键售出：%d 个多余人员 → +%d 补给"%[last_sale.count,last_sale.supplies],14,UiKit.COL_ACCENT_2))
 	match str(run.phase):
@@ -687,7 +687,7 @@ func build_arrivals() -> void:
 	button(body,("收起" if arrivals_open else "展开")+"增援 · "+times,func():arrivals_open=not arrivals_open;build())
 	if not arrivals_open:return
 	body.add_child(label("出战增援时间表",20,UiKit.COL_GOLD))
-	body.add_child(label("每局从零重新计时；只有军团与英雄跨关，工厂自产兵不加入军团。",13,UiKit.COL_DIM))
+	body.add_child(label("每关重新计时。自产单位可补同兵种的普通军团空位，下关随军团传送；没补进军团的单位不带回营地，也不能出售。",13,UiKit.COL_DIM))
 	for id:String in Catalog.Heroes.owned(Expedition.state):
 		var line:=row(body);icon(line,id,"hero");line.add_child(label(MetaProgress.Academy.hero_label(id)+(" · 待救治" if id in Catalog.Heroes.wounded(Expedition.state) else " · 本关自动排队"),16,UiKit.COL_GOLD))
 	body.add_child(label(Insights.arrival_text(Expedition.state),14))
@@ -720,7 +720,7 @@ func build_shop() -> void:
 	cost_button(services,("已持有 · " if run.get("relics",{}).get(Growth.RELIC,false) else "购买藏品 · ")+Growth.RELIC_NAME+("" if run.get("relics",{}).get(Growth.RELIC,false) else " · 40"),service.bind("relic","","a"),Growth.RELIC_PRICE,not run.get("relics",{}).get(Growth.RELIC,false))
 	body.add_child(label(Growth.RELIC_NAME+"：每关免费强化一个兵种一次；攻防各 +1 级，最高 5 级，独立于战术装备。",14,UiKit.COL_DIM))
 	for id:String in Catalog.Heroes.wounded(run):cost_button(body,"救治 "+str(MetaProgress.Academy.HEROES[id])+" · 60",rescue.bind(id),60)
-	body.add_child(label("每店首次刷新免费，之后 "+("5／10／15 封顶（暗线地图）" if Relics.owned(run,"bargain_map") else "10／20／30 封顶")+"。满编时仍可招募，新兵留在预备队。锁定不限数量，可全部锁定并跨店保留；全部锁定时暂停刷新，保留免费次数与补给。黄色定向商品跟随标记羁绊。未锁定的末格优先提供未持有藏品，专属藏品按已有兵种筛选。同一件商品每店只出现一次；可升级装备显示购买前后等级，满级不可购买。",14,UiKit.COL_DIM))
+	body.add_child(label("每店首次刷新免费，之后 "+("5／10／15 封顶（暗线地图）" if Relics.owned(run,"bargain_map") else "10／20／30 封顶")+"。同一营地每个兵种只能招募一次，普通、定向和特装共用次数，刷新不重置。出战名额已满时，新兵留在预备队。锁定不限数量，可全部锁定并跨店保留；全部锁定时暂停刷新，保留免费次数与补给。黄色定向商品跟随标记羁绊。未锁定的末格优先提供未持有藏品，专属藏品按已有兵种筛选。同一件商品每店只出现一次；可升级装备显示购买前后等级，满级不可购买。",14,UiKit.COL_DIM))
 	var choices:=grid(body)
 	for index in run.shop.size():
 		var item:Dictionary=run.shop[index]
@@ -729,11 +729,20 @@ func build_shop() -> void:
 		if item.kind=="buff":
 			var current:=int(run.buffs.get(item.id,0))
 			level_text="Lv.%d → Lv.%d / 3"%[current,mini(3,current+int(item.get("levels",1)))]
-		var price_text:="首购免费（原售 %d 补给）"%item.price if Expedition.free_shelf_purchase(run) else "%d 补给"%item.price
-		var caption:="已售罄" if item.sold else "购买 · "+price_text
-		var box:=card(choices,item,request_item.bind("shop",index),caption)
+		var price:=Market.shelf_price(run,item)
+		var price_text:="首购免费（原售 %d 补给）"%price if Expedition.free_shelf_purchase(run) else "%d 补给"%price
+		var caption:="本营地已招募" if Market.recruit_bought(run,item) else ("已售罄" if item.sold else "购买 · "+price_text)
+		var display:=item
+		if Market.is_recruit(item) and not item.sold:
+			var new_recruits:=Market.recruit_count(run,item)
+			if new_recruits>0:
+				caption="招募 %d 个 · %s"%[new_recruits,price_text]
+				display=item.duplicate();display.recruit_count=new_recruits
+			else:caption="该兵种已满员"
+		var box:=card(choices,display,request_item.bind("shop",index),caption)
 		var purchase:Button=box.get_child(box.get_child_count()-1)
-		if not item.sold and not Expedition.free_shelf_purchase(run) and item.price>0:purchase.icon=preload("res://scripts/ui/resource_cost_icon.gd").texture("supplies")
+		if not item.sold and not Expedition.free_shelf_purchase(run) and price>0:purchase.icon=preload("res://scripts/ui/resource_cost_icon.gd").texture("supplies")
+		if Market.is_recruit(item):box.add_child(label("已持有 %d / %d · 含出战与预备"%[Army.quantity(run,item.id),Army.limit(item.id)],14,UiKit.COL_DIM))
 		purchase.name="PurchaseButton";purchase.disabled=not problem.is_empty()
 		if not level_text.is_empty():box.add_child(label(level_text,14,UiKit.COL_GOLD))
 		box.add_child(label(problem if not problem.is_empty() else "可购买",14,Color.WHITE))
@@ -746,7 +755,8 @@ func build_shop() -> void:
 			lock_button.icon=Glyph.texture("lock")
 			lock_button.add_theme_constant_override("icon_max_width",18)
 		preload("res://scripts/expedition/shop_card.gd").apply(box,index,bool(item.sold),problem)
-		preload("res://scripts/expedition/shop_card.gd").add_discount(box,item)
+		if not Market.is_recruit(item) or price>0:
+			preload("res://scripts/expedition/shop_card.gd").add_discount(box,item,price if price<int(item.price) else -1)
 		if item.get("fresh_stock", false) and not item.sold:
 			preload("res://scripts/expedition/shop_card.gd").add_new_badge(box)
 	build_equipment()
@@ -805,7 +815,7 @@ func build_army() -> void:
 	board.name="FormationBox"
 	board.changed.connect(result,CONNECT_DEFERRED)
 	body.add_child(board)
-	body.add_child(label("点卡片右侧的 − 或 +，每次调整 1 个出战单位。减到 0 会腾出编制格。步兵每种最多出战 8 人，其他兵种最多 4 个，限造兵种按其限额出战。预备队人数不限。",14))
+	body.add_child(label("点卡片右侧的 − 或 +，每次调整 1 个出战单位。减到 0 会腾出编制格。出战人数受本章上限限制。出战与预备合计，步兵每种最多持有 8 人，其他兵种最多 4 个；限造兵种按其限额。",14))
 	body.add_child(label("攻防分别按局外等级 ÷ 4 四舍五入带入，最高 5 级。每次强化攻防各 +1，相当于局外各 +4 级；不回写局外。",14,UiKit.COL_DIM))
 	if run.get("relics",{}).get(Growth.RELIC,false):body.add_child(label(Growth.RELIC_NAME+(" · 本关免费强化 1 次可用" if Growth.free_available(run) else " · 本关免费次数已使用，下关恢复"),14,UiKit.COL_GOLD))
 	var filters:=OptionButton.new()

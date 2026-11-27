@@ -26,7 +26,7 @@ static func run(t) -> void:
 	next.supplies=100;next.buffs.armor=1;next.buffs.health=3;next.trait_buffs.infantry=9
 	next.unit_growth[id]={"atk":5,"def":5}
 	next.relics.field_manual=true;next.relics.erase("prism_matrix")
-	next.shop=[offer("buff","armor",80),offer("buff","firepower",180),offer("unit",id,80,true),offer("relic","field_manual",40),offer("buff","health",80),offer("trait_buff","infantry",80),offer("training",id,40),offer("relic","prism_matrix",280)]
+	next.shop=[offer("buff","armor",80),offer("buff","firepower",180),offer("buff","engines",80,true),offer("relic","field_manual",40),offer("buff","health",80),offer("trait_buff","infantry",80),offer("training",id,40),offer("relic","prism_matrix",280)]
 	t.check(Expedition.commit(next),"shop card mixed-state fixture")
 	var saved:Dictionary=Expedition.state.duplicate(true)
 	Expedition.error=""

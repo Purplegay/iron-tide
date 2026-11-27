@@ -38,9 +38,9 @@ static func send_armour(ai, launcher, visible: Array) -> void:
 	for target in visible:
 		if not target is Building or target.data.get("tags", []).has("civilian"): continue
 		for tank in world.units:
-			if not armour(world, tank,ai.house_id) or tank.position.distance_to(target.position) < 600: continue
+			if tank.special.has("yr_skirmish_team") or not armour(world, tank,ai.house_id) or tank.position.distance_to(target.position) < 600: continue
 			var group := Shift.actors(world, tank.position, ai.house_id)
-			if group.is_empty() or not group.all(func(u): return armour(world, u,ai.house_id)): continue
+			if group.is_empty() or not group.all(func(u): return not u.special.has("yr_skirmish_team") and armour(world, u,ai.house_id)): continue
 			for i in 8:
 				var direction: Vector2 = target.position.direction_to(tank.position).rotated(i * TAU / 8)
 				var drop: Vector2 = target.position + direction * (target.footprint_clearance(direction) + 150)

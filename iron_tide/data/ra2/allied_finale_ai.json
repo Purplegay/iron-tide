@@ -1,0 +1,4887 @@
+{
+ "hash": "0ec687c320382e4c02cf66eec0153b713e56c4449fab7d29b5a19b61bf10e4f3",
+ "raids": [
+  {
+   "id": "0960d93c",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_Barracks1,0,1,1,1,0",
+    "events": "4,37,0,1,36,0,4,36,0,0,13,0,75",
+    "actions": "4,7,1,08D5D5FC,0,0,0,0,A,53,2,0BDCA03C,0,0,0,0,A,53,2,0464C5FC,0,0,0,0,A,54,2,0960D93C,0,0,0,0,A",
+    "tags": {
+     "0960d35c": []
+    }
+   },
+   "team": {
+    "id": "08D5D5FC",
+    "house": "Arabs",
+    "entry": "TA",
+    "units": [
+     [
+      "YHVR",
+      1
+     ],
+     [
+      "INIT",
+      5
+     ]
+    ],
+    "script": [
+     [
+      3,
+      521
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      2
+     ],
+     [
+      40,
+      4
+     ],
+     [
+      39,
+      5
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0464c5fc",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_Barracks2,1,1,1,1,0",
+    "events": "4,37,0,1,36,0,5,36,0,0,13,0,75",
+    "actions": "4,7,1,08D686CC,0,0,0,0,A,53,2,0464D1BC,0,0,0,0,A,53,2,0B7AE1EC,0,0,0,0,A,54,2,0464C5FC,0,0,0,0,A",
+    "tags": {
+     "0464d33c": []
+    }
+   },
+   "team": {
+    "id": "08D686CC",
+    "house": "Arabs",
+    "entry": "TC",
+    "units": [
+     [
+      "INIT",
+      5
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      523
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      3
+     ],
+     [
+      40,
+      5
+     ],
+     [
+      39,
+      6
+     ],
+     [
+      3,
+      107
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b7ae1ec",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_Barracks3,1,1,1,1,0",
+    "events": "4,37,0,1,36,0,6,36,0,0,13,0,90",
+    "actions": "4,7,1,08D680EC,0,0,0,0,A,53,2,0B7A95FC,0,0,0,0,A,53,2,0B2E9EDC,0,0,0,0,A,54,2,0B7AE1EC,0,0,0,0,A",
+    "tags": {
+     "0b7a96ec": []
+    }
+   },
+   "team": {
+    "id": "08D680EC",
+    "house": "Arabs",
+    "entry": "TM",
+    "units": [
+     [
+      "LTNK",
+      1
+     ],
+     [
+      "INIT",
+      2
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "BRUTE",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      525
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      7
+     ],
+     [
+      40,
+      6
+     ],
+     [
+      39,
+      8
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b2e9edc",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_Barracks4,1,1,1,1,0",
+    "events": "4,37,0,1,13,0,90,36,0,8,36,0,0",
+    "actions": "4,7,1,08D6945C,0,0,0,0,A,53,2,0B2BD0FC,0,0,0,0,A,53,2,0B829CAC,0,0,0,0,A,54,2,0B2E9EDC,0,0,0,0,A",
+    "tags": {
+     "0b2e96bc": []
+    }
+   },
+   "team": {
+    "id": "08D6945C",
+    "house": "Arabs",
+    "entry": "TM",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "INIT",
+      3
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      527
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      40,
+      6
+     ],
+     [
+      39,
+      9
+     ],
+     [
+      39,
+      22
+     ],
+     [
+      3,
+      107
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b829cac",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_Barracks_5,1,1,1,1,0",
+    "events": "4,37,0,1,36,0,22,36,0,0,13,0,90",
+    "actions": "3,7,1,08D6A1CC,0,0,0,0,A,53,2,0960D93C,0,0,0,0,A,54,2,0B829CAC,0,0,0,0,A",
+    "tags": {
+     "0b82e89c": []
+    }
+   },
+   "team": {
+    "id": "08D6A1CC",
+    "house": "Arabs",
+    "entry": "TZ",
+    "units": [
+     [
+      "INIT",
+      4
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      521
+     ],
+     [
+      40,
+      22
+     ],
+     [
+      39,
+      4
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ ],
+ "armor_raids": [
+  {
+   "id": "09713f3c",
+   "trigger": {
+    "trigger": "Confederation,<none>,Yuri_WarFac1,1,1,1,1,0",
+    "events": "5,36,0,27,36,0,0,36,0,1,36,0,10,13,0,90",
+    "actions": "6,7,1,08D57B5C,0,0,0,0,A,53,2,096A485C,0,0,0,0,A,53,2,0B8000CC,0,0,0,0,A,57,0,27,0,0,0,0,A,53,2,079B37CC,0,0,0,0,A,54,2,09713F3C,0,0,0,0,A",
+    "tags": {
+     "09713e5c": []
+    }
+   },
+   "team": {
+    "id": "08D57B5C",
+    "house": "Confederation",
+    "entry": "TI",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "BRUTE",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      521
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      16
+     ],
+     [
+      40,
+      10
+     ],
+     [
+      39,
+      11
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b8000cc",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_WarFac2,1,1,1,1,0",
+    "events": "4,36,0,11,36,0,1,36,0,0,13,0,90",
+    "actions": "4,7,1,08D6BA4C,0,0,0,0,A,53,2,0B7F91AC,0,0,0,0,A,53,2,0B80C2BC,0,0,0,0,A,54,2,0B8000CC,0,0,0,0,A",
+    "tags": {
+     "0b80048c": []
+    }
+   },
+   "team": {
+    "id": "08D6BA4C",
+    "house": "Arabs",
+    "entry": "TK",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      531
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      18
+     ],
+     [
+      40,
+      11
+     ],
+     [
+      39,
+      12
+     ],
+     [
+      3,
+      107
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b80c2bc",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_WarFac3,1,1,1,1,0",
+    "events": "4,36,0,12,36,0,1,36,0,0,13,0,90",
+    "actions": "4,7,1,08D6CB7C,0,0,0,0,A,53,2,0B7FE1AC,0,0,0,0,A,53,2,0B82737C,0,0,0,0,A,54,2,0B80C2BC,0,0,0,0,A",
+    "tags": {
+     "0b80b08c": []
+    }
+   },
+   "team": {
+    "id": "08D6CB7C",
+    "house": "Arabs",
+    "entry": "TM",
+    "units": [
+     [
+      "BRUTE",
+      2
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      533
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      19
+     ],
+     [
+      40,
+      12
+     ],
+     [
+      39,
+      13
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b82737c",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_WarFac4,1,1,1,1,0",
+    "events": "4,36,0,13,36,0,1,36,0,0,13,0,90",
+    "actions": "4,7,1,08D6DC8C,0,0,0,0,A,53,2,0B84B0FC,0,0,0,0,A,53,2,0B807B1C,0,0,0,0,A,54,2,0B82737C,0,0,0,0,A",
+    "tags": {
+     "0b82462c": []
+    }
+   },
+   "team": {
+    "id": "08D6DC8C",
+    "house": "Arabs",
+    "entry": "TO",
+    "units": [
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "LTNK",
+      1
+     ],
+     [
+      "BRUTE",
+      2
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      535
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      20
+     ],
+     [
+      40,
+      13
+     ],
+     [
+      39,
+      14
+     ],
+     [
+      3,
+      107
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0b807b1c",
+   "trigger": {
+    "trigger": "Arabs,<none>,Yuri_WarFac5,1,1,1,1,0",
+    "events": "4,36,0,14,36,0,1,36,0,0,13,0,90",
+    "actions": "4,7,1,08D6D18C,0,0,0,0,A,53,2,0B7F92FC,0,0,0,0,A,53,2,09713F3C,0,0,0,0,A,54,2,0B807B1C,0,0,0,0,A",
+    "tags": {
+     "0b8a182c": []
+    }
+   },
+   "team": {
+    "id": "08D6D18C",
+    "house": "Arabs",
+    "entry": "TQ",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "YHVR",
+      1
+     ]
+    ],
+    "script": [
+     [
+      3,
+      537
+     ],
+     [
+      8,
+      2
+     ],
+     [
+      39,
+      21
+     ],
+     [
+      40,
+      14
+     ],
+     [
+      39,
+      10
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ ],
+ "rules": [
+  {
+   "id": "08da8edc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_TierraFloater01",
+   "related": "NAPOWR",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "05E12D5C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "DISK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "04f45edc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_TierraFloater_Easy",
+   "related": "NAPOWR",
+   "count": 3,
+   "weight": 60,
+   "difficulty": [
+    1,
+    0,
+    0
+   ],
+   "team": {
+    "id": "04F46BBC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "DISK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0970ac3c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_TierraFloater01",
+   "related": "NATECH",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "05E1257C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "DISK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      106
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "08da437c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Floater3",
+   "related": "GAPOWR",
+   "count": 2,
+   "weight": 50,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08E9634C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "DISK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "04f45d8c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Floater_Easy",
+   "related": "GAPOWR",
+   "count": 3,
+   "weight": 60,
+   "difficulty": [
+    1,
+    0,
+    0
+   ],
+   "team": {
+    "id": "04F46A8C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "DISK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "08da5aec",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_SovietBA_2",
+   "related": "GAPOWR",
+   "count": 2,
+   "weight": 500,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "079CE8EC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "DISK",
+      1
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "LTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0e6056ac",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiTank_1",
+   "related": "MTNK",
+   "count": 4,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0E3297DC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      6
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fec4c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BA_1",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08D7135C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "TELE",
+      2
+     ],
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092feafc",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BA_2",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08D72DEC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe9ac",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BA_3",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08D7293C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "DISK",
+      1
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe77c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BA_4",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08D726FC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "TELE",
+      3
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "LTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fcedc",
+   "room": "Yuri3",
+   "condition": 0,
+   "name": "Yuri3_AntiChrono_1",
+   "related": "GACSPH",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09736DCC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "TELE",
+      3
+     ],
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      46,
+      131099
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fc9bc",
+   "room": "Yuri3",
+   "condition": 0,
+   "name": "Yuri3_AntiChrono_2",
+   "related": "GACSPH",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "097358AC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      46,
+      131099
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fc86c",
+   "room": "Yuri3",
+   "condition": 0,
+   "name": "Yuri3_AntiIron",
+   "related": "NAIRON",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09735E1C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      46,
+      131096
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fc71c",
+   "room": "Yuri3",
+   "condition": 0,
+   "name": "Yuri3_AntiIron_2",
+   "related": "NAIRON",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0973577C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "TELE",
+      3
+     ],
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      46,
+      131096
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe62c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_Irritate_1",
+   "related": "YABRCK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0973262C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "INIT",
+      8
+     ],
+     [
+      "YURI",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe4dc",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_Irritate_2",
+   "related": "YABRCK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09731E7C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "ENGINEER",
+      5
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe38c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_Irritate_3",
+   "related": "YABRCK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "097314EC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "BRUTE",
+      4
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YURI",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "092fe23c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_Irritate_4",
+   "related": "YABRCK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09736EFC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "INIT",
+      4
+     ],
+     [
+      "YURI",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "BRUTE",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0461114c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BD_1",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095042EC",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "04612edc",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BD_2",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09509B7C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "LTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "04612d8c",
+   "room": "Yuri3",
+   "condition": 1,
+   "name": "Yuri3_BD_3",
+   "related": "YAWEAP",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0950993C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0951918c",
+   "room": "Yuri3",
+   "condition": 0,
+   "name": "Yuri3_AntiRT_1",
+   "related": "ROBO",
+   "count": 5,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0951EC5C",
+    "house": "Yuri3Country",
+    "units": [
+     [
+      "INIT",
+      4
+     ],
+     [
+      "BRUTE",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0c22299c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiGuardian_1",
+   "related": "GGI",
+   "count": 3,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0E32AEFC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "YURI",
+      2
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0e60594c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiHarvester_1",
+   "related": "CMIN",
+   "count": 2,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "092C3EFC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "BRUTE",
+      2
+     ]
+    ],
+    "script": [
+     [
+      0,
+      3
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0e6057fc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiHarvester_2",
+   "related": "HARV",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "045CC43C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "BRUTE",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0e5fd30c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiTank_2",
+   "related": "HTNK",
+   "count": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "045CA87C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "BRUTE",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0961666c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_BD_1",
+   "related": "GACNST",
+   "count": 1,
+   "weight": 20,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0CA2EB7C",
+    "house": "YuriCountry",
+    "entry": "YA",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ],
+     [
+      49,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0958630c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiGI_1",
+   "related": "E1",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "096276AC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095861bc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiGI_2",
+   "related": "E1",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095C7A7C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      5
+     ],
+     [
+      "YURI",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09580edc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiGI_3",
+   "related": "E1",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095C750C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09688aec",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_BA_2",
+   "related": "GATECH",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0963594C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09586c6c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_BA_Soviet_1",
+   "related": "NATECH",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0958594C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095a4d8c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiSW_Allied_1",
+   "related": "GACSPH",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095CD19C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "MIND",
+      1
+     ],
+     [
+      "YTNK",
+      3
+     ],
+     [
+      "LTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      46,
+      131099
+     ],
+     [
+      46,
+      131101
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095a4c3c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiSW_Allied_2",
+   "related": "GAWEAT",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095CD19C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "MIND",
+      1
+     ],
+     [
+      "YTNK",
+      3
+     ],
+     [
+      "LTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      46,
+      131099
+     ],
+     [
+      46,
+      131101
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095f7dac",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiTank_Allied_2",
+   "related": "MTNK",
+   "count": 2,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095F68EC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      5
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0e6041fc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiGuardian_2",
+   "related": "GGI",
+   "count": 5,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0E60477C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "YTNK",
+      3
+     ],
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "YURI",
+      1
+     ]
+    ],
+    "script": [
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "06c708cc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiTank_Soviet_2",
+   "related": "HTNK",
+   "count": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "06C71EFC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "BRUTE",
+      3
+     ],
+     [
+      "YURI",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09689edc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_BA_3",
+   "related": "GAWEAP",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "06C2694C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      3
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "LTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0970845c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Floater1",
+   "related": "GATECH",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0BC207DC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "DISK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0961504c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Mastermind1",
+   "related": "SREF",
+   "count": 2,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0CA2993C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "MIND",
+      1
+     ],
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095afcac",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Mastermind2",
+   "related": "GATECH",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0CA2948C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "MIND",
+      2
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "08da399c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Floater2",
+   "related": "ATESLA",
+   "count": 2,
+   "weight": 70,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "045E7D5C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "DISK",
+      1
+     ],
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "YTNK",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095af68c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_Infantry1",
+   "related": "GAWEAP",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "045E579C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      5
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YURI",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      1
+     ],
+     [
+      49,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931e30c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiInfantry1",
+   "related": "E1",
+   "count": 3,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09327B7C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931e1bc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiIInfantry2",
+   "related": "GGI",
+   "count": 2,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "093276CC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931cedc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiInfantry3",
+   "related": "DOG",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09324EFC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YURI",
+      1
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931cd8c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTank1",
+   "related": "MTNK",
+   "count": 3,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09324A4C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      8
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09592b4c",
+   "room": "YuriCountry",
+   "condition": 1,
+   "name": "Yuri_BD_2",
+   "related": "YABRCK",
+   "count": 1,
+   "weight": 20,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0CA2DA4C",
+    "house": "YuriCountry",
+    "entry": "YB",
+    "units": [
+     [
+      "TELE",
+      1
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YURI",
+      2
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ],
+     [
+      49,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095929fc",
+   "room": "YuriCountry",
+   "condition": 1,
+   "name": "Yuri_BD_3",
+   "related": "YACNST",
+   "count": 1,
+   "weight": 20,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0CA2D80C",
+    "house": "YuriCountry",
+    "entry": "YC",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "BRUTE",
+      4
+     ],
+     [
+      "YURI",
+      2
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ],
+     [
+      49,
+      0
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931e6fc",
+   "room": "Yuri2",
+   "condition": 1,
+   "name": "Africa_BD1",
+   "related": "YAPOWR",
+   "count": 0,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09321C8C",
+    "house": "Yuri2Country",
+    "entry": "EA",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931e5ac",
+   "room": "Yuri2",
+   "condition": 1,
+   "name": "Africa_BD2",
+   "related": "YAPOWR",
+   "count": 0,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "093217DC",
+    "house": "Yuri2Country",
+    "entry": "EB",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "INIT",
+      3
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931e45c",
+   "room": "Yuri2",
+   "condition": 1,
+   "name": "Africa_BD3",
+   "related": "YAPOWR",
+   "count": 0,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932132C",
+    "house": "Yuri2Country",
+    "entry": "EC",
+    "units": [
+     [
+      "YURI",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "YTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      11,
+      11
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931cc3c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTank2",
+   "related": "HTNK",
+   "count": 3,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932459C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931caec",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTank3",
+   "related": "SREF",
+   "count": 2,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09322DEC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      5
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931c99c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTank4",
+   "related": "BFRT",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932293C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "BRUTE",
+      3
+     ],
+     [
+      "YURI",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931c84c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_BA1",
+   "related": "NASAM",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932248C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931c6fc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_BA2",
+   "related": "GATECH",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09325C8C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "YURI",
+      2
+     ],
+     [
+      "YTNK",
+      3
+     ],
+     [
+      "LTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931c5ac",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_BA3",
+   "related": "ATESLA",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "093257DC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "MIND",
+      1
+     ],
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09fa77cc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiIFV1",
+   "related": "FV",
+   "count": 3,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09F9967C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "MIND",
+      1
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0931c1bc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiIFV1",
+   "related": "FV",
+   "count": 3,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "092E55AC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087ad90c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiFlak1",
+   "related": "HTK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "092E55AC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087ab06c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiConscript1",
+   "related": "E2",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09327B7C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087ae07c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTesla1",
+   "related": "SHK",
+   "count": 1,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "093276CC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087cd83c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiV3_1",
+   "related": "V3",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09322DEC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      5
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087cd63c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiApoc1",
+   "related": "APOC",
+   "count": 1,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932293C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "BRUTE",
+      3
+     ],
+     [
+      "YURI",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087cf0bc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_FlakCannon",
+   "related": "NAFLAK",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0932248C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "TELE",
+      1
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087cf34c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_SovBLab_1",
+   "related": "NATECH",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09325C8C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "YURI",
+      2
+     ],
+     [
+      "YTNK",
+      3
+     ],
+     [
+      "LTNK",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "087cfbbc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_TeslaCoil_1",
+   "related": "TESLA",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "093257DC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "MIND",
+      1
+     ],
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "TELE",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0968b30c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiPCannon",
+   "related": "ATESLA",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0905BECC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "TELE",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "091a884c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiConscript_1",
+   "related": "E2",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "096276AC",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "VIRUS",
+      2
+     ],
+     [
+      "INIT",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      9
+     ],
+     [
+      0,
+      2
+     ]
+    ]
+   }
+  },
+  {
+   "id": "091ada5c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiShock_1",
+   "related": "SHK",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095C7A7C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      5
+     ],
+     [
+      "YURI",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "091ad90c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiShock_2",
+   "related": "SHK",
+   "count": 1,
+   "weight": 40,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "095C750C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "VIRUS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      4
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "079ceedc",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_BA_4",
+   "related": "GAWEAP",
+   "count": 1,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "079CC70C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      2
+     ],
+     [
+      "TELE",
+      2
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "MIND",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      3,
+      35
+     ],
+     [
+      3,
+      36
+     ],
+     [
+      3,
+      37
+     ],
+     [
+      3,
+      38
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0a6b550c",
+   "room": "YuriCountry",
+   "condition": 1,
+   "name": "Yuri_AntiTank_3",
+   "related": "YAPOWR",
+   "count": 1,
+   "weight": 60,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "050FEE1C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "BRUTE",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ],
+     [
+      "LTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      6
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "09505c9c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiRT_1",
+   "related": "ROBO",
+   "count": 5,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "094E907C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      3
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0950e05c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiRT_2",
+   "related": "ROBO",
+   "count": 3,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0951318C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      6
+     ],
+     [
+      "YTNK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0950d05c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiRT_3",
+   "related": "ROBO",
+   "count": 5,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0951305C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "INIT",
+      4
+     ],
+     [
+      "BRUTE",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0c576c3c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiPrism_1",
+   "related": "SREF",
+   "count": 2,
+   "weight": 50,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "09590B8C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "LTNK",
+      4
+     ],
+     [
+      "CAOS",
+      1
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "13525d8c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_EngineerRush_1",
+   "related": "GAPOWR",
+   "count": 1,
+   "weight": 30,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0D29367C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "YURI",
+      1
+     ],
+     [
+      "VIRUS",
+      1
+     ],
+     [
+      "YENGINEER",
+      2
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      53,
+      0
+     ],
+     [
+      46,
+      131072
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      46,
+      131075
+     ],
+     [
+      46,
+      131079
+     ]
+    ]
+   }
+  },
+  {
+   "id": "095192dc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Yuri2_AntiRT_1",
+   "related": "ROBO",
+   "count": 3,
+   "weight": 70,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "0951809C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "INIT",
+      4
+     ],
+     [
+      "BRUTE",
+      4
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      5
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "0a5a71bc",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_Floater1",
+   "related": "ATESLA",
+   "count": 2,
+   "weight": 70,
+   "difficulty": [
+    0,
+    1,
+    1
+   ],
+   "team": {
+    "id": "08FFB35C",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "DISK",
+      2
+     ]
+    ],
+    "script": [
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "05ed315c",
+   "room": "Yuri2",
+   "condition": 0,
+   "name": "Africa_AntiTesla01",
+   "related": "TESLA",
+   "count": 2,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "05ED7EFC",
+    "house": "Yuri2Country",
+    "units": [
+     [
+      "TELE",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "05ed772c",
+   "room": "YuriCountry",
+   "condition": 0,
+   "name": "Yuri_AntiTesla01",
+   "related": "TESLA",
+   "count": 2,
+   "weight": 500,
+   "difficulty": [
+    1,
+    1,
+    1
+   ],
+   "team": {
+    "id": "05ED248C",
+    "house": "YuriCountry",
+    "units": [
+     [
+      "TELE",
+      3
+     ]
+    ],
+    "script": [
+     [
+      54,
+      0
+     ],
+     [
+      0,
+      7
+     ],
+     [
+      49,
+      0
+     ],
+     [
+      0,
+      2
+     ],
+     [
+      0,
+      1
+     ]
+    ]
+   }
+  }
+ ]
+}

@@ -1,6 +1,5 @@
 extends Control
-## 设置（B2）：边缘滚屏开关 / 滚屏速度 / 事件字幕。
-## 入口：主菜单「设 置」。改动即写 MetaProgress 并落盘（user://iron_tide_meta.json）。
+## 入口：主菜单「设置」。各设置项即时保存。
 ## 滚屏速度以当前基准（50 = 1170 px/s，原速度的 1.5 倍）线性缩放，见 MetaProgress.scroll_px_per_sec()。
 
 @onready var kit = UiKit
@@ -45,10 +44,17 @@ func _build() -> void:
 	add_child(bg)
 	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 
+	var scroll := ScrollContainer.new()
+	scroll.name = "SettingsScroll"
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	scroll.follow_focus = true
+	add_child(scroll)
+	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var cc := CenterContainer.new()
-	cc.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	cc.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	cc.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	cc.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(cc)
+	scroll.add_child(cc)
 
 	var box := kit.make_panel(Color(0.07, 0.085, 0.115, 0.94), Color(0.3, 0.5, 0.72))
 	box.custom_minimum_size = Vector2(580, 430)
@@ -69,6 +75,7 @@ func _build() -> void:
 
 	add_name_setting(vb)
 	vb.add_child(preload("res://scripts/ui/camera_controls.gd").new())
+	vb.add_child(preload("res://scripts/ui/battle_speed_controls.gd").new())
 
 	# —— 事件字幕 ——
 	var c3 := HBoxContainer.new()
@@ -94,6 +101,7 @@ func _build() -> void:
 	row.add_theme_constant_override("separation", 12)
 	vb.add_child(row)
 	var bback := kit.make_button("返 回 主 菜 单", 15)
+	bback.name = "SettingsBack"
 	bback.custom_minimum_size = Vector2(240, 42)
 	bback.pressed.connect(func() -> void: get_tree().change_scene_to_file("res://scenes/main.tscn"))
 	row.add_child(bback)

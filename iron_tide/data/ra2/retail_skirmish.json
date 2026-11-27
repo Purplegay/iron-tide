@@ -1,0 +1,9103 @@
+{
+  "aim_sha256": "5df41eaec00a78d0760ef5eecdf27d65ae1cd537309c7eac973318266986f89d",
+  "rules_sha256": "3d341ef8a13a4b5ab24af2eef48ac94931ac2bb87d950fe3330a07e2d25672ef",
+  "rows": {
+    "hunter": {
+      "team": "0CA48EFC-G",
+      "trigger": null,
+      "unit": "MTNK",
+      "count": 3,
+      "steps": [
+        [
+          54,
+          0
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          49,
+          0
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "sites": []
+    },
+    "flak": {
+      "team": "06BC625C-G",
+      "trigger": "0CA2FEDC-G",
+      "unit": "FLAKT",
+      "count": 6,
+      "steps": [
+        [
+          58,
+          131139
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          11,
+          11
+        ]
+      ],
+      "sites": [
+        "NAFLAK"
+      ],
+      "enemy": "ZEP",
+      "minimum": 2,
+      "difficulties": [
+        false,
+        true,
+        true
+      ]
+    },
+    "patrol_soviet": {
+      "team": "0A454B9C-G",
+      "trigger": "0A452C6C-G",
+      "unit": "DRON",
+      "count": 2,
+      "steps": [
+        [
+          58,
+          131087
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131086
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131081
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131092
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "sites": [
+        "NAREFN",
+        "NAWEAP",
+        "NAPOWR",
+        "NALASR"
+      ],
+      "enemy": "HTNK",
+      "minimum": 6,
+      "difficulties": [
+        false,
+        true,
+        true
+      ]
+    },
+    "patrol_allied": {
+      "team": "0A454B9C-G",
+      "trigger": "0A452E5C-G",
+      "unit": "DRON",
+      "count": 2,
+      "steps": [
+        [
+          58,
+          131087
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131086
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131081
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          58,
+          131092
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          6,
+          1
+        ]
+      ],
+      "sites": [
+        "NAREFN",
+        "NAWEAP",
+        "NAPOWR",
+        "NALASR"
+      ],
+      "enemy": "MTNK",
+      "minimum": 8,
+      "difficulties": [
+        false,
+        false,
+        true
+      ]
+    }
+  },
+  "missions": {
+    "Move": true,
+    "Patrol": true,
+    "Guard": true,
+    "Area Guard": true,
+    "Attack": true,
+    "Harvest": false,
+    "Sleep": false,
+    "Hunt": false,
+    "Capture": false,
+    "Enter": false
+  },
+  "power_surplus": 50,
+  "aa_ratio": 0.14,
+  "aa_limit": 10,
+  "safe_distance": 20,
+  "scan_delay": {
+    "normal": 27,
+    "area_guard": 36
+  },
+  "defenses": {
+    "allied": [
+      "GAPILL",
+      "ATESLA",
+      "NASAM"
+    ],
+    "soviet": [
+      "NALASR",
+      "NABNKR",
+      "TESLA",
+      "NAFLAK"
+    ],
+    "yuri": [
+      "YAGGUN",
+      "YAPSYT",
+      "NATBNK"
+    ]
+  },
+  "triggers": {
+    "0CAD0DCC-G": {
+      "name": "Allied Anti-Nuke 1",
+      "primary": "08DA125C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 0,
+      "object": "NAMISL",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CAD0C7C-G": {
+      "name": "Allied Anti-Weather",
+      "primary": "0A6E513C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 0,
+      "object": "GAWEAT",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CAD0B2C-G": {
+      "name": "Allied Base guard - Adv",
+      "primary": "0CE4CA3C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CA6621C-G": {
+      "name": "Allied Base Guard - Basic",
+      "primary": "08DA30EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0CDF8EDC-G": {
+      "name": "Allied Base guard - Tech",
+      "primary": "0CE4CEFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CDF8D8C-G": {
+      "name": "Allied Base Guard - War",
+      "primary": "06175EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "GAWEAP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C0C7AEC-G": {
+      "name": "Allied Bombard - E1",
+      "primary": "0A6E452C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "0D62199C-G": {
+      "name": "Allied Bombard - H1 vs Sov",
+      "primary": "0A6E210C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 0,
+      "object": "NAPOWR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CDF899C-G": {
+      "name": "Allied Bombard - M1",
+      "primary": "0A874DEC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0D6216FC-G": {
+      "name": "Allied Bombard - H1 vs ally",
+      "primary": "0A6E210C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 0,
+      "object": "GAPOWR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D6215AC-G": {
+      "name": "Allied C-Legion vs Allied Con",
+      "primary": "0CE334AC-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D62145C-G": {
+      "name": "Allied C-Legion vs Sov Con",
+      "primary": "0CE33A8C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D0803CC-G": {
+      "name": "Allied Chrono Commando",
+      "primary": "09B5354C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 0,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C32599C-G": {
+      "name": "Allied C-Sphere Easy",
+      "primary": "0D2701DC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 6,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 0,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0CE23AAC-G": {
+      "name": "Allied C-Sphere Medium",
+      "primary": "0A87472C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 6,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 0,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0CA1F84C-G": {
+      "name": "Allied C-Sphere Hard",
+      "primary": "0A87472C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 6,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 0,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CE26CAC-G": {
+      "name": "Allied Grizzly Attack - E1",
+      "primary": "09B4F12C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0CE26B5C-G": {
+      "name": "Alliied Grizzly Attack - H1",
+      "primary": "0CABE7DC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 30,
+      "min": 30,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CAD145C-G": {
+      "name": "Allied Grizzly Attack - H2",
+      "primary": "09B4FB7C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CAD130C-G": {
+      "name": "Allied Grizzly Attack - H3",
+      "primary": "0CA0486C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CE2395C-G": {
+      "name": "Allied Grizzly Attack - M1",
+      "primary": "0A86A48C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0D084B5C-G": {
+      "name": "Allied Harrier - E1",
+      "primary": "0CA7122C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0D084A0C-G": {
+      "name": "Allied Harrier - H1",
+      "primary": "0CAC9EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D0848BC-G": {
+      "name": "Allied Harrier - H2",
+      "primary": "0CACFEFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 20,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CAD2AEC-G": {
+      "name": "Allied Harrier - M1",
+      "primary": "09B50C8C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0D08461C-G": {
+      "name": "Allied Infantry Attack - E1",
+      "primary": "0617E91C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0D0873DC-G": {
+      "name": "Allied Infantry Attack - M1",
+      "primary": "06BB88BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C8E2C3C-G": {
+      "name": "Allied Infantry - H1",
+      "primary": "0617FC8C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CAD25AC-G": {
+      "name": "Allied Infantry - H2",
+      "primary": "0617EEFC-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 10,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D087D8C-G": {
+      "name": "Allied Naval Hunters",
+      "primary": "0CA1E67C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 20,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0C8B81BC-G": {
+      "name": "Allied Rocketeers - H1",
+      "primary": "09B4E8BC-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CADDEDC-G": {
+      "name": "Allied Spy vs Allied Barracks",
+      "primary": "0CADF54C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "GAAIRC",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C92C45C-G": {
+      "name": "Allied Spy vs Allied Power",
+      "primary": "0CE1F59C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "GAPOWR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C9565AC-G": {
+      "name": "Allied Spy vs Allied Tech",
+      "primary": "09B5141C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "0C92C1BC-G": {
+      "name": "Allied Spy vs Allied War",
+      "primary": "0CE1BE7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "GAWEAP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CADD99C-G": {
+      "name": "Allied Spy vs Sov Barracks",
+      "primary": "0CE32D3C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "NARADR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C9561BC-G": {
+      "name": "Allied Spy vs Soviet Power",
+      "primary": "09B5091C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "NAPOWR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0CE2EA2C-G": {
+      "name": "Allied Spy vs Soviet War",
+      "primary": "0CE1B99C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "NAWEAP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CE2E8DC-G": {
+      "name": "Allied Tanya - M1",
+      "primary": "09B52C8C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C955C3C-G": {
+      "name": "Allied Tanya vs Allied Con",
+      "primary": "06178A4C-G",
+      "secondary": "0CE1F59C-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 10,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C955AEC-G": {
+      "name": "Allied Tanya vs Soviet Con",
+      "primary": "0AD4D7BC-G",
+      "secondary": "09B5091C-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C8C71BC-G": {
+      "name": "Allied Tech Airport Capture",
+      "primary": "0CFFF0EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAAIRP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C8C6EDC-G": {
+      "name": "Allied Tech Oil Capture",
+      "primary": "0CFFF59C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAOILD",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D052AEC-G": {
+      "name": "Allied Ultra-Hard Attack",
+      "primary": "0A43AEFC-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 8,
+      "condition": 1,
+      "object": "GAWEAT",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CE44D0C-G": {
+      "name": "Nation Biristh Sniper - Easy",
+      "primary": "0CACC1FC-G",
+      "secondary": "",
+      "country": "British",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0CA5945C-G": {
+      "name": "Nation British Sniper - Med",
+      "primary": "0CACC1FC-G",
+      "secondary": "",
+      "country": "British",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0CAD2C3C-G": {
+      "name": "Nation British - Hard",
+      "primary": "0CAC27DC-G",
+      "secondary": "0CACC1FC-G",
+      "country": "British",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D535EDC-G": {
+      "name": "Nation German Tank 1",
+      "primary": "0A87293C-G",
+      "secondary": "",
+      "country": "Germans",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0AA846FC-G": {
+      "name": "Allied IFV Rush vs Ally Con",
+      "primary": "0A86849C-G",
+      "secondary": "0A86849C-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "ATESLA",
+      "threshold": 1,
+      "comparison": 1,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "0AA845AC-G": {
+      "name": "Allied IFV Rush vs Sov Con",
+      "primary": "0CA79EFC-G",
+      "secondary": "0CA79EFC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "TESLA",
+      "threshold": 1,
+      "comparison": 1,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "0C8C645C-G": {
+      "name": "Nation Korea",
+      "primary": "0CB1CDEC-G",
+      "secondary": "",
+      "country": "Alliance",
+      "tech": 3,
+      "condition": 4,
+      "object": "GAAIRC",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0AD2BAEC-G": {
+      "name": "Allied Mirage Tanks",
+      "primary": "0ACCD81C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C96F5AC-G": {
+      "name": "Nation Cuban vs Ally",
+      "primary": "0C95B6FC-G",
+      "secondary": "",
+      "country": "Confederation",
+      "tech": 5,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C96F45C-G": {
+      "name": "Nation Cuban vs Soviet",
+      "primary": "06BC27CC-G",
+      "secondary": "",
+      "country": "Confederation",
+      "tech": 5,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CB2CEDC-G": {
+      "name": "Nation Iraqi",
+      "primary": "06BC3EFC-G",
+      "secondary": "",
+      "country": "Arabs",
+      "tech": 8,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0C91D45C-G": {
+      "name": "Nation Lybian Demo Truck",
+      "primary": "0CACCB7C-G",
+      "secondary": "",
+      "country": "Africans",
+      "tech": 10,
+      "condition": 1,
+      "object": "NARADR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CAD5AEC-G": {
+      "name": "Soviet Apoc Hard",
+      "primary": "0CAD3CBC-G",
+      "secondary": "0EC24B7C-G",
+      "country": "<all>",
+      "tech": 7,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D2C45DC-G": {
+      "name": "Soviet Apoc Medium",
+      "primary": "0CA1614C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 7,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0D2C448C-G": {
+      "name": "Soviet Armor Easy",
+      "primary": "06BB841C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0C8C56FC-G": {
+      "name": "Soviet Armor Hard",
+      "primary": "0CA1D38C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 40,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0D2C41EC-G": {
+      "name": "Soviet Armor Medium",
+      "primary": "0C31CA7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0CA6AEDC-G": {
+      "name": "Soviet Base Defense",
+      "primary": "05C643BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0C0D251C-G": {
+      "name": "Soviet Bombard Easy",
+      "primary": "0ACDDDAC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 1,
+      "object": "NARADR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "0C8C51BC-G": {
+      "name": "Soviet Bombard Hard",
+      "primary": "0CA1683C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 4,
+      "object": "NARADR",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0CA24D8C-G": {
+      "name": "Soviet Bombard Medium",
+      "primary": "0ACDDB6C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 1,
+      "object": "NARADR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C8BC5AC-G": {
+      "name": "Soviet Engineer Oil",
+      "primary": "0D04C46C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAOILD",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C8C4C3C-G": {
+      "name": "Soviet Engineer Airport",
+      "primary": "0A31428C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAAIRP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D53430C-G": {
+      "name": "Soviet Engineer vs Ally med",
+      "primary": "0C143EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0ECCFCAC-G": {
+      "name": "Soviet Engineer vs Sov Med",
+      "primary": "06BC2DEC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0ECCFA7C-G": {
+      "name": "Soviet Engineer vs Sov H",
+      "primary": "06BC2DEC-G",
+      "secondary": "06BC2DEC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C8EEEDC-G": {
+      "name": "Soviet Engineer vs Ally H",
+      "primary": "0C143EFC-G",
+      "secondary": "0C143EFC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C0D184C-G": {
+      "name": "Soviet Infantry Easy 1",
+      "primary": "060F5C8C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0ECCF68C-G": {
+      "name": "Soviet Infanty Easy 2",
+      "primary": "09B575AC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0C8C430C-G": {
+      "name": "Soviet Infantry Hard 1",
+      "primary": "060F538C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0C87B99C-G": {
+      "name": "Soviet Infantry Hard 2",
+      "primary": "0613D80C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0ECCF29C-G": {
+      "name": "Soviet Infantry Medium 1",
+      "primary": "060F580C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0ECCF14C-G": {
+      "name": "Soviet Infantry Medium 2",
+      "primary": "09B5712C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C8EEAEC-G": {
+      "name": "Soviet Iron Curtain",
+      "primary": "0ACDAEFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 5,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 0,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0C87B45C-G": {
+      "name": "Soviet Ivan vs Allies",
+      "primary": "0A42EBFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "GACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0ECCBC3C-G": {
+      "name": "Soviet Ivan vs Soviets",
+      "primary": "0A43080C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "NACNST",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C8EE1BC-G": {
+      "name": "Soviet KIrov Hard",
+      "primary": "0CA0380C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0ECCB7FC-G": {
+      "name": "Soviet Kirov Medium",
+      "primary": "06BC359C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "0C32D84C-G": {
+      "name": "Soviet Navy Bombard",
+      "primary": "0EC2038C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 1,
+      "object": "NATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0ECCB55C-G": {
+      "name": "Soviet Navy Hunters",
+      "primary": "0CA18BAC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0ECCB40C-G": {
+      "name": "Soviet Terror Drone Easy",
+      "primary": "06BC103C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0ECCB2BC-G": {
+      "name": "Soviet Terror Drone Attack",
+      "primary": "0EC24B7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 30,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CB29EDC-G": {
+      "name": "Nation Russian",
+      "primary": "0CADBA7C-G",
+      "secondary": "",
+      "country": "Russians",
+      "tech": 10,
+      "condition": 1,
+      "object": "NARADR",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C8C2C3C-G": {
+      "name": "Soviet Miners",
+      "primary": "0ECCB03C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 1,
+      "object": "HARV",
+      "threshold": 3,
+      "comparison": 1,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C8C2AEC-G": {
+      "name": "Allied Chrono Miners",
+      "primary": "06BC5B7C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 1,
+      "object": "CMIN",
+      "threshold": 3,
+      "comparison": 1,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0A31295C-G": {
+      "name": "Soviet Guard Dogs",
+      "primary": "0D6266CC-G",
+      "secondary": "06BC521C-G",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "SPY",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C87E5AC-G": {
+      "name": "Allied Grizzly Attack - H1",
+      "primary": "0CABE7DC-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08A3EEDC-G": {
+      "name": "Allied Anti-Grand Cannon",
+      "primary": "0D020EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "GTGCAN",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D022B1C-G": {
+      "name": "Soviet Anti-Grand Cannon",
+      "primary": "06BC67BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 0,
+      "object": "GTGCAN",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C1246FC-G": {
+      "name": "Allied Refinery Guard",
+      "primary": "0C9146DC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "SPY",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 5000,
+      "min": 10,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0C1245AC-G": {
+      "name": "Soviet Refinery Guard",
+      "primary": "0C12237C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "SPY",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D0B3B9C-G": {
+      "name": "ChronoSphere Exists team",
+      "primary": "0A87472C-G",
+      "secondary": "0CB246CC-G",
+      "country": "<all>",
+      "tech": 9,
+      "condition": 1,
+      "object": "GACSPH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CA2A04C-G": {
+      "name": "Soviet Anti-Harrier Defense",
+      "primary": "06BC625C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 0,
+      "object": "ORCA",
+      "threshold": 6,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CA2B06C-G": {
+      "name": "Soviet Anti-Beagle Defense",
+      "primary": "06BC625C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 0,
+      "object": "BEAG",
+      "threshold": 5,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0CA2FEDC-G": {
+      "name": "Soviet Anti-Kirov Defense",
+      "primary": "06BC625C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 0,
+      "object": "ZEP",
+      "threshold": 2,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D2769BC-G": {
+      "name": "Soviet Iron Curtain Easy",
+      "primary": "0D27E06C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 5,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 0,
+      "weight": 5000,
+      "min": 10,
+      "max": 5000,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "0A452E5C-G": {
+      "name": "Soviet Terror D vs Allies",
+      "primary": "0A454B9C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 0,
+      "object": "MTNK",
+      "threshold": 8,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0A452C6C-G": {
+      "name": "Soviet Terror D vs Soviet",
+      "primary": "0A454B9C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 0,
+      "object": "HTNK",
+      "threshold": 6,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0A44F2CC-G": {
+      "name": "Allied Dog Refinery Guards",
+      "primary": "06BC70AC-G",
+      "secondary": "06BC70AC-G",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "SPY",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0A44F17C-G": {
+      "name": "Soviet Dog Refinery Guards",
+      "primary": "0A4520CC-G",
+      "secondary": "0A4520CC-G",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "SPY",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 5000,
+      "min": 5000,
+      "max": 5000,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0D53099C-G": {
+      "name": "Soviet Tesla Charge",
+      "primary": "09B58D0C-G",
+      "secondary": "09B58D0C-G",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 1,
+      "object": "TESLA",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 50,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0612B11C-G": {
+      "name": "Yuri Guard - Basic I",
+      "primary": "06099EFC-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "06C551AC-G": {
+      "name": "Yuri Naval Hunters",
+      "primary": "06C5992C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 20,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0612CD8C-G": {
+      "name": "Yuri Guard - Basic II",
+      "primary": "0609946C-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        true,
+        true
+      ]
+    },
+    "0ABC484C-G": {
+      "name": "Yuri Armor - 1",
+      "primary": "05FFBD7C-G",
+      "secondary": "08B9108C-G",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 60,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05FFB18C-G": {
+      "name": "Yuri Infantry - M1",
+      "primary": "05FFB46C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "05FFA7DC-G": {
+      "name": "Yuri Armor - M2",
+      "primary": "05FFAA3C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "06002BFC-G": {
+      "name": "Yuri Infantry - M2",
+      "primary": "05FFA48C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "05CB5B6C-G": {
+      "name": "Yuri Prime - M1",
+      "primary": "07C00E7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "07C04EDC-G": {
+      "name": "Yuri Air Force - M1",
+      "primary": "0ABB14BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "07C04C7C-G": {
+      "name": "Yuri Chaos - M1",
+      "primary": "07C0304C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 30,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "07C0B14C-G": {
+      "name": "Yuri Magnetron",
+      "primary": "07C0AEFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "YAPSYT",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 20,
+      "min": 10,
+      "max": 30,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05FC1A8C-G": {
+      "name": "Yuri Infantry - M3",
+      "primary": "05FBBBEC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "05FC50EC-G": {
+      "name": "Yuri Armor - E1",
+      "primary": "05FC195C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "05FC3C9C-G": {
+      "name": "Yuri Infantry - E1",
+      "primary": "05FC3EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "05FC37CC-G": {
+      "name": "Yuri Infantry - E2",
+      "primary": "05FC3B6C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "05FC333C-G": {
+      "name": "Yuri Armor - H2",
+      "primary": "060F8A7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "05FC0C9C-G": {
+      "name": "Yuri Armor - H3",
+      "primary": "060F883C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "05FC088C-G": {
+      "name": "Yuri Chaos - H1",
+      "primary": "05FC0B6C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "05FC75CC-G": {
+      "name": "Yuri Disc - H2_A",
+      "primary": "05FC7C8C-G",
+      "secondary": "05FC075C-G",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "05FC747C-G": {
+      "name": "Yuri Disc - H2_S",
+      "primary": "05FC019C-G",
+      "secondary": "05FC075C-G",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B9154C-G": {
+      "name": "Yuri Infantry - H1",
+      "primary": "08B90EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B911BC-G": {
+      "name": "Yuri Infantry - H1",
+      "primary": "08B9141C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B9213C-G": {
+      "name": "Yuri Brute Squad",
+      "primary": "08B9108C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9356C-G": {
+      "name": "Yuri Prime - H1",
+      "primary": "05CA183C-G",
+      "secondary": "0ABB14BC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B9305C-G": {
+      "name": "Yuri Big Team",
+      "primary": "08B9343C-G",
+      "secondary": "08B9108C-G",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 1,
+      "object": "YAPPET",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B9483C-G": {
+      "name": "Yuri Anti-Grand Cannon",
+      "primary": "08B94EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "GTGCAN",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9423C-G": {
+      "name": "Yuri Anti-Dog_S",
+      "primary": "08B9449C-G",
+      "secondary": "08B9449C-G",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "DOG",
+      "threshold": 5,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B940EC-G": {
+      "name": "Yuri Anti-Dog_A",
+      "primary": "08B9449C-G",
+      "secondary": "08B9449C-G",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 0,
+      "object": "ADOG",
+      "threshold": 5,
+      "comparison": 3,
+      "weight": 50,
+      "min": 10,
+      "max": 50,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9586C-G": {
+      "name": "Yuri Engineers",
+      "primary": "08B95EFC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 30,
+      "min": 10,
+      "max": 30,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0611A33C-G": {
+      "name": "Yuri Slave Miners",
+      "primary": "08B9573C-G",
+      "secondary": "061183BC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "SMIN",
+      "threshold": 2,
+      "comparison": 0,
+      "weight": 70,
+      "min": 70,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0611A1EC-G": {
+      "name": "Yuri Refinery Guards",
+      "primary": "061183BC-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "SMIN",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 50,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9641C-G": {
+      "name": "Yuri Psychic Force",
+      "primary": "08B967BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B97C6C-G": {
+      "name": "Yuri Capture Airport",
+      "primary": "08B962EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAAIRP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9767C-G": {
+      "name": "Yuri Capture Oil",
+      "primary": "08B97B3C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAOILD",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B9708C-G": {
+      "name": "Yuri Capture Machine",
+      "primary": "08B9754C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CAMACH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05FC1C5C-G": {
+      "name": "Yuri Capture Hospital",
+      "primary": "05FC006C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 7,
+      "object": "CATHOSP",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 40,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0612EAEC-G": {
+      "name": "Yuri Anti-BEagle Defense",
+      "primary": "06109EFC-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 0,
+      "object": "BEAG",
+      "threshold": 5,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "0612F9AC-G": {
+      "name": "Yuri Anti-Harrier Defense",
+      "primary": "06109A4C-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 0,
+      "object": "ORCA",
+      "threshold": 5,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05FC13EC-G": {
+      "name": "Yuri Cloning Vats",
+      "primary": "08B91ABC-G",
+      "secondary": "08B91ABC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "NACLON",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "08B90B1C-G": {
+      "name": "Yuri Boomer Bombard_A",
+      "primary": "05FC5C6C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "GAYARD",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "08B902EC-G": {
+      "name": "Yuri Boomer Bombard_S",
+      "primary": "08B909EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 0,
+      "object": "NAYARD",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0612F46C-G": {
+      "name": "Yuri Base Guard - Adv",
+      "primary": "08BE3EFC-G",
+      "secondary": "043F828C-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 4,
+      "object": "<none>",
+      "threshold": 0,
+      "comparison": 3,
+      "weight": 40,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "044082BC-G": {
+      "name": "Allied Battle Fort - M1",
+      "primary": "044091AC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 50,
+      "min": 30,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "07C310BC-G": {
+      "name": "Allied Battle Fort - M2",
+      "primary": "07C257EC-G",
+      "secondary": "07C257EC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        false
+      ]
+    },
+    "07C329FC-G": {
+      "name": "Allied Battle Fort - H1",
+      "primary": "07C32EFC-G",
+      "secondary": "07C328CC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 60,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "07C3266C-G": {
+      "name": "Allied Battle Fort - H2",
+      "primary": "07C328CC-G",
+      "secondary": "07C32EFC-G",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "GATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 10,
+      "max": 60,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "07C33DDC-G": {
+      "name": "Allied Battle Fort - H3",
+      "primary": "07C3227C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "BFRT",
+      "threshold": 4,
+      "comparison": 3,
+      "weight": 500,
+      "min": 10,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "0616004C-G": {
+      "name": "Soviet Siege Bunker_1",
+      "primary": "0610813C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 1,
+      "object": "NABNKR",
+      "threshold": 1,
+      "comparison": 2,
+      "weight": 500,
+      "min": 70,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "07C330CC-G": {
+      "name": "Soviet Siege Bunker_2",
+      "primary": "0610813C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 1,
+      "condition": 1,
+      "object": "NABNKR",
+      "threshold": 2,
+      "comparison": 2,
+      "weight": 500,
+      "min": 70,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        false
+      ]
+    },
+    "07C30A5C-G": {
+      "name": "Soviet SChop vs Sov",
+      "primary": "07C460CC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 7,
+      "condition": 0,
+      "object": "NAPOWR",
+      "threshold": 2,
+      "comparison": 4,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "07C4853C-G": {
+      "name": "Soviet SChop vs All",
+      "primary": "07C3092C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 7,
+      "condition": 0,
+      "object": "GAPOWR",
+      "threshold": 2,
+      "comparison": 4,
+      "weight": 50,
+      "min": 10,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "043F521C-G": {
+      "name": "Yuri MCV - H",
+      "primary": "043F89AC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "YACNST",
+      "threshold": 0,
+      "comparison": 2,
+      "weight": 70,
+      "min": 60,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "043F874C-G": {
+      "name": "Allied MCV - H",
+      "primary": "043F29AC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "GACNST",
+      "threshold": 0,
+      "comparison": 2,
+      "weight": 70,
+      "min": 60,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "043F40BC-G": {
+      "name": "Soviet MCV - H",
+      "primary": "043F83EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 10,
+      "condition": 1,
+      "object": "NACNST",
+      "threshold": 0,
+      "comparison": 2,
+      "weight": 70,
+      "min": 60,
+      "max": 70,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        false,
+        true
+      ]
+    },
+    "05CBC2EC-G": {
+      "name": "Soviet Anti-Floater",
+      "primary": "05C566EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "DISK",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 70,
+      "max": 500,
+      "skirmish": true,
+      "side": "soviet",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05CBC19C-G": {
+      "name": "Allied Anti-Floater",
+      "primary": "05CAB5CC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 3,
+      "condition": 0,
+      "object": "DISK",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 60,
+      "max": 500,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05CBC04C-G": {
+      "name": "Yuri Anti-Floater",
+      "primary": "05CACB7C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 4,
+      "condition": 0,
+      "object": "DISK",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 500,
+      "min": 60,
+      "max": 500,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "078F4B2C-G": {
+      "name": "Yuri Finishers",
+      "primary": "078F3A3C-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 5,
+      "condition": 1,
+      "object": "YATECH",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 70,
+      "min": 40,
+      "max": 70,
+      "skirmish": true,
+      "side": "yuri",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    },
+    "05CB830C-G": {
+      "name": "Allied Robo Tank - Easy",
+      "primary": "07A735EC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "GAROBO",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 30,
+      "max": 60,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        true,
+        false,
+        false
+      ]
+    },
+    "05CBAEDC-G": {
+      "name": "Allied Robo Tank - M_H",
+      "primary": "079D93BC-G",
+      "secondary": "",
+      "country": "<all>",
+      "tech": 2,
+      "condition": 1,
+      "object": "GAROBO",
+      "threshold": 1,
+      "comparison": 3,
+      "weight": 60,
+      "min": 40,
+      "max": 70,
+      "skirmish": true,
+      "side": "allied",
+      "difficulty": [
+        false,
+        true,
+        true
+      ]
+    }
+  },
+  "teams": {
+    "06175EFC-G": {
+      "name": "Allied Base Guard - Refine",
+      "force": "05C60C4C-G",
+      "script": "0C9C878C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE4CEFC-G": {
+      "name": "Allied Base Guard - Tech",
+      "force": "0D082CFC-G",
+      "script": "0CE4CC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE4CA3C-G": {
+      "name": "Allied Base Guard - Adv",
+      "force": "0CE4C92C-G",
+      "script": "0CE4C2DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0617FC8C-G": {
+      "name": "Allied Infantry Attack - H1",
+      "force": "0617A3DC-G",
+      "script": "0CE4EC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0617EEFC-G": {
+      "name": "Allied Infantry Attack - H2",
+      "force": "0617EB7C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BB88BC-G": {
+      "name": "Allied Infantry Attack - M1",
+      "force": "05C60C4C-G",
+      "script": "0CE4EC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0617E91C-G": {
+      "name": "Allied Infantry Attack - E1",
+      "force": "0617E80C-G",
+      "script": "0CE4EC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CFFF59C-G": {
+      "name": "Allied Tech Oil Capture",
+      "force": "0D0811AC-G",
+      "script": "0C94D80C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CFFF0EC-G": {
+      "name": "Allied Tech Airport Capture",
+      "force": "0D0811AC-G",
+      "script": "09B4DB1C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CABE7DC-G": {
+      "name": "Allied Grizzly Attack - H1",
+      "force": "0A86ACAC-G",
+      "script": "0ABA756C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B4FB7C-G": {
+      "name": "Allied Grizzly Attack - H2",
+      "force": "0CE4DCDC-G",
+      "script": "0ABA6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA0486C-G": {
+      "name": "Allied Grizzly Attack - H3",
+      "force": "0CE4DA9C-G",
+      "script": "0ABA6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A86A48C-G": {
+      "name": "Allied Grizzly Attack - M1",
+      "force": "0AE7296C-G",
+      "script": "0CE4EC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B4F12C-G": {
+      "name": "Allied Grizzly Attack - E1",
+      "force": "0D2700CC-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B4E8BC-G": {
+      "name": "Allied Rocketeer - H1",
+      "force": "0D082BEC-G",
+      "script": "0ABA6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CAC9EFC-G": {
+      "name": "Allied Harrier - H1",
+      "force": "0CE0F34C-G",
+      "script": "08A2135C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CACFEFC-G": {
+      "name": "Allied Harrier - H2",
+      "force": "0CE0F34C-G",
+      "script": "0CB13B4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B50C8C-G": {
+      "name": "Allied Harrier - M1",
+      "force": "0CE0F34C-G",
+      "script": "0CB13B4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA7122C-G": {
+      "name": "Allied Harrier - E1",
+      "force": "0CE1DF1C-G",
+      "script": "0CB13B4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B5091C-G": {
+      "name": "Allied Spy vs Soviet Power",
+      "force": "0D0828BC-G",
+      "script": "0CADC46C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE1F59C-G": {
+      "name": "Allied Spy vs Allied Power",
+      "force": "0D0828BC-G",
+      "script": "0CADDDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE1BE7C-G": {
+      "name": "Allied Spy vs Allied War",
+      "force": "0D0828BC-G",
+      "script": "0CADDA1C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE1B99C-G": {
+      "name": "Allied Spy vs Soviet War",
+      "force": "0D0828BC-G",
+      "script": "0C8A3C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B517BC-G": {
+      "name": "Allied Spy vs Soviet Tech",
+      "force": "0D0828BC-G",
+      "script": "0C8A254C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B5141C-G": {
+      "name": "Allied spy vs Allied Tech",
+      "force": "0D0828BC-G",
+      "script": "0C8A354C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0AD4D7BC-G": {
+      "name": "Allied Tanya vs Soviet Con",
+      "force": "0617909C-G",
+      "script": "0C954B4C-G",
+      "max": 1,
+      "recruiter": true,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "09B52C8C-G": {
+      "name": "Allied Tanya - M1",
+      "force": "0D082ADC-G",
+      "script": "0CE4EC8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06178A4C-G": {
+      "name": "Allied Tanya vs Allied Con",
+      "force": "0617909C-G",
+      "script": "0A86CDBC-G",
+      "max": 1,
+      "recruiter": true,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0CE33A8C-G": {
+      "name": "Allied C-Legion vs Soviet Con",
+      "force": "0D0829CC-G",
+      "script": "0CE3381C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE334AC-G": {
+      "name": "Allied C-Legion vs Allied Con",
+      "force": "0D0829CC-G",
+      "script": "0CE3323C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CE32D3C-G": {
+      "name": "Allied Spy vs Sov Barracks",
+      "force": "0D0828BC-G",
+      "script": "0CADF67C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CADF54C-G": {
+      "name": "Allied Spy vs Allied Barracks",
+      "force": "0D0828BC-G",
+      "script": "0CADF2DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B5354C-G": {
+      "name": "Allied Chrono Commando",
+      "force": "0CE3236C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B5330C-G": {
+      "name": "Allied Psi-Corp",
+      "force": "0CE3CF1C-G",
+      "script": "0CE4C2DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A6E210C-G": {
+      "name": "Allied Bombard - H1",
+      "force": "0A6E3F1C-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A874DEC-G": {
+      "name": "Allied Bombard - M1",
+      "force": "0A874CDC-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A6E452C-G": {
+      "name": "Allied Bombard - E1",
+      "force": "0A6E441C-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A43AEFC-G": {
+      "name": "Allied Ultra-Hard Attack",
+      "force": "0A43ADEC-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A87472C-G": {
+      "name": "Allied Chrono-Sphere Unit",
+      "force": "0A86ACAC-G",
+      "script": "0CAC55CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08DA125C-G": {
+      "name": "Allied Anti-Nuke Team - 1",
+      "force": "0617909C-G",
+      "script": "0A6E54EC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0A6E513C-G": {
+      "name": "Allied Anti-Weather Team - 1",
+      "force": "0617909C-G",
+      "script": "0A6E6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0CA1E67C-G": {
+      "name": "Allied Naval Hunters - 1",
+      "force": "0A6E6A3C-G",
+      "script": "0612EDBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CAC330C-G": {
+      "name": "Allied Naval Bombard- 1",
+      "force": "0A6E644C-G",
+      "script": "0A869C8C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CACC1FC-G": {
+      "name": "Nation British Sniper 1",
+      "force": "0D0827AC-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CAC27DC-G": {
+      "name": "Nation British Sniper - 2",
+      "force": "0A6E7A4C-G",
+      "script": "0C9506CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A87293C-G": {
+      "name": "Nation German Tank Dest 1",
+      "force": "0A6E73DC-G",
+      "script": "08DA356C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CB1CDEC-G": {
+      "name": "Nation Korea - 1",
+      "force": "0A6E9B0C-G",
+      "script": "0CB13B4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08DA30EC-G": {
+      "name": "Allied Base Guard - Basic",
+      "force": "05C60C4C-G",
+      "script": "0CE4C2DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA79EFC-G": {
+      "name": "Allied IFV Rush vs Sov",
+      "force": "0A7101EC-G",
+      "script": "0C954B4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0A86849C-G": {
+      "name": "Allied IFV Rush vs Allied Con",
+      "force": "0A7101EC-G",
+      "script": "0A86CDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0ACCD81C-G": {
+      "name": "Allied Mirage Tanks",
+      "force": "0ACC87AC-G",
+      "script": "0C90CA2C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "060F5C8C-G": {
+      "name": "Soviet Infantry Easy 1",
+      "force": "0CD9CF1C-G",
+      "script": "043F45FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B575AC-G": {
+      "name": "Soviet Infantry Easy 2",
+      "force": "0D2F847C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "060F580C-G": {
+      "name": "Soviet Infantry Medium 1",
+      "force": "0D081B0C-G",
+      "script": "043EB5AC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B5712C-G": {
+      "name": "Soviet Infantry Medium 2",
+      "force": "0D0812BC-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "060F538C-G": {
+      "name": "Soviet Infantry Hard 1",
+      "force": "0D30551C-G",
+      "script": "043EB5AC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0613D80C-G": {
+      "name": "Soviet Infantry Hard 2",
+      "force": "0D3052DC-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BB841C-G": {
+      "name": "Soviet Armor Easy",
+      "force": "0A37731C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0C31CA7C-G": {
+      "name": "Soviet Armor Medium",
+      "force": "0A427B9C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA1D38C-G": {
+      "name": "Soviet Armor Hard",
+      "force": "0ACDC72C-G",
+      "script": "0CA1FDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0ACDDDAC-G": {
+      "name": "Soviet Bombard - Easy",
+      "force": "0ACDDC9C-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0ACDDB6C-G": {
+      "name": "Soviet Bombard Medium",
+      "force": "0ACDDA5C-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA1683C-G": {
+      "name": "Soviet Bombard Hard",
+      "force": "0ACDD81C-G",
+      "script": "0607B8FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0ACDAEFC-G": {
+      "name": "Soviet Iron Curtain Team",
+      "force": "0ACDADEC-G",
+      "script": "0C31EA4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA1614C-G": {
+      "name": "Soviet Apoc Medium",
+      "force": "0ACDA62C-G",
+      "script": "0C31EA4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CAD3CBC-G": {
+      "name": "Soviet Apoc Hard",
+      "force": "0EC2118C-G",
+      "script": "0C31EA4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA18BAC-G": {
+      "name": "Soviet Navy Hunters",
+      "force": "0EC204BC-G",
+      "script": "0612EDBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0EC2038C-G": {
+      "name": "Soviet Navy Bombard",
+      "force": "0EC2027C-G",
+      "script": "0A869C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC103C-G": {
+      "name": "Soviet Terror Drone - Easy",
+      "force": "0C90985C-G",
+      "script": "08DA356C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0EC24B7C-G": {
+      "name": "Soviet Terror Drone Attack",
+      "force": "0EC24A6C-G",
+      "script": "08DA356C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CADBA7C-G": {
+      "name": "Nation: Russian Tesla Tank",
+      "force": "0EC2482C-G",
+      "script": "0C31EA4C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC27CC-G": {
+      "name": "Nation Cuba T vs Sov",
+      "force": "0EC245EC-G",
+      "script": "0A8856FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0C95B6FC-G": {
+      "name": "Nation Cuba T vs Ally",
+      "force": "0EC245EC-G",
+      "script": "0A88524C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC3EFC-G": {
+      "name": "Nation Iraqi",
+      "force": "0EC7C19C-G",
+      "script": "0EC7A7AC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CACCB7C-G": {
+      "name": "Nation Libyan Boom",
+      "force": "0EC797DC-G",
+      "script": "0AD0CDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC359C-G": {
+      "name": "Soviet Kirov Medium",
+      "force": "0EC7959C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA0380C-G": {
+      "name": "Soviet Kirov Hard",
+      "force": "0EC7935C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0C143EFC-G": {
+      "name": "Soviet Engineer vs Ally",
+      "force": "08A2824C-G",
+      "script": "0A88524C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A42EBFC-G": {
+      "name": "Soviet Ivan vs Allies",
+      "force": "0A42EAEC-G",
+      "script": "0A88524C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0A43080C-G": {
+      "name": "Soviet Ivan vs Soviet",
+      "force": "0A42EAEC-G",
+      "script": "0A8856FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "05C643BC-G": {
+      "name": "Soviet Base Defense Infantry",
+      "force": "0D2C5DCC-G",
+      "script": "05C77DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC2DEC-G": {
+      "name": "Soviet Engineer vs Soviet",
+      "force": "08A2824C-G",
+      "script": "0A8856FC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": true,
+      "only_enemy": false
+    },
+    "0D04C46C-G": {
+      "name": "Soviet Engineer Oil",
+      "force": "0A31360C-G",
+      "script": "0C94D80C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A31428C-G": {
+      "name": "Soviet Engineer Airport",
+      "force": "0A31360C-G",
+      "script": "09B4DB1C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0ECCB03C-G": {
+      "name": "Soviet War Miner",
+      "force": "0ECCF03C-G",
+      "script": "0ECC9B0C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC5B7C-G": {
+      "name": "Allied Chrono Miner",
+      "force": "0ECC96CC-G",
+      "script": "0ECC92DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0D6266CC-G": {
+      "name": "Soviet Guard Dog Tech",
+      "force": "0A313C6C-G",
+      "script": "0A3142EC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC521C-G": {
+      "name": "Soviet Guard Dog Power",
+      "force": "0D082E0C-G",
+      "script": "0A312C5C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CB246CC-G": {
+      "name": "Allied Harrier Support",
+      "force": "0CE1DF1C-G",
+      "script": "08A2135C-G",
+      "max": 1,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0D020EFC-G": {
+      "name": "Allied Anit-Grand Cannon",
+      "force": "0D082BEC-G",
+      "script": "0D020C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC67BC-G": {
+      "name": "Soviet Anti-Grand Cannon",
+      "force": "0D02070C-G",
+      "script": "0D020C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0C9146DC-G": {
+      "name": "Allied Refinery Guards",
+      "force": "0D082CFC-G",
+      "script": "0C9C878C-G",
+      "max": 3,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0C12237C-G": {
+      "name": "Soviet Refinery Guard",
+      "force": "0A313C6C-G",
+      "script": "0C91433C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC625C-G": {
+      "name": "Soviet Flak Defenses",
+      "force": "0C9E903C-G",
+      "script": "0CA2192C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0CA48EFC-G": {
+      "name": "Allied Small Armor Team",
+      "force": "0C14A81C-G",
+      "script": "0ABA6DBC-G",
+      "max": 2,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC7B5C-G": {
+      "name": "Soviet Small Armor Team",
+      "force": "0C1510CC-G",
+      "script": "0ABA6DBC-G",
+      "max": 2,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0D2701DC-G": {
+      "name": "Allied Chrono Unit Easy",
+      "force": "0D2700CC-G",
+      "script": "0CAC55CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0D27E06C-G": {
+      "name": "Soviet Iron Curtain Unit Easy",
+      "force": "0D27D04C-G",
+      "script": "0CA1FDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A454B9C-G": {
+      "name": "Soviet Terror Drone Base D",
+      "force": "0A454A8C-G",
+      "script": "0A4529FC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06BC70AC-G": {
+      "name": "Allied Dog Guard Refine",
+      "force": "0D082CFC-G",
+      "script": "0C90CA2C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0A4520CC-G": {
+      "name": "Soviet Refinery Guard",
+      "force": "0A313C6C-G",
+      "script": "0C91433C-G",
+      "max": 3,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "09B58D0C-G": {
+      "name": "Soviet Tesla Charge Team",
+      "force": "0A36DDEC-G",
+      "script": "0A36952C-G",
+      "max": 3,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06099EFC-G": {
+      "name": "Yuri Guard - Basic I",
+      "force": "08A3357C-G",
+      "script": "043E08AC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06C5992C-G": {
+      "name": "Yuri Naval Hunters",
+      "force": "06C5981C-G",
+      "script": "06C55C6C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0609946C-G": {
+      "name": "Yuri Guard - Basic II",
+      "force": "09A3B12C-G",
+      "script": "043E08AC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FFBD7C-G": {
+      "name": "Yuri Armor - 1",
+      "force": "05FFBC6C-G",
+      "script": "060F6DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FFB46C-G": {
+      "name": "Yuri Infantry - M1",
+      "force": "05FFB35C-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FFAA3C-G": {
+      "name": "Yuri Armor - M2",
+      "force": "05FFA92C-G",
+      "script": "060F6DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FFA48C-G": {
+      "name": "Yuri Infantry - M2",
+      "force": "05FFA37C-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C00E7C-G": {
+      "name": "Yuri Prime - M1",
+      "force": "07C00D6C-G",
+      "script": "07C03C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0ABB14BC-G": {
+      "name": "Yuri Air Force - M1",
+      "force": "07C034EC-G",
+      "script": "0ABB124C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C0304C-G": {
+      "name": "Yuri Chaos - M1",
+      "force": "07C04DCC-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C0AEFC-G": {
+      "name": "Yuri Magnetron",
+      "force": "07C0903C-G",
+      "script": "07C0B52C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FBBBEC-G": {
+      "name": "Yuri Infantry - M3",
+      "force": "05FBBADC-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC195C-G": {
+      "name": "Yuri Armor - E1",
+      "force": "05FC184C-G",
+      "script": "060F6DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC3EFC-G": {
+      "name": "Yuri Infantry - E1",
+      "force": "05FC3DEC-G",
+      "script": "08A29DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC3B6C-G": {
+      "name": "Yuri Infantry - E2",
+      "force": "05FC3A5C-G",
+      "script": "08DA356C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "060F8A7C-G": {
+      "name": "Yuri Armor - H2",
+      "force": "05FC358C-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "060F883C-G": {
+      "name": "Yuri Armor - H3",
+      "force": "05FC0DEC-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC0B6C-G": {
+      "name": "Yuri Chaos - H1",
+      "force": "05FC104C-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC075C-G": {
+      "name": "Yuri Disc - H1",
+      "force": "05FC064C-G",
+      "script": "0ABB124C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC019C-G": {
+      "name": "Yuri Disc - H2_S",
+      "force": "05FC064C-G",
+      "script": "05FC7DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC7C8C-G": {
+      "name": "Yuri Disc - H2_A",
+      "force": "05FC064C-G",
+      "script": "05FC78DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B90EFC-G": {
+      "name": "Yuri Infantry - H1",
+      "force": "08B90DEC-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9141C-G": {
+      "name": "Yuri Infantry - H2",
+      "force": "08B9130C-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9108C-G": {
+      "name": "Yuri Brute Squad",
+      "force": "08B92F1C-G",
+      "script": "08DA356C-G",
+      "max": 3,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B93EFC-G": {
+      "name": "Yuri Infantry - H3",
+      "force": "08B93DEC-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05CA183C-G": {
+      "name": "Yuri Prime - H1",
+      "force": "08B93AEC-G",
+      "script": "05CA15CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9343C-G": {
+      "name": "Yuri Big Team",
+      "force": "08B9332C-G",
+      "script": "0ABA756C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B94EFC-G": {
+      "name": "Yuri Anti-Grand Cannon",
+      "force": "07C034EC-G",
+      "script": "08B94C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9449C-G": {
+      "name": "Yuri Anti-Dog",
+      "force": "08B9438C-G",
+      "script": "08A29DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B95EFC-G": {
+      "name": "Yuri Engineers",
+      "force": "08B95DEC-G",
+      "script": "08B95B7C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9573C-G": {
+      "name": "Yuri Slave Miners",
+      "force": "08B9562C-G",
+      "script": "08B953BC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "061183BC-G": {
+      "name": "Yuri Refinery Guards",
+      "force": "08B9504C-G",
+      "script": "08B96C8C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B967BC-G": {
+      "name": "Yuri Psychic Force",
+      "force": "08B966AC-G",
+      "script": "060F6DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B962EC-G": {
+      "name": "Yuri Capture Airport",
+      "force": "08B961DC-G",
+      "script": "08B97DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B97B3C-G": {
+      "name": "Yuri Capture Oil",
+      "force": "08B961DC-G",
+      "script": "08B978CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B9754C-G": {
+      "name": "Yuri Capture Machine",
+      "force": "08B961DC-G",
+      "script": "08B972DC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC006C-G": {
+      "name": "Yuri Capture Hospital",
+      "force": "08B961DC-G",
+      "script": "05FC30CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06109EFC-G": {
+      "name": "Yuri Anti-BEagle Defense",
+      "force": "05FC1DEC-G",
+      "script": "08B945CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "06109A4C-G": {
+      "name": "Yuri Anti-Harrier Defense",
+      "force": "05FC1DEC-G",
+      "script": "08B945CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B91ABC-G": {
+      "name": "Yuri Cloning Vats",
+      "force": "08B91C7C-G",
+      "script": "08A29DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05FC5C6C-G": {
+      "name": "Yuri Boomer Bombard_A",
+      "force": "05FC5B5C-G",
+      "script": "08B9184C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08B909EC-G": {
+      "name": "Yuri Boomer Bombard_S",
+      "force": "05FC5B5C-G",
+      "script": "08B9077C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "08BE3EFC-G": {
+      "name": "Yuri Base Guard - Adv",
+      "force": "08BE3DEC-G",
+      "script": "08BE420C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": true,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "044091AC-G": {
+      "name": "Allied Battle Fort - M1",
+      "force": "0440909C-G",
+      "script": "08DA356C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C257EC-G": {
+      "name": "Allied Battle Fort - M2",
+      "force": "07C256DC-G",
+      "script": "07C30DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C32EFC-G": {
+      "name": "Allied Battle Fort - H1",
+      "force": "07C256DC-G",
+      "script": "07C32C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C328CC-G": {
+      "name": "Allied Battle Fort - H2",
+      "force": "07C327BC-G",
+      "script": "07C32C8C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C3227C-G": {
+      "name": "Allied Battle Fort - H3",
+      "force": "07C3216C-G",
+      "script": "0612EDBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "0610813C-G": {
+      "name": "Soviet Siege Bunker",
+      "force": "07C338DC-G",
+      "script": "06109AFC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C460CC-G": {
+      "name": "Soviet SChop vs Sov",
+      "force": "07C47F1C-G",
+      "script": "07C3188C-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07C3092C-G": {
+      "name": "Soviet SChop vs All",
+      "force": "07C47F1C-G",
+      "script": "07C48DBC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "043F89AC-G": {
+      "name": "Yuri MCV",
+      "force": "043F889C-G",
+      "script": "043F23CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "043F29AC-G": {
+      "name": "Allied MCV",
+      "force": "043F289C-G",
+      "script": "043F23CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "043F83EC-G": {
+      "name": "Soviet MCV",
+      "force": "043F863C-G",
+      "script": "043F23CC-G",
+      "max": 1,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "043F828C-G": {
+      "name": "Yuri BioReactors",
+      "force": "043F817C-G",
+      "script": "043F784C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": true,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05CAB5CC-G": {
+      "name": "Allied Anti-Floater",
+      "force": "05C3F22C-G",
+      "script": "05CAB35C-G",
+      "max": 2,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05C566EC-G": {
+      "name": "Soviet Anti-Floater",
+      "force": "05C565DC-G",
+      "script": "05C5411C-G",
+      "max": 2,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "05CACB7C-G": {
+      "name": "Yuri Anti-Floater",
+      "force": "05C5340C-G",
+      "script": "05CAC90C-G",
+      "max": 2,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "078F3A3C-G": {
+      "name": "Yuri Finishers",
+      "force": "078F364C-G",
+      "script": "078F4DBC-G",
+      "max": 1,
+      "recruiter": true,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "07A735EC-G": {
+      "name": "Allied Robo Tank - Easy",
+      "force": "07A734DC-G",
+      "script": "079D823C-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    },
+    "079D93BC-G": {
+      "name": "Allied Robo Tank - M_H",
+      "force": "079D92AC-G",
+      "script": "07A72DBC-G",
+      "max": 2,
+      "recruiter": false,
+      "defense": false,
+      "suicide": false,
+      "transports_return": false,
+      "only_enemy": false
+    }
+  },
+  "formations": {
+    "05C60C4C-G": [
+      {
+        "count": 3,
+        "product": "E1"
+      },
+      {
+        "count": 3,
+        "product": "GGI"
+      }
+    ],
+    "0D082CFC-G": [
+      {
+        "count": 2,
+        "product": "ADOG"
+      }
+    ],
+    "0CE4C92C-G": [
+      {
+        "count": 2,
+        "product": "SREF"
+      },
+      {
+        "count": 2,
+        "product": "FV"
+      }
+    ],
+    "0617A3DC-G": [
+      {
+        "count": 5,
+        "product": "E1"
+      },
+      {
+        "count": 5,
+        "product": "GGI"
+      }
+    ],
+    "0617EB7C-G": [
+      {
+        "count": 6,
+        "product": "E1"
+      },
+      {
+        "count": 2,
+        "product": "ENGINEER"
+      },
+      {
+        "count": 4,
+        "product": "GGI"
+      }
+    ],
+    "0617E80C-G": [
+      {
+        "count": 2,
+        "product": "E1"
+      },
+      {
+        "count": 2,
+        "product": "GGI"
+      }
+    ],
+    "0D0811AC-G": [
+      {
+        "count": 1,
+        "product": "ENGINEER"
+      }
+    ],
+    "0A86ACAC-G": [
+      {
+        "count": 4,
+        "product": "MTNK"
+      },
+      {
+        "count": 1,
+        "product": "MGTK"
+      },
+      {
+        "count": 1,
+        "product": "SREF"
+      }
+    ],
+    "0CE4DCDC-G": [
+      {
+        "count": 2,
+        "product": "FV"
+      },
+      {
+        "count": 6,
+        "product": "MTNK"
+      }
+    ],
+    "0CE4DA9C-G": [
+      {
+        "count": 4,
+        "product": "JUMPJET"
+      },
+      {
+        "count": 6,
+        "product": "MTNK"
+      }
+    ],
+    "0AE7296C-G": [
+      {
+        "count": 6,
+        "product": "MTNK"
+      }
+    ],
+    "0D2700CC-G": [
+      {
+        "count": 3,
+        "product": "MTNK"
+      }
+    ],
+    "0D082BEC-G": [
+      {
+        "count": 5,
+        "product": "JUMPJET"
+      }
+    ],
+    "0CE0F34C-G": [
+      {
+        "count": 4,
+        "product": "ORCA"
+      }
+    ],
+    "0CE1DF1C-G": [
+      {
+        "count": 2,
+        "product": "ORCA"
+      }
+    ],
+    "0D0828BC-G": [
+      {
+        "count": 1,
+        "product": "SPY"
+      }
+    ],
+    "0617909C-G": [
+      {
+        "count": 1,
+        "product": "TANY"
+      },
+      {
+        "count": 3,
+        "product": "E1"
+      },
+      {
+        "count": 1,
+        "product": "SHAD"
+      },
+      {
+        "count": 1,
+        "product": "GGI"
+      }
+    ],
+    "0D082ADC-G": [
+      {
+        "count": 1,
+        "product": "TANY"
+      }
+    ],
+    "0D0829CC-G": [
+      {
+        "count": 2,
+        "product": "CLEG"
+      }
+    ],
+    "0CE3236C-G": [
+      {
+        "count": 2,
+        "product": "CCOMAND"
+      }
+    ],
+    "0CE3CF1C-G": [
+      {
+        "count": 2,
+        "product": "PTROOP"
+      }
+    ],
+    "0A6E3F1C-G": [
+      {
+        "count": 2,
+        "product": "FV"
+      },
+      {
+        "count": 2,
+        "product": "SREF"
+      },
+      {
+        "count": 4,
+        "product": "MTNK"
+      }
+    ],
+    "0A874CDC-G": [
+      {
+        "count": 2,
+        "product": "SREF"
+      },
+      {
+        "count": 6,
+        "product": "MTNK"
+      }
+    ],
+    "0A6E441C-G": [
+      {
+        "count": 2,
+        "product": "SREF"
+      }
+    ],
+    "0A43ADEC-G": [
+      {
+        "count": 6,
+        "product": "MTNK"
+      },
+      {
+        "count": 3,
+        "product": "SREF"
+      },
+      {
+        "count": 4,
+        "product": "FV"
+      }
+    ],
+    "0A6E6A3C-G": [
+      {
+        "count": 3,
+        "product": "DEST"
+      }
+    ],
+    "0A6E644C-G": [
+      {
+        "count": 1,
+        "product": "AEGIS"
+      },
+      {
+        "count": 1,
+        "product": "CARRIER"
+      }
+    ],
+    "0D0827AC-G": [
+      {
+        "count": 1,
+        "product": "SNIPE"
+      }
+    ],
+    "0A6E7A4C-G": [
+      {
+        "count": 1,
+        "product": "FV"
+      },
+      {
+        "count": 1,
+        "product": "SNIPE"
+      }
+    ],
+    "0A6E73DC-G": [
+      {
+        "count": 4,
+        "product": "TNKD"
+      }
+    ],
+    "0A6E9B0C-G": [
+      {
+        "count": 4,
+        "product": "BEAG"
+      }
+    ],
+    "0A7101EC-G": [
+      {
+        "count": 1,
+        "product": "FV"
+      },
+      {
+        "count": 1,
+        "product": "ENGINEER"
+      }
+    ],
+    "0ACC87AC-G": [
+      {
+        "count": 2,
+        "product": "MGTK"
+      }
+    ],
+    "0CD9CF1C-G": [
+      {
+        "count": 8,
+        "product": "E2"
+      }
+    ],
+    "0D2F847C-G": [
+      {
+        "count": 3,
+        "product": "SHK"
+      }
+    ],
+    "0D081B0C-G": [
+      {
+        "count": 10,
+        "product": "E2"
+      }
+    ],
+    "0D0812BC-G": [
+      {
+        "count": 10,
+        "product": "E2"
+      },
+      {
+        "count": 2,
+        "product": "SENGINEER"
+      }
+    ],
+    "0D30551C-G": [
+      {
+        "count": 20,
+        "product": "E2"
+      }
+    ],
+    "0D3052DC-G": [
+      {
+        "count": 2,
+        "product": "FLAKT"
+      },
+      {
+        "count": 10,
+        "product": "E2"
+      },
+      {
+        "count": 3,
+        "product": "SHK"
+      }
+    ],
+    "0A37731C-G": [
+      {
+        "count": 2,
+        "product": "HTNK"
+      },
+      {
+        "count": 1,
+        "product": "HTK"
+      }
+    ],
+    "0A427B9C-G": [
+      {
+        "count": 2,
+        "product": "HTK"
+      },
+      {
+        "count": 3,
+        "product": "HTNK"
+      }
+    ],
+    "0ACDC72C-G": [
+      {
+        "count": 2,
+        "product": "HTK"
+      },
+      {
+        "count": 5,
+        "product": "HTNK"
+      }
+    ],
+    "0ACDDC9C-G": [
+      {
+        "count": 2,
+        "product": "V3"
+      }
+    ],
+    "0ACDDA5C-G": [
+      {
+        "count": 2,
+        "product": "V3"
+      },
+      {
+        "count": 2,
+        "product": "HTK"
+      }
+    ],
+    "0ACDD81C-G": [
+      {
+        "count": 3,
+        "product": "V3ROCKET"
+      },
+      {
+        "count": 2,
+        "product": "SHK"
+      },
+      {
+        "count": 2,
+        "product": "HTK"
+      }
+    ],
+    "0ACDADEC-G": [
+      {
+        "count": 6,
+        "product": "HTNK"
+      }
+    ],
+    "0ACDA62C-G": [
+      {
+        "count": 1,
+        "product": "APOC"
+      }
+    ],
+    "0EC2118C-G": [
+      {
+        "count": 4,
+        "product": "APOC"
+      }
+    ],
+    "0EC204BC-G": [
+      {
+        "count": 3,
+        "product": "SUB"
+      }
+    ],
+    "0EC2027C-G": [
+      {
+        "count": 1,
+        "product": "DRED"
+      },
+      {
+        "count": 2,
+        "product": "HYD"
+      },
+      {
+        "count": 1,
+        "product": "SQD"
+      }
+    ],
+    "0C90985C-G": [
+      {
+        "count": 1,
+        "product": "DRON"
+      }
+    ],
+    "0EC24A6C-G": [
+      {
+        "count": 4,
+        "product": "DRON"
+      }
+    ],
+    "0EC2482C-G": [
+      {
+        "count": 3,
+        "product": "TTNK"
+      },
+      {
+        "count": 2,
+        "product": "HTNK"
+      }
+    ],
+    "0EC245EC-G": [
+      {
+        "count": 1,
+        "product": "HTK"
+      },
+      {
+        "count": 5,
+        "product": "TERROR"
+      }
+    ],
+    "0EC7C19C-G": [
+      {
+        "count": 2,
+        "product": "DESO"
+      }
+    ],
+    "0EC797DC-G": [
+      {
+        "count": 1,
+        "product": "DTRUCK"
+      }
+    ],
+    "0EC7959C-G": [
+      {
+        "count": 1,
+        "product": "ZEP"
+      }
+    ],
+    "0EC7935C-G": [
+      {
+        "count": 3,
+        "product": "ZEP"
+      }
+    ],
+    "08A2824C-G": [
+      {
+        "count": 1,
+        "product": "HTK"
+      },
+      {
+        "count": 5,
+        "product": "SENGINEER"
+      }
+    ],
+    "0A42EAEC-G": [
+      {
+        "count": 1,
+        "product": "HTK"
+      },
+      {
+        "count": 3,
+        "product": "IVAN"
+      }
+    ],
+    "0D2C5DCC-G": [
+      {
+        "count": 4,
+        "product": "E2"
+      },
+      {
+        "count": 4,
+        "product": "FLAKT"
+      }
+    ],
+    "0A31360C-G": [
+      {
+        "count": 1,
+        "product": "SENGINEER"
+      }
+    ],
+    "0ECCF03C-G": [
+      {
+        "count": 1,
+        "product": "HARV"
+      }
+    ],
+    "0ECC96CC-G": [
+      {
+        "count": 1,
+        "product": "CMIN"
+      }
+    ],
+    "0A313C6C-G": [
+      {
+        "count": 2,
+        "product": "DOG"
+      }
+    ],
+    "0D082E0C-G": [
+      {
+        "count": 2,
+        "product": "DOG"
+      }
+    ],
+    "0D02070C-G": [
+      {
+        "count": 2,
+        "product": "ZEP"
+      }
+    ],
+    "0C9E903C-G": [
+      {
+        "count": 6,
+        "product": "FLAKT"
+      }
+    ],
+    "0C14A81C-G": [
+      {
+        "count": 3,
+        "product": "MTNK"
+      }
+    ],
+    "0C1510CC-G": [
+      {
+        "count": 2,
+        "product": "HTNK"
+      }
+    ],
+    "0D27D04C-G": [
+      {
+        "count": 2,
+        "product": "HTNK"
+      }
+    ],
+    "0A454A8C-G": [
+      {
+        "count": 2,
+        "product": "DRON"
+      }
+    ],
+    "0A36DDEC-G": [
+      {
+        "count": 1,
+        "product": "SHK"
+      }
+    ],
+    "08A3357C-G": [
+      {
+        "count": 5,
+        "product": "INIT"
+      },
+      {
+        "count": 1,
+        "product": "YURI"
+      }
+    ],
+    "06C5981C-G": [
+      {
+        "count": 2,
+        "product": "BSUB"
+      }
+    ],
+    "09A3B12C-G": [
+      {
+        "count": 3,
+        "product": "INIT"
+      },
+      {
+        "count": 1,
+        "product": "YTNK"
+      }
+    ],
+    "05FFBC6C-G": [
+      {
+        "count": 5,
+        "product": "LTNK"
+      },
+      {
+        "count": 2,
+        "product": "YTNK"
+      }
+    ],
+    "05FFB35C-G": [
+      {
+        "count": 5,
+        "product": "INIT"
+      },
+      {
+        "count": 1,
+        "product": "YENGINEER"
+      }
+    ],
+    "05FFA92C-G": [
+      {
+        "count": 2,
+        "product": "LTNK"
+      },
+      {
+        "count": 1,
+        "product": "YTNK"
+      },
+      {
+        "count": 1,
+        "product": "MIND"
+      }
+    ],
+    "05FFA37C-G": [
+      {
+        "count": 1,
+        "product": "BRUTE"
+      },
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 4,
+        "product": "INIT"
+      }
+    ],
+    "07C00D6C-G": [
+      {
+        "count": 1,
+        "product": "YURIPR"
+      }
+    ],
+    "07C034EC-G": [
+      {
+        "count": 2,
+        "product": "DISK"
+      }
+    ],
+    "07C04DCC-G": [
+      {
+        "count": 1,
+        "product": "CAOS"
+      }
+    ],
+    "07C0903C-G": [
+      {
+        "count": 1,
+        "product": "TELE"
+      }
+    ],
+    "05FBBADC-G": [
+      {
+        "count": 2,
+        "product": "BRUTE"
+      },
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 1,
+        "product": "VIRUS"
+      }
+    ],
+    "05FC184C-G": [
+      {
+        "count": 3,
+        "product": "LTNK"
+      },
+      {
+        "count": 1,
+        "product": "YTNK"
+      }
+    ],
+    "05FC3DEC-G": [
+      {
+        "count": 4,
+        "product": "INIT"
+      }
+    ],
+    "05FC3A5C-G": [
+      {
+        "count": 2,
+        "product": "BRUTE"
+      },
+      {
+        "count": 1,
+        "product": "YURI"
+      }
+    ],
+    "05FC358C-G": [
+      {
+        "count": 5,
+        "product": "LTNK"
+      },
+      {
+        "count": 2,
+        "product": "YTNK"
+      },
+      {
+        "count": 1,
+        "product": "MIND"
+      }
+    ],
+    "05FC0DEC-G": [
+      {
+        "count": 4,
+        "product": "LTNK"
+      },
+      {
+        "count": 1,
+        "product": "YTNK"
+      },
+      {
+        "count": 1,
+        "product": "TELE"
+      },
+      {
+        "count": 2,
+        "product": "MIND"
+      }
+    ],
+    "05FC104C-G": [
+      {
+        "count": 3,
+        "product": "CAOS"
+      }
+    ],
+    "05FC064C-G": [
+      {
+        "count": 3,
+        "product": "DISK"
+      }
+    ],
+    "08B90DEC-G": [
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 10,
+        "product": "INIT"
+      }
+    ],
+    "08B9130C-G": [
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 8,
+        "product": "INIT"
+      },
+      {
+        "count": 2,
+        "product": "VIRUS"
+      }
+    ],
+    "08B92F1C-G": [
+      {
+        "count": 5,
+        "product": "BRUTE"
+      }
+    ],
+    "08B93DEC-G": [
+      {
+        "count": 6,
+        "product": "INIT"
+      },
+      {
+        "count": 3,
+        "product": "YURI"
+      },
+      {
+        "count": 1,
+        "product": "VIRUS"
+      }
+    ],
+    "08B93AEC-G": [
+      {
+        "count": 3,
+        "product": "BRUTE"
+      },
+      {
+        "count": 1,
+        "product": "YURIPR"
+      },
+      {
+        "count": 2,
+        "product": "VIRUS"
+      }
+    ],
+    "08B9332C-G": [
+      {
+        "count": 6,
+        "product": "LTNK"
+      },
+      {
+        "count": 3,
+        "product": "YTNK"
+      },
+      {
+        "count": 2,
+        "product": "MIND"
+      }
+    ],
+    "08B9438C-G": [
+      {
+        "count": 2,
+        "product": "BRUTE"
+      }
+    ],
+    "08B95DEC-G": [
+      {
+        "count": 2,
+        "product": "YENGINEER"
+      }
+    ],
+    "08B9562C-G": [
+      {
+        "count": 1,
+        "product": "SMIN"
+      }
+    ],
+    "08B9504C-G": [
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 1,
+        "product": "YTNK"
+      },
+      {
+        "count": 2,
+        "product": "LTNK"
+      }
+    ],
+    "08B966AC-G": [
+      {
+        "count": 4,
+        "product": "YURI"
+      },
+      {
+        "count": 2,
+        "product": "YTNK"
+      },
+      {
+        "count": 2,
+        "product": "MIND"
+      }
+    ],
+    "08B961DC-G": [
+      {
+        "count": 1,
+        "product": "YENGINEER"
+      }
+    ],
+    "05FC1DEC-G": [
+      {
+        "count": 3,
+        "product": "YTNK"
+      }
+    ],
+    "08B91C7C-G": [
+      {
+        "count": 1,
+        "product": "YURI"
+      },
+      {
+        "count": 1,
+        "product": "YENGINEER"
+      },
+      {
+        "count": 8,
+        "product": "INIT"
+      }
+    ],
+    "05FC5B5C-G": [
+      {
+        "count": 3,
+        "product": "BSUB"
+      }
+    ],
+    "08BE3DEC-G": [
+      {
+        "count": 3,
+        "product": "YURI"
+      }
+    ],
+    "0440909C-G": [
+      {
+        "count": 2,
+        "product": "BFRT"
+      }
+    ],
+    "07C256DC-G": [
+      {
+        "count": 1,
+        "product": "BFRT"
+      },
+      {
+        "count": 2,
+        "product": "E1"
+      },
+      {
+        "count": 2,
+        "product": "GGI"
+      },
+      {
+        "count": 1,
+        "product": "GHOST"
+      }
+    ],
+    "07C327BC-G": [
+      {
+        "count": 1,
+        "product": "BFRT"
+      },
+      {
+        "count": 1,
+        "product": "GHOST"
+      },
+      {
+        "count": 2,
+        "product": "CLEG"
+      },
+      {
+        "count": 2,
+        "product": "GGI"
+      }
+    ],
+    "07C3216C-G": [
+      {
+        "count": 4,
+        "product": "BFRT"
+      }
+    ],
+    "07C338DC-G": [
+      {
+        "count": 5,
+        "product": "E2"
+      }
+    ],
+    "07C47F1C-G": [
+      {
+        "count": 2,
+        "product": "SCHP"
+      }
+    ],
+    "043F889C-G": [
+      {
+        "count": 1,
+        "product": "PCV"
+      }
+    ],
+    "043F289C-G": [
+      {
+        "count": 1,
+        "product": "AMCV"
+      }
+    ],
+    "043F863C-G": [
+      {
+        "count": 1,
+        "product": "SMCV"
+      }
+    ],
+    "043F817C-G": [
+      {
+        "count": 3,
+        "product": "INIT"
+      }
+    ],
+    "05C3F22C-G": [
+      {
+        "count": 5,
+        "product": "FV"
+      }
+    ],
+    "05C565DC-G": [
+      {
+        "count": 5,
+        "product": "HTK"
+      }
+    ],
+    "05C5340C-G": [
+      {
+        "count": 5,
+        "product": "YTNK"
+      }
+    ],
+    "078F364C-G": [
+      {
+        "count": 4,
+        "product": "TELE"
+      },
+      {
+        "count": 2,
+        "product": "YTNK"
+      },
+      {
+        "count": 2,
+        "product": "LTNK"
+      },
+      {
+        "count": 4,
+        "product": "BRUTE"
+      },
+      {
+        "count": 1,
+        "product": "MIND"
+      }
+    ],
+    "07A734DC-G": [
+      {
+        "count": 4,
+        "product": "ROBO"
+      }
+    ],
+    "079D92AC-G": [
+      {
+        "count": 6,
+        "product": "ROBO"
+      }
+    ],
+    "0D2C7A1C-G": [
+      {
+        "count": 2,
+        "product": "YURI"
+      }
+    ],
+    "0CE4D2AC-G": [
+      {
+        "count": 4,
+        "product": "MTNK"
+      }
+    ],
+    "0D0819FC-G": [
+      {
+        "count": 8,
+        "product": "E1"
+      }
+    ],
+    "0D0817DC-G": [
+      {
+        "count": 20,
+        "product": "E2"
+      }
+    ],
+    "0D0816CC-G": [
+      {
+        "count": 4,
+        "product": "SHK"
+      },
+      {
+        "count": 8,
+        "product": "E2"
+      }
+    ],
+    "0D0814DC-G": [
+      {
+        "count": 4,
+        "product": "FLAKT"
+      },
+      {
+        "count": 4,
+        "product": "SHK"
+      }
+    ],
+    "0D082F1C-G": [
+      {
+        "count": 1,
+        "product": "SENGINEER"
+      }
+    ],
+    "0D08269C-G": [
+      {
+        "count": 1,
+        "product": "DESO"
+      }
+    ]
+  },
+  "scripts": {
+    "0C9C878C-G": [
+      [
+        58,
+        1
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        58,
+        196609
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        58,
+        196609
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "0CE4CC8C-G": [
+      [
+        58,
+        131078
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0CE4C2DC-G": [
+      [
+        58,
+        131075
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0CE4EC8C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "0612EDBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        63,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0C94D80C-G": [
+      [
+        46,
+        131143
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "09B4DB1C-G": [
+      [
+        46,
+        131142
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "0ABA756C-G": [
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0ABA6DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0607B8FC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08A2135C-G": [
+      [
+        0,
+        5
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CB13B4C-G": [
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CADC46C-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        131081
+      ],
+      [
+        46,
+        9
+      ],
+      [
+        47,
+        131083
+      ],
+      [
+        46,
+        11
+      ]
+    ],
+    "0CADDDBC-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        0
+      ],
+      [
+        46,
+        131072
+      ],
+      [
+        47,
+        131083
+      ],
+      [
+        46,
+        11
+      ]
+    ],
+    "0CADDA1C-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        7
+      ],
+      [
+        46,
+        7
+      ],
+      [
+        47,
+        131072
+      ],
+      [
+        46,
+        131072
+      ]
+    ],
+    "0C8A3C8C-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        131086
+      ],
+      [
+        46,
+        131086
+      ],
+      [
+        46,
+        131081
+      ]
+    ],
+    "0C8A254C-G": [
+      [
+        0,
+        0
+      ],
+      [
+        47,
+        10
+      ],
+      [
+        46,
+        10
+      ]
+    ],
+    "0C8A354C-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        6
+      ],
+      [
+        46,
+        6
+      ],
+      [
+        46,
+        131072
+      ]
+    ],
+    "0C954B4C-G": [
+      [
+        58,
+        7
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        25
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        46,
+        131097
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A86CDBC-G": [
+      [
+        58,
+        7
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        2
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        46,
+        131074
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CE3381C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        47,
+        25
+      ],
+      [
+        46,
+        25
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CE3323C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        47,
+        2
+      ],
+      [
+        46,
+        2
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CADF67C-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        11
+      ],
+      [
+        46,
+        11
+      ],
+      [
+        47,
+        131081
+      ],
+      [
+        46,
+        131081
+      ]
+    ],
+    "0CADF2DC-G": [
+      [
+        0,
+        4
+      ],
+      [
+        47,
+        3
+      ],
+      [
+        46,
+        3
+      ],
+      [
+        47,
+        131072
+      ],
+      [
+        46,
+        131072
+      ]
+    ],
+    "0CAC55CC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        57,
+        9
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A6E54EC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        54
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        46,
+        54
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A6E6DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        29
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        46,
+        29
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A869C8C-G": [
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08A29DBC-G": [
+      [
+        0,
+        4
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0C9506CC-G": [
+      [
+        58,
+        196608
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08DA356C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0C90CA2C-G": [
+      [
+        58,
+        131073
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "043F45FC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        63,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "043EB5AC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        63,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0CA1FDBC-G": [
+      [
+        53,
+        0
+      ],
+      [
+        55,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0C31EA4C-G": [
+      [
+        53,
+        0
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        55,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A8856FC-G": [
+      [
+        58,
+        25
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        25
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        46,
+        131097
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0A88524C-G": [
+      [
+        58,
+        131086
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        47,
+        2
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        46,
+        131074
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0EC7A7AC-G": [
+      [
+        58,
+        10
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0AD0CDBC-G": [
+      [
+        53,
+        0
+      ],
+      [
+        55,
+        0
+      ],
+      [
+        0,
+        6
+      ]
+    ],
+    "05C77DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        58,
+        196623
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        58,
+        196623
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        58,
+        196623
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "0ECC9B0C-G": [
+      [
+        58,
+        15
+      ]
+    ],
+    "0ECC92DC-G": [
+      [
+        58,
+        1
+      ]
+    ],
+    "0A3142EC-G": [
+      [
+        58,
+        10
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0A312C5C-G": [
+      [
+        58,
+        9
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0D020C8C-G": [
+      [
+        53,
+        0
+      ],
+      [
+        46,
+        64
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0C91433C-G": [
+      [
+        58,
+        15
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0CA2192C-G": [
+      [
+        58,
+        131139
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0A4529FC-G": [
+      [
+        58,
+        131087
+      ],
+      [
+        5,
+        30
+      ],
+      [
+        58,
+        131086
+      ],
+      [
+        5,
+        30
+      ],
+      [
+        58,
+        131081
+      ],
+      [
+        5,
+        30
+      ],
+      [
+        58,
+        131092
+      ],
+      [
+        5,
+        30
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "0A36952C-G": [
+      [
+        58,
+        196661
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "043E08AC-G": [
+      [
+        58,
+        131374
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        58,
+        131372
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        58,
+        131375
+      ],
+      [
+        5,
+        12
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "06C55C6C-G": [
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "060F6DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        61,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "07C03C8C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0ABB124C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        49,
+        0
+      ]
+    ],
+    "07C0B52C-G": [
+      [
+        58,
+        131381
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "05FC7DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        46,
+        131087
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "05FC78DC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        46,
+        131073
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "05CA15CC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08B94C8C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        46,
+        131136
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08B95B7C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "08B953BC-G": [
+      [
+        11,
+        11
+      ],
+      [
+        49,
+        0
+      ]
+    ],
+    "08B96C8C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        58,
+        131429
+      ],
+      [
+        5,
+        120
+      ],
+      [
+        58,
+        196965
+      ],
+      [
+        5,
+        120
+      ],
+      [
+        6,
+        5
+      ]
+    ],
+    "08B97DBC-G": [
+      [
+        46,
+        131142
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "08B978CC-G": [
+      [
+        46,
+        131143
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "08B972DC-G": [
+      [
+        46,
+        131128
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "05FC30CC-G": [
+      [
+        46,
+        131141
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "08B945CC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        58,
+        131372
+      ],
+      [
+        5,
+        120
+      ],
+      [
+        58,
+        196916
+      ],
+      [
+        5,
+        60
+      ],
+      [
+        6,
+        3
+      ]
+    ],
+    "08B9184C-G": [
+      [
+        46,
+        131095
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        46,
+        131072
+      ],
+      [
+        46,
+        131075
+      ],
+      [
+        46,
+        131075
+      ],
+      [
+        46,
+        131074
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08B9077C-G": [
+      [
+        46,
+        131133
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        46,
+        131081
+      ],
+      [
+        46,
+        131081
+      ],
+      [
+        46,
+        131083
+      ],
+      [
+        46,
+        131097
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "08BE420C-G": [
+      [
+        58,
+        131372
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "07C30DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "07C32C8C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        14,
+        0
+      ],
+      [
+        43,
+        0
+      ],
+      [
+        58,
+        131078
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "06109AFC-G": [
+      [
+        63,
+        0
+      ],
+      [
+        49,
+        0
+      ]
+    ],
+    "07C3188C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        47,
+        131081
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        46,
+        131081
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "07C48DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        47,
+        131072
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "043F23CC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        9,
+        0
+      ],
+      [
+        49,
+        0
+      ]
+    ],
+    "043F784C-G": [
+      [
+        62,
+        0
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "05CAB35C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        58,
+        196608
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        131073
+      ],
+      [
+        5,
+        10
+      ],
+      [
+        58,
+        196608
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        131428
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "05C5411C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        58,
+        131087
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        196617
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        131137
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        131087
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "05CAC90C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        58,
+        196909
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        196965
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        58,
+        131373
+      ],
+      [
+        5,
+        15
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "078F4DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        53,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        6,
+        2
+      ]
+    ],
+    "079D823C-G": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "07A72DBC-G": [
+      [
+        54,
+        0
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "0D2C345C-G": [
+      [
+        58,
+        25
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0CE4A48C-G": [
+      [
+        58,
+        131079
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "0CE0D5FC-G": [
+      [
+        0,
+        9
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        0,
+        7
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        2
+      ]
+    ],
+    "0A6E67CC-G": [
+      [
+        47,
+        61
+      ],
+      [
+        46,
+        61
+      ],
+      [
+        49,
+        0
+      ],
+      [
+        11,
+        11
+      ]
+    ]
+  },
+  "buildings": [
+    "GAPOWR",
+    "GAREFN",
+    "GACNST",
+    "GAPILE",
+    "GASAND",
+    "GADEPT",
+    "GATECH",
+    "GAWEAP",
+    "CALAB",
+    "NAPOWR",
+    "NATECH",
+    "NAHAND",
+    "GAWALL",
+    "NARADR",
+    "NAWEAP",
+    "NAREFN",
+    "NAWALL",
+    "CAHSE07",
+    "NAPSIS",
+    "CASYDN01",
+    "NALASR",
+    "NASAM",
+    "CASYDN02",
+    "GAYARD",
+    "NAIRON",
+    "NACNST",
+    "NADEPT",
+    "GACSPH",
+    "GADUMY",
+    "GAWEAT",
+    "CABHUT",
+    "GALITE",
+    "REDLAMP",
+    "GRENLAMP",
+    "BLUELAMP",
+    "YELWLAMP",
+    "PURPLAMP",
+    "INORANLAMP",
+    "INGRNLMP",
+    "INREDLMP",
+    "INBLULMP",
+    "CITY01",
+    "CITY02",
+    "CITY03",
+    "CITY04",
+    "CITY05",
+    "CITY06",
+    "CAHOSP",
+    "INGALITE",
+    "INYELWLAMP",
+    "INPURPLAMP",
+    "NEGLAMP",
+    "NEGRED",
+    "TESLA",
+    "NAMISL",
+    "ATESLA",
+    "CAMACH",
+    "TSTLAMP",
+    "CASYDN03",
+    "AMMOCRAT",
+    "GAGREEN",
+    "NAYARD",
+    "GASPYSAT",
+    "GAGAP",
+    "GTGCAN",
+    "NANRCT",
+    "GAPILL",
+    "NAFLAK",
+    "CAOUTP",
+    "CATHOSP",
+    "CAAIRP",
+    "CAOILD",
+    "NACLON",
+    "GAOREP",
+    "CACITY01",
+    "CACITY02",
+    "CACITY03",
+    "CACITY04",
+    "CANEWY01",
+    "CANEWY04",
+    "CANEWY05",
+    "CASWST01",
+    "CATECH01",
+    "CATEXS01",
+    "CATEXS02",
+    "CAWASH01",
+    "CAFARM01",
+    "CAFARM02",
+    "CALIT01E",
+    "CALIT01N",
+    "CALIT01S",
+    "CALIT01W",
+    "CAMISC01",
+    "CAMISC02",
+    "CAMISC03",
+    "CAMISC04",
+    "CAPOL01E",
+    "CAPOL01N",
+    "CAPOL01S",
+    "CAPOL01W",
+    "CASIN01E",
+    "CASIN01N",
+    "CASIN01S",
+    "CASIN01W",
+    "CAPARS01",
+    "GAAIRC",
+    "CAFRMA",
+    "CAFRMB",
+    "CAWASH05",
+    "CAWASH04",
+    "CAWASH03",
+    "CAWASH07",
+    "CAWASH11",
+    "CAWSH12",
+    "CAWASH14",
+    "CAWASH09",
+    "CAWASH10",
+    "CAWASH13",
+    "CAARMY01",
+    "CAUSFGL",
+    "CAWASH08",
+    "CALIT03E",
+    "CALIT03N",
+    "CALIT03S",
+    "CALIT03W",
+    "CALIT02L",
+    "CALIT02R",
+    "CAHSE01",
+    "CAWT01",
+    "CATS01",
+    "CABARN02",
+    "CAWA2A",
+    "CAWA2B",
+    "CAWA2C",
+    "CAWA2D",
+    "AMRADR",
+    "CAPRS03",
+    "CAGARD01",
+    "CARUS01",
+    "CAMIAM01",
+    "CATRAN01",
+    "CAMIAM02",
+    "CANWY05",
+    "MAYAN",
+    "CAEUR1",
+    "CAEUR2",
+    "CAEUR04",
+    "CAMEX01",
+    "CARUS02A",
+    "CARUS02B",
+    "CARUS02C",
+    "CARUS02D",
+    "CARUS02E",
+    "CARUS02F",
+    "CANEWY06",
+    "CANEWY07",
+    "CANEWY08",
+    "CAPARS02",
+    "CAPARS08",
+    "CAPARS09",
+    "CARUS03",
+    "CANEWY10",
+    "CANEWY11",
+    "CANEWY12",
+    "CANEWY13",
+    "CANEWY14",
+    "CANEWY15",
+    "CANEWY16",
+    "CANEWY17",
+    "CANEWY18",
+    "CAPARS04",
+    "CAPARS05",
+    "CAPARS06",
+    "CAPARS07",
+    "CAWASH15",
+    "CAPARS10",
+    "CAPARS13",
+    "CAPARS14",
+    "CAGAS01",
+    "CAPARS11",
+    "CAPARS12",
+    "CAFARM06",
+    "CAMIAM04",
+    "NAPSYB",
+    "NAPSYA",
+    "CAIND01",
+    "CACOLO01",
+    "CANWY09",
+    "CANWY22",
+    "CANWY23",
+    "CANWY24",
+    "CANWY25",
+    "CANWY26",
+    "CATEXS03",
+    "CATEXS04",
+    "CATEXS05",
+    "CARUS02G",
+    "CACHIG04",
+    "CAMIAM03",
+    "CARUS07",
+    "CATEXS06",
+    "CATEXS07",
+    "CATEXS08",
+    "CACHIG01",
+    "CACHIG02",
+    "CACHIG03",
+    "CAWASH16",
+    "CAWASH17",
+    "CACHIG05",
+    "CAWASH19",
+    "CARUS08",
+    "CARUS09",
+    "CARUS10",
+    "CARUS11",
+    "CANEWY20",
+    "CANEWY21",
+    "CARUS04",
+    "CARUS05",
+    "CARUS06",
+    "CAMSC01",
+    "CAMSC02",
+    "CAMSC03",
+    "CAMSC04",
+    "CAMSC05",
+    "CAMSC06",
+    "CAMSC07",
+    "CAWASH18",
+    "CAEURO05",
+    "CAPARK01",
+    "CAPARK02",
+    "CAPARK03",
+    "CAHSE02",
+    "CAHSE03",
+    "CAHSE04",
+    "CASTRT01",
+    "CASTRT02",
+    "CASTL01",
+    "CASTL02",
+    "CASTL03",
+    "CASTL04",
+    "NAPSYA",
+    "CAHSE05",
+    "CAHSE06",
+    "CAMIAM05",
+    "CAMIAM06",
+    "CAMIAM07",
+    "CAFNCB",
+    "CAFNCW",
+    "CAMEX02",
+    "CAMEX03",
+    "CAMEX04",
+    "CAMEX05",
+    "CACHIG06",
+    "CAMSC08",
+    "CAMSC09",
+    "CAARMY02",
+    "CAARMY03",
+    "CAARMY04",
+    "TEMMORLAMP",
+    "TEMDAYLAMP",
+    "TEMDUSLAMP",
+    "TEMNITLAMP",
+    "SNOMORLAMP",
+    "SNODAYLAMP",
+    "SNODUSLAMP",
+    "SNONITLAMP",
+    "CAKRMW",
+    "CARUFGL",
+    "CAFRFGL",
+    "CATRAN02",
+    "CACUFGL",
+    "CASKFGL",
+    "CALBFGL",
+    "CAMIAM08",
+    "CAMISC05",
+    "CAMISC06",
+    "CASTL05A",
+    "CASTL05B",
+    "CASTL05C",
+    "CASTL05D",
+    "CASTL05E",
+    "CASTL05F",
+    "CASTL05G",
+    "CASTL05H",
+    "CAMSC10",
+    "CAGEFGL",
+    "CAUKFGL",
+    "CAWASH06",
+    "CAMSC11",
+    "CAMSC12",
+    "CAMSC13",
+    "CAPOFGL",
+    "CAMSC12A",
+    "CAMOV01",
+    "CAMOV02",
+    "CABUNK01",
+    "CABUNK02",
+    "CAFNCP",
+    "CASTRT03",
+    "CASTRT04",
+    "CASTRT05",
+    "YACNST",
+    "YAPOWR",
+    "YABRCK",
+    "YAWEAP",
+    "YAYARD",
+    "YADEPT",
+    "YATECH",
+    "GAFWLL",
+    "YAGGUN",
+    "YAPSYT",
+    "NAINDP",
+    "YAGRND",
+    "YAGNTC",
+    "CASLAB",
+    "CATIME",
+    "YAPPET",
+    "CALOND04",
+    "CALOND05",
+    "CALOND06",
+    "CAMOON01",
+    "CATRAN03",
+    "CAEAST01",
+    "CAEGYP01",
+    "CAEGYP02",
+    "CAEGYP03",
+    "CALA01",
+    "CALA02",
+    "CALA03",
+    "CALA04",
+    "CALA05",
+    "CALOND01",
+    "CALOND02",
+    "CALOND03",
+    "CAMORR01",
+    "CAMORR02",
+    "CAMORR03",
+    "CASANF01",
+    "CASANF02",
+    "CASANF03",
+    "CASANF04",
+    "CASANF05",
+    "CASEAT01",
+    "NATBNK",
+    "GAGATE_A",
+    "CASANF09",
+    "CASANF10",
+    "CASANF11",
+    "CASANF12",
+    "CASANF13",
+    "CASANF14",
+    "CASANF06",
+    "CASANF07",
+    "CASANF08",
+    "CASEAT02",
+    "YACOMD",
+    "YAPPPT",
+    "GAROBO",
+    "YAREFN",
+    "YAROCK",
+    "NABNKR",
+    "CASANF15",
+    "CASANF16",
+    "CASANF17",
+    "CASANF18",
+    "CASIN03E",
+    "CASIN03S",
+    "CAURB01",
+    "CAURB02",
+    "CAURB03",
+    "CAPOWR",
+    "CALA07",
+    "CAEGYP06",
+    "CALA08",
+    "CAEAST02",
+    "CABARR01",
+    "CABARR02",
+    "CAMORR04",
+    "CAMORR05",
+    "CALA09",
+    "CAEGYP04",
+    "CAEGYP05",
+    "CALA06",
+    "CAMORR06",
+    "CAMORR07",
+    "CAMORR08",
+    "CAMORR09",
+    "CAMORR10",
+    "CATIME01",
+    "CATIME02",
+    "CALA10",
+    "CALA11",
+    "CALA12",
+    "CALA13",
+    "CAPARK04",
+    "CAPARK05",
+    "CAPARK06",
+    "CALA14",
+    "CALA15",
+    "CABUNK03",
+    "CABUNK04",
+    "CALUNR01",
+    "CALUNR02"
+  ],
+  "production": {
+    "BuildConst": [
+      "GACNST",
+      "NACNST",
+      "YACNST"
+    ],
+    "BuildPower": [
+      "NAPOWR",
+      "GAPOWR",
+      "YAPOWR"
+    ],
+    "BuildRefinery": [
+      "NAREFN",
+      "GAREFN",
+      "YAREFN"
+    ],
+    "BuildBarracks": [
+      "NAHAND",
+      "GAPILE",
+      "YABRCK"
+    ],
+    "BuildWeapons": [
+      "GAWEAP",
+      "NAWEAP",
+      "YAWEAP"
+    ],
+    "BuildRadar": [
+      "GAAIRC",
+      "NARADR",
+      "AMRADR",
+      "NAPSIS"
+    ],
+    "BuildTech": [
+      "NATECH",
+      "GATECH",
+      "YATECH"
+    ],
+    "BuildNavalYard": [
+      "NAYARD",
+      "GAYARD",
+      "YAYARD"
+    ]
+  },
+  "quotas": {
+    "refinery": {
+      "ratio": 0.16,
+      "limit": 4
+    },
+    "barracks": {
+      "ratio": 0.16,
+      "limit": 2
+    },
+    "factory": {
+      "ratio": 0.1,
+      "limit": 2
+    },
+    "defense": {
+      "ratio": 0.4,
+      "limit": 40
+    },
+    "aa": {
+      "ratio": 0.14,
+      "limit": 10
+    },
+    "tesla": {
+      "ratio": 0.16,
+      "limit": 10
+    },
+    "airfield": {
+      "ratio": 0.1,
+      "limit": 2
+    }
+  },
+  "team_delays": [
+    2000,
+    2500,
+    3500
+  ],
+  "team_caps": [
+    30,
+    30,
+    30
+  ],
+  "defense_caps": [
+    2,
+    2,
+    2
+  ],
+  "near_ready": 0.7,
+  "success_delta": 20,
+  "failure_delta": -50
+}

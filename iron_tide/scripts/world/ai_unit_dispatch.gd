@@ -113,7 +113,13 @@ func allow_scan(world, unit) -> bool:
 		if entry.size()==1: waiting.erase(unit)
 	return true
 
+static func retail_order_allowed(world,unit,order: Dictionary) -> bool:
+	if order.has("yr_skirmish_team"):
+		return unit.special.get("yr_skirmish_team") == order.yr_skirmish_team and (order.kind != "attack" or (world.actor_alive(order.target) and world.actor_visible_to(unit.side,order.target)))
+	return not unit.special.has("yr_skirmish_team") or order.get("air_relief",false) or order.kind == "detour"
+
 func submit(world, unit, order: Dictionary) -> void:
+	if is_instance_valid(unit) and not retail_order_allowed(world,unit,order): return
 	if is_instance_valid(unit) and unit.special.get("expedition_objective","")=="command":return
 	if is_instance_valid(unit) and preload("res://scripts/world/air_relief.gd").blocks_order(world,unit,order): return
 	if not world.actor_alive(unit) or not BattleRequest.is_ai_house(unit.side): return
@@ -170,7 +176,7 @@ func pump(world) -> void:
 		unit.special.erase("ai_dispatch_pending")
 		if entry.size()==1: waiting.erase(unit)
 		if not order.is_empty(): _apply(world,unit,order)
-		if jobs.is_empty() or not world.actor_alive(unit) or unit.side != entry.owner: continue
+		if jobs.is_empty() or not world.actor_alive(unit) or unit.side != entry.owner or unit.special.has("yr_skirmish_team"): continue
 		var ai = world.house_controllers.get(unit.side,world.skirmish_ai)
 		if not is_instance_valid(ai): continue
 		if jobs.has("recover") and not world.owned_building_ids(unit.side).has(world.roster_id("GACNST",unit.side)):
@@ -190,6 +196,7 @@ func pump(world) -> void:
 		if jobs.has("micro"): ai.Micro.unit_decision(ai,unit,null,jobs.micro,contacts)
 
 static func _apply(world, unit, order: Dictionary) -> void:
+	if not retail_order_allowed(world,unit,order): return
 	if order.get("air_relief",false) and preload("res://scripts/world/air_relief.gd").assignment(world,unit).is_empty(): return
 	if preload("res://scripts/world/air_relief.gd").blocks_order(world,unit,order): return
 	if unit.embarked_in != null or unit.repairing or AlliedAbilities.frozen(unit): return
@@ -229,5 +236,10 @@ static func _apply(world, unit, order: Dictionary) -> void:
 				unit.order_move(via,order.attack)
 				unit.queue_waypoint(order.goal,null,order.attack)
 		"move": unit.order_move(order.point,order.attack)
+		"area_guard":
+			unit.order_guard()
+			unit.cancel_stance()
+			unit.special.campaign_area_guard=unit.position
+			unit.special.yr_flak_post=order.site
 		"guard": unit.order_guard()
 		"stop": unit.order_stop()

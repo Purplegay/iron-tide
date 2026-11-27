@@ -4,12 +4,14 @@ const Crew = preload("res://scripts/buildings/building_crew.gd")
 
 static func eject(unit) -> Array:
 	var result := []
-	# The Intruder's crew is lost with the fighter, including when its airfield is destroyed.
-	if unit.unit_id == "ORCA": return result
+	# Only non-flying vehicles can leave escape crew. Airframes stay excluded
+	# when parked, and helicopters may appear under native VehicleTypes.
+	if unit.is_air: return result
 	var row := Rules.type_data(unit.unit_id)
+	if row.get("native_category", "") != "VehicleTypes": return result
 	if unit.special.get("yr_driver_checked", false): return result
 	unit.special.yr_driver_checked = true
-	if row.get("native_category", "") not in ["VehicleTypes", "AircraftTypes"] or not Rules.flag(row, "crewed") or unit.side not in ["ally", "enemy"] or unit.special.get("no_crew", false): return result
+	if not Rules.flag(row, "crewed") or unit.side not in ["ally", "enemy"] or unit.special.get("no_crew", false): return result
 	var world = unit._battle_world()
 	if world == null: return result
 	if not world.allied_state.has("crew_rng"):

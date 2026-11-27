@@ -175,11 +175,3 @@ static func draw(unit) -> void:
 		points.append(center+Vector2(cos(a),sin(a))*extent)
 	unit.draw_colored_polygon(points,Color(COLOR,0.035+strength*0.04))
 	unit.draw_polyline(points,Color(COLOR,0.3+strength*0.35),1.4,true)
-
-static func draw_bar(unit,ci:CanvasItem,rect:Rect2) -> void:
-	var current := amount(unit)
-	if current<=0:return
-	var bar:=Rect2(rect.position+Vector2(0,-5),Vector2(rect.size.x,3))
-	ci.draw_rect(bar,Color("#122b42"))
-	bar.size.x*=clampf(current/maxf(1,maximum(unit)),0,1)
-	ci.draw_rect(bar,COLOR)

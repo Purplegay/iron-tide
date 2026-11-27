@@ -57,9 +57,13 @@ func exercise_mode(mode: String) -> void:
 	if not spot.is_finite():
 		screen.free()
 		return
+	var original_color := HouseColor.player_id
+	HouseColor.set_player_id("purple")
 	battle.struct_ready["GAPOWR"] = 1
 	battle.set_build_mode("GAPOWR")
 	await show_preview(mode + "-legal", spot)
+	check_ghost_house(HouseColor.player_color(), true, prefix + "legal building")
+	HouseColor.set_player_id("red")
 	for zoom in [0.5, 1.0, 4.0]:
 		await show_preview(mode + "-legal-zoom-" + str(zoom), spot, zoom)
 	await reject(prefix + "map edge", Vector2.ZERO, bd, "超出地图边界")
@@ -72,6 +76,7 @@ func exercise_mode(mode: String) -> void:
 	battle.add_child(rock)
 	await reject(prefix + "rock", spot, bd, "地形不可建")
 	await show_preview(mode + "-blocked", spot)
+	check_ghost_house(HouseColor.player_color(), false, prefix + "blocked building follows changed house color")
 	rock.free()
 	var ore := ResourceNode.new()
 	ore.position = center
@@ -127,6 +132,8 @@ func exercise_mode(mode: String) -> void:
 	check(int(battle.struct_ready.get("GAPOWR", 0)) == 0 and battle.funds == 0.0,
 		prefix + "placement consumes one ready item with no duplicate charge")
 	var placed = battle.buildings[-1]
+	check(placed.material == battle._build_ghost_layer.material and placed._col.is_equal_approx(HouseColor.player_color()),
+		prefix + "placed building and preview share house material")
 	check(placed.position.is_equal_approx(spot) and placed.footprint_poly() == poly,
 		prefix + "committed location and footprint match preview")
 	battle.funds = saved_funds
@@ -137,8 +144,18 @@ func exercise_mode(mode: String) -> void:
 	screen.hud.armed_escape()
 	check(battle.armed_build.is_empty() and battle.struct_ready["GATECH"] == 1,
 		prefix + "cancel keeps ready inventory")
+	battle.queue_redraw()
+	await get_tree().process_frame
+	check(battle._build_ghosts.is_empty(), prefix + "cancel clears preview")
+	HouseColor.set_player_id(original_color)
 	screen.free()
 	await get_tree().process_frame
+
+func check_ghost_house(color: Color, legal: bool, label: String) -> void:
+	var material: ShaderMaterial = battle._build_ghost_layer.material
+	check(battle._build_ghosts.size() == 1 and battle._build_ghosts[0].ok == legal
+		and material != null and color.is_equal_approx(material.get_shader_parameter("target_color"))
+		and battle.material != material, label)
 
 func reject(label: String, pos: Vector2, bd: Dictionary, reason: String) -> void:
 	var result: Dictionary = battle.build_spot_ok(battle.snap_build_pos(pos), bd, true)

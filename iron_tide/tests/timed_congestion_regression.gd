@@ -26,18 +26,23 @@ func exercise(mode: String) -> void:
 		b.side=owner
 		a.move_with_traffic_exceptions(Vector2(34,0))
 		a.order_stop()
-		wait_blocked(a,1.0)
-		check(Traffic.passing(a),prefix+owner+" stop while overlapping cannot restore solid penetration")
+		check(Traffic.passing(a) and a.position.distance_to(b.position)<1.0,prefix+owner+" stop keeps the overlapping pair passable before saving")
 		var saved=BattleSaves.save_slot(battle,"slot1")
 		check(saved.ok,prefix+owner+" save active escape through real save entry",saved)
 		if not saved.ok: return
 		check(BattleSaves.prepare_load("slot1").ok,prefix+owner+" reload active escape")
 		BattleSaves.restore_pending(battle)
-		a=battle.units.filter(func(u):return u.special.has(Traffic.CONGESTION))[0]
+		var movers=battle.units.filter(func(u):return u.special.has(Traffic.CONGESTION))
+		check(movers.size()==1,prefix+owner+" restored one active congestion record")
+		if movers.size()!=1:return
+		a=movers[0]
 		b=battle.units.filter(func(u):return u!=a)[0]
 		battle.paused=false;get_tree().paused=false
 		activate(b);b.order_guard()
 		check(Traffic.passing(a) and a.position.distance_to(b.position)<1.0,prefix+owner+" escape survives load without solid overlap")
+		wait_blocked(a,1.0)
+		var separated:bool=a.position.distance_to(b.position)>=a.radius+b.radius
+		check(Traffic.passing(a) or separated,prefix+owner+" stopped hulls remain passable until physically separated")
 		b.position+=Vector2(100,0);battle.neighborhood.relocate(b)
 		wait_blocked(a,0.4)
 		check(not Traffic.passing(a) and not Traffic.friendly_unit_pair(a,b),prefix+owner+" restores collision after clearance")

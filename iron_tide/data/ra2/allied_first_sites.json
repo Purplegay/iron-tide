@@ -1,0 +1,1751 @@
+{
+ "hash": "dee38769f2247a85908705486c175ef14a4cf90437899defe7c8b4c0d1c51fb0",
+ "types": {
+  "GTGCAN": {
+   "foundation": "2x2",
+   "hp": 2000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 100
+  },
+  "GAPILE": {
+   "foundation": "3x2",
+   "hp": 500,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 5
+  },
+  "GAWEAP": {
+   "foundation": "5x3",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 4
+  },
+  "GAREFN": {
+   "foundation": "4x3",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CALAB": {
+   "foundation": "3x4",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 6,
+   "art_id": "ALL01_CALAB"
+  },
+  "CATEXS07": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "GAPILL": {
+   "foundation": "1x1",
+   "hp": 400,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 7
+  },
+  "CANEWY18": {
+   "foundation": "2x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CANEWY12": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CASTL02": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAPARS04": {
+   "foundation": "3x3",
+   "hp": 500,
+   "slots": 6,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CARUS05": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 8,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6,
+   "art_id": "ALL01_CARUS05"
+  },
+  "CAMSC10": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 8,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CAPARK03": {
+   "foundation": "2x2",
+   "hp": 1,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CAPARK02": {
+   "foundation": "2x1",
+   "hp": 1,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CANEWY21": {
+   "foundation": "5x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CACHIG02": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAMISC04": {
+   "foundation": "1x1",
+   "hp": 10,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 0,
+   "hollywood_art": true
+  },
+  "CAHSE07": {
+   "foundation": "2x3",
+   "hp": 600,
+   "slots": 5,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CAMISC05": {
+   "foundation": "1x1",
+   "hp": 10,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 0
+  },
+  "CARUS06": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 8,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CASANF01": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CACHIG03": {
+   "foundation": "3x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CATEXS08": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAGAS01": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CAMSC11": {
+   "foundation": "1x1",
+   "hp": 10,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 0,
+   "hollywood_art": true
+  },
+  "CAWASH10": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6,
+   "hollywood_art": true
+  },
+  "CACHIG01": {
+   "foundation": "3x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CATHOSP": {
+   "foundation": "6x4",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAWASH07": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAWASH05": {
+   "foundation": "4x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAWASH08": {
+   "foundation": "3x4",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6,
+   "hollywood_art": true
+  },
+  "CAMIAM03": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CANEWY11": {
+   "foundation": "3x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAEURO05": {
+   "foundation": "2x2",
+   "hp": 400,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPARS14": {
+   "foundation": "4x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAWASH03": {
+   "foundation": "4x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAUSFGL": {
+   "foundation": "1x1",
+   "hp": 20,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CASANF02": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF03": {
+   "foundation": "2x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "GAOREP": {
+   "foundation": "3x3",
+   "hp": 900,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 5
+  },
+  "CAWT01": {
+   "foundation": "1x1",
+   "hp": 400,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CASTRT05": {
+   "foundation": "1x1",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CANWY23": {
+   "foundation": "3x2",
+   "hp": 400,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6,
+   "hollywood_art": true
+  },
+  "GASPYSAT": {
+   "foundation": "2x2",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 5
+  },
+  "NANRCT": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 5
+  },
+  "YAPPET": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 5
+  },
+  "YAGGUN": {
+   "foundation": "1x1",
+   "hp": 810,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 10
+  },
+  "CATEXS06": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6,
+   "hollywood_art": true
+  },
+  "CAMISC03": {
+   "foundation": "1x1",
+   "hp": 100,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "concrete",
+   "sight": 0
+  },
+  "CASANF10": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF04": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF11": {
+   "foundation": "3x5",
+   "hp": 2000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF12": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF13": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "YACNST": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 10
+  },
+  "CASANF09": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF08": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 8,
+   "art_id": "ALL01_CASANF08"
+  },
+  "CASANF06": {
+   "foundation": "3x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 8,
+   "art_id": "ALL01_CASANF06"
+  },
+  "CASANF16": {
+   "foundation": "1x1",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF15": {
+   "foundation": "1x1",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF07": {
+   "foundation": "3x2",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 8,
+   "art_id": "ALL01_CASANF07"
+  },
+  "CASANF05": {
+   "foundation": "6x4",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF14": {
+   "foundation": "3x5",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 6
+  },
+  "GAPOWR": {
+   "foundation": "2x2",
+   "hp": 750,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "wood",
+   "sight": 4
+  },
+  "CABUNK02": {
+   "foundation": "2x2",
+   "hp": 2000,
+   "slots": 8,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAMISC01": {
+   "foundation": "1x1",
+   "hp": 5,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 0
+  },
+  "CAMISC02": {
+   "foundation": "1x1",
+   "hp": 5,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 0
+  },
+  "CATIME01": {
+   "foundation": "4x3",
+   "hp": 1000,
+   "slots": 0,
+   "capturable": false,
+   "neutral": false,
+   "armor": "steel",
+   "sight": 6
+  },
+  "CAPOWR01": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR02": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR03": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR04": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR05": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR06": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR07": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CAPOWR08": {
+   "foundation": "2x2",
+   "hp": 800,
+   "slots": 0,
+   "capturable": true,
+   "neutral": false,
+   "armor": "concrete",
+   "sight": 6
+  },
+  "CASANF17": {
+   "foundation": "3x3",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASANF18": {
+   "foundation": "2x5",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "wood",
+   "sight": 6
+  },
+  "CASTL01": {
+   "foundation": "4x4",
+   "hp": 1000,
+   "slots": 10,
+   "capturable": false,
+   "neutral": true,
+   "armor": "steel",
+   "sight": 6
+  }
+ },
+ "props": [
+  [
+   "TREE08",
+   64.5,
+   78.5
+  ],
+  [
+   "TREE03",
+   64.5,
+   80.5
+  ],
+  [
+   "TREE09",
+   84.5,
+   86.5
+  ],
+  [
+   "TREE02",
+   63.5,
+   89.5
+  ],
+  [
+   "TREE10",
+   62.5,
+   91.5
+  ],
+  [
+   "TREE08",
+   93.5,
+   97.5
+  ],
+  [
+   "TREE03",
+   97.5,
+   91.5
+  ],
+  [
+   "TREE12",
+   95.5,
+   94.5
+  ],
+  [
+   "TREE16",
+   90.5,
+   94.5
+  ],
+  [
+   "TREE16",
+   89.5,
+   94.5
+  ],
+  [
+   "TREE18",
+   13.5,
+   86.5
+  ],
+  [
+   "TREE15",
+   20.5,
+   82.5
+  ],
+  [
+   "TREE05",
+   19.5,
+   109.5
+  ],
+  [
+   "TREE10",
+   20.5,
+   107.5
+  ],
+  [
+   "TRFF02",
+   33.5,
+   96.5
+  ],
+  [
+   "TREE14",
+   53.5,
+   98.5
+  ],
+  [
+   "TREE04",
+   71.5,
+   77.5
+  ],
+  [
+   "TREE26",
+   54.5,
+   105.5
+  ],
+  [
+   "TREE03",
+   39.5,
+   100.5
+  ],
+  [
+   "TREE25",
+   61.5,
+   102.5
+  ],
+  [
+   "TREE10",
+   47.5,
+   62.5
+  ],
+  [
+   "TREE11",
+   48.5,
+   64.5
+  ],
+  [
+   "TREE15",
+   45.5,
+   65.5
+  ],
+  [
+   "TREE10",
+   25.5,
+   93.5
+  ],
+  [
+   "TREE25",
+   15.5,
+   104.5
+  ],
+  [
+   "TREE27",
+   14.5,
+   114.5
+  ],
+  [
+   "TREE07",
+   17.5,
+   103.5
+  ],
+  [
+   "TREE12",
+   20.5,
+   105.5
+  ],
+  [
+   "TREE13",
+   25.5,
+   105.5
+  ],
+  [
+   "TREE15",
+   24.5,
+   102.5
+  ],
+  [
+   "TREE26",
+   22.5,
+   102.5
+  ],
+  [
+   "TREE27",
+   22.5,
+   100.5
+  ],
+  [
+   "TREE25",
+   22.5,
+   108.5
+  ],
+  [
+   "TREE15",
+   70.5,
+   114.5
+  ],
+  [
+   "TREE11",
+   74.5,
+   114.5
+  ],
+  [
+   "TREE19",
+   70.5,
+   110.5
+  ],
+  [
+   "TREE08",
+   80.5,
+   96.5
+  ],
+  [
+   "TREE11",
+   61.5,
+   117.5
+  ],
+  [
+   "TREE03",
+   53.5,
+   114.5
+  ],
+  [
+   "TREE26",
+   36.5,
+   126.5
+  ],
+  [
+   "TREE26",
+   86.5,
+   100.5
+  ],
+  [
+   "TREE27",
+   86.5,
+   102.5
+  ],
+  [
+   "TREE25",
+   82.5,
+   99.5
+  ],
+  [
+   "TREE11",
+   82.5,
+   102.5
+  ],
+  [
+   "TREE12",
+   90.5,
+   99.5
+  ],
+  [
+   "TREE27",
+   24.5,
+   107.5
+  ],
+  [
+   "TREE07",
+   23.5,
+   118.5
+  ],
+  [
+   "TREE15",
+   26.5,
+   119.5
+  ],
+  [
+   "TREE19",
+   26.5,
+   126.5
+  ],
+  [
+   "TREE25",
+   28.5,
+   123.5
+  ],
+  [
+   "TREE05",
+   38.5,
+   122.5
+  ],
+  [
+   "TREE01",
+   37.5,
+   120.5
+  ],
+  [
+   "TREE02",
+   33.5,
+   121.5
+  ],
+  [
+   "TREE25",
+   36.5,
+   123.5
+  ],
+  [
+   "TREE27",
+   39.5,
+   127.5
+  ],
+  [
+   "TREE07",
+   61.5,
+   121.5
+  ],
+  [
+   "TREE27",
+   64.5,
+   123.5
+  ],
+  [
+   "TREE26",
+   66.5,
+   124.5
+  ],
+  [
+   "TREE04",
+   71.5,
+   118.5
+  ],
+  [
+   "TREE03",
+   70.5,
+   121.5
+  ],
+  [
+   "TREE25",
+   65.5,
+   119.5
+  ],
+  [
+   "TREE18",
+   33.5,
+   113.5
+  ],
+  [
+   "TREE18",
+   33.5,
+   115.5
+  ],
+  [
+   "TREE02",
+   29.5,
+   70.5
+  ],
+  [
+   "TREE10",
+   29.5,
+   75.5
+  ],
+  [
+   "TREE05",
+   26.5,
+   77.5
+  ],
+  [
+   "TRFF02",
+   33.5,
+   85.5
+  ],
+  [
+   "LT_GEN04",
+   33.5,
+   69.5
+  ],
+  [
+   "LT_GEN04",
+   33.5,
+   103.5
+  ],
+  [
+   "TREE01",
+   58.5,
+   113.5
+  ],
+  [
+   "TREE01",
+   58.5,
+   98.5
+  ],
+  [
+   "TREE01",
+   63.5,
+   98.5
+  ],
+  [
+   "TREE01",
+   24.5,
+   93.5
+  ],
+  [
+   "TREE01",
+   21.5,
+   93.5
+  ],
+  [
+   "TREE01",
+   18.5,
+   93.5
+  ],
+  [
+   "TREE02",
+   87.5,
+   91.5
+  ],
+  [
+   "TREE08",
+   13.5,
+   97.5
+  ],
+  [
+   "TREE10",
+   13.5,
+   96.5
+  ],
+  [
+   "TREE05",
+   12.5,
+   96.5
+  ],
+  [
+   "TREE04",
+   12.5,
+   97.5
+  ],
+  [
+   "TREE02",
+   11.5,
+   96.5
+  ],
+  [
+   "TREE15",
+   11.5,
+   97.5
+  ],
+  [
+   "TREE11",
+   10.5,
+   96.5
+  ],
+  [
+   "TREE05",
+   9.5,
+   96.5
+  ],
+  [
+   "TREE06",
+   10.5,
+   97.5
+  ],
+  [
+   "TREE07",
+   9.5,
+   97.5
+  ],
+  [
+   "TREE08",
+   8.5,
+   96.5
+  ],
+  [
+   "TREE04",
+   7.5,
+   96.5
+  ],
+  [
+   "TREE12",
+   8.5,
+   97.5
+  ],
+  [
+   "TREE11",
+   7.5,
+   97.5
+  ],
+  [
+   "TREE02",
+   47.5,
+   63.5
+  ],
+  [
+   "TREE04",
+   47.5,
+   60.5
+  ],
+  [
+   "TREE05",
+   47.5,
+   65.5
+  ],
+  [
+   "TREE06",
+   46.5,
+   63.5
+  ],
+  [
+   "TREE07",
+   47.5,
+   64.5
+  ],
+  [
+   "TREE08",
+   49.5,
+   62.5
+  ],
+  [
+   "TREE10",
+   45.5,
+   60.5
+  ],
+  [
+   "TREE11",
+   46.5,
+   61.5
+  ],
+  [
+   "TREE12",
+   45.5,
+   61.5
+  ],
+  [
+   "TREE15",
+   45.5,
+   62.5
+  ],
+  [
+   "TREE02",
+   42.5,
+   65.5
+  ],
+  [
+   "TREE04",
+   45.5,
+   63.5
+  ],
+  [
+   "TREE05",
+   46.5,
+   64.5
+  ],
+  [
+   "TREE06",
+   44.5,
+   63.5
+  ],
+  [
+   "TREE07",
+   44.5,
+   65.5
+  ],
+  [
+   "TREE08",
+   44.5,
+   64.5
+  ],
+  [
+   "TREE10",
+   48.5,
+   61.5
+  ],
+  [
+   "TREE08",
+   48.5,
+   65.5
+  ],
+  [
+   "TREE10",
+   49.5,
+   65.5
+  ],
+  [
+   "TREE11",
+   48.5,
+   63.5
+  ],
+  [
+   "TREE04",
+   65.5,
+   66.5
+  ],
+  [
+   "LT_SGN02",
+   38.5,
+   96.5
+  ],
+  [
+   "LT_GEN02",
+   73.5,
+   70.5
+  ],
+  [
+   "LT_GEN02",
+   73.5,
+   72.5
+  ],
+  [
+   "LT_GEN01",
+   71.5,
+   64.5
+  ],
+  [
+   "LT_GEN01",
+   69.5,
+   64.5
+  ],
+  [
+   "TRFF02",
+   54.5,
+   94.5
+  ],
+  [
+   "TREE02",
+   69.5,
+   93.5
+  ],
+  [
+   "TREE04",
+   72.5,
+   93.5
+  ],
+  [
+   "TREE05",
+   72.5,
+   95.5
+  ],
+  [
+   "TREE06",
+   70.5,
+   94.5
+  ],
+  [
+   "TREE07",
+   71.5,
+   93.5
+  ],
+  [
+   "TREE08",
+   71.5,
+   94.5
+  ],
+  [
+   "TREE10",
+   71.5,
+   95.5
+  ],
+  [
+   "TREE11",
+   69.5,
+   94.5
+  ],
+  [
+   "TREE12",
+   69.5,
+   95.5
+  ],
+  [
+   "TREE15",
+   70.5,
+   95.5
+  ],
+  [
+   "TREE10",
+   72.5,
+   94.5
+  ],
+  [
+   "TREE02",
+   78.5,
+   77.5
+  ],
+  [
+   "TREE04",
+   77.5,
+   78.5
+  ],
+  [
+   "TREE05",
+   78.5,
+   79.5
+  ],
+  [
+   "TREE10",
+   79.5,
+   80.5
+  ],
+  [
+   "TREE05",
+   76.5,
+   78.5
+  ],
+  [
+   "TREE04",
+   80.5,
+   81.5
+  ],
+  [
+   "TREE08",
+   80.5,
+   83.5
+  ],
+  [
+   "TREE03",
+   80.5,
+   86.5
+  ],
+  [
+   "TREE12",
+   72.5,
+   78.5
+  ],
+  [
+   "TREE01",
+   34.5,
+   116.5
+  ],
+  [
+   "TREE01",
+   36.5,
+   116.5
+  ],
+  [
+   "TREE18",
+   33.5,
+   111.5
+  ],
+  [
+   "TREE04",
+   34.5,
+   108.5
+  ],
+  [
+   "TREE15",
+   78.5,
+   31.5
+  ],
+  [
+   "TREE04",
+   82.5,
+   36.5
+  ],
+  [
+   "POLE01",
+   46.5,
+   103.5
+  ],
+  [
+   "POLE01",
+   46.5,
+   100.5
+  ],
+  [
+   "POLE01",
+   46.5,
+   97.5
+  ],
+  [
+   "POLE01",
+   46.5,
+   107.5
+  ],
+  [
+   "TREE01",
+   42.5,
+   99.5
+  ],
+  [
+   "POLE01",
+   70.5,
+   105.5
+  ],
+  [
+   "POLE01",
+   70.5,
+   108.5
+  ],
+  [
+   "POLE01",
+   70.5,
+   97.5
+  ],
+  [
+   "POLE01",
+   70.5,
+   101.5
+  ],
+  [
+   "TREE03",
+   72.5,
+   99.5
+  ],
+  [
+   "TRFF02",
+   30.5,
+   118.5
+  ],
+  [
+   "SIGN02",
+   70.5,
+   104.5
+  ],
+  [
+   "TREE26",
+   74.5,
+   102.5
+  ],
+  [
+   "SIGN02",
+   76.5,
+   72.5
+  ],
+  [
+   "SIGN02",
+   48.5,
+   96.5
+  ],
+  [
+   "TREE11",
+   45.5,
+   115.5
+  ],
+  [
+   "TREE12",
+   42.5,
+   119.5
+  ],
+  [
+   "TREE02",
+   43.5,
+   117.5
+  ],
+  [
+   "TREE04",
+   44.5,
+   115.5
+  ],
+  [
+   "TREE05",
+   44.5,
+   116.5
+  ],
+  [
+   "TREE07",
+   45.5,
+   116.5
+  ],
+  [
+   "TREE08",
+   45.5,
+   117.5
+  ],
+  [
+   "TREE10",
+   44.5,
+   117.5
+  ],
+  [
+   "TREE15",
+   45.5,
+   118.5
+  ],
+  [
+   "TREE12",
+   44.5,
+   118.5
+  ],
+  [
+   "TREE06",
+   43.5,
+   118.5
+  ],
+  [
+   "TREE05",
+   42.5,
+   118.5
+  ],
+  [
+   "LT_SGN04",
+   48.5,
+   118.5
+  ],
+  [
+   "TREE01",
+   53.5,
+   124.5
+  ],
+  [
+   "TREE10",
+   52.5,
+   119.5
+  ],
+  [
+   "TREE03",
+   44.5,
+   122.5
+  ],
+  [
+   "TREE01",
+   36.5,
+   103.5
+  ],
+  [
+   "TREE09",
+   40.5,
+   102.5
+  ],
+  [
+   "TREE13",
+   83.5,
+   96.5
+  ],
+  [
+   "TREE27",
+   76.5,
+   98.5
+  ],
+  [
+   "TREE26",
+   16.5,
+   106.5
+  ],
+  [
+   "LT_SGN01",
+   17.5,
+   112.5
+  ],
+  [
+   "TIBTRE01",
+   70.5,
+   82.5
+  ],
+  [
+   "TREE10",
+   40.5,
+   60.5
+  ],
+  [
+   "TREE07",
+   41.5,
+   60.5
+  ],
+  [
+   "TREE03",
+   39.5,
+   60.5
+  ],
+  [
+   "TREE12",
+   41.5,
+   58.5
+  ],
+  [
+   "TREE13",
+   24.5,
+   122.5
+  ],
+  [
+   "TREE07",
+   25.5,
+   124.5
+  ],
+  [
+   "TREE11",
+   91.5,
+   27.5
+  ],
+  [
+   "TREE12",
+   94.5,
+   27.5
+  ],
+  [
+   "TREE15",
+   91.5,
+   28.5
+  ],
+  [
+   "TREE02",
+   84.5,
+   42.5
+  ],
+  [
+   "TREE07",
+   87.5,
+   37.5
+  ],
+  [
+   "TREE10",
+   96.5,
+   33.5
+  ],
+  [
+   "TREE11",
+   98.5,
+   27.5
+  ],
+  [
+   "TREE12",
+   98.5,
+   28.5
+  ],
+  [
+   "TREE15",
+   99.5,
+   28.5
+  ]
+ ],
+ "textures": {
+  "TREE08": "res://assets/ra2/time_shift/terrain/TREE08.png",
+  "TREE03": "res://assets/ra2/time_shift/terrain/TREE03.png",
+  "TREE09": "res://assets/ra2/time_shift/terrain/TREE09.png",
+  "TREE02": "res://assets/ra2/time_shift/terrain/TREE02.png",
+  "TREE10": "res://assets/ra2/time_shift/terrain/TREE10.png",
+  "TREE12": "res://assets/ra2/time_shift/terrain/TREE12.png",
+  "TREE16": "res://assets/ra2/time_shift/terrain/TREE16.png",
+  "TREE18": "res://assets/ra2/time_shift/terrain/TREE18.png",
+  "TREE15": "res://assets/ra2/time_shift/terrain/TREE15.png",
+  "TREE05": "res://assets/ra2/time_shift/terrain/TREE05.png",
+  "TRFF02": "res://assets/ra2/time_shift/terrain/TRFF02.png",
+  "TREE14": "res://assets/ra2/time_shift/terrain/TREE14.png",
+  "TREE04": "res://assets/ra2/time_shift/terrain/TREE04.png",
+  "TREE26": "res://assets/ra2/time_shift/terrain/TREE26.png",
+  "TREE25": "res://assets/ra2/time_shift/terrain/TREE25.png",
+  "TREE11": "res://assets/ra2/time_shift/terrain/TREE11.png",
+  "TREE27": "res://assets/ra2/time_shift/terrain/TREE27.png",
+  "TREE07": "res://assets/ra2/time_shift/terrain/TREE07.png",
+  "TREE13": "res://assets/ra2/time_shift/terrain/TREE13.png",
+  "TREE19": "res://assets/ra2/time_shift/terrain/TREE19.png",
+  "TREE01": "res://assets/ra2/time_shift/terrain/TREE01.png",
+  "LT_GEN04": "res://assets/maps/yr/allied_first/LT_GEN04.png",
+  "TREE06": "res://assets/ra2/time_shift/terrain/TREE06.png",
+  "LT_SGN02": "res://assets/ra2/time_shift/terrain/LT_SGN02.png",
+  "LT_GEN02": "res://assets/ra2/time_shift/terrain/LT_GEN02.png",
+  "LT_GEN01": "res://assets/ra2/time_shift/terrain/LT_GEN01.png",
+  "POLE01": "res://assets/ra2/time_shift/terrain/POLE01.png",
+  "SIGN02": "res://assets/ra2/time_shift/terrain/SIGN02.png",
+  "LT_SGN04": "res://assets/ra2/time_shift/terrain/LT_SGN04.png",
+  "LT_SGN01": "res://assets/maps/yr/allied_first/LT_SGN01.png"
+ },
+ "outside": 34
+}

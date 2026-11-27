@@ -1,6 +1,22 @@
 extends Node2D
 var world
-func _process(_delta:float) -> void:queue_redraw()
+const FIELD_KEYS := [preload("res://scripts/units/leizhu_cards.gd").FIELDS,
+	preload("res://scripts/units/expansion_2_calibration.gd").ZONES,
+	preload("res://scripts/units/expansion_2_aircraft.gd").FIELDS,
+	preload("res://scripts/units/expansion_2_overload.gd").TARGETS,
+	preload("res://scripts/units/expansion_2_tractor.gd").FIELDS, "expansion_zones", "expansion_scraps"]
+var _had_fields := false
+
+func _process(_delta:float) -> void:
+	var active := false
+	if is_instance_valid(world):
+		for key in FIELD_KEYS:
+			var fields = world.allied_state.get(key)
+			if fields != null and not fields.is_empty():
+				active = true
+				break
+	if active or _had_fields: queue_redraw()
+	_had_fields = active
 func _draw() -> void:
 	if not is_instance_valid(world):return
 	Iso.begin(self)

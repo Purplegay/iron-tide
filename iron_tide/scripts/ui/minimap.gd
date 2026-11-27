@@ -424,6 +424,11 @@ func _draw() -> void:
 	if battle.fog != null and battle.fog.texture != null:
 		draw_colored_polygon(_world_edge, Color.WHITE, _edge_uv, battle.fog.texture)
 	draw_set_transform_matrix(Transform2D.IDENTITY)
+	draw_rect(Rect2(Vector2.ZERO, s), Color(0.3, 0.45, 0.62), false, 2.0)
+	# 沿地形和迷雾共用的外缘闭合描边，不把两侧留白算进地图。
+	var edge := projection * _world_edge
+	edge.append(edge[0])
+	draw_polyline(edge, Color("#7897ae"), 2.5, true)
 	# 资源点（T11）矿体已散成多枚小矿格：按邻近聚合成「一处一块」显示，避免糊成一片点阵
 	var revision: int = battle.fog.minimap_mask_revision if battle.fog != null else - 1
 	if _ore_revision != battle.radar_ore_revision or revision != _ore_mask_revision or not projection.is_equal_approx(_ore_projection):
@@ -433,6 +438,14 @@ func _draw() -> void:
 		_ore_revision = battle.radar_ore_revision
 	for mk in _ore_marks:
 		draw_circle(mk["p"], 2.5 + 0.7 * minf(int(mk["n"]), 6), Color(0.4, 0.9, 1.0) if mk["seen"] else Color(0.85, 0.64, 0.3))
+	# 灰雾里的建筑只画最后目击位置，不读取当前阵营或存活状态。
+	if battle.fog != null:
+		var remembered: Dictionary = battle.fog.building_memory.shown
+		for point: Vector2 in remembered:
+			var row: Dictionary = remembered[point]
+			var center := projection * point
+			var size := Vector2.ONE * maxf(4.0, float(row.radius) * k * 1.6)
+			draw_rect(Rect2(center - size * 0.5, size), (row.radar as Color).darkened(0.45))
 	# 建筑
 	for b in battle.buildings:
 		if not is_instance_valid(b) or not battle.actor_alive(b) or not battle.actor_visible_to("ally", b):
@@ -440,7 +453,7 @@ func _draw() -> void:
 		var p2: Vector2 = projection * b.global_position
 		var col := Color(0.65, 0.65, 0.6) if b.side == "neutral" else Color(0.4, 0.7, 1.0) if BattleRequest.friendly(b.side,"ally") else Color(1.0, 0.45, 0.4)
 		var sz: float = max(4.0, float(b.radius) * k * 1.6)
-		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.head_games() or HouseColor.hollywood_enemy(b.side): col = b._col
+		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.allied_first() or HouseColor.head_games() or HouseColor.allied_finale() or HouseColor.hollywood_enemy(b.side): col = b._col
 		draw_rect(Rect2(p2 - Vector2(sz, sz) * 0.5, Vector2(sz, sz)), col)
 	# 单位
 	for u in battle.units:
@@ -448,7 +461,7 @@ func _draw() -> void:
 			continue
 		var p3: Vector2 = projection * u.global_position
 		var col2 := Color(0.55, 0.85, 1.0) if BattleRequest.friendly(u.side,"ally") else Color(1.0, 0.55, 0.45)
-		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.head_games() or HouseColor.hollywood_enemy(u.side): col2 = u._col
+		if (not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift") or HouseColor.allied_first() or HouseColor.head_games() or HouseColor.allied_finale() or HouseColor.hollywood_enemy(u.side): col2 = u._col
 		draw_circle(p3, 1.8, col2)
 	# 雷达事件闪烁（B3）：受袭红环 / 建成黄环，随时间扩散淡出
 	for pg in _pings:
@@ -473,11 +486,11 @@ func _draw() -> void:
 		draw_circle(center, 2.5, gold)
 	# Public mission objectives remain readable above fog and ordinary radar dots.
 	_draw_objectives()
-	# 边框
-	draw_rect(Rect2(Vector2.ZERO, s), Color(0.3, 0.45, 0.62), false, 2.0)
 
 func campaign_radar_offline() -> bool:
-	return is_instance_valid(battle) and battle.allied_state.has("hollywood") and not battle.Hollywood.radar_online(battle)
+	if not is_instance_valid(battle): return false
+	if battle.allied_state.get("allied_first",{}).get("phase") == 3: return true
+	return battle.allied_state.has("hollywood") and not battle.Hollywood.radar_online(battle)
 
 func _draw_camera_outline() -> void:
 	if campaign_radar_offline():return

@@ -158,9 +158,7 @@ const LOW_HP_TINT: float = 0.34           # 低于此血量比例时整牌泛红
 var red_alert_panel: Control
 var minimap
 var gm_console = null
-var _speed_index: int = 0
 var _display_multiplier := 1.0
-const SPEEDS := [1.0, 2.0, 3.0]
 
 ## Selection uses live panel bounds, including collapsed/expanded layouts.
 func covers_world_pixel(pixel: Vector2) -> bool:
@@ -516,7 +514,7 @@ func _build_settings(root: Control) -> void:
 	scroll.add_child(column)
 	var heading := HBoxContainer.new()
 	column.add_child(heading)
-	var title := kit.make_label("显示、音乐与开发工具", 16, kit.COL_TEXT)
+	var title := kit.make_label("战场设置", 16, kit.COL_TEXT)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	heading.add_child(title)
 	var close := kit.make_button("关闭")
@@ -527,6 +525,8 @@ func _build_settings(root: Control) -> void:
 	view_btn.pressed.connect(_cycle_view)
 	column.add_child(view_btn)
 	column.add_child(preload("res://scripts/ui/camera_controls.gd").new())
+	column.add_child(preload("res://scripts/ui/battle_speed_controls.gd").new())
+	DisplayPreferences.battle_speeds_changed.connect(_on_battle_speeds_changed)
 	column.add_child(preload("res://scripts/ui/display_controls.gd").new())
 	column.add_child(preload("res://scripts/ui/model_display_controls.gd").new())
 	column.add_child(preload("res://scripts/ui/music_controls.gd").new())
@@ -830,7 +830,7 @@ func _build_log(root: Control) -> void:
 	var log_scroll := ScrollContainer.new()
 	log_scroll.custom_minimum_size = Vector2(0, 180)
 	log_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	if BattleRequest.mission_id == "yr_hollywood" and not BattleRequest.skirmish:
+	if BattleRequest.mission_id in ["yr_hollywood", "yr_allied_first", "yr_allied_finale"] and not BattleRequest.skirmish:
 		var column := VBoxContainer.new()
 		log_panel.add_child(column)
 		column.add_child(kit.make_label("本关总目标", 16, kit.COL_GOLD))
@@ -974,12 +974,29 @@ func _build_production(root: Control) -> void:
 			button.add_theme_color_override("font_outline_color", Color("142431cc"))
 			header_actions.add_child(button)
 	auto_w_controls=preload("res://scripts/units/auto_w.gd").add_global_control(vb,self)
+	_campaign_base_row = HBoxContainer.new()
+	_campaign_base_row.name = "CampaignBaseTabs"
+	_campaign_base_row.add_theme_constant_override("separation", 4)
+	_campaign_base_row.hide()
+	vb.add_child(_campaign_base_row)
+	for faction in CAMPAIGN_BASE_NAMES:
+		var tab: Button = kit.ra_button(13, 28)
+		tab.name = "CampaignBaseSoviet" if faction == "soviet" else "CampaignBaseAllied"
+		tab.text = CAMPAIGN_BASE_NAMES[faction]
+		tab.tooltip_text = "查看%s的建筑和部队生产目录" % tab.text
+		tab.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		tab.focus_mode = Control.FOCUS_NONE
+		tab.toggle_mode = true
+		tab.pressed.connect(_select_campaign_deck.bind(faction, true))
+		tab.draw.connect(_draw_campaign_base_ready.bind(tab, faction))
+		_campaign_base_row.add_child(tab)
+		_campaign_base_tabs[faction] = tab
 	deck_tabs = GridContainer.new()
 	deck_tabs.columns = 6
 	deck_tabs.add_theme_constant_override("h_separation", 4)
 	deck_tabs.add_theme_constant_override("v_separation", 4)
 	vb.add_child(deck_tabs)
-	_add_prod_tabs()
+	_add_prod_tabs(_sync_campaign_deck())
 
 	vb.add_child(kit.divider())
 	_roster_body = VBoxContainer.new()
@@ -1432,6 +1449,7 @@ func _process(delta: float) -> void:
 	delta = BattleClock.control_delta(delta)
 	if not is_equal_approx(_display_multiplier, GM.fast_forward):
 		_display_multiplier = GM.fast_forward
+		refresh_speed_button()
 		_refresh_selection()
 	_tick_prod_hold(delta)
 	_live_poll_elapsed += delta
@@ -1490,8 +1508,8 @@ func _refresh_top() -> void:
 	if battle == null:
 		return
 	_refresh_opening_orders_button()
-	speed_btn.text = "倍速 ×%s" % str(GM.fast_forward)
-	speed_btn.tooltip_text = "逻辑每秒更新 15 次；显示时间为当前倍速下的预计现实秒数。"
+	refresh_speed_button()
+	speed_btn.tooltip_text = "切换到下一档已勾选的倍速。可在战场设置中更改档位。"
 	_refresh_funds()
 	# 电力（RA2）：标签 + 电力条
 	var ps: Dictionary = battle.power_stats()
@@ -1514,7 +1532,7 @@ func _refresh_top() -> void:
 				power_sub.text = "赤字 −%d" % -reserve
 			if float(ps.get("hero_bonus",0))>0:power_sub.text+="   英雄供电 +%d"%int(ps.hero_bonus)
 			if low:
-				power_sub.text += "   电力不足 - 生产减缓"
+				power_sub.text += "   基地断电 - 生产减缓" if ps.get("blackout", false) else "   电力不足 - 生产减缓"
 				power_sub.add_theme_color_override("font_color", kit.COL_WARN)
 			else:
 				power_sub.add_theme_color_override("font_color", kit.COL_DIM)
@@ -1531,6 +1549,12 @@ func _refresh_top() -> void:
 
 func _refresh_mission_objectives() -> void:
 	if mission_objectives == null or battle == null: return
+	if battle.mission.get("id") == "yr_allied_finale":
+		mission_objectives.text = battle.AlliedFinale.objective(battle).detail
+		return
+	if battle.mission.get("id") == "yr_allied_first":
+		mission_objectives.text = battle.AlliedFirst.objective(battle).detail
+		return
 	var state: Dictionary = battle.allied_state.get("hollywood", {})
 	var total := preload("res://scripts/world/hollywood_mission.gd").FACTORIES.size()
 	var remaining := int(state.get("remaining", total))
@@ -1551,9 +1575,22 @@ func _refresh_timer() -> void:
 	if battle.allied_state.has("hollywood"):
 		var state: Dictionary = battle.allied_state.hollywood
 		wave_label.text = "摧毁回收厂（剩余 %d 座）" % state.remaining if state.phase == 1 else "摧毁剩余敌方建筑"
-		if state.get("briefing",false): wave_label.text = "战前简报 · 洛杉矶机场"
+		if state.get("briefing",false):
+			wave_label.text = "战前简报 · 洛杉矶机场"
+			timer_label.text = "简报结束后可下令" if battle.has_node("HollywoodFilm") else "接应基地车 · 预计 %d 秒后交还操控" % ceili(maxf(0.0,15.0-float(state.intro)))
+			return
 		if state.phase == 3: wave_label.text = "城区已解放"
 		timer_label.text = "已救下 %d 人" % int(state.get("rescued",0))
+		return
+	if battle.allied_state.has("allied_finale"):
+		var task: Dictionary = battle.AlliedFinale.objective(battle)
+		wave_label.text = task.title
+		timer_label.text = task.progress
+		return
+	if battle.allied_state.has("allied_first"):
+		var task: Dictionary = battle.AlliedFirst.objective(battle)
+		wave_label.text = task.title
+		timer_label.text = task.progress
 		return
 	if battle.allied_state.has("time_shift"):
 		var s:Dictionary=battle.allied_state.time_shift
@@ -1566,6 +1603,7 @@ func _refresh_timer() -> void:
 		timer_label.text = ""
 		if state.has("head_brief_stage"):
 			wave_label.text = "战前简报 · 特兰西瓦尼亚"
+			timer_label.text = "简报结束后可指挥基地车"
 		elif state.has("s07_castle_down"):
 			wave_label.text = "尤里的城堡已摧毁"
 		elif freed == 2:
@@ -1777,8 +1815,8 @@ func _add_unit_info(first) -> void:
 	sel_hp_label.custom_minimum_size = Vector2(76, 0)
 	sel_hp_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	row.add_child(sel_hp_label)
-	sel_shield_label = kit.make_label("", 12, Unit.TankHero.Shield.COLOR)
-	sel_shield_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	sel_shield_label = kit.make_label("", 12, HpBar.SHIELD_FILL)
+	sel_shield_label.mouse_filter = Control.MOUSE_FILTER_PASS
 	_unit_vitals.add_child(sel_shield_label)
 	_refresh_shield_live(first)
 	var experience := HBoxContainer.new()
@@ -2293,9 +2331,20 @@ func _refresh_shield_live(unit) -> void:
 	if not is_instance_valid(sel_shield_label):return
 	var shield:Dictionary=preload("res://scripts/ui/shield_readout.gd").summary(unit)
 	sel_shield_label.visible = shield.visible
-	if not sel_shield_label.visible:return
 	sel_shield_label.text = shield.text
 	sel_shield_label.tooltip_text = shield.details
+	var parent := sel_shield_label.get_parent()
+	var timer := parent.get_node_or_null("PsiShieldCountdown") as Label
+	if shield.psi_left > 0.0 and timer == null:
+		timer = kit.make_label("", 12, HpBar.PSI_SHIELD_INK)
+		timer.name = "PsiShieldCountdown"
+		timer.mouse_filter = Control.MOUSE_FILTER_PASS
+		timer.tooltip_text = "灵能护盾持续到倒计时结束，不消耗护盾耐久。"
+		parent.add_child(timer)
+		parent.move_child(timer, sel_shield_label.get_index() + 1)
+	if timer != null:
+		timer.visible = shield.psi_left > 0.0
+		if timer.visible:timer.text = HpBar.psi_countdown(shield.psi_left)
 
 func _refresh_veterancy_live(unit) -> void:
 	if not is_instance_valid(sel_xp_label):
@@ -2564,7 +2613,8 @@ func _show_building_info(b) -> void:
 	row.add_child(sel_hp_bar)
 	sel_hp_label = kit.make_label("%d / %d" % [int(ceil(b.hp)), int(b.max_hp)], 12, kit.COL_TEXT)
 	row.add_child(sel_hp_label)
-	sel_shield_label = kit.make_label("",12,Unit.TankHero.Shield.COLOR)
+	sel_shield_label = kit.make_label("",12,HpBar.SHIELD_FILL)
+	sel_shield_label.mouse_filter = Control.MOUSE_FILTER_PASS
 	sel_box.add_child(sel_shield_label)
 	_refresh_shield_live(b)
 	sel_box.add_child(kit.make_label("护甲 %s" % GameData.armor_label(b.armor), 13, kit.COL_TEXT))
@@ -2721,10 +2771,10 @@ var _ready_tab_phase := 0.0
 ## 鼠标生产页签：建筑 / 防御 / 步兵 / 载具 / 空军 / 海军
 ## 红警3 把飞机、舰船从「载具」里拆成独立页签，这里照做。
 ## D7=B：**无内容的页签自动隐藏**（如本工程暂无海军设施 → 海军页签不显示）。
-func _add_prod_tabs() -> void:
+func _add_prod_tabs(faction: String) -> void:
 	if deck_tabs == null:
 		return
-	_deck_faction = battle.roster_faction()
+	_deck_faction = faction
 	deck_tabs_btns.clear()
 	var defs: Array = [["building", "建筑"], ["defense", "防御"], ["infantry", "步兵"], ["vehicle", "载具"], ["air", "空军"], ["naval", "海军"]]
 	var shown: Array[String] = []
@@ -2767,14 +2817,24 @@ func _update_ready_tabs(delta: float) -> void:
 	for id in ["building", "defense"]:
 		var button: Button = deck_tabs_btns.get(id)
 		if not is_instance_valid(button): continue
-		var count: int = battle.structure_ready_count(id) if not battle.ended else 0
+		var count := _deck_structure_ready_count(id) if not battle.ended else 0
 		any_ready = any_ready or count > 0
 		button.tooltip_text = "%s：%d 项建造就绪，点击页签后选择图标放置" % [_tab_label(id), count] if count > 0 else _tab_label(id)
 		button.queue_redraw()
-	_ready_tab_phase = fmod(_ready_tab_phase + maxf(0.0, delta), 1.0) if any_ready else 0.0
+	var base_ready := _update_campaign_base_ready()
+	_ready_tab_phase = fmod(_ready_tab_phase + maxf(0.0, delta), 1.0) if any_ready or base_ready else 0.0
+
+func _deck_structure_faction() -> String:
+	return _deck_faction if battle.uses_split_campaign_deck() else ""
+
+func _deck_structure_ready_count(category: String) -> int:
+	return battle.structure_ready_count(category, "ally", _deck_structure_faction())
 
 func _draw_ready_tab(button: Button, id: String) -> void:
-	if battle == null or battle.ended or battle.structure_ready_count(id) <= 0: return
+	if battle == null or battle.ended or _deck_structure_ready_count(id) <= 0: return
+	_draw_ready_pulse(button)
+
+func _draw_ready_pulse(button: Button) -> void:
 	var pulse := 0.5 + 0.5 * cos(TAU * _ready_tab_phase)
 	var rect := Rect2(Vector2(1, 1), button.size - Vector2(2, 2))
 	var cut := 5.0
@@ -2789,6 +2849,8 @@ func _draw_ready_tab(button: Button, id: String) -> void:
 ## 该页签是否有可生产内容（D7=B 无内容则隐藏）。建筑/防御恒有。
 func _tab_available(id: String) -> bool:
 	if id == "building" or id == "defense":
+		return true
+	if id == "infantry" and battle.uses_split_campaign_deck() and _has_campaign_infantry_factory():
 		return true
 	for bd in _construction_choices():
 		if bd.faction == "soviet" and not bd.get("ra2", false): continue
@@ -2874,20 +2936,110 @@ func _auto_focus_building_tab(b) -> void:
 		return
 	if b.side != "ally" or b.under_construction:
 		return
+	if not b.is_hq and (b.buildable as Array).is_empty():
+		return
+	var t := "building" if b.is_hq else _tab_for_building(b)
+	if t != "infantry" and battle.uses_split_campaign_deck() and b.faction in battle.campaign_deck_factions():
+		_select_campaign_deck(b.faction)
 	if b.is_hq:
 		select_prod_tab("building")
 		return
-	if (b.buildable as Array).is_empty():
-		return
-	var t := _tab_for_building(b)
 	if t != "":
+		if t == "infantry" and battle.uses_split_campaign_deck() and not deck_tabs_btns.has(t):
+			_refresh_production()
 		_factories.remember(b, t)
 	if t != "" and t != prod_tab:
 		select_prod_tab(t)
 
 ## 建筑目录（按页签过滤：建筑=非防御，防御=防御）。
 ## RA3 风格：不可建造项不隐藏，保留在网格中置灰（可用性见 _build_state）。
+const CAMPAIGN_BASE_NAMES := {"soviet": "苏军基地", "allied": "盟军基地"}
+var _campaign_deck_choice := ""
+var _pending_infantry_faction := ""
+var _campaign_base_row: HBoxContainer
+var _campaign_base_tabs: Dictionary = {}
+var _campaign_base_ready: Dictionary = {}
+
+func _campaign_infantry_tab() -> bool:
+	return prod_tab == "infantry" and battle.uses_split_campaign_deck()
+
+func _has_campaign_infantry_factory() -> bool:
+	for b in battle.buildings:
+		if not battle.actor_alive(b) or b.side != "ally" or b.is_refinery(): continue
+		for uid in b.buildable:
+			if _unit_cat(GameData.get_unit(str(uid))) == "infantry": return true
+	return false
+
+func _factory_matches_deck(b, category: String) -> bool:
+	return not battle.uses_split_campaign_deck() or category == "infantry" or b.faction == _deck_faction
+
+func _select_campaign_deck(faction: String, open_ready := false) -> void:
+	if not battle.uses_split_campaign_deck() or faction not in battle.campaign_deck_factions(): return
+	_campaign_deck_choice = faction
+	if open_ready and not battle.ended:
+		var ready_tab := _campaign_ready_category(faction)
+		if not ready_tab.is_empty():
+			select_prod_tab(ready_tab)
+			return
+	if _campaign_infantry_tab(): _pending_infantry_faction = faction
+	_unlock_focus = ""
+	if production_collapsed:
+		set_production_collapsed(false, false)
+	else:
+		_refresh_production()
+
+func _campaign_ready_category(faction: String) -> String:
+	if prod_tab in ["building", "defense"] and battle.structure_ready_count(prod_tab, "ally", faction) > 0:
+		return prod_tab
+	for id in battle.struct_ready_order:
+		if int(battle.struct_ready.get(id, 0)) > 0 and battle.structure_lane_faction(str(id)) == faction:
+			return battle.structure_category(str(id))
+	# Keep the shortcut usable if a restored ready item has no order entry.
+	for id in ["building", "defense"]:
+		if battle.structure_ready_count(id, "ally", faction) > 0: return id
+	return ""
+
+func _sync_campaign_deck() -> String:
+	if not battle.uses_split_campaign_deck():
+		_campaign_base_row.hide()
+		return battle.roster_faction()
+	var available: Array[String] = battle.campaign_deck_factions()
+	if _campaign_deck_choice not in available:
+		_campaign_deck_choice = available[0] if not available.is_empty() else ""
+	_campaign_base_row.visible = not available.is_empty()
+	for faction in _campaign_base_tabs:
+		var tab: Button = _campaign_base_tabs[faction]
+		tab.visible = faction in available
+		tab.set_pressed_no_signal(faction == _campaign_deck_choice)
+	return _campaign_deck_choice
+
+func _update_campaign_base_ready() -> bool:
+	_campaign_base_ready.clear()
+	if not is_instance_valid(_campaign_base_row) or not _campaign_base_row.visible: return false
+	var any_ready := false
+	for faction in _campaign_base_tabs:
+		var tab: Button = _campaign_base_tabs[faction]
+		if not tab.visible: continue
+		var count := battle.structure_ready_count("", "ally", faction) if not battle.ended else 0
+		_campaign_base_ready[faction] = count
+		any_ready = any_ready or count > 0
+		var base_name: String = CAMPAIGN_BASE_NAMES[faction]
+		var title := "%s · %d 就绪" % [base_name, count] if count > 0 else base_name
+		var changed := tab.text != title
+		if changed:
+			tab.text = title
+			tab.tooltip_text = "%s有 %d 项建造就绪，点击跳到就绪分类，再选择图标放置" % [base_name, count] if count > 0 else "查看%s的建筑和部队生产目录" % base_name
+		if changed or count > 0:
+			tab.queue_redraw()
+	return any_ready
+
+func _draw_campaign_base_ready(button: Button, faction: String) -> void:
+	if battle == null or battle.ended or int(_campaign_base_ready.get(faction, 0)) <= 0: return
+	_draw_ready_pulse(button)
+
 func _construction_choices() -> Array:
+	if battle.uses_split_campaign_deck():
+		return [] if _deck_faction.is_empty() else GameData.buildings_for_faction(_deck_faction)
 	var native: String = battle.roster_faction()
 	var choices := GameData.buildings_for_faction(native)
 	for foreign in ["allied","soviet","yuri"]:
@@ -2895,6 +3047,8 @@ func _construction_choices() -> Array:
 		if foreign == "yuri" and not battle.skirmish: continue
 		for building in GameData.buildings_for_faction(foreign):
 			if GameData.is_ra2(str(building.id)) and building.id!="NEUTRALSTUDIO": choices.append(building)
+	if battle.s07_secret_product("GTGCAN") and "CASLAB" in _owned_building_ids() and choices.all(func(b):return b.id!="GTGCAN"):
+		choices.append(GameData.get_building("GTGCAN"))
 	return choices
 
 func _building_catalog() -> Array:
@@ -2919,7 +3073,9 @@ func _building_catalog() -> Array:
 
 ## 某建筑当前是否可建造（RA3 侧栏置灰口径）：{ ok: bool, reason: String }
 func _build_state(bid: String) -> Dictionary:
-	if bid==MetaProgress.Academy.Stars.STUDIO:
+	var yard_reason: String = battle.campaign_yard_block_reason(bid)
+	if not yard_reason.is_empty(): return {"ok":false,"reason":yard_reason}
+	if bid==MetaProgress.Academy.Stars.STUDIO or battle.s07_secret_product(bid):
 		var studio_reason:String=battle.structure_production_block_reason(bid)
 		return {"ok":studio_reason.is_empty(),"reason":studio_reason}
 	var disabled_reason := GameData.building_production_block_reason(bid)
@@ -2959,13 +3115,24 @@ func _unit_catalog() -> Array:
 			if _cat_match(GameData.get_unit(uid)) and GameData.unit_production_block_reason(uid, battle.allied_state, factory.side).is_empty():
 				available.append(uid)
 		return GameData.catalog_sorted(available, "unit")
-	var native: String = battle.roster_faction()
+	if _campaign_infantry_tab():
+		var barracks = _factories.current()
+		if is_instance_valid(barracks):
+			var owned := _owned_building_ids() if not GameData.mission_production_tech().is_empty() else []
+			return GameData.catalog_sorted(barracks.buildable.filter(func(uid):
+				if str(uid).begins_with("R3") or uid == "YURIKO" or not _cat_match(GameData.get_unit(str(uid))): return false
+				if uid in GameData.STOLEN_INFANTRY and not GameData.unit_production_block_reason(str(uid), battle.allied_state).is_empty(): return false
+				return GameData.mission_product_block_reason(str(uid), owned).is_empty()), "unit")
+	var split: bool = battle.uses_split_campaign_deck()
+	var native: String = _deck_faction if split else battle.roster_faction()
+	if native.is_empty(): return []
 	var catalog := GameData.faction_unit_catalog(native)
 	if not BattleRequest.skirmish:
 		catalog = catalog.filter(func(id: String): return not id.begins_with("R3") and id != "YURIKO")
 	var extra: Array = []
 	for b in battle.buildings:
 		if not battle.actor_alive(b) or b.side != "ally" or b.under_construction or b.is_refinery(): continue
+		if split and b.faction != native: continue
 		if b.faction == native and b.building_id not in ["GAPILE", "NAHAND"]: continue
 		for id in b.buildable:
 			if catalog.has(id) or extra.has(id) or not (GameData.is_ra2(id) or GameData.hollywood_production_unit(id)) or str(id).begins_with("R3"): continue
@@ -3015,20 +3182,23 @@ func _active_producer():
 
 ## 为某单位寻找能生产它的建筑（红警2 式自动路由，无需先选中建筑）
 func _producer_for(uid: String):
+	if _campaign_infantry_tab() and _cat_match(GameData.get_unit(uid)):
+		var barracks = _factories.current()
+		return barracks if is_instance_valid(barracks) and barracks.buildable.has(uid) else null
 	if prod_tab not in ["building", "defense"] and _cat_match(GameData.get_unit(uid)):
 		# Factory tabs own normal production; refinery manufacture is a separate technology action.
 		var active = _factories.current()
 		if is_instance_valid(active) and active.buildable.has(uid):
 			return active
 	var b = battle.selected_building
-	if is_instance_valid(b) and b.side == "ally" and not b.is_refinery() and not b.is_dead() and not b.under_construction and (b.buildable as Array).has(uid):
+	if is_instance_valid(b) and b.side == "ally" and _factory_matches_deck(b, prod_tab) and not b.is_refinery() and not b.is_dead() and not b.under_construction and (b.buildable as Array).has(uid):
 		return b
 	for node in get_tree().get_nodes_in_group("ally_buildings"):
-		if is_instance_valid(node) and not node.is_refinery() and not node.is_dead() and not node.under_construction and (node.buildable as Array).has(uid):
+		if is_instance_valid(node) and _factory_matches_deck(node, prod_tab) and not node.is_refinery() and not node.is_dead() and not node.under_construction and (node.buildable as Array).has(uid):
 			return node
 	# 仍在施工的唯一生产建筑也应给出具体原因，而不是声称没有该建筑。
 	for node in get_tree().get_nodes_in_group("ally_buildings"):
-		if is_instance_valid(node) and not node.is_refinery() and not node.is_dead() and (node.buildable as Array).has(uid):
+		if is_instance_valid(node) and _factory_matches_deck(node, prod_tab) and not node.is_refinery() and not node.is_dead() and (node.buildable as Array).has(uid):
 			return node
 	return null
 
@@ -3088,7 +3258,7 @@ func _make_build_bar(frac: float, caption: String, _fill_col: Color = kit.RA_CYA
 
 
 func _prod_signature() -> String:
-	var parts: Array = [str(prod_tab), _factories.signature(), str(GM.no_build_time)]
+	var parts: Array = [str(prod_tab), _deck_faction, _factories.signature(), str(GM.no_build_time)]
 	if prod_tab == "building" or prod_tab == "defense":
 		for bid in _building_catalog():
 			parts.append(str(bid) + ("+" if (_build_state(str(bid)).get("ok", true) == true) else "-"))
@@ -3096,7 +3266,7 @@ func _prod_signature() -> String:
 		if battle.get("struct_ready") != null:
 			for rid in battle.struct_ready_order:
 				parts.append("R:" + str(rid) + ":" + str(int(battle.struct_ready.get(rid, 0))))
-		var sjob: Dictionary = battle.current_structure_job(prod_tab) if battle.has_method("current_structure_job") else {}
+		var sjob: Dictionary = battle.current_structure_job(prod_tab, _deck_structure_faction()) if battle.has_method("current_structure_job") else {}
 		parts.append("J:" + str(sjob.get("id", "")))
 	else:
 		for uid in _unit_catalog():
@@ -3225,7 +3395,7 @@ func _update_production_live() -> void:
 			var color: Color = kit.COL_GOLD
 			var ready_n := int(battle.struct_ready.get(str(uid), 0))
 			var queue_index := -1
-			var jobs: Array = battle.structure_jobs(prod_tab)
+			var jobs: Array = battle.structure_jobs(prod_tab, "ally", _deck_structure_faction())
 			for i in jobs.size():
 				if str(jobs[i].id) == str(uid):
 					queue_index = i
@@ -3237,7 +3407,7 @@ func _update_production_live() -> void:
 			elif queue_index >= 0:
 				btn.disabled = not _catalog_block_reason(str(uid)).is_empty()
 				if queue_index == 0:
-					var job: Dictionary = battle.current_structure_job(prod_tab)
+					var job: Dictionary = jobs[0]
 					state = "%s %d%%" % ["已暂停" if bool(job.get("paused", false)) else _production_status("建造中", cost, null, str(job.id)), int(100.0 * float(job.elapsed) / maxf(0.01, float(job.time)))]
 				else:
 					state = "排队第 %d 项" % (queue_index + 1)
@@ -3366,11 +3536,9 @@ func _production_status(normal: String, cost: float, producer = null, structure_
 func _update_structure_status() -> void:
 	if not is_instance_valid(_structure_status):
 		return
-	var job: Dictionary = battle.current_structure_job(prod_tab)
-	var ready_n := 0
-	for id in battle.struct_ready:
-		if battle.structure_category(str(id)) == prod_tab:
-			ready_n += int(battle.struct_ready[id])
+	var jobs: Array = battle.structure_jobs(prod_tab, "ally", _deck_structure_faction())
+	var job: Dictionary = jobs[0] if not jobs.is_empty() else {}
+	var ready_n := _deck_structure_ready_count(prod_tab)
 	_structure_status.visible = true
 	var line := "%s就绪 %d · 点击对应图标选址" % [_tab_label(prod_tab), ready_n] if ready_n > 0 else "空闲 · 点击图标开始建造"
 	if not job.is_empty():
@@ -3381,8 +3549,12 @@ func _update_structure_status() -> void:
 		line = "%s · %s · %d%%" % [_entity_name(str(job.id)), state, int(100.0 * float(job.elapsed) / maxf(0.01, float(job.time)))]
 		if state in ["建造中", "缺电减速"]:
 			line += " · 剩 %ds" % int(ceil(BattleClock.real_seconds(maxf(0.0, float(job.time) - float(job.elapsed)) / maxf(0.01, battle.structure_work_rate("ally", str(job.id))))))
-		line += "\n等待 %d 项 · 就绪 %d" % [maxi(0, battle.structure_jobs(prod_tab).size() - 1), ready_n]
-	_structure_status.text = "%s独立队列 · 可与%s同时建造\n" % [_tab_label(prod_tab), "建筑" if prod_tab == "defense" else "防御"] + line
+		line += "\n等待 %d 项 · 就绪 %d" % [maxi(0, jobs.size() - 1), ready_n]
+	if battle.uses_split_campaign_deck():
+		var base_name: String = CAMPAIGN_BASE_NAMES.get(_deck_faction, "")
+		_structure_status.text = "%s · %s独立队列\n" % [base_name, _tab_label(prod_tab)] + line if not base_name.is_empty() else "没有可用的建造场"
+	else:
+		_structure_status.text = "%s独立队列 · 可与%s同时建造\n" % [_tab_label(prod_tab), "建筑" if prod_tab == "defense" else "防御"] + line
 	_structure_status.text += ("\n建筑预约：已解锁（含就绪上限 %d；局外可升级）" % battle.production_technology.structure_capacity("ally")) if battle.structure_reservations_enabled() else "\n建筑预约：未解锁 · 当前类别仅建造一项，放置后继续"
 
 
@@ -3395,7 +3567,7 @@ func _clock_phase(normal: String, cost: float, producer = null, structure_id := 
 func _update_cameo_wipes() -> void:
 	var states: Dictionary = {}
 	if prod_tab in ["building","defense"]:
-		var jobs: Array = battle.structure_jobs(prod_tab)
+		var jobs: Array = battle.structure_jobs(prod_tab, "ally", _deck_structure_faction())
 		for i in jobs.size():
 			var job: Dictionary = jobs[i]
 			var id := str(job.id)
@@ -3405,9 +3577,8 @@ func _update_cameo_wipes() -> void:
 				if i == 0:
 					phase = "paused" if bool(job.get("paused",false)) else _clock_phase("建造中",float(job.cost),null,id)
 					progress=clampf(float(job.elapsed)/maxf(0.001,float(job.time)),0.0,1.0)
-					if not battle.structure_reservations_enabled():
-						for ready_id in battle.struct_ready:
-							if int(battle.struct_ready[ready_id])>0 and battle.structure_category(str(ready_id))==prod_tab: phase="blocked"
+					if not battle.structure_reservations_enabled() and _deck_structure_ready_count(prod_tab) > 0:
+						phase = "blocked"
 				states[id]=[progress,0,phase]
 			states[id][1]+=1
 		for id in battle.struct_ready:
@@ -3459,11 +3630,22 @@ func refresh_repair_all() -> void:
 func _refresh_production() -> void:
 	if battle == null or prod_box == null:
 		return
+	var deck_faction := _sync_campaign_deck()
+	var infantry_available := _tab_available("infantry") if deck_tabs != null and battle.uses_split_campaign_deck() else deck_tabs_btns.has("infantry")
+	if deck_tabs != null and (_deck_faction != deck_faction or deck_tabs_btns.has("infantry") != infantry_available):
+		if battle.uses_split_campaign_deck() and not battle.armed_build.is_empty() and GameData.get_building(battle.armed_build).get("faction") != deck_faction:
+			# Changing base exits the other base's placement mode, but the paid building stays ready.
+			battle.armed_build = ""
+			battle.queue_redraw()
+		_clear_nodes(deck_tabs)
+		_add_prod_tabs(deck_faction)
+		if not production_collapsed:
+			deck_title.text = "指令甲板 · %s" % _tab_label(prod_tab)
+	if not _pending_infantry_faction.is_empty():
+		if _campaign_infantry_tab(): _factories.prefer_faction(_pending_infantry_faction)
+		_pending_infantry_faction = ""
 	_recipe_button.visible = prod_tab in ["infantry", "vehicle", "air", "naval"] and BattleRequest.extensions_enabled() and battle.production_technology.is_unlocked("production_recipes", "ally")
 	_sync_plan_button(_deck_orders_button, battle.allied_state.get("opening_orders_pending", []))
-	if deck_tabs != null and _deck_faction != battle.roster_faction():
-		_clear_nodes(deck_tabs)
-		_add_prod_tabs()
 	if is_instance_valid(_recipe_window) and not _recipe_window.is_queued_for_deletion():
 		_recipe_window.sync_from_deck()
 	_update_ready_tabs(0.0)
@@ -3498,7 +3680,7 @@ func _refresh_production() -> void:
 		var cat := _building_catalog()
 		if cat.is_empty():
 			prod_box.add_child(kit.make_label("暂无可建造项目", 13, kit.COL_DIM))
-		var job: Dictionary = battle.current_structure_job(prod_tab) if battle.has_method("current_structure_job") else {}
+		var job: Dictionary = battle.current_structure_job(prod_tab, _deck_structure_faction()) if battle.has_method("current_structure_job") else {}
 		for bid in cat:
 			var sid := str(bid)
 			var bd := GameData.get_building(sid)
@@ -3544,7 +3726,7 @@ func _refresh_production() -> void:
 			var hint := "暂无可生产单位（需先建成兵营 / 工厂）"
 			match prod_tab:
 				"air":
-					hint = "苏联飞行器由战车工厂生产" if battle.roster_faction() == "soviet" else "战机由空指部生产"
+					hint = "苏军飞行器由战车工厂生产" if _deck_faction == "soviet" else "战机由空指部生产"
 				"naval":
 					hint = "舰艇由造船厂生产，船厂需建在水面"
 					if not GameData.mission_tech_block_reason(battle.roster_id("GAYARD", "ally")).is_empty():
@@ -4019,7 +4201,9 @@ func _input(event: InputEvent) -> void:
 		KEY_SPACE:
 			_toggle_pause()
 		KEY_TAB:
+			if settings_panel.visible and event.keycode == KEY_TAB: return
 			_cycle_speed()
+			get_viewport().set_input_as_handled()
 		KEY_G:
 			if ctrl:
 				_toggle_gm()
@@ -4176,11 +4360,16 @@ func _open_saves() -> void:
 		add_child(save_panel)
 	save_panel.open()
 
+func refresh_speed_button() -> void:
+	speed_btn.text = "倍速 ×" + str(GM.fast_forward).trim_suffix(".0")
+
+func _on_battle_speeds_changed() -> void:
+	if is_instance_valid(battle) and not battle.ended and not DisplayPreferences.battle_speeds.has(GM.fast_forward):
+		_cycle_speed()
+
 func _cycle_speed() -> void:
-	_speed_index = (SPEEDS.find(GM.fast_forward) + 1) % SPEEDS.size()
-	var s: float = SPEEDS[_speed_index]
-	BattleClock.set_speed(s)
-	speed_btn.text = "倍速 ×%d" % int(s)
+	BattleClock.set_speed(DisplayPreferences.next_battle_speed(GM.fast_forward))
+	refresh_speed_button()
 
 func _toggle_gm() -> void:
 	if gm_console == null or not is_instance_valid(gm_console):

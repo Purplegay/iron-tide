@@ -44,7 +44,7 @@ static func run(t) -> void:
 			await t.get_tree().physics_frame
 		for n in 3:
 			var vehicle=tasks.actor("convoy"+str(n))
-			t.check(vehicle.position.is_equal_approx(positions[n]) and not vehicle.has_move_order and vehicle.move_speed==0,"paused convoy stays still despite automatic objective ticks "+country+str(n))
+			t.check(vehicle.position.is_equal_approx(positions[n]) and not vehicle.has_move_order and vehicle.move_speed==0,"paused convoy stays still despite automatic objective ticks "+country+str(n),{"start":positions[n],"end":vehicle.position,"speed":vehicle.move_speed,"order":vehicle.has_move_order})
 		for n in 3:tasks.actor("convoy"+str(n)).position=truck.position+Vector2(n*35,0)
 		truck.position=tasks.state.origin+Vector2(520,0)
 		for n in 3:

@@ -40,14 +40,19 @@ const ALERT: Color = Color(1.0, 0.30, 0.24)          # 建筑受损警戒脉冲
 const RIM_ENEMY: Color = Color(1.0, 1.0, 1.0, 0.62)  # 敌方血条细描边（非颜色维度区分）
 const NO_RIM: Color = Color(0.0, 0.0, 0.0, 0.0)
 
-## 返回该阵营血条的额外描边色（敌方给一条细窄白描边，便于颜色之外辨识）。
+const SHIELD_FILL := Color(0.30, 0.85, 1.0)
+const PSI_SHIELD_INK := Color(0.83, 0.62, 1.0)
+
+static func psi_countdown(left: float) -> String:
+	return "灵能护盾 %d 秒" % ceili(left)
+
 static func shield_number(amount: float) -> String:
 	return str(maxi(1, roundi(amount))) if amount > 0.0 else "0"
 
 static func readout(side: String, hp: float, maximum: float, shield: float) -> String:
 	if side != "ally": return ""
 	var text := "%s/%s" % [shield_number(hp), shield_number(maximum)]
-	if shield > 0.0: text += "  盾 " + shield_number(shield)
+	if shield > 0.0: text += "  护盾 " + shield_number(shield)
 	return text
 
 static func draw_readout(canvas: CanvasItem, rect: Rect2, side: String, hp: float, maximum: float, shield: float) -> void:
@@ -58,6 +63,37 @@ static func draw_readout(canvas: CanvasItem, rect: Rect2, side: String, hp: floa
 	canvas.draw_string_outline(font, baseline, text, HORIZONTAL_ALIGNMENT_CENTER, 180, 12, 3, Color("#071018"))
 	canvas.draw_string(font, baseline, text, HORIZONTAL_ALIGNMENT_CENTER, 180, 12, Color.WHITE)
 
+## Shared unit/building overlay. Exact enemy durability stays hidden like HP.
+static func draw_shield(ci: CanvasItem, rect: Rect2, shield: Dictionary, side: String, show_health_text: bool) -> void:
+	var amount := float(shield.amount)
+	var psi_left := float(shield.psi_left)
+	if amount <= 0.0 and not shield.protected and psi_left <= 0.0:return
+	var bar := Rect2(rect.position + Vector2(0, -5), Vector2(rect.size.x, 3))
+	if amount > 0.0:
+		# A positive sliver must stay visible even on a narrow health bar.
+		var fill := maxf(float(shield.fraction), 1.0 / maxf(1.0, bar.size.x - 2.0))
+		draw_bar(ci, bar, fill, SHIELD_FILL)
+	elif shield.protected:
+		ci.draw_rect(bar, SHIELD_FILL, false, 1.0)
+	var text := ""
+	if side == "ally" and amount > 0.0 and not show_health_text:
+		text = "护盾 " + shield_number(amount)
+	if shield.protected:
+		text += (" · " if not text.is_empty() else "") + "防护中"
+	var y := rect.position.y - (22.0 if show_health_text and side in ["ally", "neutral"] else 8.0)
+	if not text.is_empty():
+		_draw_shield_text(ci, Vector2(rect.get_center().x, y), text, SHIELD_FILL)
+		y -= 14.0
+	if psi_left > 0.0:
+		_draw_shield_text(ci, Vector2(rect.get_center().x, y), psi_countdown(psi_left), PSI_SHIELD_INK)
+
+static func _draw_shield_text(ci: CanvasItem, center: Vector2, text: String, ink: Color) -> void:
+	var baseline := center - Vector2(90.0, 0.0)
+	var font := ThemeDB.fallback_font
+	ci.draw_string_outline(font, baseline, text, HORIZONTAL_ALIGNMENT_CENTER, 180, 12, 3, Color("#071018"))
+	ci.draw_string(font, baseline, text, HORIZONTAL_ALIGNMENT_CENTER, 180, 12, ink)
+
+## 敌方血条用白色细描边，便于在颜色之外辨识。
 static func rim_for(side: String) -> Color:
 	return RIM_ENEMY if side == "enemy" else NO_RIM
 

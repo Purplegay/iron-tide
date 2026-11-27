@@ -21,6 +21,7 @@ static func run(t) -> void:
 	t.check(Expedition.load_run() and Expedition.state==saved,"shared talent upgrades survive reload")
 	t.check(Expedition.launch(0),"shared talents actual battle launches")
 	if t.instantiate_battle():
+		t.receive_scheduled_army()
 		var normal=t.battle.spawn_unit("CLEG","ally",t.battle.player_start()+Vector2(400,200))
 		var special
 		for unit in t.battle.units:

@@ -86,11 +86,11 @@ func check_unlimited_reserves() -> void:
 	excess.active_roster.append("MGTK")
 	check(army.roster_error(excess).contains("出战编制超过"),"ninth active type still exceeds chapter slots")
 	excess=run.duplicate(true)
-	army.add_unit(excess,"MGTK",1)
-	check(army.roster_error(excess).contains("人口上限"),"reserves still count toward population")
+	army.add_unit(excess,"ZEP",1)
+	check(army.roster_error(excess).is_empty() and Expedition.excess_sale(excess).count==0 and army.deployment(excess).reserve.size()==16,"a legal reserve can raise total inventory above the deployment cap")
 	check(Expedition.commit(run) and Expedition.load_run(),"reload full camp with all six reserves")
 	camp.change_tab(2)
-	check(camp.body.find_children("*","Label",true,false).any(func(l):return l.text.contains("预备 6 种（不限种类）") and l.text.contains("40 / 40")),"camp shows reserve count and population separately")
+	check(camp.body.find_children("*","Label",true,false).any(func(l):return l.text.contains("预备 15 个") and l.text.contains("出战人数 25 / 40")),"camp shows reserve count and population separately")
 	for id:String in reserves:
 		check(tile(-1,id)!=null and army.quantity(Expedition.state,id)==reserves[id],"reserve card and saved quantity "+id)
 	camp.change_tab(0)
@@ -102,7 +102,7 @@ func check_unlimited_reserves() -> void:
 
 func tile(index:int,id:String=""):
 	for node in camp.body.find_child("FormationBox",true,false).find_children("*","Button",true,false):
-		if node.slot_index==index and (index>=0 or node.unit_id==id):return node
+		if "slot_index" in node and node.slot_index==index and (index>=0 or node.unit_id==id):return node
 	return null
 
 func mouse_motion(point:Vector2,pressed:bool) -> void:

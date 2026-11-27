@@ -48,7 +48,34 @@ func verify_battle_assets() -> void:
 		var path := "res://assets/ra2/%s.png" % image
 		check(ResourceLoader.exists(path) and load(path) is Texture2D, "battle texture available: " + path)
 
+func disable_autosave(screen: Node) -> void:
+	var autosave := screen.get_node_or_null("BattleAutosave")
+	if autosave != null: autosave.set_process(false)
+	check(autosave != null and not autosave.is_processing(), "isolated smoke autosave disabled")
+
+func create_fixture(path: String) -> void:
+	BattleRequest.configure_skirmish(MatchRules.EXTENDED, {"map_layout":"yr_blood_feud", "country":"美国", "enemy_country":"苏俄", "fog_of_war":true, "difficulty":5})
+	var screen = load("res://scenes/battle.tscn").instantiate()
+	add_child(screen)
+	disable_autosave(screen)
+	await get_tree().physics_frame
+	var world = screen.battle
+	for i in 310:
+		world.spawn_unit("E1", "ally", world.player_start() + Vector2((i % 20) * 24, (i / 20.0) * 24))
+	for i in 215:
+		world._place_building("GAPOWR", "ally", Vector2(200 + (i % 20) * 100, 300 + (i / 20.0) * 100), true)
+	check(world.units.size() >= 300 and world.buildings.size() >= 190, "large fixture population")
+	var saved := BattleSaves.save_slot(world, "slot2")
+	check(saved.ok, "create fixture with current release: " + saved.message)
+	if saved.ok:
+		check(DirAccess.copy_absolute(ProjectSettings.globalize_path(BattleSaves.slot_path("slot2")), path) == OK, "copy fixture out of isolated profile")
+	get_tree().quit(int(failed != 0))
+
 func run() -> void:
+	var fixture := OS.get_environment("IRON_PACKAGE_CREATE_FIXTURE")
+	if not fixture.is_empty():
+		await create_fixture(fixture)
+		return
 	verify_battle_assets()
 	check(not OS.has_feature("editor"),"running actual exported release executable")
 	check(ProjectSettings.get_setting("application/config/version")==OS.get_environment("IRON_PACKAGE_VERSION"),"package version")
@@ -60,6 +87,7 @@ func run() -> void:
 		BattleRequest.configure_skirmish(MatchRules.EXTENDED,{"map_layout":id,"country":country,"enemy_country":"苏俄" if country=="美国" else "美国","fog_of_war":true,"difficulty":5})
 		var screen=load("res://scenes/battle.tscn").instantiate()
 		add_child(screen)
+		disable_autosave(screen)
 		for i in 30:await get_tree().physics_frame
 		var world=screen.battle
 		check(world!=null and world.fog!=null and world.skirmish_ai!=null,"native map opens "+id)
@@ -77,10 +105,11 @@ func run() -> void:
 	DirAccess.make_dir_recursive_absolute(BattleSaves.DIRECTORY)
 	check(DirAccess.copy_absolute(OS.get_environment("IRON_SAVE"),ProjectSettings.globalize_path(BattleSaves.slot_path("slot1")))==OK,"copy checkpoint into isolated profile")
 	var loaded: Dictionary=BattleSaves.load_into_scene("slot1")
-	check(loaded.ok,"packaged build accepts the measured checkpoint")
+	check(loaded.ok,"packaged build accepts the test checkpoint: " + loaded.message)
 	if loaded.ok:
 		while get_tree().current_scene==null:await get_tree().process_frame
 		var screen=get_tree().current_scene
+		disable_autosave(screen)
 		check(screen.battle.units.size()>=300 and screen.battle.buildings.size()>=190,"large checkpoint population restored")
 		BattleClock.set_speed(1.0)
 		get_tree().paused=false

@@ -1,10 +1,11 @@
 extends RefCounted
 
 const BRANCHES := {"army":"军团调度", "supply":"前线后勤", "intel":"战场情报", "factory":"野战生产", "bargain":"折扣采购"}
+const SUPPLY_BONUSES := {1:50, 2:10, 4:50, 6:10, 7:300, 8:30, 9:30}
 const NODES := {
 	"bargain":["一键锁定打折商品","一键购买打折商品"],
-	"army":["第一批军团提前10%","增援移速提高1%","第二批军团提前10%","增援生命提高1%","第三批军团提前10%","增援移速再提高1%","第一批提前至12%","增援生命再提高1%","第二批提前至12%","第三批提前至12%"],
-	"supply":["开局补给增加5","胜利补给增加1","商店增加一个货位","开局补给再增加5","每个营地多一次免费刷新","胜利补给再增加1","首次胜利额外获得3补给","开局补给再增加3","首次进入营地获得3补给","首个营地再送一次刷新"],
+	"army":["第一批等待时间缩短10%","增援移速提高1%","第二批等待时间缩短10%","增援生命提高1%","第三批等待时间缩短10%","增援移速再提高1%","第一批等待缩短12%（原为10%）","增援生命再提高1%","第二批等待缩短12%（原为10%）","第三批等待缩短12%（原为10%）"],
+	"supply":["出征时额外获得%d补给"%SUPPLY_BONUSES[1],"每场胜利额外获得%d补给"%SUPPLY_BONUSES[2],"商店增加一个货位","出征时再多获得%d补给"%SUPPLY_BONUSES[4],"每个营地多一次免费刷新","每场胜利再多获得%d补给"%SUPPLY_BONUSES[6],"本轮首胜额外获得%d补给"%SUPPLY_BONUSES[7],"出征时再多获得%d补给"%SUPPLY_BONUSES[8],"进入本轮第一个营地时获得%d补给"%SUPPLY_BONUSES[9],"本轮第一个营地再多一次免费刷新"],
 	"intel":["预览任务敌军","视野提高1%，并在路线和战场上标出百合子的初遇雨棚","显示首批敌军数量","显示首批抵达时间","预览第二批敌军","视野再提高1%","显示第二批数量","显示第二批抵达时间","标记精英战术","两批敌军并列比较"],
 	"factory":["载具生产时间缩短1%","步兵生产费用降低1%","首辆载具生产时间缩短20%","载具生产再快1%","首单步兵生产时间缩短20%","步兵生产时间缩短1%","首架飞机生产时间缩短15%","舰船生产时间缩短1%","飞机生产时间缩短1%","首艘舰船生产时间缩短15%"]}
 const COST := [100,200,300,400,500,600,700,800,900,1000]
@@ -97,9 +98,16 @@ static func populate(box:VBoxContainer) -> void:
 			if index < current:
 				b.add_theme_color_override("font_disabled_color", Color.WHITE)
 
+static func opening_supplies(run:Dictionary) -> int:
+	var level:=rank(run,"supply")
+	return SUPPLY_BONUSES[1]*int(level>=1)+SUPPLY_BONUSES[4]*int(level>=4)+SUPPLY_BONUSES[8]*int(level>=8)
+
 static func supply_reward(run:Dictionary) -> int:
 	var level:=rank(run,"supply")
-	return int(level>=2)+int(level>=6)+3*int(level>=7 and run.history.is_empty())
+	return SUPPLY_BONUSES[2]*int(level>=2)+SUPPLY_BONUSES[6]*int(level>=6)+SUPPLY_BONUSES[7]*int(level>=7 and run.history.is_empty())
+
+static func first_camp_supplies(run:Dictionary) -> int:
+	return SUPPLY_BONUSES[9] if rank(run,"supply")>=9 else 0
 
 static func production(battle,side:String,uid:String) -> float:
 	if side!="ally" or battle==null:return 1.0

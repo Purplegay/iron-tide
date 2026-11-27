@@ -145,7 +145,7 @@ static func staff_soviet_defense(ai) -> void:
 			if u.special.get("action") == action and u.special.get("target") == building:
 				assigned += 1
 				continue
-			if u.special.has("action") or u.special.has("ai_oil_post") or u.repairing or u.attack_ordered or is_instance_valid(u.attack_target): continue
+			if u.special.has("yr_skirmish_team") or u.special.has("action") or u.special.has("ai_oil_post") or u.repairing or u.attack_ordered or is_instance_valid(u.attack_target): continue
 			if not AlliedAbilities.can_order(u,building,action): continue
 			var d: float = u.position.distance_to(building.position)
 			if d < distance:
@@ -447,7 +447,7 @@ static func meet_passengers(world, carrier) -> void:
 static func transport(ai, carrier, visible: Array) -> void:
 	var phase: String = carrier.special.get("ai_transport_phase", "load")
 	if phase == "load":
-		var troops: Array = ai.battle.units.filter(func(u): return ai.battle.actor_alive(u) and u.side == ai.house_id and u.unit_id == "GHOST" and u.embarked_in == null and u.logistics.boarding == null)
+		var troops: Array = ai.battle.units.filter(func(u): return ai.battle.actor_alive(u) and u.side == ai.house_id and u.unit_id == "GHOST" and not u.special.has("yr_skirmish_team") and u.embarked_in == null and u.logistics.boarding == null)
 		for unit in troops.slice(0, maxi(0, 2 - carrier.logistics.passengers.size() - carrier.logistics.incoming.size())):
 			unit.cancel_stance()
 			if ai.battle.ai_dispatch.defer_job(ai.battle,unit,"board",carrier) or unit.logistics.request_board(carrier):
@@ -485,7 +485,7 @@ static func transport(ai, carrier, visible: Array) -> void:
 		carrier.special.ai_transport_phase = "load"
 
 static func unit_decision(ai,unit,visible, batch: Dictionary = {}) -> void:
-	if unit.embarked_in != null: return
+	if unit.embarked_in != null or unit.special.has("yr_skirmish_team"): return
 	var world = ai.battle
 	var carrier = unit.special.get("ai_carrier")
 	if unit.special.get("ai_transport_reserved", false) and (not world.actor_alive(carrier) or carrier.side != unit.side):

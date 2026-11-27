@@ -17,6 +17,7 @@ static func lights(world) -> void:
 	for row in RETAIL.data.lights:
 		var sprite := Sprite2D.new()
 		sprite.texture = gradient
+		sprite.set_meta("retail_light_type",str(row[0]))
 		sprite.position = Vector2(row[1],row[2])*55
 		var radius := float(row[3])*55/256
 		sprite.scale = Vector2.ONE*radius*2/gradient.get_width()
@@ -41,8 +42,9 @@ static func native_catalog(row:Dictionary) -> void:
 		if site[4]=="Civilian House": health[Vector2(site[1],site[2])] = site[3]
 	for site in row.structures: site.append(health.get(Vector2(site[1],site[2]),256))
 
-static func super_site(world, clip:String) -> void:
+static func super_site(world, clip:String, retail_type: String = ""):
 	var entry: Array = {"csof001":["NAMISL",48091,0],"csof010":["GAWEAT",107018,1],"csof125":["YAPPET",85058,-1],"csof128":["YAGNTC",52075,-1]}[clip]
+	if not retail_type.is_empty() and retail_type != entry[0]:return null
 	var coord := int(entry[1])
 	var point := Vector2(201.5-floori(coord/1000.0), coord%1000-10.5)*55
 	var dims := str(GameData.get_building(entry[0]).foundation).split("x")
@@ -50,3 +52,4 @@ static func super_site(world, clip:String) -> void:
 	var building = world._place_building(entry[0],"enemy",point,true)
 	if building != null:building.special.s07_launcher=true
 	if building != null and int(entry[2])>=0: world.HeadGames.assign_wing(building,entry[2])
+	return building

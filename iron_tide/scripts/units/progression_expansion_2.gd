@@ -21,6 +21,12 @@ const Tractor=preload("res://scripts/units/expansion_2_tractor.gd")
 const KEY:="progression_v2"
 const ACTIVE:=["ap_anchor_pin","ap_observer_line","ap_battle_breather","ap_prism_cross","ap_flak_fan","ap_lure_pounce","ap_escort_water","ap_gun_ballast","ap_overload_seal","ap_tractor_warhead"]
 const EMPTY:Dictionary={}
+const UNIT_TYPES := {
+	"E1": true, "E2": true, "SNIPE": true, "FLAKT": true, "FV": true, "GGI": true,
+	"SREF": true, "MGTK": true, "SHK": true, "HTK": true, "DRON": true, "V3": true,
+	"APOC": true, "JUMPJET": true, "SHAD": true, "SCHP": true, "HYD": true, "AEGIS": true,
+	"SUB": true, "MTNK": true, "HTNK": true, "GHOST": true, "TANY": true, "BORIS": true,
+}
 
 static func state(unit) -> Dictionary:
 	return unit.special.get_or_add(KEY,{"side":unit.side})
@@ -31,7 +37,7 @@ static func eligible(unit) -> bool:
 	var id: String = unit.unit_id
 	if id in ["ORCA","BEAG"] and Aircraft.eligible(unit):return true
 	if id=="DRED" and Dread.enabled(unit):return true
-	if id not in ["E1","E2","SNIPE","FLAKT","FV","GGI","SREF","MGTK","SHK","HTK","DRON","V3","APOC","JUMPJET","SHAD","SCHP","HYD","AEGIS","SUB","MTNK","HTNK","GHOST","TANY","BORIS"] and not unit.special.has(KEY):return false
+	if not unit.special.has(KEY) and not UNIT_TYPES.has(id):return false
 	if not R.active(unit):return false
 	# Saved effects and the two type-independent cards retain the full tick path.
 	# Only dispatch is narrowed; card ranks, ownership and status remain live.

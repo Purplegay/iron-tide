@@ -12,21 +12,19 @@ var _flash: float = 0.0      # 受击白闪剩余（1→0）
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	set_process(true)
+	set_process(_cur / _mx < HpBar.CRIT or _flash > 0.0 or _ghost != clampf(_cur / _mx, 0.0, 1.0))
 
 ## 更新血量（每帧可安全调用）。
 func set_hp(cur: float, mx: float) -> void:
 	var nmx: float = maxf(1.0, mx)
-	var prev_frac: float = clampf(_cur / maxf(1.0, _mx), 0.0, 1.0)
 	if absf(cur - _cur) > 0.001 or absf(nmx - _mx) > 0.001:
 		if cur < _cur - 0.001:
 			_flash = 1.0                        # 掉血瞬间触发白闪
-			_ghost = maxf(_ghost, prev_frac)    # 残影保留旧血量
+			_ghost = maxf(_ghost, clampf(_cur / _mx, 0.0, 1.0))    # 残影保留旧血量
 		_cur = cur
 		_mx = nmx
+		set_process(true)
 		queue_redraw()
-	elif _cur / nmx < HpBar.CRIT:
-		queue_redraw()   # 低血脉冲需要持续重绘
 
 func _process(delta: float) -> void:
 	if not is_visible_in_tree():
@@ -45,6 +43,8 @@ func _process(delta: float) -> void:
 		need = true
 	if need:
 		queue_redraw()
+	if frac >= HpBar.CRIT and _flash == 0.0 and _ghost == frac:
+		set_process(false)
 
 func set_use_tier(enabled: bool) -> void:
 	if _use_tier != enabled:

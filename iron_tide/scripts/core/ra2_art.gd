@@ -92,6 +92,22 @@ static func art(id: String) -> Dictionary:
 	_cache[id] = m
 	return m
 
+static func allied_finale_site(id: String) -> Dictionary:
+	if BattleRequest.skirmish or BattleRequest.mission_id != "yr_allied_finale": return {}
+	var key := "allied_finale:" + id
+	if not _cache.has(key):
+		var base := "res://assets/maps/yr/allied_finale/" + id
+		var result := {}
+		if FileAccess.file_exists(base+".json") and ResourceLoader.exists(base+".png"):
+			result = JSON.parse_string(FileAccess.get_file_as_string(base+".json"))
+			result.merge({"kind":"shp","key":id,"tex":load(base+".png")},true)
+			if ResourceLoader.exists(base+"_detail.png"):
+				var detail := load(base+"_detail.png") as Texture2D
+				if detail != null and detail.get_size() == result.tex.get_size()*2.0:
+					result.merge({"detail_tex":detail,"detail_scale":2.0})
+		_cache[key] = result
+	return _cache[key]
+
 static func has_art(id: String) -> bool:
 	return not art(id).is_empty()
 
@@ -328,6 +344,25 @@ static func begin_detail_draw(canvas: CanvasItem) -> void:
 		canvas.set_meta("shp_detail_previous", canvas.get_meta("shp_detail_textures"))
 		canvas.set_meta("shp_detail_textures", previous)
 ## Draw at logical size from a denser atlas, preserving every shared anchor.
+## Freeze a draw command without keeping an actor, texture resource or animation clock in the save.
+static func remember_sprite(layers: Array, art_data: Dictionary, target: Rect2, source: Rect2, tint: Color) -> void:
+	if not target.has_area() or not source.has_area(): return
+	var detail: Dictionary = art_data.get("detail", {})
+	if not detail.is_empty():
+		var entry: Dictionary = detail.lookup.get(Vector4i(source.position.x, source.position.y, source.size.x, source.size.y), {})
+		if not entry.is_empty():
+			var page_index := int(entry.page)
+			if page_index < 0: return
+			var geometry: Array = entry.fog_region
+			var crop: Rect2 = geometry[1]
+			var ratio := target.size / source.size
+			layers.append([geometry[0], Rect2(target.position + crop.position * ratio, crop.size * ratio), geometry[2], tint])
+			return
+	var texture: Texture2D = art_data.get("detail_tex", art_data.get("tex"))
+	if texture == null or texture.resource_path.is_empty(): return
+	var density := float(art_data.get("detail_scale", 1.0))
+	layers.append([texture.resource_path, target, Rect2(source.position * density, source.size * density), tint])
+
 static func draw_sprite(canvas: CanvasItem, art_data: Dictionary, target: Rect2, source: Rect2, tint: Color = Color.WHITE, waterline := INF) -> void:
 	if art_data.has("detail") and ShpDetail.draw(canvas, art_data, target, source, tint, waterline): return
 	var texture: Texture2D = art_data["detail_tex"] if art_data.has("detail_tex") else art_data.get("tex")

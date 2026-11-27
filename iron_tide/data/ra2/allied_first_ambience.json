@@ -1,0 +1,279 @@
+{
+ "_Amb_UrbanMurmur1": {
+  "files": [
+   "aurb01a",
+   "aurb01b",
+   "aurb01c",
+   "aurb01d",
+   "aurb01e",
+   "aurb01f"
+  ],
+  "volume": 0.35,
+  "range": 25,
+  "delay": [
+   0,
+   0
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 2
+ },
+ "_Amb_Traffic": {
+  "files": [
+   "atra01a",
+   "atra01b",
+   "atra01c",
+   "atra01d",
+   "atra01e",
+   "atra01f"
+  ],
+  "volume": 0.4,
+  "range": 15,
+  "delay": [
+   6000,
+   10000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_UrbanMurmur2": {
+  "files": [
+   "aurb02a",
+   "aurb02b",
+   "aurb02c",
+   "aurb02d"
+  ],
+  "volume": 0.3,
+  "range": 25,
+  "delay": [
+   0,
+   0
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 2
+ },
+ "_Amb_BirdsTemperate1": {
+  "files": [
+   "abirt01a",
+   "abirt01b",
+   "abirt01c",
+   "abirt01d",
+   "abirt01e",
+   "abirt01f",
+   "abirt01g"
+  ],
+  "volume": 0.35,
+  "range": 10,
+  "delay": [
+   5000,
+   8000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_BirdsPark": {
+  "files": [
+   "abirp01a",
+   "abirp01b",
+   "abirp01c",
+   "abirp01d",
+   "abirp01e"
+  ],
+  "volume": 0.35,
+  "range": 15,
+  "delay": [
+   5000,
+   8000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_BirdsTemperate2": {
+  "files": [
+   "abirt02a",
+   "abirt02b"
+  ],
+  "volume": 0.35,
+  "range": 10,
+  "delay": [
+   5000,
+   8000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_BirdsMorning": {
+  "files": [
+   "abirm01a",
+   "abirm01b",
+   "abirm01c"
+  ],
+  "volume": 0.4,
+  "range": 10,
+  "delay": [
+   7000,
+   12000
+  ],
+  "pitch": [
+   0,
+   0
+  ],
+  "limit": 1
+ },
+ "_Amb_BirdsBeach": {
+  "files": [
+   "agul02a",
+   "agul02b",
+   "agul02c",
+   "agul02d",
+   "agul02e",
+   "agul02f",
+   "agul02g",
+   "agul02h",
+   "agul02i",
+   "agul02j"
+  ],
+  "volume": 0.3,
+  "range": 10,
+  "delay": [
+   4000,
+   8000
+  ],
+  "pitch": [
+   0,
+   0
+  ],
+  "limit": 1
+ },
+ "_Amb_BirdsHarbor": {
+  "files": [
+   "agul01a",
+   "agul01b",
+   "agul01c",
+   "agul01d",
+   "agul01e"
+  ],
+  "volume": 0.35,
+  "range": 10,
+  "delay": [
+   0,
+   0
+  ],
+  "pitch": [
+   0,
+   0
+  ],
+  "limit": 1
+ },
+ "_Amb_WindCold": {
+  "files": [
+   "awin01a",
+   "awin01b",
+   "awin01c",
+   "awin01d"
+  ],
+  "volume": 0.45,
+  "range": 10,
+  "delay": [
+   5000,
+   10000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_WindPlains": {
+  "files": [
+   "awin02a",
+   "awin02b",
+   "awin02c",
+   "awin02d"
+  ],
+  "volume": 0.55,
+  "range": 10,
+  "delay": [
+   5000,
+   10000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_CricketChirps": {
+  "files": [
+   "acri01a",
+   "acri01b",
+   "acri01c"
+  ],
+  "volume": 0.25,
+  "range": 10,
+  "delay": [
+   8000,
+   16000
+  ],
+  "pitch": [
+   0,
+   0
+  ],
+  "limit": 1
+ },
+ "_Amb_OceanHeavy": {
+  "files": [
+   "awav01a",
+   "awav01b",
+   "awav01c",
+   "awav01d"
+  ],
+  "volume": 0.45,
+  "range": 15,
+  "delay": [
+   2000,
+   5000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ },
+ "_Amb_OceanLight": {
+  "files": [
+   "awav02a",
+   "awav02b",
+   "awav02c",
+   "awav02d"
+  ],
+  "volume": 0.55,
+  "range": 15,
+  "delay": [
+   2000,
+   4000
+  ],
+  "pitch": [
+   -5,
+   5
+  ],
+  "limit": 1
+ }
+}

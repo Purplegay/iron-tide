@@ -133,13 +133,18 @@ func run() -> void:
 	w._place_building("GACNST","ally",Vector2(800,500),true)
 	w._place_building("GAPOWR","ally",Vector2(1100,550),true)
 	check(GameData.ra2_prereq_ok(Stars.STUDIO,["NAPOWR"]) and GameData.ra2_prereq_ok(Stars.STUDIO,["YAPOWR"]),"苏军和尤里供电建筑可用")
+	check(w.single_structure("NAINDP") and not w.single_structure("GAPILE"),"保留原版工业工厂限建，普通兵营不限建")
 	for country in ["Americans","British","Germans","French","Alliance","Russians","Confederation","Arabs","Africans"]:
 		w._countries.ally=country
 		w.request_structure(Stars.STUDIO)
 		check(w.struct_queue.any(func(job):return job.id==Stars.STUDIO),"制造所进入建造队列 "+country)
 		w.struct_queue.clear()
 	w.request_structure(Stars.STUDIO)
+	check(not w.structure_queue_block_reason(Stars.STUDIO).is_empty(),"生产中占用制造所名额")
+	w.request_structure(Stars.STUDIO)
+	check(w.struct_queue.filter(func(job):return job.id==Stars.STUDIO).size()==1,"禁止重复排队")
 	w._tick_structure_jobs(1000.,w.struct_queue,w.struct_ready,"ally","building")
+	check(not w.structure_queue_block_reason(Stars.STUDIO).is_empty() and w.limit_reason(Stars.STUDIO,"ally",true).is_empty(),"待放置占名额但允许落地")
 	check(int(w.struct_ready.get(Stars.STUDIO,0))==1,"施工扣款完成待放置")
 	var origin:Vector2=w._player_hq().position
 	var site:=Vector2.INF
@@ -156,6 +161,9 @@ func run() -> void:
 	check(placed.size()==1 and not w.struct_ready.has(Stars.STUDIO),"落地消耗成品")
 	if placed.is_empty():get_tree().quit(1);return
 	var studio=placed[0]
+	w.request_structure(Stars.STUDIO)
+	check(w.struct_queue.all(func(job):return job.id!=Stars.STUDIO) and not w.limit_reason(Stars.STUDIO,"ally",true).is_empty(),"已建造禁止再次生产或放置")
+	check(w.limit_reason(Stars.STUDIO,"enemy").is_empty(),"各方名额独立")
 	var building_icon=load(GameData.ra2_cameo_path(Stars.STUDIO))
 	check(building_icon is AtlasTexture and building_icon.get_width()*4==building_icon.get_height()*5 and building_icon.region.size.x<building_icon.atlas.get_width(),"制造所图标单独裁切")
 	studio._buildup_play=-1
@@ -195,6 +203,19 @@ func run() -> void:
 		codec.restore(w,snap)
 		var restored:Array=w.units.filter(func(u):return w.actor_alive(u) and u.special.get("academy_hero")=="ARND")
 		check(restored.size()==1 and restored[0].special.studio.has("hard_cd") and restored[0].special.hero_survival_rank==2,"对局读档恢复天赋与硬汉冷却")
+		var restored_studio = w.buildings.filter(func(b):return w.actor_alive(b) and b.side=="ally" and b.building_id==Stars.STUDIO)
+		check(restored_studio.size()==1 and not w.limit_reason(Stars.STUDIO,"ally").is_empty(),"读取的制造所仍占限建名额")
+		if restored_studio.size()==1:
+			w.hud._toggle_pause()
+			check(w.apply_building_action("sell",restored_studio[0]),"恢复战斗后可出售制造所")
+			w.request_structure(Stars.STUDIO)
+			check(w.struct_queue.any(func(job):return job.id==Stars.STUDIO),"出售后可重新建造")
+			w._tick_structure_jobs(1000.,w.struct_queue,w.struct_ready,"ally","building")
+			var rebuilt = w.deliver_ready_structure(Stars.STUDIO,"ally",site)
+			check(w.actor_alive(rebuilt),"重新落地成功")
+			if w.actor_alive(rebuilt):
+				rebuilt.receive_hit(1000000.0)
+				check(not w.actor_alive(rebuilt) and w.limit_reason(Stars.STUDIO,"ally").is_empty(),"摧毁后释放建造名额")
 	print("STUDIO RESULT ",checks," checks ",errors," failed")
 	get_tree().quit(1 if errors else 0)
 

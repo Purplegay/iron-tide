@@ -185,7 +185,7 @@ static func paint_plan(world, id: String, origin: Vector2) -> void:
 		for neighbor in all_points:
 			for i in 4:
 				if Vector2(neighbor - point).distance_to(DIRECTIONS[i] * CELL) < 0.1: mask |= 1 << i
-		world._draw_build_ghost(data, point, true, mask)
+		world._queue_build_ghost(data, point, true, mask)
 		world._draw_world_poly(footprint(), point, Color(0.5, 1.0, 0.6, 0.85), 2.0)
 	for point in proposed.blocked:
 		world._draw_world_poly(footprint(), point, Color(1.0, 0.3, 0.25, 0.9), 2.0)

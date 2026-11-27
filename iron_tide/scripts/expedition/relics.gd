@@ -13,7 +13,7 @@ const ITEMS := {
 	"capture_manual":{"name":"据点协同手册","rarity":"优质","max_level":3,"family":"经营","price":100,"icon":"escort","desc":"多支部队共同推进远征主线或支线读条时缩短用时。每升一级，人数带来的减时上限提高 10 个百分点，一级至三级分别为 40%、50%、60%。每处 8 个友方地面单位即可达到上限。"},
 	"signal_timer":{"name":"信物校时器","rarity":"稀有","max_level":5,"family":"经营","price":120,"icon":"hourglass","desc":"每级让所有信物的开场等待和使用后的冷却缩短 10%，最多减半。满级时，原本开场等 300 秒的信物只等 150 秒。"},
 	"alert_array":{"name":"战区监听阵列","rarity":"史诗","drop_weight":0.4,"max_level":3,"family":"经营","price":140,"icon":"antiair","desc":"每层使充满警戒槽所需的警戒值降低 5%，三层共降低 15%。"},
-	"chrono_anchor":{"max_level":3,"name":"超时空稳定锚","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"reload","desc":"军团超时空增援的跨局减时上限从 50% 逐层升至 60%／70%／80%。每局重新倒计时；上局推进的传送时间折半累积，军团人数损失按比例扣回减时收益。本局工厂自产单位不加入军团，也不计损失比例。"},
+	"chrono_anchor":{"max_level":3,"name":"超时空稳定锚","rarity":"传说","drop_weight":0.15,"family":"经营","price":200,"icon":"reload","desc":"军团超时空增援的跨局减时上限从 50% 逐层升至 60%／70%／80%。每局重新倒计时；上局推进的传送时间折半累积，军团人数损失按比例扣回减时收益。自产单位可以补普通军团空位，但不会抵消本关军团伤亡。"},
 	"red_alert_warrant":{"name":"警戒授权","rarity":"传说","drop_weight":0.15,"family":"经营","price":160,"icon":"red_coordinates","desc":"每关开局获得半槽警戒值（50%）。若已储存一次总攻，则保留该次数。"},
 	"bastion_heart":{"name":"不落要塞之心","family":"究极构筑","units":["E1","GGI"],"min_stage":16,"price":260,"icon":"guard","desc":"部署停稳 3 秒获得 15% 护盾，12 秒冷却。护盾实际吸收的伤害蓄为反击能量，最多最大生命的 40%；下次部署直击消耗能量，每吸收 1% 生命对应伤害 +3%，最高 +120%。固守 9 层时，满能量反击再补 10% 护盾。玩法：持盾承伤→蓄能重击→补盾守线。"},
 	"grizzly_engine":{"name":"灰熊穿插引擎","family":"究极构筑","units":["MTNK"],"min_stage":16,"price":260,"icon":"vehicle","desc":"持续移动 2 秒装填 3 发追击弹，10 秒冷却，刷新不累加；每发直击 +25%，每 0.25 秒最多消耗一发。打完三发恢复 8% 生命，并刷新行军首击及灰熊竞速飞轮冷却；装甲 9 层另补满 3 发羁绊突击弹。玩法：穿插装填→三连击→接行军首击再突进。"},

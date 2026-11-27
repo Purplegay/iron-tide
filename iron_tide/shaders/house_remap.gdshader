@@ -36,6 +36,7 @@ uniform bool temporal_active = false;
 uniform float temporal_progress : hint_range(0.0, 1.0) = 0.0;
 uniform float temporal_phase = 0.0;
 uniform float c4_flash : hint_range(0.0, 1.0) = 0.0;
+uniform float sapper_flash : hint_range(0.0, 1.0) = 0.0;
 uniform int paint_mode = 0;
 uniform bool hollywood_paint = false;
 uniform int unit_skin = 0;
@@ -206,6 +207,10 @@ void fragment() {
 		if (c4_flash > 0.0 && sprite_tint > 0.5 && textureSize(TEXTURE, 0).x > 8 && len > 0.12) {
 			float light = dot(rgb, vec3(0.299, 0.587, 0.114));
 			rgb = mix(rgb, vec3(0.45 + light * 0.7, light * 0.12, light * 0.07), c4_flash * 0.85);
+		}
+		// Extra light on textured vehicle art only; leave black shadows and UI alone.
+		if (sapper_flash > 0.0 && textureSize(TEXTURE, 0).x > 8 && length(draw_tint.rgb) > 0.12) {
+			rgb = min(rgb * (1.0 + sapper_flash), vec3(1.0));
 		}
 		if (psi_lift) {
 			vec2 step_uv = TEXTURE_PIXEL_SIZE * 2.0;

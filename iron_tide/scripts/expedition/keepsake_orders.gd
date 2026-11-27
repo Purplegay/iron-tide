@@ -9,6 +9,7 @@ var id:String
 var area:Dictionary
 var state:Dictionary
 var aiming:=false
+var _had_world_graphics := false
 var button:Button
 var charge_mask: Sidebar.ChargeMask
 var instruction:Label
@@ -89,7 +90,9 @@ func refresh() -> void:
 	queue_redraw()
 
 func _process(_delta:float) -> void:
-	queue_redraw()
+	var active: bool = aiming or state.has("watch_left") or (state.has("events") and not state.events.is_empty())
+	if active or _had_world_graphics: queue_redraw()
+	_had_world_graphics = active
 
 func ready_to_act() -> bool:
 	return (float(state.get("cooldown", 0)) <= 0 or state.has("breach_left")) and not world.ended and not world.paused and not get_tree().paused

@@ -1,16 +1,19 @@
 extends Node
-## Saved window resolution; fullscreen always uses the monitor's native mode.
+## Saved display, HUD and battle preferences; fullscreen uses the monitor's native mode.
 
 signal changed
+signal battle_speeds_changed
 const SETTINGS_PATH := "user://display_settings.cfg"
 const RESOLUTIONS: Array[Vector2i] = [Vector2i(1280, 720), Vector2i(1600, 900),
 	Vector2i(1920, 1080), Vector2i(2560, 1440), Vector2i(3840, 2160)]
+const BATTLE_SPEEDS: Array[float] = [1.0, 1.25, 1.5, 2.0, 3.0]
 const DEFAULT_INDEX := 3
 const SETTINGS_VERSION := 2
 var resolution_index := DEFAULT_INDEX
 var fullscreen := false
 var show_production_details := true
 var automatic_building_repair := false
+var battle_speeds: Array[float] = BATTLE_SPEEDS.duplicate()
 var campaign_growth := false
 var campaign_difficulty := 1
 var save_error: Error = OK
@@ -35,8 +38,15 @@ func reload() -> void:
 	automatic_building_repair = false
 	campaign_growth = false
 	campaign_difficulty = 1
+	battle_speeds.assign(BATTLE_SPEEDS)
 	var config := ConfigFile.new()
 	if config.load(SETTINGS_PATH) == OK:
+		var saved_speeds = config.get_value("battle", "speeds", [])
+		if saved_speeds is Array:
+			var enabled: Array[float] = []
+			for speed in BATTLE_SPEEDS:
+				if speed in saved_speeds: enabled.append(speed)
+			if not enabled.is_empty(): battle_speeds = enabled
 		var growth = config.get_value("campaign", "growth", false)
 		if growth is bool: campaign_growth = growth
 		var level = config.get_value("campaign", "difficulty", 1)
@@ -57,6 +67,7 @@ func reload() -> void:
 		if typeof(version) == TYPE_INT and version == SETTINGS_VERSION and typeof(saved_mode) == TYPE_BOOL:
 			fullscreen = saved_mode
 	changed.emit()
+	battle_speeds_changed.emit()
 
 func set_resolution(index: int) -> void:
 	if index < 0 or index >= RESOLUTIONS.size(): return
@@ -79,8 +90,25 @@ func set_automatic_building_repair(enabled: bool) -> void:
 	automatic_building_repair = enabled
 	save()
 
+func set_battle_speed_enabled(speed: float, enabled: bool) -> void:
+	if speed not in BATTLE_SPEEDS or enabled == battle_speeds.has(speed): return
+	if not enabled and battle_speeds.size() == 1: return
+	if enabled:
+		battle_speeds.append(speed)
+		battle_speeds.sort()
+	else:
+		battle_speeds.erase(speed)
+	save()
+	battle_speeds_changed.emit()
+
+func next_battle_speed(current: float) -> float:
+	for speed in battle_speeds:
+		if speed > current and not is_equal_approx(speed, current): return speed
+	return battle_speeds[0]
+
 func save() -> void:
 	var config := ConfigFile.new()
+	config.set_value("battle", "speeds", battle_speeds)
 	config.set_value("hud", "show_production_details", show_production_details)
 	config.set_value("hud", "automatic_building_repair", automatic_building_repair)
 	config.set_value("campaign", "growth", campaign_growth)

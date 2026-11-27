@@ -255,6 +255,24 @@ func tick(delta: float) -> bool:
 		unit.queue_redraw()
 	return false
 
+## Preview the same landing clearance used by unloading without moving cargo.
+func hover_can_unload_at(point: Vector2) -> bool:
+	if unit.unit_id != "YHVR" or passengers.is_empty(): return false
+	return hover_exit_at(point, passengers[0]).is_finite()
+
+func hover_exit_at(point: Vector2, passenger) -> Vector2:
+	var world = unit._battle_world()
+	# The hovercraft can land on either side of the shoreline, but cargo must
+	# have a clear exit and cannot jump across a building between it and the ramp.
+	for ring in [1.0, 1.35, 1.7]:
+		for i in 16:
+			var direction := Vector2.from_angle(unit.hull_angle + TAU*i/16.0)
+			var p: Vector2 = point + direction*(unit.radius+passenger.radius+8.0)*ring
+			if not landing_clear(world,p,passenger.radius,passenger): continue
+			if ring > 1.0 and world.path_service.is_blocked(point.lerp(p,0.55),false,true): continue
+			return p
+	return Vector2.INF
+
 func unload_one() -> void:
 	used_capacity()
 	if passengers.is_empty():
@@ -262,14 +280,17 @@ func unload_one() -> void:
 		return
 	var passenger = passengers[0]
 	var world = unit._battle_world()
-	var ferry: bool = unit.unit_id in ["LCRF", "SAPC"]
+	var ferry: bool = unit.unit_id in ["LCRF", "SAPC", "YHVR"]
+	var hover_exit := hover_exit_at(unit.position,passenger) if unit.unit_id=="YHVR" else Vector2.INF
+	if unit.unit_id=="YHVR" and not hover_exit.is_finite(): return
 	# Start at the bow and fan out to either side if the shore is obstructed.
 	for ring in ([1.0] if ferry else [1.0, 1.6, 2.2]):
 		for i in 16:
 			var step := ceili(i * 0.5) * (1 if i % 2 else -1)
 			var angle: float = unit.hull_angle + TAU * step / 16.0 if ferry else TAU * i / 16.0
 			var direction := Vector2.from_angle(angle)
-			var p: Vector2 = unit.position + direction * (unit.radius + passenger.radius + (4.0 if ferry else 12.0)) * ring
+			var p: Vector2 = hover_exit if hover_exit.is_finite() else unit.position + direction * (unit.radius + passenger.radius + (4.0 if ferry else 12.0)) * ring
+			if hover_exit.is_finite(): direction=unit.position.direction_to(p)
 			if not landing_clear(world, p, passenger.radius):
 				continue
 			passengers.pop_front()

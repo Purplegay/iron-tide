@@ -398,10 +398,12 @@
    "foundation": "3x3",
    "radius": 35,
    "builds": [],
-   "capturable": false,
+   "capturable": true,
+   "unsellable": true,
+   "base_normal": false,
    "power": 0,
    "powered": false,
-   "desc": "尤里控制的技术设施。"
+   "desc": "派工程师占领后可在己方建造场建造巨炮。失去实验室后不能再建造新的巨炮。"
   },
   "YATECH": {
    "id": "YATECH",
@@ -447,7 +449,7 @@
    "capturable": false,
    "power": -200,
    "powered": false,
-   "desc": "尤里的兵员复制设施。"
+   "desc": "己方兵营每训练完一名普通步兵，只要复制中心有空位出兵，就会免费复制一名。"
   }
  },
  "warheads": {

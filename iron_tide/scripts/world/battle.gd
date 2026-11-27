@@ -41,6 +41,13 @@ func clear_ai_decision_cache() -> void:
 var _building_members: Dictionary = {}
 var _building_members_dirty := true
 var _building_members_count := -1
+var _production_witnesses: Dictionary = {}
+
+# These readers borrow the existing valid membership index. They must not
+# trigger a rebuild or cache live eligibility/production results.
+func _warm_owner_buildings(owner_side: String) -> Array:
+	if _building_members_dirty or _building_members_count != buildings.size(): return buildings
+	return _building_members.get(owner_side, [])
 
 func invalidate_building_membership() -> void:
 	_building_members_dirty = true
@@ -50,6 +57,7 @@ func _buildings_for_side(owner_side: String) -> Array:
 		var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(51)
 		preload("res://scripts/world/battle_call_counters.gd").iterations(51,buildings.size())
 		_building_members.clear()
+		_production_witnesses.clear()
 		for candidate in buildings:
 			if not is_instance_valid(candidate): continue
 			var building: Building = candidate
@@ -72,8 +80,10 @@ var build_range_preview = BuildRangePreview.new()
 const AttackCooldownIndicator = preload("res://scripts/ui/attack_cooldown_indicator.gd")
 const AircraftAmmoIndicator = preload("res://scripts/ui/aircraft_ammo_indicator.gd")
 const TransportIndicator = preload("res://scripts/ui/transport_indicator.gd")
+const GarrisonIndicator = preload("res://scripts/ui/garrison_indicator.gd")
 const VeterancyIndicator = preload("res://scripts/ui/veterancy_indicator.gd")
 const HealingIndicator = preload("res://scripts/ui/healing_indicator.gd")
+var _move_preview_was_active := false
 var _attack_ranges_drawn := false
 var _range_nodes: Array[AttackRangePreview] = []
 var ore_growth_elapsed := 0.0
@@ -116,6 +126,7 @@ var enemy_root: Node2D
 var projectiles_root: Node2D
 var effects_root: Node2D
 var hp_overlay: Node2D                  # 高层级血条/标签层（WORLD_HUD）：恒盖在所有实体之上
+var campaign_mark_overlay: Node2D
 var move_order_overlay: Node2D
 
 # 波次
@@ -258,6 +269,11 @@ var _removed_building_bounds := Rect2()
 var building_art_warmup: Node
 
 func _ready() -> void:
+	_build_ghost_layer = Node2D.new()
+	_build_ghost_layer.name = "BuildGhostLayer"
+	_build_ghost_layer.show_behind_parent = true # 占地边界画在贴图上方。
+	_build_ghost_layer.draw.connect(_draw_build_ghosts)
+	add_child(_build_ghost_layer)
 	if DisplayServer.get_name() != "headless":
 		building_art_warmup = preload("res://scripts/buildings/building_art_warmup.gd").new()
 		add_child(building_art_warmup)
@@ -298,6 +314,10 @@ func _notification(what: int) -> void:
 		cancel_pointer_gestures()
 
 func world_input_enabled() -> bool:
+	var first: Dictionary = allied_state.get("allied_first",{})
+	if first.get("assault_input_locked",false) or first.get("phase") in [-1,0,3] or (first.get("power_camera_lock",false) and not power_low): return false
+	if int(allied_state.get("allied_finale",{}).get("media_stage",0)) != 0: return false
+	if allied_state.has("head_brief_stage"): return false
 	return not allied_state.get("hollywood",{}).get("briefing",false) and _window_focused and not paused and not ended and not get_tree().paused and preload("res://scripts/ui/battle_hotkeys.gd").modal_count==0
 
 func cancel_pointer_gestures() -> void:
@@ -317,6 +337,8 @@ func cancel_pointer_gestures() -> void:
 	queue_redraw()
 
 func _on_unit_died(node) -> void:
+	if node is Unit and node.unit_id=="SQD" and node.side=="ally" and node.special.get("time_shift_fleet_slot",-1)==21 and node._battle_world()==self and allied_state.has("time_shift") and int(allied_state.time_shift.phase)==0:
+		allied_state.time_shift.s01_opening_squid2_lost=true
 	invalidate_ai_population()
 	if skirmish and not gm_unit_lab and node is Unit and node.unit_id not in SUPPORT_FLIGHTS \
 			and BattleRequest.is_ai_house(node.side) and node._battle_world() == self and ai_decisions(node.side).get("mobilized",false):
@@ -412,13 +434,19 @@ func setup(p_mission_id: String, p_hud) -> void:
 		for unit in units:
 			if is_instance_valid(unit) and unit.side=="enemy":unit.order_stop();unit.fire_stance="none"
 		hud.call_deferred("_toggle_gm")
-	BattleClock.set_speed()
+	BattleClock.set_speed(DisplayPreferences.battle_speeds[0])
 
 	Events.funds_changed.emit(funds)
 	Events.emit_message("★ %s — %s" % [mission.get("name", ""), mission.get("subtitle", "")], Color(0.7, 0.85, 1.0))
 	Events.emit_message(str(mission.get("brief", "")), Color(0.8, 0.85, 0.9))
 	if mission.get("id")==TimeShift.ID:
 		TimeShift.setup(self)
+		return
+	if mission.get("id")==AlliedFinale.ID:
+		AlliedFinale.setup(self)
+		return
+	if mission.get("id")==AlliedFirst.ID:
+		AlliedFirst.setup(self)
 		return
 	if mission.get("id") == Hollywood.ID:
 		if BattleSaves.pending.is_empty(): Hollywood.setup(self)
@@ -429,6 +457,8 @@ func setup(p_mission_id: String, p_hud) -> void:
 	wave_timer = prepare_time
 	if mission.get("id")==HeadGames.ID and BattleSaves.pending.is_empty(): HeadGames.start_film(self)
 
+const AlliedFirst = preload("res://scripts/world/allied_first.gd")
+const AlliedFinale = preload("res://scripts/world/allied_finale.gd")
 const TimeShift = preload("res://scripts/world/time_shift.gd")
 const HeadGames = preload("res://scripts/world/head_games.gd")
 const Hollywood = preload("res://scripts/world/hollywood_mission.gd")
@@ -473,9 +503,18 @@ func _build_world() -> void:
 		if ab!=null and ab.id==Unit.Convoy.Cards.PRESS:
 			var miner=selected_skill_unit()
 			var aim:Vector2=get_global_mouse_position() if cast_slot>=0 else miner.position+Vector2.from_angle(miner.hull_angle)*Unit.Convoy.Cards.PRESS_RANGE
-			Unit.Convoy.Cards.draw_press_preview(move_order_overlay,miner,aim,cast_slot>=0)
-		if mission.get("id") in [HeadGames.ID, TimeShift.ID, Hollywood.ID] or mission.get("objectives", {}).has("destroy_hives"):
-			CampaignMarks.paint(move_order_overlay, self))
+			Unit.Convoy.Cards.draw_press_preview(move_order_overlay,miner,aim,cast_slot>=0))
+	if mission.get("id") in [HeadGames.ID, TimeShift.ID, Hollywood.ID, AlliedFirst.ID, AlliedFinale.ID] or mission.get("objectives", {}).has("destroy_hives"):
+		var objective_canvas := CanvasLayer.new()
+		objective_canvas.name = "CampaignObjectiveCanvas"
+		objective_canvas.layer = 1 # Above world and fog, below the HUD and films.
+		add_child(objective_canvas)
+		var objectives := Node2D.new()
+		objectives.name = "Markers"
+		objective_canvas.add_child(objectives)
+		objectives.draw.connect(func(): CampaignMarks.paint(objectives,self))
+		get_viewport().size_changed.connect(objectives.queue_redraw)
+		campaign_mark_overlay = objectives
 
 	enemy_root = Node2D.new()
 	add_child(enemy_root)
@@ -507,7 +546,7 @@ func _build_world() -> void:
 	# 矿场必须开局就有：否则采矿车满仓后无坞可进，表现为“回不动”（T7）。
 	var hq_pos := player_start()
 	var starting_refinery = null
-	if mission.get("id") in [Hollywood.ID,HeadGames.ID,TimeShift.ID]:
+	if mission.get("id") in [Hollywood.ID,HeadGames.ID,TimeShift.ID,AlliedFinale.ID,AlliedFirst.ID]:
 		pass # The airport convoy arrives during the briefing.
 	elif mcv_opening():
 		hq_pos = snap_build_pos(Vector2(minf(map_size * 0.56, coast_x - 140.0), map_size * 0.84) if map_layout() == "coast" and not BattleRequest.skirmish_config.get("houses",[]).any(func(row):return row.has("spawn")) else hq_pos)
@@ -567,7 +606,7 @@ func _build_world() -> void:
 		_build_skirmish_enemy_base()
 	elif mission.get("id") == HeadGames.ID:
 		HeadGames.setup(self)
-	elif mission.get("id") not in [Hollywood.ID,TimeShift.ID]:
+	elif mission.get("id") not in [Hollywood.ID,TimeShift.ID,AlliedFinale.ID,AlliedFirst.ID]:
 		for p in spawn_points:
 			_place_building("swarm_hive", "enemy", p, true)
 		# RA3 式水域：地图两侧的湖泊（地面单位不可通行，但允许水上建造）
@@ -857,7 +896,7 @@ func _path_blockers() -> Array:
 			blockers.append(b)
 	return blockers
 
-func _place_building(bid: String, side: String, pos: Vector2, instant: bool = false, placement_sound: bool = false):
+func _place_building(bid: String, side: String, pos: Vector2, instant: bool = false, placement_sound: bool = false, force_construction := false):
 	if house_defeated(side): return null
 	var bd := GameData.get_building(bid)
 	if bd.is_empty():
@@ -865,7 +904,7 @@ func _place_building(bid: String, side: String, pos: Vector2, instant: bool = fa
 		return null
 	var parent: Node = self if side == "ally" else enemy_root
 	var b = BuildingScript.new()
-	b.setup(bd, side, pos, self, instant)
+	b.setup(bd, side, pos, self, instant, force_construction)
 	preload("res://scripts/world/american_paradrop.gd").configure(b)
 	parent.add_child(b)
 	if skirmish and bid == "NAPSIS": b.add_to_group(&"psychic_sensors")
@@ -979,6 +1018,8 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 		data["_attack_mult"] = pow(float(sc.get("damage_mult_per_loop", 1.08)), endless_loop)
 	var u = UnitScript.new()
 	u.setup(data, side, pos)
+	if from_queue and side == "ally" and preload("res://scripts/expedition/rules.gd").active():
+		u.special[preload("res://scripts/expedition/reinforcement_plan.gd").LOCAL_PRODUCTION] = true
 	u._combat_world = self
 	var parent: Node = self if side == "ally" else enemy_root
 	parent.add_child(u)
@@ -1021,7 +1062,7 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 			skirmish_ai.unit_produced(u)
 		elif not u.is_harvester:
 			var goal := _player_target()
-			if is_instance_valid(producer) and producer.special.has("hollywood_wave"): preload("res://scripts/world/hollywood_bases.gd").dispatch(self,u,producer)
+			if is_instance_valid(producer) and (producer.special.has("hollywood_wave") or producer.special.has("hollywood_retail_order")): preload("res://scripts/world/hollywood_bases.gd").dispatch(self,u,producer)
 			elif skirmish: u.ai_order("move",goal,true)
 			else: u.order_move(goal,true)
 	elif house_controllers.has(side) and is_instance_valid(producer) and producer.side == side and buildings.has(producer):
@@ -1039,6 +1080,12 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 		elif ProductionExit.supported(producer) and u.logistics.air_state != "parked":
 			var assembly := ProductionExit.assembly(producer, u)
 			if assembly != Vector2.INF: u.order_move(assembly, false)
+	if producer is Building and mission.get("id") == AlliedFinale.ID and side == "enemy":
+		AlliedFinale.AI.produced(self,u,producer)
+	if from_queue and producer is Building and mission.get("id")==TimeShift.ID and producer.special.has("shift_global_order"):
+		preload("res://scripts/world/time_shift_global_ai.gd").produced(self,u,producer)
+	if from_queue and producer is Building and mission.get("id")==AlliedFirst.ID and producer.special.has(AlliedFirst.GlobalAI.ORDER):
+		AlliedFirst.GlobalAI.produced(self,u,producer)
 	if producer is Building and producer.special.has("s07_building_unit"):
 		HeadGames.Orders.produced(self,u,producer)
 	Events.unit_spawned.emit(u)
@@ -1046,11 +1093,14 @@ func spawn_unit(uid: String, side: String, pos: Vector2, producer = null, from_q
 
 ## Sort at the ground contact. Only a unit actually using a facility belongs above its deck.
 func _update_depth_order() -> void:
+	var axis := Vector2.DOWN.rotated(Iso.eff_angle())
+	var center := Vector2.ONE * map_size * 0.5
+	var extent := DepthLayers.projection_extent(axis, map_size)
 	var overpass = ground.overpass if ground is Ground else null
 	var factories:Array[Building]=[]
 	for b in buildings:
 		if is_instance_valid(b):
-			b.z_index = DepthLayers.entity_z(b.depth_anchor(), map_size)
+			b.z_index = DepthLayers.projected_z(b.depth_anchor(), axis, center, extent)
 			if b.building_id=="GAWEAP":factories.append(b)
 	for u in units:
 		if not is_instance_valid(u): continue
@@ -1058,7 +1108,7 @@ func _update_depth_order() -> void:
 		if u.is_air_target():
 			u.z_index = DepthLayers.AIR
 			continue
-		u.z_index = DepthLayers.entity_z(u.global_position, map_size)
+		u.z_index = DepthLayers.projected_z(u.global_position, axis, center, extent)
 		if overpass != null and not u.is_air:
 			u.occluded_by_bridge = overpass.sort_unit(u)
 		if u.is_naval and path_service.near_deck(u.global_position, u.radius + 48.0):
@@ -1092,9 +1142,10 @@ func map_layout() -> String:
 	return str(mission.get("map_layout", "coast"))
 
 func player_start() -> Vector2:
+	if mission.get("id")==AlliedFirst.ID and allied_state.get("allied_first",{}).has("assault_base_wp"): return AlliedFirst.wp(int(allied_state.allied_first.assault_base_wp))
 	if mission.get("id")==TimeShift.ID:return TimeShift.wp(18)
 	if mission.get("id") == HeadGames.ID: return Vector2(HeadGames.FIELD.data.start[0],HeadGames.FIELD.data.start[1])*NativeMaps.CELL
-	if mission.get("id") == Hollywood.ID: return NativeMaps.start(map_layout())
+	if mission.get("id") in [Hollywood.ID,AlliedFinale.ID,AlliedFirst.ID]: return NativeMaps.start(map_layout())
 	if skirmish:return BattleRequest.Houses.starts(map_layout(),map_size)[BattleRequest.house_spawn(0)]
 	return Vector2(0.5 if map_layout() == "coast" else 0.22, 0.80) * map_size
 
@@ -1122,7 +1173,24 @@ func spend_funds(cost: float) -> bool:
 func current_funds() -> float:
 	return funds
 
+const HeadEconomy = preload("res://scripts/world/head_games_economy.gd")
+
+const ShiftEconomy = preload("res://scripts/world/time_shift_global_ai.gd")
+
+func economy_owner(actor) -> String:
+	if mission.get("id")==TimeShift.ID:return ShiftEconomy.economy_owner(self,actor)
+	if mission.get("id")==AlliedFinale.ID and actor.side=="enemy" and actor.special.get("allied_finale_room")=="Yuri3" and allied_state.has("allied_finale"): return AlliedFinale.Branches.THIRD_ACCOUNT
+	return HeadEconomy.owner(self,actor)
+
 func funds_for(owner_side: String) -> float:
+	if owner_side.begins_with(ShiftEconomy.ACCOUNT_PREFIX):return float(allied_state.get("s01_ai_accounts",{}).get(owner_side,0.0))
+	if owner_side==AlliedFinale.Branches.THIRD_ACCOUNT and allied_state.has("allied_finale"): return float(AlliedFinale.Branches.ensure_account(self).funds)
+	var accounts:Dictionary=allied_state.get("s07_accounts",{})
+	if accounts.has(owner_side): return float(accounts[owner_side])
+	if owner_side=="enemy" and not accounts.is_empty():
+		var total:=0.0
+		for amount in accounts.values(): total+=float(amount)
+		return total
 	if owner_side not in ["ally","enemy"] and allied_state.get("house_ai",{}).has(owner_side):
 		return float(allied_state.house_ai[owner_side].funds)
 	return funds if owner_side == "ally" else enemy_funds
@@ -1173,8 +1241,17 @@ func ai_build_factor(owner_side: String) -> float:
 func credit_side(owner_side: String, amount: float, silent := false) -> void:
 	if amount <= 0.0:
 		return
-	if owner_side == "ally":
+	if owner_side==AlliedFinale.Branches.THIRD_ACCOUNT and allied_state.has("allied_finale"):
+		AlliedFinale.Branches.ensure_account(self).funds += amount
+	elif owner_side.begins_with(ShiftEconomy.ACCOUNT_PREFIX):
+		var rooms:Dictionary=allied_state.get("s01_ai_accounts",{})
+		if rooms.has(owner_side):rooms[owner_side]+=amount
+	elif owner_side == "ally":
 		add_funds(amount, silent)
+	elif allied_state.get("s07_accounts",{}).has(owner_side):
+		allied_state.s07_accounts[owner_side] += amount
+	elif owner_side=="enemy" and allied_state.has("s07_accounts"):
+		allied_state.s07_accounts[HeadEconomy.account(-1)] += amount
 	elif owner_side not in ["ally","enemy"] and allied_state.get("house_ai",{}).has(owner_side):
 		allied_state.house_ai[owner_side].funds += amount
 	else:
@@ -1183,6 +1260,16 @@ func credit_side(owner_side: String, amount: float, silent := false) -> void:
 ## Theft transfers existing balances, independent of free-purchase debug flags.
 ## Commit both sides before emitting the single player-HUD notification.
 func transfer_spy_funds(victim: String, thief: String, percent: float, at: Vector2) -> float:
+	if allied_state.has("s07_accounts") or victim.begins_with(ShiftEconomy.ACCOUNT_PREFIX) or thief.begins_with(ShiftEconomy.ACCOUNT_PREFIX):
+		if victim==thief or not is_finite(percent): return 0.0
+		var stolen:=transfer_drain_funds(victim,thief,funds_for(victim)*clampf(percent,0.0,1.0))
+		var gain:=thief=="ally"
+		if stolen>0.0:
+			var tint:=Color(0.5,1,0.75) if gain else Color(1,0.5,0.4)
+			Events.emit_message(("间谍渗透成功：窃取敌方资金 +%s" if gain else "敌方间谍渗透矿场：我方损失资金 -%s")%stolen,tint)
+			Effects.spawn_text(at,("+%s" if gain else "-%s")%stolen,tint)
+		elif gain: Events.emit_message("间谍已进入矿场，但该敌军基地没有可窃取的资金。")
+		return stolen
 	if not BattleRequest.house_teams.is_empty():
 		if not BattleRequest.house_teams.has(victim) or not BattleRequest.house_teams.has(thief) or BattleRequest.friendly(victim,thief) or not is_finite(percent): return 0.0
 		var stolen := funds_for(victim)*clampf(percent,0.0,1.0)
@@ -1210,9 +1297,50 @@ func transfer_spy_funds(victim: String, thief: String, percent: float, at: Vecto
 	Effects.spawn_text(at, ("+%s" if thief == "ally" else "-%s") % amount, Color(0.5, 1, 0.75) if thief == "ally" else Color(1, 0.5, 0.4))
 	return amount
 
+## DiskDrain moves existing funds rather than purchasing anything.
+func transfer_drain_funds(victim: String, thief: String, limit: float) -> float:
+	var accounts:Dictionary=allied_state.get("s01_ai_accounts",{}) if victim.begins_with(ShiftEconomy.ACCOUNT_PREFIX) or thief.begins_with(ShiftEconomy.ACCOUNT_PREFIX) else allied_state.get("s07_accounts",{})
+	if not accounts.is_empty():
+		if not ((victim=="ally" and accounts.has(thief)) or (thief=="ally" and accounts.has(victim))): return 0.0
+		var moved:=minf(limit,funds_for(victim))
+		if moved<=0 or not spend_side(victim,moved): return 0.0
+		credit_side(thief,moved,true)
+		return moved
+	var houses: Dictionary = allied_state.get("house_ai", {})
+	if BattleRequest.friendly(victim, thief): return 0.0
+	if victim not in ["ally", "enemy"] and not houses.has(victim): return 0.0
+	if thief not in ["ally", "enemy"] and not houses.has(thief): return 0.0
+	var amount := minf(limit, funds_for(victim))
+	if amount <= 0.0: return 0.0
+	if victim == "ally":
+		funds -= amount
+	elif victim == "enemy":
+		enemy_funds -= amount
+	else:
+		houses[victim].funds -= amount
+	credit_side(thief, amount, true)
+	if victim == "ally" or thief == "ally": Events.funds_changed.emit(funds)
+	return amount
+
 func spend_side(owner_side: String, amount: float) -> bool:
+	if owner_side.begins_with(ShiftEconomy.ACCOUNT_PREFIX):
+		var rooms:Dictionary=allied_state.get("s01_ai_accounts",{})
+		if not rooms.has(owner_side) or amount<0.0 or float(rooms[owner_side])+0.000001<amount:return false
+		rooms[owner_side]=maxf(0.0,float(rooms[owner_side])-amount)
+		return true
+	if owner_side==AlliedFinale.Branches.THIRD_ACCOUNT and allied_state.has("allied_finale"):
+		var bank := AlliedFinale.Branches.ensure_account(self)
+		if amount<0.0 or bank.funds+0.000001<amount: return false
+		bank.funds=maxf(0.0,bank.funds-amount)
+		return true
 	if owner_side == "ally":
 		return try_spend(amount)
+	if owner_side=="enemy" and allied_state.has("s07_accounts"): owner_side=HeadEconomy.account(-1)
+	var accounts:Dictionary=allied_state.get("s07_accounts",{})
+	if accounts.has(owner_side):
+		if amount<0.0 or float(accounts[owner_side])+0.000001<amount: return false
+		accounts[owner_side]=maxf(0.0,float(accounts[owner_side])-amount)
+		return true
 	if owner_side not in ["ally","enemy"] and allied_state.get("house_ai",{}).has(owner_side):
 		if amount < 0 or funds_for(owner_side) < amount: return false
 		allied_state.house_ai[owner_side].funds -= amount
@@ -1267,6 +1395,7 @@ func _update_power() -> void:
 			var grid: Dictionary = grids[b.side]
 			grid.produced += produced
 			grid.drain += consumed
+	if allied_state.has("allied_first"): prod+=float(allied_state.allied_first.get("auxiliary_power",0))
 	grids.ally={"produced":prod,"drain":drain}
 	preload("res://scripts/units/leizhu_station.gd").update(self,grids)
 	prod=float(grids.ally.produced);grids.erase("ally")
@@ -1280,34 +1409,42 @@ func _update_power() -> void:
 	power_produced = prod
 	power_drain = drain
 	power_low = prod < drain - 0.001
-	var sig := "%d|%d|%d|%d" % [int(prod), int(drain), 1 if power_low else 0,int(allied_state.get("leizhu_power",{}).get("ally",0))]
+	var blackout := side_power_blackout("ally")
+	var effective_prod := 0.0 if blackout else prod
+	var effective_low := power_low or blackout
+	var sig := "%d|%d|%d|%d|%d" % [int(effective_prod), int(drain), int(effective_low), int(allied_state.get("leizhu_power",{}).get("ally",0)), int(blackout)]
 	if sig != _power_sig:
 		_power_sig = sig
-		Events.power_changed.emit(power_produced, power_drain, power_low)
-	if power_low and not _eva_power_low_prev:
+		Events.power_changed.emit(effective_prod, power_drain, effective_low)
+	if effective_low and not _eva_power_low_prev:
 		Ra2Sfx.play_player_eva(self, "EVA_LowPower", 5000)
-	_eva_power_low_prev = power_low
+	_eva_power_low_prev = effective_low
 
 ## 低电时全阵营建造/生产速度乘数（RA2 ProductionTrait.computeLowPowerBuildSpeedModifier）。
 func _side_power(owner_side: String) -> Dictionary:
 	var produced := 0.0
 	var drain := 0.0
-	for b: Building in buildings:
+	for b in _warm_owner_buildings(owner_side):
 		if not is_instance_valid(b) or b.side != owner_side or b.hp <= 0.0 or b.under_construction:
 			continue
 		if b.power > 0.0:
 			produced += ceilf(b.installed_power() * clampf(b.hp / maxf(1.0, b.max_hp), 0.0, 1.0))
 		else:
 			drain -= b.power
+	if owner_side=="ally" and allied_state.has("allied_first"): produced+=float(allied_state.allied_first.get("auxiliary_power",0))
 	produced+=preload("res://scripts/units/leizhu_station.gd").amount(self,owner_side,produced,drain)
 	return {"produced": produced, "drain": drain, "low": produced < drain - 0.001}
 
+func side_power_blackout(owner_side: String) -> bool:
+	return float(allied_state.get("blackout_" + owner_side, 0.0)) > 0.0
+
 func side_power_low(owner_side: String) -> bool:
-	if float(allied_state.get("blackout_" + owner_side, 0.0)) > 0.0: return true
+	if side_power_blackout(owner_side): return true
 	if owner_side not in ["ally","enemy"]: return allied_state.get("house_ai",{}).get(owner_side,{}).get("power",{}).get("low",false)
 	return power_low if owner_side == "ally" else bool(enemy_power.low)
 
 func power_build_factor(owner_side: String = "ally") -> float:
+	if side_power_blackout(owner_side): return POWER_MIN_LOW_SPEED
 	var low := side_power_low(owner_side)
 	var grid: Dictionary = allied_state.get("house_ai",{}).get(owner_side,{}).get("power",enemy_power)
 	var produced: float = power_produced if owner_side == "ally" else float(grid.produced)
@@ -1319,7 +1456,10 @@ func power_build_factor(owner_side: String = "ally") -> float:
 	return clampf(1.0 - penalty, POWER_MIN_LOW_SPEED, POWER_MAX_LOW_SPEED)
 
 func power_stats() -> Dictionary:
-	return {"produced": power_produced, "drain": power_drain, "low": power_low,"hero_bonus":float(allied_state.get("leizhu_power",{}).get("ally",0))}
+	var blackout := side_power_blackout("ally")
+	return {"produced": 0.0 if blackout else power_produced, "drain": power_drain,
+		"low": power_low or blackout, "blackout": blackout,
+		"hero_bonus": 0.0 if blackout else float(allied_state.get("leizhu_power", {}).get("ally", 0))}
 
 # ================================================================== 主循环
 
@@ -1372,10 +1512,14 @@ func _process(delta: float) -> void:
 	_update_order_marks(delta)
 	_update_cast_flashes(delta)
 	_ensure_visual_layers()
-	if _attack_ranges_drawn or not build_range_preview.cells.is_empty() or not selected_units.is_empty() or is_instance_valid(selected_building) or dragging or armed_build != "" or command_mode != "" or cast_slot >= 0 or hover_ability >= 0 or not _order_marks.is_empty() or not _cast_flashes.is_empty() or _has_waypoints():
+	if _attack_ranges_drawn or not build_range_preview.cells.is_empty() or not selected_units.is_empty() or is_instance_valid(selected_building) or dragging or armed_build != "" or command_mode != "" or cast_slot >= 0 or hover_ability >= 0 or not _order_marks.is_empty() or not _cast_flashes.is_empty():
 		queue_redraw()
 	if move_order_overlay != null:
-		move_order_overlay.queue_redraw()
+		var active := not selected_units.is_empty() or command_mode == ReaperSplit.ID or command_mode == Unit.YRTalents.REVERSE or cast_slot >= 0 or hover_ability >= 0
+		if active or _move_preview_was_active: move_order_overlay.queue_redraw()
+		_move_preview_was_active = active
+	if campaign_mark_overlay != null:
+		campaign_mark_overlay.queue_redraw()
 	if ended:
 		return
 	units = units.filter(func(u): return is_instance_valid(u))
@@ -1408,11 +1552,15 @@ func _process(delta: float) -> void:
 			_slave_clock = 0
 	if mission.get("id")==TimeShift.ID:
 		TimeShift.tick(self,delta)
+	elif mission.get("id")==AlliedFinale.ID:
+		AlliedFinale.tick(self,delta)
+	elif mission.get("id")==AlliedFirst.ID:
+		AlliedFirst.tick(self,delta)
 	elif allied_state.has("hollywood"):
 		if not paused: Hollywood.tick(self,delta)
 	else:
 		if mission.get("id") == HeadGames.ID and not paused:
-			if allied_state.has("head_brief_stage"): HeadGames.briefing(self,delta)
+			if allied_state.has("head_brief_stage"): HeadGames.briefing(self)
 			HeadGames.attackers(self,delta)
 			HeadGames.field_events(self,delta)
 		if mission.get("id")!=HeadGames.ID: _update_waves(delta)
@@ -1792,6 +1940,7 @@ func _apply_selection(a: Vector2, additive: bool, sbox: Rect2) -> void:
 		_emit_selection()
 		return
 	var picked = pick_for_selection(a) if single else null
+	if single and picked==null and allied_state.has("hollywood") and Hollywood.RetailSequences.resident_click(self,allied_state.hollywood,a):return
 	if single and not additive and can_click_evacuate(picked):
 		deploy_selected()
 		return
@@ -1971,7 +2120,7 @@ func _pick_enemy_at(p: Vector2):
 	if best != null:
 		return best
 	for bld in buildings:
-		if is_instance_valid(bld) and bld.side != "neutral" and not BattleRequest.friendly(bld.side,"ally") and actor_visible_to("ally", bld) and bld.hit_test(p):
+		if actor_alive(bld) and (bld.side != "neutral" or bld.is_explosive_barrel() or bld.special.get("allied_first_overlay",false)) and not BattleRequest.friendly(bld.side,"ally") and actor_visible_to("ally", bld) and bld.hit_test(p):
 			return bld
 	return null
 
@@ -2503,6 +2652,8 @@ func path_for_unit(u, p: Vector2, candidates = null, traffic_blockers: Array = [
 		var elevated: bool = u.special.get("hollywood_deck_goal",Vector2.INF) == p
 		if elevated or u.special.has("hollywood_on_deck"):
 			return ground.overpass.layered_route(u,p,elevated,routes,stationary)
+	if traffic_blockers.is_empty() and u is Unit:
+		stationary.append_array(u._local_traffic.campaign_neutral_blockers(u, self, p))
 	var transit=preload("res://scripts/expedition/foundation_transit.gd")
 	# Foundation collision exceptions exist only for explicit movement orders.
 	# Automatic mining/docking must keep routing around solid allied buildings.
@@ -2704,6 +2855,7 @@ func force_attack(target, append := false) -> void:
 			elif not selected_building.data.has("garrison_weapons"):
 				selected_building.special.defense_ordered_target = target
 			selected_building.attack_target = target
+			if target is Building and target.is_explosive_barrel(): selected_building.special[ForceFire.KEY] = target
 		_add_order_mark(target.global_position, "attack")
 		return
 	if not is_instance_valid(target) or selected_units.is_empty() or not (actor_visible_to("ally",target) or NavalContact.visible_grip(self,"ally",target)):
@@ -2726,7 +2878,7 @@ func force_attack(target, append := false) -> void:
 			var ang := TAU * float(i) / float(n)
 			var rad := 22.0 + 12.0 * float(i / 8)
 			ring = Vector2(cos(ang), sin(ang)) * rad
-		u.order_target(target, false, append, ring)
+		u.order_target(target, target is Building and (target.is_explosive_barrel() or target.special.get("allied_first_overlay",false)), append, ring)
 	if not attackers.is_empty():
 		_add_order_mark(dest, "attack")
 		Events.emit_message("集火：%s" % str(target.get("display_name")), Color(1.0, 0.72, 0.45))
@@ -2884,6 +3036,8 @@ func deploy_construction_vehicle(unit) -> bool:
 		building.bonuses["defense_bonus"] = float(building.bonuses.get("defense_bonus", 1.0)) * growth_defense
 	if unit.special.has(Ra3Clearance.KEY):
 		building.special[Ra3Clearance.KEY] = unit.special[Ra3Clearance.KEY].duplicate(true)
+	if mission.get("id")==TimeShift.ID and unit.special.has("shift_global_house"):
+		building.special.time_shift_native_house=unit.special.shift_global_house
 	preload("res://scripts/world/construction_transition.gd").deploying(building, unit, vehicle_origin)
 	unit._dead = true
 	unit.set_process(false)
@@ -3637,7 +3791,7 @@ func _draw_command_cursor() -> void:
 # ================================================================== 建造
 
 func set_build_mode(bid: String) -> void:
-	if not GameData.building_production_block_reason(bid).is_empty():
+	if not campaign_yard_block_reason(bid).is_empty() or not GameData.building_production_block_reason(bid).is_empty():
 		return
 	armed_build = bid
 	cast_slot = -1
@@ -3667,7 +3821,12 @@ func roster_id(allied_id: String, owner_side: String = "ally") -> String:
 		return str(YURI_EQUIVALENT.get(allied_id,allied_id))
 	return str(SOVIET_EQUIVALENT.get(allied_id, allied_id)) if roster_faction(owner_side) == "soviet" else allied_id
 
+func s07_secret_product(id:String) -> bool:
+	return not skirmish and mission.get("id")==HeadGames.ID and id=="GTGCAN"
+
 func country_block_reason(id: String, owner_side: String = "ally") -> String:
+	if s07_secret_product(id) and owner_side=="ally":
+		return "" if "CASLAB" in owned_building_ids(owner_side) else "需占领秘密实验室"
 	if GameData.hollywood_production_unit(id): return ""
 	const ExpeditionRules = preload("res://scripts/expedition/rules.gd")
 	if owner_side == "ally" and GameData.unit_index.has(id) and ExpeditionRules.active():
@@ -3683,14 +3842,32 @@ func country_block_reason(id: String, owner_side: String = "ally") -> String:
 	return GameData.ra2_country_block_reason(id, str(_countries.get(owner_side, "Americans")), foreign_producer)
 
 func owns_production_yard(bid: String, owner_side: String) -> bool:
-	if bid=="NEUTRALSTUDIO":
+	if bid=="NEUTRALSTUDIO" or s07_secret_product(bid):
 		var yards:=owned_building_ids(owner_side)
 		return "GACNST" in yards or "NACNST" in yards or "YACNST" in yards
 	var faction: String = GameData.building_index.get(bid, {}).get("faction", roster_faction(owner_side))
 	return {"soviet":"NACNST","yuri":"YACNST","allied":"GACNST"}.get(faction) in owned_building_ids(owner_side)
 
+func uses_split_campaign_deck() -> bool:
+	return not skirmish and mission.get("id") == AlliedFinale.ID
+
+func campaign_deck_factions() -> Array[String]:
+	var result: Array[String] = []
+	var owned := owned_building_ids()
+	if "NACNST" in owned: result.append("soviet")
+	if "GACNST" in owned: result.append("allied")
+	return result
+
+func campaign_yard_block_reason(bid: String, owner_side := "ally") -> String:
+	if s07_secret_product(bid) and owner_side=="ally":
+		if not owns_production_yard(bid,owner_side):return "缺少建造场"
+		return country_block_reason(bid,owner_side)
+	if owner_side != "ally" or not uses_split_campaign_deck() or not GameData.is_ra2(bid): return ""
+	if owns_production_yard(bid, owner_side): return ""
+	return "缺少对应阵营的建造场"
+
 func has_construction_roster(faction: String, owner_side: String = "ally") -> bool:
-	if faction == roster_faction(owner_side): return true
+	if not uses_split_campaign_deck() and faction == roster_faction(owner_side): return true
 	return {"allied":"GACNST", "soviet":"NACNST", "yuri":"YACNST"}.get(faction) in owned_building_ids(owner_side)
 
 func owned_building_ids(owner_side: String = "ally") -> Array:
@@ -3718,9 +3895,14 @@ func production_prereqs_ok(id: String, owner_side: String) -> bool:
 		return GameData.ra2_prereq_ok(id, owned_building_ids(owner_side), allied_state, owner_side)
 	if not GameData.ra2_prereq.has(id): return true
 	var candidates := _buildings_for_side(owner_side)
+	var witnesses: Dictionary = _production_witnesses.get_or_add(owner_side, {})
 	for pre in GameData.production_prerequisites(id, allied_state, owner_side):
 		var token := str(pre).strip_edges().to_upper()
 		if token.is_empty(): continue
+		# This is a live witness, not a cached prerequisite answer.
+		var witness = witnesses.get(token)
+		if is_instance_valid(witness) and _live_production_witness(witness, owner_side, token): continue
+		witnesses.erase(token)
 		var found := false
 		for candidate in candidates:
 			if not is_instance_valid(candidate): continue
@@ -3728,34 +3910,49 @@ func production_prereqs_ok(id: String, owner_side: String) -> bool:
 			# Reject irrelevant types before reading the remaining live actor state.
 			if not GameData.supplies_prerequisite(building.building_id, token): continue
 			if building.side != owner_side or building.hp <= 0.0 or building.is_dead() or building.is_queued_for_deletion() or building.under_construction: continue
+			witnesses[token] = building
 			found = true
 			break
 		if not found: return false
 	return true
 
+func _live_production_witness(building: Building, owner_side: String, token: String) -> bool:
+	return building.side == owner_side and building.hp > 0.0 and not building.is_dead() \
+		and not building.is_queued_for_deletion() and not building.under_construction \
+		and GameData.supplies_prerequisite(building.building_id, token)
+
 func structure_category(bid: String) -> String:
 	return GameData.building_production_category(bid)
 
-## Category views retain job dictionaries; mutate membership via request/cancel.
-func structure_jobs(category: String = "", owner_side: String = "ally") -> Array:
+## Only the mixed campaign splits the player's construction lanes by faction.
+func structure_lane_faction(bid: String, owner_side: String = "ally") -> String:
+	if owner_side != "ally" or not uses_split_campaign_deck(): return ""
+	var faction := str(GameData.building_index.get(bid, {}).get("faction", ""))
+	return faction if faction in ["soviet", "allied"] else roster_faction(owner_side)
+
+func _matches_structure_lane(bid: String, category: String, faction: String, owner_side: String) -> bool:
+	return (category.is_empty() or structure_category(bid) == category) and (faction.is_empty() or structure_lane_faction(bid, owner_side) == faction)
+
+## Lane views retain job dictionaries; mutate membership via request/cancel.
+func structure_jobs(category: String = "", owner_side: String = "ally", faction: String = "") -> Array:
 	var jobs: Array = struct_queue if owner_side == "ally" else enemy_struct_queue
-	if category.is_empty():
+	if category.is_empty() and faction.is_empty():
 		return jobs
-	return jobs.filter(func(job): return structure_category(str(job.id)) == category)
+	return jobs.filter(func(job): return _matches_structure_lane(str(job.id), category, faction, owner_side))
 
 func structure_reservations_enabled(owner_side: String = "ally") -> bool:
 	return production_technology.is_unlocked("structure_queue", owner_side)
 
-func structure_ready_count(category: String, owner_side: String = "ally") -> int:
+func structure_ready_count(category: String, owner_side: String = "ally", faction: String = "") -> int:
 	var ready: Dictionary = struct_ready if owner_side == "ally" else enemy_struct_ready
 	var count := 0
 	for id in ready:
-		if structure_category(str(id)) == category:
+		if _matches_structure_lane(str(id), category, faction, owner_side):
 			count += int(ready[id])
 	return count
 
 func hero_limit_reason(id: String, owner_side: String, include_training := true) -> String:
-	if id not in ["TANY", "BORIS", "YURIPR"] and id not in MetaProgress.Academy.Stars.IDS: return ""
+	if id not in GameData.UNIQUE_HERO_TYPES: return ""
 	for unit in units:
 		if actor_alive(unit) and unit.side == owner_side and unit.unit_id == id:
 			if id not in MetaProgress.Academy.Stars.IDS and owner_side == "ally" and unit.special.get(preload("res://scripts/expedition/reinforcement_plan.gd").MEMBER, false) and preload("res://scripts/expedition/rules.gd").active():
@@ -3768,7 +3965,11 @@ func hero_limit_reason(id: String, owner_side: String, include_training := true)
 	return ""
 
 func single_structure(id: String) -> bool:
-	return GameData.is_building(id) and int(preload("res://scripts/core/yr_death_rules.gd").type_data(id).get("buildlimit",-1)) == 1
+	var definition: Dictionary = GameData.building_index.get(id, {})
+	if definition.is_empty(): return false
+	var defined_limit = definition.get("buildlimit")
+	if defined_limit != null: return int(defined_limit) == 1
+	return int(preload("res://scripts/core/yr_death_rules.gd").type_data(id).get("buildlimit",-1)) == 1
 
 func limit_reason(id: String, owner_side: String, placing_paid := false) -> String:
 	if not single_structure(id): return hero_limit_reason(id, owner_side)
@@ -3789,7 +3990,7 @@ func production_price(item: Dictionary, owner_side: String) -> float:
 	if ai_prerequisite_scan and ai_scan_prices.has(owner_side):
 		var factor: float = ai_scan_prices[owner_side]
 		return price if factor < 0.0 else floorf(price * factor)
-	for b in buildings:
+	for b in _warm_owner_buildings(owner_side):
 		if is_instance_valid(b) and b.side == owner_side and b.data.has("vehicle_cost_factor") and b.is_operational():
 			var factor := float(b.data.vehicle_cost_factor)
 			if ai_prerequisite_scan: ai_scan_prices[owner_side] = factor
@@ -3801,21 +4002,23 @@ func structure_queue_block_reason(bid: String, owner_side: String = "ally") -> S
 	var limit := limit_reason(bid, owner_side)
 	if not limit.is_empty(): return limit
 	var category := structure_category(bid)
-	var jobs := structure_jobs(category, owner_side)
+	var faction := structure_lane_faction(bid, owner_side)
+	var jobs := structure_jobs(category, owner_side, faction)
+	var ready := structure_ready_count(category, owner_side, faction)
 	if not structure_reservations_enabled(owner_side):
-		if structure_ready_count(category, owner_side) > 0:
+		if ready > 0:
 			return "请先放置或取消已就绪建筑；预约后续建造需要科技：建筑预约"
 		if not jobs.is_empty():
 			return "当前类别正在建造；预约后续建造需要科技：建筑预约"
 	var capacity: int = production_technology.structure_capacity(owner_side)
-	if jobs.size() + structure_ready_count(category, owner_side) >= capacity:
+	if jobs.size() + ready >= capacity:
 		return "建造队列已满（含就绪，上限 %d）；可在局外科技升级" % capacity
 	return ""
 
 ## 已就绪进入选址；预约必须经过同一科技/容量门禁。
 func request_structure(bid: String, owner_side: String = "ally") -> void:
 	if house_defeated(owner_side): return
-	if not GameData.building_production_block_reason(bid).is_empty(): return
+	if not campaign_yard_block_reason(bid, owner_side).is_empty() or not GameData.building_production_block_reason(bid).is_empty(): return
 	if owner_side == "ally" and int(struct_ready.get(bid, 0)) == 0 and resume_structure(bid): return
 	var bd := GameData.get_building(bid)
 	if bd.is_empty():
@@ -3842,7 +4045,7 @@ func request_structure(bid: String, owner_side: String = "ally") -> void:
 	if int(struct_ready.get(bid, 0)) > 0:
 		set_build_mode(bid)
 		return
-	if not GameData.ra2_prereq_ok(bid, owned_building_ids()):
+	if not s07_secret_product(bid) and not GameData.ra2_prereq_ok(bid, owned_building_ids()):
 		Events.emit_message("无法建造 %s：缺少前置：%s" % [bd.get("name", bid),
 			GameData.ra2_missing_prereq_names(bid, owned_building_ids())], Color(1.0, 0.6, 0.5))
 		return
@@ -3861,17 +4064,17 @@ func request_structure(bid: String, owner_side: String = "ally") -> void:
 	Ra2Sfx.play_player_eva(self, "EVA_Building", 1000)
 
 func structure_is_paused(bid: String) -> bool:
-	var job := current_structure_job(structure_category(bid))
+	var job := current_structure_job(structure_category(bid), structure_lane_faction(bid))
 	return not job.is_empty() and str(job.id) == bid and bool(job.get("paused", false))
 
 func resume_structure(bid: String) -> bool:
 	if not structure_is_paused(bid): return false
-	current_structure_job(structure_category(bid)).erase("paused")
+	current_structure_job(structure_category(bid), structure_lane_faction(bid)).erase("paused")
 	Ra2Sfx.play_player_eva(self, "EVA_Building", 0)
 	return true
 
 func structure_right_click(bid: String) -> void:
-	var job := current_structure_job(structure_category(bid))
+	var job := current_structure_job(structure_category(bid), structure_lane_faction(bid))
 	if not job.is_empty() and str(job.id) == bid and not bool(job.get("paused", false)):
 		job["paused"] = true
 		Ra2Sfx.play_player_eva(self, "EVA_OnHold", 500)
@@ -3905,8 +4108,22 @@ func cancel_structure(bid: String) -> void:
 
 ## 队列推进：分期付款建造，完成后进入就绪队列。
 func _tick_structure_queue(delta: float) -> void:
+	var split := uses_split_campaign_deck()
+	if split and (not struct_queue.is_empty() or not struct_ready.is_empty()):
+		var invalid := {}
+		for job in struct_queue:
+			if not campaign_yard_block_reason(str(job.id)).is_empty(): invalid[str(job.id)] = true
+		for id in struct_ready:
+			if not campaign_yard_block_reason(str(id)).is_empty(): invalid[str(id)] = true
+		for id in invalid:
+			while struct_queue.any(func(job): return job.id == id) or int(struct_ready.get(id,0)) > 0:
+				cancel_structure(id)
 	for category in ["building", "defense"]:
-		_tick_structure_jobs(delta, struct_queue, struct_ready, "ally", category)
+		if split:
+			for faction in ["soviet", "allied"]:
+				_tick_structure_jobs(delta, struct_queue, struct_ready, "ally", category, faction)
+		else:
+			_tick_structure_jobs(delta, struct_queue, struct_ready, "ally", category)
 		_tick_structure_jobs(delta, enemy_struct_queue, enemy_struct_ready, "enemy", category)
 
 func factory_speed_factor(owner_side: String, uid: String = "") -> float:
@@ -3936,20 +4153,21 @@ func structure_production_block_reason(bid: String, owner_side: String = "ally")
 		return "缺少生产建筑：建造厂"
 	var country_reason := country_block_reason(bid, owner_side)
 	if not country_reason.is_empty(): return country_reason
+	if s07_secret_product(bid) and owner_side=="ally": return ""
 	var owned := owned_building_ids(owner_side)
 	if not GameData.ra2_prereq_ok(bid, owned, allied_state, owner_side):
 		return "缺少前置：" + GameData.ra2_missing_prereq_names(bid, owned, allied_state, owner_side)
 	return ""
 
-func _tick_structure_jobs(delta: float, jobs: Array, ready: Dictionary, owner_side: String, category: String = "") -> void:
+func _tick_structure_jobs(delta: float, jobs: Array, ready: Dictionary, owner_side: String, category: String = "", faction: String = "") -> void:
 	if house_defeated(owner_side): return
 	if jobs.is_empty():
 		return
 	var job_index := 0
-	if not category.is_empty():
+	if not category.is_empty() or not faction.is_empty():
 		job_index = -1
 		for i in jobs.size():
-			if structure_category(str(jobs[i].id)) == category:
+			if _matches_structure_lane(str(jobs[i].id), category, faction, owner_side):
 				job_index = i
 				break
 		if job_index < 0:
@@ -3958,7 +4176,7 @@ func _tick_structure_jobs(delta: float, jobs: Array, ready: Dictionary, owner_si
 	if bool(it.get("paused", false)) or not structure_production_block_reason(str(it.id), owner_side).is_empty(): return
 	# Preserve old saved queues, but an unplaced building occupies the lane
 	# until this technology is granted. Never discard paid work on migration.
-	if not category.is_empty() and not structure_reservations_enabled(owner_side) and structure_ready_count(structure_category(str(it.id)), owner_side) > 0:
+	if not category.is_empty() and not structure_reservations_enabled(owner_side) and structure_ready_count(category, owner_side, faction) > 0:
 		return
 	var t := maxf(0.01, float(it.get("time", 10.0)))
 	var cost := maxf(0.0, float(it.get("cost", 0.0)))
@@ -3985,8 +4203,8 @@ func _tick_structure_jobs(delta: float, jobs: Array, ready: Dictionary, owner_si
 		Ra2Sfx.play_player_eva(self, "EVA_ConstructionComplete")
 
 ## 当前正在建造的队列项（供 HUD 显示进度），无则返回空字典。
-func current_structure_job(category: String = "") -> Dictionary:
-	var jobs := structure_jobs(category)
+func current_structure_job(category: String = "", faction: String = "") -> Dictionary:
+	var jobs := structure_jobs(category, "ally", faction)
 	if jobs.is_empty():
 		return {}
 	return jobs[0]
@@ -3994,7 +4212,7 @@ func current_structure_job(category: String = "") -> Dictionary:
 # A yard delivers a structure when its checked footprint is placed. Extra wall
 # segments, map fixtures and an MCV unfolding do not represent new deliveries.
 func deliver_ready_structure(id: String, side: String, point: Vector2):
-	if not GameData.mission_tech_block_reason(id).is_empty(): return null
+	if not campaign_yard_block_reason(id, side).is_empty() or not GameData.mission_tech_block_reason(id).is_empty(): return null
 	var ready: Dictionary = struct_ready if side == "ally" else enemy_struct_ready
 	if int(ready.get(id, 0)) <= 0 or GameData.get_building(id).is_empty(): return null
 	if not limit_reason(id,side,true).is_empty(): return null
@@ -4011,7 +4229,7 @@ func deliver_ready_structure(id: String, side: String, point: Vector2):
 	return placed
 
 func _try_place_building(pos: Vector2) -> void:
-	if not GameData.mission_tech_block_reason(armed_build).is_empty():
+	if not campaign_yard_block_reason(armed_build).is_empty() or not GameData.mission_tech_block_reason(armed_build).is_empty():
 		armed_build = ""
 		return
 	var bd: Dictionary = GameData.get_building(armed_build)
@@ -4143,8 +4361,7 @@ func _check_end() -> void:
 			end_battle(true)
 		return
 	if mission.get("id")==HeadGames.ID:
-		if not has_surviving_assets("ally"):end_battle(false)
-		else:HeadGames.objectives(self)
+		if not HeadGames.check_player_loss(self):HeadGames.objectives(self)
 		return
 	if mission.get("id")==TimeShift.ID:return
 	if _player_hq() == null:
@@ -4228,7 +4445,7 @@ func house_defeated(owner_side: String) -> bool:
 	return skirmish and not gm_unit_lab and allied_state.get("defeated_houses",{}).has(owner_side)
 
 func has_base_assets(owner_side: String) -> bool:
-	for b in buildings:
+	for b in _warm_owner_buildings(owner_side):
 		if not actor_alive(b) or b.side != owner_side: continue
 		var tags: Array = b.data.get("tags", [])
 		if not tags.has("civilian") and not tags.has("defense"):
@@ -4352,6 +4569,8 @@ func _draw() -> void:
 	_draw_cast_flashes()
 	if cast_slot >= 0 or hover_ability >= 0:
 		_draw_ability_range()
+	var had_build_ghosts := not _build_ghosts.is_empty()
+	_build_ghosts.clear()
 	if command_mode == "mcv_site" and selected_mcv() != null:
 		var unit = selected_mcv()
 		var site := snap_build_pos(get_global_mouse_position())
@@ -4368,6 +4587,8 @@ func _draw() -> void:
 		draw_set_transform_matrix(Transform2D.IDENTITY)
 	if armed_build != "":
 		_draw_build_preview()
+	if had_build_ghosts or not _build_ghosts.is_empty():
+		_build_ghost_layer.queue_redraw()
 
 ## RA3 式水域渲染（世界坐标矩形 → 相机自动投影为等距菱形湖面）。
 var _water_layer: WaterLayer = null
@@ -4438,6 +4659,8 @@ func _draw_hp_overlay() -> void:
 	if get_tree().has_group(&"psychic_sensors"):
 		preload("res://scripts/world/yuri_support.gd").draw_orders(self,hp_overlay)
 	if allied_state.has("hollywood"): Hollywood.draw_supplies(self)
+	if allied_state.has("head_grinder_crates"): HeadGames.draw_grinder_crates(self)
+	if allied_state.has("allied_finale"): AlliedFinale.draw_cash_crates(self)
 	_draw_superweapon_footprint()
 	preload("res://scripts/units/soviet_specials.gd").draw_missiles(hp_overlay, self)
 	const Psychic = preload("res://scripts/world/yuri_support.gd")
@@ -4490,7 +4713,7 @@ func _draw_hp_overlay() -> void:
 				if is_instance_valid(mount):preload("res://scripts/ui/unit_status.gd").draw_world(mount,hp_overlay,Iso.dir(b.global_position))
 			if b.selected or b.hovered: _paint_control_group(b,projection,zoom)
 		AttackCooldownIndicator.paint(b, hp_overlay)
-		if b.selected or b.hovered: TransportIndicator.paint_garrison(b, hp_overlay)
+		if b.selected or b.hovered: GarrisonIndicator.paint(b, hp_overlay, projection)
 	HpBar.world_batch = null
 	_health_batch.finish()
 	_ring_batch.finish()
@@ -4534,14 +4757,6 @@ func _draw_hp_overlay() -> void:
 
 ## 路径点队列：单位 → 后续点 的连线 + 小菱形
 ## 是否任一选中单位存在路径点队列（决定是否持续重绘）
-func _has_waypoints() -> bool:
-	for u in selected_units:
-		if is_instance_valid(u):
-			var q = u.get("order_queue")
-			if q != null and not (q as Array).is_empty():
-				return true
-	return false
-
 ## 集结点旗帜
 func _draw_rally_flags() -> void:
 	var b = selected_building
@@ -4576,9 +4791,9 @@ func _draw_build_preview(bd: Dictionary = {}, site: Dictionary = {}) -> void:
 	# 占地 = 建筑真实底盘多边形（与选中角标、碰撞体完全同一份几何，所见即所得）
 	var fpoly := Building.placement_poly(bd)
 	_fill_world_poly(fpoly, pos, Color(col.r, col.g, col.b, 0.22))
-	# 先画鬼影，再描占地，防止贴图盖住真正的放置边界。
+	# 建筑贴图单独走房色材质，放置边界仍用本层的绿/红提示。
 	if not WallArt.is_wall(bd) or int(struct_ready.get(armed_build, 0)) <= 0 or not ok:
-		_draw_build_ghost(bd, pos, ok)
+		_queue_build_ghost(bd, pos, ok)
 	_draw_world_poly(fpoly, pos, col, 2.5)
 	# 四角标（按真实底盘包围盒）
 	var frect := Placement.aabb(fpoly, pos)
@@ -4616,37 +4831,50 @@ func _draw_build_caption(pos: Vector2, poly: PackedVector2Array, text: String, c
 func foundation_half(bd: Dictionary) -> Vector2:
 	return Building.foundation_half_for_data(bd)
 
-## RA3 式全息鬼影：按建筑 SHP 帧 0 绘制半透明的「成型预览」（合法=青绿，非法=红）。
-## 在世界空间用 draw_set_transform 对齐到与真实建筑相同的 begin 变换。
+## 建筑贴图和炮塔独立于放置反馈着色；透明度不改变房色阶的 RGB。
+var _build_ghost_layer: Node2D
+var _build_ghosts: Array[Dictionary] = []
 var _build_ghost_turrets: Dictionary = {}
 
-func _draw_build_ghost(bd: Dictionary, pos: Vector2, ok: bool, planned_mask: int = -1) -> void:
+func _queue_build_ghost(bd: Dictionary, pos: Vector2, ok: bool, planned_mask: int = -1) -> void:
+	_build_ghosts.append({"data": bd, "pos": pos, "ok": ok, "mask": planned_mask})
+
+func _draw_build_ghosts() -> void:
+	RA2Art.begin_detail_draw(_build_ghost_layer)
+	if _build_ghosts.is_empty():
+		return
+	# 普通放置和基地车选址互斥；连墙预览的所有段也使用同一建筑 ID。
+	var bd: Dictionary = _build_ghosts[0].data
+	var faction := str(bd.get("faction", "allied"))
+	var house := HouseColor.player_building_preview_color(faction)
+	_build_ghost_layer.material = HouseColor.material_for(house)
+	for ghost in _build_ghosts:
+		_draw_build_ghost(ghost.data, ghost.pos, ghost.ok, ghost.mask)
+	_build_ghost_layer.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+
+func _draw_build_ghost(bd: Dictionary, pos: Vector2, ok: bool, planned_mask: int) -> void:
 	var img := str(bd.get("id", armed_build))
 	var art: Dictionary = RA2Art.art(img)
 	var tex: Texture2D = art.get("tex")
 	if tex == null:
 		return
 	var rr := float(bd.get("radius", 30.0))
-	var col := Color(0.55, 1.0, 0.7) if ok else Color(1.0, 0.45, 0.4)
 	var sz: Vector2 = RA2Art.frame_size(art)
 	var anc: Vector2 = RA2Art.anchor(art, [0])
 	var base := Vector2(-anc.x, rr * 0.35 - anc.y)
-	var tint := col
-	tint.a = 0.55 if ok else 0.42
-	draw_set_transform(pos, Iso.eff_angle(), Iso.up())
+	var tint := Color(1.0, 1.0, 1.0, 0.55 if ok else 0.42)
+	_build_ghost_layer.draw_set_transform(pos, Iso.eff_angle(), Iso.up())
 	if WallArt.supported(bd, art):
 		var mask := planned_mask if planned_mask >= 0 else WallArt.mask_at(pos, img, "ally", get_tree().get_nodes_in_group("buildings"))
 		var rect := RA2Art.draw_rect(art, rr, [0], WallArt.lift(art, rr), WallArt.SCALE)
-		RA2Art.draw_sprite(self, art, rect, RA2Art.src_rect(art, WallArt.frame(art, mask, 1.0)), tint)
-		draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+		RA2Art.draw_sprite(_build_ghost_layer, art, rect, RA2Art.src_rect(art, WallArt.frame(art, mask, 1.0)), tint)
 		return
-	RA2Art.draw_sprite(self, art, Rect2(base, sz), RA2Art.src_rect(art, 0), tint)
+	RA2Art.draw_sprite(_build_ghost_layer, art, Rect2(base, sz), RA2Art.src_rect(art, 0), tint)
 	if not _build_ghost_turrets.has(img):
 		var turret := BuildingTurretArt.new()
 		turret.setup(img)
 		_build_ghost_turrets[img] = turret
-	_build_ghost_turrets[img].draw_on(self, base, sz, 1.0, tint)
-	draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
+	_build_ghost_turrets[img].draw_on(_build_ghost_layer, base, sz, 1.0, tint)
 
 ## 两个轴对齐矩形（占地盒）是否重叠。
 func _rect_overlap(a: Vector2, ah: Vector2, b: Vector2, bh: Vector2) -> bool:
@@ -4717,7 +4945,7 @@ func snap_build_pos(p: Vector2) -> Vector2:
 ##   ③ 水陆不可骑跨（要么整块陆地，要么整块水面做浮动平台）；
 ##   ④ 基地连通：必须与我方已有建筑的底盘接壤（RA2 Adjacent 范围）。
 ## 返回 {"ok": bool, "reason": String}
-func build_spot_ok(pos: Vector2, bd: Dictionary, ignore_funds: bool = false, owner_side: String = "ally", deploying_unit = null) -> Dictionary:
+func build_spot_ok(pos: Vector2, bd: Dictionary, ignore_funds: bool = false, owner_side: String = "ally", deploying_unit = null, authored_node := false) -> Dictionary:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(13)
 	var poly: PackedVector2Array
 	if ai_prerequisite_scan:
@@ -4798,7 +5026,7 @@ func build_spot_ok(pos: Vector2, bd: Dictionary, ignore_funds: bool = false, own
 
 	# ④ BaseNormal 来源：原版 Adjacent；扩展模式建造场至少提供 12 格范围。
 	# 与范围绘制共用源建筑规则，地形和占用由上方检查。
-	if reason == "" and deploying_unit == null:
+	if reason == "" and deploying_unit == null and not authored_node:
 		var zones: Array
 		if ai_prerequisite_scan:
 			var by_type: Dictionary = ai_scan_zones.get_or_add(owner_side, {})

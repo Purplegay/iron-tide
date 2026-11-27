@@ -63,35 +63,36 @@ func _ready() -> void:
 	get_tree().quit(0 if failed == 0 else 1)
 
 func check_tanya_limit(mode: String) -> void:
-	var first = add("GAPILE","enemy", Vector2(800,800))
-	var second = add("GAPILE","enemy", Vector2(1200,800))
-	var player = add("GAPILE","ally", Vector2(1700,800))
+	var first = add("GAPILE","ally", Vector2(800,800))
+	var second = add("GAPILE","ally", Vector2(1200,800))
+	var computer = add("GAPILE","enemy", Vector2(1700,800))
 	add("GATECH","enemy", Vector2(800,1200))
 	add("GATECH","ally", Vector2(1700,1200))
 	battle.enemy_funds = 20000
+	battle.funds = 20000
 	var ai = battle.skirmish_ai
 	ai._unit_pool.assign(["TANY"])
 	ai._try_train()
-	check(first.production.count("TANY")+second.production.count("TANY")==1, mode+" AI purchasing decision shares one hero slot across both barracks")
+	check(computer.production.count("TANY")==0 and not computer.can_queue("TANY"),mode+" AI procurement excludes unique heroes")
 	for producer in [first,second]:
 		while not producer.production.is_empty(): producer.cancel_at(0)
 	check(first.enqueue_many("TANY",5)==1, mode+" batch reserves exactly one Tanya")
-	check(not second.can_queue("TANY") and not second.enqueue("TANY"), mode+" second AI barracks sees first reservation")
-	check(player.can_queue("TANY"), mode+" opposite side has its own Tanya slot")
+	check(not second.can_queue("TANY") and not second.enqueue("TANY"), mode+" second player barracks sees first reservation")
+	check(not computer.enqueue("TANY"), mode+" direct computer queue also rejects the unique hero")
 	while not first.production.is_empty(): first.cancel_at(0)
 	while not second.production.is_empty(): second.cancel_at(0)
 	check(second.enqueue("TANY"), mode+" cancelled training releases slot")
 	second._process(180)
-	var heroes = battle.units.filter(func(u): return battle.actor_alive(u) and u.side=="enemy" and u.unit_id=="TANY")
-	check(heroes.size()==1 and not first.can_queue("TANY"), mode+" deployed AI Tanya occupies slot")
+	var heroes = battle.units.filter(func(u): return battle.actor_alive(u) and u.side=="ally" and u.unit_id=="TANY")
+	check(heroes.size()==1 and not first.can_queue("TANY"), mode+" deployed player Tanya occupies slot")
 	if heroes.size()!=1: return
 	first.production.append("TANY") # A queue saved before the limit was enforced.
-	var wallet:float=battle.enemy_funds
+	var wallet:float=battle.funds
 	first._process(180)
-	check(first.production.has("TANY") and first.production_paid==0.0 and wallet==battle.enemy_funds, mode+" old duplicate order waits without charging")
+	check(first.production.has("TANY") and first.production_paid==0.0 and wallet==battle.funds, mode+" old duplicate order waits without charging")
 	heroes[0].receive_hit(100000)
 	first._process(180)
-	heroes=battle.units.filter(func(u):return battle.actor_alive(u) and u.side=="enemy" and u.unit_id=="TANY")
+	heroes=battle.units.filter(func(u):return battle.actor_alive(u) and u.side=="ally" and u.unit_id=="TANY")
 	check(first.production.is_empty() and heroes.size()==1, mode+" loss permits one replacement from saved queue")
 
 func check_defense_and_lab(soviet:bool, difficulty:int) -> void:
@@ -119,7 +120,9 @@ func check_defense_and_lab(soviet:bool, difficulty:int) -> void:
 	ai._try_build()
 	check(battle.enemy_struct_queue.any(func(j):return j.id==radar) and battle.enemy_struct_queue.any(func(j):return j.id==aa), faction+" queues AA while radar is in production",battle.enemy_struct_queue.duplicate(true))
 	check(not factory.can_queue(tech),faction+" lab required for T3 vehicle")
-	for cycle in 6:
+	for cycle in 12:
+		var assets:Array=battle.owned_building_ids("enemy")
+		if assets.count(aa)>=4 and assets.has(tower) and assets.has(lab): break
 		battle._tick_structure_queue(180)
 		ai._try_build()
 	var owned:Array=battle.owned_building_ids("enemy")
@@ -260,7 +263,8 @@ func decisions() -> void:
 	Ops.tick(ai)
 	check(not spy_unit.special.has("action"), prefix + "pause freezes special decisions")
 	battle.paused = false
-	# All candidates now hidden; keep actor lists but remove observer sight.
+	# End the previous storm: its impact legally provides sight for a follow-up sortie.
+	battle.allied_state.erase("lightning_storms")
 	for u in battle.units:
 		if u.side == "enemy": u.position = Vector2(100, 100)
 	for b in battle.buildings:
@@ -268,6 +272,7 @@ func decisions() -> void:
 	battle.fog = preload("res://scripts/world/fog_of_war.gd").new(); battle.add_child(battle.fog); battle.fog.setup(battle)
 	plane.order_stop(); plane.logistics.air_state = "parked"; plane.logistics.ammo = plane.logistics.ammo_max
 	Ops.tick(ai)
+	check(Ops.targets(ai).is_empty(),prefix+"no live contact after storm intelligence expires")
 	check(not plane.attack_ordered and not spy_unit.special.has("action"), prefix + "unseen enemy positions never create sortie or spy order")
 	battle.fog.free(); battle.fog = null
 
@@ -280,14 +285,17 @@ func interrupted_sortie(id: String) -> void:
 	await get_tree().physics_frame
 	Ops.tick(battle.skirmish_ai)
 	check(plane.attack_target == target and plane.logistics.air_state == "flying", id + " real AI launches full aircraft")
-	for tick in 300: plane._physics_process(1.0/60.0)
+	plane.set_physics_process(true)
+	for tick in 300:
+		await get_tree().physics_frame
+		if plane.logistics.air_lift>0.95 and plane.position.distance_to(field.position)>80: break
 	check(plane.logistics.air_lift > 0.95 and plane.position.distance_to(field.position) > 80 and plane.logistics.ammo == plane.logistics.ammo_max, id + " airborne en route before first shot")
 	battle.buildings.erase(target)
 	target.free()
-	for tick in 2: plane._physics_process(1.0/60.0)
+	for tick in 2: await get_tree().physics_frame
 	check(plane.logistics.air_state == "returning" and plane.logistics.air_lift > 0.95, id + " lost target triggers return even with ammunition")
 	for tick in 1600:
-		plane._physics_process(1.0/60.0)
+		await get_tree().physics_frame
 		if plane.logistics.air_state == "parked": break
 	check(plane.logistics.air_state == "parked" and plane.position.distance_to(plane.logistics.dock_destination()) < 1 and plane.logistics.air_lift == 0, id + " lands on reserved pad")
 	Ops.tick(battle.skirmish_ai)
@@ -302,11 +310,11 @@ func interrupted_sortie(id: String) -> void:
 	plane.logistics.air_lift = 0
 	battle.buildings.erase(field)
 	field.free()
-	for tick in 300: plane._physics_process(1.0/60.0)
+	for tick in 300: await get_tree().physics_frame
 	check(plane.logistics.air_state == "returning" and plane.logistics.air_lift > 0.95 and not is_instance_valid(plane.logistics.home), id + " stranded aircraft climbs and waits when base lost")
 	var replacement = add("GAAIRC", "enemy", Vector2(450, 850))
 	for tick in 1600:
-		plane._physics_process(1.0/60.0)
+		await get_tree().physics_frame
 		if plane.logistics.air_state == "parked": break
 	check(plane.logistics.air_state == "parked" and plane.logistics.home == replacement and plane.position.distance_to(plane.logistics.dock_destination()) < 1, id + " replacement airport recovers airborne aircraft")
 

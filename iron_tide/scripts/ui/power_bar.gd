@@ -12,10 +12,15 @@ var drain: float = 0.0
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	set_process(is_low_power())
 
 func set_power(p: float, d: float) -> void:
-	produced = maxf(0.0, p)
-	drain = maxf(0.0, d)
+	p = maxf(0.0, p)
+	d = maxf(0.0, d)
+	if produced == p and drain == d: return
+	produced = p
+	drain = d
+	set_process(is_low_power())
 	queue_redraw()
 
 func is_low_power() -> bool:

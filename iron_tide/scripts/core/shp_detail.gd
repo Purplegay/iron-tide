@@ -21,6 +21,12 @@ static func manifest(id: String, native_size: Vector2) -> Dictionary:
 	for entry in data.frames:
 		var source: Array = entry.source
 		lookup[Vector4i(source[0], source[1], source[2], source[3])] = entry
+		# Decode the immutable atlas geometry once; each fog pose still supplies its live destination.
+		var page := int(entry.page)
+		if page >= 0:
+			var uv: Array = entry.rect
+			var crop: Array = entry.crop
+			entry.fog_region = [ROOT + str(data.pages[page].file), Rect2(crop[0], crop[1], crop[2], crop[3]), Rect2(uv[0], uv[1], uv[2], uv[3])]
 	data["lookup"] = lookup
 	return data
 

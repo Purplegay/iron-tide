@@ -60,14 +60,28 @@ static func offer_available(run:Dictionary,item:Dictionary) -> bool:
 static func reward_item(run:Dictionary,item:Dictionary) -> Dictionary:
 	return item if offer_available(run,item) else {"kind":"supplies","id":"bonus","amount":100,"converted":true}
 
+static func is_recruit(item:Dictionary) -> bool:
+	return item.get("kind","") in ["unit","special_unit"]
+
+static func recruit_batch(item:Dictionary) -> int:
+	return int(item.get("count",1)) if item.kind=="special_unit" else preload("res://scripts/expedition/catalog.gd").squad_size(item.id)
+
+static func recruit_count(run:Dictionary,item:Dictionary) -> int:
+	return mini(maxi(0,recruit_batch(item)),Army.room(run,item.id))
+
+static func shelf_price(run:Dictionary,item:Dictionary) -> int:
+	var price:=int(item.price)
+	if not is_recruit(item):return price
+	return ceili(float(price)*recruit_count(run,item)/maxi(1,recruit_batch(item)))
+
 static func recruit_fits(run:Dictionary,item:Dictionary) -> bool:
-	match item.kind:
-		"unit":return Army.room(run,item.id)>=preload("res://scripts/expedition/catalog.gd").squad_size(item.id)
-		"special_unit":return Army.room(run,item.id)>=int(item.get("count",1))
-	return true
+	return not is_recruit(item) or recruit_count(run,item)>0
+
+static func recruit_bought(run:Dictionary,item:Dictionary) -> bool:
+	return is_recruit(item) and item.id in run.get("camp_recruits_bought",[])
 
 static func lock_available(run:Dictionary,item:Dictionary) -> bool:
-	if item.get("sold",false) or item.kind=="supplies" or not recruit_fits(run,item):return false
+	if item.get("sold",false) or recruit_bought(run,item) or item.kind=="supplies" or not recruit_fits(run,item):return false
 	match item.kind:
 		"unit","reinforce":return true
 		"special_unit":return special_useful(run,item.id,int(item.tier))
@@ -231,7 +245,7 @@ static func draw_index(pool:Array,random:RandomNumberGenerator) -> int:
 
 static func shop(run:Dictionary,refresh:int) -> Array:
 	var random:=rng(run,"market_"+str(refresh))
-	var catalog_units:=unit_pool(run)
+	var catalog_units:=unit_pool(run).filter(func(item):return not recruit_bought(run,item))
 	var units:=catalog_units.filter(func(item):return recruit_fits(run,item))
 	var buffs:=buff_pool(run)+trait_pool(run)+relic_pool(run)
 	var native:=native_pool(run)
@@ -242,6 +256,7 @@ static func shop(run:Dictionary,refresh:int) -> Array:
 		if keep_locked(run,old):
 			reserved_items[shop_key(old)]=true
 			if old.kind=="relic":reserved.append(old.id)
+	var locked_keys:=reserved_items.duplicate()
 	for index in SHOP_SIZE+int(preload("res://scripts/expedition/research.gd").rank(run,"supply")>=3):
 		var rarity:=quality(run,random)
 		var slot_units:=units
@@ -271,7 +286,7 @@ static func shop(run:Dictionary,refresh:int) -> Array:
 	for index in result.size():
 		if index!=4 and result[index].kind!="supplies":other_shop_items[shop_key(result[index])]=true
 	for item:Dictionary in units:
-		if other_shop_items.has(shop_key(item)):continue
+		if other_shop_items.has(shop_key(item)) or locked_keys.has(shop_key(item)):continue
 		for tag:String in Army.tags(item.id,run):
 			if tag in wanted:matches.append(item);break
 	if not matches.is_empty():
@@ -359,9 +374,20 @@ static func apply_shop_price(item:Dictionary) -> void:
 
 static func normalize_shop(run:Dictionary,upgrade_saved_prices:=false) -> void:
 	var stock:Array=[]
+	var bought:Array=run.get("camp_recruits_bought",[])
+	# Recover known purchases in old saves before normalizing any alternate cards.
+	for id in run.get("targeted_recruits_bought",[]):
+		if id not in bought:bought.append(id)
+	run.erase("targeted_recruits_bought")
 	for item:Dictionary in run.get("shop",[]):
+		if is_recruit(item) and item.get("sold",false) and item.id not in bought:bought.append(item.id)
+	if not bought.is_empty():run.camp_recruits_bought=bought
+	for item:Dictionary in run.get("shop",[]):
+		if recruit_bought(run,item):
+			item.sold=true
+			item.locked=false
 		if not item.get("sold",false):
-			if item.kind in ["supplies","blueprint"] or str(item.id).begins_with("R3") or not recruit_fits(run,item):continue
+			if item.kind in ["supplies","blueprint"] or str(item.id).begins_with("R3"):continue
 			if item.kind=="relic" and not Relics.ITEMS.has(item.id):continue
 			if item.kind=="hero" and not MetaProgress.Academy.HEROES.has(item.id):continue
 			if not lock_available(run,item):
@@ -473,7 +499,7 @@ static func description(item:Dictionary) -> String:
 		"specialization":return "天赋 3 级后的额外能力，覆盖本轮全部同兵种及后续招募。每种兵种阵地／机动二选一，本轮不能更换，不影响其他兵种的选择。\n"+specialization_description(item.id,str(item.get("branch","a")))
 		"training":return "该兵种攻击、防御各 +1 肉鸽等级（相当于局外各 +4 级），最高 5 级；已满的属性不再增加。不回写局外。"
 		"relic":return Relics.description(item.id)
-		"special_unit":return "立即招募 %d 个特装 %s 单位，个体攻击、防御至少 %d / 5 级，已有更高等级保留。招募后即可在本轮生产和补员，全部天赋与同兵种共享。"%[item.get("count",1),["","I","II","III"][int(item.tier)],Growth.special_level(int(item.tier))]
+		"special_unit":return "立即招募 %d 个特装 %s 单位，个体攻击、防御至少 %d / 5 级，已有更高等级保留。招募后即可在本轮生产和补员，全部天赋与同兵种共享。"%[item.get("recruit_count",item.get("count",1)),["","I","II","III"][int(item.tier)],Growth.special_level(int(item.tier))]
 	return ""
 
 static func event(run:Dictionary) -> Dictionary:

@@ -289,7 +289,7 @@ func attack_cursor(target) -> String:
 		if not battle.actor_alive(unit) or unit.embarked_in != null or not unit.attack_domain_valid(target): continue
 		if CommandoCombat.building_c4(unit, target): return "c4"
 		if CommandoCombat.sabotage(unit, target): return "sabotage"
-		if unit.unit_id == "BORIS" and target is Building: return "boris_airstrike"
+		if Unit.SovietSpecials.boris_airstrike_target(unit, target): return "boris_airstrike"
 	return "attack"
 
 func can_attack(target) -> bool:

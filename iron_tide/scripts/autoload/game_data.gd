@@ -244,8 +244,10 @@ func apply_hollywood_fx(definition: Dictionary) -> void:
 	if definition.get("hollywood_art", false) and definition.has("garrison_slots") and pack.fire_ports.has(id):
 		definition.fire_ports = pack.fire_ports[id]
 
+const ALL01_SHARED_UNITS := ["CRUISE","TUG","COP","CBLC"]
+
 func get_unit(id: String) -> Dictionary:
-	if not BattleRequest.skirmish and BattleRequest.mission_id=="yr_time_shift" and not unit_index.has(id) and not hollywood_yuri.units.has(id):
+	if not BattleRequest.skirmish and (BattleRequest.mission_id=="yr_time_shift" or (BattleRequest.mission_id=="yr_allied_first" and id in ALL01_SHARED_UNITS)) and not unit_index.has(id) and not hollywood_yuri.units.has(id):
 		var units01:Dictionary=preload("res://data/time_shift_assets.json").data.units
 		if units01.has(id):return units01[id].duplicate(true)
 	# Escape-only fallbacks neither change the production roster/hash nor mask
@@ -270,11 +272,74 @@ func spawned_weapon(id: String) -> Dictionary:
 		"ra2_projectile": str(raw.get("projectile", "")), "ra2_aa": false}
 
 func get_building(id: String) -> Dictionary:
+	var base := _building_definition(id)
+	if BattleRequest.skirmish or BattleRequest.mission_id!="yr_allied_first": return base
+	var src: Dictionary = preload("res://data/ra2/allied_first_sites.json").data.types.get(id,{})
+	if src.is_empty(): return base
+	if base.is_empty():
+		base = preload("res://data/time_shift_assets.json").data.defs.get(id,{}).duplicate(true)
+		if base.is_empty() and (src.neutral or id=="CALAB"):
+			base = {"id":id,"name":"爱因斯坦实验室" if id=="CALAB" else "旧金山建筑","ra2":true,"role":"structure","faction":"civilian","armor":"structure","radius":30,"sight":src.sight*55,"cost":0,"power":0,"tags":["civilian"],"base_normal":false,"capturable":false}
+	if base.is_empty(): return base
+	base = base.duplicate(true)
+	base.foundation = src.foundation
+	base.hp = src.hp
+	base.ra2_armor = src.armor
+	if src.has("art_id"): base.art_id = src.art_id
+	if src.has("hollywood_art"): base.hollywood_art = true
+	if src.neutral:
+		base.capturable = src.capturable
+		if int(src.slots)>0:
+			base.garrison_slots = int(src.slots)
+			base.garrison_weapons = _building_definition("NABNKR").garrison_weapons
+		else: base.erase("garrison_slots")
+	return base
+
+func _building_definition(id: String) -> Dictionary:
+	if id in ["CAFNCP","CAFNCB","CAFNCW"] and not BattleRequest.skirmish and BattleRequest.mission_id in ["yr_hollywood","yr_allied_first"]:
+		var fence:Dictionary=preload("res://data/time_shift_assets.json").data.defs.CAFNCP.duplicate(true)
+		fence.id=id
+		fence.name={"CAFNCP":"铁丝围栏","CAFNCB":"黑色围栏","CAFNCW":"白色围栏"}[id]
+		return fence
+	if BattleRequest.mission_id=="yr_allied_first" and not BattleRequest.skirmish:
+		if id in ["CAGAS01","CASANF01","CASANF02"]:
+			var garrison: Dictionary = preload("res://data/time_shift_assets.json").data.defs[id].duplicate(true)
+			garrison.garrison_weapons = get_building("NABNKR").garrison_weapons
+			return garrison
+		if id.begins_with("CAPOWR0"):
+			return {"id":id, "name":"任务发电厂", "ra2":true, "art_id":"CAPOWR", "hp":600, "power":200, "sight":220, "radius":25, "foundation":"1x1", "armor":"structure", "ra2_armor":"wood", "capturable":true, "base_normal":false, "cost":0}
+		if id=="CATHOSP":
+			var hospital: Dictionary = preload("res://data/time_shift_assets.json").data.defs[id].duplicate(true)
+			hospital.unsellable = true
+			return hospital
+		if id in ["CATIME01","YAPPPT"] or id in ["CASANF04","CASANF09","CASANF10","CASANF11","CASANF12","CASANF13","CASANF14"]:
+			var fixed: Dictionary = preload("res://data/time_shift_assets.json").data.defs.get(id, {}).duplicate(true)
+			if id=="CATIME01":
+				fixed.hp=1000
+				fixed.power=0
+				fixed.ra2_armor="steel"
+			if not fixed.is_empty(): return fixed
 	if BattleRequest.mission_id=="yr_time_shift" and not BattleRequest.skirmish:
 		var defs:Dictionary=preload("res://data/time_shift_assets.json").data.defs
 		if defs.has(id) and (id.begins_with("CATIME") or id=="YAPPPT" or not building_index.has(id) and not hollywood_yuri.buildings.has(id)):return defs[id].duplicate(true)
-	if (not BattleRequest.skirmish or not building_index.has(id)) and hollywood_yuri.buildings.has(id): return hollywood_yuri.buildings[id].duplicate(true)
+	if (not BattleRequest.skirmish or not building_index.has(id)) and hollywood_yuri.buildings.has(id):
+		var definition: Dictionary = hollywood_yuri.buildings[id].duplicate(true)
+		if id == "NACLON" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_head_games":
+			definition.capturable = true # Mission-specific concession; retail NACLON is not capturable.
+			definition.desc = "可用工程师占领。" + str(definition.desc)
+		return definition
 	var result := MatchRules.entity_data(BattleRequest.rules_mode, building_index.get(id, {}), ra2_source_buildings.get(id, {}))
+	if not BattleRequest.skirmish and BattleRequest.mission_id=="yr_allied_first" and id in ["GTGCAN","GASPYSAT"] and not result.is_empty():
+		result = result.duplicate(true)
+		result.hp = 2000 if id=="GTGCAN" else 1000
+		result.power = -100 if id=="GTGCAN" else -1
+		result.ra2_armor = "steel" if id=="GTGCAN" else "wood"
+		result.capturable = id=="GASPYSAT"
+		if id=="GTGCAN":
+			result.weapon.damage = 150
+			result.weapon.cooldown = 120.0/15.0
+			result.weapon.range = 30.0*55.0
+			result.weapon.min_range = 3.0*55.0
 	if id == "NAFLAK" and BattleRequest.mission_id == "yr_hollywood" and not BattleRequest.skirmish:
 		result = result.duplicate(true)
 		result.cost = 20000
@@ -377,10 +442,16 @@ func units_from_building(faction: String, building_id: String) -> Array[Dictiona
 		var stars:Array[Dictionary]=[]
 		for id in BattleRequest.combat_context.get("hollywood_roster",[]): stars.append(get_unit(id))
 		return stars
-	if building_id in ["YAWEAP","YABRCK"] and not BattleRequest.skirmish and BattleRequest.mission_id in ["yr_hollywood","yr_head_games"]:
+	if building_id in ["YAWEAP","YABRCK"] and not BattleRequest.skirmish and BattleRequest.mission_id in ["yr_hollywood","yr_head_games","yr_allied_finale"]:
 		var native:Array[Dictionary]=[]
 		var products: Array = hollywood_yuri.buildings[building_id].builds.duplicate()
 		if BattleRequest.mission_id=="yr_head_games": products.append_array(HEAD_PRODUCTS[building_id])
+		if BattleRequest.mission_id=="yr_allied_finale" and building_id=="YAWEAP":
+			for id in ["DISK","TELE","MIND","CAOS"]:
+				if not products.has(id): products.append(id)
+		if BattleRequest.mission_id=="yr_allied_finale" and building_id=="YABRCK":
+			for id in ["BRUTE","VIRUS","ENGINEER"]:
+				if not products.has(id): products.append(id)
 		for id in products: native.append(get_unit(id))
 		return native
 	var out: Array[Dictionary] = []
@@ -410,9 +481,12 @@ func faction_unit_catalog(faction: String, include_extensions := BattleRequest.e
 			eng.append(s)
 	return catalog_sorted(ra2, "unit") + eng
 
-## Scenario actors remain spawnable/saveable but are not factory products.
+## Unique hero types are not eligible for autonomous AI production.
+## Ordinary unit types with a separate player hero promotion are not on this list.
+const UNIQUE_HERO_TYPES := ["TANY", "BORIS", "YURIPR", "CLNT", "ARND", "STLN"]
+
 func ai_product_allowed(id: String) -> bool:
-	return not id.begins_with("R3")
+	return not id.begins_with("R3") and id not in UNIQUE_HERO_TYPES
 
 func unit_in_production_catalog(id: String, include_extensions := BattleRequest.extensions_enabled()) -> bool:
 	if id in FieldCommission.HIDDEN: return false
@@ -452,12 +526,21 @@ func hollywood_production_unit(id: String) -> bool:
 		return id in HEAD_PRODUCTS.YABRCK or id in HEAD_PRODUCTS.YAWEAP or id in ["INIT","YURI","YENGINEER","LTNK","YTNK"]
 	return not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood" and id in ["INIT", "YURI", "YENGINEER", "LTNK", "YTNK"]
 
+const S07_VOLUNTEER_PRODUCTS := {"TERROR":"NAHAND", "DTRUCK":"NAWEAP"}
+
+func s07_volunteer_product(id: String) -> bool:
+	return not BattleRequest.skirmish and BattleRequest.mission_id == "yr_head_games" and S07_VOLUNTEER_PRODUCTS.has(id)
+
 func unit_production_block_reason(id: String, battle_state: Dictionary = {}, owner_side: String = "ally") -> String:
+	if s07_volunteer_product(id):
+		return "" if owner_side == "ally" and battle_state.has("head_volunteers") else "需先找到并接管当地志愿军"
 	var mission_reason := mission_tech_block_reason(id)
 	if not mission_reason.is_empty(): return mission_reason
 	if id in preload("res://scripts/rules/hollywood_heroes.gd").IDS:
 		return "" if id in BattleRequest.combat_context.get("hollywood_roster",[]) else "英雄尚未入册"
 	if hollywood_production_unit(id): return ""
+	# ALL07's retail factory teams use these already-implemented Yuri units.
+	if not BattleRequest.skirmish and BattleRequest.mission_id=="yr_allied_finale" and owner_side=="enemy" and id in ["CAOS","YENGINEER"]: return ""
 	var expedition_reason:=preload("res://scripts/expedition/rules.gd").block_reason(id,owner_side)
 	if not expedition_reason.is_empty():return expedition_reason
 	if preload("res://scripts/expedition/rules.gd").licensed_production(id, owner_side): return ""
@@ -629,6 +712,7 @@ func ra2_prereq_ok(id: String, owned: Array, battle_state: Dictionary = {}, owne
 	return ra2_missing_prereqs(id, owned, battle_state, owner_side).is_empty()
 
 func production_prerequisites(id: String, battle_state: Dictionary = {}, owner_side: String = "ally") -> Array:
+	if s07_volunteer_product(id): return [S07_VOLUNTEER_PRODUCTS[id], "RADAR"]
 	if id == "GTGCAN" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood":
 		return ["RADAR", "GACNST"]
 	var result: Array = ra2_prereq.get(id, []).duplicate()
@@ -645,7 +729,7 @@ func production_prerequisites(id: String, battle_state: Dictionary = {}, owner_s
 ## 列出尚未满足的前置令牌；空数组表示可建造（供 UI 置灰提示复用）
 func ra2_missing_prereqs(id: String, owned: Array, battle_state: Dictionary = {}, owner_side: String = "ally") -> Array:
 	var out: Array = []
-	if not ra2_prereq.has(id):
+	if not ra2_prereq.has(id) and not s07_volunteer_product(id):
 		return out
 	for pre in production_prerequisites(id, battle_state, owner_side):
 		var token := str(pre).strip_edges().to_upper()
@@ -707,6 +791,8 @@ func _country_names(ids: Array) -> String:
 ## Country eligibility comes from raw Owner / RequiredHouses / ForbiddenHouses.
 ## Country exclusives apply to both modes; progression does not change nationality.
 func ra2_country_block_reason(id: String, country: String, foreign_producer := false) -> String:
+	# SOV07 overrides the retail country restriction with RequiredHouses=Player.
+	if s07_volunteer_product(id): return ""
 	if id == "GTGCAN" and not BattleRequest.skirmish and BattleRequest.mission_id == "yr_hollywood":
 		return "" if country == "Americans" else "本关只有美国可以建造巨炮"
 	var source_id := id

@@ -198,8 +198,16 @@ static func _valid_order_pair(unit, target, action := "") -> bool:
 	if not alive(unit) or not alive(target) or unit == target: return false
 	var world = unit._battle_world()
 	if world == null: return false
+	if action=="allied_engineer" and unit.unit_id=="YENGINEER" and unit.side=="enemy" and world.mission.get("id")=="yr_time_shift" and unit.special.get("shift_reactor_fixer",false) and target is Building and target.special.get("shift_reactor_repair_target",false):
+		return target.side=="enemy" # The scripted engineer knows its own reactor; never retake a captured one.
 	if action == "allied_engineer" and unit.unit_id == "YENGINEER" and unit.side == "enemy" and world.mission.get("id") == "yr_time_shift" and unit.special.get("shift_plant") == target:
 		return true
+	if action == "allied_engineer" and world.mission.get("id") == "yr_allied_first" and unit.side == "enemy" and target is Building and target.side == "ally" and unit.special.get("allied_first_retake", "") == target.building_id and target.building_id.begins_with("CAPOWR0"):
+		return true # The scenario gives this patrol the assigned plant location.
+	if action=="allied_bridge" and world.mission.get("id")=="yr_hollywood" and unit.side=="enemy" and unit.special.get("hollywood_bridge_target")==target:
+		return true # The scripted fixer knows its designated hut.
+	if action=="allied_engineer" and world.mission.get("id")=="yr_allied_finale" and unit.side=="enemy" and unit.special.has("finale_oil_wp") and target==world.AlliedFinale.Branches.oil(world,int(unit.special.finale_oil_wp)):
+		return true # The original team is ordered to capture this exact waypoint site.
 	return world.actor_visible_to(unit.side, target)
 
 static func _action_allowed(unit, target, id: String) -> bool:
@@ -275,12 +283,12 @@ static func consume(unit) -> void:
 	unit.hide()
 	unit.queue_free()
 
-static func change_side(actor, owner: String, refresh_world := true) -> void:
+static func change_side(actor, owner: String, refresh_world := true, keep_garrison := false) -> void:
 	if actor.side == owner: return
 	actor.special.erase("dominator_source")
 	var world = actor._battle_world() if actor is Unit else actor.battle
 	if actor is Building:
-		if actor.data.has("garrison_slots") and not actor.special.get("occupants", []).is_empty():
+		if not keep_garrison and actor.data.has("garrison_slots") and not actor.special.get("occupants", []).is_empty():
 			preload("res://scripts/units/civilian_orders.gd").evacuate(actor,true)
 		if actor.side=="enemy" and world.mission.get("id")=="yr_head_games" and actor.building_id in ["NACNST","GACNST","YACNST"]:
 			world.allied_state["s07_no_yard_%d"%int(actor.special.get("head_games_wing",-1))]=true
@@ -312,10 +320,13 @@ static func change_side(actor, owner: String, refresh_world := true) -> void:
 			world.ai_decisions(owner).erase("oil_retry_left")
 		if not actor.special.get("oil_claimed", false):
 			actor.special.oil_claimed = true
-			world.credit_side(owner, float(actor.data.oil_startup))
+			world.credit_side(world.economy_owner(actor), float(actor.data.oil_startup))
 		if owner == "ally":
 			Ra2Sfx.play_player_eva(world, "EVA_OilRefineryCaptured")
 			Events.emit_message("已占领科技钻油井，可在附近建造")
+	if actor is Building and actor.building_id=="CAMACH" and owner=="ally" and world.mission.get("id")=="yr_allied_finale":
+		Ra2Sfx.play_player_eva(world,"EVA_MachineShopCaptured")
+		Events.emit_message("已占领机械维修厂，受损的己方车辆会持续恢复耐久。")
 	actor.attack_target = null
 	for group in ["allies", "enemies", "ally_targets", "enemy_targets"]: actor.remove_from_group(group)
 	if (owner in ["ally", "enemy"] or BattleRequest.house_teams.has(owner)):
@@ -327,6 +338,8 @@ static func change_side(actor, owner: String, refresh_world := true) -> void:
 	if actor is Unit and is_instance_valid(world.skirmish_ai):
 		world.skirmish_ai._army.erase(actor)
 		if owner == "enemy" and not actor.is_harvester and actor.deploy_building_id().is_empty(): world.skirmish_ai._army.append(actor)
+	if actor is Unit and actor.embarked_in != null:
+		BattleRequest.sync_unit_target_groups(actor,false)
 	actor.refresh_house_color()
 	actor.set_selected(false)
 	world.selected_units.erase(actor)
@@ -410,6 +423,11 @@ static func tick_action(unit, delta: float) -> bool:
 			# Credit the mission's power contest only when the engineer finishes entering.
 			if unit.unit_id == "YENGINEER" and unit.side == "enemy" and unit.special.get("shift_plant") == target:
 				target.special.yuri_power = true
+			if unit.side=="enemy" and target.battle.mission.get("id")=="yr_time_shift" and unit.special.has("shift_global_house"):
+				target.special.time_shift_native_house=unit.special.shift_global_house
+			if unit.side=="enemy" and target.battle.mission.get("id")=="yr_allied_finale":
+				if unit.special.has("finale_oil_wp") and target.building_id=="CAOILD": target.special.allied_finale_room="Yuri3"
+				elif unit.special.has("finale_engineer_rush"): target.special.allied_finale_room=unit.special.allied_finale_room
 			change_side(target, unit.side)
 	elif action == "allied_infiltrate":
 		resolve_infiltration(unit, target)
@@ -429,7 +447,8 @@ static func resolve_infiltration(unit, target) -> void:
 	if target.special.has("hollywood_plant") and thief == "ally": target.special.hollywood_infiltrated = true
 	if id in SPY_REFINERIES:
 		var percent := clampf(float(GameData.allied_capabilities.get("general", {}).get("SpyMoneyStealPercent", 0.5)), 0.0, 1.0)
-		world.transfer_spy_funds(victim, thief, percent, at)
+		if not world.skirmish and world.mission.get("id") in ["yr_time_shift","yr_hollywood","yr_head_games"]: percent=0.05 # Retail map [General] overrides.
+		world.transfer_spy_funds(world.economy_owner(target), world.economy_owner(unit), percent, at)
 	elif id in SPY_POWER:
 		world.allied_state["blackout_" + victim] = float(GameData.allied_capabilities.get("general", {}).get("SpyPowerBlackout", 1000)) / 15.0
 	elif STOLEN_LABS.has(id):
@@ -491,9 +510,10 @@ static func tick_actor(actor, delta: float) -> void:
 			actor.hp = 0.0
 			actor._die(owner)
 			return
-	if state.has("controller") and not alive(state.controller):
-		_clear_mind_control(actor)
-		state=actor.special
+	if state.has("controller"):
+		if not alive(state.controller):
+			_clear_mind_control(actor)
+			state=actor.special
 	if state.has("temporal_by"):
 		var owner = state.temporal_by
 		if not alive(owner) or owner.special.get("temporal_target") != actor:
@@ -593,6 +613,7 @@ static func _clear_mind_control(target) -> void:
 	var original: String = target.special.get("original_side", target.side)
 	target.special.erase("controller")
 	target.special.erase("original_side")
+	target.special.erase("mind_control_link_left") # Clear legacy snapshot data on release.
 	if target.side == original: return
 	change_side(target, original)
 	Ra2Sfx.play("MindCleared")

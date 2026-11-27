@@ -2,6 +2,11 @@ extends RefCounted
 ## Independent local target policy. Callers retain visibility/domain/order authority.
 ## Scores are preferences, not damage changes or predictions of guaranteed kills.
 
+const OUTSIDE_RANGE_PENALTY := 16.0
+# Mobile targets: effectiveness <= 4, volley <= 4, wound <= 0.6,
+# current <= 0.5, and no structure bonus. Round the ceiling up for safety.
+const OUTSIDE_RANGE_SCORE_CEILING := 10.0 - OUTSIDE_RANGE_PENALTY
+
 static func score(shooter, target, weapon: Dictionary, current) -> float:
 	var distance: float = shooter.global_position.distance_to(target.global_position)
 	if distance < float(weapon.get("min_range", 0.0)):
@@ -19,7 +24,7 @@ static func score(shooter, target, weapon: Dictionary, current) -> float:
 	result -= 0.5 * distance / maxf(1.0, float(shooter.attack_range))
 	# A shootable target always beats a target which would need pursuit.
 	if distance > shooter.attack_range:
-		result -= 16.0
+		result -= OUTSIDE_RANGE_PENALTY
 	if shooter is Unit and BattleRequest.is_ai_house(shooter.side) and target is Building and distance<=shooter.attack_range:
 		result+=2.0
 	if target == current:

@@ -6,7 +6,8 @@ import { YrSource, sha256 } from './lib/yr_source.mjs';
 import { parseIni, getSec } from './lib/ini.mjs';
 import { decodeShp, decodePal, montageIndexed, encodePngIndexed } from './art_lib.mjs';
 
-const [game, output] = process.argv.slice(2);
+const [game, output, mode] = process.argv.slice(2);
+if (mode && mode !== '--with-warp-in') throw new Error('Unknown mode: '+mode);
 if (!game || !output) throw new Error('Usage: node ra2pipe/yr_chrono_fx.mjs <YR directory> <new external candidate>');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = path.join(fs.realpathSync(path.dirname(path.resolve(output))), path.basename(output));
@@ -30,7 +31,7 @@ fs.mkdirSync(dir, { recursive: true });
 // CMIN's blue-white warp art is WARPOUT (also used by OpenRA/ra2's
 // ChronoResourceDelivery). General.WarpIn is a different brown ground ring;
 // do not infer the miner's appearance from that general-purpose tag's name.
-for (const key of ['warpout']) {
+for (const key of mode === '--with-warp-in' ? ['warpout', 'warpin'] : ['warpout']) {
   const image = getSec(rules, 'General').keys.get(key).toUpperCase();
   if (!/^[A-Z0-9_]+$/.test(image)) throw new Error(`Invalid image: ${image}`);
   const raw = getSec(art, image).keys;

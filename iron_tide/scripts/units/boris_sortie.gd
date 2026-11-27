@@ -15,7 +15,7 @@ static func occupied(unit) -> bool:
 	return unit.special.has("airstrike_wing")
 
 static func legal(unit,target,visible:=false) -> bool:
-	if not is_instance_valid(target) or not target is Building or not R.enemy(unit,target):return false
+	if not Unit.SovietSpecials.boris_airstrike_target(unit,target) or not R.enemy(unit,target):return false
 	if target.special.get("expedition_protected",false) or target.special.has("iron_left") or float(target.special.get("force_shield_left",0))>0:return false
 	if AlliedAbilities.alive(target.special.get("temporal_by")) or target.ignores_warhead("") or (target.side=="ally" and GM.god_mode):return false
 	return not visible or R.world(unit).actor_visible_to(unit.side,target)

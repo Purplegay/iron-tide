@@ -134,12 +134,23 @@ func exercise_mode(mode: String) -> void:
 	check(Driver.eject(miner).is_empty(), "Crewed=no miner cannot escape")
 	var robot = actor("ROBO", "ally", Vector2(1900, 1900))
 	check(Driver.eject(robot).is_empty(), "robot without Crewed cannot spawn organic driver")
-	for owner in ["ally", "enemy"]:
-		var jet = actor("ORCA", owner, Vector2(2500, 1500))
-		jet.logistics.air_lift = 1.0
+	var boris = actor("BORIS", "ally", Vector2(2200, 1200))
+	var strike_target = battle._place_building("NAPOWR", "enemy", Vector2(2600, 1300), true)
+	var wing: Array = []
+	preload("res://scripts/units/soviet_specials.gd")._dispatch_migs(boris, strike_target, wing)
+	check(not wing.is_empty(), "Boris dispatches a real MiG wing")
+	for mig in wing:
+		mig.position = Vector2(2700, 1850)
 		var before_loss: int = battle.units.size()
-		jet.receive_hit(100000, "flak")
-		check(jet._dead and battle.units.size() == before_loss, owner + " Intruder shot down over clear land spawns no soldier or technician")
+		mig.receive_hit(100000, "flak")
+		check(mig.unit_id == "BPLN" and mig._dead and battle.units.size() == before_loss, "Boris's MiG shot down over clear land spawns no escape crew")
+	for owner in ["ally", "enemy"]:
+		for aircraft_case in [["ORCA", 1.0], ["BEAG", 1.0], ["BEAG", 0.0], ["SHAD", 1.0], ["SHAD", 0.0]]:
+			var jet = actor(aircraft_case[0], owner, Vector2(2500, 1500))
+			jet.logistics.air_lift = aircraft_case[1]
+			var before_loss: int = battle.units.size()
+			jet.receive_hit(100000, "flak")
+			check(jet._dead and battle.units.size() == before_loss, "%s %s lift=%s spawns no escape crew" % [owner, aircraft_case[0], aircraft_case[1]])
 	var drone = actor("HORNET", "enemy", Vector2(2500, 1700))
 	check(Driver.eject(drone).is_empty(), "carrier drone has no pilot escape")
 	var blocked = actor("AMCV", "enemy", Vector2(2200, 2200))

@@ -25,7 +25,7 @@ static func configure(field) -> void:
 static func valid_zone(world, point: Vector2) -> bool:
 	return point.is_finite() and Rect2(Vector2.ZERO,Vector2.ONE*world.map_size).has_point(point) and not world.in_water_world(point) and not world.path_service.is_blocked(point)
 
-static func _start_drop(world, side: String, point: Vector2, infantry: String, count: int) -> bool:
+static func _start_drop(world, side: String, point: Vector2, infantry: String, count: int, story_tags: Dictionary = {}) -> bool:
 	if not valid_zone(world, point) or count <= 0: return false
 	var dir := 1 if point.x > world.map_size * 0.5 else -1
 	var start := Vector2(0 if dir == 1 else world.map_size, point.y)
@@ -35,6 +35,7 @@ static func _start_drop(world, side: String, point: Vector2, infantry: String, c
 	plane.special.para_count = count
 	plane.special.para_infantry = infantry
 	plane.special.para_left = count
+	if not story_tags.is_empty(): plane.special.para_story_tags=story_tags.duplicate()
 	plane.special.para_dir = dir
 	plane.hull_angle = 0.0 if dir == 1 else PI
 	plane.logistics.air_lift = 1.0
@@ -48,8 +49,21 @@ static func launch(field, point: Vector2) -> bool:
 
 # Mission scripts use the same aircraft, chute and landing rules as a real
 # paradrop, but do not require a constructed superweapon building.
-static func launch_story(world, point: Vector2, infantry: String, count: int) -> bool:
-	return _start_drop(world, "ally", point, infantry, count)
+static func launch_story(world, point: Vector2, infantry: String, count: int, entry := Vector2.INF, tags: Dictionary = {}, side: String = "ally") -> bool:
+	if not _start_drop(world, side, point, infantry, count, tags): return false
+	if entry.is_finite():
+		var plane = world.units.back()
+		plane.position = entry
+		plane.special.para_approach = true
+		plane.special.para_dir = 1 if point.x > entry.x else -1
+		plane.hull_angle = 0.0 if int(plane.special.para_dir)==1 else PI
+		plane.reset_physics_interpolation()
+	return true
+
+static func launch_story_manifest(world, point: Vector2, manifest: Array[String], entry: Vector2, tags: Dictionary) -> bool:
+	if manifest.is_empty() or not launch_story(world,point,manifest[0],manifest.size(),entry,tags): return false
+	world.units.back().special.para_manifest=manifest.duplicate()
+	return true
 
 static func open_ground(world, at: Vector2, except = null) -> Vector2:
 	for ring in 4:
@@ -70,6 +84,16 @@ static func fly(plane, delta: float) -> void:
 	var span := minf(radius, 120.0)
 	var count := int(plane.special.get("para_count", spec.count))
 	var start_x := clampf(goal.x - span, 16, world.map_size - 2 * span - 16)
+	if plane.special.get("para_approach",false):
+		var approach := Vector2(start_x-32.0 if dir==1 else start_x+2.0*span+32.0,goal.y)
+		var direction: Vector2 = plane.position.direction_to(approach)
+		if not direction.is_zero_approx(): plane.hull_angle=direction.angle()
+		plane.position=plane.position.move_toward(approach,plane.move_speed*delta)
+		if plane.position.is_equal_approx(approach):
+			plane.special.erase("para_approach")
+			plane.hull_angle=0.0 if dir==1 else PI
+		plane.queue_redraw()
+		return
 	var end_x := float(world.map_size) if dir == 1 else 0.0
 	plane.position.x = move_toward(plane.position.x,end_x,plane.move_speed*delta)
 	if world.actor_visible_to("ally",plane): Ra2Sfx.start_attached_loop(plane,"CargoEngine","para_engine_audio","PDPlaneMoveLoop")
@@ -84,8 +108,11 @@ static func fly(plane, delta: float) -> void:
 		var point := open_ground(world,Vector2(x,goal.y))
 		if not point.is_finite(): point = open_ground(world,goal)
 		if not point.is_finite(): continue
-		var soldier = world.spawn_unit(str(plane.special.get("para_infantry",spec.infantry)),plane.side,point)
+		var manifest: Array = plane.special.get("para_manifest",[])
+		var infantry: String = manifest[index] if index<manifest.size() else str(plane.special.get("para_infantry",spec.infantry))
+		var soldier = world.spawn_unit(infantry,plane.side,point)
 		if soldier == null: continue
+		if plane.special.has("para_story_tags"): soldier.special.merge(plane.special.para_story_tags)
 		soldier.special.para_height = plane._visual_lift()
 		soldier.special.para_age = 0.0
 		soldier.special.para_collision = [soldier.collision_layer,soldier.collision_mask]

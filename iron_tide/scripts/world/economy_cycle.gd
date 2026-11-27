@@ -23,7 +23,7 @@ static func income_factor(world, owner: String) -> float:
 	var count := 0
 	for b in world.buildings:
 		if is_instance_valid(b) and not b.is_queued_for_deletion() and b.hp > 0.0 \
-				and b.side == owner and b.data.get("tags", []).has("purifier") and b.is_operational():
+				and b.data.get("tags", []).has("purifier") and world.economy_owner(b) == owner and b.is_operational():
 			count += 1
 	return 1.0 + count * float(GameData.ra2_economy.get("purifier_bonus", 0.25))
 

@@ -202,12 +202,17 @@ func neighbor_changes(mode: String) -> void:
 	var ok: Dictionary = battle.build_spot_ok(next, data, true)
 	check(ok.ok, mode + ": adjacent wall placement is legal", ok)
 	if ok.ok:
+		var original_color := HouseColor.player_id
+		HouseColor.set_player_id("purple")
 		battle.struct_ready["GAWALL"] = 1
 		battle.armed_build = "GAWALL"
 		battle.preview_override = next
 		battle.queue_redraw()
 		battle.hp_overlay.queue_redraw()
 		await settle_draw()
+		check(not battle._build_ghosts.is_empty() and battle._build_ghosts[0].mask >= 0
+			and battle._build_ghost_layer.material == HouseColor.material_for(HouseColor.player_color()),
+			mode + ": connected wall preview uses player house material")
 		save_picture(mode + "-wall-preview.png")
 		battle._try_place_building(next)
 		await settle_draw()
@@ -216,6 +221,7 @@ func neighbor_changes(mode: String) -> void:
 		for item in battle.buildings.duplicate():
 			if is_instance_valid(item) and item != b and item.building_id == "GAWALL" and item.position == next:
 				remove_wall(item)
+		HouseColor.set_player_id(original_color)
 	remove_wall(range_source)
 	battle.preview_override = Vector2.INF
 	battle.armed_build = ""

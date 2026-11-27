@@ -4,6 +4,28 @@ import json
 from PIL import Image
 
 
+def group_cells(rows):
+    """Group eight-neighbor texture warnings for same-camera review."""
+    counts = {(u, v): hits for u, v, hits in rows}
+    remaining = set(counts)
+    groups = []
+    while remaining:
+        root = min(remaining)
+        remaining.remove(root)
+        queue = [root]
+        for x, y in queue:
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    point = x+dx, y+dy
+                    if point in remaining:
+                        remaining.remove(point)
+                        queue.append(point)
+        xs, ys = zip(*queue)
+        groups.append(dict(bounds=[min(xs), min(ys), max(xs), max(ys)], cells=len(queue),
+                           peak=max(queue, key=lambda p: (counts[p], p))))
+    return groups
+
+
 def inspect_terrain(row, image):
     size = row['side']
     pixels, remainder = divmod(image.width, size)
@@ -32,6 +54,8 @@ def inspect_terrain(row, image):
         if hits >= samples * 0.8:
             (failures if (u,v) in protected else review).append((u,v,hits))
     print(f"{row['id']} scanned {len((risks | protected) & levels.keys())} cells; samples/cell {samples}; review {review}; regression {failures}")
+    if review:
+        print(f"{row['id']} review_groups {json.dumps(group_cells(review))}")
     if failures:
         raise ValueError('Repeated vertical texture at verified south bridge approach')
 

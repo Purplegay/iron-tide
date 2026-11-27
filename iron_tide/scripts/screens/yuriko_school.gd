@@ -34,6 +34,11 @@ const TEAL:=Color("#276b62")
 const PAPER:=Color("#fbf7ebf5")
 const WARM:=Color("#f4dfac")
 const VIEW_NAMES:=["手记","日常活动","灵能练习","试衣间","私信与礼物","场景"]
+const SCROLL_PREFS_PATH := "user://yuriko_scroll.cfg"
+const SCROLL_KEYS := {0: "chapters", 1: "activities", 2: "training", 4: "gifts", 5: "scenes", 6: "affinity", 7: "replies", 8: "cg"}
+var scroll_prefs := ConfigFile.new()
+var scroll_save_timer: Timer
+var scroll_dirty := false
 const DETAILS:={"Shield":["护盾持续 5 秒","护盾持续 7 秒","护盾持续 9 秒"],"Lure":["最多控制 3 名步兵","最多控制 5 名步兵","最多控制 7 名步兵"],"Slam":["举起半径 22.5，冷却 5 秒","举起半径 30，冷却 4 秒","举起半径 37.5，冷却 3 秒"],"Speed":["基础移速 ×1.15","基础移速累计 ×1.3225"],"Health":["生命上限 ×1.15","生命上限累计 ×1.3225"],"AttackDamage":["攻击 ×1.25","攻击累计 ×1.5625"]}
 
 var shop_day:=""
@@ -62,6 +67,12 @@ var actor_layer:TextureRect
 var story_portraits:Dictionary={"swim":SWIM_PORTRAIT}
 
 func _ready() -> void:
+	scroll_prefs.load(SCROLL_PREFS_PATH)
+	scroll_save_timer = Timer.new()
+	scroll_save_timer.one_shot = true
+	scroll_save_timer.wait_time = 0.3
+	scroll_save_timer.timeout.connect(save_scroll_positions)
+	add_child(scroll_save_timer)
 	from_base=get_tree().get_meta("yuriko_from_base",false)
 	if from_base:get_tree().remove_meta("yuriko_from_base")
 	from_cg_collection=get_tree().get_meta("yuriko_from_cg_collection",false)
@@ -186,7 +197,31 @@ func scrolling(parent:Control) -> VBoxContainer:
 	entries.size_flags_horizontal=Control.SIZE_EXPAND_FILL
 	entries.add_theme_constant_override("separation",7)
 	scroll.add_child(entries)
+	var key: String = SCROLL_KEYS[tab]
+	restore_scroll(scroll, key)
 	return entries
+
+func restore_scroll(scroll: ScrollContainer, key: String) -> void:
+	# Wait for the nested containers to calculate the scrollbar range.
+	await get_tree().process_frame
+	await get_tree().process_frame
+	if not is_instance_valid(scroll) or not scroll.is_inside_tree():
+		return
+	scroll.scroll_vertical = maxi(0, int(scroll_prefs.get_value("vertical", key, 0)))
+	# Restoring a clamped position on a shorter page must not replace the bookmark.
+	scroll.get_v_scroll_bar().value_changed.connect(remember_scroll.bind(key))
+
+func remember_scroll(value: float, key: String) -> void:
+	scroll_prefs.set_value("vertical", key, int(value))
+	scroll_dirty = true
+	scroll_save_timer.start()
+
+func save_scroll_positions() -> void:
+	if scroll_dirty and scroll_prefs.save(SCROLL_PREFS_PATH) == OK:
+		scroll_dirty = false
+
+func _exit_tree() -> void:
+	save_scroll_positions()
 
 func place_portrait(portrait:Control) -> void:
 	stage.add_child(portrait)
@@ -450,13 +485,14 @@ func correspondence(box:VBoxContainer) -> void:
 	var list:=scrolling(box)
 	var counts:=Book.bonus_counts()
 	label(list,"驻场 %d 秒　生命 +%d%%　攻击 +%d%%　移速 +%s%%　冷却 −%s%%"%[Psi.BASE_DURATION+2*int(counts.get("duration",0)),int(counts.get("health",0)),int(counts.get("attack",0)),String.num(0.5*int(counts.get("speed",0)),1),String.num(0.25*int(counts.get("cooldown",0)),2)],16)
+	label(list,"每升 1 级好感可选一项加成。每项最多 %d 级，点满后不再出现。"%Book.BONUS_CAP,16)
 	var level:=Book.next_bonus_level()
 	if level<=Book.affinity_level():
 		label(list,"第 %d 级 · 选择一项加成（待选 %d 级）"%[level,Book.affinity_level()-level+1],19,TEAL)
 		var row:=HFlowContainer.new()
 		list.add_child(row)
 		for key:String in Book.bonus_options():
-			button(row,Book.BONUSES[key],choose_affinity.bind(level,key))
+			button(row,"%s（%d/%d 级）"%[Book.BONUSES[key],counts.get(key,0),Book.BONUS_CAP],choose_affinity.bind(level,key))
 	Unread.Dot.mark(button(list,"好感手记 · 两个人的放学路",hub.bind(6)),Unread.section(6),"有未读内容")
 	label(list,"送给百合子",19,TEAL)
 	shop_wallet=label(list,"",16)

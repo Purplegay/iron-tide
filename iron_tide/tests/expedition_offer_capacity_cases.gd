@@ -34,34 +34,40 @@ static func run(t) -> void:
 	Expedition.commit(next)
 	var saved:Dictionary=Expedition.state.duplicate(true)
 	t.check(not Expedition.buy(0) and not Expedition.buy(1) and Expedition.state==saved,"stale full unit and max equipment cannot charge")
-	# A persisted reward may become unusable before it is claimed. It must pay once.
+	# Recruits grant inventory, while exhausted upgrades convert into a one-time payout.
 	for item:Dictionary in [{"kind":"unit","id":"E1"},{"kind":"special_unit","id":"TANY","tier":3},{"kind":"buff","id":"armor"},{"kind":"training","id":"E1"},{"kind":"hero","id":"E1"}]:
 		next=saved.duplicate(true);next.phase="reward";next.reward_round="main";next.offers=[item]
 		Expedition.commit(next)
 		var balance:int=Expedition.state.supplies
 		var token:=Expedition.reward_token()
 		var display:=Market.reward_item(Expedition.state,item)
-		t.check(display.kind=="supplies" and display.amount==100 and Catalog.description(display).contains("改领补给"),"converted reward display explains actual payout "+item.kind)
-		t.check(Expedition.load_run() and Expedition.choose(0,"",token) and Expedition.state.supplies==balance+100,"capped reward pays supplies through real claim "+item.kind)
+		if item.kind in ["unit","special_unit"]:
+			var quantity:=Army.quantity(Expedition.state,item.id)
+			t.check(display==item,"recruit reward remains available for reserves "+item.kind)
+			t.check(Expedition.load_run() and Expedition.choose(0,"",token) and Expedition.state.supplies==balance and Army.quantity(Expedition.state,item.id)==quantity+Market.recruit_batch(item),"full recruit reward added to reserves "+item.kind)
+		else:
+			t.check(display.kind=="supplies" and display.amount==100 and Catalog.description(display).contains("改领补给"),"converted reward explains compensation "+item.kind)
+			t.check(Expedition.load_run() and Expedition.choose(0,"",token) and Expedition.state.supplies==balance+100,"unavailable reward pays through real claim "+item.kind)
 		var claimed:Dictionary=Expedition.state.duplicate(true)
-		t.check(not Expedition.choose(0,"",token) and Expedition.load_run() and Expedition.state==claimed,"converted reward cannot be claimed twice "+item.kind)
-	# Partial batches fill vacancies and compensate only the surplus.
+		t.check(not Expedition.choose(0,"",token) and Expedition.load_run() and Expedition.state==claimed,"persisted reward cannot be claimed twice "+item.kind)
+	# Rewards grant their full batch. Excess inventory stays in reserve.
 	next=saved.duplicate(true);next.shop=[];next.heroes=[]
 	next.reinforcements=[{"id":"MTNK","count":3}];next.active_roster=["MTNK"]
 	var balance:int=next.supplies
 	Expedition.grant(next,{"kind":"unit","id":"MTNK"})
-	t.check(Army.quantity(next,"MTNK")==4 and next.supplies==balance+15,"partial vehicle batch fills one and refunds one surplus")
+	t.check(Army.quantity(next,"MTNK")==3+Catalog.squad_size("MTNK") and next.supplies==balance and Army.deployment(next).counts.MTNK==4,"vehicle reward keeps surplus in reserve without refund")
 	next.reinforcements=[];next.special_squads=[];next.active_roster=[]
 	Expedition.grant(next,{"kind":"unit","id":"TANY"})
 	t.check(Army.quantity(next,"TANY")==1,"ordinary unique recruitment cannot create duplicates")
 	Expedition.grant(next,{"kind":"special_unit","id":"TANY","tier":3,"count":1})
-	t.check(Army.quantity(next,"TANY")==1 and next.special_squads.is_empty(),"special variant shares unique unit capacity")
-	next.reinforcements=[]
+	t.check(Army.quantity(next,"TANY")==2 and Army.deployment(next).counts.TANY==1 and Army.deployment(next).reserve.size()==1,"ordinary and special variants share unique deployment capacity")
+	next.reinforcements=[];next.special_squads=[]
 	Expedition.grant(next,{"kind":"special_unit","id":"TANY","tier":3,"count":2})
-	t.check(Army.quantity(next,"TANY")==1 and Army.room(next,"TANY")==0,"special-first unique unit blocks ordinary duplicate")
-	# Chapter population is a separate exclusion, even for an unowned unit type.
+	t.check(Army.quantity(next,"TANY")==2 and Army.room(next,"TANY")==0 and Army.deployment(next).counts.TANY==1,"special-first unique reward retains reserve and blocks shop duplication")
+	# Chapter population constrains deployment while the shop still has room for new types.
 	next.stage=1;next.special_squads=[];next.reinforcements=[{"id":"E1","count":8},{"id":"GGI","count":8},{"id":"MTNK","count":4},{"id":"FV","count":4}]
-	t.check(Market.unit_pool(next).is_empty() and Army.room(next,"TANY")==0,"chapter population excludes every recruitment candidate")
+	next.active_roster=["E1","GGI","MTNK","FV"]
+	t.check(Army.deployment(next).remaining==0 and not Market.unit_pool(next).is_empty() and Army.room(next,"TANY")==1,"full deployment leaves new types available for reserve recruitment")
 	# Vacancies and equipment below max become eligible again; no permanent blacklist.
 	next.reinforcements=[{"id":"E1","count":7}];next.buffs.armor=2
 	t.check(Market.offer_available(next,{"kind":"unit","id":"E1"}) and Market.offer_available(next,{"kind":"buff","id":"armor"}),"vacancy and nonmax equipment are available again")

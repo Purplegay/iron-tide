@@ -31,7 +31,8 @@ static func air_pursuit(unit: Unit, target) -> bool:
 ## Campaign Area Guard is distinct from sitting on Guard or following a team script.
 ## Use the local sight radius as a leash; weapon reach still gates actual firing.
 static func area_guard(unit: Unit, target, reach: float, delta: float) -> bool:
-	if unit.side != "enemy" or unit.hold_position or unit.fire_stance != "free": return false
+	if unit.side != "enemy" and not (unit.special.has("yr_flak_post") and BattleRequest.is_ai_house(unit.side)): return false
+	if unit.hold_position or unit.fire_stance != "free": return false
 	if unit.has_move_order or unit.attack_ordered or unit.attack_move or unit.patrolling or not unit.order_queue.is_empty(): return false
 	if unit._deployed or unit.repairing or unit.embarked_in != null or unit.is_harvester or unit.is_air or unit.weapon.is_empty(): return false
 	if unit.special.has("action") or unit.special.has("finished_attack_route"): return false

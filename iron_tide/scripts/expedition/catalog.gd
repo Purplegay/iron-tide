@@ -127,7 +127,7 @@ static func description(item:Dictionary) -> String:
 	if not detail.is_empty():return detail
 	if item.kind=="hero":return "本轮获得 1 位英雄，无需局外解锁；可与已有英雄一同出战，同名不重复。阵亡后可花 60 补给救治，不解锁局外英雄。"
 	if item.kind=="buff":return str(BUFFS[item.id].desc)+"；最高 3 级，本轮持续生效"
-	if item.kind=="unit":return "招募 %d 个单位。出战名额已满时，新兵留在预备队。未持有时解锁本轮生产许可；继承攻防等级，重复招募不自动强化。"%squad_size(item.id)
+	if item.kind=="unit":return "招募 %d 个单位。出战名额已满时，新兵留在预备队。未持有时解锁本轮生产许可；新兵继承该兵种已有的攻防等级。"%int(item.get("recruit_count",squad_size(item.id)))
 	if item.kind=="repair_kit":return "战斗中主动使用，全军恢复 35% 最大生命；每包一次"
 	if item.kind=="supplies":return ("原奖励已满员、满级或已拥有，改领补给。" if item.get("converted",false) else "")+"获得 %d 远征补给，可用于下一关商店、强化与整备；跨关保留。"%int(item.get("amount",100))
 	if item.kind=="refresh_token":return "下一营地首件货架商品免费，可先刷新再买。免单不含服务，离营失效。另送 1 次免费刷新，可与商店首次免费刷新叠加，未用可保留。"

@@ -10,9 +10,17 @@ const SNOW = preload("res://assets/ui/cg_gallery/snow.png")
 const LOCK = preload("res://assets/ui/cg_gallery/lock.svg")
 const PLAY = preload("res://assets/ui/cg_gallery/play.svg")
 const POSTERS := {
+	"A01_F00E": preload("res://assets/ui/cg_gallery/A01_F00E.webp"),
+	"A01_P01E": preload("res://assets/ui/cg_gallery/A01_P01E.webp"),
+	"A01_P02E": preload("res://assets/ui/cg_gallery/A01_P02E.webp"),
+	"A01_P03E": preload("res://assets/ui/cg_gallery/A01_P03E.webp"),
+	"A07_F00E": preload("res://assets/ui/cg_gallery/A07_F00E.webp"),
+	"A07_P01E": preload("res://assets/ui/cg_gallery/A07_P01E.webp"),
+	"A08_F00E": preload("res://assets/ui/cg_gallery/A08_F00E.webp"),
 	"A02_F00E": preload("res://assets/ui/cg_gallery/A02_F00E.webp"),
 	"A02_P01E": preload("res://assets/ui/cg_gallery/A02_P01E.webp"),
 	"A02_P02E": preload("res://assets/ui/cg_gallery/A02_P02E.webp"),
+	"A02_P03E": preload("res://assets/ui/cg_gallery/A02_P03E.webp"),
 	"S01_F00E": preload("res://assets/ui/cg_gallery/S01_F00E.png"),
 	"S01_P01E": preload("res://assets/ui/cg_gallery/S01_P01E.webp"),
 	"S01_P02E": preload("res://assets/ui/cg_gallery/S01_P02E.webp"),
@@ -81,6 +89,16 @@ func _ready() -> void:
 		counts[group.faction] += subtotal
 	_panel(page,Rect2(1264,118,6,6),_style(Color("#e79a82"),3))
 	_text(page,Rect2(1277,108,115,24),"战役影片  %d / %d" % [total.x,total.y],14,SMALL,false,HORIZONTAL_ALIGNMENT_RIGHT)
+	var progress := ProgressBar.new()
+	progress.name = "CampaignCGProgress"
+	progress.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	progress.show_percentage = false
+	progress.step = 1.0
+	progress.max_value = maxi(1,total.y)
+	progress.value = total.x
+	progress.add_theme_stylebox_override("background",_style(Color("#25313e"),4,Color("#465665")))
+	progress.add_theme_stylebox_override("fill",_style(Color("#e79a82"),4))
+	_place(page,progress,Rect2(1168,136,224,8))
 	_solid(page,Rect2(48,203,1344,1),Color("#37434f"))
 	_make_tab("allied",48,counts.allied)
 	_make_tab("soviet",224,counts.soviet)
@@ -143,8 +161,7 @@ func _make_faction(faction: String) -> void:
 	contents.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	scroll.add_child(contents)
 	var section := 0
-	for group in Catalog.GROUPS:
-		if group.faction != faction: continue
+	for group in Catalog.groups_for_faction(faction):
 		var y := 25 + section * 314
 		var spec: Dictionary = FACTIONS[faction]
 		_panel(contents,Rect2(0,y-17,34,26),_style(Color(spec.bottom).lightened(0.08),4,Color(spec.border).darkened(0.4)))

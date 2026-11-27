@@ -13,6 +13,7 @@ func _ready() -> void:
 	await eligibility_and_retry()
 	await ui_and_expedition()
 	await native_fire_and_flight()
+	await automatic_fire()
 	await expedition_runtime()
 	FileAccess.open(output_dir.path_join("result.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failed":failed},"  "))
 	print("PEREGRINE_BASE_RESULT ",checks.size()," checks, ",failed," failed")
@@ -249,6 +250,49 @@ func native_fire_and_flight() -> void:
 	check(not ordinary.flight.jumpjet and ordinary.logistics.ammo_max==int(GameData.ra2_source_units.ORCA.extra.Ammo),"ordinary ORCA retains native flight and ammunition")
 	ordinary.logistics.ammo=0;ordinary.logistics.tick(.01)
 	check(ordinary.logistics.air_state!="flying","ordinary empty aircraft still requests airport return")
+	await finish()
+
+func automatic_fire() -> void:
+	var hero=setup_hero()
+	var origin:Vector2=hero.position
+	var target=battle.spawn_unit("HTNK","enemy",origin+Vector2(160,0))
+	target.hp=100000;target.max_hp=100000
+	var reach:float=hero._weapon_for_target(target).range
+	target.position=origin+Vector2(reach+32,0)
+	hero.set_fire_stance("free")
+	hero._refresh_target()
+	check(hero.attack_target!=target,"Peregrine does not acquire an out-of-range tank in free fire",[reach,hero.attack_range,str(hero.attack_target)])
+	target.position=origin+Vector2(160,0)
+	for stance in ["none","return"]:
+		hero.set_fire_stance(stance)
+		hero._refresh_target()
+		check(hero.attack_target==null,"Peregrine respects non-acquiring stance: "+stance)
+	hero.order_stop()
+	hero.hull_angle=0;hero.turret_angle=0;hero._think_timer=0;hero._cd_timer=0
+	var rounds:int=hero.logistics.ammo
+	for i in 120:
+		hero._physics_process(1.0/60)
+		if hero.logistics.ammo<rounds:break
+	check(hero.fire_stance=="defend" and hero.attack_target==target and not hero.attack_ordered,"default defense automatically acquires a nearby enemy unit")
+	check(hero.logistics.ammo==rounds-1 and hero.position.distance_to(origin)<1,"automatic ground volley consumes one round without pursuing")
+	var shots:Array=battle.projectiles_root.get_children().filter(func(shot):return shot is Projectile and is_same(shot.shooter(),hero))
+	check(not shots.is_empty(),"automatic fire launches a real projectile")
+	for shot in shots:shot._explode()
+	check(target.hp<100000,"automatic missile impact damages the enemy")
+	var ordinary=battle.spawn_unit("ORCA","ally",origin+Vector2(0,20))
+	ordinary._refresh_target()
+	check(ordinary.attack_target==null and not ordinary.attack_ordered,"ordinary ORCA still requires a manual attack order")
+	hero.order_stop()
+	hero.special.hero_command_rank=2
+	hero.logistics.ammo=0
+	hero._think_timer=0;hero._cd_timer=0
+	var air=battle.spawn_unit("ZEP","enemy",origin+Vector2(128,0))
+	air.logistics.air_lift=1.0
+	var air_hp:float=air.hp
+	for i in 120:
+		hero._physics_process(1.0/60)
+		if air.hp<air_hp:break
+	check(hero.attack_target==air and not hero.attack_ordered and air.hp<air_hp and hero.logistics.ammo==0,"unlocked AA gun automatically hits aircraft even with empty ground ammo")
 	await finish()
 
 func expedition_runtime() -> void:

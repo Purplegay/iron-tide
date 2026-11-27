@@ -125,6 +125,11 @@ static func impact_candidates(shot) -> Array:
 			return not air)
 	if GameData.warhead_blocks_friendly_damage(shot.ra2_warhead):
 		result = result.filter(func(actor): return not BattleRequest.friendly(actor.side,shot.owner_side))
+	# Neutral scenery is not in either combat target group. Preserve an explicitly
+	# aimed barrel in splash resolution without turning all scenery into scan targets.
+	var direct = shot.target
+	if AlliedAbilities.alive(direct) and direct is Building and (direct.is_explosive_barrel() or direct.special.get("allied_first_overlay",false)) and not result.has(direct):
+		result.append(direct)
 	return result
 
 # Only narrow the broad phase; the caller retains its exact distance, layer and

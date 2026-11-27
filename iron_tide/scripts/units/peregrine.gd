@@ -38,7 +38,7 @@ static func promote(_meta,world,unit) -> void:
 	unit.equip_hero_cards()
 	var academy=MetaProgress.Academy
 	var training:Dictionary=BattleRequest.combat_context.get("hero_training",{}) if unit.side=="ally" else {}
-	var scale:float=BattleRequest.combat_context.get("hero_training_scale",academy.HERO_TRAINING_SCALE)
+	var scale:float=BattleRequest.combat_context.get("hero_training_scale",1.0)
 	unit._grant_veteran(int(GameData.ra2_veteran_rules().get("cap",2)),false)
 	unit._base_max_hp*=1.0+.01*academy.training_percent("health",academy.training_rank(training,"ORCA","health"),scale)
 	unit.max_hp=unit._base_max_hp;unit.hp=unit.max_hp

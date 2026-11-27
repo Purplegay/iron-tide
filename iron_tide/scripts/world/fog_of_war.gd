@@ -1,6 +1,6 @@
 extends Node2D
 ## Independent shared visibility: 40-world-unit cells, persistent terrain exploration.
-## Does not model terrain occlusion, stealth detection or remembered enemy buildings.
+## The player's last-seen structures are presentation only, never combat sight.
 
 const CELL := 40.0
 # An unpacked Allied or Soviet yard scouts 12 original cells instead of 8.
@@ -19,6 +19,7 @@ const IVAN_BOMB_SIGHT := 3.0 * CELL
 const EXPLORED_OPACITY := 0.45
 const FOG_RETURN_FADE := 1.2
 var battle: Battle
+var building_memory := preload("res://scripts/world/fog_building_memory.gd").new()
 var width := 0
 var visible_cells: Dictionary = {}
 var explored_cells: Dictionary = {}
@@ -99,14 +100,20 @@ class SightBatch:
 			var right := mini(mini(hi.x, size - 1), floori((point.x + span) / CELL))
 			if left <= right: image.fill_rect(Rect2i(left, y, right - left + 1, 1), Color.WHITE)
 
-	static func raster_vacated(image: Image, size: int, old: Dictionary, current: Dictionary) -> void:
+	static func raster_vacated(image: Image, size: int, old: Dictionary, current: Dictionary) -> Vector2i:
 		var p: Vector2 = old.point
 		var radius: float = old.radius
+		var has_current := not current.is_empty()
+		var at: Vector2 = current.point if has_current else Vector2.ZERO
+		var r: float = current.radius if has_current else 0.0
+		var radius_squared := radius * radius
+		var current_squared := r * r
 		var lo := Vector2i(floori((p.x - radius) / CELL), floori((p.y - radius) / CELL))
 		var hi := Vector2i(floori((p.x + radius) / CELL), floori((p.y + radius) / CELL))
+		var bounds := Vector2i(-1, -1)
 		for y in range(maxi(0, lo.y), mini(size - 1, hi.y) + 1):
 			var dy := p.y - clampf(p.y, y * CELL, (y + 1) * CELL)
-			var span2 := radius * radius - dy * dy
+			var span2 := radius_squared - dy * dy
 			if span2 < 0: continue
 			var span := sqrt(span2)
 			var left := maxi(maxi(lo.x, 0), ceili((p.x - span) / CELL) - 1)
@@ -114,20 +121,27 @@ class SightBatch:
 			if left >= end: continue
 			var skip_left := end
 			var skip_end := end
-			if not current.is_empty():
-				var at: Vector2 = current.point
-				var r: float = current.radius
+			if has_current:
 				var offset_y := at.y - clampf(at.y, y * CELL, (y + 1) * CELL)
-				var overlap2 := r * r - offset_y * offset_y
+				var overlap2 := current_squared - offset_y * offset_y
 				if overlap2 >= 0:
 					var overlap := sqrt(overlap2)
 					skip_left = clampi(ceili((at.x - overlap) / CELL) - 1, left, end)
 					skip_end = clampi(floori((at.x + overlap) / CELL) + 1, left, end)
+			var first_written := left
+			var last_written := end - 1
 			if skip_end <= skip_left:
 				image.fill_rect(Rect2i(left, y, end - left, 1), Color.WHITE)
 			else:
+				if skip_left == left and skip_end == end: continue
 				if skip_left > left: image.fill_rect(Rect2i(left, y, skip_left - left, 1), Color.WHITE)
+				else: first_written = skip_end
 				if skip_end < end: image.fill_rect(Rect2i(skip_end, y, end - skip_end, 1), Color.WHITE)
+				else: last_written = skip_left - 1
+			var row := y * size
+			if bounds.x < 0: bounds.x = row + first_written
+			bounds.y = row + last_written
+		return bounds
 
 func setup(world) -> void:
 	battle = world
@@ -248,7 +262,11 @@ func _scout_covers_firing(shot: Dictionary, cache: Dictionary) -> bool:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(85)
 	var owner: String = shot.side
 	if not visible_cells.has(owner): return false
-	if not cache.has(owner):
+	# Valid skirmish team IDs are integers; standalone houses keep a separate key.
+	# The caller discards this cache at the end of the synchronous expiry pass.
+	var key: Variant = BattleRequest.house_teams.get(owner)
+	if not key is int: key = owner
+	if not cache.has(key):
 		var positions: Array[Vector2] = []
 		var clearances: Array[float] = []
 		for actor in battle.units + battle.buildings:
@@ -259,8 +277,8 @@ func _scout_covers_firing(shot: Dictionary, cache: Dictionary) -> bool:
 			if clearance <= 0.0: continue
 			positions.append(actor.global_position)
 			clearances.append(clearance*clearance)
-		cache[owner] = {"positions":positions,"clearances":clearances}
-	var sources: Dictionary = cache[owner]
+		cache[key] = {"positions":positions,"clearances":clearances}
+	var sources: Dictionary = cache[key]
 	var at: Vector2 = shot.position
 	for i in sources.positions.size():
 		if at.distance_squared_to(sources.positions[i]) < sources.clearances[i]: return true
@@ -285,7 +303,7 @@ func reveal_attack(attacker, target) -> void:
 	var changed := not is_visible_at(observer, origin)
 	var ping_origin := changed and BattleRequest.friendly(observer, "ally")
 	var player_building_changed := false
-	if target is Building and visible_cells.has(attacker.side) and battle.actor_visible_to(attacker.side, target):
+	if target is Building and visible_cells.has(attacker.side) and not _held_buildings[attacker.side].has(target.get_instance_id()) and battle.actor_visible_to(attacker.side, target):
 		if _hold_building(attacker.side, target):
 			changed = true
 			player_building_changed = attacker.side == "ally"
@@ -452,6 +470,20 @@ func is_explored_at(side: String, p: Vector2) -> bool:
 	var index := _index(p)
 	return index >= 0 and explored_cells.has(side) and explored_cells[side][index] != 0
 
+func reshroud_at(side:String,point:Vector2,radius:float) -> void:
+	if not explored_cells.has(side) or not visible_cells.has(side):return
+	var min_cell:=Vector2i(((point-Vector2.ONE*radius)/CELL).floor())
+	var max_cell:=Vector2i(((point+Vector2.ONE*radius)/CELL).floor())
+	for y in range(maxi(0,min_cell.y),mini(int(explored_cells[side].size()/width)-1,max_cell.y)+1):
+		for x in range(maxi(0,min_cell.x),mini(width-1,max_cell.x)+1):
+			var index:=y*width+x
+			if visible_cells[side][index]==0 and ((Vector2(x,y)+Vector2.ONE*0.5)*CELL).distance_squared_to(point)<=radius*radius:
+				explored_cells[side][index]=0
+	if side=="ally":
+		for pos in building_memory.records.keys():
+			if not is_explored_at(side,pos):building_memory.forget(pos)
+	rebuild()
+
 func reset_exploration(side: String) -> void:
 	if not explored_cells.has(side): return
 	sight_until[side].clear()
@@ -461,6 +493,7 @@ func reset_exploration(side: String) -> void:
 	for id in firing_positions.keys():
 		if firing_positions[id].side == side: firing_positions.erase(id)
 	if side == "ally":
+		building_memory.restore({})
 		_previous_visible.resize(width * width)
 		_previous_visible.fill(0)
 		_fading_cells.clear()
@@ -671,26 +704,35 @@ func _hold_vacated_scouts(scouts: Dictionary, remaining: float) -> void:
 	# Union each scout's OLD minus its OWN current footprint, not union(old)
 	# minus union(current): another scout's death must not erase this hold time.
 	var masks := {}
+	var written := {}
 	for id in _scouts:
 		var old: Dictionary = _scouts[id]
 		var current: Dictionary = scouts.get(id, {})
 		if old == current or not visible_cells.has(old.side): continue
 		if current.get("side") != old.side: current = {}
+		# An expanding footprint at the same point vacates nothing.
+		if not current.is_empty() and current.point == old.point and float(old.radius) >= 0.0 and float(current.radius) >= float(old.radius): continue
 		var team = BattleRequest.house_teams.get(old.side, old.side)
 		if not masks.has(team):
 			var mask := Image.create(width, width, false, Image.FORMAT_L8)
 			mask.fill(Color.BLACK)
 			masks[team] = mask
-		SightBatch.raster_vacated(masks[team], width, old, current)
+		var span := SightBatch.raster_vacated(masks[team], width, old, current)
+		if span.x < 0: continue
+		var previous: Vector2i = written.get(team, span)
+		written[team] = Vector2i(mini(previous.x, span.x), maxi(previous.y, span.y))
 	var deadline := sight_clock + remaining
 	for team in masks:
+		if not written.has(team): continue
+		var span: Vector2i = written[team]
 		var bytes: PackedByteArray = masks[team].get_data()
 		var indices := PackedInt32Array()
 		# Most pixels are empty: native byte search skips those without a script
 		# iteration per map cell. L8 masks contain only 0 and 255.
-		var index := bytes.find(255)
+		var index := bytes.find(255, span.x)
 		while index >= 0:
 			indices.append(index)
+			if index == span.y: break
 			index = bytes.find(255, index + 1)
 		for side in visible_cells:
 			if BattleRequest.house_teams.get(side, side) != team: continue
@@ -738,11 +780,11 @@ func _expire_held_sight() -> void:
 		cells.fill(0)
 		preload("res://scripts/world/battle_call_counters.gd").iterations(41,held.size())
 		var expired: Array = []
-		for index in held.keys():
-			if sight_clock >= float(held[index]):
-				held.erase(index)
-				expired.append(index)
+		# Iterate without copying all keys; erase only after traversal.
+		for index in held:
+			if sight_clock >= float(held[index]): expired.append(index)
 			else: cells[int(index)] = 1
+		for index in expired: held.erase(index)
 		visible_cells[side] = cells
 		for member in identical:
 			# Keep observer tables independent, including existing references to
@@ -768,6 +810,9 @@ func rebuild() -> void:
 	var hollywood: Dictionary = battle.allied_state.get("hollywood", {})
 	if hollywood.get("briefing", false):
 		_reveal("ally", battle.Hollywood.briefing_point(hollywood), battle.Hollywood.BRIEFING_SIGHT)
+	var head_stage := int(battle.allied_state.get("head_brief_stage", 0))
+	if head_stage > 0:
+		battle.HeadGames.reveal_briefing_site(battle, head_stage)
 	var batches := {}
 	for team in _live_masks:
 		var batch := SightBatch.new()
@@ -840,15 +885,28 @@ func rebuild() -> void:
 				explored_cells[side].fill(1)
 	_publish_combat_sight()
 
+func forget_observed_removal(building: Building) -> void:
+	var point := building.global_position
+	if building_memory.records.has(point) and (BattleRequest.friendly("ally", building.side) or (is_visible_at("ally", point) and battle.actor_visible_to("ally", building))):
+		building_memory.forget(point)
+
 func _publish_combat_sight() -> void:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(45)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(45,battle.units.size()+battle.buildings.size())
+	var observed := {}
 	for actor in battle.units + battle.buildings:
 		if not is_instance_valid(actor):
 			continue
 		actor.visible = (not (actor is Unit and actor.embarked_in != null)) and battle.actor_visible_to("ally", actor)
 		if not actor.visible and actor.get("hovered") == true:
 			actor.set_hovered(false)
+		if actor is Building and actor.visible and battle.actor_alive(actor):
+			if BattleRequest.friendly("ally", actor.side):
+				if building_memory.records.has(actor.global_position): building_memory.forget(actor.global_position)
+			elif actor.building_id != "R3REAPERTURRET" and is_visible_at("ally", actor.global_position):
+				observed[actor.global_position] = true
+				building_memory.observe(actor)
+	building_memory.publish(self, observed)
 	_sync_mask()
 
 func _sync_mask() -> void:

@@ -68,7 +68,7 @@ func equipment_collection() -> void:
   var before:int=next.supplies
   t.check(Expedition.buy(0) and Expedition.state.buffs.size()==index+1,"first chapter accepts equipment without capacity gate "+id)
   t.check(Expedition.state.supplies==before-120,"equipment purchase charges only its own price "+id)
- t.check(Expedition.load_run() and Expedition.state.buffs.size()==24,"entire equipment collection survives reload")
+ t.check(Expedition.load_run() and Expedition.state.buffs.size()==ids.size(),"entire equipment collection survives reload")
  next=Expedition.state.duplicate(true)
  next.shop=[{"kind":"buff","id":"firepower","price":120,"sold":false,"locked":false}];Expedition.commit(next)
  t.check(Expedition.buy(0,"armor") and Expedition.state.buffs.firepower==2 and Expedition.state.buffs.has("armor"),"obsolete replacement argument cannot discard owned gear")
@@ -78,14 +78,14 @@ func equipment_collection() -> void:
  Expedition.commit(next)
  var balance:int=Expedition.state.supplies
  t.check(not Expedition.resolve_event(next.event.choices.size()-1) and Expedition.state.supplies==balance,"stale expansion option cannot charge")
- t.check(Expedition.resolve_event(0) and Expedition.state.buffs.size()==24,"post-battle event preserves full collection")
+ t.check(Expedition.resolve_event(0) and Expedition.state.buffs.size()==ids.size(),"post-battle event preserves full collection")
  next=Expedition.state.duplicate(true);next.routes[0].map="exp_plain";Expedition.commit(next)
  t.check(Expedition.launch(0),"full equipment collection launches")
  if t.instantiate_battle():
   for id:String in ids:t.check(Rules.rank(id)==int(Expedition.state.buffs[id]),"battle consumes collected equipment "+id)
   t.check(Expedition.checkpoint(t.battle),"full collection battle checkpoint")
  await t.finish()
- t.check(Expedition.load_run() and Expedition.state.buffs.size()==24,"battle save retains all equipment")
+ t.check(Expedition.load_run() and Expedition.state.buffs.size()==ids.size(),"battle save retains all equipment")
  t.new_ready("美国",1)
  next=Expedition.state.duplicate(true)
  for id:String in ids.slice(0,7):next.buffs[id]=1
@@ -141,6 +141,7 @@ func hero_lifecycle() -> void:
   for id:String in ids:t.check(preload("res://scripts/expedition/heroes.gd").recruit(next,id),"local hero recruit "+id)
   Expedition.commit(next);Expedition.launch(0)
   if t.instantiate_battle():
+   t.receive_scheduled_army()
    var found:Array=[]
    for unit in t.battle.units:
     if unit.special.has("academy_hero"):found.append(unit.special.academy_hero)
@@ -169,9 +170,10 @@ func roster_and_store() -> void:
  next.reinforcements.append({"id":"E1","count":20})
  var before_sale:int=next.supplies
  var excess:=Army.quantity(next,"E1")-8
- Expedition.commit(next)
+ t.check(Expedition.commit(next) and Expedition.state.supplies==before_sale and Expedition.excess_sale(Expedition.state).count==excess,"over-cap units kept until sale")
+ t.check(Expedition.sell_excess_personnel(),"sell camp excess explicitly")
  var quantity:=Army.quantity(Expedition.state,"E1")
- t.check(quantity==8 and Expedition.state.supplies==before_sale+excess*5,"excess infantry automatically sold with exact compensation")
+ t.check(quantity==8 and Expedition.state.supplies==before_sale+excess*5,"manual infantry sale grants exact compensation")
  t.check(Expedition.dismiss("E1",quantity-2) and Army.quantity(Expedition.state,"E1")==2,"explicit demobilization retains requested amount")
  var emblem_balance:int=Expedition.state.supplies
  t.check(not Expedition.service("emblem","E1","energy") and Expedition.state.supplies==emblem_balance,"removed emblem service cannot charge supplies")
@@ -207,6 +209,7 @@ func boss_protection() -> void:
  t.new_ready("美国",5);Expedition.launch(0)
  if t.instantiate_battle():
   var tasks=t.screen.expedition_runtime.tasks
+  t.receive_scheduled_army()
   var command=tasks.actor("command")
   var soldier=t.battle.spawn_unit("E1","ally",command.position+Vector2(100,0))
   var chrono=t.battle.spawn_unit("CLEG","ally",command.position+Vector2(140,0))

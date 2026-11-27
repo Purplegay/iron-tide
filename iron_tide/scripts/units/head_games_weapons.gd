@@ -1,5 +1,7 @@
 extends RefCounted
 
+const MagnetPull := preload("res://scripts/units/yr_magnetron_pull.gd")
+
 static func eligible(unit, target) -> bool:
 	if target is ForceFirePoint: return false
 	if target.special.get("expedition_protected",false): return false
@@ -11,11 +13,9 @@ static func eligible(unit, target) -> bool:
 static func shot(unit, target, gun: Dictionary) -> bool:
 	var world = unit._battle_world()
 	match gun.get("name", ""):
-		"MagneticBeam":
-			if target is Unit and eligible(unit,target):
-				target.special.magnet_seconds = 1.5
-				target.special.magnet_source = unit
-				Effects.spawn_beam(unit.position,target.position,Color.MAGENTA,"laser",2.5,0.7)
+		"MagneticBeam", "MagneticBeamE":
+			if target is Unit and eligible(unit,target) and target.embarked_in == null:
+				MagnetPull.start(unit, target, gun)
 			return true
 		"ChaosAttack":
 			for victim in world.units.duplicate():
@@ -29,10 +29,21 @@ static func shot(unit, target, gun: Dictionary) -> bool:
 			return true
 		"DiskDrain":
 			unit._disc_trace("drain.begin", target)
-			if target.power>0: world.allied_state["blackout_"+target.side] = 4.0
+			if target.power > 0:
+				var key: String = "blackout_" + target.side
+				var was_blackout: bool = world.side_power_blackout(target.side)
+				world.allied_state[key] = maxf(4.0, float(world.allied_state.get(key, 0.0)))
+				if not was_blackout and target.side == "ally":
+					Events.emit_message("镭射幽浮正在吸取电力，基地断电！", Color(1.0, 0.67, 0.35))
 			elif target.is_refinery():
-				var amount := minf(50.0,world.funds_for(target.side))
-				if world.spend_side(target.side,amount): world.credit_side(unit.side,amount)
+				var amount: float = world.transfer_drain_funds(world.economy_owner(target), world.economy_owner(unit), 50.0)
+				if amount > 0.0 and (target.side == "ally" or unit.side == "ally"):
+					var loss: bool = target.side == "ally"
+					var color := Color(1.0, 0.55, 0.4) if loss else Color(0.5, 1.0, 0.75)
+					var shown := ("%.2f" % amount).trim_suffix("00").trim_suffix(".") if amount >= 0.01 else "不到 0.01"
+					var message := "敌方镭射幽浮从我方采矿场偷走 %s 资金。" if loss else "镭射幽浮从敌方采矿场偷到 %s 资金。"
+					Events.emit_message(message % shown, color)
+					Effects.spawn_text(target.art_center(), ("−" if loss else "+") + shown, color, Vector2(0, -20))
 			Effects.spawn_beam(unit._disc_center(), target.art_center(), Color.VIOLET, "laser", 3.0, 0.8, "", null, false, false, false, unit.global_position, target.global_position)
 			unit._disc_trace("drain.created", target)
 			return true
@@ -46,17 +57,6 @@ static func tick(unit, delta: float) -> void:
 		if unit.special.chaos_seconds<=0:
 			unit.special.erase("chaos_seconds")
 			unit.order_stop()
-	if unit.special.has("magnet_seconds"):
-		var owner = unit.special.get("magnet_source")
-		unit.special.magnet_seconds -= delta
-		if not AlliedAbilities.alive(owner) or unit.special.magnet_seconds<=0:
-			unit.special.erase("magnet_source")
-			unit.special.erase("magnet_seconds")
-		else:
-			var world = unit._battle_world()
-			var dest: Vector2 = unit.position.move_toward(owner.position,90*delta)
-			if not world.path_service.is_blocked(dest): unit.position = dest
-			unit._stun_timer = maxf(unit._stun_timer,delta*2)
 	if unit.special.has("mind_links"):
 		var links: Array = unit.special.mind_links.filter(func(t):return AlliedAbilities.alive(t) and t.special.get("controller")==unit)
 		unit.special.mind_links = links

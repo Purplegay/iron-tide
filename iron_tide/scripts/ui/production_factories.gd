@@ -16,7 +16,7 @@ func candidates() -> Array:
 	if hud.battle == null or hud.prod_tab in ["building", "defense"]:
 		return result
 	for b in hud.battle.buildings:
-		if not is_instance_valid(b) or b.is_dead() or b.side != "ally" or b.is_refinery():
+		if not is_instance_valid(b) or b.is_dead() or b.hp <= 0.0 or b.is_queued_for_deletion() or b.side != "ally" or b.is_refinery() or not hud._factory_matches_deck(b, hud.prod_tab):
 			continue
 		for uid in b.buildable:
 			if hud._cat_match(GameData.get_unit(str(uid))):
@@ -26,32 +26,53 @@ func candidates() -> Array:
 
 func current():
 	var choices := candidates()
-	var previous = selected.get(hud.prod_tab)
+	var key := _selection_key(hud.prod_tab)
+	var previous = selected.get(key)
 	if is_instance_valid(previous) and choices.has(previous):
 		return previous
 	var world_choice = hud.battle.selected_building
 	if choices.has(world_choice) and hud._tab_for_building(world_choice) == hud.prod_tab:
-		selected[hud.prod_tab] = world_choice
+		selected[key] = world_choice
 		return world_choice
+	if hud._campaign_infantry_tab():
+		for b in choices:
+			if b.faction == hud._deck_faction and not b.under_construction and b._buildup_play < 0.0:
+				selected[key] = b
+				return b
 	# Prefer the category's dedicated factory on first opening.
 	for b in choices:
 		if hud._tab_for_building(b) == hud.prod_tab and not b.under_construction and b._buildup_play < 0.0:
-			selected[hud.prod_tab] = b
+			selected[key] = b
 			return b
 	for b in choices:
 		if not b.under_construction and b._buildup_play < 0.0:
-			selected[hud.prod_tab] = b
+			selected[key] = b
 			return b
-	selected[hud.prod_tab] = choices[0] if not choices.is_empty() else null
-	return selected[hud.prod_tab]
+	selected[key] = choices[0] if not choices.is_empty() else null
+	return selected[key]
+
+func _selection_key(category: String) -> String:
+	return "%s:%s" % [hud._deck_faction, category] if hud.battle.uses_split_campaign_deck() else category
 
 func remember(b, category: String) -> void:
-	selected[category] = b
+	if hud._factory_matches_deck(b, category):
+		selected[_selection_key(category)] = b
+
+func prefer_faction(faction: String) -> void:
+	var choices := candidates()
+	var key := _selection_key(hud.prod_tab)
+	var previous = selected.get(key)
+	if choices.has(previous) and previous.faction == faction:
+		return
+	for b in choices:
+		if b.faction == faction and not b.under_construction:
+			selected[key] = b
+			return
 
 func choose(b) -> void:
 	if not candidates().has(b):
 		return
-	selected[hud.prod_tab] = b
+	remember(b, hud.prod_tab)
 	hud._unlock_focus = ""
 	hud._refresh_production()
 
@@ -126,7 +147,7 @@ func update() -> void:
 			var state: String = hud._production_status("生产中", float(job.get("cost", 0)), b)
 			if state != "生产中": status = state.left(7) + ("…" if state.length() > 7 else "")
 			detail += "\n" + hud._queue_caption(b)
-		var short_name: String = {"GAPILE": "兵营", "GAWEAP": "战车厂", "GAAIRC": "机场", "GAYARD": "船坞", "NAYARD": "船坞"}.get(b.building_id, b.display_name)
+		var short_name: String = {"GAPILE": "盟军兵营", "NAHAND": "苏军兵营", "GAWEAP": "战车厂", "GAAIRC": "机场", "GAYARD": "船坞", "NAYARD": "船坞"}.get(b.building_id, b.display_name)
 		entry.button.text = "%s %d\n%s" % [short_name, number_for(b), status]
 		entry.button.button_pressed = b == active
 		entry.button.tooltip_text = detail + "\n点击：切换此工厂的生产目录与队列"

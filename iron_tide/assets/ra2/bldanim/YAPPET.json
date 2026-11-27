@@ -4,18 +4,87 @@
   {
    "kind": "activeanim",
    "image": "YAPPET_A",
-   "frames": 20,
    "loopStart": 0,
-   "loopEnd": 5,
-   "rate": 170
+   "loopEnd": 4,
+   "frames": 10,
+   "rate": 170,
+   "shadow": true,
+   "dmg": {
+    "image": "YAPPET_A",
+    "loopStart": 6,
+    "loopEnd": 9,
+    "frames": 10,
+    "rate": 170,
+    "shadow": true
+   }
   },
   {
    "kind": "idleanim",
    "image": "YAPPET_E",
-   "frames": 4,
    "loopStart": 0,
-   "loopEnd": 1,
-   "rate": 200
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAPPET_E",
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 200,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimtwo",
+   "image": "YAPPET_F",
+   "loopStart": 0,
+   "loopEnd": 18,
+   "frames": 38,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAPPET_F",
+    "loopStart": 20,
+    "loopEnd": 37,
+    "frames": 38,
+    "rate": 200,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimthree",
+   "image": "YAPPET_G",
+   "loopStart": 0,
+   "loopEnd": 7,
+   "frames": 16,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAPPET_G",
+    "loopStart": 9,
+    "loopEnd": 15,
+    "frames": 16,
+    "rate": 200,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimfour",
+   "image": "YAPPET_H",
+   "loopStart": 0,
+   "loopEnd": 18,
+   "frames": 38,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAPPET_H",
+    "loopStart": 20,
+    "loopEnd": 37,
+    "frames": 38,
+    "rate": 200,
+    "shadow": true
+   }
   }
  ]
 }

@@ -43,6 +43,14 @@ static func run(t) -> void:
 		next.stage=stage;next.phase="reward";next.reward_round="main";next.offers=[{"kind":"supplies","id":"bonus","amount":100}]
 		Expedition.commit(next);Expedition.choose(0,"",Expedition.reward_token())
 		for direction:String in ["infantry","fortify"]:
+			if int(Expedition.state.trait_buffs.get(direction,0))==9:
+				var fallback:=-1
+				for index in Expedition.state.offers.size():
+					var item:Dictionary=Expedition.state.offers[index]
+					t.check(item.kind!="trait_buff" or item.id!=direction,"maxed direction excluded from pending choices")
+					if item.kind!="trait_buff" or item.id not in next.tracked_traits:fallback=index
+				t.check(fallback>=0 and Expedition.choose(fallback,"",Expedition.reward_token()),"claim an alternative when the target is complete")
+				continue
 			var found:=-1
 			for index in Expedition.state.offers.size():
 				var item:Dictionary=Expedition.state.offers[index]

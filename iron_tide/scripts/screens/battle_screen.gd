@@ -34,10 +34,15 @@ func _ready() -> void:
 	hud.setup(battle)
 	crash_trace.mark("setup.begin")
 	battle.setup(BattleRequest.mission_id, hud)
+	hud.refresh_speed_button()
 	crash_trace.mark("setup.end", {"map": battle.map_layout()})
 	var restored_expedition:=not BattleSaves.pending.is_empty()
 	crash_trace.mark("restore.begin", {"pending": restored_expedition})
 	BattleSaves.restore_pending(battle)
+	if restored_expedition and battle.mission.get("id")==battle.AlliedFinale.ID:
+		battle.AlliedFinale.resume_media.call_deferred(battle)
+	if restored_expedition and battle.mission.get("id")==battle.AlliedFirst.ID:
+		battle.AlliedFirst.resume_media.call_deferred(battle)
 	crash_trace.mark("restore.end")
 	preload("res://scripts/world/battle_music_director.gd").begin(battle, restored_expedition)
 	var expedition_active := preload("res://scripts/expedition/rules.gd").active()
@@ -62,7 +67,9 @@ func _ready() -> void:
 			if not restored_expedition and not Expedition.checkpoint(battle):expedition_runtime.show_error(Expedition.error)
 	var autosave := preload("res://scripts/save/battle_autosave.gd").new()
 	autosave.setup(battle, crash_trace)
+	autosave.name="BattleAutosave"
 	add_child(autosave)
+	if OS.has_feature("editor") and "--campaign-test-no-autosave" in OS.get_cmdline_user_args():autosave.set_process(false)
 	add_child(call_log)
 	call_log.setup(battle)
 	if battle.building_art_warmup != null:
@@ -224,6 +231,9 @@ func _show_result(result: Dictionary) -> void:
 	if win and result.get("mission")=="yr_head_games" and not battle.allied_state.has("head_postscore"):
 		battle.allied_state.head_postscore=true
 		preload("res://scripts/ui/hollywood_film.gd").show_clip(battle,"S08_F00E")
+	if win and result.get("mission")==battle.AlliedFinale.ID and not battle.allied_state.has("allied_postscore"):
+		battle.allied_state.allied_postscore=true
+		preload("res://scripts/ui/hollywood_film.gd").show_clip(battle,"A08_F00E")
 
 func _show_expedition_result(result:Dictionary) -> void:
 	if is_instance_valid(result_overlay):result_overlay.queue_free()

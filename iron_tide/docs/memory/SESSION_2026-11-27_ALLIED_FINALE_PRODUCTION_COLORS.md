@@ -1,0 +1,5 @@
+# 盟军第七关《脑死》接管后生产房色
+
+- 用户反馈火地岛接管设施红色，但新造建筑或单位蓝色。Steam `mapsmd03.mix/ALL07SMD.MAP` SHA-256 `0ec687c320382e4c02cf66eec0153b713e56c4449fab7d29b5a19b61bf10e4f3`：`Basic.Player=Americans`，`Americans.Color=DarkBlue`，`Special.Color=DarkRed`、`Russians.Color=DarkRed`；火地岛建造场与炮塔/反应炉转属链见 `SESSION_2026-11-27_ALLIED_FINALE_OPENING_TRANSFER.md`。用于确认红蓝房的来源，不宣称零售引擎的全部生产房行为；本项目共用玩家 side/经济，用实体制式维持双基地红蓝配色。
+- `scripts/core/house_color.gd::finale_color/apply_to`：只在非遭遇战 `yr_allied_finale` 内，己方 `Special` 标记继续优先显示苏军红；无原房标记的己方苏军制式建筑/单位也走同一红色；盟军制式蓝，保持敌方各尤里房与中立分支。依据实体制式而不是指令甲板当前选项；不改任务标记、归属、经济、科技、任务触发器或地图 AI。雷达现有逻辑用同一个 `_col`，冷读沿用本关 `battle_snapshot.gd` 的 `refresh_house_color`，无需改写存档。
+- Godot 4.7.2 隔离 APPDATA/LOCALAPPDATA、隐藏无头 `res://tests/allied_finale_playable.tscn -- --house-colors` 43/43，独立进程 `-- --cold-house-colors` 12/12，均 exit 0、stderr 空。实际菜单出击、工程师走到门、点生产卡经付费/合法选址放置苏军精炼厂/雷达/兵营，矿车赠送和动员兵出厂；盟军超时空基地车、光棱坦克、展开建造场，实际切到盟军甲板点卡造电厂。核对上述实体及开场接管对象的 `_col` 与 ShaderMaterial `target_color`。夹具提高初始测试资金、步进真实产线/建造动画和任务计时，写隔离 slot6 并模拟一个旧蓝色缓存验证读档重新着色。证据 `.validation/finale-house-colors-20261127/{house-colors,cold-house-colors}.{out,err}`。未开图形窗口、未逐兵种或逐动画像素核验、未打包、未修改玩家原档。

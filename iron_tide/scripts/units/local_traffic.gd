@@ -9,6 +9,7 @@ var yield_target := Vector2.INF
 var yield_left := 0.0
 var yield_origin := Vector2.INF
 var nearby: Array = []
+var _query_ranks: Dictionary = {}
 var query_origin := Vector2.INF
 var _query_world: Battle
 var _query_radius := 0.0
@@ -52,20 +53,8 @@ func tick_congestion(unit: Unit, delta: float) -> void:
 	for i in unit.get_slide_collision_count():
 		var other = unit.get_slide_collision(i).get_collider()
 		if _ground_friend(unit,other) and not friendly_unit_pair(unit,other) and unit.position.distance_squared_to(other.position) < pow(unit.radius+other.radius+8.0,2): blocked=true; break
-	if not blocked: ensure_candidates(unit)
-	if not blocked and not nearby.is_empty():
-		# Yielding brakes before physical contact, so include the current local lane.
-		var waypoint: Vector2 = unit.move_target
-		if unit._path_pts.size() >= 2: waypoint=unit._path_pts[clampi(unit._path_i,1,unit._path_pts.size()-1)]
-		var direction := unit.position.direction_to(waypoint)
-		# Reject the broad-phase margin and bodies behind this leg before reading
-		# ownership/deployment policy. Those predicates cannot make them blockers.
-		for other in nearby:
-			if not is_instance_valid(other) or not other is Unit: continue
-			if (other.collision_layer & 1) == 0: continue
-			var offset: Vector2 = other.position-unit.position
-			if offset.dot(direction)<=0.0 or offset.length_squared()>=pow(unit.radius+other.radius+8.0,2): continue
-			if _ground_friend(unit,other) and not friendly_unit_pair(unit,other): blocked=true; break
+	if not blocked:
+		blocked = _congestion_blocker_ahead(unit)
 	if not blocked:
 		unit.special.erase(CONGESTION)
 		return
@@ -81,9 +70,32 @@ func tick_congestion(unit: Unit, delta: float) -> void:
 		invalidate_query()
 		unit._dodge_t=0.0
 
+# Only the close forward obstruction matters to the congestion timer. The
+# wider steering/watch cache is still validated by every steering consumer.
+func _congestion_blocker_ahead(unit: Unit) -> bool:
+	var world := unit._navigation_world()
+	var origin := unit.position
+	var contacts: Array
+	if world != null and world.units.size() >= 96 and origin == unit.global_position and not AlliedAbilities.infantry(unit):
+		contacts = world.neighborhood.nearby(origin, unit.radius + world.neighborhood.max_unit_radius + 8.0, true)
+	else:
+		ensure_candidates(unit)
+		contacts = nearby
+	if contacts.is_empty(): return false
+	var waypoint: Vector2 = unit.move_target
+	if unit._path_pts.size() >= 2: waypoint=unit._path_pts[clampi(unit._path_i,1,unit._path_pts.size()-1)]
+	var direction := origin.direction_to(waypoint)
+	for other in contacts:
+		if not is_instance_valid(other) or not other is Unit or other == unit: continue
+		if (other.collision_layer & 1) == 0: continue
+		var offset: Vector2 = other.position-origin
+		if offset.dot(direction)<=0.0 or offset.length_squared()>=pow(unit.radius+other.radius+8.0,2): continue
+		if _ground_friend(unit,other) and not friendly_unit_pair(unit,other): return true
+	return false
+
 # Resolve a parked hull intersection locally, preserving the unit's current orders.
 func settle_overlapping_vehicle(unit: Unit) -> void:
-	if unit._deployed or unit.is_harvester or unit.repairing or AlliedAbilities.infantry(unit): return
+	if unit._deployed or unit.is_harvester or unit.repairing or unit.special.get("expedition_convoy_paused", false) or AlliedAbilities.infantry(unit): return
 	var world := unit._navigation_world()
 	if world == null or world.path_service == null: return
 	var reach: float = unit.radius + world.neighborhood.max_unit_radius
@@ -123,6 +135,9 @@ static func _ground_friend(unit: Unit, other) -> bool:
 
 static func friendly_unit_pair(unit: Unit, other: Unit) -> bool:
 	if not BattleRequest.friendly(unit.side,other.side): return false
+	return _friendly_pair_policy(unit,other)
+
+static func _friendly_pair_policy(unit: Unit, other: Unit) -> bool:
 	if not unit.is_air and not other.is_air and not unit.is_naval and not other.is_naval and (passing(unit) or passing(other)): return true
 	if not unit.is_air and not other.is_air and not unit.is_naval and not other.is_naval and (preload("res://scripts/units/base_escape.gd").active(unit) or preload("res://scripts/units/base_escape.gd").active(other)):return true
 	if (unit.side == "ally" and BattleRequest.is_ai_house(other.side)) \
@@ -158,6 +173,7 @@ func invalidate_query() -> void:
 	_query_region.clear()
 	_query_watch.clear()
 	nearby.clear()
+	_query_ranks.clear()
 
 func reset() -> void:
 	invalidate_query()
@@ -215,6 +231,7 @@ func _can_reuse_candidates(unit: Unit, world: Battle, radius: float, mask: int) 
 
 func _rebuild_candidates(unit: Unit, world: Battle, radius: float, mask: int) -> void:
 	nearby.clear()
+	_query_ranks.clear()
 	_query_watch.clear()
 	_query_region.clear()
 	var query_position := unit.global_position
@@ -227,6 +244,7 @@ func _rebuild_candidates(unit: Unit, world: Battle, radius: float, mask: int) ->
 			var actor: Unit = candidate
 			var distance: float = radius + actor.radius
 			if (actor.collision_layer & mask) != 0 and query_position.distance_squared_to(actor.global_position) <= distance * distance:
+				_query_ranks[actor] = nearby.size()
 				nearby.append(actor)
 			else:
 				_query_watch.append(actor)
@@ -265,26 +283,20 @@ func apply(unit:Unit, _delta: float) -> void:
 	var push := Vector2.ZERO
 	var head_on := 0.0
 	var wait_factor := 1.0
-	preload("res://scripts/world/battle_call_counters.gd").iterations(26,nearby.size())
-	for candidate in nearby:
-		if not is_instance_valid(candidate) or not candidate is Unit: continue
-		var other:Unit=candidate
-		if (other.collision_layer & _query_mask) == 0: continue
-		var offset: Vector2 = other.global_position - position
-		var clearance: float = actor_radius + other.radius + 4.0
-		var distance_squared := offset.length_squared()
-		var along := offset.dot(forward)
-		var ahead := check_lane and along > 0.0 and along < look
-		var lateral := absf(offset.cross(forward)) if ahead else 0.0
-		var in_lane: bool = ahead and lateral < clearance
-		# The broad-phase margin is for next-tick arrivals, not a reason to read
-		# every distant actor's combat/order state on every movement step.
-		if distance_squared >= clearance * clearance and not in_lane:
-			continue
-		if friendly_unit_pair(unit,other): continue
-		if not BattleRequest.friendly(other.side,owner) or other.hp <= 0.0 or other.embarked_in != null \
-			or other.is_air != air or other.is_naval != naval:
-			continue
+	var contacts := _exact_avoidance_contacts(unit, position, forward, look, check_lane)
+	preload("res://scripts/world/battle_call_counters.gd").iterations(26,contacts.size())
+	for entry in contacts:
+		var other: Unit = entry[0]
+		var offset: Vector2 = entry[1]
+		var clearance: float = entry[2]
+		var distance_squared: float = entry[3]
+		var along: float = entry[4]
+		var lateral: float = entry[5]
+		var in_lane: bool = entry[6]
+		if other.hp <= 0.0 or other.embarked_in != null or other.is_air != air or other.is_naval != naval: continue
+		if not BattleRequest.friendly(other.side,owner): continue
+		if (owner == other.side or BattleRequest.house_teams.get(other.side) is int) and _friendly_pair_policy(unit,other): continue
+		if owner != other.side and not BattleRequest.house_teams.get(other.side) is int and friendly_unit_pair(unit,other): continue
 		if distance_squared < clearance * clearance:
 			var distance := sqrt(distance_squared)
 			if distance > 0.01 and distance < clearance:
@@ -296,8 +308,7 @@ func apply(unit:Unit, _delta: float) -> void:
 					# Use the actual front of the swept circle at this offset.
 					var contact := sqrt(maxf(0.0, combined_radius * combined_radius - lateral * lateral))
 					wait_factor = minf(wait_factor, clampf((along - contact - 4.0) / look, 0.0, 1.0))
-			var facing: Vector2 = other.velocity.normalized()
-			if (other.has_move_order or other.is_harvester) and facing.dot(forward) < -0.5:
+			if (other.has_move_order or other.is_harvester) and other.velocity.normalized().dot(forward) < -0.5:
 				head_on = maxf(head_on, 1.0 - along / look)
 				BridgeTraffic.record(unit,"head_on",other)
 	if head_on > 0.0:
@@ -310,10 +321,86 @@ func apply(unit:Unit, _delta: float) -> void:
 	if wait_factor < 1.0: BridgeTraffic.record(unit,"yield_slowdown")
 	unit.velocity = unit.velocity * wait_factor + push
 
-# Reuse the physics neighbourhood gathered while moving. Only plan a detour
-# when a stopped ally actually obstructs the current leg, then route around
-# the surrounding group as a whole. These circles belong to one request.
+# Exact geometry is evaluated once, before sorting and before any yield policy.
+# The legacy cache remains authoritative for order and for other consumers.
+func _exact_avoidance_contacts(unit: Unit, point: Vector2, direction: Vector2, look: float, check_lane: bool) -> Array:
+	var buckets: Array = [nearby]
+	var rank_candidates := false
+	if _query_world != null and _query_world.units.size() >= 96 and nearby.size() > 2:
+		var tree_parent := unit.get_parent() as Node2D
+		if tree_parent != null and tree_parent.global_transform == Transform2D.IDENTITY:
+			var index = _query_world.neighborhood
+			var reach: float = unit.radius + index.max_unit_radius + 4.0
+			var lane_look := look if check_lane else 0.0
+			if point.is_finite() and direction.is_finite() and is_finite(lane_look) and is_finite(reach) and reach >= 0.0 and reach + lane_look <= 512.0:
+				buckets = index.traffic_contact_buckets(point, direction, lane_look, reach)
+				rank_candidates = true
+	var selected: Array = []
+	var ranked := PackedInt32Array()
+	var by_rank: Dictionary = {}
+	var actor_radius := unit.radius
+	for bucket: Array in buckets:
+		for candidate in bucket:
+			var rank := -1
+			if rank_candidates:
+				rank = _query_ranks.get(candidate, -1)
+				if rank < 0: continue
+			if not is_instance_valid(candidate) or not candidate is Unit: continue
+			var other: Unit = candidate
+			if (other.collision_layer & _query_mask) == 0: continue
+			var offset := other.global_position - point
+			var clearance := actor_radius + other.radius + 4.0
+			var distance_squared := offset.length_squared()
+			var along := offset.dot(direction)
+			var ahead := check_lane and along > 0.0 and along < look
+			var lateral := absf(offset.cross(direction)) if ahead else 0.0
+			var in_lane := ahead and lateral < clearance
+			if distance_squared >= clearance * clearance and not in_lane: continue
+			var entry := [other,offset,clearance,distance_squared,along,lateral,in_lane]
+			if rank_candidates:
+				ranked.append(rank)
+				by_rank[rank] = entry
+			else:
+				selected.append(entry)
+	if rank_candidates:
+		ranked.sort()
+		for rank in ranked:
+			selected.append(by_rank[rank])
+	return selected
+
+# Neutral actors are solid without being eligible for friendly yielding. Use a
+# short live corridor, not a map-wide occupancy grid or remembered unit list.
+static func campaign_neutral_blockers(unit: Unit, world: Battle, waypoint: Vector2, stalled := false) -> Array:
+	if world == null or world.skirmish or world.endless or not world.uses_ground_passages(unit):
+		return []
+	if preload("res://scripts/expedition/rules.gd").active(): return []
+	if unit.special.has("hollywood_on_deck") or unit.special.get("hollywood_deck_goal", Vector2.INF) == unit.move_target:
+		return [] # The elevated lane cannot use the street planner's circles.
+	var start := unit.global_position
+	var leg := (waypoint - start).limit_length(240.0)
+	if leg.is_zero_approx(): return []
+	var end := start + leg
+	var corridor_margin := 48.0
+	var reach: float = leg.length() * 0.5 + unit.radius + world.neighborhood.max_unit_radius + 8.0 + corridor_margin
+	var blockers := []
+	var blocked := false
+	for other in world.neighborhood.nearby(start + leg * 0.5, reach, true):
+		if not is_instance_valid(other) or not other is Unit or other == unit or other.side != "neutral": continue
+		if other._dead or other.hp <= 0.0 or other.is_queued_for_deletion() or other.embarked_in != null or other.is_air or other.is_naval: continue
+		if (other.collision_layer & unit.collision_mask) == 0 or other.special.has("hollywood_on_deck") or friendly_unit_pair(unit, other): continue
+		if other.velocity.length_squared() > 64.0 or (not stalled and other.has_move_order): continue
+		var clearance: float = unit.radius + other.radius + 8.0
+		var closest := Geometry2D.get_closest_point_to_segment(other.global_position, start, end)
+		var distance_sq := closest.distance_squared_to(other.global_position)
+		if distance_sq > pow(clearance + corridor_margin, 2) or not world.actor_visible_to(unit.side, other, unit): continue
+		if distance_sq <= clearance * clearance: blocked = true
+		blockers.append({"position": other.global_position, "radius": clearance})
+	return blockers if blocked else []
+
+# Only detour when a stopped ally or neutral actor obstructs the current leg.
+# These circles belong to one request; they never change shared terrain.
 func stalled_blockers(unit: Unit, waypoint: Vector2) -> Array:
+	var neutrals := campaign_neutral_blockers(unit, unit._navigation_world(), waypoint, true)
 	ensure_candidates(unit, true)
 	var blockers := []
 	var blocked := false
@@ -330,7 +417,10 @@ func stalled_blockers(unit: Unit, waypoint: Vector2) -> Array:
 		var closest := Geometry2D.get_closest_point_to_segment(other.global_position, unit.global_position, waypoint)
 		if closest.distance_squared_to(other.global_position) <= clearance * clearance: blocked = true
 		blockers.append({"position":other.global_position, "radius":clearance})
-	return blockers if blocked else []
+	if blocked:
+		blockers.append_array(neutrals)
+		return blockers
+	return neutrals
 
 func request_yield(requester: Unit, other: Unit, forward: Vector2) -> bool:
 	if friendly_unit_pair(requester,other): return false

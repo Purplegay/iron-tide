@@ -1,0 +1,6 @@
+# 2026-11-27 · 尤复资金箱拾取动画
+
+- 玩家反馈缺少原版金色「$」闪烁。Steam 零售 `expandmd01.mix` 内 `rulesmd.ini [Powerups] Money=20,MONEY,yes,2000` 指定拾取动画；`ra2md.mix > localmd.mix` 的 `artmd.ini [MONEY]` 为 `Normalized=yes, Rate=400`。通过 `tools/yr_cash_crate_fx.mjs <零售目录> <新输出目录>` 从 `ra2.mix > conquer.mix` 提取 `MONEY.SHP`（37×31、23 帧），使用 `ra2.mix > cache.mix` 的 `ANIM.PAL`。各来源及 SHA-256 在 `assets/ra2/fx/MONEY.json`；验看图集确认金色 $ 转动、闪白、消失。保留 SHP 原画布，按工程 `Rate/60` 换算约 6.67 fps，不宣称匹配零售速度设置下的墙钟时长。
+- `hollywood_mission.gd::collect_cash_crates`（ALL02UMD）、`head_games.gd::grinder_crates_tick`（SOV07）、`allied_finale.gd::pick_crates`（ALL07SMD）在移除已领取箱子后，借现有 `Ra2Fx.play` 在箱格坐标单次播放；播放完自行清理。未改生成、拾取资格、金额、原有地面贴图、音效、存档、触发器及 AI 数据；没有在未领取时循环显示 $。该工作只补三关现有资金箱的拾取视觉。
+- Godot 4.7.2 隐藏无头，分别隔离 APPDATA。导入 exit 0。`res://tests/head_games.tscn -- --grinder-script` 12/12，`res://tests/allied_finale_playable.tscn -- --branches` 75/75，均 exit 0。其中终关验证只有被领取的箱子播放、原料加载、末帧和清理。`res://tests/hollywood_campaign.tscn` 主线 109/110：四箱均通过仅生成不播放、离开再入格同格一次到账与一次播动画；失败项为「通讯与跳过按钮位于右上雷达框内」。同场景 `-- --cash-crates` 39/46：两箱由真实右键移动拾取、原位播一次、停留不重播均通过；另外两条测试路线分别停在箱格外 23 和 55 世界单位，不到账也不播，导致 6 项失败，另外 1 项同为雷达 UI 断言。未在去掉本批改动的基线重跑，不能断言这些失败原已存在。四份日志 stderr 均空，位于 `.validation/yr-cash-pickup-fx/`。
+- 未开窗口做实机画面或遮挡验收，未冷读玩家档，未重打包；不以无头结果声称自然通关通过。

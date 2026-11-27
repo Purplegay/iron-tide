@@ -1,0 +1,46 @@
+{
+  "sov01": {
+    "043e763c": {
+      "seconds": 80,
+      "random": false
+    },
+    "0b554afc": {
+      "seconds": 10,
+      "random": true,
+      "enable": [
+        "0b557e6c"
+      ]
+    },
+    "0b557e6c": {
+      "seconds": 10,
+      "random": true,
+      "enable": [
+        "0b554afc"
+      ]
+    }
+  },
+  "all02": {
+    "094d906c": {
+      "seconds": 15,
+      "random": false,
+      "enable": [
+        "04627bcc"
+      ]
+    },
+    "04627bcc": {
+      "seconds": 120,
+      "random": false
+    },
+    "07ac738c": {
+      "seconds": 20,
+      "random": false
+    },
+    "0618f5cc": {
+      "seconds": 5,
+      "random": false,
+      "enable": [
+        "07ac738c"
+      ]
+    }
+  }
+}

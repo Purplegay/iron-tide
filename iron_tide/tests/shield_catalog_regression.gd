@@ -18,6 +18,7 @@ func _ready() -> void:
 	for spec in SPECS:await shield_case(spec)
 	await stacking()
 	await other_shields()
+	await yuriko_countdown()
 	await capacitor_marker()
 	FileAccess.open(output_dir.path_join("result.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failed":failed},"  "))
 	get_tree().quit(0 if failed==0 else 1)
@@ -43,6 +44,8 @@ func shield_case(spec:Array) -> void:
 	unit.special.audit_owner=true;seed_shield(unit,spec)
 	var saved:Dictionary=unit.special.duplicate(true);var label:String=spec[1]+"/"+spec[2]
 	check(is_equal_approx(View.amount(unit),20),label+" visible amount matches real shield")
+	var world_shield := View.summary(unit,false)
+	check(world_shield.amount==20 and world_shield.fraction>0.0,label+" unselected world bar includes this shield")
 	View.summary(unit);check(unit.special==saved,label+" presentation does not mutate combat state")
 	battle.select_unit(unit,false);battle._emit_selection();screen.hud._refresh_selection();screen.hud._refresh_selection_live(false)
 	if unit.unit_id=="DMISL":check(battle.selected_units.is_empty(),"missile remains unselectable; world readout still exposes escort shield")
@@ -50,6 +53,8 @@ func shield_case(spec:Array) -> void:
 	unit.receive_hit(5,"bullet")
 	var remains:=View.amount(unit)
 	check(unit.hp==10000 and remains>0 and remains<20,label+" real receiver debits shield before health")
+	var hit_shield := View.summary(unit,false)
+	check(is_equal_approx(hit_shield.amount,remains) and hit_shield.fraction<world_shield.fraction,label+" blue world bar shrinks as shield absorbs damage")
 	screen.hud._refresh_selection_live(false)
 	if unit.unit_id!="DMISL":check(screen.hud.sel_shield_label.text.begins_with("护盾 "+HpBar.shield_number(remains)),label+" HUD follows actual debit")
 	var codec=BattleSaves.Snapshot.new();var path:=output_dir.path_join(str(SPECS.find(spec))+".bin")
@@ -59,6 +64,7 @@ func shield_case(spec:Array) -> void:
 	check(codec.error.is_empty() and is_equal_approx(View.amount(unit),remains),label+" binary save restores remaining shield")
 	unit.receive_hit(100,"bullet")
 	check(View.amount(unit)==0 and unit.hp<10000 and not unit._dead,label+" break passes overflow to health")
+	check(View.summary(unit,false).fraction==0.0,label+" depleted shield no longer fills the world bar")
 	await finish()
 
 func other_shields() -> void:
@@ -77,6 +83,42 @@ func other_shields() -> void:
 	check(building.hp==hp and View.amount(building)<20,"building shield absorbs through real damage entry")
 	building.special.brutal_shield=0.0;screen.hud._refresh_selection_live(false)
 	check(not screen.hud.sel_shield_label.visible,"exhausted building shield disappears from HUD")
+	building.special.force_shield_left=5.0
+	screen.hud._refresh_selection_live(false)
+	check(View.summary(building,false).protected and View.amount(building)==0 and screen.hud.sel_shield_label.text=="防护中","force shield shows protection without invented durability")
+	building.special.erase("force_shield_left")
+	unit.special.rescue_shield=true
+	var protection := View.summary(unit)
+	check(protection.protected and protection.text.ends_with("防护中") and protection.details.contains("救援保护"),"non-HP rescue protection stays distinct from finite scrap armor")
+	unit.special.erase("rescue_shield")
+	unit.special.iron_left=4.0
+	check(View.summary(unit,false).protected and View.amount(unit)>0,"non-HP protection can coexist with finite shields")
+	unit.special.erase("iron_left")
+	check(not View.summary(unit,false).protected,"protection marker clears when its source expires")
+	await finish()
+
+func yuriko_countdown() -> void:
+	start(MatchRules.EXTENDED)
+	var unit = battle.spawn_unit("YURIKO", "ally", Vector2(1000,1000))
+	var psi = preload("res://scripts/units/yuriko.gd")
+	var saved_hp: float = unit.hp
+	unit.special.psi_shield = 4.2
+	battle.allied_state.yuriko_field = unit
+	var world_view := View.summary(unit, false)
+	check(world_view.psi_left == 4.2 and world_view.amount == 0.0 and not world_view.protected,"Yuriko countdown is separate from blue durability and generic protection")
+	battle.select_unit(unit,false);battle._emit_selection();screen.hud._refresh_selection();screen.hud._refresh_selection_live(false)
+	var panel: Label = screen.hud.sel_shield_label
+	var timer := panel.get_parent().get_node_or_null("PsiShieldCountdown") as Label
+	check(timer != null and timer.visible and timer.text == "灵能护盾 5 秒" and not panel.visible,"real selected HUD shows the dedicated countdown instead of shield HP")
+	unit.receive_hit(20.0,"bullet")
+	check(unit.hp == saved_hp and View.summary(unit,false).psi_left == 4.2,"absorbing a hit does not spend countdown time")
+	psi.tick(unit,1.3);screen.hud._refresh_selection_live(false)
+	check(timer != null and timer.visible and timer.text == "灵能护盾 3 秒","actual Yuriko timer updates the HUD")
+	unit.special.progression_v1={"scrap":[10.0]}
+	screen.hud._refresh_selection_live(false)
+	check(timer != null and timer.visible and panel.visible and panel.text == "护盾 10","actual shield HP coexists with the countdown")
+	psi.tick(unit,3.0);screen.hud._refresh_selection_live(false)
+	check(timer != null and not timer.visible and View.summary(unit,false).psi_left == 0.0 and panel.visible,"countdown vanishes on expiry without hiding other shields")
 	await finish()
 
 func capacitor_marker() -> void:

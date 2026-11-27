@@ -123,6 +123,10 @@ static func _launch_missile(unit, target, cfg: Dictionary, dread: bool, point: V
 		"damage":cfg.elite_damage if elite else cfg.damage, "warhead":("YR_SOV_DMISLEWH" if elite else "YR_SOV_DMISLWH") if dread else ("YR_SOV_V3EWH" if elite else "YR_SOV_V3WH"),
 		"bonus":unit.bonuses.duplicate(true), "force":ForceFire.active(unit, target)}
 
+	# ALL01UMD collapses French and Confederation into one combat side. Only
+	# the explicit DX script target may bypass that side check, not nearby actors.
+	if dread and ForceFire.active(unit,target) and unit.special.get("allied_first_team")=="0955BB7C" and target is Building and target.building_id=="NANRCT" and target.special.get("allied_first_room")=="Confederation" and unit._battle_world().mission.get("id")=="yr_allied_first":
+		missile.special.flight.allied_first_dx_target = target
 	if not dread and BattleRequest.has_unit_talent(unit.unit_id,"v3_cluster",unit.side):
 		missile.special.flight.cluster_rank=MetaProgress.talent_rank(unit.unit_id,"v3_cluster",BattleRequest.combat_context.get("unit_talents",{}))
 	if Effects.Looks.current(unit)=="reentry":missile.special.flight.weapon_look="reentry"
@@ -169,8 +173,9 @@ static func fly(missile, delta: float) -> void:
 	var candidates := impact_candidates(world, missile.position, state.warhead)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(60, candidates.size())
 	var affects_allies := not GameData.warhead_blocks_friendly_damage(state.warhead)
+	var scripted_target = state.get("allied_first_dx_target")
 	for target in candidates:
-		if target == missile or not AlliedAbilities.alive(target) or (target.side == missile.side and not affects_allies): continue
+		if target == missile or not AlliedAbilities.alive(target) or (target.side == missile.side and not affects_allies and target!=scripted_target): continue
 		if target is Unit and (target.embarked_in != null or target.is_air_target()): continue
 		var distance: float = target.position.distance_to(missile.position)
 		if not Ra2Damage.in_spread(distance, state.warhead): continue

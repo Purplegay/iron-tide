@@ -10,6 +10,7 @@ var side: String = "ally":
 		if side == value: return
 		side = value
 		if building_id == "CAMACH": special.erase("machine_shop_elapsed")
+		if building_id == "CATHOSP": special.erase("hospital_elapsed")
 		if is_instance_valid(battle): battle.invalidate_building_membership()
 var faction: String = "allied"
 var building_id: String = ""
@@ -282,7 +283,7 @@ func _process_repair(delta: float) -> void:
 		if typeof(ud) == TYPE_DICTIONARY:
 			unit_cost = float((ud as Dictionary).get("cost", 0.0))
 		var cost: float = want * unit_cost * REPAIR_PERCENT / mx
-		if cost > 0.0 and not battle.spend_side(side, cost):
+		if cost > 0.0 and not battle.spend_side(battle.economy_owner(self), cost):
 			continue
 		preload("res://scripts/units/soviet_advanced.gd").cleanse(u, true)
 		u.heal(want, self)
@@ -431,8 +432,33 @@ func _door_fraction() -> float:
 		amount = maxf(amount, clampf(1.0 - remaining / duration, 0.0, 1.0))
 	return amount
 
+func _has_yuri_superweapon_lid() -> bool:
+	return building_id == "YAPPET" or building_id == "YAGNTC"
+
+func _uses_full_superweapon_pose() -> bool:
+	if under_construction or _buildup_play >= 0.0: return false
+	if building_id == "NAMISL": return true
+	if not _has_yuri_superweapon_lid() or _ra2_anim.is_empty(): return false
+	return not _uses_mutator_idle_overlay()
+
+func _uses_mutator_idle_overlay() -> bool:
+	# The retail YAGNTC_E sheet only contains the lid, unlike its full F/H poses and YAPPET_E.
+	return building_id == "YAGNTC" and not under_construction and _buildup_play < 0.0 and _yuri_lid_layer() == "idleanim"
+
+func _charged_anim_lead() -> float:
+	return float(preload("res://scripts/core/yr_death_rules.gd").type_data(building_id).get("chargedanimtime", 1)) * 60.0
+
+func _yuri_lid_layer() -> String:
+	if special.has("sw_discharge_age"): return "superanimfour"
+	if superweapon.is_empty() or under_construction: return "idleanim"
+	var opening_age := _charged_anim_lead() - (sw_recharge() - _sw_charge)
+	if opening_age < 0.0: return "idleanim"
+	return "superanimtwo" if opening_age < sw_anim_seconds("superanimtwo") else "superanimthree"
+
 ## 判断某层在当前状态下是否应绘制（互斥分组）。
 func _layer_visible(kind: String) -> bool:
+	if (kind == "idleanim" or kind.begins_with("superanim")) and _has_yuri_superweapon_lid():
+		return kind == _yuri_lid_layer()
 	if kind.begins_with("superanim") and building_id in ["NAIRON", "NAMISL"]:
 		# The silo's super layers are complete poses, including the foundation.
 		# Keep its current pose visible even when operation is suspended.
@@ -474,7 +500,7 @@ func _layer_visible(kind: String) -> bool:
 				or kind.begins_with("underdooranim") or kind.begins_with("roofdeployinganim") \
 				or kind.begins_with("underroofdooranim"))
 
-func setup(p_data: Dictionary, p_side: String, p_pos: Vector2, p_battle, instant: bool = false) -> void:
+func setup(p_data: Dictionary, p_side: String, p_pos: Vector2, p_battle, instant: bool = false, force_construction := false) -> void:
 	data = p_data
 	GameData.apply_hollywood_fx(data)
 	side = p_side
@@ -528,7 +554,9 @@ func setup(p_data: Dictionary, p_side: String, p_pos: Vector2, p_battle, instant
 	preload("res://scripts/rules/joint_ra2_production.gd").sync_catalog(self)
 	preload("res://scripts/expedition/rules.gd").sync_training_permits(self)
 	apply_mission_production_limits()
-	_ra2 = RA2Art.art(building_id)
+	_ra2 = RA2Art.art(str(data.get("art_id",building_id)))
+	var snow_site := RA2Art.allied_finale_site(building_id)
+	if not snow_site.is_empty(): _ra2 = snow_site
 	if building_id=="NATBNK": _ra2=RA2Art.art("NATBNKBB")
 	if p_data.get("hollywood_art",false):
 		var tex := load("res://assets/ra2/hollywood/city/"+building_id+".png") as Texture2D
@@ -591,7 +619,7 @@ func setup(p_data: Dictionary, p_side: String, p_pos: Vector2, p_battle, instant
 	# RA2 没有“放下后再施工”：侧栏生产已耗时，放下即建成，只播 BuildupTime 动画。
 	# 旧数据 build_time 为空 → 这里回退到 rules.ini BuildSpeed 计算（cost*0.7 分钟/1000）。
 	var btime := GameData.ra2_build_time(p_data)
-	if instant or (side == "enemy" and BattleRequest.house_teams.is_empty()):
+	if instant or (side == "enemy" and BattleRequest.house_teams.is_empty() and not force_construction):
 		under_construction = false
 		hp = max_hp
 		if not _buildup_art.is_empty():
@@ -614,7 +642,59 @@ const BUILD_GRID := 40.0
 
 ## Step C 阶段2：用 RA2 建筑 SHP 替换程序化建模（取帧 0，底边中点对齐脚下）。
 ## (A6) 绘制建造中的 RA2 原版 buildup 序列；返回 false 表示无素材，调用方回退到常规绘制。
-func _draw_buildup(r: float) -> bool:
+var _fog_pose_body: Dictionary
+var _fog_pose_layers: Array
+var _fog_pose_atlases: Array[Dictionary] = []
+var _fog_pose_key: Array = []
+var _fog_pose_commands: Array = []
+
+## Presentation snapshot: use current simulation state, not the last rendered frame.
+func fog_pose() -> Array:
+	if _ra2.is_empty() or _ra2.get("kind") != "shp" or under_construction or _buildup_play >= 0.0 \
+		or WallArt.supported(data, _ra2) or _turret_art.art.get("tex") != null \
+		or building_id == "NATBNK" or _has_yuri_superweapon_lid() or building_id in ["NAMISL", "YAPOWR"]:
+		return _build_fog_pose()
+	# Atlas geometry is immutable after loading; compare dictionary identity, not its mutable memo fields.
+	var key: Array = [building_id, BattleRequest.mission_id, radius, _body_damage_frame(), _civilian_garrison_shadow_start()]
+	var atlases: Array[Dictionary] = []
+	var damaged := _dmg_index() > 0
+	var same_atlases := true
+	for layer: Dictionary in _ra2_anim:
+		if not _layer_visible(str(layer.get("kind", ""))):
+			key.append(null)
+			continue
+		var state: Dictionary = layer._damaged_state if damaged else layer._healthy_state
+		var atlas := _structure_anim_art(str(state.image))
+		var index := atlases.size()
+		if index >= _fog_pose_atlases.size() or not is_same(atlas, _fog_pose_atlases[index]):
+			same_atlases = false
+		atlases.append(atlas)
+		key.append([_anim_frame_for(layer, state), state.shadow, state.frames, layer.get("x", 0.0), layer.get("y", 0.0)])
+	if same_atlases and atlases.size() == _fog_pose_atlases.size() and is_same(_fog_pose_body, _ra2) \
+		and is_same(_fog_pose_layers, _ra2_anim) and key == _fog_pose_key:
+		return _fog_pose_commands
+	_fog_pose_body = _ra2
+	_fog_pose_layers = _ra2_anim
+	_fog_pose_atlases = atlases
+	_fog_pose_key = key
+	_fog_pose_commands = _build_fog_pose()
+	# Fog records can outlive their actor. Never mutate an already published snapshot.
+	for command: Array in _fog_pose_commands: command.make_read_only()
+	_fog_pose_commands.make_read_only()
+	return _fog_pose_commands
+
+func _build_fog_pose() -> Array:
+	var layers: Array = []
+	if not _ra2.is_empty(): _draw_ra2_sprite(radius, layers)
+	return layers
+
+func _draw_structure_layer(memory, art: Dictionary, target: Rect2, source: Rect2, tint := Color.WHITE) -> void:
+	if memory == null:
+		RA2Art.draw_sprite(self, art, target, source, tint)
+	else:
+		RA2Art.remember_sprite(memory, art, target, source, tint)
+
+func _draw_buildup(r: float, memory = null) -> bool:
 	if _buildup_art.is_empty():
 		return false
 	var tex: Texture2D = _buildup_art.get("tex")
@@ -637,6 +717,9 @@ func _draw_buildup(r: float) -> bool:
 	var a := RA2Art.anchor(_buildup_art, [n - 1])
 	var base := Vector2(-a.x * sc, r * 0.35 - a.y * sc)
 	base += preload("res://scripts/world/construction_transition.gd").deployment_shift(self)
+	if memory != null:
+		RA2Art.remember_sprite(memory, _buildup_art, Rect2(base, sz * sc), RA2Art.src_rect(_buildup_art, fi), Color.WHITE)
+		return true
 	var dia := RA2Art.base_diamond(_buildup_art, [n - 1])
 	if dia.size() == 4:
 		var poly := PackedVector2Array()
@@ -659,16 +742,17 @@ func _draw_buildup(r: float) -> bool:
 	_art_lift = 0.0
 	return true
 
-func _draw_ra2_sprite(r: float) -> void:
-	_turret_art.visible = false
-	_art_source = _ra2
+func _draw_ra2_sprite(r: float, memory = null) -> void:
+	if memory == null:
+		_turret_art.visible = false
+		_art_source = _ra2
 	if WallArt.supported(data, _ra2):
-		_draw_wall()
+		_draw_wall(memory)
 		return
 	# (A6) 建造中 / 放下后的 BuildupTime：优先播放 RA2 原版 buildup 序列
 	# （帧 0=空基座 → 末帧=落成；旧版只在 under_construction 时进这里，而常规流程
 	#   instant=true，所以建筑永远是“啪”一下出现，建造动画实际从未播放过。）
-	if (under_construction or _buildup_play >= 0.0) and _draw_buildup(r):
+	if (under_construction or _buildup_play >= 0.0) and _draw_buildup(r, memory):
 		return
 	var tex: Texture2D = _ra2.get("tex")
 	if tex == null:
@@ -684,7 +768,8 @@ func _draw_ra2_sprite(r: float) -> void:
 	if kind != "shp":
 		var vf := RA2Art.facing_index(0.0, int(_ra2.get("facings", 8)))
 		var va := RA2Art.anchor(_ra2, [vf])
-		RA2Art.draw_sprite(self, _ra2, Rect2(Vector2(-va.x * sc, r * 0.35 - va.y * sc), sz * sc), RA2Art.src_rect(_ra2, vf))
+		_draw_structure_layer(memory, _ra2, Rect2(Vector2(-va.x * sc, r * 0.35 - va.y * sc), sz * sc), RA2Art.src_rect(_ra2, vf))
+		if memory != null: return
 		_art_frame = vf
 		_art_aframes = [vf]
 		_art_sc = sc
@@ -696,71 +781,96 @@ func _draw_ra2_sprite(r: float) -> void:
 	var anchors := body_anchor_frames(di)
 	var a := RA2Art.anchor(_ra2, anchors)
 	var base := Vector2(-a.x * sc, r * 0.35 - a.y * sc)
-	# 选中角标：贴合素材可见底盘的菱形（像素坐标 → begin 空间）
-	var dia := base_outline(building_id, _ra2, di)
-	if dia.size() >= 3:
-		var poly := PackedVector2Array()
-		for p in dia:
-			poly.append(base + p * sc)
-		_sel_poly = poly
-	else:
-		_sel_poly = PackedVector2Array()
-	# ---- 地面投影（RA2 原版影子帧）----
-	# 建筑 SHP 的后半段就是影子帧：总帧数 = 2 * dmg，帧 [dmg..2*dmg-1] 与主体帧同画布、同偏移，
-	# 黑色半透明（RA2 影子调色板全 0 + opacity 0.5）画在主体之下即可完美对齐。
-	# 影子帧只包含「露在建筑外的部分」（RA2 美术优化），所以本体遮挡处无需补。
-	var has_shadow := dmg_frames >= 2 and int(_ra2.get("count", 0)) == dmg_frames * 2
-	var srect := RA2Art.src_rect(_ra2, di + dmg_frames)
-	if building_id not in ["NAMISL", "YAPOWR"]:
-		if has_shadow and srect.size.x > 0.0:
-			RA2Art.draw_sprite(self, _ra2, Rect2(base, srect.size * sc), srect, Color(0.0, 0.0, 0.0, 0.5))
+	if memory == null:
+		# 选中角标：贴合素材可见底盘的菱形（像素坐标 → begin 空间）
+		var dia := base_outline(building_id, _ra2, int(anchors[0]))
+		if dia.size() >= 3:
+			var poly := PackedVector2Array()
+			for p in dia:
+				poly.append(base + p * sc)
+			_sel_poly = poly
 		else:
+			_sel_poly = PackedVector2Array()
+	# ---- 地面投影（RA2 原版影子帧）----
+	# 原版活体姿态数不一定等于 SHP 的主体帧数（还可能包含驻军或废墟）。
+	# 明确标注的投影起始帧优先；旧素材保留成对帧回退。投影与本体共用画布和锚点。
+	var frame_count := int(_ra2.get("count", 0))
+	var shadow_start := _civilian_garrison_shadow_start()
+	if shadow_start < 0:
+		shadow_start = int(_ra2.get("shadow_start", dmg_frames if dmg_frames >= 2 and frame_count == dmg_frames * 2 else -1))
+	var has_shadow := shadow_start >= 0 and shadow_start + di < frame_count
+	var srect := RA2Art.src_rect(_ra2, shadow_start + di) if has_shadow else Rect2()
+	# These retail pose sheets contain the entire building and its shadow.
+	if building_id not in ["NAMISL", "YAPOWR"] and not _uses_full_superweapon_pose():
+		if has_shadow and srect.size.x > 0.0:
+			_draw_structure_layer(memory, _ra2, Rect2(base, srect.size * sc), srect, Color(0.0, 0.0, 0.0, 0.5))
+		elif memory == null and not _uses_mutator_idle_overlay():
+			# The mutator's retail idle overlay already supplies its ground shadow.
 			Iso.shadow(self, Vector2(r * 0.34, r * 0.35), r * 0.9, 0.30)
-		RA2Art.draw_sprite(self, _ra2, Rect2(base, sz * sc), RA2Art.src_rect(_ra2, di))
+		_draw_structure_layer(memory, _ra2, Rect2(base, sz * sc), RA2Art.src_rect(_ra2, di))
 	if building_id=="NATBNK" and not special.get("occupants",[]).is_empty():
-		_draw_ra2_anim(base,sc,"specialanimtwo")
-		HollywoodTurrets.draw_bunker_vehicle(self,false)
-		_draw_ra2_anim(base,sc,"specialanim")
-		HollywoodTurrets.draw_bunker_vehicle(self,true)
+		_draw_ra2_anim(base,sc,"specialanimtwo", memory)
+		if memory == null: HollywoodTurrets.draw_bunker_vehicle(self,false)
+		_draw_ra2_anim(base,sc,"specialanim", memory)
+		if memory == null: HollywoodTurrets.draw_bunker_vehicle(self,true)
 	else:
-		_draw_ra2_anim(base,sc)
-	if building_id=="NAREFN" and side=="ally" and MetaProgress.cosmetic_style(building_id).get("skin")=="night_shift":
+		_draw_ra2_anim(base,sc,"", memory)
+	if memory == null and building_id=="NAREFN" and side=="ally" and MetaProgress.cosmetic_style(building_id).get("skin")=="night_shift":
 		var miner=unloading_miner()
 		var remaining:=float(miner._unload_timer)/maxf(0.01,miner.unload_time) if miner!=null else 0.0
 		preload("res://scripts/units/night_shift.gd").ramp(self,base,sc,remaining)
-	_turret_art.draw_on(self, base, sz, sc)
+	_turret_art.draw_on(self, base, sz, sc, Color.WHITE, memory)
+	if memory != null: return
 	# 记录本帧绘制参数，供 hit_test()/art_center() 复用（铁律：判定几何 = 绘制几何）
 	_art_frame = di
 	_art_aframes = anchors
 	_art_sc = sc
 	_art_lift = 0.0
 
-func _draw_wall() -> void:
+func _draw_wall(memory = null) -> void:
 	var pitch := float(special.get("native_wall_pitch", WallArt.CELL))
 	var mask := WallArt.mask_at(global_position, building_id, side, get_tree().get_nodes_in_group("buildings"), pitch)
-	_art_frame = WallArt.frame(_ra2, mask, hp / maxf(1.0, max_hp))
+	var frame := WallArt.frame(_ra2, mask, hp / maxf(1.0, max_hp))
+	var sc := WallArt.SCALE * pitch / WallArt.CELL
+	var lift := WallArt.lift(_ra2, radius)
+	var rect := RA2Art.draw_rect(_ra2, radius, [0], lift, sc)
+	var shadow := int(_ra2.wall_layout.shadow_start) + frame
+	_draw_structure_layer(memory, _ra2, rect, RA2Art.src_rect(_ra2, shadow), Color(0, 0, 0, 0.5))
+	_draw_structure_layer(memory, _ra2, rect, RA2Art.src_rect(_ra2, frame))
+	if memory != null: return
+	_art_frame = frame
 	_art_aframes = [0]
-	_art_sc = WallArt.SCALE * pitch / WallArt.CELL
-	_art_lift = WallArt.lift(_ra2, radius)
-	var rect := RA2Art.draw_rect(_ra2, radius, _art_aframes, _art_lift, _art_sc)
-	var shadow := int(_ra2.wall_layout.shadow_start) + _art_frame
-	RA2Art.draw_sprite(self, _ra2, rect, RA2Art.src_rect(_ra2, shadow), Color(0, 0, 0, 0.5))
-	RA2Art.draw_sprite(self, _ra2, rect, RA2Art.src_rect(_ra2, _art_frame))
+	_art_sc = sc
+	_art_lift = lift
 	_sel_poly = PackedVector2Array()
 	for point in footprint_poly():
 		_sel_poly.append(Iso.dir(point))
 
+# Verified retail SHP layouts: intact, damaged, occupied, optional rubble,
+# then matching shadows. Not every garrisonable sheet uses this layout.
+const CIVILIAN_GARRISON_SHADOWS := {
+	"CATRAN01": 4, "CATRAN02": 4, "CAEUR04": 4, "CAEUR1": 4, "CAEUR2": 4,
+	"CAHSE01": 4, "CAFRMA": 3, "CABARN02": 4, "CAARMY03": 3, "CAARMY04": 3,
+	"CAPARS04": 4, "CAPARS06": 4, "CAFARM01": 3,
+}
+
+func _civilian_garrison_shadow_start() -> int:
+	if not data.has("garrison_slots") or _ra2.get("city_occupancy", false): return -1
+	if _ra2.get("key", "") != building_id: return -1
+	var first_shadow := int(CIVILIAN_GARRISON_SHADOWS.get(building_id, -1))
+	return first_shadow if int(_ra2.get("count", 0)) == first_shadow * 2 else -1
+
 func body_anchor_frames(frame: int) -> Array:
 	# Sandbags extend the silhouette; keep the bricks and firing ports in place.
-	return [0] if building_id in ["CAHSE01", "CAOILD", "NAMISL"] or _ra2.get("city_occupancy",false) else [frame]
+	return [0] if building_id in ["CAHSE01", "CAOILD", "NAMISL", "NABNKR"] or _ra2.get("city_occupancy",false) or _civilian_garrison_shadow_start() >= 0 else [frame]
 
 func _body_damage_frame() -> int:
 	var count := int(_ra2.get("dmg", 1))
 	if count <= 1 or max_hp <= 0.0:
 		return 0
 	var fraction := hp / max_hp
-	if building_id == "CAHSE01" or _ra2.get("city_occupancy",false):
-		# The house has one sandbagged frame, followed by rubble; neither is a damage stage.
+	if building_id == "CAHSE01" or _ra2.get("city_occupancy",false) or _civilian_garrison_shadow_start() >= 0:
+		# The sandbagged pose is shared at all survivable damage levels.
 		if not special.get("occupants", []).is_empty(): return 2
 		return 1 if fraction <= 0.66 else 0
 	if building_id == "NABNKR": return (2 if not special.get("occupants", []).is_empty() else 0) + (1 if fraction <= 0.5 else 0)
@@ -785,19 +895,20 @@ func _weapon_muzzle() -> Vector2:
 func hit_test(world_p: Vector2) -> bool:
 	var gun=get_node_or_null("ReaperMount") if building_id=="R3REAPERTURRET" else null
 	if gun!=null and gun._ra3_model!=null:return gun.hit_test(world_p)
-	var silo_pose := building_id == "NAMISL" and not under_construction and _buildup_play < 0.0
-	if (silo_pose or building_id == "CAOILD") and _ra2.get("tex") != null:
-		var rect := RA2Art.draw_rect(_ra2, radius, [0], 0, RA2_SPRITE_SCALE)
+	var full_pose := _uses_full_superweapon_pose()
+	if (full_pose or building_id == "CAOILD" or _uses_mutator_idle_overlay()) and _ra2.get("tex") != null:
+		var anchors := body_anchor_frames(_body_damage_frame()) if _has_yuri_superweapon_lid() else [0]
+		var rect := RA2Art.draw_rect(_ra2, radius, anchors, 0, RA2_SPRITE_SCALE)
 		var local := Iso.dir(world_p - global_position)
 		if not rect.has_point(local): return false
 		var pixel := (local - rect.position) / RA2_SPRITE_SCALE
 		if Geometry2D.is_point_in_polygon(pixel, base_outline(building_id, _ra2, 0)): return true
-		if not silo_pose and _layer_frame_hit(_ra2, _body_damage_frame(), pixel): return true
+		if not full_pose and _layer_frame_hit(_ra2, _body_damage_frame(), pixel): return true
 		for layer in _ra2_anim:
 			if not _layer_visible(str(layer.kind)): continue
 			var state := _anim_layer(layer)
 			var offset := Vector2(float(layer.get("x", 0)), float(layer.get("y", 0)))
-			if _layer_frame_hit(RA2Art.art(str(state.image)), _anim_frame_for(layer, state), pixel - offset): return true
+			if _layer_frame_hit(_structure_anim_art(str(state.image)), _anim_frame_for(layer, state), pixel - offset): return true
 		return false
 	if _turret_art.hit_test(Iso.dir(world_p - global_position)):
 		return true
@@ -831,7 +942,7 @@ func combat_sight_rect() -> Rect2:
 	for layer in _ra2_anim:
 		if not _layer_visible(str(layer.kind)): continue
 		var state := _anim_layer(layer)
-		var art := RA2Art.art(str(state.image))
+		var art := _structure_anim_art(str(state.image))
 		if art.get("tex") == null: continue
 		var offset := Vector2(layer.get("x", 0), layer.get("y", 0)) * RA2_SPRITE_SCALE
 		var dest := Rect2(body.position + offset, RA2Art.frame_size(art) * RA2_SPRITE_SCALE)
@@ -1225,7 +1336,7 @@ func _process(delta: float) -> void:
 		if special.hero_escort_retry<=0.0: MetaProgress.Academy.release_escorts(self)
 	if building_id == "CAOILD": preload("res://scripts/world/civilian_sites.gd").oil_income(self, delta)
 	if building_id == "CAMACH": preload("res://scripts/world/civilian_sites.gd").repair_vehicles(self, delta)
-	if building_id == "CATHOSP" and battle.mission.get("id") == "yr_hollywood": battle.Hollywood.hospital_heal(self, delta)
+	if building_id == "CATHOSP" and battle.mission.get("id") in ["yr_hollywood","yr_allied_first","yr_time_shift"]: battle.Hollywood.hospital_heal(self, delta)
 	if special.has("force_shield_left"):
 		special.force_shield_left -= delta
 		self_modulate = Color(0.7, 0.86 + 0.12 * sin(special.force_shield_left * 6.0), 1.4)
@@ -1285,7 +1396,7 @@ func _process(delta: float) -> void:
 		var previous_elapsed := build_elapsed
 		var pay_ok := true
 		if build_cost > 0.0:
-			pay_ok = battle.spend_side(side, build_cost / max(0.01, build_total) * step)
+			pay_ok = battle.spend_side(battle.economy_owner(self), build_cost / max(0.01, build_total) * step)
 		if pay_ok:
 			build_elapsed += step
 			_pay_stall = false
@@ -1318,7 +1429,7 @@ func _process(delta: float) -> void:
 
 	# 资金涓流（RA2：Powered 建筑低电停摆时不再涓流，如矿石精炼器 GAOREP）
 	if trickle > 0.0 and is_operational():
-		battle.credit_income(side, trickle * delta, true)
+		battle.credit_income(battle.economy_owner(self), trickle * delta, true)
 
 	# (A4) 维修厂：为驻停的受损载具回血
 	if _is_repair:
@@ -1397,6 +1508,10 @@ func _tick_unit_queues(delta: float) -> void:
 				heads.append(str(uid))
 				break
 	for uid: String in heads:
+		if BattleRequest.is_ai_house(side) and uid in GameData.UNIQUE_HERO_TYPES:
+			# Old saves and captured factories can carry a previously valid order.
+			cancel_at(production.find(uid))
+			continue
 		if not (battle is Battle and battle.ai_production_full(side,uid,self,false)): _tick_unit_queue(delta,uid)
 
 func _tick_unit_queue(delta: float, uid: String) -> void:
@@ -1412,9 +1527,9 @@ func _tick_unit_queue(delta: float, uid: String) -> void:
 		state.price = float(ud.cost) if float(state.paid) > 0.0 else battle.production_price(ud, side)
 	var ucost: float = state.price
 	var need := minf(ucost / maxf(0.01, bt) * step, maxf(0.0, ucost - float(state.paid)))
-	var pay := minf(need, maxf(0.0, battle.funds_for(side)))
+	var pay := minf(need, maxf(0.0, battle.funds_for(battle.economy_owner(self))))
 	if side == "ally" and GM.infinite_funds: pay = need
-	if pay > 0.0 and not battle.spend_side(side, pay): pay = 0.0
+	if pay > 0.0 and not battle.spend_side(battle.economy_owner(self), pay): pay = 0.0
 	state.paid += pay
 	if need > 0.0: step *= pay / need
 	state.progress += step
@@ -1428,7 +1543,7 @@ func _tick_unit_queue(delta: float, uid: String) -> void:
 			state = Parallel.empty_state()
 			Parallel.store(self,uid,state)
 			var produced=battle.spawn_unit(uid, side, exit_pos, self, true)
-			if battle.skirmish and data.tags.has("barracks"):
+			if data.tags.has("barracks"):
 				preload("res://scripts/world/yuri_support.gd").clone_infantry(battle,self,produced)
 			preload("res://scripts/rules/hero_reinforcements.gd").produced(battle,self,produced)
 			if side == "ally" and produced != null and preload("res://scripts/expedition/research.gd").rank(BattleRequest.combat_context.get("expedition",{}),"factory")>0:
@@ -1464,6 +1579,20 @@ func total_production_paid() -> float:
 func queue_exit_blocked(uid := "") -> bool:
 	return bool(Parallel.state(self,uid).blocked)
 
+var _legacy_exit_directions := PackedVector2Array()
+var _legacy_exit_clearances := PackedFloat64Array()
+var _legacy_exit_poly := PackedVector2Array()
+var _legacy_exit_radius := 0.0
+var _legacy_exit_blockers := PackedVector2Array()
+var _legacy_exit_origin := Vector2.INF
+var _legacy_exit_unit_radius := -1.0
+var _legacy_exit_naval := false
+var _legacy_exit_cells := PackedInt32Array()
+var _legacy_exit_cols := 0
+var _legacy_exit_rows := 0
+var _legacy_exit_cell_size := 0.0
+
+
 func _spawn_point(uid: String = "") -> Vector2:
 	if ProductionExit.supported(self) or preload("res://scripts/buildings/airport_dock.gd").can_produce(self, uid):
 		return ProductionExit.point(self, uid)
@@ -1473,15 +1602,54 @@ func _spawn_point(uid: String = "") -> Vector2:
 	var unit_radius := maxf(1.0, float(ud.get("radius", 8.0)))
 	# Unmapped legacy buildings retain their old fallback until their art ports are calibrated.
 	# 不因随机数改变出口；无合法位置时保留队首等待，舰船绝不退回陆地。
+	var poly := footprint_poly()
+	if _legacy_exit_directions.is_empty() or _legacy_exit_poly != poly or _legacy_exit_radius != radius:
+		_legacy_exit_poly = poly.duplicate()
+		_legacy_exit_radius = radius
+		_legacy_exit_directions.resize(24)
+		_legacy_exit_clearances.resize(24)
+		_legacy_exit_blockers.clear()
+		_legacy_exit_cells.clear()
+		for i in 24:
+			var dir := Vector2.DOWN.rotated(TAU * float(i) / 24.0)
+			_legacy_exit_directions[i] = dir
+			_legacy_exit_clearances[i] = footprint_clearance(dir)
+	var origin := global_position
+	if _legacy_exit_blockers.size() != 72 or _legacy_exit_origin != origin or _legacy_exit_unit_radius != unit_radius or _legacy_exit_naval != naval:
+		_legacy_exit_origin = origin
+		_legacy_exit_unit_radius = unit_radius
+		_legacy_exit_naval = naval
+		_legacy_exit_blockers.resize(72)
+		_legacy_exit_blockers.fill(Vector2.INF)
+		_legacy_exit_cells.clear()
+	var service: PathService = battle.path_service if not air and battle != null else null
+	var grid := PackedFloat32Array()
+	if service != null: grid = service.water_cost if naval else service.cost
+	var cols := service.cols if service != null else 0
+	var rows := service.rows if service != null else 0
+	var cell_size := service.cell if service != null else 0.0
+	if _legacy_exit_cells.size() != 72 or _legacy_exit_cols != cols or _legacy_exit_rows != rows or _legacy_exit_cell_size != cell_size:
+		_legacy_exit_cols = cols
+		_legacy_exit_rows = rows
+		_legacy_exit_cell_size = cell_size
+		_legacy_exit_cells.resize(72)
+		_legacy_exit_cells.fill(-1)
+	var index := -1
 	for extra in [26.0, 66.0, 106.0]:
-		for i in range(24):
-			var d := Vector2.DOWN.rotated(TAU * float(i) / 24.0)
-			var p: Vector2 = global_position + d * (footprint_clearance(d) + float(extra) + unit_radius)
-			if _exit_position_clear(p, unit_radius, naval, air):
-				return p
+		for i in 24:
+			var p := origin + _legacy_exit_directions[i] * (_legacy_exit_clearances[i] + float(extra) + unit_radius)
+			index += 1
+			# A witness never proves success. The current grid must still reject it.
+			var cell_index := _legacy_exit_cells[index]
+			if cell_index < 0 and not grid.is_empty() and _legacy_exit_blockers[index].is_finite():
+				var cell := service._cell_of(_legacy_exit_blockers[index])
+				cell_index = cell.y * service.cols + cell.x
+				_legacy_exit_cells[index] = cell_index
+			if cell_index >= 0 and cell_index < grid.size() and grid[cell_index] < 0.0: continue
+			if _exit_position_clear(p, unit_radius, naval, air, index): return p
 	return Vector2.INF
 
-func _exit_position_clear(p: Vector2, unit_radius: float, naval: bool, air: bool) -> bool:
+func _exit_position_clear(p: Vector2, unit_radius: float, naval: bool, air: bool, witness_index := -1) -> bool:
 	if battle == null:
 		return false
 	# 中心与外圈都检查，防止中心在岸边/地图内而身体跨入阻挡。
@@ -1490,6 +1658,9 @@ func _exit_position_clear(p: Vector2, unit_radius: float, naval: bool, air: bool
 		if sample.x < 0.0 or sample.y < 0.0 or sample.x >= battle.map_size or sample.y >= battle.map_size:
 			return false
 		if not air and (battle.path_service == null or battle.path_service.is_blocked(sample, naval)):
+			if witness_index >= 0:
+				_legacy_exit_blockers[witness_index] = sample
+				_legacy_exit_cells[witness_index] = -1
 			return false
 		if naval and not battle.in_water_world(sample):
 			return false
@@ -1521,6 +1692,7 @@ func queue_capacity() -> int:
 
 func can_queue(uid: String) -> bool:
 	if battle is Battle and battle.ai_production_full(side,uid,self): return false
+	if BattleRequest.is_ai_house(side) and uid in GameData.UNIQUE_HERO_TYPES: return false
 	if side == "enemy" and battle != null and is_instance_valid(battle.skirmish_ai) and not GameData.ai_product_allowed(uid): return false
 	if battle != null and not battle.hero_limit_reason(uid, side).is_empty(): return false
 	if uid in ["ORCA", "BEAG"] and battle != null:
@@ -1541,6 +1713,13 @@ func unit_prereqs_ok(uid: String) -> bool:
 		return false
 	if is_refinery() and uid == CONSTRUCTION_FREE_UNITS.get(building_id):
 		return battle != null
+	if battle is Battle and side=="enemy" and battle.mission.get("id")=="yr_time_shift" and int(battle.allied_state.get("time_shift",{}).get("phase",-1))==4:
+		var room:String=battle.ShiftEconomy.native_house(self)
+		if not room.is_empty():return GameData.ra2_prereq_ok(uid,battle.ShiftEconomy.production_sites(battle,room),battle.allied_state,side)
+	if battle is Battle and side=="enemy" and battle.mission.get("id")=="yr_head_games":
+		return GameData.ra2_prereq_ok(uid,battle.HeadGames.Orders.production_sites(battle,int(special.get("head_games_wing",-1))),battle.allied_state,side)
+	if battle is Battle and side=="enemy" and battle.mission.get("id")=="yr_allied_finale" and special.get("allied_finale_room")=="Yuri3":
+		return GameData.ra2_prereq_ok(uid,battle.AlliedFinale.AI.room_ids(battle,"Yuri3"),battle.allied_state,side)
 	if battle is Battle: return battle.production_prereqs_ok(uid, side)
 	return battle != null and GameData.ra2_prereq_ok(uid, battle.owned_building_ids(side), battle.allied_state, side)
 
@@ -1551,6 +1730,7 @@ func production_tech_block_reason(uid: String) -> String:
 	return battle.production_technology.block_reason(building_id, uid, side) if battle != null else ""
 
 func queue_block_reason(uid: String) -> String:
+	if BattleRequest.is_ai_house(side) and uid in GameData.UNIQUE_HERO_TYPES: return "电脑不能生产英雄单位"
 	if battle is Battle and battle.ai_production_full(side,uid,self): return "本家电脑单位已达 %d 上限（含在训）" % Battle.AI_UNIT_LIMIT
 	if side == "enemy" and battle != null and is_instance_valid(battle.skirmish_ai) and not GameData.ai_product_allowed(uid): return "遭遇战 AI 禁止生产 RA3 单位"
 	if battle != null:
@@ -1691,10 +1871,13 @@ func cancel_at(idx: int) -> bool:
 	var state := Parallel.state(self,uid)
 	var active := idx == Parallel.stored_head(self,uid)
 	production.remove_at(idx)
+	if uid in ["HARV","FLAKT"] and not production.has(uid):
+		special.erase("all01_ai_order")
+		special.erase("all01_flak_job")
 	if battle is Battle: battle.invalidate_ai_population()
 	if battle is Battle: preload("res://scripts/world/ai_emergency_engineer.gd").cancelled(battle,self,uid)
 	if active:
-		battle.credit_side(side, float(state.paid))
+		battle.credit_side(battle.economy_owner(self), float(state.paid))
 		Parallel.store(self,uid,Parallel.empty_state())
 	else: Parallel.sync(self)
 	if side == "ally": Events.production_queue_changed.emit()
@@ -1717,16 +1900,19 @@ func queue_progress(uid := "") -> float:
 func supports_attack_order() -> bool:
 	return not weapon.is_empty() or building_id == "R3REAPERTURRET" or data.has("garrison_weapons") or data.has("charged_weapon")
 
+func is_explosive_barrel() -> bool:
+	return building_id in ["CAMISC01", "CAMISC02"]
+
 func attack_order_reason(target) -> String:
 	if data.has("garrison_weapons"):
 		return preload("res://scripts/units/civilian_orders.gd").order_block_reason(self, target)
 	if building_id == "R3REAPERTURRET":
 		return "" if preload("res://scripts/buildings/ra3_reaper_emplacement.gd").accepts_order(self, target) else "请选择射程内可攻击的敌人"
 	if not data.has("charged_weapon"):
-		if not battle.actor_alive(target) or target.side in [side,"neutral"]: return "请选择敌方目标"
+		if not battle.actor_alive(target) or target.side == side or (target.side == "neutral" and not (target is Building and target.is_explosive_barrel())): return "请选择敌方目标或油桶"
 		return ForceFire.reason(battle,self,target)
 	if not is_operational(): return "磁暴线圈尚未就绪或供电不足"
-	if not battle.actor_alive(target) or target.side == side or target.side == "neutral": return "请选择敌方目标"
+	if not battle.actor_alive(target) or target.side == side or (target.side == "neutral" and not (target is Building and target.is_explosive_barrel())): return "请选择敌方目标或油桶"
 	if target is Unit and target.is_air_target(): return "磁暴线圈只能攻击地面目标"
 	preload("res://scripts/units/tesla_support.gd").update_weapon(self)
 	if not _valid_weapon_target(target): return "请选择射程内可见且可攻击的敌方目标"
@@ -1908,9 +2094,14 @@ func is_protected_mission_plant() -> bool:
 	return int(battle.allied_state.get("time_shift",{}).get("phase",0)) in [0,1]
 
 func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: Dictionary = {}, source = null, warhead_id: String = "") -> void:
-	if is_instance_valid(battle) and battle.mission.get("id")=="yr_time_shift" and battle.allied_state.has("time_shift") and is_instance_valid(source) and source.get("side")=="ally":
-		if building_id.begins_with("CATIME"):battle.TimeShift.Story.once(battle,"Mis_xS1_ZofiaSaveTimeMach")
-		if building_id.begins_with("GAPOWR") and building_id.length()==7:battle.TimeShift.Story.once(battle,"Mis_xS1_ZofiaDoNotKillPower")
+	if damage > 0.0 and is_instance_valid(battle) and battle.mission.get("id")=="yr_head_games" and special.get("head_grinder")=="sw" and side=="enemy" and is_instance_valid(source) and source.get("side")=="ally":
+		preload("res://scripts/world/head_games.gd").grinder_apply(battle,"0CBF5A9C")
+	if damage > 0.0 and is_instance_valid(battle) and battle.mission.get("id")=="yr_time_shift" and battle.allied_state.has("time_shift") and is_instance_valid(source) and source.get("side")=="ally":
+		if int(battle.allied_state.time_shift.phase)==2:
+			battle.TimeShift.Story.grid_attack_warning(battle,self)
+		elif building_id.begins_with("CATIME"):battle.TimeShift.Story.once(battle,"Mis_xS1_ZofiaSaveTimeMach")
+		elif int(battle.allied_state.time_shift.phase)<2 and is_protected_mission_plant():
+			battle.TimeShift.Story.once(battle,"Mis_xS1_ZofiaDoNotKillPower")
 	if damage > 0 and is_protected_mission_plant(): return
 	if damage > 0 and is_instance_valid(battle) and battle.allied_state.has("yuriko_field") and preload("res://scripts/units/yuriko.gd").protected(battle,self,source,attack_type): return
 	if building_id=="CABHUT" and is_instance_valid(battle) and battle.allied_state.get("expedition_bridge_guard",false):return
@@ -1941,8 +2132,20 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 	defended=CombatMath.FinalDamage.apply(defended,hit_reference*defended/damage if damage>0 else 0.0,self,attacker_bonus,source)
 	# Cross-game PRISM ratios retain fractions; Yuri warheads keep their rounding.
 	var final_dmg := defended if warhead_id in ["RA3_PRISM", "RA3_EXPANSION"] else Ra2Damage.quantize(defended)
+	# AKM/AKME do chip damage to concrete barrels; do not round a positive hit to zero.
+	if defended > 0.0 and final_dmg == 0.0 and warhead_id == "YR_SOV_BORISWH" and is_explosive_barrel(): final_dmg = 1.0
 	if damage > 0.0 and WallArt.is_wall(data) and WallArt.destroys_wall(warhead_id): final_dmg = hp
 	if final_dmg > 0:
+		if side=="enemy" and special.get("head_grinder")=="sw":
+			var attacker=source.shooter() if source is Projectile else source
+			if is_instance_valid(attacker) and attacker.get("side")=="ally":
+				preload("res://scripts/world/head_games.gd").grinder_discovered(battle,"sw")
+		if building_id=="CATIME01" and special.get("allied_first_index","")=="1028558" and is_instance_valid(battle) and battle.mission.get("id")=="yr_allied_first" and battle.allied_state.allied_first.get("map_field_rows",false):
+			battle.allied_state.allied_first.field_machine_hit=true
+		if building_id.begins_with("CAPOWR0") and special.has("allied_first_index") and is_instance_valid(battle) and battle.mission.get("id")=="yr_allied_first":
+			var attacker = source.shooter() if source is Projectile else source
+			if (attacker is Unit or attacker is Building) and attacker.side=="ally" and attacker.special.get("allied_first_room","Americans")=="Americans":
+				battle.allied_state.allied_first.get_or_add("player_hit_plants",{})[building_id] = true
 		MetaProgress.Academy.hit(self, source)
 		if battle != null and battle.fog != null and is_instance_valid(source):
 			var shooter = source.shooter() if source is Projectile else source
@@ -1964,6 +2167,10 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 	if final_dmg>0:preload("res://scripts/units/convoy_heroes.gd").damaged(self,source,final_dmg,attacker_bonus)
 	if attacker_bonus.get("studio_grenade",false):final_dmg*=Unit.StudioTalents.grenade_multiplier(source,self,attacker_bonus)
 	hp -= final_dmg
+	if final_dmg>0 and special.has("hollywood_star_guard") and battle!=null and battle.mission.get("id")=="yr_hollywood":battle.Hollywood.star_guard_attacked(battle,self)
+	if final_dmg>0 and special.has("hollywood_plant") and battle!=null and battle.mission.get("id")=="yr_hollywood" and is_instance_valid(source) and source.get("side")=="ally":battle.Hollywood.grinder_attacked(battle,self)
+	if final_dmg>0 and building_id=="CATRAN03" and battle!=null and battle.mission.get("id")=="yr_head_games":
+		preload("res://scripts/world/head_games.gd").castle_attacked(battle,self)
 	if final_dmg>0 and attacker_bonus.has("studio_target"):Unit.StudioTalents.impact(source,self,attacker_bonus)
 	if warhead_id == "RA3_PRISM" and absf(hp) < 0.000001: hp = 0.0
 	if side == "ally":
@@ -2005,7 +2212,7 @@ func _process_building_repair(delta: float) -> void:
 		var charge := heal * per_hp
 		# Capturable oil derricks have no purchase price. Charge the minimum repair tick.
 		if building_id == "CAOILD": charge = maxf(1.0, charge)
-		if not battle.spend_side(side, charge):
+		if not battle.spend_side(battle.economy_owner(self), charge):
 			if not repair_waiting_funds and side == "ally":
 				Events.emit_message("%s 维修暂停：资金不足，到账后继续" % display_name, Color(1.0, 0.8, 0.5))
 				Ra2Sfx.play_player_eva(battle, "EVA_InsufficientFunds")
@@ -2023,6 +2230,7 @@ func _process_building_repair(delta: float) -> void:
 
 func retire_sold() -> void:
 	if _dead: return
+	if is_instance_valid(battle) and battle.fog != null: battle.fog.forget_observed_removal(self)
 	if special.has("occupants"): preload("res://scripts/units/civilian_orders.gd").evacuate(self, true)
 	preload("res://scripts/buildings/building_sale_fx.gd").play(self)
 	_dead = true
@@ -2042,6 +2250,17 @@ func retire_sold() -> void:
 	queue_free()
 
 func _die(killer = null, temporal_erasure := false) -> void:
+	if not _dead and building_id=="GTGCAN" and is_instance_valid(battle) and battle.mission.get("id")=="yr_allied_first":
+		var first: Dictionary = battle.allied_state.allied_first
+		if not first.get("crossing_swapped",false):
+			first.get_or_add("fallen_cannon_tags",{})[special.get("allied_first_tag","")] = true
+	if not _dead and building_id=="NANRCT" and special.get("allied_first_index","")=="1028460" and is_instance_valid(battle) and battle.mission.get("id")=="yr_allied_first":
+		var first: Dictionary = battle.allied_state.allied_first
+		if int(first.phase)<=3 and not first.get("crossing_swapped",false): first.retail_reactor_destroyed = true
+	if not _dead and building_id=="CATIME01" and special.get("allied_first_index","")=="1028558" and is_instance_valid(battle) and battle.mission.get("id")=="yr_allied_first":
+		var mission_state: Dictionary = battle.allied_state.allied_first
+		mission_state.machine_death_era = 1 if mission_state.get("crossing_swapped",false) or int(mission_state.phase)>=4 else 0
+	if not _dead and is_instance_valid(battle) and battle.mission.get("id")=="yr_hollywood":battle.Hollywood.enemy_site_lost(battle,self)
 	if not _dead and is_instance_valid(battle) and battle.mission.get("id")=="yr_head_games":
 		if side=="enemy" and building_id in ["NACNST","GACNST","YACNST"]:
 			battle.allied_state["s07_no_yard_%d"%int(special.get("head_games_wing",-1))]=true
@@ -2053,6 +2272,7 @@ func _die(killer = null, temporal_erasure := false) -> void:
 		preload("res://scripts/world/head_games.gd").grinder_lost(battle,special.head_grinder)
 	if _dead:
 		return
+	if is_instance_valid(battle) and battle.fog != null: battle.fog.forget_observed_removal(self)
 	if building_id=="YAREFN": preload("res://scripts/world/slave_mining.gd").release(self,killer)
 	var eliminated:bool=special.get("house_eliminated",false)
 	if eliminated:
@@ -2247,19 +2467,24 @@ func _draw() -> void:
 ## 恒盖在所有实体（含建筑）之上。
 ## origin 为 begin 空间坐标（调用方传 Iso.dir(世界坐标)），ci 为其所属 CanvasItem。
 func hp_bar_rect() -> Rect2:
+	if _ra2.has("shadow_start"):
+		var frame := _body_damage_frame()
+		var body := RA2Art.draw_rect(_ra2, radius, body_anchor_frames(frame), 0, RA2_SPRITE_SCALE)
+		var visible_body := RA2Art.visible_sprite_rect(_ra2, body, RA2Art.src_rect(_ra2, frame))
+		if visible_body.has_area():
+			var width := maxf(32.0, visible_body.size.x)
+			return Rect2(visible_body.get_center().x-width*0.5, visible_body.position.y-12.0, width, 6.0)
 	var width := maxf(50.0,radius*2.4)
 	return Rect2(-width*0.5,-radius*2.9,width,6.0)
 
 func draw_hp_bar(ci: CanvasItem, origin: Vector2, show_values := false) -> void:
-	var shield := float(special.get("brutal_shield", 0.0))
-	if _dead or not (show_values or hp < max_hp or _hp_flash > 0.0 or shield > 0):
+	var shield := preload("res://scripts/ui/shield_readout.gd").summary(self, false)
+	if _dead or not (show_values or hp < max_hp or _hp_flash > 0.0 or shield.amount > 0.0 or shield.protected):
 		return
 	var rect := hp_bar_rect()
 	rect.position += origin
-	if shield > 0:
-		var bar := Rect2(rect.position+Vector2(0,-5),Vector2(rect.size.x,3))
-		HpBar.draw_bar(ci,bar,shield / (max_hp * 0.5),Color.SKY_BLUE)
-	if show_values: HpBar.draw_readout(ci,rect,side,hp,max_hp,shield)
+	HpBar.draw_shield(ci,rect,shield,side,show_values)
+	if show_values: HpBar.draw_readout(ci,rect,side,hp,max_hp,shield.amount)
 	var pct := clampf(hp / max(1.0, max_hp), 0.0, 1.0)
 	var alert_k: float = clampf(1.0 - pct, 0.0, 1.0)
 	HpBar.draw_bar(ci, rect, pct, HpBar.world_fill(side, pct), 0, _hp_ghost, _hp_flash, alert_k, HpBar.rim_for(side))
@@ -2297,9 +2522,8 @@ func _anim_frame_for(lay: Dictionary, st: Dictionary) -> int:
 	var kind := str(lay.get("kind", ""))
 	if kind == "superanimfour" and special.has("sw_discharge_age"):
 		return ls + mini(n-1,int(float(special.sw_discharge_age)/spf))
-	if kind == "superanimtwo" and building_id in ["NAMISL","NAIRON"]:
-		var lead := float(preload("res://scripts/core/yr_death_rules.gd").type_data(building_id).get("chargedanimtime",1)) * 60.0
-		return ls + clampi(int((lead-sw_recharge()+_sw_charge)/spf),0,n-1)
+	if kind == "superanimtwo" and (_has_yuri_superweapon_lid() or building_id in ["NAMISL","NAIRON"]):
+		return ls + clampi(int((_charged_anim_lead() - sw_recharge() + _sw_charge) / spf), 0, n - 1)
 	if kind.begins_with("productionanim"):
 		return ls + mini(n - 1, int(maxf(0.0, _production_anim_t) / spf))
 	if _is_door_layer(kind):
@@ -2347,7 +2571,13 @@ static func _make_anim_layer(lay: Dictionary, damaged:bool) -> Dictionary:
 		st["loopEnd"] = st["loopStart"]
 	return st
 
-func _draw_ra2_anim(base: Vector2, sc: float, only_kind: String = "") -> void:
+func _structure_anim_art(id: String) -> Dictionary:
+	if _ra2.has("shadow_start"):
+		var snow := RA2Art.allied_finale_site(id)
+		if not snow.is_empty(): return snow
+	return RA2Art.art(id)
+
+func _draw_ra2_anim(base: Vector2, sc: float, only_kind: String = "", memory = null) -> void:
 	if _ra2_anim.is_empty():
 		return
 	for lay in _ra2_anim:
@@ -2355,7 +2585,7 @@ func _draw_ra2_anim(base: Vector2, sc: float, only_kind: String = "") -> void:
 		if not _layer_visible(str(lay.get("kind", ""))):
 			continue
 		var est := _anim_layer(lay)
-		var art := RA2Art.art(str(est["image"]))
+		var art := _structure_anim_art(str(est["image"]))
 		var tex: Texture2D = art.get("tex")
 		if tex == null:
 			continue
@@ -2366,8 +2596,8 @@ func _draw_ra2_anim(base: Vector2, sc: float, only_kind: String = "") -> void:
 		if (est["shadow"] == true) and half > 0 and v + half < total:
 			var sr := RA2Art.src_rect(art, v + half)
 			if sr.size.x > 0.0:
-				RA2Art.draw_sprite(self, art, Rect2(ofs, sr.size * sc), sr, Color(0.0, 0.0, 0.0, 0.5))
-		RA2Art.draw_sprite(self, art, Rect2(ofs, RA2Art.frame_size(art) * sc), RA2Art.src_rect(art, v))
+				_draw_structure_layer(memory, art, Rect2(ofs, sr.size * sc), sr, Color(0.0, 0.0, 0.0, 0.5))
+		_draw_structure_layer(memory, art, Rect2(ofs, RA2Art.frame_size(art) * sc), RA2Art.src_rect(art, v))
 
 # ======================= 超级武器 =======================
 
@@ -2396,10 +2626,10 @@ func sw_label() -> String:
 func sw_type() -> String:
 	return str(superweapon.get("type", ""))
 
-## Only these four YR superweapons broadcast their site and countdown.
-## Other support powers share the charging machinery but use normal scouting.
+## Major strategic weapons broadcast their site and countdown. Tactical support
+## powers share the charging machinery but use normal scouting.
 func broadcasts_superweapon() -> bool:
-	return sw_type() in ["MultiMissile", "IronCurtain", "ChronoSphere", "LightningStorm"]
+	return sw_type() in ["MultiMissile", "IronCurtain", "ChronoSphere", "LightningStorm", "PsychicDominator", "GeneticConverter"]
 
 func is_allied_ai_storm() -> bool:
 	return sw_type() == "LightningStorm" and BattleRequest.is_ai_house(side) and BattleRequest.friendly("ally", side)
@@ -2471,7 +2701,7 @@ func fire_superweapon(target: Vector2, chrono_origin := Vector2.INF) -> bool:
 	if typ == "multimissile" and battle.position_visible_to("ally", global_position):
 		var ignition = Ra2Fx.play(battle.effects_root, global_position, "NUKETO")
 		if ignition != null: ignition.draw_offset = preload("res://scripts/units/soviet_specials.gd").SILO_OFFSET
-	if building_id in ["NAMISL","NAIRON"]: special.sw_discharge_age = 0.0
+	if _has_yuri_superweapon_lid() or building_id in ["NAMISL","NAIRON"]: special.sw_discharge_age = 0.0
 	_sw_charge = 0.0
 	_sw_was_ready = false
 	SupportSystems.sync_charge(self)

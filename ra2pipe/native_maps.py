@@ -212,11 +212,21 @@ def bake(source, project):
                  -15/pixels,15/pixels,shape.get('anchor_y',shape['height']/2)),Image.Resampling.BICUBIC)
             canvas.paste(transformed,(int((u+.5-radius)*pixels),int((v+.5-radius)*pixels)),transformed)
         starts = []
+        # Mission waypoints include off-map entrances and are not multiplayer slots.
+        waypoints = {}
         for key, value in config['Waypoints'].items():
-            if int(key) > 7: continue
+            if not entry.get('campaign') and int(key) > 7: continue
             x, y = int(value) % 1000, int(value) // 1000
-            assert (x, y) in valid
-            u, v = position(x, y); starts.append([int(key), u + .5, v + .5])
+            u, v = position(x, y)
+            if entry.get('campaign'):
+                waypoints[key] = [u + .5, v + .5, (x, y) in valid]
+                if int(key) == int(config['Basic']['HomeCell']) and (x, y) in valid:
+                    starts.append([int(key), u + .5, v + .5])
+            else:
+                assert (x, y) in valid
+                starts.append([int(key), u + .5, v + .5])
+        if entry.get('campaign') and not starts:
+            raise ValueError(f"Mission HomeCell is not in LocalSize: {entry['archive']}")
         structures = []; site_types={}
         for row in config['Structures'].values() if 'Structures' in config else []:
             values = row.split(','); x, y = int(values[3]), int(values[4])
@@ -229,21 +239,35 @@ def bake(source, project):
                 site_types[sid]['foundation']=drawing.get('foundation','1x1')
         mid = 'yr_' + entry['archive'].split('.')[0].lower()
         canvas.save(dest / (mid + '_terrain.png'))
-        pw, ph = map(int, config['Preview']['Size'].split(',')[2:])
-        preview = unpack(config['PreviewPack'], 'lzo')
-        assert len(preview) >= pw * ph * 3
-        Image.frombytes('RGB', (pw, ph), preview[:pw * ph * 3]).save(dest / (mid + '_preview.png'))
+        if 'Preview' in config and 'PreviewPack' in config:
+            pw, ph = map(int, config['Preview']['Size'].split(',')[2:])
+            preview = unpack(config['PreviewPack'], 'lzo')
+            assert len(preview) >= pw * ph * 3
+            Image.frombytes('RGB', (pw, ph), preview[:pw * ph * 3]).save(dest / (mid + '_preview.png'))
+        elif entry.get('campaign'):
+            # Retail campaign maps may omit a lobby preview. This is terrain-only.
+            preview = canvas.copy()
+            preview.thumbnail((384, 384), Image.Resampling.LANCZOS)
+            preview.save(dest / (mid + '_preview.png'))
+        else:
+            raise ValueError(f"Missing retail lobby preview: {entry['archive']}")
         data = {k: entry[k] for k in ['title','archive','sha256','archive_sha256','theater']}
         if 'container' in entry:
             data['container'] = entry['container']
         data.update(id=mid, side=side, cell_size=55, cells=cells, resources=resources, starts=starts,
                     structures=structures, site_types=site_types, bridges=bridges, local_size=[lx,ly,lw,lh],
                     adaptation='Original cells and TMP ground, flat elevation; original mission triggers are not executed.')
+        if entry.get('campaign'):
+            data.update(campaign=True, waypoints=waypoints, retail_origin=[min_x, max_y],
+                        adaptation='Campaign terrain staging only. Mission triggers and special bridge structures are not executed.')
         (data_dir / (mid + '.json')).write_text(json.dumps(data, separators=(',',':')), encoding='utf8')
         from native_ore import export_ore
         export_ore(raw, data, rules, data_dir / 'ore')
-        catalog.append({k: data[k] for k in ['id','title','archive','sha256','theater','side']})
+        if not entry.get('campaign'):
+            catalog.append({k: data[k] for k in ['id','title','archive','sha256','theater','side']})
         print(mid, side, 'cells',len(cells),'ore',len(resources),'bridges',len(bridges),'structures',len(structures))
+    if not catalog:
+        return
     catalog_file = data_dir / 'yr_catalog.json'
     existing = json.loads(catalog_file.read_text(encoding='utf8')) if catalog_file.exists() else []
     by_id = {row['id']: row for row in existing}

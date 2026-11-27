@@ -62,7 +62,7 @@ static func rifle_hit(target,source,amount:float,bonus:Dictionary) -> void:
 static func modify_reload(unit,seconds:float) -> float:
 	var s:Dictionary=unit.special.get(KEY,{})
 	if not s.has("relay") or s.side!=unit.side or not AlliedAbilities.infantry(unit):return seconds
-	if unit.unit_id=="BORIS" and unit.attack_target is Building:return seconds
+	if Unit.SovietSpecials.boris_airstrike_target(unit,unit.attack_target):return seconds
 	s.erase("relay");unit.queue_redraw()
 	return seconds*P.number("hero/BORIS/command","relay_reload")
 

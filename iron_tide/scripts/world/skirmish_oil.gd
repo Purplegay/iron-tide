@@ -47,7 +47,7 @@ static func team(ai, point: Vector2, wanted: int, scout: bool) -> Array:
 			else:
 				u.special.erase("ai_oil_post")
 				if u.embarked_in == null and not u.repairing: u.ai_order("move",ai.rally, false)
-		elif u.unit_id in LIGHT and u.embarked_in == null and not u.repairing and not u.attack_ordered and not u.is_deployed() and not u.special.has("action") and not u.special.get("ai_transport_reserved", false):
+		elif not u.special.has("yr_skirmish_team") and not u.special.has("expedition_objective") and not u.special.has("field_convoy") and u.unit_id in LIGHT and u.embarked_in == null and not u.repairing and not u.attack_ordered and not u.is_deployed() and not u.special.has("action") and not u.special.get("ai_transport_reserved", false):
 			candidates.append(u)
 	candidates.sort_custom(func(a, b):
 		var a_dog: bool = scout and "DOG" in str(a.unit_id)

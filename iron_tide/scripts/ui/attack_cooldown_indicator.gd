@@ -88,7 +88,7 @@ static func state(unit) -> Dictionary:
 	if unit is Building:return building_state(unit)
 	if unit.embarked_in!=null:return {}
 	if unit.unit_id == "BORIS":
-		var designating := is_instance_valid(unit.attack_target) and unit.attack_target is Building
+		var designating := Unit.SovietSpecials.boris_airstrike_target(unit, unit.attack_target)
 		var clocks: Array = []
 		if not designating and (unit.selected or unit._cd_timer > 0.0):
 			clocks.append(ordinary_slot(unit, unit._weapon_for_target(null), "hull"))

@@ -1,0 +1,103 @@
+TeamType ID	名称	房号	计数范围	正式战场状态	创建或招募来源（触发ID/名称/动作/航点/易普难）	其他动作引用	TaskForce ID	队伍组成	ScriptType ID	原始指令	验收
+0A2BC12C	Paradrop@I	Russians	无创建或招募引用	仅定义			0813239C	8,INIT	08133DBC	0,2 → 0,1 → 49,0	
+0A2BD90C	Hover_Team_1	Nod	本图任务引用	已正式接入	0b7d4bcc/Create_Hover_One/80/K/111		0BCFEB7C	1,LTNK + 3,INIT + 1,YHVR	0A9F8B7C	3,11 → 8,2 → 39,0 → 3,39 → 3,40 → 0,4 → 0,5 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0B7D664C	Hover1_Home_Team	Nod	本图任务引用	已正式接入	0b7d6aac/Hover1_Go_Home/4/L/111		0BCFE59C	1,YHVR	0B7D63DC	3,10 → 37,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+089B3A4C	TEAM_NW_Attack	Russians	本图任务引用	已正式接入	0813427c/Drop_I_Team/80/M/011		0BBC47FC	5,INIT	0A9F821C	3,80 → 3,81 → 3,8 → 0,4 → 0,4 → 0,5 → 0,7 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0B03E84C	TEAM_Starting_GI	Americans	本图任务引用	已正式接入	0b03a5bc/Deploy_Start_GI/4/J/111		0B0391CC	5,E1	0B03E5DC	9,0	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+08B03A4C	TEAM_Starting_GGI	Americans	本图任务引用	已正式接入	068f288c/Deploy_Start_GGI/4/N/111	0b0246cc/Camera_Player_Base/5/A/111	08B289CC	5,GGI	0A2BFB7C	9,0	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+043998EC	TEAM_UT_Garrison	YuriCountry	本图任务引用	已正式接入	0437e7ec/Garrison_UT/4/U/111		0439B15C	5,INIT	0A797DBC	1,19	MAP65 原图默认关闭，无启用上游；正式场景受控招募，未计为自然出场。
+0AA79A4C	AA_AB_Patrol	YuriCountry	无创建或招募引用	仅定义			0AA796CC	1,LTNK	0BB87DBC	16,27 → 16,28 → 16,29 → 16,30 → 16,29 → 16,28 → 16,26 → 6,1	
+0BF1048C	TEAM_GGI_GuineaPig	YuriCountry	本图任务引用	已正式接入	0ab41d9c/GGI_GuineaPig_Start/4/V/111		0B6FFB7C	2,LTNK	0AB470CC	3,22	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+08B066CC	TEAM_GGI_Flash	Americans	本图任务引用	已正式接入	0a815afc/Flash_GGI/4/N/111		0CE3909C	5,GGI	08B0645C	50,120	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0437F1EC	TEAM_ZAI_Garrison	YuriCountry	本图任务引用	已正式接入	0437c23c/Garrison_ZAI/4/Z/111		0437D69C	5,INIT	0437FCDC	1,34	收尾：原图默认关闭，无启用上游；正式场景受控招募五名场上新兵，并核对脚本目标建筑地基。
+089CE49C	TEAM_AJ_AK_Garrison	YuriCountry	本图任务引用	已正式接入	089cf54c/Garrison_AJAK/4/AJ/111		089CC47C	5,INIT	089CE22C	1,36	收尾：原图默认关闭，无启用上游；正式场景受控招募五名场上新兵，并核对脚本目标建筑地基。
+0A80332C	TEAM_Water_Two	Confederation	本图任务引用	已正式接入	0895c19c/Create_Hover_2/80/Y/111		0BD010CC	4,LTNK + 1,YHVR	0AA0521C	3,23 → 8,2 → 39,1 → 0,4 → 0,5 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0AB4AB7C	Hover2_Home_Team	Confederation	本图任务引用	已正式接入	08a2318c/Hover2_Go_Home/4/X/111		0BD02B7C	1,YHVR	0AB4A90C	3,24 → 37,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+08A006AC	TEAM_AF_AG_Patrol	YuriCountry	本图任务引用	已正式接入	08a0367c/Start_AF_AH_Patrol/4/AG/111		096BF82C	2,LTNK	08A0043C	16,31 → 16,33 → 16,31 → 16,32 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0A7F16AC	TEAM_Water3	Germans	本图任务引用	已正式接入	0b16029c/Create_Hover_3/80/AL/111		0BD0221C	3,LTNK + 2,INIT + 1,YHVR	0AA0421C	3,38 → 8,2 → 39,2 → 0,4 → 0,5 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0B16493C	Hover3_Home_Team	Germans	本图任务引用	已正式接入	0b1612ec/Hover3_Go_Home/4/AM/111		0BD03CAC	1,YHVR	0B1646CC	3,37 → 37,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+09F3BC1C	TEAM_Attack_Tanya	YuriCountry	本图任务引用	已正式接入	089f2aac/Attack_Tanya/80/AP/111		09F3B65C	5,INIT	09F3B76C	3,14 → 0,4 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+09F3A3CC	TEAM_Apocs	Russians	无创建或招募引用	仅定义			09F3A04C	4,APOC	0927132C	59,78 → 0,1	
+093DDC8C	TEAM_Apoc1	Special	本图任务引用	已正式接入	05ee7c8c/Create_Apocs(Easy)/80/CE/100 | 05ee7b9c/Create_Apocs(MedHard)/80/CE/011		09F3BB7C	1,APOC	09270C8C	42,6 → 59,78 → 0,5 → 0,10	装甲小队；按难度出击及装甲主线
+093DD7DC	TEAM_Apoc2	Special	本图任务引用	已正式接入	05ee7c8c/Create_Apocs(Easy)/80/CF/100 | 05ee7b9c/Create_Apocs(MedHard)/80/CF/011		09F3B6CC	1,APOC	092707DC	42,6 → 59,78 → 0,1	装甲小队；按难度出击及装甲主线
+093DD32C	TEAM_Apoc3	Special	本图任务引用	已正式接入	05ee7b9c/Create_Apocs(MedHard)/80/CG/011		09F3B21C	1,APOC	0927032C	42,6 → 59,78 → 0,1	装甲小队；按难度出击及装甲主线
+093DFDEC	TEAM_Apoc4	Special	本图任务引用	已正式接入	05ee7b9c/Create_Apocs(MedHard)/80/CH/011		09F3834C	1,APOC	0930529C	42,6 → 59,78 → 0,1	装甲小队；按难度出击及装甲主线
+0D2AF91C	TEAM_AP_Paradrop	Africans	本图任务引用	已正式接入	069b22fc/AP_Paradrop/80/AP/111		0AC17B7C	5,INIT	0D2AF6AC	3,42 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0955BB7C	TEAM_Dred1	French	本图任务引用	已正式接入	067dd9fc/Create_Stuff/80/DX/111		089D42DC	1,DRED	0C32290C	42,2 → 46,131138	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0955B6CC	TEAM_Dred2	French	本图任务引用	已正式接入	067dd9fc/Create_Stuff/80/DY/111		089DFE3C	1,DRED	0B4F0DBC	42,2 → 59,70 → 1,286 → 1,441	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0955B21C	TEAM_Dred3	French	本图任务引用	已正式接入	089d5a8c/Create_Stuff2/80/DZ/111		089D30BC	1,DRED	0C360A1C	42,3 → 1,291 → 1,125 → 1,440	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+09645EFC	TEAM_Scorp1	French	本图任务引用	已正式接入	089d5a8c/Create_Stuff2/80/ST/111		089D7B0C	1,HYD	09645C8C	3,63 → 3,64 → 3,65 → 3,66 → 3,67 → 3,68 → 3,69 → 3,513 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+09645A4C	TEAM_Scorp2	French	本图任务引用	已正式接入	089d5a8c/Create_Stuff2/80/SU/111		089D79FC	1,HYD	091F7C8C	3,67 → 3,68 → 3,69 → 3,513 → 3,63 → 3,64 → 3,65 → 3,66 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0964580C	TEAM_Scorp3	French	本图任务引用	已正式接入	089d5a8c/Create_Stuff2/80/SV/111		089D78EC	1,HYD	091F730C	3,65 → 3,66 → 3,67 → 3,68 → 3,69 → 3,513 → 3,63 → 3,64 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+096455CC	TEAM_Scorp4	French	本图任务引用	已正式接入	089d5a8c/Create_Stuff2/80/SW/111		089D75BC	1,HYD	091F5ABC	3,69 → 3,513 → 3,63 → 3,64 → 3,65 → 3,66 → 3,67 → 3,68 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+08071C8C	TEAM_Carriers	Americans	本图任务引用	已正式接入	0ba104bc/Death_Reinforce/7/CQ/111 | 089b1ccc/Send_Carriers/7/CQ/111		0437FEBC	3,CARRIER	089B0DBC	3,417	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0AA2AEFC	TEAM_RA_Tanks	Russians	本图任务引用	已正式接入	0bb731dc/Create_RA_Team/7/RA/011		0BAEC78C	4,LTNK	0E5B3A1C	3,469 → 3,470 → 0,1	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0BB37C5C	TEAM_RDU_Patrol	YuriCountry	本图任务引用	已正式接入	0bb6491c/Start_RD_U_Patrol/4/RD/111		0BB3308C	1,LTNK	0BB379EC	16,472 → 16,473 → 16,474 → 16,20 → 16,474 → 16,473 → 16,472 → 16,471 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0BB4625C	TEAM_RHRL_Patrol	YuriCountry	本图任务引用	已正式接入	0bb37f3c/Start_RHRL_Patrol/4/RH/111		0CBAAF1C	2,LTNK	0BB47DBC	16,476 → 16,477 → 16,478 → 16,479 → 16,478 → 16,477 → 16,476 → 16,475 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0C36E6AC	TEAM_RM_RN_Attack	Russians	本图任务引用	已正式接入	06a0a20c/Create_RM_RN_Team/7/RM/011		0BB0F6AC	4,LTNK	0C36E43C	3,481 → 46,314 → 0,2 → 0,1 → 49,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0A7AB79C	TEAM_Taxi1	Neutral	无创建或招募引用	仅定义			08A54A0C	1,TAXI	0A9467DC	3,679 → 3,108 → 3,111 → 3,112 → 3,111 → 3,108 → 3,679 → 3,104 → 6,1	
+0A7AB0CC	TEAM_Truck1	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/7/DL/111		08A2551C	1,PTRUCK	0A91721C	3,116 → 3,117 → 3,118 → 3,119 → 3,20 → 3,35 → 3,120 → 3,121 → 3,122 → 3,130 → 3,122 → 3,121 → 3,120 → 3,35 → 3,20 → 3,119 → 3,118 → 3,117 → 3,116 → 3,115 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0A7ACC6C	TEAM_Cop1	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/7/U/111		08A167FC	1,COP	0A90532C	3,481 → 3,13 → 3,481 → 3,20 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0A7AC7BC	TEAM_ConVehicle1	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/7/EB/111		08A0344C	1,CONA	08A06C2C	5,120 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0A7AC30C	TEAM_ConVehicle2	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/7/EC/111		08A059AC	1,CONA	08A0664C	5,120 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0A7ADDEC	TEAM_Cop2	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/7/ED/111		0898AF1C	1,COP	0A90632C	3,134 → 3,135 → 3,136 → 3,137 → 3,138 → 3,13 → 3,138 → 3,137 → 3,136 → 3,135 → 3,134 → 3,133 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+06A1C95C	TEAM_Civ1	Neutral	无创建或招募引用	仅定义			06A1AE3C	1,CIV1	06A1C6EC	19,0 → 6,1	
+06A1C37C	TEAM_Civ2	Neutral	无创建或招募引用	仅定义			06A1CC7C	1,CIV2	06A1C10C	19,0 → 6,1	
+06A1DEBC	TEAM_Civ3	Neutral	本图任务引用	已正式接入	06a1d17c/Make_People/80/FH/111		06A1CB6C	1,CIV3	06A1DC4C	19,0 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+068FE26C	TEAM_Calm_Civ1	Neutral	本图任务引用	已正式接入	06a1d17c/Make_People/80/FA/111 | 06a1d17c/Make_People/80/FE/111 | 06a1d17c/Make_People/80/FG/111		068FC6EC	1,CIV1	068FFDBC	5,120 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+068FFC5C	TEAM_Calm_Civ2	Neutral	本图任务引用	已正式接入	06a1d17c/Make_People/80/FB/111 | 06a1d17c/Make_People/80/FD/111 | 08a6340c/Make_People2/80/AS/111 | 08a6340c/Make_People2/80/BE/111		068FEE6C	1,CIV2	068FFDBC	5,120 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+068FFB2C	TEAM_Calm_Civ3	Neutral	本图任务引用	已正式接入	06a1d17c/Make_People/80/FC/111 | 06a1d17c/Make_People/80/FF/111		068FED5C	1,CIV3	068FFDBC	5,120 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+068FC13C	TEAM_Stat_Stang	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/80/GA/111		0696B8AC	1,STANG	0A91BC8C	42,6	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+068FDEFC	TEAM_Stat_SUVW	Neutral	本图任务引用	已正式接入	0b3778ec/Make_Civ_Cars1/80/GB/111		068FC26C	1,SUVW	0A91B7DC	42,2	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0692D74C	TEAM_SUVW1	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/7/GC/111		0690B7FC	1,SUVW	0692D4DC	3,28 → 3,185 → 3,186 → 3,184 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0692AB8C	TEAM_Cop3	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/7/GD/111		0692E67C	1,COP	0692A91C	3,186 → 3,184 → 3,28 → 3,185 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+069226CC	TEAM_Cop4	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/7/GF/111		06926D8C	1,COP	0692245C	3,114 → 3,187 → 3,188 → 3,13 → 3,187 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0C92859C	TEAM_Alcatraz1	French	无创建或招募引用	仅定义			0C92821C	1,E2	0692849C	42,6 → 5,120 → 6,2	
+0C95AA7C	TEAM_Alcatraz_2	French	无创建或招募引用	仅定义			0C92821C	1,E2	0692C79C	42,1 → 5,120 → 6,2	
+0C39AEFC	TEAM_SUVB_LL	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/80/GH/111		0C39AAAC	1,SUVB	0C39AC8C	42,4 → 5,120 → 6,2	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0C39803C	TEAM_WINI_UR	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/80/GI/111		0C39C39C	1,WINI	0C39879C	42,1 → 5,120 → 6,2	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0C8992CC	TEAM_Stang2	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/80/DJ/111		0C8910BC	1,STANG	0C89905C	3,191 → 3,192 → 3,193 → 3,194 → 3,107 → 3,195 → 3,196 → 3,197 → 3,198 → 3,111 → 3,112 → 3,114 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+08BF127C	TEAM_Bus1	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/80/BD/111		08BF116C	1,CBLC	08BF2DBC	3,46 → 3,55 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0A7C0A8C	TEAM_SUVB_2	Neutral	本图任务引用	已正式接入	0692a65c/Make_Civ_Cars2/80/AC/111		0A7C330C	1,SUVB	0A7C081C	3,199 → 3,200 → 3,201 → 3,202 → 3,203 → 3,204 → 3,20 → 3,35 → 3,120 → 3,121 → 3,122 → 3,205 → 3,27 → 3,28 → 6,1	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0780F21C	TEAM_Harriers	Alliance	本图任务引用	已正式接入	0c077bcc/Camera_Harriers/7/PG/111		0C07134C	1,ORCA	0C69990C	3,214	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0780BC8C	TEAM_Harrier2	Alliance	本图任务引用	已正式接入	0c077bcc/Camera_Harriers/7/PC/111		0C07408C	1,ORCA	0C69945C	3,214	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+088C1A4C	TEAM_Tanya	Americans	本图任务引用	已正式接入	0ac85f3c/Enter_Tanya/7/PE/111	0ac85f3c/Enter_Tanya/104/40/111	0ABD6F1C	1,TANY	0926745C	3,93 → 11,11	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0AEB2EFC	TEAM_CityP1	YuriCountry	本图任务引用	已正式接入	07adf47c/Start_ZC_EE_Patrol/7/ZC/011		0AEB4B1C	4,INIT	0AEB2C8C	3,134 → 3,678 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+089305FC	TEAM_City2	YuriCountry	本图任务引用	已正式接入	096c466c/Start_CityP/4/GJ/111		0AEB3CEC	4,INIT	0893038C	3,313 → 3,191 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0AEB68DC	TEAM_CityP3	YuriCountry	本图任务引用	已正式接入	096c466c/Start_CityP/4/BB/111		0AEB324C	4,INIT	0AEB666C	3,54 → 3,53 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+08934B5C	TEAM_CityP4	YuriCountry	本图任务引用	已正式接入	096c466c/Start_CityP/4/BC/111		0AEB313C	4,INIT	089348EC	3,204 → 3,54 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0AEB564C	TEAM_CityP5	YuriCountry	本图任务引用	已正式接入	05eff13c/Start_AB_GX_Patrol/7/AB/011		0AEB577C	4,INIT	0AEB50CC	3,205 → 3,27 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+096C680C	TEAM_CityP6	YuriCountry	本图任务引用	已正式接入	096c466c/Start_CityP/4/ZF/111		096C35DC	4,INIT	096C659C	3,205 → 3,681 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+09569A4C	TEAM_Dred4	French	本图任务引用	已正式接入	085159ec/Fix_Buildings/7/KC/111		0BFAD86C	1,DRED	0C372DBC	42,2 → 1,287 → 1,294 → 1,109	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0956959C	TEAM_Dred5	French	本图任务引用	已正式接入	085159ec/Fix_Buildings/7/KD/111		0BF6B24C	1,DRED	094DB7DC	42,2 → 59,194 → 3,127 → 3,289 → 6,3	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0956AEFC	TEAM_Dred6	French	本图任务引用	已正式接入	085159ec/Fix_Buildings/7/KE/111		0BFA62AC	1,DRED	0956AC8C	42,2 → 59,292 → 3,127 → 3,290 → 6,3	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0B4FFC8C	TEAM_Dred7	French	本图任务引用	已正式接入	085159ec/Fix_Buildings/7/KH/111		089D42DC	1,DRED	0956A7DC	42,2 → 1,109 → 3,513 → 3,127 → 6,3	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0973710C	TEAM_CruiseShip1	Neutral	本图任务引用	已正式接入	04c24a8c/Kill_Sounds3/7/KJ/111		09736BBC	1,CRUISE	06B482DC	42,0 → 11,0	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0973241C	TEAM_CruiseShip2	Neutral	本图任务引用	已正式接入	04c24a8c/Kill_Sounds3/7/KK/111		09736BBC	1,CRUISE	06B4AC8C	42,6 → 11,0	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+09339C8C	TEAM_ScorpPatrol1	French	本图任务引用	已正式接入	04c24a8c/Kill_Sounds3/7/KL/111		0798333C	1,HYD	0798D54C	3,299 → 3,297 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+09735B1C	TEAM_TugBoat2	Neutral	本图任务引用	已正式接入	04c24a8c/Kill_Sounds3/7/KM/111		097374FC	1,TUG	06B4A43C	42,6 → 11,0	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+0925E45C	TEAM_SovArmor1	Soviet2 Country	本图任务引用	已正式接入	087c0d5c/Send_Armor(Hard)/7/RM/001 | 087c0e4c/Send_Armor(Easy)/7/RM/100 | 087c0f3c/Send_Armor(Med)/7/RM/010		0B0815BC	2,HTNK + 1,TTNK	0973352C	3,14 → 0,1	装甲小队；按难度出击及装甲主线
+0925FDEC	TEAM_SovArmor2	Soviet2 Country	本图任务引用	已正式接入	087c0d5c/Send_Armor(Hard)/7/RM/001 | 087c0e4c/Send_Armor(Easy)/7/RM/100 | 087c0f3c/Send_Armor(Med)/7/RM/010		0B082F1C	3,HTNK	0973D72C	3,421 → 0,1	装甲小队；按难度出击及装甲主线
+096FCB5C	TEAM_CityP7	YuriCountry	本图任务引用	已正式接入	096c466c/Start_CityP/4/ZB/111		096FACEC	4,INIT	096FC8EC	3,680 → 3,677 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0C96FB7C	TEAM_CW_Garrison	French	无创建或招募引用	仅定义			0C96F7FC	10,E2	0C819ABC	1,100	
+0B7FEECC	TEAM_Lame_Tanks	French	无创建或招募引用	仅定义			0B7FA61C	2,HTNK	0B7FEC5C	3,367 → 3,366 → 6,1	
+0941632C	TEAM_Kirov_HT	Soviet2 Country	本图任务引用	已正式接入	0921804c/Create_Kirov/7/HT/011		045E94DC	1,ZEP	0962056C	3,304 → 46,131136 → 3,146 → 59,146 → 3,147 → 59,147 → 3,148 → 37,0	MAP40 城区出场；正式出击核对原始队伍、成员、房号、难度与第一条指令；路线验证范围见批次记录
+0E0F469C	TEAM_GGI_Group2	Americans	本图任务引用	已正式接入	0e0f4dcc/Deploy_GGI_Group2/4/RN/111		0E0F2B8C	5,GGI	0E0F442C	9,0	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0D3FA93C	TEAM_Start_Engineer	Americans	本图任务引用	已正式接入	06c7108c/Load_Engineer/4/O/111		0D3FA5BC	1,ENGINEER + 1,FV	06C9B07C	14,0	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0C8E7A8C	TEAM_PP1_Group_PatrolA	YuriCountry	本图任务引用	已正式接入	0b12eafc/Start_AA_AB_Patrol/7/AA/011		06C2FC3C	4,INIT	0C8E8DBC	3,27 → 3,26 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+06B9CD4C	TEAM_PP1_Group_PatrolB	YuriCountry	本图任务引用	已正式接入	06b9c76c/Start_AD_GD_Patrol/4/AD/111		06B9CE7C	4,INIT	06B9CADC	3,185 → 3,29 → 6,1	开局小队；MAP30 正式出击逐队人数、来源、房号与难度；路线完成度见交接
+0DC53EFC	TEAM_Nuke_Repair	Confederation	本图任务引用	已正式接入	0691357c/Power_Online/7/BG/111		0DC4FC9C	1,ENGINEER	0DCD703C	1,364	核电站工程师；供电主线与到门维修
+060FB74C	TEAM_CableCar2	Neutral	本图任务引用	已正式接入	04c19e5c/Start_Sounds2/7/AH/111		060FB63C	1,CBLC	060FDC5C	3,137 → 3,33 → 6,1	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+096D287C	TEAM_BYgarrison	YuriCountry	本图任务引用	已正式接入	096d092c/Garrison_BY/7/BY/001		096C86EC	4,INIT	096D260C	59,77	MAP65 原图队伍；正式出击、实际房号与难度、动作和复测范围见批次记录。
+0796497C	ScorpPatrol2	French	本图任务引用	已正式接入	04c24a8c/Kill_Sounds3/7/KO/111		0798333C	1,HYD	0796470C	3,301 → 3,300 → 6,1	原图舰队；RETAIL24 舰队实测，按队登记出场与房号
+098A9B5C	Alcatraz_Patrol	Confederation	本图任务引用	已正式接入	0692c4ac/Make_Alcatraz_Men/7/BT/111		098A696C	4,E2 + 2,DOG	098A833C	3,72 → 3,71 → 6,1	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0788E0EC	SovGar_BV	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/BV/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0788F21C	SovGarrision_BW	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/BW/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0788BC4C	SovGarrision_BX	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/BX/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+077D3BAC	SovGar_CK	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/CK/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+077D3A7C	SovGarr_CL	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/CL/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+077D394C	SovGarr_CM	French	本图任务引用	已正式接入	08a6340c/Make_People2/7/CM/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+077D381C	SovGarr_CN	French	本图任务引用	已正式接入	0692c4ac/Make_Alcatraz_Men/7/CN/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+077D36EC	SovGar_CO	French	本图任务引用	已正式接入	0692c4ac/Make_Alcatraz_Men/7/CO/111		0788403C	4,E2	0788BDBC	64,0	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0908B07C	Engineers	Americans	本图任务引用	已正式接入	08e568dc/Engineer_Check/7/EM/111		08E5673C	4,ENGINEER	0AE30DBC	39,54 → 11,11	MAP50 正式出击；原房号、原编组与出场来源。实际驻军、巡逻、空降、航母及读档证据见本批交接
+0915293C	Leftover_Guy	Confederation	无创建或招募引用	仅定义			09151F1C	1,E2	091526CC	37,0	

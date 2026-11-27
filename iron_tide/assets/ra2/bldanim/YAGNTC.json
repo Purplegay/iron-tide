@@ -4,10 +4,70 @@
   {
    "kind": "idleanim",
    "image": "YAGNTC_E",
-   "frames": 4,
    "loopStart": 0,
-   "loopEnd": 1,
-   "rate": 200
+   "loopEnd": 0,
+   "frames": 2,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAGNTC_E",
+    "loopStart": 1,
+    "loopEnd": 1,
+    "frames": 2,
+    "rate": 200,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimtwo",
+   "image": "YAGNTC_F",
+   "loopStart": 0,
+   "loopEnd": 30,
+   "frames": 62,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAGNTC_F",
+    "loopStart": 31,
+    "loopEnd": 61,
+    "frames": 62,
+    "rate": 200,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimthree",
+   "image": "YAGNTC_F",
+   "loopStart": 15,
+   "loopEnd": 30,
+   "frames": 62,
+   "rate": 400,
+   "shadow": true,
+   "dmg": {
+    "image": "YAGNTC_F",
+    "loopStart": 47,
+    "loopEnd": 61,
+    "frames": 62,
+    "rate": 400,
+    "shadow": true
+   }
+  },
+  {
+   "kind": "superanimfour",
+   "image": "YAGNTC_H",
+   "loopStart": 0,
+   "loopEnd": 30,
+   "frames": 62,
+   "rate": 200,
+   "shadow": true,
+   "dmg": {
+    "image": "YAGNTC_H",
+    "loopStart": 32,
+    "loopEnd": 61,
+    "frames": 62,
+    "rate": 200,
+    "shadow": true
+   }
   }
  ]
 }

@@ -3,6 +3,7 @@ extends Node
 ## 盟军 AI 与玩家共用采矿、资金、工厂和建造队列。虫群保留扩展模式孵化规则。
 ## 行为：真实生产与经济、按可见敌军补兵、基地留守与集结进攻。
 ## 胜负由 battle.gd 统一检查存活建筑及可展开基地车。
+const Retail = preload("res://scripts/world/retail_skirmish.gd")
 const Campaign = preload("res://scripts/world/skirmish_campaign.gd")
 const BaseAccess = preload("res://scripts/world/ai_base_access.gd")
 const Brutal = preload("res://scripts/world/brutal_three.gd")
@@ -32,6 +33,7 @@ var rally: Vector2 = Vector2.ZERO
 var a_spawned := 0          # 诊断：AI 累计造兵
 var a_attacks := 0          # 诊断：AI 进攻波次
 var _train_t := 4.0
+var _retail_elapsed := 0.0
 var _refill_t := 5.0
 var _attack_t := 45.0
 var _army: Array = []
@@ -92,6 +94,7 @@ func run_decisions(dt: float, nbuild: int = 0) -> void:
 		Micro.tick(self, dt)
 		Economy.relief(self, dt)
 	_army = _army.filter(func(u): return Tactics.fighter(battle, u, house_id))
+	if enemy_base in ["allied","soviet","yuri"]: _retail_elapsed += dt
 	_train_t -= dt * (battle.ai_replenishment_factor(house_id) if enemy_base == "swarm" else 1.0)
 	if _train_t <= 0.0:
 		battle.update_ai_strength(house_id,battle.ai_living_count(house_id))
@@ -103,6 +106,8 @@ func run_decisions(dt: float, nbuild: int = 0) -> void:
 			_try_build()
 			Economy.manage(self)
 			if enemy_base == "soviet": Operations.staff_soviet_defense(self)
+			Retail.tick(self,_retail_elapsed)
+			_retail_elapsed = 0.0
 			_recruit_idle()
 			_defend_base()
 			Operations.tick(self)
@@ -342,7 +347,7 @@ func _try_build() -> void:
 	if Power.needed(self):
 		battle.request_structure(battle.roster_id("GAPOWR",house_id),house_id)
 		return
-	var factory: String = battle.roster_id("GAWEAP",house_id)
+	var factory: String = Retail.construction(self,"BuildWeapons","GAWEAP")
 	if battle.mcv_opening() and owned.has(battle.roster_id("GAREFN",house_id)) and not _has_miner():
 		var miner_id: String = battle.roster_id("CMIN",house_id)
 		if owned.has(factory) or Economy.refineries(self).any(func(b): return b.can_queue(miner_id) or b.special.get("construction_free_unit","") == miner_id):
@@ -351,9 +356,9 @@ func _try_build() -> void:
 		battle.request_structure(Power.before_build(self,factory), house_id)
 		return
 	var wanted := ""
-	var radar: String = battle.roster_id("NARADR" if enemy_base == "soviet" else "GAAIRC",house_id)
-	var lab: String = battle.roster_id("NATECH" if enemy_base == "soviet" else "GATECH",house_id)
-	var yard: String = battle.roster_id("GAYARD",house_id)
+	var radar: String = Retail.construction(self,"BuildRadar","GAAIRC")
+	var lab: String = Retail.construction(self,"BuildTech","GATECH")
+	var yard: String = Retail.construction(self,"BuildNavalYard","GAYARD")
 	if wanted.is_empty() and owned.has(battle.roster_id("GAWEAP",house_id)):
 		# Leave the coastal opening enough time to launch its first patrol ship.
 		if not owned.has(yard) and GameData.ra2_prereq_ok(yard, owned, battle.allied_state, house_id) and Operations.has_build_spot(self,yard):
@@ -366,6 +371,7 @@ func _try_build() -> void:
 	if wanted.is_empty():
 		var extra := Tactics.additional_factory(battle,house_id,difficulty,owned,Economy.reserve(self))
 		if not extra.is_empty() and Operations.has_build_spot(self,extra): wanted=extra
+	if wanted.is_empty(): wanted=Retail.airfield(self,owned)
 	if wanted == "":
 		var sequence := ["GAPOWR", "GAREFN", "GAPILE", "GAWEAP", "GAYARD"]
 		sequence.append_array(["NARADR", "GADEPT", "NATECH"] if enemy_base == "soviet" else ["GAAIRC", "GATECH"])
@@ -374,6 +380,8 @@ func _try_build() -> void:
 			sequence.append_array(["NANRCT", "NAINDP", "NAIRON", "NAMISL"])
 		for entry in sequence:
 			var id: String = battle.roster_id(entry, house_id)
+			if entry in ["NARADR","GAAIRC"]: id=radar
+			if entry in ["NATECH","GATECH"]: id=lab
 			if not owned.has(id) and GameData.ra2_prereq_ok(id, owned, battle.allied_state, house_id):
 				if entry == "GAYARD" and not Operations.has_build_spot(self,id): continue
 				wanted = id
@@ -394,17 +402,13 @@ func _can_fund_structure(id: String, installments: bool) -> bool:
 
 func _try_defense(owned: Array) -> void:
 	if not battle.structure_jobs("defense",house_id).is_empty() or battle.structure_ready_count("defense",house_id) > 0: return
-	var soviet := enemy_base == "soviet"
-	var aa := "NAFLAK" if soviet else "NASAM"
 	var priority: Array = []
 	var air_order := Tactics.air_defense_order(battle,house_id,difficulty,owned)
 	if not air_order.is_empty(): priority.append(air_order)
 	if owned.has(battle.roster_id("GAREFN",house_id)) and owned.has(battle.roster_id("GAWEAP",house_id)):
-		priority.append("TESLA" if soviet else "ATESLA")
-		if soviet: priority.append_array(["NALASR","NABNKR"])
-	if enemy_base == "yuri": priority = ["YAGGUN","YAPSYT","NATBNK"]
+		var id:=Retail.ground_defense(self,owned)
+		if not id.is_empty(): priority.append(id)
 	for id in priority:
-		if id != aa and owned.has(id): continue
 		if GameData.ra2_prereq_ok(id, owned, battle.allied_state, house_id) and _can_fund_structure(id,true) and Operations.has_build_spot(self,id):
 			battle.request_structure(id,house_id)
 			return

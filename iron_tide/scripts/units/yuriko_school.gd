@@ -4,6 +4,7 @@ static var episodes:Array=JSON.parse_string(FileAccess.get_file_as_string("res:/
 static var affinity_stories:Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/yuriko_affinity.json"))
 static var talents:Array=JSON.parse_string(FileAccess.get_file_as_string("res://data/yuriko.json")).tree
 const AFFINITY_CAP := 100
+const BONUS_CAP := 20
 const BONUSES := {"health":"生命 +1%","attack":"攻击 +1%","duration":"驻场 +2 秒","speed":"移速 +0.5%","cooldown":"技能冷却 −0.25%"}
 
 static func affinity_level() -> int:
@@ -15,28 +16,42 @@ static func add_affinity(next:Dictionary,amount:int) -> void:
 		next.affinity_seed=0 if int(next.get("affinity",0))>0 else randi()
 	next.affinity=mini(AFFINITY_CAP,int(next.get("affinity",0))+amount)
 
+## Keep the first 20 ranks per attribute on legacy profiles. Overflow becomes unspent choices.
+static func capped_bonus_choices() -> Array:
+	var choices := []
+	var counts := {}
+	for key in MetaProgress.yuriko_school.get("affinity_choices", []):
+		var count: int = counts.get(key, 0)
+		if not BONUSES.has(key) or count >= BONUS_CAP:continue
+		counts[key] = count + 1
+		choices.append(key)
+	return choices
+
 static func next_bonus_level() -> int:
-	return MetaProgress.yuriko_school.get("affinity_choices",[]).size()+1
+	return capped_bonus_choices().size()+1
 
 static func bonus_options() -> Array:
 	var level := next_bonus_level()
 	if level>affinity_level():return []
 	var roll := RandomNumberGenerator.new()
 	roll.seed=hash([int(MetaProgress.yuriko_school.get("affinity_seed",0)),level])
-	var pool:=BONUSES.keys()
+	var counts := bonus_counts()
+	var pool := BONUSES.keys().filter(func(key): return counts.get(key, 0) < BONUS_CAP)
 	var options:=[]
-	for i in 3:options.append(pool.pop_at(roll.randi_range(0,pool.size()-1)))
+	for i in mini(3, pool.size()):options.append(pool.pop_at(roll.randi_range(0,pool.size()-1)))
 	return options
 
 static func choose_bonus(level:int,key:String) -> bool:
 	if level!=next_bonus_level() or key not in bonus_options():return false
 	var next:=MetaProgress.yuriko_school.duplicate(true)
-	next.get_or_add("affinity_choices",[]).append(key)
+	var choices := capped_bonus_choices()
+	choices.append(key)
+	next.affinity_choices = choices
 	return commit(next)
 
 static func bonus_counts() -> Dictionary:
 	var counts:={}
-	for key in MetaProgress.yuriko_school.get("affinity_choices",[]):
+	for key in capped_bonus_choices():
 		counts[key]=int(counts.get(key,0))+1
 	return counts
 

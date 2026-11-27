@@ -46,19 +46,28 @@ const retailMaps = [
   ['Dustbowl','Dust Bowl','TEMPERATE'], ['NewHghts','New Heights','TEMPERATE'],
   ['HailMary','Hail Mary','URBAN'], ['Grinder','Meat Grinder','TEMPERATE']
 ].map(([id,title,theater]) => [id+'.mmx',title,theater,...({TEMPERATE:['temperatmd.ini','tem','isotem.pal'],SNOW:['snowmd.ini','sno','isosno.pal'],URBAN:['urbanmd.ini','urb','isourb.pal']}[theater])]);
+const alliedEnds = process.argv.includes('--allied-ends');
+const alliedMaps = [
+  ['all01umd.map','Time Lapse','NEWURBAN','urbannmd.ini','ubn','isoubn.pal'],
+  ['all07smd.map','Brain Dead','SNOW','snowmd.ini','sno','isosno.pal']
+];
 const multiplayer=process.argv.includes('--multimd');
-const container=multiplayer ? source.loose('multimd.mix') : null;
-if(multiplayer && !container)throw new Error('Missing multiplayer map archive multimd.mix');
-const selectedMaps=process.argv.includes('--retail16') ? retailMaps : multiplayer ? multiplayerMaps : process.argv.includes('--expedition') ? expansionMaps : maps;
+if (alliedEnds && (multiplayer || process.argv.includes('--retail16') || process.argv.includes('--expedition'))) {
+  throw new Error('--allied-ends cannot be combined with other map sets');
+}
+const archiveName = alliedEnds ? 'mapsmd03.mix' : multiplayer ? 'multimd.mix' : null;
+const container=archiveName ? source.loose(archiveName) : null;
+if(archiveName && !container)throw new Error('Missing map archive '+archiveName);
+const selectedMaps=alliedEnds ? alliedMaps : process.argv.includes('--retail16') ? retailMaps : multiplayer ? multiplayerMaps : process.argv.includes('--expedition') ? expansionMaps : maps;
 const manifest=[];
 for (const [archive,title,theater,ini,ext,pal] of selectedMaps) {
   const only=process.argv.find(arg=>arg.startsWith('--map='))?.slice(6);
   if(only && only!=='yr_'+archive.split('.')[0].toLowerCase())continue;
-  const bytes=multiplayer ? container.data : fs.readFileSync(path.join(directory,archive));
+  const bytes=container ? container.data : fs.readFileSync(path.join(directory,archive));
   const log=console.log;let mix;
   try {console.log=()=>{};mix=new MixFile(new DataStream(new DataView(bytes.buffer,bytes.byteOffset,bytes.length)));} finally {console.log=log;}
   let raw;
-  for (const hash of (multiplayer ? [MixEntry.hashFilename(archive)] : mix.getEntryHashes())) {
+  for (const hash of (container ? [MixEntry.hashFilename(archive)] : mix.getEntryHashes())) {
     const entry=mix.getEntry(hash);
     if(!entry)throw new Error('Missing map member '+archive);
     const offset=mix.getDataStart()+entry.offset;
@@ -105,9 +114,10 @@ for (const [archive,title,theater,ini,ext,pal] of selectedMaps) {
       if(file)fs.writeFileSync(path.join(destination,name),file.data);
     }
   }
-  manifest.push({archive,title,theater,ini,pal,tiles,bridges,sha256:sha256(raw),archive_sha256:sha256(bytes),...(multiplayer ? {container:'multimd.mix'} : {})});
+  manifest.push({archive,title,theater,ini,pal,tiles,bridges,sha256:sha256(raw),archive_sha256:sha256(bytes),...(container ? {container:archiveName} : {}),...(alliedEnds ? {campaign:true} : {})});
   console.log(archive,tiles.length,'tiles',tiles.filter(t=>t.exists).length,'available');
 }
+if (!manifest.length) throw new Error('No maps matched the selected map set');
 const rules=source.read('rulesmd.ini');fs.writeFileSync(path.join(destination,'rulesmd.ini'),rules.data);
 fs.writeFileSync(path.join(destination,'artmd.ini'),source.read('artmd.ini').data);
 fs.writeFileSync(path.join(destination,'manifest.json'),JSON.stringify(manifest,null,2));

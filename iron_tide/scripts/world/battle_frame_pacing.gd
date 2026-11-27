@@ -153,7 +153,7 @@ func _process(_delta: float) -> void:
 	_presentation_left -= BattleClock.control_delta(_delta)
 	if _presentation_owner != null and _presentation_left <= 0.0:
 		_presentation_left = 1.0 / 30.0
-		for unit: Unit in _presentation_owner.battle.units:
+		for unit in _presentation_owner.battle.units:
 			if is_instance_valid(unit) and unit.visible and unit.motion_pose.turning(unit): unit.queue_redraw()
 	var now := Time.get_ticks_usec()
 	if _last_frame_us > 0: observe_frame(now - _last_frame_us)

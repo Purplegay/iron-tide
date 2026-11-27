@@ -1,0 +1,250 @@
+{
+ "map_sha": "dee38769f2247a85908705486c175ef14a4cf90437899defe7c8b4c0d1c51fb0",
+ "aimd_sha": "5df41eaec00a78d0760ef5eecdf27d65ae1cd537309c7eac973318266986f89d",
+ "total": 165,
+ "rooms": {
+  "Americans": {
+   "color": "DarkBlue",
+   "tech": 3,
+   "country": "Americans"
+  },
+  "Alliance": {
+   "color": "DarkBlue",
+   "tech": 2,
+   "country": "Alliance"
+  },
+  "French": {
+   "color": "DarkRed",
+   "tech": 2,
+   "country": "French"
+  },
+  "Germans": {
+   "color": "Purple",
+   "tech": 2,
+   "country": "Germans"
+  },
+  "British": {
+   "color": "DarkBlue",
+   "tech": 2,
+   "country": "British"
+  },
+  "Africans": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "Africans"
+  },
+  "Arabs": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "Arabs"
+  },
+  "Confederation": {
+   "color": "Purple",
+   "tech": 2,
+   "country": "Confederation"
+  },
+  "Russians": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "Russians"
+  },
+  "YuriCountry": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "YuriCountry"
+  },
+  "GDI": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "GDI"
+  },
+  "Nod": {
+   "color": "Purple",
+   "tech": 1,
+   "country": "Nod"
+  },
+  "Neutral": {
+   "color": "Grey",
+   "tech": 1,
+   "country": "Neutral"
+  },
+  "Special": {
+   "color": "DarkRed",
+   "tech": 1,
+   "country": "Special"
+  },
+  "PowerHouse": {
+   "color": "Grey",
+   "tech": 1,
+   "country": "PowerHouse Country"
+  },
+  "Soviet2House": {
+   "color": "DarkRed",
+   "tech": 1,
+   "country": "Soviet2 Country"
+  },
+  "BridgeHouse": {
+   "color": "Grey",
+   "tech": 1,
+   "country": "Bridge Country"
+  }
+ },
+ "colors": {
+  "DarkBlue": [
+   153,
+   214,
+   212
+  ],
+  "DarkRed": [
+   0,
+   230,
+   255
+  ],
+  "Purple": [
+   201,
+   201,
+   189
+  ],
+  "Grey": [
+   0,
+   0,
+   131
+  ]
+ },
+ "team_delays": [
+  2000,
+  2500,
+  3500
+ ],
+ "rows": [
+  {
+   "id": "0c8c2c3c-g",
+   "name": "Soviet Miners",
+   "enabled": true,
+   "tech": 1,
+   "difficulty": [
+    false,
+    true,
+    true
+   ],
+   "weight": 70,
+   "own_type": "HARV",
+   "maximum": 3,
+   "team_max": 1,
+   "product": "HARV",
+   "team": "0ECCB03C-G",
+   "target": "NAREFN"
+  },
+  {
+   "id": "0ca2a04c-g",
+   "name": "Soviet Anti-Harrier Defense",
+   "enabled": true,
+   "tech": 1,
+   "difficulty": [
+    false,
+    true,
+    true
+   ],
+   "threat": "ORCA",
+   "minimum": 6,
+   "team_max": 2,
+   "quantity": 6,
+   "requires": [
+    "NAHAND",
+    "NARADR"
+   ],
+   "weight": 500,
+   "product": "FLAKT",
+   "team": "06BC625C-G",
+   "target": "NAFLAK",
+   "steps": [
+    [
+     58,
+     131139
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     11,
+     11
+    ]
+   ]
+  },
+  {
+   "id": "0ca2b06c-g",
+   "name": "Soviet Anti-Beagle Defense",
+   "enabled": true,
+   "tech": 1,
+   "difficulty": [
+    false,
+    true,
+    true
+   ],
+   "threat": "BEAG",
+   "minimum": 5,
+   "team_max": 2,
+   "quantity": 6,
+   "requires": [
+    "NAHAND",
+    "NARADR"
+   ],
+   "weight": 500,
+   "product": "FLAKT",
+   "team": "06BC625C-G",
+   "target": "NAFLAK",
+   "steps": [
+    [
+     58,
+     131139
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     11,
+     11
+    ]
+   ]
+  },
+  {
+   "id": "0ca2fedc-g",
+   "name": "Soviet Anti-Kirov Defense",
+   "enabled": true,
+   "tech": 1,
+   "difficulty": [
+    false,
+    true,
+    true
+   ],
+   "threat": "ZEP",
+   "minimum": 2,
+   "team_max": 2,
+   "quantity": 6,
+   "requires": [
+    "NAHAND",
+    "NARADR"
+   ],
+   "weight": 500,
+   "product": "FLAKT",
+   "team": "06BC625C-G",
+   "target": "NAFLAK",
+   "steps": [
+    [
+     58,
+     131139
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     11,
+     11
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,93 @@
+{
+  "id": "WARPIN",
+  "image": "WARPIN",
+  "kind": "fx",
+  "cell": [
+    54,
+    26
+  ],
+  "count": 10,
+  "rects": [
+    {
+      "i": 0,
+      "x": 0,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 1,
+      "x": 54,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 2,
+      "x": 108,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 3,
+      "x": 162,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 4,
+      "x": 216,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 5,
+      "x": 270,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 6,
+      "x": 324,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 7,
+      "x": 378,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 8,
+      "x": 432,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    },
+    {
+      "i": 9,
+      "x": 486,
+      "y": 0,
+      "w": 54,
+      "h": 26
+    }
+  ],
+  "fps": 15,
+  "rate": 120,
+  "translucent": true,
+  "flat": true,
+  "layer": "ground",
+  "sound": null,
+  "source": {
+    "source": "ra2.mix > conquer.mix > 0xf39d573d",
+    "sha256": "e8f10d52d9b8a51a88a3eb737612312d9db8ac1cdd81977eb362411bdf3dea75"
+  },
+  "timing_adapter": "15 frames per second; original art Rate retained separately"
+}

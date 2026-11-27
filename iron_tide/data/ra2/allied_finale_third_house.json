@@ -1,0 +1,125 @@
+{
+ "map_sha256": "0ec687c320382e4c02cf66eec0153b713e56c4449fab7d29b5a19b61bf10e4f3",
+ "room": "Yuri3",
+ "starting_funds": 100000,
+ "techlevel": 10,
+ "nodes": [
+  {
+   "key": "000",
+   "id": "YAPSYT",
+   "uv": [
+    12.5,
+    112.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "001",
+   "id": "YAGGUN",
+   "uv": [
+    12.5,
+    110.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "002",
+   "id": "YAGGUN",
+   "uv": [
+    13.5,
+    114.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "003",
+   "id": "YABRCK",
+   "uv": [
+    1.5,
+    114.5
+   ],
+   "inside": false
+  },
+  {
+   "key": "004",
+   "id": "YAWEAP",
+   "uv": [
+    10.5,
+    115.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "005",
+   "id": "YAPOWR",
+   "uv": [
+    3.5,
+    109.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "006",
+   "id": "YAPOWR",
+   "uv": [
+    5.5,
+    118.5
+   ],
+   "inside": false
+  },
+  {
+   "key": "007",
+   "id": "YAPOWR",
+   "uv": [
+    6.5,
+    105.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "008",
+   "id": "YAGGUN",
+   "uv": [
+    9.5,
+    107.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "009",
+   "id": "YAGGUN",
+   "uv": [
+    12.5,
+    120.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "010",
+   "id": "YAPSYT",
+   "uv": [
+    13.5,
+    117.5
+   ],
+   "inside": true
+  },
+  {
+   "key": "011",
+   "id": "YAPSYT",
+   "uv": [
+    8.5,
+    123.5
+   ],
+   "inside": false
+  },
+  {
+   "key": "012",
+   "id": "YAPSYT",
+   "uv": [
+    10.5,
+    109.5
+   ],
+   "inside": true
+  }
+ ]
+}

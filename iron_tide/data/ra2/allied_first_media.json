@@ -1,0 +1,18 @@
+{
+  "A01_F00E": {
+    "source": "movmd03.mix > 0xf21d4216",
+    "sha256": "caf97fedac387ad4228568af3ed8470f6ea17e29f4ac6d529c4834252c0043a7"
+  },
+  "A01_P01E": {
+    "source": "movmd03.mix > 0x8395a91f",
+    "sha256": "66de36d570467894ae071bb5f5c95d54ffcc7a430db3de22d872800ed93bc509"
+  },
+  "a01_p01": {
+    "source": "langmd.mix > audiomd.mix > 0xcc5b7930",
+    "sha256": "cec535ea20fea292ef7afa90eb726a6a0ab45428b12ce0a46f18ecbb541a8aac"
+  },
+  "A01_P03E": {
+    "source": "movmd03.mix > 0xce5d0814",
+    "sha256": "c6a7e06da391e1006ea40721141c01f426044cb366a970a24d41eb6eda376d31"
+  }
+}

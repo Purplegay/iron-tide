@@ -171,13 +171,11 @@ static func run(t,w) -> void:
 	AlliedAbilities.special_shot(y,distant,y._active_weapon())
 	t.check(effects_at(w,"YURICNTL",hit).size()==1 and not GameData.ra2_sound_files("YuriMindControl").is_empty() and not GameData.ra2_sound_files("MindCleared").is_empty(),"重复控制不重播命中，控制和解除均有原声")
 	t.check(distant.special.get("controller")==y and RA2Art.fx("MINDANIM").get("tex")!=null,"普攻控制及受控循环贴图")
-	AlliedAbilities.tick_actor(y,19.0/15)
-	t.check(preload("res://scripts/world/yuri_support.gd").control_source(distant,{}) == y,"心控连线在第 19 帧仍可见")
-	AlliedAbilities.tick_actor(y,1.01/15)
-	t.check(preload("res://scripts/world/yuri_support.gd").control_source(distant,{}) == y and distant.special.has("controller"),"20 帧后未选中仍保留心控连线")
-	distant.selected=true
-	t.check(preload("res://scripts/world/yuri_support.gd").control_source(distant,{}) == y,"选中受控单位可重看控制关系")
-	distant.selected=false
+	const Psychic = preload("res://scripts/world/yuri_support.gd")
+	y.selected = false
+	distant.selected = false
+	AlliedAbilities.tick_actor(distant, 2.0)
+	t.check(Psychic.visible_control_source(w, distant, {}) == y,"超过 20 个规则帧后仍显示未选中对象的心控弧线")
 	y._die()
 	t.check(distant.side=="enemy" and not distant.special.has("controller"),"释放控制后恢复原阵营")
 	var g=w.spawn_unit("YTNK","ally",p)

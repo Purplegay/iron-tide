@@ -277,6 +277,62 @@ func run() -> void:
 	var tree := get_tree()
 	reparent(tree.root)
 	var args := OS.get_cmdline_user_args()
+	if "--cold-retail-easy-sale" in args:
+		for slot in ["slot1","slot2"]:
+			var restored:=BattleSaves.load_into_scene(slot)
+			check(restored.ok,"冷读售炮断点 "+slot)
+			if not restored.ok:continue
+			await tree.scene_changed
+			var w=tree.current_scene.battle
+			var s:Dictionary=w.allied_state.hollywood
+			var funds_before:float=w.funds
+			check(int(BattleRequest.skirmish_config.get("difficulty",-1))==0,"冷读保留简单难度 "+slot)
+			w.Hollywood.RetailSequences.closure_tick(w,s,0.3)
+			check(s.get("retail_closure",{}).has("10A9144C") and (w.funds>funds_before if slot=="slot1" else w.funds==funds_before),"冷读只补发尚未到账的退款 "+slot)
+		tree.quit(failures);return
+	if "--cold-batch14-group" in args:
+		var result:=BattleSaves.load_into_scene("slot1")
+		check(result.ok,"独立进程冷读集结断点")
+		if result.ok:
+			await tree.scene_changed
+			var w=tree.current_scene.battle
+			var s:Dictionary=w.allied_state.hollywood
+			var ai=preload("res://scripts/world/hollywood_bases.gd")
+			var groups:Array=s.get("retail_groups",[])
+			check(groups.size()==1 and groups[0].members.size()==2 and groups[0].index==0,"读档恢复活动队员与集结阶段")
+			if groups.size()==1:
+				var job:Dictionary=groups[0]
+				for u in job.members:
+					u.position=u.special.hollywood_group_goal
+					u.order_stop(false)
+				ai.advance_retail_groups(w,s,1.0)
+				check(job.index==1 and groups.size()==1,"冷读到达后只推进一个脚本动作")
+		tree.quit(failures);return
+	if "--cold-batch13-wave" in args:
+		var result:=BattleSaves.load_into_scene("slot1")
+		check(result.ok,"独立冷读好莱坞侧翼增援")
+		if result.ok:
+			await tree.scene_changed
+			var w=tree.current_scene.battle
+			var s:Dictionary=w.allied_state.hollywood
+			BattleRequest.skirmish_config.difficulty=1
+			check(s.retail_wave_id=="09588C1C" and is_equal_approx(s.attack_left,0.5),"恢复已选队伍和待发时长")
+			w.Hollywood.difficulty_attacks(w,s,0.4)
+			check(s.retail_wave_id=="09588C1C","独立冷读不早派")
+			w.Hollywood.difficulty_attacks(w,s,0.2)
+			w.Hollywood.difficulty_attacks(w,s,0.2)
+			check(s.retail_wave_id=="094DCE7C" and w.units.filter(func(u):return w.actor_alive(u) and u.special.get("hollywood_wave_trigger")=="09588C1C").size()==4,"到点只发一队并推进")
+		tree.quit(failures);return
+	if "--cold-retail-walls" in args:
+		var result:=BattleSaves.load_into_scene("slot1")
+		check(result.ok,"独立进程可读取围栏断点")
+		if result.ok:
+			await tree.scene_changed
+			var w=tree.current_scene.battle
+			var walls:Array=w.buildings.filter(func(b):return w.actor_alive(b) and b.special.get("hollywood_retail_wall",false))
+			check(walls.size()==187 and not walls.any(func(b):return b.position==w.allied_state.wall_test_destroyed),"冷读不重建已毁围栏")
+			check(walls.all(func(b):return w.path_service.is_blocked(b.position)),"冷读后的幸存围栏仍然挡路")
+		tree.quit(failures);return
 	if "--cold-bridge-move-queue" in args:
 		var loaded := BattleSaves.load_into_scene("slot3")
 		check(loaded.ok, "从磁盘冷读桥面移动及排队指令")
@@ -353,7 +409,13 @@ func run() -> void:
 	tree.root.add_child(lobby)
 	for btn in lobby.find_children("*","Button",true,false):
 		if btn.text=="盟军战役": btn.pressed.emit(); break
-	check(lobby.mission.get("id")=="yr_hollywood" and not lobby.carry,"盟军任务默认原版配置")
+	var hollywood_title := ""
+	for item in GameData.missions:
+		if item.id=="yr_hollywood": hollywood_title=item.name;break
+	for btn in lobby.find_children("*","Button",true,false):
+		if btn.text==hollywood_title: btn.pressed.emit();break
+	check(lobby.mission.get("id")=="yr_hollywood" and not lobby.carry,"从盟军菜单选中好莱坞原版配置")
+	if lobby.mission.get("id")!="yr_hollywood":tree.quit(failures);return
 	for btn in lobby.find_children("*","Button",true,false):
 		if btn.text=="带入我的养成" and "--growth" in OS.get_cmdline_user_args(): btn.pressed.emit()
 		if btn.text=="出击": btn.pressed.emit(); break
@@ -364,11 +426,129 @@ func run() -> void:
 	check(world.mission.id == "yr_hollywood" and world.enemy_faction == "yuri", "原战役编号进入尤里战场")
 	var film = world.get_node("HollywoodFilm")
 	check(tree.paused and film.player.is_playing() and film.subtitle.text.contains("指挥官"),"全屏原版简报正在播放")
+	if "--map-inventory" in args:
+		preload("res://tests/campaign_map_inventory.gd").capture(world,"opening")
+		tree.quit(failures);return
 	if "--write-briefing" in args: check(BattleSaves.save_slot(world, "slot1").ok, "写盘全屏简报断点")
 	film.skip.pressed.emit()
 	check(world.hud.field_radio.is_visible_in_tree() and world.hud.field_radio.body.text.contains("伞兵增援"),"开场机场通讯介绍工程师和伞兵增援")
 	await tree.process_frame
 	check(not tree.paused,"跳过影片后战场恢复")
+	if "--seed-retail-easy-sale" in args:
+		var s:Dictionary=world.allied_state.hollywood
+		BattleRequest.skirmish_config.difficulty=0
+		world.Hollywood.RetailSequences.closure_tick(world,s,0.8)
+		check(BattleSaves.save_slot(world,"slot1").ok,"售炮前保存")
+		var funds_before:float=world.funds
+		world.Hollywood.RetailSequences.closure_tick(world,s,0.3)
+		check(world.funds>funds_before and BattleSaves.save_slot(world,"slot2").ok,"实际退款后保存")
+		tree.quit(failures);return
+	if "--retail-closure21" in args:
+		var m=world.Hollywood
+		var seqs=m.RetailSequences
+		var state:Dictionary=world.allied_state.hollywood
+		var old_level:int=BattleRequest.skirmish_config.get("difficulty",1)
+		var sale:Array=seqs.DATA.closure["0EB68F3C"].sites[0]
+		var pos:Vector2=m.retail_site_center(sale[0],Vector2i(int(sale[1]),int(sale[2])))
+		var gun=world.buildings.filter(func(b):return world.actor_alive(b) and b.building_id==sale[0] and b.position.is_equal_approx(pos))[0]
+		BattleRequest.skirmish_config.difficulty=0
+		var easy:Dictionary={}
+		var funds_before:float=world.funds
+		seqs.closure_tick(world,easy,0.9)
+		check(world.actor_alive(gun),"简单分支满一秒前不出售")
+		seqs.closure_tick(world,easy,0.2)
+		check(not world.actor_alive(gun) and world.funds>funds_before and easy.retail_closure.has("10A9144C") and not easy.retail_closure.has("0EB68F3C"),"简单分支按链接标签出售，退款归玩家")
+		var funds_after:float=world.funds
+		seqs.closure_tick(world,easy,1.1)
+		check(world.funds==funds_after,"简单分支不重复退款")
+		seqs.setup_closure_sites(world)
+		gun=world.buildings.filter(func(b):return world.actor_alive(b) and b.building_id==sale[0] and b.position.is_equal_approx(pos))[0]
+		BattleRequest.skirmish_config.difficulty=1
+		seqs.closure_tick(world,state,0.9)
+		check(world.actor_alive(gun),"普通分支一秒前不卖原防空炮")
+		seqs.closure_tick(world,state,0.2)
+		check(not world.actor_alive(gun),"普通分支仅处置原坐标防空炮")
+		BattleRequest.skirmish_config.difficulty=old_level
+		for u in world.units.duplicate():
+			if world.actor_alive(u) and u.special.get("hollywood_house")=="Arabs":AlliedAbilities.consume(u)
+		seqs.closure_tick(world,state,0.0)
+		check(state.retail_closure.has("08D5E88C") and state.retail_closure.has("0ACD381C"),"原房全灭后调度无目标后继")
+		state.final_win_elapsed=9.9
+		seqs.neutral_cheer(world,state)
+		check(not state.get("retail_neutral_cheer",false),"中立欢呼满10秒前不执行")
+		state.final_win_elapsed=10.0
+		seqs.neutral_cheer(world,state)
+		check(state.get("retail_neutral_cheer",false),"独立中立欢呼执行")
+		var bases=load("res://scripts/world/hollywood_bases.gd")
+		var index:int=bases.ASSAULTS.find_custom(func(r):return r[0]=="0BA16EDC")
+		var crew:Array=[]
+		for uid in bases.ASSAULTS[index][5]:
+			var u=world.spawn_unit(uid,"enemy",world.player_start()+Vector2(180,120))
+			u.special.hollywood_house="YuriCountry"
+			crew.append(u)
+		var order:Dictionary={"index":index,"next":crew.size(),"members":crew}
+		bases.advance(world,"YuriCountry",order)
+		check(crew.all(func(u):return u.special.get("hollywood_assembled_trigger")=="0963AA4C") and not state.retail_lifecycle_flags.has("15"),"齐员触发原后继并清旗标，不复制出兵")
+		tree.quit(failures);return
+	if "--retail-prisoners" in args:
+		var state:Dictionary=world.allied_state.hollywood
+		var retail=world.Hollywood.RetailSequences
+		var guards:Array=world.units.filter(func(u):return u.special.get("hollywood_prisoner_tag")=="095D099C")
+		var prisoners:Array=world.units.filter(func(u):return u.special.get("hollywood_prisoner_tag")=="0958149C")
+		check(guards.size()==8 and prisoners.size()==7,"预置原标签绑定八守卫及七囚民")
+		retail.prisoners_tick(world,state,5.0)
+		check(not state.has("retail_prisoner_jobs"),"无受伤不会启动")
+		if not guards.is_empty():
+			guards[0].receive_hit(15.0)
+			check(state.get("retail_prisoner_jobs",{}).has("095D033C"),"实际伤害开启囚民后继")
+			retail.prisoners_tick(world,state,0.9)
+			check(prisoners.all(func(u):return not u.special.has("hollywood_prisoner_team")),"一秒前只唤醒不撤跑")
+			retail.prisoners_tick(world,state,0.11)
+			var fleeing:Array=prisoners.filter(func(u):return u.special.get("hollywood_prisoner_team")=="096CEA1C")
+			check(fleeing.size()==6 and fleeing.all(func(u):return u.side=="neutral" and u.has_move_order),"原编组六人撤跑并保持中立")
+			check(prisoners.any(func(u):return u.unit_id=="CIVSTM" and not u.special.has("hollywood_prisoner_team")),"未列入原编组的人仅唤醒")
+			guards[0].receive_hit(15.0)
+			check(state.get("retail_prisoner_jobs",{}).is_empty(),"再次受伤不重复编队")
+		tree.quit(failures);return
+	if "--retail-batch19" in args:
+		var state:Dictionary=world.allied_state.hollywood
+		var m=world.Hollywood
+		var retail=m.RetailSequences
+		state.briefing=false
+		for row in retail.DATA.voices.values():
+			var resident=world.spawn_unit("CIV2","neutral",world.player_start()+Vector2(80,80))
+			var plays:int=Ra2Sfx.a_plays
+			check(not retail.resident_voice(state,resident),"无原队标签不播放 "+row.id)
+			resident.special.hollywood_staged_team=row.teams[0]
+			check(retail.resident_voice(state,resident) and Ra2Sfx.a_plays==plays+1,"播放原声 "+row.id)
+			check(retail.resident_voice(state,resident) and Ra2Sfx.a_plays==plays+1,"同队冷却内不重播 "+row.id)
+			retail.voice_tick(state,float(row.delay)-0.1)
+			check(state.retail_resident_voice_left.has(row.next),"零售延时未到 "+row.next)
+			retail.voice_tick(state,0.11)
+			check(retail.resident_voice(state,resident) and Ra2Sfx.a_plays==plays+2,"零售延时结束可重播 "+row.next)
+			AlliedAbilities.consume(resident)
+		var spy_probe:Dictionary={"visited":{}}
+		var satellite=world._place_building("GASPYSAT","ally",world.player_start()+Vector2(300,0),true)
+		satellite.under_construction=true
+		spy_probe.retail_westwood_closed={"0464860C":true,"09D2968C":true}
+		retail.westwood_tick(world,spy_probe)
+		check(not spy_probe.has("retail_westwood_pending"),"侦察卫星施工中不触发")
+		satellite.under_construction=false
+		retail.westwood_tick(world,spy_probe)
+		check(spy_probe.get("retail_westwood_pending",false) and spy_probe.retail_westwood_closed.has("0926703C"),"侦察卫星完工强制发现一次")
+		satellite._die(null,true)
+		var cells:Array=retail.DATA.westwood["0464860C"].cells
+		var at:Vector2=m.cell(cells[0][0],cells[0][1])
+		var scout=world.spawn_unit("E1","ally",at)
+		scout.position=at
+		retail.westwood_tick(world,state)
+		check(state.get("retail_westwood_pending",false) and state.get("retail_westwood_closed",{}).has("07A40B2C"),"进入原图格触发备援并停用选择分支")
+		m.discover(world,state,[scout])
+		var clint=world.units.filter(func(u):return world.actor_alive(u) and u.special.get("hollywood_star")=="克林特")[0]
+		check(clint.side=="ally" and state.retail_lifecycle_flags.has("64") and state.clint_report_left==15.0,"克林特实际转属、局部旗标及后继短片计时")
+		check(not state.has("retail_westwood_pending"),"发现消费一次性待办")
+		check(GameData.ra2_sound_files("_Amb_LondonCivilians").size()==12 and retail.DATA.ambience["0463917C"].points.size()==3,"回收区三原点及十二个零售样本")
+		tree.quit(failures);return
 	if "--write-broken-bridge" in args:
 		var native := NativeMaps.data("yr_all02umd")
 		for center in BRIDGE_CENTERS:
@@ -454,6 +634,499 @@ func run() -> void:
 		check(BattleSaves.save_slot(world, "slot3").ok, "将移动中车辆及队列写入磁盘")
 		tree.quit(int(failures>0))
 		return
+	if "--retail-walls" in args:
+		var walls:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.special.get("hollywood_retail_wall",false))
+		check(walls.filter(func(b):return b.building_id=="CAFNCP").size()==19,"零售十九段铁丝围栏实际装配")
+		check(walls.filter(func(b):return b.building_id=="CAFNCB").size()==47 and walls.filter(func(b):return b.building_id=="CAFNCW").size()==28,"零售黑白围栏分别装配四十七段和二十八段")
+		check(walls.filter(func(b):return b.building_id=="GAFWLL").size()==94,"零售九十四段尤里围墙实际装配")
+		check(walls.all(func(b):return b.special.get("native_wall_pitch")==55 and WallArt.supported(b.data,b._ra2)),"墙栏使用原图网格与连接图集")
+		check(walls.all(func(b):return world.path_service.is_blocked(b.position)),"墙栏全部进入地面通行网格")
+		check(walls.all(func(b):return not b.special.has("hollywood_house")),"墙栏不计入清剿目标")
+		var sample=walls.filter(func(b):return b.building_id=="CAFNCP")[0]
+		world.allied_state.wall_test_destroyed=sample.position
+		sample.receive_hit(100000)
+		check(not world.actor_alive(sample) and BattleSaves.save_slot(world,"slot1").ok,"可破坏围栏，断点成功写盘")
+		tree.quit(failures);return
+	if "--all-retail-layout" in args:
+		var count:=0
+		var missing:Array=[]
+		var duplicates:Array=[]
+		var data:Dictionary=world.Hollywood.MAP_DATA.data
+		for row in preload("res://tests/hollywood_retail_layout.json").data:
+			var dims:=str(data.site_types[row[0]].foundation).to_lower().split("x")
+			var expected:Vector2=Vector2(206.5-float(row[2]),float(row[1])-11.5)*55.0
+			if dims.size()==2:expected+=Vector2(1-int(dims[1]),int(dims[0])-1)*27.5
+			var matches:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.building_id==row[0] and b.position.is_equal_approx(expected))
+			if matches.is_empty():missing.append(row)
+			elif matches.size()>1:duplicates.append(row)
+			else:count+=1
+		print("LAYOUT exact=",count," missing=",missing," duplicates=",duplicates)
+		check(count==368 and missing.is_empty(),"可玩区368条零售建筑均有对应正确落点")
+		check(duplicates.is_empty(),"零售建筑没有坐标重叠的重复实例")
+		var walls:Array=preload("res://data/maps/hollywood_wall_overlays.json").data
+		var actual_walls:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.special.get("hollywood_retail_wall",false))
+		check(actual_walls.size()==188 and walls.all(func(r):return actual_walls.any(func(b):return b.building_id==r[2] and b.position.is_equal_approx((Vector2(r[0],r[1])+Vector2.ONE*0.5)*55))),"188段墙栏类型和原格均匹配")
+		var explicit:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.special.has("hollywood_retail_cell") and b.side=="enemy")
+		check(explicit.size()==73,"原图预置尤里建筑73座均按零售角点装配")
+		var yard=explicit.filter(func(b):return b.building_id=="YACNST")[0]
+		check(yard.position.is_equal_approx(Vector2(128,65)*55),"尤里建造场坐落在原围墙地基内")
+		world.allied_state.hollywood.phase=2
+		world.fog._reveal("ally",yard.position,120.0,2.0)
+		var marks:Array=world.Hollywood.markers(world,false).filter(func(m):return m.actor==yard)
+		check(marks.size()==1 and marks[0].position==yard.position and marks[0].roof_gap==18.0,"红色建造场目标绑定实际实体和屋顶间距")
+		tree.quit(failures);return
+	if "--fortress-chain" in args:
+		var state:Dictionary=world.allied_state.hollywood
+		state.fortress_elapsed=5.0
+		world.Hollywood.fortress_tick(world,state,0.0)
+		check(not state.reinforced,"无作战实验室时不派战斗要塞")
+		world._place_building("GATECH","ally",world.player_start()+Vector2(620,650),true)
+		world.Hollywood.fortress_tick(world,state,0.0)
+		var team:Array=world.units.filter(func(u):return world.actor_alive(u) and u.unit_id=="BFRT" and u.side=="ally")
+		check(team.size()==1 and state.get("fortress_report_left",0.0)==20.0,"只派一辆要塞并登记独立20秒到达播报")
+		if not team.is_empty():
+			var carrier=team[0]
+			check(carrier.position.distance_to(world.Hollywood.cell(180,142))<55 and carrier.has_move_order and carrier.move_target==world.Hollywood.cell(170,132),"KE入场并实际下令前往CR")
+			check(carrier.logistics.passengers.size()==5,"原图五名乘员随车")
+		world.Hollywood.fortress_tick(world,state,19.9)
+		check(not state.get("fortress_report_sent",false),"20秒前不会抢播增援到达")
+		world.Hollywood.fortress_tick(world,state,0.2)
+		check(state.get("fortress_report_sent",false) and not state.has("fortress_report_left"),"到期发出雷达与语音并清计时")
+		world.Hollywood.fortress_tick(world,state,60.0)
+		check(world.units.filter(func(u):return world.actor_alive(u) and u.unit_id=="BFRT").size()==1,"后续不重复派遣")
+		tree.quit(failures);return
+	if "--grinder-layout" in args:
+		var state:Dictionary=world.allied_state.hollywood
+		var fixtures:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.special.has("hollywood_plant"))
+		check(fixtures.size()==4,"原图四座回收厂均已摆放")
+		var corners:=[Vector2(79.5,92.5),Vector2(128.5,116.5),Vector2(104.5,181.5),Vector2(137.5,139.5)]
+		for b in fixtures:
+			var k:String=b.special.hollywood_plant
+			var expected:Vector2=(corners[int(k)]+Vector2(-1,1))*55.0
+			check(b.position.is_equal_approx(expected) and state.plants[k]==b.position,"厂房与任务锚点使用同一零售地基中心 "+k)
+		var subject=fixtures[0]
+		world.fog._reveal("ally",subject.position,240.0,2.0)
+		var marks:Array=world.Hollywood.markers(world,false).filter(func(m):return m.get("actor")==subject)
+		check(marks.size()==1 and marks[0].position==subject.position and marks[0].roof_gap==18.0,"可见的回收厂标记绑定同一实体、靠近屋顶")
+		state.new_mission_notice_left=15.0
+		world.Hollywood.new_mission_notice(world,state,14.0)
+		check(not state.has("new_mission_repeat_left"),"十五秒前不启动重复提醒")
+		world.Hollywood.new_mission_notice(world,state,1.0)
+		check(state.get("new_mission_repeat_left",0.0)==120.0,"首条广播后开启120秒文字提醒")
+		world.Hollywood.new_mission_notice(world,state,119.0)
+		check(state.get("new_mission_repeat_left",0.0)==1.0,"下一条提醒不会提前")
+		world.Hollywood.new_mission_notice(world,state,1.0)
+		check(not state.has("new_mission_repeat_left"),"第二条文字提醒触发后清理状态")
+		tree.quit(failures);return
+	if "--actor-report-sale" in args:
+		var s:Dictionary=world.allied_state.hollywood
+		s.clint_report_left=15.0
+		world.Hollywood.clint_report(world,s,14.0)
+		check(not world.has_node("HollywoodFilm") and s.clint_report_left==1.0,"片场通讯等待满十五规则秒")
+		world.Hollywood.clint_report(world,s,1.0)
+		var report=world.get_node_or_null("HollywoodFilm")
+		check(report!=null and report.clip_id=="A02_P03E","时间到后播放卡维利零售短片")
+		if report!=null:
+			check(report.radar==world.hud.minimap and report.player.is_playing(),"卡维利原片正在右上角雷达窗播放")
+			check(report.subtitle.text=="卡维利：指挥官，好莱坞的平民里有几个硬汉。","卡维利开口时显示第一句中文字幕")
+			report._update_subtitle(4.4)
+			check(report.subtitle.text=="他们说不定能帮上你的忙。","第二句原声时间显示对应中文字幕")
+			report._update_subtitle(6.0)
+			check(report.subtitle.text.is_empty(),"原声结束后清空卡维利字幕")
+			report.finish()
+		check(not s.has("clint_report_left"),"完成后清除通讯断点")
+		var base=world.buildings.filter(func(b):return world.actor_alive(b) and b.side=="enemy" and b.special.get("hollywood_house")=="Yuri2" and not b.data.get("unsellable",false))[0]
+		var survivor=world.spawn_unit("LTNK","enemy",base.position+Vector2(100,0))
+		survivor.special.hollywood_house="Yuri2"
+		s.visited["克林特"]=true
+		s.remaining=0
+		for b in world.buildings.duplicate():
+			if world.actor_alive(b) and b.side=="enemy" and b.special.get("hollywood_house")=="Yuri2" and b.building_id in ["YAPOWR","YABRCK"]:b._die(null,true)
+		world.Hollywood.withdrawals_tick(world,s,0.0)
+		check(not world.actor_alive(base) and s.get("withdrawals",{}).has("Yuri2") and survivor.has_move_order,"副房实际触发出售并立即追击")
+		survivor.order_stop()
+		world.Hollywood.withdrawals_tick(world,s,4.9)
+		check(not survivor.has_move_order,"五秒前没有重发")
+		var home:Vector2=world.player_start()
+		var yard=world._place_building("GACNST","ally",home,true)
+		survivor.position=home+Vector2(260,0)
+		var before:float=yard.hp
+		world.Hollywood.withdrawals_tick(world,s,0.2)
+		check(s.withdrawals.Yuri2.hunting and survivor.has_move_order and survivor.attack_move,"五秒后残部收到第二次命令")
+		for frame in 360:
+			await tree.physics_frame
+			if yard.hp<before:break
+		check(yard.hp<before,"追击坦克用正式武器命中建造场")
+		tree.quit(failures);return
+	if "--stallone-combat" in args:
+		var s:Dictionary=world.allied_state.hollywood
+		var actor=world.units.filter(func(u):return u.unit_id=="STLN")[0]
+		var targets:Array=world.buildings.filter(func(b):return b.special.get("hollywood_star_guard")=="史泰龙" and b.position.distance_to(world.Hollywood.cell(164,78))>115)
+		check(targets.size()==2,"确认原图两处拆除目标")
+		for u in world.units.duplicate():
+			if world.actor_alive(u) and u.side=="enemy":u._die(null,true)
+		for b in world.buildings.duplicate():
+			if world.actor_alive(b) and b.side=="enemy" and not targets.has(b) and b.data.get("weapon",{}).size()>0:b._die(null,true)
+		s.get_or_add("star_awakened",{})["史泰龙"]=true
+		world.Hollywood.discover(world,s,[])
+		var exit:Vector2=world.Hollywood.cell(156,73)
+		for frame in 2400:
+			await tree.physics_frame
+			if not world.actor_alive(actor) or (targets.all(func(b):return not world.actor_alive(b)) and actor.position.distance_to(exit)<65):break
+		check(targets.all(func(b):return not world.actor_alive(b)),"史泰龙用实际武器摧毁两个脚本目标")
+		check(world.actor_alive(actor) and actor.position.distance_to(exit)<65,"拆除后自行走到470号航点")
+		tree.quit(failures);return
+	if "--depot-taunt" in args:
+		var s:Dictionary=world.allied_state.hollywood
+		var home:Vector2=world.player_start()
+		world._place_building("GADEPT","ally",home+Vector2(220,280),true)
+		var depot=world._place_building("NADEPT","ally",home+Vector2(500,280),false)
+		world.Hollywood.repair_depot_taunt(world,s)
+		check(depot.under_construction and not s.taunted,"盟军维修厂和施工中的苏军维修厂均不触发")
+		depot.under_construction=false
+		world.Hollywood.repair_depot_taunt(world,s)
+		check(s.taunted and Ra2Sfx._eva_last.has("xa2yu01"),"完成的苏军维修厂提交尤里原声对白")
+		tree.quit(failures);return
+	if "--write-batch13-wave" in args:
+		var s:Dictionary=world.allied_state.hollywood
+		BattleRequest.skirmish_config.difficulty=1
+		s.visited["克林特"]=true
+		world.Hollywood.difficulty_attacks(world,s,0.0)
+		world.Hollywood.difficulty_attacks(world,s,float(s.attack_left)-0.5)
+		check(BattleSaves.save_slot(world,"slot1").ok,"写入原第一波待发断点")
+		tree.quit(failures);return
+	if "--retail-batch15" in args:
+		var retail=world.Hollywood.RetailSequences
+		var s:Dictionary=world.allied_state.hollywood
+		s.retail_yuri2_ready=true
+		var root:Vector2=world.player_start()+Vector2(300,100)
+		var radar=world._place_building("GAAIRC","ally",root,true)
+		var sat=world._place_building("GASPYSAT","ally",root+Vector2(300,0),true)
+		retail.latches(world,s,0.0)
+		check(s.retail_lifecycle_flags.has("6") and s.retail_lifecycle_flags.has("7"),"空指部和卫星置各自的原图旗标")
+		radar.receive_hit(1000000);sat.receive_hit(1000000)
+		retail.latches(world,s,0.0)
+		check(not s.retail_lifecycle_flags.has("6") and not s.retail_lifecycle_flags.has("7"),"两类设施失去清除独立锁存")
+		for row in retail.DATA.special.values():
+			if row.id in ["0B81A8BC","0B81D9DC"] and not world.units.any(func(u):return world.actor_alive(u) and row.release.has(u.special.get("hollywood_special_team",""))):
+				var fixture=world.spawn_unit("INIT","enemy",root+Vector2(100,0))
+				fixture.special.hollywood_special_team=row.release[0]
+			s.retail_special={"id":row.id,"left":float(row.delay)}
+			s.retail_lifecycle_flags.erase("13")
+			retail.special_waves(world,s,float(row.delay)+0.1)
+			check(s.retail_special.id==row.enable[0],"按原图接到下一侧翼动作："+str(row.id))
+			for group in row.spawn:
+				check(world.units.any(func(u):return world.actor_alive(u) and u.special.get("hollywood_special_team")==group.id),"实战队员绑定原队："+str(group.id))
+		for row in retail.DATA.cleanup.values():
+			s.retail_cleanup_done=false
+			s.retail_cleanup={"id":row.id,"left":float(row.delay)}
+			retail.cleanup(world,s,float(row.delay)+0.1)
+			check(s.get("retail_cleanup_done",false) or s.retail_cleanup.id!=row.id,"按原段落推进居民清场："+str(row.id))
+		var played:=0
+		for row in retail.DATA.ambience.values():
+			if not row.points.all(func(e):return retail.CITY_SOUNDS.has(e[0]) or not GameData.ra2_sound_files(e[0]).is_empty()):continue
+			played+=1
+		check(played==9,"九组城市声源均有原声资源，包含回收区人声")
+		tree.quit(failures);return
+	if "--retail-batch14" in args:
+		var m=world.Hollywood
+		var s:Dictionary=world.allied_state.hollywood
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		m.bind_retail_sources(world,s)
+		check(s.retail_sources.size()==21,"全部零售居民源楼明确绑到实际建筑")
+		for id in m.RETAIL_DRIVERS.sources:
+			if not s.retail_sources.has(id):continue
+			var actor=s.retail_sources[id]
+			actor.receive_hit(1000000)
+			s.visited["克林特"]=true
+			s.retail_staged_started=true
+			s.get_or_add("retail_resident_routes",{})[id]={"left":0.0}
+			m.retail_residents(world,s,0.0)
+			check(not s.retail_resident_routes.has(id),"原零售建筑摧毁后停用路线："+id)
+		var plants:Dictionary={}
+		for b in world.buildings:
+			if world.actor_alive(b) and b.special.has("hollywood_plant"):plants[b.special.hollywood_plant]=b
+		for row in m.RETAIL_DRIVERS.staged.values():
+			s.retail_staged_residents={row.plant:{"id":row.id,"left":float(row.delay)}}
+			m.staged_residents(world,s,float(row.delay)-0.1,plants)
+			check(s.retail_staged_residents.get(row.plant,{}).get("id")==row.id,"到期前保留居民分波："+str(row.id))
+			m.staged_residents(world,s,0.2,plants)
+			var actors:Array=world.units.filter(func(u):return world.actor_alive(u) and u.special.get("hollywood_staged_trigger")==row.id)
+			check(actors.size()==1 and s.retail_staged_residents.get(row.plant,{}).get("id","")==row.next,"到期派原居民并启后继："+str(row.id))
+			for u in actors:AlliedAbilities.consume(u)
+		s.phase=1;s.radar=true
+		m.retail_goal_hints(world,s,0.0)
+		check(s.retail_goal_hints.size()==5,"雷达恢复安排四个报点及文字")
+		s.radar=false
+		m.retail_goal_hints(world,s,0.0)
+		check(s.retail_goal_hints.is_empty(),"雷达失效取消五个待办")
+		var pings:Array=[]
+		Events.radar_ping.connect(func(p:Vector2,kind:String):if kind=="campaign_site":pings.append(p))
+		s.radar=true
+		m.retail_goal_hints(world,s,119.9)
+		check(pings.is_empty(),"120秒之前不发定时报点")
+		m.retail_goal_hints(world,s,0.2)
+		check(s.retail_goal_hints.is_empty() and pings.size()==4,"原图120秒发四处雷达报点")
+		var count:=0
+		for row in ai.ASSAULTS:
+			if not ai.gathering(row):continue
+			count+=1
+			var team:Array=[]
+			for j in 2:
+				var u=world.spawn_unit("LTNK","enemy",world.player_start()+Vector2(100+j*100,100))
+				u.special.hollywood_house=row[1]
+				team.append(u)
+			ai.start_retail_group(world,s,row,team)
+			var job:Dictionary=s.retail_groups[0]
+			check(job.row==row[0] and job.has("goals") and team.all(func(u):return u.has_move_order),"实际编队执行原图集结脚本："+row[0])
+			if row[0]=="0C6C0D8C":check(BattleSaves.save_slot(world,"slot1").ok,"保存集结中的队员与目标")
+			for path in job.commands:
+				for u in team:
+					u.position=u.special.get("hollywood_group_goal",u.position)
+					u.order_stop(false)
+				ai.advance_retail_groups(world,s,1.0)
+			check(s.retail_groups.is_empty(),"所有阶段完结再出击："+row[0])
+			for u in team:AlliedAbilities.consume(u)
+		check(count==22,"22条原生集结规则")
+		tree.quit(failures);return
+	if "--retail-batch13" in args:
+		var m=world.Hollywood
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		var s:Dictionary=world.allied_state.hollywood
+		for row in ai.ASSAULTS:
+			var rule:Dictionary=ai.CONDITION_ROWS[row[0]]
+			var t:float=rule.threshold
+			var valid:=bool(rule.enabled) and int(rule.mask[1])!=0
+			check(not ai.threshold_passes(rule,t-1,1) and ai.threshold_passes(rule,t,1)==valid and ai.threshold_passes(rule,t+1,1)==valid,"原图AI比较与难度："+row[0])
+		for spec in m.RETAIL_DRIVERS.waves.values():
+			m.spawn_retail_wave(world,spec)
+			var actual:Array=world.units.filter(func(u):return world.actor_alive(u) and u.special.get("hollywood_wave_trigger")==spec.id)
+			var expected:=0
+			for unit in spec.team.members:expected+=int(unit[0])
+			check(actual.size()==expected and actual.all(func(u):return u.has_move_order),"侧翼编组及可走首令："+str(spec.id))
+			for u in actual:AlliedAbilities.consume(u)
+		for level in 3:
+			BattleRequest.skirmish_config.difficulty=level
+			var fixture:Dictionary={"visited":{"克林特":true}}
+			if level==2:
+				m.difficulty_attacks(world,fixture,200.0)
+				check(not fixture.has("retail_wave_id"),"困难没有完工车厂不启用侧翼波次")
+				world._place_building("GAWEAP","ally",world.player_start()+Vector2(500,100),true)
+			m.difficulty_attacks(world,fixture,0.0)
+			check(fixture.has("retail_wave_id") and fixture.attack_left==(180.0 if level==2 else 330.0),"难度启用与首波延时：%d"%level)
+			if not fixture.has("retail_wave_id"):continue
+			var id:String=fixture.retail_wave_id
+			m.difficulty_attacks(world,fixture,float(fixture.attack_left)-0.1)
+			check(fixture.retail_wave_id==id,"截止前不得提前发波")
+			m.difficulty_attacks(world,fixture,0.2)
+			check(fixture.retail_wave_id==m.RETAIL_DRIVERS.waves[id].next,"到期才切原后继")
+		s.visited["克林特"]=true
+		for spec in m.RETAIL_DRIVERS.residents.values():
+			for u in world.units.duplicate():
+				if world.actor_alive(u) and u.special.has("hollywood_civilian"):AlliedAbilities.consume(u)
+			var clocks:Dictionary={}
+			for other in m.RETAIL_DRIVERS.residents.values():clocks[other.id]={"left":0.0 if other.id==spec.id else 9999.0}
+			s.retail_resident_routes=clocks
+			m.retail_residents(world,s,0.0)
+			var actor=clocks[spec.id].get("actor")
+			check(world.actor_alive(actor) and actor.unit_id==spec.walker.members[0][1],"原图居民编组："+str(spec.id))
+			if not world.actor_alive(actor):continue
+			var plant=world.buildings.filter(func(b):return world.actor_alive(b) and b.special.get("hollywood_plant")==spec.plant)[0]
+			actor.position=plant.special.civilian_queue_slots[0]
+			m.retail_residents(world,s,125.0)
+			check(actor.special.get("hollywood_resident_change")==spec.change,"到达后换组条件："+str(spec.change))
+		var blocked:Dictionary={"visited":{"克林特":true},"retail_wave_id":"0796E03C","attack_left":0.0}
+		var satellite=world._place_building("GASPYSAT","ally",world.player_start()+Vector2(750,100),true)
+		m.difficulty_attacks(world,blocked,500.0)
+		check(world.actor_alive(satellite) and blocked.retail_wave_id=="0796E03C","卫星存在不推进待发侧翼波次")
+		tree.quit(failures);return
+	if "--retail-quarry-ai" in args:
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		var u=world.spawn_unit("LTNK","enemy",world.player_start()+Vector2(200,200))
+		var fixture=world.spawn_unit("E1","ally",world.player_start()+Vector2(200,280))
+		var power=world._place_building("GAPOWR","ally",fixture.position+Vector2(150,150),true)
+		check(world.actor_alive(fixture) and world.actor_alive(power),"择敌测试使用实际盟军步兵和电厂")
+		world.fog._reveal("enemy",fixture.position,1200.0,2.0)
+		var count:=0
+		for ally in world.units+world.buildings:
+			if world.actor_alive(ally) and ally.side=="ally":world.fog._reveal("enemy",ally.position,200.0,2.0)
+		for row in ai.ASSAULTS:
+			var types:Array=ai.retail_quarries(row)
+			if types.is_empty():continue
+			count+=1
+			u.order_stop()
+			ai.deploy_team_member(world,u,row)
+			u.order_stop(false) # End the route in place; only test the following attack commands.
+			u.special.hollywood_quarries=types.duplicate()
+			ai.attack_next_quarry(world,u)
+			var target=u.attack_target
+			check(world.actor_alive(target) and target.side=="ally" and types.any(func(k):return ai.quarry_matches(target,k)),"零售攻击序列下令："+row[0])
+		check(count==24,"二十四条含择敌命令的原图规则")
+		u.order_stop()
+		u.special.hollywood_quarries=[9,4,1]
+		ai.attack_next_quarry(world,u)
+		check(u.attack_target==power,"优先打电厂，不先打更近步兵")
+		power.receive_hit(100000)
+		u.order_stop()
+		ai.attack_next_quarry(world,u)
+		check(world.actor_alive(u.attack_target) and AlliedAbilities.infantry(u.attack_target),"电厂被毁后递进到步兵")
+		tree.quit(failures);return
+	if "--retail-movement-ai" in args:
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		var u=world.spawn_unit("LTNK","enemy",world.player_start()+Vector2(200,200))
+		var count:=0
+		for row in ai.ASSAULTS:
+			var route:Array=ai.retail_route(row)
+			if route.is_empty():continue
+			count+=1
+			ai.deploy_team_member(world,u,row)
+			var exact:bool=route.size()==row[6].size()
+			for i in route.size():
+				var raw:=int(row[6][i])
+				exact=exact and route[i][0]==ai.map_cell(raw%1000,raw/1000)
+			check(exact and u.move_target==route[0][0] and u.attack_move==route[0][1] and u.order_queue.size()==route.size()-1,"零售路线、首段行为及队列："+row[0])
+		check(count==12,"十二条路线规则逐ID执行")
+		tree.quit(failures);return
+	if "--retail-guard-ai" in args:
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		var s:Dictionary=world.allied_state.hollywood
+		var place:Vector2=world.player_start()
+		for id in ["GAPOWR","GACNST","GAPILE","GAWEAP"]:
+			world._place_building(id,"ally",place,true)
+			place+=Vector2(200,0)
+		var old:Dictionary=BattleRequest.skirmish_config.duplicate()
+		BattleRequest.skirmish_config.difficulty=1
+		var guards:=0
+		for i in ai.ASSAULTS.size():
+			var row:Array=ai.ASSAULTS[i]
+			if row[10].size()!=2 or int(row[10][0][0])!=11:continue
+			guards+=1
+			var house:String=row[1]
+			check(ai.selectable(world,house,row) and not ai.selectable(world,"Neutral",row),"原条件与房号可选："+row[0])
+			if not ai.selectable(world,house,row):continue
+			var job:Dictionary={"index":i,"next":0,"members":[]}
+			s["retail_order_"+house]=job
+			world.credit_side("enemy",10000.0,true) # Each isolated rule still pays real production costs.
+			var cash:float=world.funds_for("enemy")
+			for uid in row[5]:
+				var maker=ai.factory_for(world,house,uid)
+				maker._buildup_play=-1.0
+				ai.advance(world,house,job)
+				if not maker.production.has(uid):break
+				maker._tick_unit_queue(1000.0,uid)
+			if int(job.get("next",-1))!=row[5].size():
+				check(false,"出厂编组不完整："+row[0]);continue
+			var members:Array=job.members.duplicate()
+			check(members.all(func(u):return not u.special.has("campaign_area_guard")),"齐员前未下发区域警戒："+row[0])
+			ai.advance(world,house,job)
+			check(members.size()==row[5].size() and world.funds_for("enemy")<cash,"真实扣费、编组齐员："+row[0])
+			check(members.all(func(u):return not u.hold_position and u.special.get("campaign_area_guard")==u.global_position),"出厂后部署区域警戒及岗位锚点："+row[0])
+			if guards==1:
+				var u=members[0]
+				var post:Vector2=u.special.campaign_area_guard
+				var home:Vector2=world.player_start()+Vector2(0,440)
+				var open:Vector2=world.path_service.nearest_reachable(home,home,false,8)
+				var displaced:Vector2=world.path_service.nearest_reachable(open+Vector2(95,0),open,false,8)
+				u.special.campaign_area_guard=open
+				u.position=displaced
+				var before:float=u.position.distance_to(open)
+				for j in 45:await tree.physics_frame
+				check(u.position.distance_to(open)<before,"区域警戒单位经正式物理步向岗点回移 %s -> %s"%[before,u.position.distance_to(open)])
+				u.special.campaign_area_guard=post
+		check(guards==9,"九条区域警戒规则各自进入真实战场回归")
+		BattleRequest.skirmish_config.difficulty=0
+		check(not ai.eligible(world,ai.ASSAULTS[23]),"简单难度不启用高级守备队")
+		BattleRequest.skirmish_config=old
+		tree.quit(failures);return
+	if "--retail-ai" in args:
+		var ai=preload("res://scripts/world/hollywood_bases.gd")
+		var s:Dictionary=world.allied_state.hollywood
+		var row:Array=ai.ASSAULTS[4]
+		check(ai.eligible(world,row) and not ai.eligible(world,ai.ASSAULTS[5]),"副基地兵营条件成立，玩家没车厂不选后门坦克队")
+		var maker=ai.factory_for(world,"Yuri2","INIT")
+		check(maker!=null,"副基地使用自己的兵营")
+		if maker==null:tree.quit(failures);return
+		maker._buildup_play=-1.0 # This test enters before the opening films and building animation finish.
+		var cash:float=world.funds_for("enemy")
+		check(ai.ASSAULTS.size()==36,"原图三十六条本图 AI 条件已载入")
+		var fixture=world.spawn_unit("E1","ally",world.player_start()+Vector2(200,280))
+		check(world.actor_alive(fixture),"出击目标为实际盟军步兵")
+		world.fog._reveal("enemy",fixture.position,1200.0,2.0)
+		var job:Dictionary={"index":4,"next":0,"members":[]}
+		s.retail_order_Yuri2=job
+		ai.advance(world,"Yuri2",job)
+		check(job.get("index")==4 and maker.production.has("INIT"),"从本房的零售条件选中副基地步兵队 %s / %s" % [str(job),maker.queue_block_reason("INIT")])
+		for i in row[5].size():
+			maker._tick_unit_queue(1000.0,row[5][i])
+			ai.advance(world,"Yuri2",job)
+		for _stage in 3:
+			for group in s.get("retail_groups",[]):
+				for u in group.members:
+					u.position=u.special.get("hollywood_group_goal",u.position)
+					u.order_stop(false)
+			ai.advance_retail_groups(world,s,1.0)
+		var team:Array=world.units.filter(func(u):return world.actor_alive(u) and u.side=="enemy" and u.special.get("hollywood_house")=="Yuri2" and u.attack_ordered and world.actor_alive(u.attack_target) and u.attack_target.side=="ally")
+		check(not job.has("index") and team.size()>=5 and world.funds_for("enemy")<cash,"付费造齐五个队员后才出击")
+		var taunt:=Ra2Sfx._stream_eva("hollywood/xs3yu05")
+		check(taunt!=null and taunt.get_length()>0,"尤里第二段原声可加载")
+		var plant=world.buildings.filter(func(b):return b.special.get("hollywood_plant")=="1")[0]
+		plant._die()
+		world.Hollywood.plants_tick(world,s,[],0.5)
+		check(s.has("yuri_leave_left") and not s.get("yuri_leave_played",false),"先拆二号厂也会启用尤里喊话，不提前播放")
+		world.Hollywood.plants_tick(world,s,[],1.0)
+		check(s.get("yuri_leave_played",false) and not s.has("yuri_leave_left"),"满一秒播放并锁定一次")
+		tree.quit(failures);return
+	if "--bridge-fixers" in args:
+		var fix=preload("res://scripts/world/hollywood_bridge_fixers.gd")
+		var s:Dictionary=world.allied_state.hollywood
+		var sections:Array=[]
+		for row in fix.CHAINS:
+			var section:Rect2=BridgeDamage.section_at(world,fix.point(row[0]))
+			check(section.has_area() and not sections.has(section),"原图触发格对应独立桥段")
+			if section.has_area():sections.append(section);BridgeDamage.damage_section(world,section,BridgeDamage.strength())
+		fix.tick(world,s,59)
+		check(s.bridge_fixers.size()==4 and s.bridge_fixers.values().all(func(job):return not job.sent),"四座桥独立等待，未提前空投")
+		fix.tick(world,s,1)
+		var planes:Array=world.units.filter(func(u):return u.special.has("para_story_tags"))
+		check(planes.size()==4,"四条链各派一架工程师空投机")
+		for plane in planes:
+			fix.Drop.fly(plane,1000)
+		var engineers:Array=world.units.filter(func(u):return u.special.has("hollywood_bridge_fixer"))
+		check(engineers.size()==4,"实走空投逻辑生成四名工程师")
+		for u in engineers:fix.Drop.descend(u,1000)
+		fix.tick(world,s,1)
+		for u in engineers:
+			var hut=u.special.get("target")
+			check(hut!=null,"工程师收到指定小屋维修命令")
+			if hut==null:continue
+			u.position=AlliedAbilities.approach(u,hut)
+			for j in 100:
+				if not world.actor_alive(u):break
+				AlliedAbilities.tick_action(u,0.1)
+		fix.tick(world,s,1)
+		check(s.bridge_fixers.is_empty() and sections.all(func(section):return BridgeDamage.health(world,section)>0),"修复四处并恢复下轮触发")
+		tree.quit(failures);return
+	if "--bridge-all-entries" in args:
+		var deck=world.ground.overpass
+		var visited:=0
+		for spec in [[150,114,122],[145,114,122],[56,93,107],[51,93,107],[56,120,146],[51,120,144]]:
+			var x:=int(spec[0])-1
+			for direction in [1,-1]:
+				var bank:=Vector2i(x,int(spec[1])-1 if direction==1 else int(spec[2])+1)
+				if not deck.ends.has(bank):continue
+				visited+=1
+				var start:=(Vector2(bank)+Vector2.ONE*0.5)*55
+				var vehicle=world.spawn_unit("MTNK","ally",start)
+				var step:=Vector2(0,direction*55)
+				for i in 4:vehicle.move_with_traffic_exceptions(step)
+				world._update_depth_order()
+				check(vehicle.position.distance_to(start+4*step)<1 and vehicle.special.has("hollywood_on_deck") and vehicle.z_index>deck.z_index,"坦克沿引道上桥 %s"%str(bank))
+				for i in 4:vehicle.move_with_traffic_exceptions(-step)
+				world._update_depth_order()
+				check(vehicle.position.distance_to(start)<1 and not vehicle.special.has("hollywood_on_deck"),"坦克原桥头下桥 %s"%str(bank))
+				AlliedAbilities.consume(vehicle)
+		check(visited==11,"覆盖全部十一处可玩桥头，未补裁剪端")
+		tree.quit(failures);return
 	if "--bridge-orders" in OS.get_cmdline_user_args():
 		var deck = world.ground.overpass
 		var goal := Vector2(55.5,139.5)*55
@@ -815,11 +1488,56 @@ func run() -> void:
 				break
 			await tree.process_frame
 		check(sampled and visible_through_line,"伊娃说到为战争筹款时厂房持续可见")
-	elif "--all-houses" in OS.get_cmdline_user_args() or "--city-house" in OS.get_cmdline_user_args() or "--shop-capture" in OS.get_cmdline_user_args(): report.skip.pressed.emit()
+	elif "--all-houses" in args or "--city-house" in args or "--shop-capture" in args or "--cash-crates" in args: report.skip.pressed.emit()
 	else: await report.player.finished
 	await tree.process_frame
 	world.Hollywood.tick(world,8)
 	check(not s.briefing and world.units.any(func(u):return u.unit_id=="AMCV"),"机场基地车抵达并交还控制")
+	if "--cash-crates" in args:
+		var plants:Array=world.buildings.filter(func(b):return b.special.has("hollywood_plant"))
+		var cells := [Vector2i(105,128),Vector2i(129,79),Vector2i(194,103),Vector2i(153,71)]
+		check(plants.size()==4,"四座回收厂已装配")
+		for plant in plants:
+			var key:=int(plant.special.hollywood_plant)
+			var old_point:Vector2=plant.position
+			var point:Vector2=world.Hollywood.cell(cells[key].x,cells[key].y)
+			plant._die(null,true)
+			await tree.process_frame
+			await tree.process_frame
+			world.Hollywood.tick(world,0.5)
+			check(s.crates.has(point) and (point==old_point or not s.crates.has(old_point)),"%d号厂在原版航点放箱" % (key+1))
+			var drop:Vector2=point if s.crates.has(point) else old_point
+			var start:=Vector2.INF
+			var approaches:=[Vector2(-55,0),Vector2(0,55),Vector2(0,-55),Vector2(55,0),Vector2(-110,0),Vector2(110,0),Vector2(0,-110),Vector2(0,110)]
+			if key==1:approaches.push_front(Vector2(0,55))
+			for offset in approaches:
+				var approach:Vector2=drop+offset
+				if world.path_service.is_blocked(approach):continue
+				if not world.path_service.line_walkable(approach,drop,world.path_service.cost):continue
+				if world.units.any(func(u):return world.actor_alive(u) and Geometry2D.get_closest_point_to_segment(u.position,approach,drop).distance_to(u.position)<u.radius+20.0):continue
+				start=approach
+				break
+			check(start.is_finite(),"有可步行接近的邻格")
+			if not start.is_finite():continue
+			var collector=world.spawn_unit("E1","ally",start)
+			collector.set_fire_stance("none")
+			world.fog.rebuild()
+			world.select_unit(collector,false)
+			var before:float=world.funds
+			world._issue_order(drop)
+			print("CRATE route ",key," blocked=",world.path_service.is_blocked(drop)," drop=",drop," start=",start," target=",collector.move_target," path=",world.path_for_unit(collector,drop))
+			for frame in 150:
+				await tree.physics_frame
+				if not s.crates.has(drop) or not world.actor_alive(collector):break
+			print("CRATE result alive=",world.actor_alive(collector)," pos=",collector.position if is_instance_valid(collector) else Vector2.INF," delta=",world.funds-before," remaining=",s.crates)
+			check(not s.crates.has(drop) and world.funds==before+5000,"%d号厂右键实走拾取，按原版一次到账5000" % (key+1))
+			var money_at_drop := func(f): return f is Ra2Fx and f.anim.get("image") == "MONEY" and f.position == drop
+			check(world.effects_root.get_children().filter(money_at_drop).size()==1,"走入箱格后在箱子位置播放一次原版金色 $")
+			world.Hollywood.tick(world,0.5)
+			check(world.funds==before+5000 and world.effects_root.get_children().filter(money_at_drop).size()==1,"停在拾取位置不会重复到账或播放")
+			if world.actor_alive(collector):collector.queue_free()
+		tree.quit(failures)
+		return
 	if sight_test:
 		check(world.fog.is_explored_at("ally",s.plants["0"]) and not world.position_visible_to("ally",s.plants["0"]),"交还控制后首厂只留探索记录")
 		tree.quit(int(failures > 0))
@@ -1080,10 +1798,30 @@ func run() -> void:
 		check(sound!=null and sound.get_length()>1,"原声 "+clip)
 	var scout=world.units.filter(func(u):return u.unit_id=="E1" and u.side=="ally")[0]
 	for row in world.Hollywood.VISITS:
-		if row[0]=="医院":
-			scout.position=world.Hollywood.cell(144,133);world.Hollywood.tick(world,1)
 		scout.position=world.Hollywood.cell(row[1],row[2]);world.Hollywood.tick(world,1)
-	check(world.buildings.filter(func(b):return b.building_id in ["CATHOSP","CAMACH"] and b.special.get("campaign_flash_left",0)>0).size()>=2,"医院与机械维修厂发现闪烁")
+		if row[0] in world.Hollywood.STAR_GUARDS:
+			check(not s.visited.has(row[0]),"仅靠近不招募 "+row[0])
+			var tagged_guards:Array=(world.units+world.buildings).filter(func(a):return world.actor_alive(a) and a.special.get("hollywood_star_guard")==row[0])
+			check(tagged_guards.size()==5,"原图受袭标签对象已绑定 "+row[0])
+			if not tagged_guards.is_empty():tagged_guards.back().receive_hit(100,"shell",{},scout)
+			world.Hollywood.tick(world,1)
+			check(s.visited.has(row[0]),"命中指定守军后招募并播报 "+row[0])
+	scout.position=world.Hollywood.cell(144,133);world.Hollywood.tick(world,1)
+	var facilities:Array=world.buildings.filter(func(b):return world.actor_alive(b) and b.building_id in ["CATHOSP","CAMACH"])
+	check(facilities.size()==2 and not s.visited.has("医院") and not s.visited.has("机械维修厂"),"迷雾内不提前报告医院和机械维修厂")
+	for site in facilities:
+		scout.position=site.position
+		world.fog.rebuild()
+		world.Hollywood.tick(world,1)
+	check(facilities.all(func(site):return site.special.get("campaign_flash_left",0)>0),"医院与机械维修厂进入视野后发现闪烁")
+	var shop=facilities.filter(func(site):return site.building_id=="CAMACH")[0]
+	var vehicle=world.spawn_unit("MTNK","ally",shop.position+Vector2(80,0))
+	vehicle.hp=vehicle.max_hp-20
+	var hurt:float=vehicle.hp
+	shop.special.campaign_flash_left=0.0
+	world.Hollywood.tick(world,1)
+	check(is_equal_approx(vehicle.hp,hurt) and shop.side=="neutral","未占领机械维修厂时，附近车辆不再免费修理")
+	check(shop.special.campaign_flash_left==0.0,"同一设施进入视野后不重复报告")
 	world._place_building("GATECH","ally",home+Vector2(620,650),true)
 	world.Hollywood.tick(world,1.0)
 	var forts:Array=world.units.filter(func(u):return u.unit_id=="BFRT" and u.side=="ally")
@@ -1092,8 +1830,11 @@ func run() -> void:
 	world._place_building("GAWEAP","ally",home+Vector2(1000,650),true)
 	for level in 3:
 		BattleRequest.skirmish_config.difficulty=level
-		s.attack_left=0.0
+		s.erase("retail_wave_id")
+		s.erase("attack_left")
 		s.attack_index=0
+		world.Hollywood.difficulty_attacks(world,s,0.0)
+		s.attack_left=0.0
 		var before:int=world.units.filter(func(u):return u.unit_id=="LTNK").size()
 		world.Hollywood.tick(world,1.0)
 		var after:int=world.units.filter(func(u):return u.unit_id=="LTNK").size()
@@ -1127,19 +1868,24 @@ func run() -> void:
 	check(fired and (not world.actor_alive(infantry) or infantry.hp < initial_hp), "克林特入队后自行开枪命中敌方步兵")
 	var budget:float=world.funds
 	for b in targets:
-		var at:Vector2=b.position
+		var wp:Vector2i=world.Hollywood.CASH_WAYPOINTS[int(b.special.hollywood_plant)]
+		var at:Vector2=world.Hollywood.cell(wp.x,wp.y)
 		scout.position=at
 		b._die();world.Hollywood.tick(world,1)
 		world.Hollywood.tick(world,1)
+		var money_at_box := func(f): return f is Ra2Fx and f.anim.get("image") == "MONEY" and f.position == at
 		check(s.crates.has(at),"资金箱出现在部队脚下后仍可留在原地")
-		scout.position=at+Vector2(110,0);world.Hollywood.tick(world,1)
+		check(world.effects_root.get_children().filter(money_at_box).is_empty(),"只生成资金箱时不播放拾取动画")
+		scout.position=at+Vector2(110,0);world.Hollywood.tick(world,0.01)
 		check(s.crates.has(at),"距离两格不触发拾取")
 		var before_pickup:float=world.funds
-		scout.position=at;world.Hollywood.tick(world,1)
-		world.Hollywood.tick(world,1)
-		check(not s.crates.has(at) and world.funds==before_pickup+500,"走进箱子所在格只领取一次 500 资金")
+		scout.position=at;world.Hollywood.tick(world,0.01)
+		world.Hollywood.tick(world,0.01)
+		check(not s.crates.has(at) and world.funds==before_pickup+5000,"半秒任务轮询之间走进箱子所在格仍只领取一次 5000 资金")
+		check(world.effects_root.get_children().filter(money_at_box).size()==1,"离格再入格只在箱子原位播放一次金色 $")
 	world.hud.log_btn.pressed.emit()
 	check(objectives.is_visible_in_tree() and objectives.text.contains("4/4") and objectives.text.contains("进行中"),"重新展开情报可见拆厂完成与清剿目标")
+	world.Hollywood.fortress_tick(world,s,20.0) # Arrival report is now independent from the introduction.
 	var final_lines := PackedStringArray()
 	while radio.visible:
 		final_lines.append(radio.speaker.text + "：" + radio.body.text)
@@ -1147,7 +1893,7 @@ func run() -> void:
 	var ending := "\n".join(final_lines)
 	for phrase in ["增援部队已抵达", "尤里：同志", "重装大兵：谢谢您救了我们", "给您拍部电影"]:
 		check(ending.contains(phrase), "增援与回收厂事件通讯：" + phrase)
-	check(world.funds>=budget+2000 and s.phase==2 and s.rescued>0,"拾取、救人和第二目标")
+	check(world.funds>=budget+20000 and s.phase==2 and s.rescued>0,"拾取、救人和第二目标")
 	var cleanup: Array = world.CampaignMarks.marks(world, false)
 	check(not cleanup.is_empty() and cleanup.all(func(mark): return mark.title.begins_with("摧毁") and world.position_explored_by("ally", mark.position)), "清剿阶段只标记已侦察的目标建筑")
 	if "--loss" in OS.get_cmdline_user_args():
@@ -1166,9 +1912,16 @@ func run() -> void:
 	var results := []
 	Events.battle_ended.connect(func(result): results.append(result),CONNECT_ONE_SHOT)
 	world.Hollywood.tick(world,1)
+	if not world.ended and s.phase==2 and s.get("withdrawals",{}).values().any(func(row):return not row.hunting):
+		world.Hollywood.tick(world,6.0)
 	if s.phase==3:
+		world.Hollywood.tick(world,2.9)
+		check(not s.get("final_cheer_sent",false) and not world.ended,"三秒未满不欢呼")
+		world.Hollywood.tick(world,0.2)
 		check(world.units.any(func(u): return world.actor_alive(u) and u.special.has("cheer_elapsed") and u.HollywoodInfantry.pose(u)=="Cheer"),"结尾获救居民播放本体欢呼序列")
-		world.Hollywood.tick(world,5)
+		world.Hollywood.tick(world,6.8)
+		check(not world.ended,"结算使用自己的十秒计时")
+		world.Hollywood.tick(world,0.2)
 	check(results.size()==1 and results[0].win == ("--loss" not in OS.get_cmdline_user_args()),"胜负结算")
 	if not results.is_empty():
 		var expected_stars:=[]

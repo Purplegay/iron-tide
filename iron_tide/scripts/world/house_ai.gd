@@ -98,6 +98,7 @@ func run_decisions(delta: float, _nbuild: int = 0) -> void:
 	if swarm:
 		_hatch(state,buildings)
 	else:
+		Retail.tick(self,2.0)
 		_manage_base(state,buildings,units)
 	battle.update_ai_strength(house_id,battle.ai_living_count(house_id))
 	_form_wave(state)
@@ -203,11 +204,7 @@ func prepare_air_defense(buildings:Array, difficulty:int) -> float:
 	var id := Tactics.air_defense_order(battle,house_id,difficulty,owned)
 	if battle.side_power_low(house_id): return 0.0
 	if id.is_empty() and owned.has(battle.roster_id("GAWEAP",house_id)) and owned.has(battle.roster_id("GAREFN",house_id)):
-		var choices := ["TESLA","NALASR","NABNKR"] if enemy_base=="soviet" else ["ATESLA"]
-		for defense in choices:
-			if defense not in owned and GameData.ra2_prereq_ok(defense, owned, battle.allied_state, house_id):
-				id=defense
-				break
+		id=Retail.ground_defense(self,owned)
 	var cover := Vector2.INF
 	if id.is_empty() and difficulty==6:
 		cover=Brutal.cover_point(self)
@@ -268,8 +265,9 @@ func next_structure(buildings: Array) -> Dictionary:
 	var owned: Array = battle.owned_building_ids(house_id)
 	var power_id: String = battle.roster_id("GAPOWR",house_id)
 	var soviet: bool = battle.roster_faction(house_id)=="soviet"
-	var plan := ["GAPOWR","GAREFN","GAPILE","GAWEAP"]
-	plan.append_array(["NARADR","NATECH"] if soviet else ["GAAIRC","GATECH"])
+	var plan := []
+	for pair in [["BuildPower","GAPOWR"],["BuildRefinery","GAREFN"],["BuildBarracks","GAPILE"],["BuildWeapons","GAWEAP"],["BuildRadar","GAAIRC"],["BuildTech","GATECH"]]:
+		plan.append(Retail.construction(self,pair[0],pair[1]))
 	var power: Dictionary = battle._side_power(house_id)
 	if power.low: return {} # An existing power order must finish before another is started.
 	for entry in plan:
@@ -283,7 +281,9 @@ func next_structure(buildings: Array) -> Dictionary:
 	var reserve: float = battle.production_price(GameData.get_unit(miner_id),house_id)
 	var extra := Tactics.additional_factory(battle,house_id, BattleRequest.house_difficulty(house_id), owned, reserve)
 	if not extra.is_empty(): return GameData.get_building(extra)
-	var yard:String=battle.roster_id("GAYARD",house_id)
+	var airport:=Retail.airfield(self,owned)
+	if not airport.is_empty(): return GameData.get_building(Power.before_build(self,airport))
+	var yard:String=Retail.construction(self,"BuildNavalYard","GAYARD")
 	# Failed shoreline/ore scans are expensive on native maps. Other build
 	# decisions and interrupted construction stay responsive during the retry.
 	if float(ai_state.get("site_retry",0))<=0:
@@ -292,7 +292,7 @@ func next_structure(buildings: Array) -> Dictionary:
 			if port.is_finite():
 				ai_state.planned_site=port
 				return GameData.get_building(yard)
-		if Economy.refineries(self).size()<2 and Economy.miners(self,false)>=2 and funds>Tactics.committed(battle,house_id)+Economy.reserve(self):
+		if Economy.refineries(self).size()<maxi(2,Retail.quota("refinery",owned.size())) and Economy.miners(self,false)>=2 and funds>Tactics.committed(battle,house_id)+Economy.reserve(self):
 			for outpost in [false,true]:
 				var point:=Economy.placement(self,outpost)
 				if point.is_finite():

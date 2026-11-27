@@ -4,6 +4,7 @@ const Heroes=preload("res://scripts/expedition/heroes.gd")
 const FILE := "user://expedition.itrung"
 const VERSION := 2
 const Army=preload("res://scripts/expedition/army.gd")
+const ReinforcementPlan=preload("res://scripts/expedition/reinforcement_plan.gd")
 const Market=preload("res://scripts/expedition/market.gd")
 const Campaign=preload("res://scripts/expedition/campaign.gd")
 const Growth=preload("res://scripts/expedition/growth.gd")
@@ -149,8 +150,7 @@ func start(country:String,hero:String="",seed_value:int=0,opening:Dictionary={},
 		"stage":1,"phase":"reward","supplies":160,"buffs":{},"licenses":Catalog.basic(country),"catalog":Catalog.roster(country),"frozen":frozen,
 		"reinforcements":[],"survivors":[],"offers":[],"routes":[],"shop":[],"token":"","kits":1,"refreshes":0,"reward_unit":false,"reward_buff":true,"reward_round":"initial","history":[]}
 	next.research=MetaProgress.academy.get("expedition_research",{}).duplicate(true)
-	var logistics_level: int = preload("res://scripts/expedition/research.gd").rank(next,"supply")
-	next.supplies += 5*int(logistics_level>=1)+5*int(logistics_level>=4)+3*int(logistics_level>=8)
+	next.supplies += preload("res://scripts/expedition/research.gd").opening_supplies(next)
 	next.cycle=cycle
 	Army.initialize(next,opening)
 	next.reunion_contacts=gifts.previous_rescues(MetaProgress)
@@ -238,14 +238,14 @@ func grant(next:Dictionary,item:Dictionary) -> void:
 			var paid:Dictionary=next.get_or_add("equipment_paid",{})
 			paid[item.id]=int(paid.get(item.id,0))+int(item.get("paid",0))
 		"unit":
-			var count:=Catalog.squad_size(item.id)
+			var count:=int(item.get("recruit_count",Catalog.squad_size(item.id)))
 			if count>0:Army.add_unit(next,item.id,count)
 		"training":Growth.upgrade(next,item.id)
 		"relic":Relics.grant(next,item.id)
 		"native":Army.Talents.grant(next,item)
 		"specialization":next.specializations[item.id]=str(item.get("branch","a"))
 		"special_unit":
-			var count:=int(item.get("count",1))
+			var count:=int(item.get("recruit_count",item.get("count",1)))
 			if count<=0:return
 			var token:=str(next.id)+":"+str(next.stage)+":"+str(next.special_squads.size())
 			next.special_squads.append({"id":item.id,"token":token,"tier":item.tier,"native_rank":item.get("native_rank",-1),"count":count,"max_count":count})
@@ -269,8 +269,10 @@ func ready(next:Dictionary) -> void:
 	if research_level>=5:next.free_refresh=int(next.get("free_refresh",0))+1
 	if not next.get("research_camp_seen",false):
 		next.research_camp_seen=true
-		if research_level>=9:next.supplies+=3
+		next.supplies+=preload("res://scripts/expedition/research.gd").first_camp_supplies(next)
 		if research_level>=10:next.free_refresh+=1
+	next.erase("targeted_recruits_bought")
+	next.erase("camp_recruits_bought")
 	next.shop_roll=0
 	next.shop=Catalog.shop(next,0)
 	next.event={}
@@ -293,11 +295,17 @@ func buy(index:int,_replace_equipment:String="") -> bool:
 func apply_shelf_purchase(next:Dictionary,index:int) -> int:
 	var item:Dictionary=next.shop[index]
 	next.supply_action="商店购买"
-	var paid:=0 if free_shelf_purchase(next) else int(item.price)
+	var paid:=0 if free_shelf_purchase(next) else Market.shelf_price(next,item)
 	next.erase("free_purchase_stage")
 	next.supplies-=paid
-	next.shop[index].sold=true
+	var recruitment:=Market.is_recruit(item)
+	item.sold=true
+	if recruitment:
+		var bought:Array=next.get_or_add("camp_recruits_bought",[])
+		bought.append(item.id)
+		item.locked=false
 	item=item.duplicate(true)
+	if recruitment:item.recruit_count=Market.recruit_count(next,item)
 	item.paid=paid
 	grant(next,item)
 	return paid
@@ -346,15 +354,17 @@ func purchase_problem(run:Dictionary,index:int) -> String:
 	if run.get("phase","")!="ready":return "请先完成当前奖励或事件"
 	if index<0 or index>=run.get("shop",[]).size():return "商品已变化，请重新选择"
 	var item:Dictionary=run.shop[index]
+	if Market.recruit_bought(run,item):return "本营地已招募过该兵种"
 	if item.sold:return "已售罄"
-	if not Market.recruit_fits(run,item):return "剩余名额不足以招募整队该兵种"
+	if not Market.recruit_fits(run,item):return "该兵种已达持有上限（%d 个）"%Army.limit(item.id)
 	var key:=Market.shop_key(item)
 	for other_index in run.shop.size():
 		if other_index<index and Market.shop_key(run.shop[other_index])==key:return "本店已有同款商品"
 	var problem:=item_problem(run,item)
 	if not problem.is_empty():return problem
 	if item.kind=="buff" and int(run.buffs.get(item.id,0))>=3:return "该装备已满 3 级"
-	if not free_shelf_purchase(run) and int(item.price)>int(run.supplies):return "补给不足 · 还差 %d"%(int(item.price)-int(run.supplies))
+	var price:=Market.shelf_price(run,item)
+	if not free_shelf_purchase(run) and price>int(run.supplies):return "补给不足 · 还差 %d"%(price-int(run.supplies))
 	return ""
 
 func refresh_price() -> int:
@@ -508,9 +518,7 @@ func settle(world,win:bool) -> bool:
 		next.battle_reports.append(report)
 		next.phase="failed"
 		return commit(next)
-	next.survivors=collect(world)
-	next.chrono_discounts=preload("res://scripts/expedition/reinforcement_plan.gd").carry(state,world,next.survivors)
-	next.survivors.append_array(Army.deployment(state).reserve)
+	settle_legion(next,world)
 	next.reinforcements=[]
 	Army.synchronize(next)
 	Heroes.update_wounded(next,world)
@@ -567,14 +575,60 @@ func settle(world,win:bool) -> bool:
 		next.offers=Market.rewards(next)
 	return commit(next)
 
+func settle_legion(next:Dictionary,world,heal:=true) -> void:
+	var survivors:=collect(world,heal)
+	next.chrono_discounts=ReinforcementPlan.carry(state,world,survivors)
+	var returning:Array=survivors + Army.deployment(state).reserve
+	returning.append_array(collect_replacements(world,survivors,returning,heal))
+	next.survivors=returning
+
+func eligible_survivor(world,unit) -> bool:
+	return world.actor_alive(unit) and unit.side=="ally" and unit.unit_id in state.catalog \
+		and not (unit.special.has("expedition_mission_unit") or unit.special.has("expansion_temporary") or unit.special.has("furnace_flak_life") or unit.special.has("hero_wreck") or unit.is_harvester or unit.deploy_building_id()!="")
+
+func survivor_row(unit,heal:bool) -> Dictionary:
+	var promoted:bool = unit.special.get(preload("res://scripts/expedition/red_alert.gd").PROMOTED,false)
+	return {"id":unit.unit_id,"excluded":unit.excluded_from_army_selection,"hp":minf(1.0,unit.hp/maxf(1,unit.max_hp)+(recovery(unit.unit_id) if heal else 0.0)),"rank":1 if promoted else unit.veteran_level,"xp":0.0 if promoted else unit._vet_kills,"alert_start_one":promoted,"hero":unit.special.get("academy_hero",""),"variant":unit.special.get("expedition_variant","")}
+
+func collect_replacements(world,survivors:Array,returning:Array,heal:bool) -> Array:
+	var vacancies:Dictionary={}
+	for row:Dictionary in world.allied_state.get("expedition_legion_initial",[]):
+		if str(row.get("hero","")).is_empty() and str(row.get("variant","")).is_empty():
+			vacancies[row.id]=int(vacancies.get(row.id,0))+1
+	for row:Dictionary in survivors:
+		if vacancies.has(row.id) and str(row.get("hero","")).is_empty() and str(row.get("variant","")).is_empty():
+			vacancies[row.id]-=1
+	# The camp's excess sale counts reserves toward both limits. Backfill must
+	# not create sellable excess or displace already-owned reserves.
+	var counts:Dictionary={}
+	var room:=Campaign.population(int(state.stage))
+	for row:Dictionary in returning:
+		if not str(row.get("hero","")).is_empty():continue
+		counts[row.id]=int(counts.get(row.id,0))+1
+		room-=1
+	if room<=0:return []
+	for id in vacancies:
+		vacancies[id]=mini(int(vacancies[id]),Army.limit(id)-int(counts.get(id,0)))
+	var candidates:Array=[]
+	for unit in world.units:
+		if not eligible_survivor(world,unit) or int(vacancies.get(unit.unit_id,0))<=0:continue
+		if not unit.special.get(ReinforcementPlan.LOCAL_PRODUCTION,false) or unit.special.get(ReinforcementPlan.MEMBER,false) or unit.special.get("expedition_radio_copy",false):continue
+		var row:=survivor_row(unit,heal)
+		if str(row.hero).is_empty() and str(row.variant).is_empty():candidates.append(row)
+	candidates.sort_custom(survivor_before)
+	var result:Array=[]
+	for row:Dictionary in candidates:
+		if int(vacancies[row.id])<=0:continue
+		vacancies[row.id]-=1
+		result.append(row)
+		if result.size()>=room:break
+	return result
+
 func collect(world,heal:=true) -> Array:
 	var result:Array=[]
 	for unit in world.units:
-		if not world.actor_alive(unit) or unit.side!="ally" or not unit.unit_id in state.catalog:continue
-		if not unit.special.get(preload("res://scripts/expedition/reinforcement_plan.gd").MEMBER,false):continue
-		if unit.special.has("expedition_mission_unit") or unit.special.has("expansion_temporary") or unit.special.has("furnace_flak_life") or unit.special.has("hero_wreck") or unit.is_harvester or unit.deploy_building_id()!="":continue
-		var promoted:bool = unit.special.get(preload("res://scripts/expedition/red_alert.gd").PROMOTED,false)
-		result.append({"id":unit.unit_id,"excluded":unit.excluded_from_army_selection,"hp":minf(1.0,unit.hp/maxf(1,unit.max_hp)+(recovery(unit.unit_id) if heal else 0.0)),"rank":1 if promoted else unit.veteran_level,"xp":0.0 if promoted else unit._vet_kills,"alert_start_one":promoted,"hero":unit.special.get("academy_hero",""),"variant":unit.special.get("expedition_variant","")})
+		if not eligible_survivor(world,unit) or not unit.special.get(ReinforcementPlan.MEMBER,false):continue
+		result.append(survivor_row(unit,heal))
 	result.sort_custom(survivor_before)
 	# Queued chronoshift reinforcements never entered the battle, so they cannot
 	# be dead or wounded. Carry each pending unit into the next camp intact.
@@ -597,9 +651,7 @@ func retreat(world) -> bool:
 	next.battle_reports=next.get("battle_reports",[]).duplicate(true);next.battle_reports.append(report)
 	next.supply_action="撤退"
 	next.retreat_used=true;next.supplies-=80
-	next.survivors=collect(world,false)
-	next.chrono_discounts=preload("res://scripts/expedition/reinforcement_plan.gd").carry(state,world,next.survivors)
-	next.survivors.append_array(Army.deployment(state).reserve)
+	settle_legion(next,world,false)
 	next.reinforcements=[]
 	Army.synchronize(next)
 	next.kits=int(world.allied_state.get("expedition_kits",next.kits))
@@ -715,29 +767,23 @@ func excess_sale(run:Dictionary) -> Dictionary:
 	var rows:=Army.inventory(run)
 	rows.sort_custom(dismiss_before)
 	var counts:Dictionary={}
-	var total:=0
 	for row:Dictionary in rows:
 		if not str(row.get("hero","")).is_empty():continue
 		counts[row.id]=int(counts.get(row.id,0))+1
-		total+=1
 	var sold:=0
 	var refund:=0
-	# First remove type excess; only then resolve the chapter population cap.
-	for pass_index in 2:
-		for index in range(rows.size()-1,-1,-1):
-			var row:Dictionary=rows[index]
-			if not str(row.get("hero","")).is_empty():continue
-			var excess:bool=int(counts[row.id])>Army.limit(row.id) if pass_index==0 else total>Campaign.population(int(run.stage))
-			if not excess:continue
-			counts[row.id]-=1;total-=1;sold+=1
-			refund+=Catalog.dismissal_value(row.id)
-			rows.remove_at(index)
+	for index in range(rows.size()-1,-1,-1):
+		var row:Dictionary=rows[index]
+		if not str(row.get("hero","")).is_empty() or int(counts[row.id])<=Army.limit(row.id):continue
+		counts[row.id]-=1;sold+=1
+		refund+=Catalog.dismissal_value(row.id)
+		rows.remove_at(index)
 	return {"rows":rows,"count":sold,"supplies":refund}
 
 func sell_excess_personnel() -> bool:
 	if state.get("phase","")!="ready":return false
 	var sale:=excess_sale(state)
-	if int(sale.count)<=0:error="没有超过兵种或本章人数上限的人员";return false
+	if int(sale.count)<=0:error="没有超过同兵种持有上限的人员";return false
 	var next:=state.duplicate(true)
 	next.survivors=sale.rows
 	next.reinforcements=[]

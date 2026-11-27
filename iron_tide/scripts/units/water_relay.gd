@@ -103,11 +103,3 @@ static func absorb(unit,damage:float) -> float:
 	if state[SHIELD].hp<=0:state.erase(SHIELD)
 	unit.queue_redraw()
 	return damage-taken
-
-static func draw_bar(unit,canvas,rect:Rect2) -> void:
-	if amount(unit)<=0:return
-	var shield:Dictionary=unit.special[KEY][SHIELD]
-	var bar:=Rect2(rect.position+Vector2(0,-5),Vector2(rect.size.x,3))
-	canvas.draw_rect(bar,Color(.04,.15,.2,.9))
-	bar.size.x*=clampf(amount(unit)/maxf(1,float(shield.maximum)),0,1)
-	canvas.draw_rect(bar,Color(.2,1,.9))

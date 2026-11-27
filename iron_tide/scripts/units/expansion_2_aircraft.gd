@@ -137,7 +137,8 @@ static func entries(unit) -> Array:
 static func draw_fields(canvas,world) -> void:
 	for field:Dictionary in world.allied_state.get(FIELDS,[]):
 		if not world.position_visible_to("ally",field.point):continue
+		var radius_cells := P.number("mechanic/ps_burning_payload","radius")
 		var points:=PackedVector2Array()
-		for i in 33:points.append(Iso.dir(field.point+Vector2.from_angle(TAU*i/32)*P.number("mechanic/ps_burning_payload","radius")*R.CELL))
+		for i in 33:points.append(Iso.dir(field.point+Vector2.from_angle(TAU*i/32)*radius_cells*R.CELL))
 		canvas.draw_colored_polygon(points,Color(1,.25,.05,.15));canvas.draw_polyline(points,Color(1,.55,.1,.7),1.5,true)
 		canvas.draw_string(ThemeDB.fallback_font,Iso.dir(field.point),"燃烧 %.1fs"%maxf(0,3-float(field.age)),HORIZONTAL_ALIGNMENT_CENTER,-1,12,Color.ORANGE)

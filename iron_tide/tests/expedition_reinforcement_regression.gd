@@ -4,8 +4,8 @@ const Runtime=preload("res://scripts/expedition/runtime.gd")
 
 func _ready() -> void:
 	output_dir=OS.get_environment("IRON_TIDE_REPORT_DIR")
-	if output_dir.is_empty() or not ProjectSettings.get_setting("application/config/use_custom_user_dir",false):get_tree().quit(2);return
-	var run:Dictionary={"active_roster":["E1","MTNK"],"reinforcements":[{"id":"MTNK","count":2},{"id":"E1","count":3}],"special_squads":[],"heroes":[],"survivors":[],"frozen":{"hero_training":{"E1":{"firepower":3,"health":5}},"expedition_hero_profile":{"academy":{"hero_builds":{"E1":999}}}}}
+	if output_dir.is_empty() or (not ProjectSettings.get_setting("application/config/use_custom_user_dir",false) and OS.get_environment("IRON_TIDE_TEST_PROFILE")!=OS.get_user_data_dir()):get_tree().quit(2);return
+	var run:Dictionary={"stage":1,"active_roster":["E1","MTNK"],"reinforcements":[{"id":"MTNK","count":2},{"id":"E1","count":3}],"special_squads":[],"heroes":[],"survivors":[],"frozen":{"hero_training":{"E1":{"firepower":3,"health":5}},"expedition_hero_profile":{"academy":{"hero_builds":{"E1":999}}}}}
 	check(Plan.delay_for("E1","",run)==Plan.unit_cost("E1")*0.3,"price / 100 / 2 minutes")
 	check(Plan.delay_for("E1","E1",run)==Plan.delay_for("E1","",run),"hero uses the same cost-based arrival timer as ordinary units despite high training")
 	var plan:Array=Plan.build(run)
@@ -91,6 +91,52 @@ func _ready() -> void:
 	check(Ra2Sfx.play_eva(Ra2Sfx.REINFORCEMENTS_ARRIVED,"soviet",0) and Ra2Sfx._eva_player.stream.resource_path.ends_with("csof038.wav"),"Soviet commander receives Soviet recording")
 	runtime.free()
 	await finish()
+	await check_local_replacements()
 	FileAccess.open(output_dir.path_join("result.json"),FileAccess.WRITE).store_string(JSON.stringify({"checks":checks,"failed":failed},"  "))
 	print("REINFORCEMENTS checks=",checks.size()," failed=",failed)
 	get_tree().quit(0 if failed==0 else 1)
+
+func check_local_replacements() -> void:
+	start(MatchRules.EXTENDED)
+	BattleRequest.combat_context.expedition={"stage":1,"catalog":["E1","MTNK"],"licenses":["E1","MTNK"],"buffs":{},"condition":"","trait_buffs":{}}
+	var e1:Dictionary={"id":"E1","hero":"","variant":"","hp":1.0,"rank":0,"xp":0.0,"due":30.0}
+	var tank:Dictionary=e1.duplicate();tank.id="MTNK"
+	Expedition.state={"stage":1,"catalog":["E1","MTNK"],"active_roster":["E1"],"special_squads":[],"survivors":[e1.duplicate(),e1.duplicate()],"reinforcements":[],"trait_buffs":{}}
+	battle.allied_state.expedition_legion_initial=[e1.duplicate(),e1.duplicate(),tank.duplicate()]
+	battle.allied_state.expedition_reinforcement_plan=[e1.duplicate()]
+	battle.allied_state.expedition_reinforcement_clock=30.0
+	var base_pos:Vector2=battle.player_start()
+	var barracks=battle._place_building("GAPILE","ally",base_pos+Vector2(280,0),true)
+	barracks._buildup_play=-1.0
+	var accepted:bool=barracks.enqueue("E1") and barracks.enqueue("E1")
+	check(accepted,"real barracks can queue two local infantry",barracks.queue_block_reason("E1"))
+	barracks._tick_unit_queue(1000.0,"E1")
+	var locals:Array=battle.units.filter(func(unit):return unit.special.get(Plan.LOCAL_PRODUCTION,false))
+	if not locals.is_empty():
+		locals[0].position=base_pos+Vector2(0,400)
+		locals[0]._grant_veteran(1,false)
+	barracks._tick_unit_queue(1000.0,"E1")
+	locals=battle.units.filter(func(unit):return unit.special.get(Plan.LOCAL_PRODUCTION,false))
+	check(locals.size()==2,"real queue completion marks both units as locally produced")
+	var map_tank=battle.spawn_unit("MTNK","ally",base_pos+Vector2(0,480))
+	check(not map_tank.special.get(Plan.LOCAL_PRODUCTION,false),"non-queue map spawn is not local production")
+	var next:=Expedition.state.duplicate(true)
+	Expedition.settle_legion(next,battle,false)
+	check(next.survivors.size()==2 and next.survivors.all(func(row):return row.id=="E1"),"one pending infantry and one replacement return; no second local or map tank")
+	check(next.survivors.any(func(row):return row.rank==1),"veteran local gets the only replacement slot")
+	check(is_equal_approx(float(next.chrono_discounts.get("E1::",-1)),5.0),"original loss ratio is calculated before backfill")
+	check(Plan.build(next).size()==2,"the replacement joins next stage timed plan")
+	check(Expedition.excess_sale(next).count==0,"replacement does not produce sellable excess")
+	for i in 8:Expedition.state.survivors.append(e1.duplicate())
+	Expedition.state.deployment_counts={"E1":2}
+	Expedition.settle_legion(next,battle,false)
+	var sale:=Expedition.excess_sale(next)
+	check(next.survivors.size()==9 and sale.count==1,"already-owned excess is preserved, local production adds none")
+	Expedition.state.survivors=[e1.duplicate(),e1.duplicate()]
+	for id in ["GGI","SNIPE","SENGINEER"]:
+		for i in 8:
+			var reserve:=e1.duplicate();reserve.id=id
+			Expedition.state.survivors.append(reserve)
+	Expedition.settle_legion(next,battle,false)
+	check(next.survivors.size()==25 and next.survivors.filter(func(row):return row.id=="E1").size()==1,"chapter population cap prevents local backfill without removing reserves")
+	await finish()

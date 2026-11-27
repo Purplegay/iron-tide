@@ -1,0 +1,56 @@
+{
+ "EVA_PsychicDominatorDetected": {
+  "sample": "ceva125",
+  "source": "langmd.mix > audiomd.mix > 0xe8636cee",
+  "sha256": "a8511f7132b6adb26455fa85757b3c11dc29d2845bb972805a30cd43930ec05d",
+  "text": ""
+ },
+ "EVA_GeneticMutatorDetected": {
+  "sample": "ceva128",
+  "source": "langmd.mix > audiomd.mix > 0x54fd7f30",
+  "sha256": "032d5ef018d9023dbacd1142e2546645d9c36dee5aeb523f46a4cb4d216cca71",
+  "text": ""
+ },
+ "Mis_xA7_EvaBuildUpQuickly": {
+  "sample": "xa7ev03",
+  "source": "langmd.mix > audiomd.mix > 0xdd11334a",
+  "sha256": "02132f166b56cf68bdd2a12bc3e782aa136afca29e7701543cb4932174170507",
+  "text": ""
+ },
+ "Mis_xA7_EvaUnholyAlliance": {
+  "sample": "xa7ev05",
+  "source": "langmd.mix > audiomd.mix > 0xb48d057",
+  "sha256": "f7d0d7d8e8b121ad17a1a75d671e517132645dcec7b2f1c9c50feceec3bcc06a",
+  "text": ""
+ },
+ "Mis_xA7_YuriTaunt": {
+  "sample": "xa7yu01",
+  "source": "langmd.mix > audiomd.mix > 0x54a224c7",
+  "sha256": "c8c62812cf61c11e4c268518a36b4dd4cefedcd7313ca3ce1a3b4998d41417e4",
+  "text": "So you finally located me?  Let us end this."
+ },
+ "Mis_xA7_EvaBoomerThreat": {
+  "sample": "xa7ev01",
+  "source": "langmd.mix > audiomd.mix > 0x90d99241",
+  "sha256": "b25b093a8ed4cc8dd871769c3d6d24cf796b9cef16be0839b3fab61e2ceb57f5",
+  "text": ""
+ },
+ "Mis_xA7_EvaBriefing01": {
+  "sample": "xa7ev02",
+  "source": "langmd.mix > audiomd.mix > 0x164de0ef",
+  "sha256": "3a8c71f764a27274acf7f62a59af835a55de59539c137e05f95a10c08199a61e",
+  "text": ""
+ },
+ "Mis_xA7_EvaProtectSovietBase": {
+  "sample": "xa7ev06",
+  "source": "langmd.mix > audiomd.mix > 0x8ddca2f9",
+  "sha256": "73d3ee65a32cc4d2d6edcf8e8e47fd181974ad99de7a3762d7dbc56d78111d4c",
+  "text": ""
+ },
+ "Mis_xS4_YuriTacticsTaunt": {
+  "sample": "xs4yu02",
+  "source": "langmd.mix > audiomd.mix > 0xcf9b9060",
+  "sha256": "058f8549d142afb0aad42fd22292f91c0cc2ee528557c5053977623e09768617",
+  "text": "I know what your tactics are, General and I can tell you they wont work."
+ }
+}

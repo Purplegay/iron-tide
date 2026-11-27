@@ -2,6 +2,7 @@ extends CanvasLayer
 ## Shared battle/menu slot browser. Opening is modal and preserves the previous pause state.
 var battle = null
 var root: Control
+var slots_scroll: ScrollContainer
 var slots_box: VBoxContainer
 var status: Label
 var confirmation: ConfirmationDialog
@@ -33,9 +34,14 @@ func _ready() -> void:
 	panel.add_child(box)
 	box.add_child(UiKit.make_label("对局存档", 23, UiKit.COL_ACCENT_2))
 	box.add_child(UiKit.make_label("每 60 秒自动保存 · F5 快存 · F9 读档 · 读取后空格继续", 13, UiKit.COL_DIM))
+	slots_scroll = ScrollContainer.new()
+	slots_scroll.custom_minimum_size.y = 440
+	slots_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	box.add_child(slots_scroll)
 	slots_box = VBoxContainer.new()
+	slots_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	slots_box.add_theme_constant_override("separation", 10)
-	box.add_child(slots_box)
+	slots_scroll.add_child(slots_box)
 	status = UiKit.make_label("", 13, UiKit.COL_WARN)
 	status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	box.add_child(status)
@@ -66,6 +72,7 @@ func open() -> void:
 	root.show()
 	status.text = ""
 	refresh()
+	slots_scroll.scroll_vertical = 0
 
 func close() -> void:
 	confirmation.hide()

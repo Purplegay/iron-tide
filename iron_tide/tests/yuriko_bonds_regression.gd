@@ -402,11 +402,27 @@ func run() -> void:
 	var capped:=MetaProgress.yuriko_school.duplicate(true)
 	capped.affinity=99
 	capped.affinity_choices=[]
-	capped.affinity_choices.resize(99)
-	capped.affinity_choices.fill("duration")
+	for key: String in Book.BONUSES:
+		for i in (19 if key in ["health", "attack"] else 20):
+			capped.affinity_choices.append(key)
+	# A legacy point over the duration cap should become available again.
+	capped.affinity_choices.append("duration")
 	capped.gifts.cola=2
-	check(Book.commit(capped) and not Bonds.give("cola").is_empty() and Book.affinity_level()==100,"gift reaches level 100")
-	check(Book.choose_bonus(100,Book.bonus_options()[0]) and not Bonds.give("cola").is_empty() and Book.affinity_level()==100 and Book.bonus_options().is_empty(),"level 100 offers a final choice and no further upgrades")
+	check(Book.commit(capped) and Book.affinity_level()==99 and Book.next_bonus_level()==99,"legacy overflow restores one unspent choice without changing affinity")
+	check(Book.bonus_counts().duration==20 and Book.snapshot().affinity_bonuses.duration==20,"legacy overflow excluded from counts and battle snapshot")
+	var remaining:=Book.bonus_options()
+	check(remaining.size()==2 and "health" in remaining and "attack" in remaining and not Book.choose_bonus(99,"duration"),"only two non-maxed attributes are offered and capped picks are rejected")
+	view.hub(4)
+	check(button(view.stage,Book.BONUSES.duration)==null and button(view.stage,Book.BONUSES.attack+"（19/20 级）")!=null,"real gift screen omits maxed attributes and shows current ranks")
+	var health_pick:=button(view.stage,Book.BONUSES.health+"（19/20 级）")
+	if check(health_pick!=null,"health is selectable at 19 ranks"):
+		health_pick.pressed.emit()
+	check(Book.bonus_counts().health==20 and Book.bonus_options().is_empty(),"health reaches 20 and no choice remains at affinity 99")
+	MetaProgress.load_save()
+	check(MetaProgress.yuriko_school.affinity_choices.count("duration")==20 and Book.next_bonus_level()==100,"corrected picks persist on reload")
+	check(not Bonds.give("cola").is_empty() and Book.affinity_level()==100 and Book.bonus_options()==["attack"],"level 100 offers the only remaining attribute")
+	check(Book.choose_bonus(100,"attack") and not Bonds.give("cola").is_empty() and Book.affinity_level()==100 and Book.bonus_options().is_empty(),"level 100 takes the final choice and no further upgrades")
+	check(Book.bonus_counts().size()==5 and Book.bonus_counts().values().all(func(value): return value==20),"all five attributes reach exactly 20")
 	var at_cap:Dictionary=Bonds.stories.back()
 	for step in 32:
 		if MetaProgress.yuriko_school.read.has(at_cap.id):break

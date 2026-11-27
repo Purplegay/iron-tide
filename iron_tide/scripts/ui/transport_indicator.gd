@@ -47,26 +47,6 @@ static func paint(unit, canvas: Node2D) -> void:
 	if slots.is_empty(): return
 	_paint_slots(canvas, screen_origin(unit, canvas), slots)
 
-static func garrison_slots(building) -> Array[String]:
-	var slots: Array[String] = []
-	if not (building.selected or building.hovered) or building.side != "ally" or not AlliedAbilities.alive(building) or building.under_construction:
-		return slots
-	var capacity := preload("res://scripts/units/civilian_orders.gd").slots(building)
-	if capacity == 0: return slots
-	for passenger in building.special.get("occupants", []):
-		if AlliedAbilities.alive(passenger) and passenger.embarked_in == building:
-			slots.append("green")
-	while slots.size() < capacity: slots.append("empty")
-	return slots
-
-static func paint_garrison(building, canvas: Node2D) -> void:
-	var slots := garrison_slots(building)
-	if slots.is_empty(): return
-	var zoom: float = canvas.get_viewport().get_camera_2d().zoom.x
-	var point := canvas.get_canvas_transform() * Vector2(building.global_position)
-	point += Vector2(-0.5 * (slots.size() * STRIDE - 1), (-building.radius * 2.9 + 6.0) * zoom + 2.0)
-	_paint_slots(canvas, point.round(), slots)
-
 static func _paint_slots(canvas: Node2D, origin: Vector2, slots: Array) -> void:
 	canvas.draw_set_transform_matrix(canvas.get_global_transform_with_canvas().affine_inverse())
 	var old_filter := canvas.texture_filter

@@ -102,7 +102,7 @@ static func placement(ai, step_towards_ore := false) -> Vector2:
 
 static func expand(ai) -> bool:
 	var world = ai.battle
-	if refineries(ai).size() >= 2: return false
+	if refineries(ai).size() >= maxi(2,ai.Retail.quota("refinery",world.owned_building_ids(ai.house_id).size())): return false
 	if not world.owned_building_ids(ai.house_id).has(ai.battle.roster_id("GAWEAP", ai.house_id)) or miners(ai, false) < 2: return false
 	if ai.funds - Tactics.committed(world,ai.house_id) - reserve(ai) <= 0.0: return false
 	var id: String = world.roster_id("GAREFN",ai.house_id)
@@ -118,7 +118,7 @@ static func expand(ai) -> bool:
 
 static func manage(ai) -> void:
 	for unit in ai.battle.units:
-		if not ai.battle.actor_alive(unit) or unit.side != ai.house_id or not unit.is_harvester or unit.embarked_in != null or unit.repairing: continue
+		if not ai.battle.actor_alive(unit) or unit.side != ai.house_id or not unit.is_harvester or unit.special.has("yr_skirmish_team") or unit.embarked_in != null or unit.repairing: continue
 		unit.auto_harvest_enabled = true
 		if unit.harvest_state in ["idle", ""] and not unit.has_move_order:
 			unit.cancel_stance()

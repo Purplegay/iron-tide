@@ -383,7 +383,7 @@ static func shoot(unit, target, weapon: Dictionary) -> bool:
 				target.queue_redraw()
 			return true
 		"BORIS":
-			if target is Building:
+			if boris_airstrike_target(unit, target):
 				designate(unit,target)
 				return true
 		"SQD":
@@ -497,6 +497,10 @@ static func squeeze(host, delta: float) -> void:
 		host.receive_hit(CombatMath.full_damage(gun, host.armor, squid.bonuses, null, host.ra2_armor), "melee", squid.bonuses, squid, gun.ra2_warhead)
 
 
+static func boris_airstrike_target(unit, target) -> bool:
+	return unit.unit_id == "BORIS" and is_instance_valid(target) and target is Building and not target.is_explosive_barrel()
+
+
 static func designate(unit, target) -> void:
 	if preload("res://scripts/units/boris_sortie.gd").rank(unit)>=0 and preload("res://scripts/units/boris_sortie.gd").occupied(unit):return
 	if target.special.has("airstrike_mark") or target.special.has("airstrike_left"): return
@@ -517,7 +521,7 @@ static func redirect_wing(previous) -> bool:
 	var spotter = mark.get("spotter")
 	if not AlliedAbilities.alive(spotter) or spotter.embarked_in != null or not spotter.attack_ordered: return false
 	var next = spotter.attack_target
-	if not AlliedAbilities.alive(next) or not next is Building or next == previous or next.special.has("airstrike_mark"): return false
+	if not AlliedAbilities.alive(next) or not boris_airstrike_target(spotter, next) or next == previous or next.special.has("airstrike_mark"): return false
 	if not spotter._weapon_target_valid(next): return false
 	var redirected := false
 	for jet in mark.get("jets",[]):

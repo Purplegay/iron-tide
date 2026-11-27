@@ -11,6 +11,8 @@ const ReaperSplit = preload("res://scripts/units/ra3_reaper_split.gd")
 const SovietSpecials = preload("res://scripts/units/soviet_specials.gd")
 const TankHero = preload("res://scripts/units/tank_hero.gd")
 const SovietWeapons = preload("res://scripts/units/soviet_advanced.gd")
+const MagneticWave = preload("res://scripts/core/yr_magnetic_wave.gd")
+const MagnetPull = preload("res://scripts/units/yr_magnetron_pull.gd")
 ## 通用作战单位。数据来自 GameData，加成来自 MetaProgress。
 ## 行为：待机 / 移动 / 攻击 / 采集。寻敌与决策做了节流以支撑上百单位。
 ## 建模：全部程序化绘制（多边形 + 明暗分层 + 面板缝线 + 阵营涂装），带行进/开火动画。
@@ -145,6 +147,9 @@ var _shadow_draw_rect := Rect2()
 var _shadow_draw_texture: Texture2D
 var _seq: Dictionary = {}           # (D-2) 步兵帧序（art.ini [<image>Sequence] 导出）
 var _dying := 0.0                   # (D-2) 阵亡动画剩余时间
+# Sapper damage resolves immediately; only the wreck's presentation waits.
+const SAPPER_FLASH_SECONDS := 2.0 / 15.0
+var _sapper_flash_left := 0.0
 const InfantryIdle = preload("res://scripts/units/infantry_idle.gd")
 var idle_pose: InfantryIdle
 var _fire_anim_time := -1.0
@@ -840,7 +845,7 @@ func _loadout_weapon_for_target(target) -> Dictionary:
 	if unit_id in ["YTNK","STLN","DNOA"] and not embarked_in is Building:
 		var gun := HollywoodInfantry.choose(self,target)
 		return OpenTopped.weapon(self,gun) if embarked_in is Unit else gun
-	if unit_id == "BORIS" and is_instance_valid(target) and target is Building: return data.special_weapon
+	if unit_id == "BORIS" and SovietSpecials.boris_airstrike_target(self, target): return data.special_weapon
 	if unit_id == "SQD" and is_instance_valid(target) and target is Unit and SovietSpecials.organic(target):
 		return data.get("elite_special_weapon", data.special_weapon) if veteran_level >= 2 else data.special_weapon
 	if embarked_in is Building or NATIVE_WEAPON_RESOLVERS.has(unit_id):
@@ -958,6 +963,13 @@ func _request_pose_redraw() -> void:
 	_combat_world.pending_pose_redraws.append(self)
 
 func _physics_process(delta: float) -> void:
+	if _sapper_flash_left > 0.0:
+		_sapper_flash_left = maxf(0.0, _sapper_flash_left - delta)
+		if _sapper_flash_left <= 0.000001:
+			_sapper_flash_left = 0.0
+			_play_vehicle_death_flash_end()
+			queue_free()
+		return
 	if yuriko_model != null: yuriko_model.sync_actor(self,delta)
 	if special.has("psi_crush"):preload("res://scripts/units/yuriko.gd").crush_pose(self,delta)
 	if special.has("psi_holder") or special.has("psi_flight") or special.has("psi_air_pull") or special.has("psi_burst_push"):
@@ -1102,7 +1114,11 @@ func _physics_process(delta: float) -> void:
 		OpenTopped.tick(self, delta)
 		return
 	AlliedAbilities.tick_actor(self, delta)
-	if special.has("chaos_seconds") or special.has("magnet_seconds") or special.has("mind_links"):
+	if special.has(MagnetPull.KEY):
+		MagnetPull.tick(self, delta)
+		return
+	if special.erase("magnet_seconds"): special.erase("magnet_source") # Old ground-drag saves.
+	if special.has("chaos_seconds") or special.has("mind_links"):
 		preload("res://scripts/units/head_games_weapons.gd").tick(self,delta)
 	if data.has("soviet_ra3"):
 		preload("res://scripts/units/ra3_soviet.gd").tick(self,delta)
@@ -1261,9 +1277,12 @@ func _physics_process(delta: float) -> void:
 		aim_dir = Vector2.RIGHT.rotated(turret_angle)
 	if repairing or (is_harvester and weapon.is_empty()):
 		_cancel_burst()
-	else:
+	# Skip dispatch only when the live firing state proves there is no clock work.
+	elif _burst_left > 0 or is_instance_valid(attack_target) or data.has("soviet_ra3") or unit_id == Ra3Expansion.HARBINGER:
 		_advance_firing(delta, fire_clock_before, fire_target_before, fire_clock_rate)
-	_crush_tick(delta)
+	_crush_cd = maxf(0.0, _crush_cd - delta)
+	if _crush_cd <= 0.0 and not velocity.length() < 18.0 and unit_id != "R3APOC" and _mv("crusher", false) == true:
+		_crush_contacts()
 
 	# 表现层动画重绘：选中/悬停/行进/开火/血条残影与白闪时逐帧刷新
 	var moving := velocity.length() > 4.0
@@ -1280,7 +1299,7 @@ func decorate_tick(delta: float) -> void:
 		_fire_anim_time += delta
 		if _fire_anim_time >= float(_seq.get(_fire_sequence(), {}).get("per", 0)) / 16.0:
 			_fire_anim_time = -1.0
-		_request_pose_redraw()
+		if not _pose_redraw_pending: _request_pose_redraw()
 	if speed > 4.0:
 		_track_phase = fmod(_track_phase + delta * (speed / maxf(20.0, radius * 3.0)), 1.0)
 	if unit_id != "SQD":
@@ -1349,10 +1368,13 @@ func _process_combat(delta: float) -> void:
 			if has_target:
 				# Ordinary weapons already expose their live range on the unit.
 				# Naval contact and dual-weapon selection still resolve per target.
-				if unit_id == "DRED" or unit_id == "DEST" or data.has("anti_air_weapon"):
+				var dual_weapon := data.has("anti_air_weapon")
+				# Cargo was excluded above. Only the special naval cases and an
+				# unresolved dual weapon still need the general range resolver.
+				if unit_id == "DRED" or (unit_id == "DEST" and NavalContact.underwater_type(target)) or (dual_weapon and live_weapon.is_empty()):
 					reach = OpenTopped.command_range(self, target, live_weapon, [], false)
 				else:
-					reach = attack_range
+					reach = float(live_weapon.get("range", attack_range)) if dual_weapon else attack_range
 				if special.has("studio"):reach+=StudioTalents.range_bonus(self,target)
 	var dist := CommandoCombat.distance_to(self, target) if has_target else 0.0
 	var in_range := has_target and dist <= reach and dist >= min_range
@@ -1676,10 +1698,10 @@ func _chase_target(target_pos: Vector2, delta: float, retaliation := false) -> v
 func _move_toward(p: Vector2, delta: float, use_field: bool = true) -> void:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(3)
 	var dir := _steer_dir(p, use_field)
-	if use_field and not special.has("bridge_traffic_route"): dir = _local_traffic.bridge_direction(self,dir)
+	if use_field and not special.has("bridge_traffic_route") and not is_air and not is_naval: dir = _local_traffic.bridge_direction(self,dir)
 	velocity = dir * _ramped_speed(delta)
 	apply_separation(delta)
-	_avoid_obstacles(delta)
+	if not is_air and not is_naval: _avoid_obstacles(delta)
 	_align_drive_velocity(delta)
 
 ## move 字段读取（带缓存）：data["move"][key]，缺则返回 def
@@ -1767,6 +1789,9 @@ func _crush_tick(delta: float) -> void:
 		return
 	if unit_id=="R3APOC" or not (_mv("crusher", false) == true):
 		return
+	_crush_contacts()
+
+func _crush_contacts() -> void:
 	_crush_cd = 0.15
 	# 注意："allies"/"enemies" 是【自己这一侧】的组名（见 apply_separation）；要碾压的是敌方，
 	# 所以 ally 侧要扫 "enemies"。
@@ -1775,10 +1800,11 @@ func _crush_tick(delta: float) -> void:
 	var local_search:bool=world is Battle and world.units.size()>=96
 	var contacts:Array=world.neighborhood.nearby(global_position,radius+world.neighborhood.max_unit_radius+4.0) if local_search else get_tree().get_nodes_in_group(group)
 	for e in contacts:
-		if not is_instance_valid(e) or e == self or (local_search and not e.is_in_group(group)):
+		if not is_instance_valid(e) or e == self:
 			continue
 		if e.get("crushable") != true or e.get("is_air") == true:
 			continue
+		if local_search and not e.is_in_group(group): continue
 		var hpv = e.get("hp")
 		if hpv == null or float(hpv) <= 0.0:
 			continue
@@ -2139,6 +2165,10 @@ func _face(p: Vector2) -> void:
 # inside the original interval its wait is no longer than the former policy.
 func _target_refresh_interval() -> float:
 	if side == "ally" or attack_ordered or _return_timer > 0.0: return TARGET_REFRESH
+	if special.has("yr_skirmish_team") and not is_instance_valid(attack_target):
+		var delays: Dictionary = preload("res://data/ra2/retail_skirmish.json").data.scan_delay
+		var ticks: int = int(delays.area_guard if special.has("yr_flak_post") else delays.normal)
+		return float(ticks + int(Engine.get_physics_frames() % 3))/BattleClock.RULE_TICKS_PER_SECOND
 	if not is_instance_valid(attack_target) and (has_move_order or attack_move): return TARGET_REFRESH
 	var world := _battle_world()
 	if world == null or world.units.size() < 128: return TARGET_REFRESH
@@ -2161,8 +2191,23 @@ func _automatic_target_allowed(target) -> bool:
 	var retaliating: bool = _return_timer > 0.0 and target == special.get("retaliation_target")
 	if target is Building: return retaliating
 	if not target is Unit: return false
+	if special.has("peregrine") and preload("res://scripts/units/peregrine.gd").active(self): return true
 	var raw: Dictionary = GameData.ra2_source_units.get(unit_id, {}).get("extra", {})
 	return retaliating or GameData._ra2_flag(raw.get("CanPassiveAquire", true))
+
+func _mission_allows_retaliation() -> bool:
+	if not BattleRequest.is_ai_house(side): return true
+	var world := _battle_world()
+	if world == null or not world.skirmish: return true
+	var missions: Dictionary = preload("res://data/ra2/retail_skirmish.json").data.missions
+	if is_instance_valid(logistics.boarding) or special.get("action") in ["allied_garrison","allied_infiltrate"]: return missions.Enter
+	if special.get("action")=="allied_engineer": return missions.Capture
+	if special.has("campaign_area_guard"): return missions["Area Guard"]
+	if is_harvester and not has_move_order and not attack_ordered and not patrolling: return missions.Harvest
+	if patrolling or special.get("yr_skirmish_team") == "patrol": return missions.Patrol
+	if attack_ordered: return missions.Attack
+	if has_move_order: return missions.Move
+	return missions.Guard
 
 ## A hit can pull an idle defender two cells past weapon reach. Native GuardRange
 ## is a scan radius; use a larger explicit value without extending the weapon.
@@ -2197,7 +2242,9 @@ func _refresh_target() -> void:
 	if special.has("commando_resume") and (not AlliedAbilities.alive(attack_target) or not _weapon_domain_valid(attack_target)):
 		var resume: Vector2 = special.commando_resume
 		order_move(resume, true)
-	if (logistics.ammo_max > 0 or unit_id in ["CARRIER","V3"]) and not attack_ordered:
+	# Peregrine stays airborne and reloads without an airport sortie order.
+	var peregrine_guard := special.has("peregrine") and preload("res://scripts/units/peregrine.gd").active(self)
+	if (logistics.ammo_max > 0 or unit_id in ["CARRIER","V3"]) and not attack_ordered and not peregrine_guard:
 		attack_target = null
 		return
 	if weapon.is_empty() or (fire_stance == "none" and not attack_ordered):
@@ -2250,8 +2297,18 @@ func _refresh_target() -> void:
 	var check_cover: bool = cover_world is Battle and not cover_world.wall_cells.is_empty()
 	# For a fixed-range weapon all candidate units share the same search distance.
 	# Preserve per-target ranges for passengers, dedicated AA and naval weapons.
-	var cargo_range := not logistics.passengers.is_empty() and AlliedAbilities.flag(self, "OpenTopped")
-	var fixed_range := unit_id not in ["BSUB", "DRED", "DEST","YTNK"] and not data.has("anti_air_weapon") and not cargo_range and not special.has("peregrine")
+	var variable_platform := unit_id in ["BSUB", "DRED", "DEST", "YTNK"]
+	var dual_weapon := data.has("anti_air_weapon")
+	var peregrine := special.has("peregrine")
+	var destroyer := unit_id == "DEST"
+	var simple_platform := not peregrine and (destroyer or (dual_weapon and not variable_platform))
+	var loaded := not logistics.passengers.is_empty()
+	var open_topped := (loaded or simple_platform) and AlliedAbilities.flag(self, "OpenTopped")
+	var cargo_range := loaded and open_topped
+	var fixed_range := not variable_platform and not dual_weapon and not cargo_range and not peregrine
+	var direct_range := simple_platform and not open_topped
+	var defer_destroyer_weapon := direct_range and destroyer and not dual_weapon
+	var hold_fire_range := hold_position or (fire_stance in ["defend", "return"] and not attack_move)
 	var outer_range := INF
 	if unit_id == "BSUB":
 		outer_range = float(data.shore_weapon.range)
@@ -2300,6 +2357,7 @@ func _refresh_target() -> void:
 	preload("res://scripts/world/battle_call_counters.gd").iterations(2,contacts.size())
 	# Resolve once only for weapons whose selection is independent of candidates.
 	# This cache lives for this synchronous query, never across updates.
+	var aegis_ground_gate := unit_id == "AEGIS" and not cargo_range and _weapon_target_rule == WeaponTargetRule.STANDARD
 	var share_weapon := fixed_range and (embarked_in == null or OpenTopped.query_weapon_reusable(self)) and unit_id not in ["BORIS","SQD","STLN","DNOA"] and not NATIVE_WEAPON_RESOLVERS.has(unit_id) and not special.has("academy_hero")
 	var shared_weapon: Dictionary = {}
 	var reject_air := false
@@ -2326,10 +2384,24 @@ func _refresh_target() -> void:
 		# The resolved weapon is target-independent here. Read flight state live.
 		if reject_air and e is Unit and e.is_air_target(): continue
 		var d := CommandoCombat.distance_to(self, e)
-		var candidate_weapon: Dictionary = {} if fixed_range else _weapon_for_target(e)
-		var reach := attack_range if fixed_range else OpenTopped.command_range(self, e, candidate_weapon, cargo_domain, null, cargo_weapons)
-		var search_range := reach if hold_position or (fire_stance in ["defend", "return"] and not attack_move) else maxf(sight, reach)
-		if d < min_range or (d > search_range and not _can_pursue_attacker(e, reach)):
+		# A mobile contact outside firing range loses 16 points. Once it
+		# cannot beat the current score (even with all bonuses), skip weapon
+		# resolution, visibility/domain and cover checks for this contact.
+		# DTRUCK uses edge distance; buildings can use a separate C4 score.
+		if attack_move and not shared_weapon.is_empty() and best_score > TacticalTargeting.OUTSIDE_RANGE_SCORE_CEILING and e is Unit and unit_id != "DTRUCK" and d > attack_range:
+			continue
+		# A normal destroyer contact uses attack_range regardless of its weapon.
+		# Underwater contacts keep live sonar range and resolve as before.
+		var deferred_weapon := defer_destroyer_weapon and not NavalContact.underwater_type(e)
+		var candidate_weapon: Dictionary = {} if fixed_range or deferred_weapon else _weapon_for_target(e)
+		var reach: float
+		if deferred_weapon or (not defer_destroyer_weapon and direct_range and (not dual_weapon or not candidate_weapon.is_empty()) and (not destroyer or not NavalContact.underwater_type(e))):
+			reach = candidate_weapon.get("range", attack_range) if dual_weapon else attack_range
+		else:
+			reach = float(candidate_weapon.get("range", 0.0)) if peregrine_guard else (attack_range if fixed_range else OpenTopped.command_range(self, e, candidate_weapon, cargo_domain, null, cargo_weapons))
+		var minimum := float(candidate_weapon.get("min_range", min_range)) if peregrine_guard else min_range
+		var search_range := reach if peregrine_guard or hold_fire_range else maxf(sight, reach)
+		if d < minimum or (d > search_range and not _can_pursue_attacker(e, reach)):
 			continue
 		if candidate_weapon.is_empty():
 			if share_weapon and not shared_weapon.is_empty():
@@ -2340,6 +2412,11 @@ func _refresh_target() -> void:
 				if share_weapon:
 					shared_weapon = candidate_weapon
 					reject_air = _scan_rejects_air(shared_weapon)
+		# Keep the unlocked AA gun available while the ground missile magazine refills.
+		if peregrine_guard and logistics.ammo <= 0 and not candidate_weapon.get("peregrine_aa", false): continue
+		# Use the current projectile and flight state, not the target type.
+		if aegis_ground_gate and e is Unit and not candidate_weapon.is_empty() and GameData.projectile_blocks_ground(str(candidate_weapon.get("ra2_projectile", ""))) and not e.is_air_target():
+			continue
 		var eligible: bool = cargo_domain[0] if cargo_range else _weapon_domain_valid(e, false, candidate_weapon)
 		if not eligible:
 			continue
@@ -2411,7 +2488,7 @@ func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Diction
 		else:
 			air = target.is_air_target() if target.has_method("is_air_target") else target.get("is_air") == true
 		if air:
-			if not CombatMath.can_hit_air(active): return false
+			if not CombatMath.can_hit_air(active) and not (unit_id == "TELE" and victim_is_own_magnetic_target(target)): return false
 		else:
 			if GameData.projectile_blocks_ground(str(active.get("ra2_projectile", ""))): return false
 			if GameData.unit_blocks_land_targeting(unit_id) and target.get("is_naval") != true and not (target is Building and target.data.get("water_bound", false)):
@@ -2505,9 +2582,10 @@ func _visual_lift() -> float:
 	if special.has("psi_air_pull"): return float(special.psi_air_pull.height)
 	if special.has("para_height"): return float(special.para_height)
 	if unit_id in ["V3ROCKET", "DMISL", "CMISL"]: return logistics.air_lift
+	var magnetic_height := float(special[MagnetPull.KEY].height) if special.has(MagnetPull.KEY) else 0.0
 	if special.has("hollywood_on_deck"):
-		return -Iso.dir(bridge_contact_offset()).y + hover_motion.lift
-	return flight.visual_lift() if is_air else hover_motion.lift
+		return -Iso.dir(bridge_contact_offset()).y + hover_motion.lift + magnetic_height
+	return (flight.visual_lift() if is_air else hover_motion.lift) + magnetic_height
 
 func _disc_center() -> Vector2:
 	return art_center() if _art_frame >= 0 else Effects.hit_position(self)
@@ -2599,7 +2677,7 @@ func _advance_firing(delta: float, previous_cd: float, previous_target, cooldown
 	var split: bool = delta > event_step + 0.000001 and previous_target == attack_target and is_instance_valid(attack_target)
 	if not split:
 		if _burst_left > 0: _update_burst(delta)
-		elif _try_fire_ready() and _burst_left == 0: _finish_ground_waypoint()
+		elif not (_cd_timer > 0.0 and unit_id != "APOC" and unit_id != "BORIS" and unit_id != Ra3Expansion.HARBINGER and not data.has("soviet_ra3")) and _try_fire_ready() and _burst_left == 0: _finish_ground_waypoint()
 		return
 	var ordinary_clock := not mount_clock and unit_id != Ra3Expansion.HARBINGER and not special.has("missile_racks")
 	var rate := cooldown_rate
@@ -2625,7 +2703,7 @@ func _advance_firing(delta: float, previous_cd: float, previous_target, cooldown
 					continue
 				burst_checked = true
 			if _advance_valid_burst(step, burst_weapon): burst_checked = false
-		elif ordinary_clock and _cd_timer > 0.0 and not (unit_id == "BORIS" and attack_target is Building):
+		elif ordinary_clock and _cd_timer > 0.0 and (unit_id != "BORIS" or not SovietSpecials.boris_airstrike_target(self, attack_target)):
 			continue
 		elif _try_fire_ready():
 			burst_checked = false
@@ -2671,8 +2749,8 @@ func _try_fire_ready() -> bool:
 	if not is_instance_valid(attack_target) or unit_id == "CARRIER" or (unit_id == "DEST" and NavalContact.underwater_type(attack_target)) or not logistics.can_start_volley():
 		return false
 	var t = attack_target
-	var designating := unit_id == "BORIS" and is_instance_valid(t) and t is Building
-	preload("res://scripts/units/expansion_2_armor.gd").prepare_wait(self,t)
+	var designating := unit_id == "BORIS" and SovietSpecials.boris_airstrike_target(self, t)
+	if unit_id == "APOC": preload("res://scripts/units/expansion_2_armor.gd").prepare_wait(self,t)
 	var reload_left := float(special.get("airstrike_cd", 0.0)) if designating else _cd_timer
 	if (fire_stance == "none" and not attack_ordered) or _burst_left > 0 or reload_left > 0.0:
 		return false
@@ -2796,9 +2874,10 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 		NavalContact.surface(self)
 	var world := _battle_world()
 	if world != null:
-		world.reveal_attack(embarked_in if OpenTopped.active(self) or embarked_in is Building else self, target)
+		world.reveal_attack(embarked_in if embarked_in != null and (OpenTopped.active(self) or embarked_in is Building) else self, target)
 	var weapon := _active_weapon()   # 精英武器优先（RA2 ElitePrimary）
 	if unit_id == "DISK": _disc_trace("weapon", target, str(weapon.get("name", "")))
+	var magnetic := MagneticWave.handles(self, weapon)
 	var reference_weapon:=weapon.duplicate(true) if CombatMath.FinalDamage.active() else {}
 	if unit_id == "SHK":
 		# Consume on actual firing, including a dodge or force-fire; never mutate shared weapons.
@@ -2806,7 +2885,7 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 		weapon.damage = float(weapon.damage) * preload("res://scripts/units/expansion_2_infantry.gd").discharge(self,preload("res://scripts/units/tesla_reserve.gd").discharge(self))
 		weapon.damage *= preload("res://scripts/units/electric_cards.gd").primary_multiplier(self,target)
 	preload("res://scripts/units/expansion_2_ground.gd").before_reveal(self)
-	_muzzle = 0.09
+	_muzzle = 0.0 if magnetic else 0.09
 	special.reveal = 2.0
 	if _seq.has(_fire_sequence()):
 		_fire_anim_time = 0.0
@@ -2864,13 +2943,13 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	var barrel_index := -1
 	if unit_id == "APOC" and weapon.name in ["120mmx", "120mmxE"]:
 		barrel_index = posmod(int(weapon.burst) - _burst_left, 2)
-	var muzzle := _weapon_muzzle(barrel_index)
+	var muzzle := MagneticWave.muzzle(self) if magnetic else _weapon_muzzle(barrel_index)
 	if weapon.get("peregrine_aa",false):Effects.spawn_beam(muzzle,Effects.hit_position(target),Color(.95,.85,.55),"laser",1.0,.05)
 	if yr_finish!=null:yr_finish.fire(barrel_index,weapon,Iso.dir(muzzle-global_position))
 	var commando_look:=CommandoFx.primary_style(self,weapon) if special.get("hero_skin",false) else ""
 	if not commando_look.is_empty():
 		CommandoFx.spawn(Effects._host(),commando_look,CommandoSkin.shot_origin(self,muzzle),Effects.hit_position(target))
-	elif not Ra3Mirage.handles(self): _spawn_muzzle_fx(muzzle, str(weapon.get("ra2_weapon_id", "")))
+	elif not magnetic and not Ra3Mirage.handles(self): _spawn_muzzle_fx(muzzle, str(weapon.get("ra2_weapon_id", "")))
 	# RA2 开火音效：weapon Report= → sound.ini → wav（与炮口火光同步）
 	if unit_id == "YTNK" and str(weapon.get("report", "")).begins_with("GattlingGunAttackLoop"):
 		preload("res://scripts/core/gatling_audio.gd").shot(self,weapon,_cd_timer)
@@ -2881,11 +2960,13 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 	if Ra3Mirage.handles(self):
 		Ra3Mirage.shoot(self, target, weapon, dmg, shot_bonus)
 		return
-	if AlliedAbilities.special_shot(self, target, weapon): return
+	var handled := AlliedAbilities.special_shot(self, target, weapon)
+	if magnetic and (target is Unit or target is Building): MagneticWave.fire(self, target, float(weapon.range))
+	if handled: return
 	# 表现层：光束/激光/电弧武器（原版无 Anim=，靠 IsLaser/IsRadBeam/IsElectricBolt 渲染）
 	# → 程序化光束，见 GameData.ra2_beam_spec（数据驱动，覆盖全部 27 把）
 	var beam := GameData.ra2_beam_spec(str(weapon.get("ra2_weapon_id", "")))
-	var beam_drawn := false
+	var beam_drawn := magnetic
 	if unit_id == "DISK" and weapon.get("name", "") in ["DiskLaser", "DiskLaserE"]:
 		_disc_trace("laser.begin", target)
 		var endpoint: Vector2 = target.art_center() if target.has_method("art_center") else Effects.hit_position(target)
@@ -2899,20 +2980,25 @@ func _fire_shot(target,first_in_volley:=false) -> void:
 		Effects.spawn_beam(muzzle, Effects.hit_position(target), bcol, str(beam.get("kind", "laser")),
 			float(beam.get("thickness", 2.5)), float(beam.get("duration", 0.12)), Effects.Looks.current(self,true),null,false,yr_finish!=null and unit_id=="TTNK")
 		beam_drawn = true
+	if target is ForceFirePoint and special.get("allied_first_team","")=="0941632C":
+		special.all01_bomb_released = true
 	if pspd <= 0.0 and target is ForceFirePoint:
 		ForceFire.instant_ground(self, target, weapon, dmg, shot_bonus, _pick_projectile_parent())
 		return
 	if pspd <= 0.0:
 		# 瞬发（电弧 / 近战）
 		var at := str(weapon.get("attack_type", "melee"))
+		# YR Mechanical has no impact AnimList. Let the wreck flash/explosion read cleanly.
+		var sapper_hit: bool = target is Unit and shot_bonus.impact_weapon == "YR_CAP_Sapper"
 		if at == "tesla" and not beam_drawn:
 			Effects.spawn_beam(muzzle, Effects.hit_position(target), Color(0.6, 0.9, 1.0), "tesla", 2.2, 0.09)
-		elif not beam_drawn and commando_look.is_empty():
+		elif not beam_drawn and commando_look.is_empty() and not sapper_hit:
 			Effects.spawn_impact(Effects.hit_position(target), Color(0.9, 0.85, 0.7), 8.0)
 		# 瞬发武器（电弧/近战/光束）同样按弹头 AnimList= 播放真实命中动画（第 8 批：按伤害选档）
 		if unit_id == "DISK": _disc_trace("impact.begin", target)
-		if commando_look.is_empty(): _spawn_impact_anim(Effects.hit_position(target), dmg, Effects.hit_position(target).is_equal_approx(target.global_position))
-		else: Effects.Looks.impact(Effects._host(), Effects.hit_position(target), commando_look)
+		if not magnetic and not sapper_hit:
+			if commando_look.is_empty(): _spawn_impact_anim(Effects.hit_position(target), dmg, Effects.hit_position(target).is_equal_approx(target.global_position))
+			else: Effects.Looks.impact(Effects._host(), Effects.hit_position(target), commando_look)
 		if target.has_method("receive_hit"):
 			if unit_id == "DISK": _disc_trace("impact.end", target)
 			preload("res://scripts/world/bridge_damage.gd").instant_target(self,target,CombatMath.with_offense(float(weapon.get("damage",0.0)),shot_bonus),str(weapon.get("ra2_warhead","")))
@@ -2996,7 +3082,7 @@ func _process_harvester(delta: float) -> void:
 	if _home_tick <= 0.0 and _dock_locked:
 		_home_tick = 1.5
 		blocked_home = harvest_state == "to_base" and is_instance_valid(home_base) and not EconomyCycle.refinery_accessible(self, home_base)
-	if not is_instance_valid(home_base) or home_base.side != side or home_base.hp <= 0.0 or not home_base.is_operational() \
+	if not is_instance_valid(home_base) or not Battle.HeadEconomy.same_refinery_house(_combat_world,self,home_base) or home_base.hp <= 0.0 or not home_base.is_operational() \
 			or blocked_home or (_home_tick <= 0.0 and not _dock_locked):
 		if not ai_path_allowed(): return
 		var previous_home = home_base
@@ -3159,7 +3245,7 @@ var _exit_check_left := 0.0
 var _exit_progress_at := Vector2.INF
 
 func _leave_refinery(delta: float) -> void:
-	if not is_instance_valid(home_base) or home_base.hp <= 0.0 or home_base.side != side:
+	if not is_instance_valid(home_base) or home_base.hp <= 0.0 or not Battle.HeadEconomy.same_refinery_house(_combat_world,self,home_base):
 		_harvest_exit = Vector2.INF
 		_clear_field()
 		return
@@ -3558,7 +3644,7 @@ func _unload_cargo(amount: float) -> void:
 	var base_credits := credits
 	var world := _battle_world()
 	if world != null:
-		credits *= EconomyCycle.income_factor(world, side)
+		credits *= EconomyCycle.income_factor(world, world.economy_owner(self))
 	cargo_gems = maxf(0.0, cargo_gems * (1.0 - share))
 	cargo = maxf(0.0, cargo - quantity)
 	if special.get("convoy_delivery",false) and side=="ally" and Convoy.Cards.C.eligible(world,"HARV"):
@@ -3571,7 +3657,7 @@ func _unload_cargo(amount: float) -> void:
 func _deposit(amount: float, purifier_bonus: float = 0.0) -> void:
 	var world := _battle_world()
 	if world != null:
-		world.credit_income(side, amount, false, true)
+		world.credit_income(world.economy_owner(self), amount, false, true)
 	if side == "ally":
 		var caption := "+" + String.num(amount, 2)
 		if purifier_bonus > 0.0: caption += "（精炼 +%s）" % String.num(purifier_bonus, 2)
@@ -3654,7 +3740,7 @@ func _pick_home_base():
 	var best = null
 	var bd := INF
 	for refinery in get_tree().get_nodes_in_group("ore_refineries"):
-		if refinery.side != side or refinery.hp <= 0.0 or not refinery.is_operational():
+		if not Battle.HeadEconomy.same_refinery_house(_combat_world,self,refinery) or refinery.hp <= 0.0 or not refinery.is_operational():
 			continue
 		var distance := global_position.distance_squared_to(refinery.global_position)
 		if distance < bd and EconomyCycle.refinery_accessible(self, refinery):
@@ -3752,7 +3838,7 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 		if is_instance_valid(attacker) and (attacker is Unit or attacker is Building) and not BattleRequest.friendly(attacker.side,side) and AlliedAbilities.alive(attacker):
 			if final_dmg > 0: preload("res://scripts/world/air_relief.gd").alert(self,attacker)
 			var native := preload("res://scripts/core/yr_death_rules.gd").type_data(unit_id)
-			if final_dmg > 0 and GameData._ra2_flag(native.get("canretaliate", true)):
+			if final_dmg > 0 and GameData._ra2_flag(native.get("canretaliate", true)) and _mission_allows_retaliation():
 				if _return_timer <= 0.0 or not special.has("retaliation_origin"):
 					special.retaliation_origin = global_position
 				if side == "ally" and (_return_timer <= 0.0 or not is_same(attacker, special.get("retaliation_target"))):
@@ -3825,6 +3911,10 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 		special.convoy_rescue_shield-=used;final_dmg-=used
 	if unit_id=="ARND" and special.has("studio"):final_dmg=StudioTalents.absorb(self,final_dmg)
 	hp -= final_dmg
+	if final_dmg>0 and special.get("hollywood_prisoner_tag")=="095D099C" and is_instance_valid(_combat_world) and _combat_world.allied_state.has("hollywood"):
+		_combat_world.Hollywood.RetailSequences.prisoner_attacked(_combat_world.allied_state.hollywood,self)
+	if final_dmg>0 and special.has("hollywood_star_guard") and is_instance_valid(_combat_world) and _combat_world.mission.get("id")=="yr_hollywood":
+		_combat_world.Hollywood.star_guard_attacked(_combat_world,self)
 	if final_dmg>0 and attacker_bonus.has("studio_target"):StudioTalents.impact(source,self,attacker_bonus)
 	if unit_id=="INIT" and final_dmg>0 and hp>0 and embarked_in==null: HollywoodInfantry.suppress(self)
 	if unit_id=="YURIKO":preload("res://scripts/units/yuriko_audio.gd").hurt(self,final_dmg,attack_type)
@@ -3856,7 +3946,7 @@ func receive_hit(damage: float, attack_type: String = "bullet", attacker_bonus: 
 		special.yr_causes_death_weapon = GameData.warhead_combat_rule(warhead_id).get("causes_death_weapon", false)
 		preload("res://scripts/rules/commando_contracts.gd").prepare_death(self,source,attacker_bonus)
 		if special.get("academy_hero")=="BORIS":preload("res://scripts/units/boris_radio.gd").health_hit(self,source,final_dmg)
-		_die(source)
+		_die(source, false, warhead_id.to_lower() == "yr_cap_mechanical" and attacker_bonus.get("impact_weapon") == "YR_CAP_Sapper")
 		special.erase("commando_kill_hit")
 		return
 	# A fully absorbed hit must not flash the health bar as if HP were lost.
@@ -3919,7 +4009,12 @@ func _tick_gm_target(delta: float) -> void:
 	flight.process_combat(delta)
 	queue_redraw()
 
-func _die(killer = null, temporal_erasure := false) -> void:
+func _play_vehicle_death_flash_end() -> void:
+	var world := _battle_world()
+	if not preload("res://scripts/core/yr_death_fx.gd").destroyed(self) and (world == null or world.position_visible_to("ally", global_position)):
+		Effects.spawn_impact(global_position, _col, radius * 2.2)
+
+func _die(killer = null, temporal_erasure := false, sapper := false) -> void:
 	if unit_id=="SMIN" and not _dead: preload("res://scripts/world/slave_mining.gd").release(self,killer)
 	if _dead:
 		return
@@ -3946,7 +4041,7 @@ func _die(killer = null, temporal_erasure := false) -> void:
 		hull_crash = preload("res://scripts/units/kirov_crash.gd").begin(self)
 	_dead = true
 	if shield_sprite != null: shield_sprite.hide()
-	if special.has("combo_slot") and world!=null: preload("res://scripts/world/head_games_combine.gd").casualty(world,special.combo_slot)
+	if special.has("combo_slot") and world!=null: preload("res://scripts/world/head_games_combine.gd").casualty(world,self)
 	if special.has("virus_shooter"):
 		preload("res://scripts/units/head_games_weapons.gd").virus_death(self,killer)
 	if unit_id=="YURIKO" and not temporal_erasure and is_instance_valid(world):preload("res://scripts/units/yuriko_power_fx.gd").show_fx(world,position,"FX_JapanYurikoDeath")
@@ -3988,8 +4083,16 @@ func _die(killer = null, temporal_erasure := false) -> void:
 		else: Ra3Wreck.spawn(self)
 		if unit_id == Ra3Expansion.HARBINGER:
 			preload("res://scripts/units/ra3_crash_fx.gd").spawn(_battle_world(),global_position+RA2Art.art_dir(Vector2(0,-_visual_lift()*sqrt(0.75))))
-		elif not AlliedAbilities.infantry(self) and not preload("res://scripts/core/yr_death_fx.gd").destroyed(self):
-			Effects.spawn_impact(global_position, _col, radius * 2.2)
+		elif not AlliedAbilities.infantry(self):
+			if sapper and not is_air and not _ra2.is_empty() and _ra3_model == null and material is ShaderMaterial and material.shader == HouseColor.shader_res():
+				# The normal shared house material stays unchanged on other vehicles.
+				var flash_material: ShaderMaterial = material.duplicate()
+				flash_material.set_shader_parameter("sapper_flash", 0.5)
+				material = flash_material
+				_sapper_flash_left = SAPPER_FLASH_SECONDS
+			else:
+				if not preload("res://scripts/core/yr_death_fx.gd").destroyed(self):
+					Effects.spawn_impact(global_position, _col, radius * 2.2)
 	var source_flags: Dictionary = GameData.ra2_source_units.get(unit_id, {}).get("extra", {})
 	if side == "ally" and unit_id != "HORNET" and not is_harvester and not special.has(Furnace.GUARD) and str(source_flags.get("MissileSpawn", "")).to_lower() != "yes":
 		Ra2Sfx.play_player_eva(_battle_world(), "EVA_UnitLost", 2000)
@@ -4008,6 +4111,10 @@ func _die(killer = null, temporal_erasure := false) -> void:
 	# Complete source sequence from frame zero; death never loops or collides.
 	collision_layer = 0
 	collision_mask = 0
+	if _sapper_flash_left > 0.0:
+		set_physics_process(true)
+		queue_redraw()
+		return
 	if yuriko_model != null and not temporal_erasure:
 		yuriko_model.sync_actor(self,0)
 		_dying = yuriko_model.duration(yuriko_model.action)
@@ -4318,7 +4425,7 @@ func cancel_stance() -> void:
 func order_return_to_refinery(refinery) -> bool:
 	if not is_harvester or embarked_in != null or _dead or AlliedAbilities.frozen(self) or _stun_timer > 0.0:
 		return false
-	if not is_instance_valid(refinery) or refinery.side != side or not refinery.is_refinery() or not refinery.is_operational():
+	if not is_instance_valid(refinery) or not Battle.HeadEconomy.same_refinery_house(_combat_world,self,refinery) or not refinery.is_refinery() or not refinery.is_operational():
 		return false
 	if home_base == refinery and ((_dock_locked and harvest_state in ["to_base", "unloading"]) or _harvest_exit.is_finite()):
 		return true
@@ -4581,17 +4688,16 @@ func shield_readout_amount() -> float:
 	return preload("res://scripts/ui/shield_readout.gd").amount(self)
 
 func draw_hp_bar(ci: CanvasItem, origin: Vector2, show_values := false) -> void:
-	var shield := shield_readout_amount()
-	preload("res://scripts/units/unit_shield_visual.gd").sync(self, shield)
-	if not (show_values or hp < max_hp or selected or _hp_flash > 0.0 or shield>0):
+	var shield := preload("res://scripts/ui/shield_readout.gd").summary(self, false)
+	preload("res://scripts/units/unit_shield_visual.gd").sync(self, shield.amount)
+	if not (show_values or hp < max_hp or selected or _hp_flash > 0.0 or shield.amount > 0.0 or shield.protected or shield.psi_left > 0.0):
 		return
 	var rect := hp_bar_rect()
 	rect.position += origin
 	var pct: float = clampf(hp / maxf(1.0, max_hp), 0.0, 1.0)
 	HpBar.draw_bar(ci, rect, pct, HpBar.world_fill(side, pct), 0, _hp_ghost, _hp_flash, 0.0, HpBar.rim_for(side))
-	TankHero.Shield.draw_bar(self,ci,rect)
-	preload("res://scripts/units/water_relay.gd").draw_bar(self,ci,rect)
-	if show_values: HpBar.draw_readout(ci,rect,side,hp,max_hp,shield)
+	HpBar.draw_shield(ci,rect,shield,side,show_values)
+	if show_values: HpBar.draw_readout(ci,rect,side,hp,max_hp,shield.amount)
 
 # -------------------------------------------------- RA2 原图（SHP/VXL）
 
@@ -4772,7 +4878,7 @@ func _draw_ra2_sprite_uncached(r: float) -> void:
 			nm = "FireProne" if _fire_anim_time >= 0 and _seq.has("FireProne") else "Crawl"
 		elif special.has("para_height"):
 			nm = "Paradrop"
-		elif unit_id == "BORIS" and is_instance_valid(attack_target) and attack_target is Building and attack_target.special.get("airstrike_mark", {}).get("spotter") == self and not attack_target.special.airstrike_mark.get("boris_independent",false):
+		elif SovietSpecials.boris_airstrike_target(self, attack_target) and attack_target.special.get("airstrike_mark", {}).get("spotter") == self and not attack_target.special.airstrike_mark.get("boris_independent",false):
 			nm = "SecondaryFire" # Original eight-direction laser-designator pose.
 		elif _fire_anim_time >= 0.0 or _muzzle > 0.0:
 			nm = _fire_sequence()
@@ -5631,22 +5737,22 @@ func _tick_skills(delta: float) -> void:
 
 ## 汇总限时 buff，重算攻/防/速（单一数据源：技能 buff 已在 _cast_ability 落地为 buff，避免重复计入）
 func _recompute_bonuses() -> void:
-	_recompute_base_bonuses()
+	var electric_slow := _recompute_base_bonuses()
 	if unit_id == "E2":
 		bonuses.attack_bonus*=preload("res://scripts/units/expansion_2_infantry.gd").attack(self)
 	move_speed*=preload("res://scripts/units/progression_expansion.gd").speed(self)
 	if special.has("commando_hero_v2") and special.commando_hero_v2.has("rhythm_left"):move_speed*=1.25
 	if special.has("peregrine"):
-		move_speed+=_base_speed*preload("res://scripts/units/peregrine.gd").speed_bonus(self)*(1.0-clampf(buff_value("electric_slow"),0.0,0.8))
+		move_speed+=_base_speed*preload("res://scripts/units/peregrine.gd").speed_bonus(self)*(1.0-clampf(electric_slow,0.0,0.8))
 	if unit_id == "ORCA" or unit_id == "BEAG":
-		move_speed+=_base_speed*preload("res://scripts/units/peregrine_command.gd").speed_bonus(self)*(1.0-clampf(buff_value("electric_slow"),0.0,0.8))
+		move_speed+=_base_speed*preload("res://scripts/units/peregrine_command.gd").speed_bonus(self)*(1.0-clampf(electric_slow,0.0,0.8))
 	if side == "ally":
 		move_speed*=preload("res://scripts/expedition/rules.gd").speed_factor(self)
 	if special.has(Furnace.STANCE):
 		bonuses.attack_bonus *= float(GameData.get_skill(Furnace.ACTIVE).attack_by_rank[special[Furnace.STANCE].rank])
 		move_speed = _base_speed * float(GameData.get_skill(Furnace.ACTIVE).speed_by_rank[special[Furnace.STANCE].rank])
 
-func _recompute_base_bonuses() -> void:
+func _recompute_base_bonuses() -> float:
 	# Most actors have no temporary effects. Apply the same base/deployment values
 	# directly, retaining live training and speed-floor changes during battle.
 	if buffs.is_empty() and not special.has("slope_speed"):
@@ -5655,7 +5761,7 @@ func _recompute_base_bonuses() -> void:
 		if _deployed and unit_id in DEPLOYING_INFANTRY: armor *= Training.scale(self)
 		bonuses.defense_bonus = _base_def * armor
 		move_speed = TankHero.speed(self,_base_speed)
-		return
+		return 0.0
 	# One pass, same per-kind multiplication order. Do not cache across ticks:
 	# effects can expire, be dispelled or change during another actor's attack.
 	var attack := 1.0
@@ -5677,6 +5783,8 @@ func _recompute_base_bonuses() -> void:
 	if special.has("slope_speed"): move_speed *= 1.0 + float(special.slope_speed)
 	move_speed *= 1.0 - clampf(maxf(slow,court_slow),0.0,0.8)
 	move_speed=TankHero.speed(self,move_speed)
+	# Aircraft formation bonuses use electric slow, not the combined court slow.
+	return slow
 
 # ------------------------------------------------------------------ 增益 / 减益（buff）
 
@@ -5962,7 +6070,7 @@ func command_voice_kind(kind: String) -> String:
 		if kind=="select" and special.has("psi_hurt_voice_left"):return "select_under_fire"
 		if kind=="select" and is_instance_valid(attack_target):return "select_battle"
 		if kind=="move" and attack_move:return "move_attack"
-	if unit_id == "BORIS" and kind == "attack" and is_instance_valid(attack_target) and attack_target is Building:
+	if kind == "attack" and SovietSpecials.boris_airstrike_target(self, attack_target):
 		return "secondary_attack"
 	if Ra3Mirage.handles(self): return Ra3Mirage.voice_kind(self, kind)
 	if Ra3Expansion.handles(self):return Ra3Expansion.voice_kind(self,kind)
@@ -6306,12 +6414,15 @@ func _domain_ok(p: Vector2) -> bool:
 
 ## Low-flying targets may be vulnerable to ground fire before a physical grapple can reach them.
 func ground_contact_eligible() -> bool:
-	if embarked_in != null or special.has("para_height"): return false
+	if embarked_in != null or special.has("para_height") or MagnetPull.airborne(self): return false
 	if not is_air: return true
 	return unit_id in ["SCHP", "SHAD"] and logistics.air_lift <= 0.001
 
+func victim_is_own_magnetic_target(target) -> bool:
+	return target is Unit and target.special.get("magnet_source") == self and MagnetPull.airborne(target)
+
 func is_air_target() -> bool:
-	if special.has("para_height"): return true
+	if special.has("para_height") or MagnetPull.airborne(self): return true
 	return is_air and logistics.air_lift > 0.1
 
 func set_stowed(carrier) -> void:

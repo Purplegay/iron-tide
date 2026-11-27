@@ -94,6 +94,7 @@ func setup(battle,restored:bool) -> void:
 	else:
 		SchoolField.setup(self,Expedition.state,true)
 	repair_overlapping_sites()
+	if restored: repair_tanker_stations()
 	SchoolField.prepare_finds(self,Expedition.state)
 	repair_npc_sides(world)
 	for objective:Dictionary in data.objectives:
@@ -115,7 +116,8 @@ func occupied_points() -> Array:
 	return points
 
 func valid_site(point:Vector2,occupied:Array) -> bool:
-	if not point.is_finite() or point.distance_to(world.player_start())<BASE_GAP:return false
+	if not Rect2(Vector2.ZERO,Vector2.ONE*world.map_size).has_point(point) or not point.is_finite():return false
+	if point.distance_to(world.player_start())<BASE_GAP:return false
 	var origin:Vector2=world.allied_state.get("expedition_task",{}).get("origin",world.player_start())
 	if not world.path_service.same_zone(origin,point):return false
 	for other:Vector2 in occupied:
@@ -163,6 +165,20 @@ func repair_overlapping_sites() -> void:
 					if world.actor_alive(unit) and unit.special.get("expedition_contact","")==objective.id:
 						unit.global_position=replacement;unit.order_stop();unit.reset_physics_interpolation()
 		occupied.append(objective.position)
+
+# Previously saved convoys can carry a road destination beyond the map edge.
+func repair_tanker_stations() -> void:
+	var bounds:=Rect2(Vector2.ZERO,Vector2.ONE*world.map_size)
+	for job:Dictionary in data.get("objectives",[]):
+		if job.kind!="fuel" or job.get("phase","") not in ["open","drive"] or job.done or job.failed:continue
+		if bounds.has_point(job.station):continue
+		var target:Vector2=job.get("outpost",job.station)
+		var repaired:=find_site(target.clamp(Vector2.ZERO,bounds.end-Vector2.ONE),occupied_points())
+		if not repaired.is_finite():continue
+		job.station=repaired
+		if job.phase=="drive":
+			var truck=missions.tagged("field_tanker",job.id)
+			if world.actor_alive(truck):truck.order_move(repaired)
 
 static func repair_npc_sides(battle) -> void:
 	for unit in battle.units:

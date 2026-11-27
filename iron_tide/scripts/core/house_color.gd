@@ -235,14 +235,50 @@ static func material_for(target: Color, paint_mode := PaintMode.NONE, skin := 0,
 	return m
 
 
+static func allied_first() -> bool:
+	return not BattleRequest.skirmish and BattleRequest.mission_id=="yr_allied_first"
+
+static func first_room_color(room: String) -> Color:
+	var source: Dictionary = preload("res://data/ra2/allied_first_ai.json").data
+	var hsv: Array = source.colors[source.rooms[room].color]
+	return Color.from_hsv(float(hsv[0])/255,float(hsv[1])/255,float(hsv[2])/255)
+
+static func allied_finale() -> bool:
+	return not BattleRequest.skirmish and BattleRequest.mission_id=="yr_allied_finale"
+
+static func finale_color(side: String, room: String, faction: String) -> Color:
+	if side=="ally":
+		# The captured Special house and player-built Soviet roster share a paint scheme.
+		# Use the actor's own roster, never the currently selected command-deck tab.
+		if room=="Special" or (room.is_empty() and faction=="soviet"): return Color.from_hsv(0,230.0/255,1)
+		return Color.from_hsv(153.0/255,214.0/255,212.0/255)
+	if side=="neutral": return Color.from_hsv(0,0,131.0/255)
+	var hue: float = {"YuriCountry":211.0,"Yuri2":191.0}.get(room,201.0)
+	return Color.from_hsv(hue/255.0,201.0/255,189.0/255)
+
+## 新造对象和放置预览还没有原图房 ID，按实际制式解析房色。
+static func player_building_preview_color(faction: String) -> Color:
+	return finale_color("ally", "", faction) if allied_finale() else color_for_side("ally", "")
+
 ## 给一个 CanvasItem（单位/建筑）上色：设置其 material，并返回计算出的阵营色。
 ## `faction_hex` 为该对象所属阵营的本色（用于敌方避让判定）。
 static func apply_to(node: CanvasItem, side: String, faction_hex: String) -> Color:
 	var col := color_for_side(side, faction_hex)
+	if allied_finale() and (node is Unit or node is Building):
+		col = finale_color(side,str(node.special.get("allied_finale_room","")),node.faction)
+	if allied_first() and (node is Unit or node is Building):
+		var room: String = node.special.get("allied_first_room","")
+		var rooms: Dictionary = preload("res://data/ra2/allied_first_ai.json").data.rooms
+		if rooms.has(room):
+			if side=="enemy" and room in ["PowerHouse","Neutral","BridgeHouse","Americans","Alliance","British"]: col=first_room_color("YuriCountry")
+			elif side=="neutral": col=first_room_color("Neutral")
+			elif side!="ally" or (room in ["Americans","Alliance","British"] and player_id=="allied"): col=first_room_color(room)
 	if head_games() and (node is Unit or node is Building):
 		col = mission_color(side,int(node.special.get("head_games_wing",-1)))
-	if BattleRequest.mission_id=="yr_time_shift" and side=="enemy" and (node is Unit or node is Building) and (node.faction=="yuri" or node.special.get("yuri_power",false)):col=mission_color("enemy")
+	if BattleRequest.mission_id=="yr_time_shift" and side=="enemy" and (node is Unit or node is Building) and (node.faction=="yuri" or node.special.get("yuri_power",false) or node.special.get("time_shift_native_house")=="YuriCountry"):col=mission_color("enemy")
 	var mode := PaintMode.NONE
+	if node is Building and BattleRequest.mission_id == "yr_allied_first" and not BattleRequest.skirmish and node.building_id.begins_with("CAPOWR0") and side == "neutral":
+		col = Color.from_hsv(0.0, 0.0, 131.0/255.0)
 	if node is Building and node.building_id == "CAOILD" and side == "neutral":
 		col = Color.GRAY
 		mode = PaintMode.NEUTRAL_OIL
@@ -250,7 +286,7 @@ static func apply_to(node: CanvasItem, side: String, faction_hex: String) -> Col
 		var art: Texture2D = node._ra2.get("tex")
 		var city := art != null and art.resource_path.begins_with("res://assets/ra2/hollywood/city/")
 		if side == "neutral":
-			col = Color.GRAY
+			col = first_room_color("Neutral") if allied_first() else Color.GRAY
 			mode = PaintMode.CITY_RED_RAMP if city else PaintMode.HOSPITAL_BLUE_NEUTRAL
 		else:
 			mode = PaintMode.HOSPITAL_FACADE if city else PaintMode.HOSPITAL_BLUE_FACADE

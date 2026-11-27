@@ -1,0 +1,38 @@
+{
+  "clips": {
+    "A07_F00E": {
+      "source": "movmd03.mix > 0xff033251",
+      "sha256": "bded19ad3620f024f5dfe451d7afeb074d421d3cdbf4b152267b8e0308c29809"
+    },
+    "A07_P01E": {
+      "source": "movmd03.mix > 0x8e8bd958",
+      "sha256": "5b37b7d70e532fbd107cfe53b39409df569818d2d77527cca3ef98da42796b4e"
+    },
+    "A08_F00E": {
+      "source": "movmd03.mix > 0xe0869dc",
+      "sha256": "633c2dd210438720a35e844396a29bde40a3fdfdfcb9c48cc4bed04516d94318"
+    }
+  },
+  "voices": {
+    "a07_p01": {
+      "source": "langmd.mix > audiomd.mix > 0xc1450977",
+      "sha256": "16adefeb45c37ad5993adab6fe61b9f9bf1d39eacc006086817b893759c4170e"
+    },
+    "xa7ev04": {
+      "source": "langmd.mix > audiomd.mix > 0xc01403f2",
+      "sha256": "45fcdc65c59f676cbab3e1225dbf67a8ca85bbe75f0a258eec6bf40e9ff8fc1a"
+    },
+    "macev02": {
+      "source": "langmd.mix > audiomd.mix > 0x7d545fe1",
+      "sha256": "0812e7fb76552dc5ce0dd80dfa6887f3f4564fbcd4cb2fa4fea639a8dd5da45e"
+    },
+    "ceva021": {
+      "source": "langmd.mix > audiomd.mix > 0xbf582e66",
+      "sha256": "aae1d9100d2d036b35d2988ca878fa317c4f3e54593b50c1734eaac4bac3c11d"
+    },
+    "ceva120": {
+      "source": "langmd.mix > audiomd.mix > 0xb8aefd5d",
+      "sha256": "d0412eb4a70fc844dabe7e0e863953f6c17dcab4301fe077177c9ff361c80a56"
+    }
+  }
+}

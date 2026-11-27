@@ -112,6 +112,7 @@ const SUPERWEAPON_ALERT_VOICES := {
 const SUPERWEAPON_DETECTED_VOICES := {
 	"LightningStorm": "EVA_WeatherDeviceReady", "MultiMissile": "EVA_NuclearSiloDetected",
 	"ChronoSphere": "EVA_ChronosphereDetected", "IronCurtain": "EVA_IronCurtainDetected",
+	"PsychicDominator": "EVA_PsychicDominatorDetected", "GeneticConverter": "EVA_GeneticMutatorDetected",
 }
 
 const SUPPORT_READY_VOICES := {

@@ -31,7 +31,11 @@ static func pending(ai) -> bool:
 
 static func needed(ai) -> bool:
 	if not ai.battle.owned_building_ids(ai.house_id).has(ai.battle.roster_id("GACNST",ai.house_id)): return false
-	return margin(ai)<-0.001 and not pending(ai)
+	var base: Array = ai.battle.owned_building_ids(ai.house_id)
+	var reserve_power := 0.0
+	if base.has(ai.battle.roster_id("GAREFN",ai.house_id)) and base.has(ai.battle.roster_id("GAWEAP",ai.house_id)):
+		reserve_power = float(preload("res://data/ra2/retail_skirmish.json").data.power_surplus)
+	return margin(ai)<reserve_power-0.001 and not pending(ai)
 
 static func reserve(ai) -> float:
 	if not needed(ai): return 0.0

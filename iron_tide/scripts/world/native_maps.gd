@@ -5,7 +5,7 @@ const NAMES := ["尤复 · Islands on the Land","尤复 · Ice Age","尤复 · C
 const CELL := 55.0
 static var _cache:Dictionary={}
 
-static func has(id:String) -> bool:return id in ["yr_all02umd","yr_sov07","yr_sov01"] or id in IDS
+static func has(id:String) -> bool:return id in ["yr_all02umd","yr_sov07","yr_sov01","yr_all07smd","yr_all01umd"] or id in IDS
 
 static func data(id:String) -> Dictionary:
 	if not has(id):return {}
@@ -219,19 +219,21 @@ static func populate(world) -> void:
 	world.allied_state.native_ore_version = 1
 	# Preserve native neutral sites for which we have verified building art.
 	for site:Array in row.structures:
+		if world.map_layout()=="yr_all07smd" and GameData.building_index.has(str(site[0])) and not str(site[0]) in ["CAOILD","CAMACH","CATECH01"]: continue
 		var id:String=site[0]
+		if world.map_layout()=="yr_all01umd" and (not GameData.get_building(id).is_empty() or id.begins_with("CAPOWR0")):continue
 		if world.map_layout()=="yr_sov01" and site[3]==0:continue
 		if world.map_layout()=="yr_all02umd" and id=="CAOILD" and Vector2(site[1],site[2])==Vector2(60.5,48.5): continue # Enemy-owned well is placed by Hollywood.setup.
 		var campaign_art:bool=false
 		if world.map_layout()=="yr_all02umd":
 			campaign_art=ResourceLoader.exists("res://assets/ra2/hollywood/city/"+id+".png")
-		if not campaign_art and not RA2Art.has_art(id):continue
+		if not campaign_art and not RA2Art.has_art(id) and RA2Art.allied_finale_site(id).is_empty():continue
 		var point:=Vector2(site[1],site[2])*CELL
 		var source:Dictionary=row.site_types[id]
 		var dimensions:PackedStringArray=str(source.foundation).to_lower().split("x")
 		if dimensions.size()==2:
 			point+=Vector2(-(float(dimensions[1])-1),(float(dimensions[0])-1))*CELL*.5
-		if world.map_layout() not in ["yr_all02umd","yr_sov07","yr_sov01"] and world.buildings.any(func(b):return b.position.distance_to(point)<b.radius+50):continue
+		if world.map_layout() not in ["yr_all02umd","yr_sov07","yr_sov01","yr_all07smd","yr_all01umd"] and world.buildings.any(func(b):return b.position.distance_to(point)<b.radius+50):continue
 		if id in ["CAOILD","CAHSE01","CABHUT"]:
 			load("res://scripts/world/civilian_sites.gd").create(world,id,point)
 		else:
@@ -243,6 +245,10 @@ static func populate(world) -> void:
 			if str(source.canbeoccupied).to_lower()=="yes" and not closed:
 				definition.garrison_slots=int(source.maxnumberoccupants)
 				definition.garrison_weapons=GameData.get_building("NABNKR").garrison_weapons
+			if not RA2Art.allied_finale_site(id).is_empty():
+				definition.name={"CATECH01":"通讯站","CAMISC06":"营火","CAMISC03":"杂物堆","CAARMY01":"军用帐篷","CAARMY02":"军用帐篷","CARUFGL":"苏军旗帜","CAFRMB":"农舍","CAMACH":"科技维修厂"}.get(id,"中立建筑")
+			if id in ["CAMISC01","CAMISC02"]:
+				definition.name = "油桶堆" if id=="CAMISC01" else "油桶"
 			if campaign_art: definition.hollywood_art=true
 			var building:=Building.new()
 			building.setup(definition,"neutral",point,world,true)
@@ -283,6 +289,6 @@ static func find_base_site(world,anchor:Vector2,bid:String,miner_id:String="") -
 			if apron.has_area():
 				var work_area := Rect2(point + apron.position, apron.size)
 				if not clear_rect(world.map_layout(), work_area):continue
-				if world.buildings.any(func(b): return work_area.intersects(Placement.aabb(b.footprint_poly(), b.position), true)):continue
+				if world.buildings.any(func(b): return world.actor_alive(b) and work_area.intersects(Placement.aabb(b.footprint_poly(), b.position), true)):continue
 			if clear_rect(world.map_layout(),Rect2(footprint.position+point,footprint.size)) and world._skirmish_spot_ok(point,90):return point
 	return Vector2.INF

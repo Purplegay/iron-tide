@@ -7,7 +7,7 @@ func check(ok:bool,text:String) -> void:
 	checks+=1
 	if not ok:failures+=1;push_error(text)
 func _ready() -> void:
-	if not ProjectSettings.get_setting("application/config/use_custom_user_dir",false):get_tree().quit(2);return
+	if not OS.get_user_data_dir().contains("CodexIronTideValidation") and not ProjectSettings.get_setting("application/config/use_custom_user_dir",false):get_tree().quit(2);return
 	var plan=preload("res://scripts/expedition/reinforcement_plan.gd")
 	var initial:=[{"id":"E1","due":10.0},{"id":"MTNK","due":30.0},{"id":"E2","due":50.0}]
 	var queued:=initial.slice(1).duplicate(true)
@@ -23,6 +23,7 @@ func _ready() -> void:
 	check_bulk_discounts()
 	check_recruit_weights()
 	check_special_recruits()
+	check_targeted_recruits()
 	var random:=RandomNumberGenerator.new()
 	for kind:String in ["training","native","specialization"]:
 		for rank in [1,2,3]:
@@ -158,17 +159,17 @@ func check_purchase_at_population_limit() -> void:
 	var stock:Array=Expedition.state.shop
 	check(stock.size()==before.size(),"another recruit stays in its slot when population fills")
 	if stock.size()!=before.size():return
-	check(stock[1].sold and stock[0].id==before[0].id and stock[0].price==before[0].price and stock[2]==before[2],"sold slot, adjacent goods and discount keep their positions")
-	check(stock.slice(3)==before.slice(3) and not Expedition.purchase_problem(Expedition.state,3).is_empty(),"other affected recruit and unrelated goods retain their slots on a six-card shelf")
-	check(stock[0].locked and Expedition.lock_shop(0) and not Expedition.state.shop[0].locked and Expedition.lock_shop(0),"full camp retains locks and permits unlocking and relocking")
-	check(not Expedition.buy(0) and Expedition.state.supplies==465,"full-capacity purchase cannot charge")
+	check(stock[1].sold and stock[0].id==before[0].id and stock[0].price==before[0].price and stock[2]==before[2],"capped recruit and adjacent goods keep their positions")
+	check(stock.slice(3)==before.slice(3) and Expedition.purchase_problem(Expedition.state,3).is_empty(),"another recruit can still join the reserves")
+	check(stock[0].locked and Expedition.lock_shop(0) and not Expedition.state.shop[0].locked and Expedition.lock_shop(0),"full deployment retains locks on available recruits")
+	check(not Expedition.buy(1) and Expedition.state.supplies==465,"a capped type cannot be purchased again")
 	var expected:Dictionary=stock[0].duplicate(true)
 	expected.fresh_stock=false
 	for roll in [1,0]:
 		var carried:=Market.shop(Expedition.state,roll)
 		check(carried[0]==expected,"full-capacity locked card survives refresh and new shop")
 	check(Expedition.load_run() and Expedition.state.shop==stock,"reload keeps the exact shelf")
-	check(Expedition.dismiss("FV",1) and Expedition.purchase_problem(Expedition.state,0).is_empty() and Expedition.buy(0),"vacancy enables the same discounted offer without refreshing")
+	check(Expedition.dismiss("FV",1) and not Expedition.buy(1),"dismissing a unit does not reopen the recruit")
 
 func check_special_recruits() -> void:
 	check(Expedition.start("美国","",1414) and Expedition.choose(0),"open recruiting camp")
@@ -176,7 +177,8 @@ func check_special_recruits() -> void:
 	run.shop=[{"kind":"unit","id":"SREF","price":120,"locked":true,"sold":false},{"kind":"unit","id":"SREF","price":120,"sold":true}]
 	run.event={"choices": [{"cost":60,"item":{"kind":"unit","id":"SREF"}}]}
 	Market.normalize_shop(run)
-	check(run.shop.size()==2 and run.shop[0].locked and run.shop[0].price==35 and run.shop[1].price==120,"legacy locked prism repriced and past sale preserved")
+	check(run.shop.size()==2 and run.shop[0].sold and not run.shop[0].locked and run.shop[1].sold and run.camp_recruits_bought==["SREF"],"legacy sold recruit closes prior duplicate and removes its lock")
+	run.erase("camp_recruits_bought")
 	check(run.event.choices[0].cost==30 and run.event.choices[0].label.contains("30"),"legacy discounted recruit matches displayed price")
 	run.stage=16
 	run.frozen.expedition_unlocked_talents={}
@@ -213,8 +215,58 @@ func check_special_recruits() -> void:
 	run.shop[0].merge({"price":260,"sold":false,"locked":true,"quality":2},true)
 	check(Expedition.commit(run) and Expedition.load_run() and Expedition.state.shop[0].price==36,"current camp reprices existing locked stock on disk")
 	check(Expedition.buy(0) and Expedition.state.supplies==464 and Expedition.state.special_squads.back().tier==2,"shop charges the displayed price for one tier II recruit")
+	check(not Expedition.buy(0) and Expedition.state.supplies==464 and Expedition.state.special_squads.size()==1,"same special card cannot hire again")
 	var quantity:=Market.Army.quantity(Expedition.state,"E1")
-	check(Expedition.service("refill","E1") and Market.Army.quantity(Expedition.state,"E1")>quantity and Expedition.state.special_squads.size()==1,"ordinary refill still recruits regular forces")
+	check(Expedition.service("refill","E1") and Market.Army.quantity(Expedition.state,"E1")>quantity and Expedition.state.special_squads.size()==1,"ordinary refill service still recruits regular forces")
+
+func check_targeted_recruits() -> void:
+	check(Expedition.start("美国","",1414) and Expedition.choose(0),"open separate camp for cross-card limit")
+	var run:Dictionary=Expedition.state.duplicate(true)
+	run.stage=11
+	run.supplies=1000
+	run.reinforcements=[]
+	run.survivors=[]
+	run.special_squads=[]
+	if "SREF" not in run.catalog:run.catalog.append("SREF")
+	run.tracked_traits=Market.Army.tags("SREF",run).slice(0,2)
+	var card:={"kind":"unit","id":"SREF","price":35,"sold":false,"locked":true,"targeted":true}
+	var alternate:={"kind":"special_unit","id":"SREF","tier":2,"count":1,"price":35,"sold":false,"locked":true}
+	var legacy:=run.duplicate(true)
+	legacy.targeted_recruits_bought=["SREF"]
+	legacy.shop=[alternate.duplicate(true)]
+	Market.normalize_shop(legacy)
+	check(legacy.camp_recruits_bought==["SREF"] and legacy.shop[0].sold and not legacy.shop[0].locked,"old targeted history blocks alternate stock")
+	card.sale_percent=20
+	alternate.sale_percent=20
+	run.research.bargain=2
+	run.shop=[card.duplicate(true),alternate.duplicate(true)]
+	var committed:=Expedition.commit(run)
+	var quote:=Expedition.plan_discount_purchases(Expedition.state.duplicate(true))
+	check(committed and quote.count==1,"bulk discount quote cannot include two forms of the same recruit")
+	var purchased:=committed and Expedition.buy_discounts(quote)
+	check(purchased,"targeted prism tank can be bought once: "+Expedition.error)
+	if not purchased:return
+	var saved:Dictionary=Expedition.state.duplicate(true)
+	check(saved.shop[0].sold and not saved.shop[0].locked and saved.camp_recruits_bought==["SREF"] and Market.Army.quantity(saved,"SREF")==1,"targeted purchase records one tank and closes its card")
+	check(not Expedition.buy(0) and not Expedition.can_lock_shop(0) and not Expedition.buy(1) and not Expedition.can_lock_shop(1) and saved.shop[1].sold and Expedition.state==saved,"repeat click, alternate tier or lock cannot spend or recruit")
+	check(Expedition.load_run() and not Expedition.buy(0) and Expedition.state.shop[0].sold,"reloading does not reopen a sold targeted card")
+	var unblocked:=false
+	var control:Dictionary=Expedition.state.duplicate(true)
+	control.erase("camp_recruits_bought")
+	control.shop=[]
+	var no_repeat:=true
+	for roll in range(1,16):
+		unblocked=Market.shop(control,roll).any(func(item):return Market.is_recruit(item) and item.id=="SREF") or unblocked
+		var refreshed:=Expedition.refresh_shop()
+		no_repeat=refreshed and not Expedition.state.shop.any(func(item):return Market.is_recruit(item) and item.id=="SREF") and no_repeat
+	check(unblocked,"without purchase history the same seed can draw a targeted prism tank")
+	check(no_repeat and Expedition.load_run() and Expedition.state.get("camp_recruits_bought",[])==["SREF"],"fifteen refreshes and reload preserve the targeted limit despite room")
+	var next:Dictionary=Expedition.state.duplicate(true)
+	next.stage+=1
+	Expedition.ready(next)
+	check(not next.has("camp_recruits_bought"),"new camp resets the recruitment purchase history")
+	next.shop=[card.duplicate(true)]
+	check(Expedition.commit(next) and Expedition.buy(0) and Market.Army.quantity(Expedition.state,"SREF")==2,"the same targeted recruit is eligible in a new camp")
 
 func check_recruit_weights() -> void:
 	for kind in ["unit","special_unit","reinforce"]:
