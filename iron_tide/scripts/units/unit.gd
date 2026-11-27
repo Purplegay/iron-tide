@@ -2474,7 +2474,8 @@ func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Diction
 				if not SovietSpecials.accepts_bomb(self, target): return false
 			WeaponTargetRule.INFEST:
 				if not SovietWeapons.can_infest(target): return false
-	if not NavalContact.weapon_allows(self, target): return false
+	var underwater_type := NavalContact.underwater_type(target)
+	if not NavalContact.weapon_allows(self, target, underwater_type): return false
 	# Callers that already resolved the live weapon can share it within this
 	# decision. Never retain it across ticks, target changes or passenger changes.
 	var active := resolved_weapon if not resolved_weapon.is_empty() else _weapon_for_target(target)
@@ -2496,7 +2497,7 @@ func _weapon_domain_valid(target, check_cover := false, resolved_weapon: Diction
 	var ordinary_visibility: bool = not c4 and target is Unit and target._ordinary_weapon_visibility()
 	if not c4 and not AlliedAbilities.valid_weapon_target(self, target, active, ordinary_visibility): return false
 	var world := _battle_world()
-	if world != null and not target is ForceFirePoint and not world.actor_visible_to(side,target,self,ordinary_visibility) and not (unit_id=="DLPH" and NavalContact.visible_grip(world,side,target)):
+	if world != null and not target is ForceFirePoint and not world.actor_visible_to(side,target,self,ordinary_visibility, underwater_type) and not (unit_id=="DLPH" and NavalContact.visible_grip(world,side,target)):
 		return false
 	if c4: return not AlliedAbilities.frozen(self) and not AlliedAbilities.frozen(target)
 	if check_cover and world is Battle and not world.wall_cells.is_empty() and WallArt.shot_blocked(world, self, target, active): return false

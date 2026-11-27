@@ -2684,7 +2684,9 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 		for u in units:
 			res[u] = center
 		return res
-	var pool: Array = slots.duplicate()
+	var pool := PackedInt32Array()
+	pool.resize(slots.size())
+	for i in slots.size(): pool[i] = i
 	var order: Array = units.duplicate()
 	order.sort_custom(func(a, b):
 		return a.global_position.distance_squared_to(center) < b.global_position.distance_squared_to(center))
@@ -2696,6 +2698,13 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 	origin /= maxf(1.0, units.size())
 	var forward := (center - origin).normalized()
 	var marching := origin.distance_to(center) > spacing * sqrt(float(units.size()))
+	var depth_by_slot := PackedFloat64Array()
+	var row_margin := spacing * 0.25
+	if marching:
+		depth_by_slot.resize(slots.size())
+		for i in slots.size():
+			var point: Vector2 = slots[i]
+			depth_by_slot[i] = (point - center).dot(forward)
 	# Terrain is unchanged during this synchronous command. Reuse slot checks
 	# only within this call and within an identical movement domain.
 	var blocked_by_domain:Dictionary={}
@@ -2704,31 +2713,39 @@ func _assign_move_slots(units: Array, slots: Array, center: Vector2, defer_route
 		var air: bool = u.get("is_air") == true
 		var routes := movement_service(u)
 		var domain:= (8 if routes != path_service else 0) | int(wm) | (int(u.is_amphibious)<<1) | (int(u.unit_id=="R3APOC")<<2)
-		var blocked:Dictionary=blocked_by_domain.get_or_add(domain,{})
+		var blocked: Array = []
+		if not air and path_service != null:
+			if not blocked_by_domain.has(domain):
+				blocked.resize(slots.size())
+				blocked_by_domain[domain] = blocked
+			else:
+				blocked = blocked_by_domain[domain]
 		var position:Vector2=u.global_position
 		var best := -1
 		var best_d := INF
 		var best_depth := -INF
 		for i in range(pool.size()):
-			var s: Vector2 = pool[i]
-			if not air and path_service != null:
-				if not blocked.has(s):blocked[s]=routes.is_blocked(s,wm,u.is_amphibious,u.unit_id=="R3APOC")
-				if blocked[s]:continue
-			var d: float = position.distance_squared_to(s)
-			var depth := (s - center).dot(forward)
-			# Front units occupy front rows, so early arrivals do not park
-			# across the route of the rest of the formation. Within a row,
-			# retain the nearest slot to avoid lateral crossings.
-			var better := d < best_d
+			var slot_index := pool[i]
+			var s: Vector2 = slots[slot_index]
+			if not blocked.is_empty():
+				if blocked[slot_index] == null: blocked[slot_index] = routes.is_blocked(s,wm,u.is_amphibious,u.unit_id=="R3APOC")
+				if blocked[slot_index]: continue
+			# Keep the original row/tie order. A slot behind the current row
+			# cannot win on distance, regardless of the unit's position.
+			var depth := 0.0
+			var advances_row := false
 			if marching:
-				better = depth > best_depth + spacing * 0.25 or (absf(depth - best_depth) <= spacing * 0.25 and d < best_d)
-			if better:
+				depth = depth_by_slot[slot_index]
+				advances_row = depth > best_depth + row_margin
+				if not advances_row and not absf(depth - best_depth) <= row_margin: continue
+			var d := position.distance_squared_to(s)
+			if advances_row or d < best_d:
 				best_d = d
 				best_depth = depth
 				best = i
 		if best < 0:
 			best = 0
-		var slot: Vector2 = pool[best]
+		var slot: Vector2 = slots[pool[best]]
 		pool.remove_at(best)
 		if not defer_routes and not air and path_service != null:
 			slot = resolve_move_slot(u,slot,used,spacing)
@@ -4396,7 +4413,7 @@ func actor_alive(actor) -> bool:
 		return not building.is_queued_for_deletion() and building.hp > 0.0 and not building._dead
 	return not actor.is_queued_for_deletion() and actor.hp > 0.0 and not actor._dead
 
-func actor_visible_to(observer: String, actor, viewer = null, ordinary_visibility := false) -> bool:
+func actor_visible_to(observer: String, actor, viewer = null, ordinary_visibility := false, known_underwater_type = null) -> bool:
 	if not is_instance_valid(actor):
 		return false
 	if actor is Unit and actor.embarked_in != null:
@@ -4414,7 +4431,7 @@ func actor_visible_to(observer: String, actor, viewer = null, ordinary_visibilit
 		if AlliedAbilities.alive(scout):
 			var track:Dictionary=scout.special.get("progression_v1",{}).get("tracking",{})
 			if track.get("left",0)>0 and is_same(track.get("target"),actor):return true
-	var submerged := NavalContact.submerged(actor)
+	var submerged: bool = NavalContact.submerged(actor) if known_underwater_type == null else (known_underwater_type and not actor.special.has("dive_remaining"))
 	if submerged and get_tree().has_group(Unit.FactionCards.BUOYS) and Unit.FactionCards.sees_buoy(self,observer,actor,viewer):return true
 	if fog != null and not fog.is_visible_at(observer,actor.global_position):return false
 	if submerged and not NavalContact.detected(self,observer,actor):return false

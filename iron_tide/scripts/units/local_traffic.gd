@@ -283,7 +283,7 @@ func apply(unit:Unit, _delta: float) -> void:
 	var push := Vector2.ZERO
 	var head_on := 0.0
 	var wait_factor := 1.0
-	var contacts := _exact_avoidance_contacts(unit, position, forward, look, check_lane)
+	var contacts := _exact_avoidance_contacts(unit, position, forward, look, check_lane, owner, air, naval)
 	preload("res://scripts/world/battle_call_counters.gd").iterations(26,contacts.size())
 	for entry in contacts:
 		var other: Unit = entry[0]
@@ -293,8 +293,6 @@ func apply(unit:Unit, _delta: float) -> void:
 		var along: float = entry[4]
 		var lateral: float = entry[5]
 		var in_lane: bool = entry[6]
-		if other.hp <= 0.0 or other.embarked_in != null or other.is_air != air or other.is_naval != naval: continue
-		if not BattleRequest.friendly(other.side,owner): continue
 		if (owner == other.side or BattleRequest.house_teams.get(other.side) is int) and _friendly_pair_policy(unit,other): continue
 		if owner != other.side and not BattleRequest.house_teams.get(other.side) is int and friendly_unit_pair(unit,other): continue
 		if distance_squared < clearance * clearance:
@@ -304,7 +302,7 @@ func apply(unit:Unit, _delta: float) -> void:
 		if in_lane:
 			if yield_target == Vector2.INF and (unit.has_move_order or unit.is_harvester):
 				var combined_radius: float = actor_radius + other.radius
-				if lateral < combined_radius and request_yield(unit, other, forward):
+				if lateral < combined_radius and _request_yield_after_pair_check(unit, other, forward):
 					# Use the actual front of the swept circle at this offset.
 					var contact := sqrt(maxf(0.0, combined_radius * combined_radius - lateral * lateral))
 					wait_factor = minf(wait_factor, clampf((along - contact - 4.0) / look, 0.0, 1.0))
@@ -323,7 +321,7 @@ func apply(unit:Unit, _delta: float) -> void:
 
 # Exact geometry is evaluated once, before sorting and before any yield policy.
 # The legacy cache remains authoritative for order and for other consumers.
-func _exact_avoidance_contacts(unit: Unit, point: Vector2, direction: Vector2, look: float, check_lane: bool) -> Array:
+func _exact_avoidance_contacts(unit: Unit, point: Vector2, direction: Vector2, look: float, check_lane: bool, owner: String, air: bool, naval: bool) -> Array:
 	var buckets: Array = [nearby]
 	var rank_candidates := false
 	if _query_world != null and _query_world.units.size() >= 96 and nearby.size() > 2:
@@ -356,6 +354,10 @@ func _exact_avoidance_contacts(unit: Unit, point: Vector2, direction: Vector2, l
 			var lateral := absf(offset.cross(direction)) if ahead else 0.0
 			var in_lane := ahead and lateral < clearance
 			if distance_squared >= clearance * clearance and not in_lane: continue
+			# These live predicates do not depend on a previous contact's yield
+			# decision. Reject here so they never need a row, rank or sort entry.
+			if other.hp <= 0.0 or other.embarked_in != null or other.is_air != air or other.is_naval != naval: continue
+			if not BattleRequest.friendly(other.side,owner): continue
 			var entry := [other,offset,clearance,distance_squared,along,lateral,in_lane]
 			if rank_candidates:
 				ranked.append(rank)
@@ -424,6 +426,9 @@ func stalled_blockers(unit: Unit, waypoint: Vector2) -> Array:
 
 func request_yield(requester: Unit, other: Unit, forward: Vector2) -> bool:
 	if friendly_unit_pair(requester,other): return false
+	return _request_yield_after_pair_check(requester, other, forward)
+
+func _request_yield_after_pair_check(requester: Unit, other: Unit, forward: Vector2) -> bool:
 	var _call_log_scope = preload("res://scripts/world/battle_call_counters.gd").enter(72)
 	BridgeTraffic.record(requester,"yield_requested",other)
 	if other.has_move_order or (other.hold_position and not mobile_ai_guard(other)) or other._deployed or other.is_harvester or other.repairing \

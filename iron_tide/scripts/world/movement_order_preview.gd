@@ -7,6 +7,9 @@ const ATTACK := Color(1.0, 0.27, 0.17, 0.95)
 static func routes(world) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
 	if world.ended: return result
+	# All lines in this synchronous pass use the same observer, without a
+	# viewer bonus. Many selected units can focus the same live contact.
+	var visible_targets := {}
 	for unit in world.selected_units:
 		if not is_instance_valid(unit) or unit.is_queued_for_deletion() or unit._dead or unit.hp <= 0.0:
 			continue
@@ -14,7 +17,7 @@ static func routes(world) -> Array[Dictionary]:
 			continue
 		var points := PackedVector2Array([unit.global_position])
 		var target = unit.attack_target
-		var show_target: bool = AlliedAbilities.alive(target) and ((target is ForceFirePoint and unit.attack_ordered) or ((target is Unit or target is Building) and world.actor_visible_to("ally", target)))
+		var show_target: bool = AlliedAbilities.alive(target) and ((target is ForceFirePoint and unit.attack_ordered) or ((target is Unit or target is Building) and _visible(world, target, visible_targets)))
 		if unit.attack_ordered:
 			if not show_target: continue
 			points.append(target.global_position if target is ForceFirePoint else target.art_center())
@@ -30,10 +33,14 @@ static func routes(world) -> Array[Dictionary]:
 				if order.has("position"): points.append(order.position)
 				else:
 					var queued_target = order.get("target")
-					if AlliedAbilities.alive(queued_target) and (queued_target is ForceFirePoint or world.actor_visible_to("ally", queued_target)):
+					if AlliedAbilities.alive(queued_target) and (queued_target is ForceFirePoint or _visible(world, queued_target, visible_targets)):
 						points.append(queued_target.global_position)
 		result.append({"points": points, "attack": unit.attack_ordered, "attack_move": unit.attack_move or unit.attack_ordered})
 	return result
+
+static func _visible(world, target, checked: Dictionary) -> bool:
+	if not checked.has(target): checked[target] = world.actor_visible_to("ally", target)
+	return checked[target]
 
 # Seven screen pixels of ink and seven of space. One textured quad represents
 # the entire segment regardless of its length or the number of dashes.

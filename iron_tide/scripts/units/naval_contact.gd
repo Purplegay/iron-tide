@@ -116,9 +116,10 @@ static func detected(world, observer: String, target) -> bool:
 			return true
 	return false
 
-static func weapon_allows(unit: Unit, target) -> bool:
+static func weapon_allows(unit: Unit, target, known_underwater_type = null) -> bool:
 	# Hero sonar changes only submerged-type eligibility. Ordinary ground/air
 	# targets need neither a hero-rank lookup nor a second type test.
-	if not underwater_type(target): return unit.unit_id != "ASW"
+	var underwater: bool = underwater_type(target) if known_underwater_type == null else known_underwater_type
+	if not underwater: return unit.unit_id != "ASW"
 	if Unit.TankHero.rank(unit)>=0:return unit.position.distance_squared_to(target.position)<=unit.attack_range*unit.attack_range
 	return GameData.unit_naval_targeting(unit.unit_id) in [1, 2, 3, 4, 5, 7]
